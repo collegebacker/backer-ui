@@ -11,14 +11,12 @@
     "jsx": "react",
     "module": "ESNext",
     "declaration": true,
-    "declarationDir": "types",
     "sourceMap": true,
-    "outDir": "dist",
+    // "outDir": "ui",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "emitDeclarationOnly": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "strictNullChecks": false
   },
-  "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
 }

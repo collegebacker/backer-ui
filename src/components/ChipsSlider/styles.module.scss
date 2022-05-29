@@ -1,0 +1,138 @@
+.sliderContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  opacity: 0;
+}
+
+.sliderWrap {
+  z-index: 1;
+  position: relative;
+  width: 100%;
+
+  div:first-child {
+    height: auto;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &::after,
+  &::before {
+    pointer-events: none;
+    z-index: 2;
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 40px;
+    height: 100%;
+  }
+
+  &::after {
+    left: 0;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 0)
+    );
+  }
+
+  &::before {
+    right: 0;
+    background: linear-gradient(
+      to left,
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 0)
+    );
+  }
+}
+
+.slider {
+  width: 100%;
+  padding: 4px 0;
+  position: relative;
+  // background-color: rgba(0, 0, 0, 0.1);
+  height: 100%;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.sliderCards {
+  display: flex;
+  flex-wrap: nowrap;
+  width: fit-content;
+  display: grid;
+  grid-auto-flow: column;
+}
+
+.itemWrap {
+  display: flex;
+  overflow: visible;
+  scroll-snap-align: center;
+  backface-visibility: hidden;
+  justify-content: center;
+  align-items: center;
+  // background-color: rgba(0, 0, 0, 0.1);
+}
+
+.item {
+  cursor: pointer;
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--color-main-200);
+  border-radius: 15px;
+  width: 76px;
+  height: 76px;
+  color: var(--color-main-200);
+  background-color: var(--color-main-0);
+  // transition: background-color 0.2s ease, transform 0.3s ease;
+  span {
+    pointer-events: none;
+    user-select: none;
+  }
+}
+
+.active {
+  background-color: var(--color-accent-500);
+  border: 1px solid transparent;
+  transform: scaleY(1.2);
+  transition: all 0.1s ease;
+
+  span {
+    color: var(--color-main-0);
+  }
+}
+
+.itemCaption {
+  user-select: none;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+
+  span {
+    font-weight: 200;
+    font-size: 17px;
+  }
+}
+
+.arrowButton {
+  z-index: 2;
+  user-select: none;
+  position: absolute;
+  margin-top: 36px;
+}
+
+.arrowLeft {
+  left: -60px;
+}
+
+.rightArrow {
+  right: -60px;
+}

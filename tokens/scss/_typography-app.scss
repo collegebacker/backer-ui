@@ -1,0 +1,51 @@
+@import "./typography-common.scss";
+
+// TITLES
+$typo-app-title-xlarge-desktop-fontfamily: $typo-serif-fontfamily;
+$typo-app-title-xlarge-desktop-fontweight: $typo-bold-fontweight;
+$typo-app-title-xlarge-desktop-fontsize: 66px;
+$typo-app-title-xlarge-desktop-lineheight: 115%;
+
+$typo-app-title-xlarge-mobile-fontsize: 40px;
+$typo-app-title-xlarge-mobile-lineheight: 120%;
+
+$typo-app-title-large-fontfamily: $typo-serif-fontfamily;
+$typo-app-title-large-fontweight: $typo-bold-fontweight;
+$typo-app-title-large-fontsize: 40px;
+$typo-app-title-large-lineheight: 120%;
+
+$typo-app-title-medium-fontfamily: $typo-serif-fontfamily;
+$typo-app-title-medium-fontweight: $typo-bold-fontweight;
+$typo-app-title-medium-fontsize: 34px;
+$typo-app-title-medium-lineheight: 120%;
+
+$typo-app-title-small-fontfamily: $typo-sansserif-fontfamily;
+$typo-app-title-small-fontweight: $typo-medium-fontweight;
+$typo-app-title-small-fontsize: 24px;
+$typo-app-title-small-lineheight: 130%;
+
+// BODY
+$typo-app-body-large-fontfamily: $typo-sansserif-fontfamily;
+$typo-app-body-large-fontweight: $typo-light-fontweight;
+$typo-app-body-large-fontsize: 24px;
+$typo-app-body-large-lineheight: 130%;
+
+$typo-app-body-large-paragraph-fontfamily: $typo-sansserif-fontfamily;
+$typo-app-body-large-paragraph-fontweight: $typo-light-fontweight;
+$typo-app-body-large-paragraph-fontsize: 24px;
+$typo-app-body-large-paragraph-lineheight: 150%;
+
+$typo-app-body-main-fontfamily: $typo-sansserif-fontfamily;
+$typo-app-body-main-fontweight: $typo-light-fontweight;
+$typo-app-body-main-fontsize: 17px;
+$typo-app-body-main-lineheight: 130%;
+
+$typo-app-body-paragraph-fontfamily: $typo-sansserif-fontfamily;
+$typo-app-body-paragraph-fontweight: $typo-light-fontweight;
+$typo-app-body-paragraph-fontsize: 17px;
+$typo-app-body-paragraph-lineheight: 160%;
+
+$typo-app-body-caption-fontfamily: $typo-sansserif-fontfamily;
+$typo-app-body-caption-fontweight: $typo-light-fontweight;
+$typo-app-body-caption-fontsize: 14px;
+$typo-app-body-caption-lineheight: 150%;

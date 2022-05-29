@@ -1,0 +1,71 @@
+.sb-show-main,
+.sb-main-padded {
+  overflow-x: hidden;
+}
+
+.pageWrap {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.iconsWrap {
+  display: flex;
+  flex-wrap: wrap;
+
+  &_card {
+    width: 100px;
+    margin-bottom: 40px;
+  }
+
+  &_icon {
+    margin-bottom: 16px;
+  }
+
+  &_name {
+    font-size: 12px;
+  }
+}
+
+.sliderWrapper_card {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+
+  h1 {
+    font-size: 50px;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-size: 24px;
+    line-height: 120%;
+    margin: 0;
+    margin-bottom: 10px;
+  }
+}
+
+// DOCS
+
+hr {
+  margin: 50px 0 40px;
+}
+
+.sbdocs-content {
+  max-width: 800px !important;
+}
+
+.sbdocs-h1 {
+  margin-bottom: 25px !important;
+}
+
+.sbdocs-ul {
+  margin-bottom: 30px !important;
+}
+
+.sbdocs-p {
+  font-size: 16px !important;
+  max-width: 680px;
+  margin-bottom: 24px !important;
+}

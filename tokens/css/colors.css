@@ -1,0 +1,65 @@
+:root {
+  /* // SCSS VARIABLES // */
+  --color-main-500: #141414;
+  --color-main-400: #373737;
+  --color-main-200: #8a8a8a;
+  --color-main-100: #b9b9b9;
+  --color-main-50: #f4f4f4;
+  --color-main-0: #ffffff;
+  --color-main-transparent-400: #141414d9;
+  --color-main-transparent-200: #14141480;
+  --color-main-transparent-80: #14141414;
+  --color-main-transparent-50: #1414140a;
+
+  --color-accent-800: #9a63c3;
+  --color-accent-500: #b380d4;
+  --color-accent-200: #e1c6f3;
+  --color-accent-50: #f6f0f9;
+  --color-accent-transparent-200: #b380d470;
+  --color-accent-transparent-50: #b380d41f;
+
+  --color-peach-900: #fcb099;
+  --color-peach-500: #fdcebe;
+  --color-peach-200: #feeadf;
+  --color-peach-50: #fcf5ef;
+  --color-peach-transparent-200: #fdd5be70;
+  --color-peach-transparent-50: #fdd8be42;
+
+  --color-service-error-main: #f54e5d;
+  --color-service-error-dark: #a8333b;
+  --color-service-error-light: #ffebef;
+
+  --color-service-warning-main: #ffca64;
+  --color-service-warning-dark: #d07408;
+  --color-service-warning-light: #ffeece;
+
+  --color-service-success-main: #2feea9;
+  --color-service-success-dark: #09896a;
+  --color-service-success-light: #e3fbeb;
+
+  --gradient-peach: radial-gradient(
+    50% 50% at 50% 50%,
+    #fdcebe 0%,
+    rgba(253, 206, 190, 0) 100%
+  );
+  --gradient-velvet: radial-gradient(
+    50% 50% at 50% 50%,
+    #c4c7f2 0%,
+    rgba(196, 199, 242, 0) 100%
+  );
+  --gradient-ice: radial-gradient(
+    50% 50% at 50% 50%,
+    #a4eff4 0%,
+    rgba(164, 239, 244, 0) 100%
+  );
+  --gradient-pink: radial-gradient(
+    50% 50% at 50% 50%,
+    #ffc2ff 0%,
+    rgba(255, 194, 255, 0) 100%
+  );
+  --gradient-banana: radial-gradient(
+    50% 50% at 50% 50%,
+    #fde4be 0%,
+    rgba(253, 228, 190, 0) 100%
+  );
+}

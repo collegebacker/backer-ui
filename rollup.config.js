@@ -1,42 +1,47 @@
 import resolve from "@rollup/plugin-node-resolve";
+import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
-import json from '@rollup/plugin-json'; 
+import json from "@rollup/plugin-json";
 import dts from "rollup-plugin-dts";
-import postcss from 'rollup-plugin-postcss';
-
-const packageJson = require("./package.json");
+import styles from "rollup-plugin-styles";
 
 export default [
   {
-    input: "src/index.ts",
+    input: "src/components/index.ts",
     output: [
       {
-        file: packageJson.main,
+        dir: "ui",
         format: "cjs",
-        sourcemap: false,
-      },
-      {
-        file: packageJson.module,
-        format: "esm",
-        sourcemap: false,
+        sourcemap: true,
       },
     ],
     plugins: [
+      peerDepsExternal(),
       resolve(),
-      postcss({
-        extract: false,
+      styles({
         modules: true,
-        use: ['sass'],
       }),
       json(),
       commonjs(),
-      typescript({ tsconfig: "./tsconfig.json", sourceMap: false }),
+
+      typescript({
+        compilerOptions: {
+          declaration: true,
+          declarationDir: "ui/types",
+        },
+        exclude: [
+          "node_modules/**",
+          "ui",
+          "src/**/*.stories.tsx",
+          "src/**/*.test.tsx",
+        ],
+      }),
     ],
   },
   {
-    input: "dist/esm/types/index.d.ts",
-    output: [{ file: "dist/index.d.ts", format: "esm" }],
+    input: "ui/types/components/index.d.ts",
+    output: [{ file: "ui/index.d.ts", format: "esm" }],
     plugins: [dts()],
   },
 ];

@@ -1,0 +1,55 @@
+import { Meta } from "@storybook/addon-docs";
+
+<Meta title="About/Introduction" />
+
+# Welcome to Backer UI 0.1.0
+
+Here you can find all the documentation for the components and the API. Backer UI is a React UI library that is built on top of [react-router](https://reacttraining.com/react-router/web/guides/quick-start).
+
+All components in the library are core to the project and are used by the other components and application.
+
+---
+
+# How to use
+
+---
+
+# Components
+
+Backer UI has 3 types of components:
+
+- **`Core`**: These are the core components that are used by the other components and application. <br/> They are outside the context.
+- **`App`**: These are the components that are used by the application only.
+- **`Marketing`**: These are the components that are used by the marketing components.
+
+For now we merged the `core` components and the `marketing` components into one `ui` library. This will be changed in the future if there will be more stable components.
+
+Let's store contextual components for the `app` and `marketing` components in they own repositories for now. It will speed up the development process until we need more control over the components.
+
+---
+
+# Tokens
+
+For any UI, no matter the context, there are tokens that are used to style the components.
+
+- **`colors.css`**
+- **`_grids.css`**
+- **`_spacers.css`**
+- **`_typography-common.css`**
+- **`_typography-app.css`**
+- **`_typography-marketing.css`**
+- **`_radii.css`**
+
+---
+
+# Styles
+
+In order to convey the best experience for the user and make the development process easier, we use the following styles:
+
+- **`reset.css`** - Reset styles
+- **`fonts.css`** - Load fonts
+- **`global.scss`** - Global styles
+
+---
+
+# Utils
