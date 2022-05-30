@@ -12,7 +12,7 @@ We also use [Chromatic] to test the components and preview them in the browser w
 
 ### Backer UI on Chromatic
 
-Link to the lib https://www.chromatic.com/library?appId=629496e95fff28004a61a2a4
+Storybook — https://main--629496e95fff28004a61a2a4.chromatic.com
 To view the link above, manage stories, and test the user interface, you need an invitation.
 
 ---
