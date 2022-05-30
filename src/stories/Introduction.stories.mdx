@@ -12,6 +12,22 @@ All components in the library are core to the project and are used by the other 
 
 # How to use
 
+## Installation
+
+Add the line below to your `package.json` `dependencies` file. You can use the [npm](https://www.npmjs.com) or [yarn](https://yarnpkg.com) package manager. Do not forget to add the actual version of the library as a tag. View all tags [here](https://github.com/collegebacker/backer-ui/tags).
+
+```json
+"@collegebacker/backer-ui": "git://github.com/collegebacker/backer-ui.git#tag-version"
+```
+
+## Usage
+
+After installing the library, you can use it by importing it in your application.
+
+```tsx
+import { Button } from "@collegebacker/backer-ui/ui";
+```
+
 ---
 
 # Components
@@ -32,13 +48,27 @@ Let's store contextual components for the `app` and `marketing` components in th
 
 For any UI, no matter the context, there are tokens that are used to style the components.
 
-- **`colors.css`**
-- **`_grids.css`**
-- **`_spacers.css`**
-- **`_typography-common.css`**
-- **`_typography-app.css`**
-- **`_typography-marketing.css`**
-- **`_radii.css`**
+- **`colors.css`** - This file contains all the colors used in the UI in native css format.
+- **`_grids.scss`**
+- **`_spacers.scss`**
+- **`_typography-common.scss`**
+- **`_typography-app.csss`**
+- **`_typography-marketing.scss`**
+- **`_radii.scss`**
+
+## Import
+
+You can get them separately `@collegebacker/backer-ui/tokens/**`
+
+```jsx
+// TSX
+import "@collegebacker/backer-ui/styles/colors.css";
+```
+
+```css
+/* CSS */
+@import "@collegebacker/backer-ui/styles/colors.css";
+```
 
 ---
 
@@ -46,9 +76,27 @@ For any UI, no matter the context, there are tokens that are used to style the c
 
 In order to convey the best experience for the user and make the development process easier, we use the following styles:
 
+- **`all.scss`** - This file contains all the styles that are used in the UI.<br/>
+  If you want to skip manually importing the styles, you can use this file.
 - **`reset.css`** - Reset styles
 - **`fonts.css`** - Load fonts
-- **`global.scss`** - Global styles
+- **`global.css`** - Global styles that fixed initial styles
+- **`typography-app.scss`** - App styles
+- **`typography-marketing.scss`** - Marketing styles
+
+## Import
+
+You can get them separately `@collegebacker/backer-ui/styles/**`
+
+```jsx
+// TSX
+import "@collegebacker/backer-ui/styles/all.scss";
+```
+
+```css
+/* CSS */
+@import "@collegebacker/backer-ui/styles/colors.scss";
+```
 
 ---
 

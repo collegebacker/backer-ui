@@ -56,6 +56,10 @@ interface Props$6 {
 }
 declare const Logo: React.ForwardRefExoticComponent<Props$6 & React.RefAttributes<any>>;
 
+declare type ItemType = {
+    label: string;
+    caption: string;
+};
 interface Props$5 {
     containterClassName?: string;
     arrowsClassName?: string;

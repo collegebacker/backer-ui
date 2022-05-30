@@ -4,7 +4,7 @@ $card-radius: 15px;
   position: relative;
   display: flex;
   flex-direction: column;
-  background-color: rgba(0, 0, 0, 0.04);
+  // background-color: rgba(0, 0, 0, 0.04);
 
   &:after,
   &:before {
@@ -19,13 +19,13 @@ $card-radius: 15px;
   &:after {
     left: -40px;
     background-image: linear-gradient(to right, white, transparent);
-    background-color: rgba(0, 0, 0, 0.1);
+    // background-color: rgba(0, 0, 0, 0.1);
   }
 
   &:before {
     right: -40px;
     background-image: linear-gradient(to left, white, transparent);
-    background-color: rgba(0, 0, 0, 0.1);
+    // background-color: rgba(0, 0, 0, 0.1);
   }
 }
 
@@ -39,7 +39,7 @@ $card-radius: 15px;
   scroll-padding-right: 40px;
   margin-left: -40px;
   margin-right: -40px;
-  background-color: rgba(0, 0, 0, 0.06);
+  // background-color: rgba(0, 0, 0, 0.06);
 
   &::-webkit-scrollbar {
     display: none;
