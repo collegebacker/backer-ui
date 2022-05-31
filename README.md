@@ -46,5 +46,10 @@ Ask for permission to use the storybook UI to preview the components. If you're 
 
 ---
 
-12. Create tag.
-13. Gongratulations! You have successfully released a new version of the project. 🎉
+12. Checkout the `main` branch.
+13. Run `yarn chromatic` again to deploy Storybook to the `main` branch on Chromatic.
+
+---
+
+14. Create tag.
+15. Gongratulations! You have successfully released a new version of the project. 🎉
