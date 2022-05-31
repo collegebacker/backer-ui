@@ -8,6 +8,8 @@ We also use [Chromatic] to test the components and preview them in the browser w
 
 Storybook — https://main--629496e95fff28004a61a2a4.chromatic.com
 
+Chromatic app — https://www.chromatic.com/builds?appId=629496e95fff28004a61a2a4
+
 Ask for permission to use the storybook UI to preview the components. If you're memmber of the Backer team you should have permission automatically.
 
 ---
