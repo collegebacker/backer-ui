@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface Props$9 {
+interface Props$a {
     className?: string;
     onClick?: (event: any) => void;
     mode?: "primary" | "accent" | "outline" | "ghost";
@@ -14,16 +14,16 @@ interface Props$9 {
     children?: React.ReactNode;
     maxWidth?: number;
 }
-declare const Button: React.FC<Props$9>;
+declare const Button: React.FC<Props$a>;
 
-interface Props$8 {
+interface Props$9 {
     className?: string;
     style?: React.CSSProperties;
     name: IconTypes;
 }
-declare const Icon: React.FC<Props$8>;
+declare const Icon: React.FC<Props$9>;
 
-interface Props$7 {
+interface Props$8 {
     className?: string;
     type?: "text" | "password" | "number" | "email";
     required?: boolean;
@@ -47,20 +47,20 @@ interface Props$7 {
     onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
     onInvalid?: (event: React.FormEvent<HTMLInputElement>) => void;
 }
-declare const Input: React.ForwardRefExoticComponent<Props$7 & React.RefAttributes<any>>;
+declare const Input: React.ForwardRefExoticComponent<Props$8 & React.RefAttributes<any>>;
 
-interface Props$6 {
+interface Props$7 {
     className?: string;
     type?: "default" | "foundation" | "sign";
     hoverAnimation?: boolean;
 }
-declare const Logo: React.ForwardRefExoticComponent<Props$6 & React.RefAttributes<any>>;
+declare const Logo: React.ForwardRefExoticComponent<Props$7 & React.RefAttributes<any>>;
 
 declare type ItemType = {
     label: string;
     caption: string;
 };
-interface Props$5 {
+interface Props$6 {
     containterClassName?: string;
     arrowsClassName?: string;
     items: Array<ItemType>;
@@ -74,9 +74,9 @@ interface Props$5 {
     cardFontSize?: number;
     onChange?: (index: number) => void;
 }
-declare const ChipsSlider: React.FC<Props$5>;
+declare const ChipsSlider: React.FC<Props$6>;
 
-interface Props$4 {
+interface Props$5 {
     containterClassName?: string;
     paginationClassName?: string;
     arrowsClassName?: string;
@@ -94,9 +94,9 @@ interface Props$4 {
     };
     onChange?: (index: number) => void;
 }
-declare const SliderWrapper: React.FC<Props$4>;
+declare const SliderWrapper: React.FC<Props$5>;
 
-interface Props$3 {
+interface Props$4 {
     className?: string;
     disabled?: boolean;
     direction?: "left" | "right";
@@ -105,21 +105,21 @@ interface Props$3 {
     onMouseDown?: () => void;
     onMouseUp?: () => void;
 }
-declare const ArrowButton: React.ForwardRefExoticComponent<Props$3 & React.RefAttributes<any>>;
+declare const ArrowButton: React.ForwardRefExoticComponent<Props$4 & React.RefAttributes<any>>;
 
-interface Props$2 {
+interface Props$3 {
     className?: string;
     totalAmount: number;
     activeIndex: number;
 }
-declare const DotPagination: React.FC<Props$2>;
+declare const DotPagination: React.FC<Props$3>;
 
-interface Props$1 {
+interface Props$2 {
     className?: string;
 }
-declare const Divider: React.FC<Props$1>;
+declare const Divider: React.FC<Props$2>;
 
-interface Props {
+interface Props$1 {
     className?: string;
     style?: React.CSSProperties;
     tag: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span" | "a" | "ul" | "ol" | "li";
@@ -128,6 +128,13 @@ interface Props {
     marketingStyle?: "xlarge" | "large" | "lead" | "lead-bold" | "lead-small" | "lead-small-bold" | "accent-paragraph" | "accent-paragraph-bold" | "paragraph" | "paragraph-bold" | "caption" | "caption-bold";
     [key: string]: any;
 }
-declare const Text: React.FC<Props>;
+declare const Text: React.FC<Props$1>;
 
-export { ArrowButton, Button, ChipsSlider, Divider, DotPagination, Icon, Input, Logo, SliderWrapper, Text };
+interface Props {
+    className?: string;
+    style?: React.CSSProperties;
+    size?: "small" | "medium" | "large";
+}
+declare const Spinner: React.FC<Props>;
+
+export { ArrowButton, Button, ChipsSlider, Divider, DotPagination, Icon, Input, Logo, SliderWrapper, Spinner, Text };

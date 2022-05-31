@@ -1,12 +1,9 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { Description } from "@storybook/addon-docs";
 
 import { Text } from "..";
 
 localStorage.clear();
-
-Description;
 
 export default {
   title: "Misc/Text",

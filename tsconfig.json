@@ -12,7 +12,6 @@
     "module": "ESNext",
     "declaration": true,
     "sourceMap": true,
-    // "outDir": "ui",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "emitDeclarationOnly": true,
