@@ -22,12 +22,12 @@ To view the link above, manage stories, and test the user interface, you need an
 
 1. Create new branch.
 2. Make changes.
-3. Create a PR and describe the changes.
+3. Chnage the version number in `package.json`.
+4. Create a PR and describe the changes.
 
 ---
 
-4. Wait for code review. If approved, go next.
-5. Chnage the version number in `package.json`.
+5. Wait for code review. If approved, go next.
 6. Run `yarn rollup` to build the bundle.
 7. Commit and push.
 8. Merge the PR and delete the branch.
