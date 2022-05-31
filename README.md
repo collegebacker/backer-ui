@@ -18,23 +18,27 @@ To view the link above, manage stories, and test the user interface, you need an
 
 ---
 
-# Build process
+# BUILD PIPELINE
 
 1. Create new branch.
 2. Make changes.
 3. Chnage the version number in `package.json`.
-4. Create a PR and describe the changes.
 
 ---
 
-5. Wait for code review. If approved, go next.
-6. Run `yarn rollup` to build the bundle.
-7. Commit and push.
-8. Merge the PR and delete the branch.
+4. Run `yarn chromatic` to deploy Storybook to Chromatic.
+5. Create a MR and describe the changes.
+6. Notify the team about the MR and designers about new stories.
 
 ---
 
-9. Create new tag.
-10. Run `yarn chromatic` to deploy Storybook to Chromatic.
+7. Wait for code review. If approved, go next.
+8. Run `yarn rollup` to build the bundle.
+9. Commit and push.
+10. Merge the PR and delete the branch.
+
+---
+
+11. Create new tag.
 
 ---
