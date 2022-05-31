@@ -35,10 +35,11 @@ To view the link above, manage stories, and test the user interface, you need an
 7. Wait for code review. If approved, go next.
 8. Run `yarn rollup` to build the bundle.
 9. Commit and push.
-10. Merge the PR and delete the branch.
+10. Merge the PR
+11. Delete merged branch.
 
 ---
 
-11. Create new tag.
+12. Create new tag.
 
 ---
