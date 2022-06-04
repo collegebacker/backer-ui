@@ -28,6 +28,12 @@ Add the line below to your `package.json` `dependencies` file. You can use the [
 
 After installing the library, you can use it by importing it in your application.
 
+import global styles:
+```scss
+"@collegebacker/backer-ui/styles/all.scss";
+```
+
+import the components:
 ```tsx
 import { Button } from "@collegebacker/backer-ui/ui";
 ```
