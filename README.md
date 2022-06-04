@@ -14,6 +14,26 @@ Ask for permission to use the storybook UI to preview the components. If you're 
 
 ---
 
+# 🛠 How to use
+
+## Installation
+
+Add the line below to your `package.json` `dependencies` file. You can use the [npm](https://www.npmjs.com) or [yarn](https://yarnpkg.com) package manager. Do not forget to add the actual version of the library as a tag. View all tags [here](https://github.com/collegebacker/backer-ui/tags).
+
+```json
+"@collegebacker/backer-ui": "git://github.com/collegebacker/backer-ui.git#tag-version"
+```
+
+## Usage
+
+After installing the library, you can use it by importing it in your application.
+
+```tsx
+import { Button } from "@collegebacker/backer-ui/ui";
+```
+
+---
+
 # Development process
 
 ## Run the project locally:
