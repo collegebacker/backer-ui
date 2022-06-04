@@ -9,6 +9,7 @@ import styles from "rollup-plugin-styles";
 export default [
   {
     input: "src/components/index.ts",
+    external: ["react", "react-dom"],
     output: [
       {
         dir: "ui",
