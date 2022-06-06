@@ -100,10 +100,6 @@ const BottomSheet: React.FC<Props> = (props) => {
         inertia: true,
         edgeResistance: 0.8,
         maxDuration: 0.3,
-        // bounds: {
-        //   minY: 0,
-        //   maxY: 0,
-        // },
         onDragStart: () => {
           dragStartPoint = bottomSheetRef.current.getBoundingClientRect().top;
         },

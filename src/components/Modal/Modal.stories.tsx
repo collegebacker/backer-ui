@@ -8,6 +8,40 @@ localStorage.clear();
 export default {
   title: "Misc/Modal",
   component: Modal,
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "To trigger the component, you need to creare a `ref` to the component `const ModalRef = React.useRef<any>(null)`. Then you can use the `open` method to open the modal like `() => ModalRef.current.open()`. To close the modal, you can use the `close` method.",
+      },
+    },
+  },
+  argTypes: {
+    title: {
+      control: "text",
+      description:
+        "Title of the modal. If the string is empty we don't render the title.",
+    },
+    smallTitle: {
+      control: "boolean",
+      description: "You can switch the title to the small size.",
+    },
+    isBottomSheet: {
+      control: "boolean",
+      description:
+        "You can switch the modal to bottom sheet type. Works only on the mobile breakpoint.",
+    },
+    isOpen: {
+      control: "boolean",
+      description:
+        "The initial state of the modal. It doesn't switch the state on the fly — it's just a prop.",
+    },
+    customWidth: {
+      control: { type: "number" },
+      description:
+        "Custom width of the popup window (desctop only). If the value is more than 0, the default layout size will be reseted. By default the maximum width of the popup is `660px` and the content is `420px`.",
+    },
+  },
 } as ComponentMeta<typeof Modal>;
 
 const Template: ComponentStory<typeof Modal> = (args) => {
@@ -68,7 +102,6 @@ BottomSheet.args = {
   smallTitle: true,
   isBottomSheet: true,
   isOpen: false,
-  customWidth: 0,
   children: (
     <>
       <p>
@@ -95,6 +128,4 @@ BottomSheet.args = {
       </p>
     </>
   ),
-  popupClassName: "",
-  popupContentClassName: "",
 };

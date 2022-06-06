@@ -48,7 +48,7 @@
   &_maxLayout {
     width: calc(100% - 40px);
     padding: 90px 30px 90px;
-    max-width: 660px;
+    max-width: $max-popup-window-width;
 
     .contentWrapper {
       max-width: $max-popup-content-width;
