@@ -182,6 +182,7 @@ const BottomSheet: React.FC<Props> = (props) => {
           onCloseClick={handleCloseClick}
           title={props.title}
           smallTitle={props.smallTitle}
+          noMaxWidth={true}
         />
         <div className={styles.contentWrapper}>{props.children}</div>
       </section>
