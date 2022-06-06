@@ -112,7 +112,7 @@ const BottomSheet: React.FC<Props> = (props) => {
             bottomSheetRef.current.getBoundingClientRect().top;
           let dragDifference = sheetTopPosition - dragStartPoint;
 
-          if (sheetTopPosition > props.topShift && dragDifference > 80) {
+          if (sheetTopPosition > props.topShift && dragDifference > 60) {
             // console.log("close");
             Draggable.get(bottomSheetRef.current).disable();
             props.onCloseDrag();
