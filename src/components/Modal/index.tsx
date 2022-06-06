@@ -105,7 +105,6 @@ Modal.defaultProps = {
   popupClassName: "",
   popupContentClassName: "",
   smallTitle: false,
-  customWidth: null,
   isBottomSheet: true,
   onCloseClick: () => {},
 } as Partial<Props>;

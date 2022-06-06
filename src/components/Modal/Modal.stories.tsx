@@ -31,7 +31,7 @@ Popup.args = {
   smallTitle: false,
   isBottomSheet: false,
   isOpen: false,
-  customWidth: null,
+  customWidth: 0,
   children: (
     <>
       <p>
@@ -68,7 +68,7 @@ BottomSheet.args = {
   smallTitle: true,
   isBottomSheet: true,
   isOpen: false,
-  customWidth: null,
+  customWidth: 0,
   children: (
     <>
       <p>

@@ -114,12 +114,14 @@ const Popup: React.FC<Props> = (props) => {
     >
       <section
         className={`${styles.popup} ${
-          !props.customWidth ? styles.popup_maxLayout : ""
+          !props.customWidth && props.customWidth === 0
+            ? styles.popup_maxLayout
+            : ""
         } ${props.popupClassName}`}
         ref={popupRef}
         style={{
           ...props.style,
-          ...(props.customWidth
+          ...(props.customWidth && props.customWidth > 0
             ? {
                 maxWidth: !isMobileBreakpoint ? props.customWidth : "100%",
                 width: "100%",
@@ -131,7 +133,7 @@ const Popup: React.FC<Props> = (props) => {
           onCloseClick={handleCloseClick}
           title={props.title}
           smallTitle={props.smallTitle}
-          noMaxWidth={props.customWidth !== null ? true : false}
+          noMaxWidth={props.customWidth && props.customWidth > 0 ? true : false}
         />
         <div
           className={`${styles.contentWrapper} ${styles.popupContentClassName}`}
