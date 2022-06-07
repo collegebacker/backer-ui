@@ -1,0 +1,114 @@
+@import "../../../../tokens/all.scss";
+@import "../variables.scss";
+
+.modalWrap {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0) 10%
+  );
+  pointer-events: none;
+  opacity: 0;
+}
+
+.contentWrapper {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.popup {
+  position: absolute;
+  z-index: 2;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  top: 50%;
+  left: 50%;
+  min-height: 200px;
+  max-height: calc(100% - 40px);
+  padding: 30px;
+  border-radius: $radius-m;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.95);
+  background-color: var(--color-main-0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+
+  &_maxLayout {
+    width: calc(100% - 40px);
+    padding: 90px 30px 90px;
+    max-width: $max-popup-window-width;
+
+    .contentWrapper {
+      max-width: $max-popup-content-width;
+    }
+  }
+
+  @media (max-width: $mobile-breakpoint) {
+    top: 0;
+    left: 0;
+    transform: none;
+    max-width: none;
+    width: 100%;
+    height: 100%;
+    padding: 30px 30px 80px;
+    max-height: none;
+    border-radius: 0;
+    background-color: var(--color-main-0);
+  }
+
+  &_show {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+
+    @media (max-width: $mobile-breakpoint) {
+      transform: translate(0, 0) scale(1);
+    }
+  }
+}
+
+// GRADIENTS
+
+.gradients {
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.1);
+  width: 300px;
+  height: 300px;
+  opacity: 0;
+}
+
+.gradient1 {
+  position: absolute;
+  width: 1200px;
+  height: 1400px;
+  top: 50%;
+  left: 50%;
+  opacity: 0.8;
+  transform: translate(-50%, -50%) scale(1.2) rotate(45deg);
+  background-image: var(--gradient-peach);
+}
+
+.gradient2 {
+  position: absolute;
+  width: 700px;
+  height: 1000px;
+  top: 10%;
+  left: 90%;
+  opacity: 0.8;
+  transform: translate(-50%, -50%) scale(1.2) rotate(33deg);
+  background-image: var(--gradient-velvet);
+}

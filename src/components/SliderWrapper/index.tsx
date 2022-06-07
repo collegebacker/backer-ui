@@ -7,7 +7,7 @@ import { InertiaPlugin } from "gsap-bonus/InertiaPlugin";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 import { Icon, ArrowButton, DotPagination } from "..";
 
-import { useDidMountEffect } from "../../utils";
+import { useDidMountEffect } from "../../hooks";
 
 /////////////////////////////////
 //////// TYPES AND PROPS ////////

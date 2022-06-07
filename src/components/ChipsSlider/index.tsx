@@ -6,7 +6,8 @@ import { Draggable } from "gsap/dist/Draggable";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 import { InertiaPlugin } from "gsap-bonus/InertiaPlugin";
 
-import { useDidMountEffect, usePrevious, waitForScrollEnd } from "../../utils";
+import { waitForScrollEnd } from "../../utils";
+import { useDidMountEffect, usePrevious } from "../../hooks";
 import ArrowButton from "../ArrowButton";
 
 /////////////////////////////////

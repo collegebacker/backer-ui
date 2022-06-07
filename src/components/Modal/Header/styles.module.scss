@@ -1,0 +1,105 @@
+@import "../../../../tokens/all.scss";
+@import "../variables.scss";
+
+// HEADER
+
+.header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+
+  &_maxWidth {
+    max-width: $max-popup-content-width;
+  }
+
+  @media (max-width: $mobile-breakpoint) {
+    flex-direction: row-reverse;
+  }
+}
+
+.titleWrap {
+  position: relative;
+  display: flex;
+  flex: 1 1 auto;
+  width: 100%;
+  margin: 0 auto;
+
+  @media (max-width: $mobile-breakpoint) {
+    max-width: none;
+  }
+}
+
+.title {
+  padding-right: 50px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+// CLOSE BUTTON
+
+.closeButton {
+  cursor: pointer;
+  z-index: 3;
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  width: 40px;
+  height: 40px;
+  margin-left: 20px;
+
+  &__wrap {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+
+    @media (max-width: $mobile-breakpoint) {
+      width: auto;
+    }
+  }
+
+  &__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0.7);
+    background-color: var(--color-main-transparent-50);
+    transition: opacity 0.1s ease, transform 0.1s ease;
+  }
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1px;
+    height: 24px;
+    border-radius: 40px;
+    background-color: var(--color-main-500);
+    transition: height 0.1s ease;
+  }
+
+  &:before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  &:after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  &:hover {
+    &:before,
+    &:after {
+      height: 22px;
+    }
+
+    .closeButton__background {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}

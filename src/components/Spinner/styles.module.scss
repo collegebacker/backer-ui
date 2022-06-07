@@ -31,6 +31,13 @@
   }
 }
 
+.medium-small {
+  .path {
+    stroke-dasharray: 100;
+    animation: dash-small 2.5s ease-in-out infinite;
+  }
+}
+
 .medium {
   .path {
     stroke-dasharray: 100;

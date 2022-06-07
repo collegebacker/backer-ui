@@ -4,26 +4,27 @@ import styles from "./styles.module.scss";
 export interface Props {
   className?: string;
   style?: React.CSSProperties;
-  size?: "small" | "medium" | "large";
+  size?: "small" | "medium-small" | "medium" | "large";
+  color?: string;
 }
 
 const Spinner: React.FC<Props> = (props) => {
-  const getSize = (size: "small" | "medium" | "large") => {
+  const getSize = (size: any) => {
     switch (size) {
       case "small":
         return 24;
+      case "medium-small":
+        return 32;
       case "medium":
         return 40;
       case "large":
         return 80;
-      default:
-        return 24;
     }
   };
 
   return (
     <div
-      className={`${styles.loaderWrap} ${props.className || ""}`}
+      className={`${styles.loaderWrap} ${props.className}`}
       style={{
         ...props.style,
         width: getSize(props.size),
@@ -36,6 +37,7 @@ const Spinner: React.FC<Props> = (props) => {
         viewBox={`0 0 ${getSize(props.size)} ${getSize(props.size)}`}
         fill="none"
         className={`${styles.loader} ${styles[props.size]}`}
+        style={props.color ? { fill: props.color } : {}}
         xmlns="http://www.w3.org/2000/svg"
       >
         <circle

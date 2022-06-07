@@ -35,6 +35,12 @@
     }
   }
 
+  .spinner {
+    svg {
+      stroke: var(--color-main-0);
+    }
+  }
+
   &:hover {
     background: var(--color-main-400);
   }
@@ -55,6 +61,12 @@
   .icon {
     svg {
       fill: var(--color-main-0);
+    }
+  }
+
+  .spinner {
+    svg {
+      stroke: var(--color-main-0);
     }
   }
 
@@ -81,6 +93,12 @@
     }
   }
 
+  .spinner {
+    svg {
+      stroke: var(--color-main-500);
+    }
+  }
+
   &:hover {
     border: 1px solid var(--color-main-200);
   }
@@ -99,6 +117,12 @@
   .icon {
     svg {
       fill: var(--color-main-500);
+    }
+  }
+
+  .spinner {
+    svg {
+      stroke: var(--color-main-500);
     }
   }
 
