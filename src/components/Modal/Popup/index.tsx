@@ -152,6 +152,7 @@ const Popup: React.FC<Props> = (props) => {
 
 Popup.defaultProps = {
   title: "",
+  customWidth: 0,
   onCloseClick: () => {},
 } as Partial<Props>;
 

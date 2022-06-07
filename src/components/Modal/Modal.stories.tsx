@@ -102,6 +102,7 @@ BottomSheet.args = {
   smallTitle: true,
   isBottomSheet: true,
   isOpen: false,
+  customWidth: 0,
   children: (
     <>
       <p>
