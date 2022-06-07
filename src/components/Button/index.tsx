@@ -2,36 +2,57 @@ import React from "react";
 import Icon from "../Icon";
 
 import styles from "./styles.module.scss";
+import { Spinner } from "..";
 
 export interface Props {
   className?: string;
-  onClick?: (event: any) => void;
   mode?: "primary" | "accent" | "outline" | "ghost";
   size?: "default" | "small";
-  type?: "button" | "link";
-  behaviour?: "submit" | "reset";
+  type?: "button" | "submit" | "reset";
   target?: TargetTypes;
   icon?: IconTypes;
   href?: string;
   disabled?: boolean;
-  children?: React.ReactNode;
+  label?: string;
   maxWidth?: number;
+  tabIndex?: number;
+  form?: string;
+  busy?: boolean;
+  busyLabel?: string;
+  tag?: "button" | "a";
+  onClick?: (event: any) => void;
+  onSubmit?: (event: any) => void;
+  onKeyPress?: (event: any) => void;
 }
-
-// Description
 
 const ButtonContent = ({ ...props }: Props) => {
   return (
     <>
-      {props.children ? (
-        <span className={`${styles.text}`}>{props.children}</span>
+      {props.label ? (
+        <span className={`${styles.text}`}>
+          {!props.busy ? props.label : props.busyLabel}
+        </span>
       ) : null}
-      {props.icon ? (
+      {props.icon && !props.busy ? (
         <Icon
           name={props.icon}
           className={styles.icon}
           style={
-            props.children
+            props.label
+              ? {
+                  marginLeft: "10px",
+                }
+              : {}
+          }
+        />
+      ) : null}
+
+      {props.busy ? (
+        <Spinner
+          className={styles.spinner}
+          size="medium-small"
+          style={
+            props.busyLabel && props.label
               ? {
                   marginLeft: "10px",
                 }
@@ -43,7 +64,7 @@ const ButtonContent = ({ ...props }: Props) => {
   );
 };
 
-const ButtonTag = ({ ...props }: Props) => {
+const ButtonTag = (props: Props) => {
   const handleClick = (event: any) => {
     event.preventDefault();
 
@@ -54,42 +75,50 @@ const ButtonTag = ({ ...props }: Props) => {
 
   return (
     <button
-      type={props.behaviour}
+      tabIndex={props.tabIndex}
       className={`${props.className} ${styles.button} ${styles[props.mode]} ${
         styles[props.size]
       } ${props.disabled ? styles.disabled : ""} ${
-        props.children
+        props.label
           ? styles[`minWidth-${props.size}`]
           : styles[`fixedSize-${props.size}`]
       }`}
-      style={props.maxWidth ? { maxWidth: props.maxWidth } : {}}
+      style={{
+        ...(props.maxWidth ? { maxWidth: props.maxWidth } : {}),
+        ...(props.busy ? { pointerEvents: "none" } : {}),
+      }}
       onClick={handleClick}
+      onKeyPress={props.onKeyPress}
+      onSubmit={props.onSubmit}
+      //
+      type={props.type}
+      form={props.form}
     >
       <ButtonContent {...props} />
     </button>
   );
 };
 
-const LinkTag = ({ ...props }: Props) => {
+const LinkTag = (props: Props) => {
   return (
     <a
+      tabIndex={props.tabIndex}
       className={`${props.className} ${styles.button} ${styles[props.mode]} ${
         styles[props.size]
       } ${props.disabled ? styles.disabled : ""} ${
-        props.children
+        props.label
           ? styles[`minWidth-${props.size}`]
           : styles[`fixedSize-${props.size}`]
       }`}
+      style={{
+        ...(props.maxWidth ? { maxWidth: props.maxWidth } : {}),
+        ...(props.busy ? { pointerEvents: "none" } : {}),
+      }}
+      onClick={props.onClick}
+      onKeyPress={props.onKeyPress}
+      //
       rel="noreferrer"
       href={props.href}
-      style={
-        props.maxWidth
-          ? {
-              maxWidth: props.maxWidth,
-            }
-          : {}
-      }
-      onClick={(e) => props.onClick(e)}
       target={props.target}
     >
       <ButtonContent {...props} />
@@ -98,7 +127,7 @@ const LinkTag = ({ ...props }: Props) => {
 };
 
 const Button: React.FC<Props> = (props) => {
-  return props.type === "button" ? (
+  return props.tag === "button" ? (
     <ButtonTag {...props} />
   ) : (
     <LinkTag {...props} />
@@ -109,12 +138,14 @@ Button.defaultProps = {
   className: "",
   mode: "primary",
   size: "default",
+  tag: "button",
   type: "button",
-  behaviour: "submit",
   href: "#",
   target: "_self",
+  busy: false,
+  busyLabel: "",
   disabled: false,
-  children: "Button",
+  label: "Button",
 } as Partial<Props>;
 
 export default Button;

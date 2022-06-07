@@ -11,6 +11,10 @@ export default {
   title: "Forms/Button",
   component: Button,
   argTypes: {
+    type: {
+      options: ["button", "submit", "reset"],
+      control: { type: "select" },
+    },
     target: {
       options: ["_self", "_blank", "_parent", "_top"],
       control: { type: "select" },
@@ -35,37 +39,44 @@ export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
   mode: "primary",
-  children: "Primary",
+  label: "Primary",
   size: "default",
-  type: "link",
+  tag: "a",
   disabled: false,
+  busy: false,
+  busyLabel: "",
   // target: text("label", "Hello Storybook"),
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
   mode: "accent",
-  children: "Accent",
+  label: "Accent",
   size: "default",
-  type: "link",
-
+  tag: "a",
   disabled: false,
+  busy: false,
+  busyLabel: "",
 };
 
 export const Tertiary = Template.bind({});
 Tertiary.args = {
   mode: "outline",
-  children: "Outline",
+  label: "Outline",
   size: "default",
-  type: "link",
+  tag: "a",
   disabled: false,
+  busy: false,
+  busyLabel: "",
 };
 
 export const Ghost = Template.bind({});
 Ghost.args = {
   mode: "ghost",
-  children: "Ghost",
+  label: "Ghost",
   size: "default",
-  type: "link",
+  tag: "a",
   disabled: false,
+  busy: false,
+  busyLabel: "",
 };

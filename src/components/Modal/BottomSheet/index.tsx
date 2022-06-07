@@ -7,7 +7,7 @@ import { InertiaPlugin } from "gsap-bonus/InertiaPlugin";
 import styles from "./styles.module.scss";
 import Header from "../Header";
 
-import { useDidMountEffect } from "../../../utils";
+import { useDidMountEffect } from "../../../hooks";
 
 interface Props {
   className?: string;

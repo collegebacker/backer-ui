@@ -20,6 +20,7 @@ export interface Props {
     onClick?: () => void;
   };
   id?: string;
+  tabIndex?: number;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onSubmit?: (event: React.FormEvent<HTMLInputElement>) => void;
   onEnterKeyPress?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
@@ -63,6 +64,7 @@ const Input = React.forwardRef<any, Props>((props, ref) => {
         ) : null}
         <input
           ref={inputRef}
+          tabIndex={props.tabIndex}
           autoFocus={props.autoFocus}
           type={props.type}
           id={props.id ? props.id : props.name}
