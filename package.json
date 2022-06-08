@@ -5,8 +5,7 @@
   "scripts": {
     "rollup": "rimraf ui && rollup -c",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "chromatic": "npx chromatic --auto-accept-changes --project-token=a2271e31f61f"
+    "build-storybook": "build-storybook"
   },
   "author": "Backer",
   "license": "ISC",

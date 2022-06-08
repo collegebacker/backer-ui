@@ -58,9 +58,9 @@ import { Button } from "@collegebacker/backer-ui/ui";
 
 ---
 
-4. Run `yarn chromatic` to deploy Storybook to [Chromatic](https://www.chromatic.com/) server. If you are part of the Backer team on Github you should have access to the Chromatic automatically.
-5. Create a MR and describe the changes.
-6. Notify the team about the MR and designers about the new stories build.
+1. Run `npx chromatic --auto-accept-changes --project-token=0000` to deploy Storybook to [Chromatic](https://www.chromatic.com/) server. If you are part of the Backer team on Github you should have access to the Chromatic automatically.
+2. Create a MR and describe the changes.
+3. Notify the team about the MR and designers about the new stories build.
 
 ---
 
@@ -73,7 +73,7 @@ import { Button } from "@collegebacker/backer-ui/ui";
 ---
 
 12. Checkout the `main` branch.
-13. Run `yarn chromatic` again to deploy Storybook to the `main` branch on Chromatic.
+13. Run `npx chromatic --auto-accept-changes --project-token=0000` again to deploy Storybook to the `main` branch on Chromatic.
 
 ---
 
