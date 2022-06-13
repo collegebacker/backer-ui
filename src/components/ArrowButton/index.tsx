@@ -29,6 +29,7 @@ const ArrowButton = React.forwardRef<any, Props>((props, ref) => {
       onClick={props.onClick}
       onMouseUp={props.onMouseUp}
       onMouseDown={props.onMouseDown}
+      type="button"
     >
       <svg
         width="8"
