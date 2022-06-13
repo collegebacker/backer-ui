@@ -54,7 +54,7 @@ const Template: ComponentStory<typeof Modal> = (args) => {
   return (
     <div className="iconsWrap">
       <Modal ref={ModalRef} {...args} />
-      <Button onClick={triggerPopup}>Trigger Popup</Button>
+      <Button label="Trigger Popup" onClick={triggerPopup} />
     </div>
   );
 };

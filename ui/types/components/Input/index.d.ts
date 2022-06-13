@@ -16,6 +16,7 @@ export interface Props {
         onClick?: () => void;
     };
     id?: string;
+    tabIndex?: number;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
     onSubmit?: (event: React.FormEvent<HTMLInputElement>) => void;
     onEnterKeyPress?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
