@@ -1,10 +1,11 @@
 import React from "react";
 declare type ItemType = {
     label: string;
-    caption: string;
+    value: any;
+    caption?: string;
 };
 export interface Props {
-    containterClassName?: string;
+    containerClassName?: string;
     arrowsClassName?: string;
     items: Array<ItemType>;
     defaultIndex?: number;
