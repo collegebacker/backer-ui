@@ -16,11 +16,12 @@ import ArrowButton from "../ArrowButton";
 
 type ItemType = {
   label: string;
-  caption: string;
+  value: any;
+  caption?: string;
 };
 
 export interface Props {
-  containterClassName?: string;
+  containerClassName?: string;
   arrowsClassName?: string;
   items: Array<ItemType>;
   defaultIndex?: number;
@@ -330,7 +331,7 @@ const ChipsSlider: React.FC<Props> = (props) => {
   //
   return (
     <div
-      className={`${styles.sliderContainer} ${props.containterClassName}`}
+      className={`${styles.sliderContainer} ${props.containerClassName}`}
       ref={sliderContainerRef}
       onWheel={() => {
         setIsScrollSnap(true);
@@ -485,7 +486,7 @@ const ChipsSlider: React.FC<Props> = (props) => {
 };
 
 ChipsSlider.defaultProps = {
-  containterClassName: "",
+  containerClassName: "",
   arrowsClassName: "",
   defaultIndex: 0,
   spaceBetween: 20,
