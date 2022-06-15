@@ -69,6 +69,9 @@ const ChipsSlider: React.FC<Props> = (props) => {
   const [isArrowButtonDisabled, setIsArrowButtonDisabled] =
     React.useState(false);
 
+  const [isSliderFocused, setIsSliderFocused] = React.useState(false);
+  const [isSliderWrapFocused, setIsSliderWrapFocused] = React.useState(false);
+
   // Animate cards
   const animateItemActiveState = (item: HTMLElement) => {
     gsap.to(item, {
@@ -140,6 +143,35 @@ const ChipsSlider: React.FC<Props> = (props) => {
       sliderContainerRef.current.style.overflow = "visible";
     }
   };
+
+  // Prevent scroll
+  React.useEffect(() => {
+    const preventKeyboardScroll = (e: KeyboardEvent) => {
+      if (["ArrowLeft", "ArrowRight"].indexOf(e.code) > -1) {
+        if (isSliderFocused) {
+          e.preventDefault();
+        }
+
+        if (isSliderWrapFocused) {
+          e.stopPropagation();
+          if (e.code === "ArrowLeft") {
+            console.log("left");
+            goPreviousCard();
+          }
+          if (e.code === "ArrowRight") {
+            console.log("right");
+            goToNextCard();
+          }
+        }
+      }
+    };
+
+    window.addEventListener("keydown", preventKeyboardScroll);
+
+    return () => {
+      window.removeEventListener("keydown", preventKeyboardScroll);
+    };
+  }, [isSliderFocused, isSliderWrapFocused, activeIndex]);
 
   // Initial resize and resize updates
   React.useEffect(() => {
@@ -371,7 +403,17 @@ const ChipsSlider: React.FC<Props> = (props) => {
           pointerEvents: isArrowButtonDisabled ? "none" : "auto",
         }}
       />
-      <div className={`${styles.sliderWrap}`} ref={sliderViewRef}>
+      <div
+        className={`${styles.sliderWrap}`}
+        ref={sliderViewRef}
+        tabIndex={0}
+        onFocus={() => {
+          setIsSliderWrapFocused(true);
+        }}
+        onBlur={() => {
+          setIsSliderWrapFocused(false);
+        }}
+      >
         {props.showGuidelines ? (
           <>
             <div
@@ -401,6 +443,13 @@ const ChipsSlider: React.FC<Props> = (props) => {
           className={styles.slider}
           ref={sliderRef}
           id="small-cards-slider"
+          onFocus={() => {
+            setIsSliderFocused(true);
+          }}
+          onBlur={() => {
+            setIsSliderFocused(false);
+          }}
+          tabIndex={1}
           style={{
             columnGap: props.spaceBetween,
             scrollSnapType: isScrollSnap ? "x mandatory" : "none",

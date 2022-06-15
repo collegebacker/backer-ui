@@ -27,6 +27,7 @@
   transform-origin: left;
 
   transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
 }
 
 .input {
@@ -42,7 +43,6 @@
   outline: none;
   border-radius: 0;
   -webkit-transition: all 0.15s ease;
-  -o-transition: all 0.15s ease;
   transition: all 0.15s ease;
   -webkit-box-shadow: 0 1px 0 0 var(--color-main-500);
   box-shadow: 0 1px 0 0 var(--color-main-500);
@@ -59,7 +59,6 @@
     + .label {
       opacity: 1;
       -webkit-transform: translateY(-34px) scale(0.6);
-      -ms-transform: translateY(-34px) scale(0.6);
       transform: translateY(-34px) scale(0.6);
     }
   }
@@ -67,7 +66,6 @@
   &:not(:placeholder-shown) + .label {
     opacity: 1;
     -webkit-transform: translateY(-34px) scale(0.6);
-    -ms-transform: translateY(-34px) scale(0.6);
     transform: translateY(-34px) scale(0.6);
   }
 }
