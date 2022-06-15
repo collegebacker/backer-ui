@@ -106,6 +106,7 @@ interface Props$6 {
 declare const SliderWrapper: React.FC<Props$6>;
 
 interface Props$5 {
+    tabIndex?: number;
     className?: string;
     disabled?: boolean;
     direction?: "left" | "right";
