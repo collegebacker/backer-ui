@@ -353,6 +353,13 @@ const ChipsSlider: React.FC<Props> = (props) => {
     <div
       className={`${styles.sliderContainer} ${props.containerClassName}`}
       ref={sliderContainerRef}
+      tabIndex={0}
+      onFocus={() => {
+        setIsSliderWrapFocused(true);
+      }}
+      onBlur={() => {
+        setIsSliderWrapFocused(false);
+      }}
       onWheel={() => {
         setIsScrollSnap(true);
 
@@ -403,17 +410,7 @@ const ChipsSlider: React.FC<Props> = (props) => {
           pointerEvents: isArrowButtonDisabled ? "none" : "auto",
         }}
       />
-      <div
-        className={`${styles.sliderWrap}`}
-        ref={sliderViewRef}
-        tabIndex={0}
-        onFocus={() => {
-          setIsSliderWrapFocused(true);
-        }}
-        onBlur={() => {
-          setIsSliderWrapFocused(false);
-        }}
-      >
+      <div className={`${styles.sliderWrap}`} ref={sliderViewRef}>
         {props.showGuidelines ? (
           <>
             <div

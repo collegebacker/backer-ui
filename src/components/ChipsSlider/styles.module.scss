@@ -6,6 +6,16 @@
   flex-direction: column;
   width: 100%;
   opacity: 0;
+
+  &:focus {
+    outline: none;
+    border: none;
+    .sliderWrap {
+      outline: 2px solid var(--color-accent-transparent-200);
+      outline-offset: 10px;
+      border-radius: $radius-s;
+    }
+  }
 }
 
 .sliderWrap {
@@ -22,12 +32,6 @@
 
   &::-webkit-scrollbar {
     display: none;
-  }
-
-  &:focus {
-    outline-offset: 10px;
-    outline-color: var(--color-accent-transparent-200);
-    border-radius: $radius-s;
   }
 
   &::after,
