@@ -4,6 +4,8 @@ import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 import json from "@rollup/plugin-json";
 import dts from "rollup-plugin-dts";
+import autoprefixer from "autoprefixer";
+import discardDuplicates from "postcss-discard-duplicates";
 import styles from "rollup-plugin-styles";
 
 export default [
@@ -22,6 +24,7 @@ export default [
       resolve(),
       styles({
         modules: true,
+        plugins: [autoprefixer(), discardDuplicates()], // postcss plugins
       }),
       json(),
       commonjs(),

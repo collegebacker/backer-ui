@@ -10,9 +10,11 @@ export interface Props {
   disabled?: boolean;
   direction?: "left" | "right";
   style?: React.CSSProperties;
-  onClick?: () => void;
-  onMouseDown?: () => void;
-  onMouseUp?: () => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onMouseDown?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onMouseUp?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onKeyDown?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
+  onKeyUp?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
 }
 
 const ArrowButton = React.forwardRef<any, Props>((props, ref) => {
@@ -29,6 +31,8 @@ const ArrowButton = React.forwardRef<any, Props>((props, ref) => {
       onClick={props.onClick}
       onMouseUp={props.onMouseUp}
       onMouseDown={props.onMouseDown}
+      onKeyDown={props.onKeyDown}
+      onKeyUp={props.onKeyUp}
       type="button"
     >
       <svg
@@ -51,9 +55,6 @@ ArrowButton.defaultProps = {
   disabled: false,
   direction: "left",
   style: {},
-  onClick: () => {},
-  onMouseDown: () => {},
-  onMouseUp: () => {},
 } as Partial<Props>;
 
 export default ArrowButton;

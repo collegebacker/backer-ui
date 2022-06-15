@@ -2,7 +2,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-
+  width: 100%;
   opacity: 0;
 }
 
@@ -130,9 +130,9 @@
 }
 
 .arrowLeft {
-  left: -60px;
+  left: -75px;
 }
 
 .rightArrow {
-  right: -60px;
+  right: -75px;
 }

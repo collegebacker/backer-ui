@@ -132,25 +132,12 @@ const ChipsSlider: React.FC<Props> = (props) => {
     setSliderViewWidthState(sliderViewRef.current.offsetWidth);
 
     const arrowLeftBoundingBox = arrowLeftRef.current.getBoundingClientRect();
-    const arrowRightBoundingBox = arrowRightRef.current.getBoundingClientRect();
-    const rightArrowXOffset =
-      window.innerWidth - arrowRightBoundingBox.x - arrowRightBoundingBox.width;
     const hidePoint = 40;
 
     if (arrowLeftBoundingBox.x < hidePoint) {
-      arrowLeftRef.current.style.opacity = "0";
-      arrowLeftRef.current.style.pointerEvents = "none";
+      sliderContainerRef.current.style.overflow = "hidden";
     } else {
-      arrowLeftRef.current.style.opacity = "1";
-      arrowLeftRef.current.style.pointerEvents = "all";
-    }
-
-    if (rightArrowXOffset < hidePoint) {
-      arrowRightRef.current.style.opacity = "0";
-      arrowRightRef.current.style.pointerEvents = "none";
-    } else {
-      arrowRightRef.current.style.opacity = "1";
-      arrowRightRef.current.style.pointerEvents = "all";
+      sliderContainerRef.current.style.overflow = "visible";
     }
   };
 
@@ -170,6 +157,7 @@ const ChipsSlider: React.FC<Props> = (props) => {
     });
 
     setSnapPoints(snapPoints);
+    updateOnResize();
 
     window.addEventListener("resize", updateOnResize);
 
@@ -361,10 +349,6 @@ const ChipsSlider: React.FC<Props> = (props) => {
             }
           });
         });
-      }}
-      style={{
-        marginLeft: "-20px",
-        marginRight: "-20px",
       }}
     >
       <ArrowButton

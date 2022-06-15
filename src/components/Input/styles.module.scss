@@ -26,7 +26,7 @@
   opacity: 0.3;
   transform-origin: left;
 
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .input {
@@ -41,7 +41,10 @@
   border: none;
   outline: none;
   border-radius: 0;
-  transition: box-shadow 0.15s ease;
+  -webkit-transition: all 0.15s ease;
+  -o-transition: all 0.15s ease;
+  transition: all 0.15s ease;
+  -webkit-box-shadow: 0 1px 0 0 var(--color-main-500);
   box-shadow: 0 1px 0 0 var(--color-main-500);
   -webkit-appearance: none;
 
@@ -55,12 +58,16 @@
 
     + .label {
       opacity: 1;
+      -webkit-transform: translateY(-34px) scale(0.6);
+      -ms-transform: translateY(-34px) scale(0.6);
       transform: translateY(-34px) scale(0.6);
     }
   }
 
   &:not(:placeholder-shown) + .label {
     opacity: 1;
+    -webkit-transform: translateY(-34px) scale(0.6);
+    -ms-transform: translateY(-34px) scale(0.6);
     transform: translateY(-34px) scale(0.6);
   }
 }
@@ -110,9 +117,13 @@
 
 .shake {
   // border: 1px solid var(--color-service-error-main);
+  -webkit-animation-name: shake-animation;
   animation-name: shake-animation;
+  -webkit-animation-duration: 0.4s;
   animation-duration: 0.4s;
+  -webkit-animation-iteration-count: 1;
   animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease;
   animation-timing-function: ease;
 }
 
