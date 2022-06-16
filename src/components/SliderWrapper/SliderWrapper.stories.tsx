@@ -42,7 +42,6 @@ const itemsArray = [
     description:
       "Backer is a social fund: save 4x more with gifts from family & friends.",
   },
-
   {
     emoji: "🤖",
     title: "You win, we win",
@@ -76,17 +75,4 @@ Default.args = {
   children: itemsArray.map((item, index) => {
     return <CardExample key={index} {...item} />;
   }),
-};
-
-export const LastCard = Template.bind({});
-LastCard.args = {
-  children: itemsArray.map((item, index) => {
-    return <CardExample key={index} {...item} />;
-  }),
-  lastCard: {
-    label: "Continue",
-    onClick: (e) => {
-      action("last card clicked")(e);
-    },
-  },
 };

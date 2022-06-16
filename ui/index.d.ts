@@ -97,15 +97,12 @@ interface Props$6 {
     showGuidelines?: boolean;
     hideArrows?: boolean;
     children: React.ReactNode;
-    lastCard?: {
-        label: string;
-        onClick: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
-    };
     onChange?: (index: number) => void;
 }
 declare const SliderWrapper: React.FC<Props$6>;
 
 interface Props$5 {
+    tabIndex?: number;
     className?: string;
     disabled?: boolean;
     direction?: "left" | "right";

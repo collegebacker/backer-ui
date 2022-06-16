@@ -5,7 +5,7 @@ import { gsap } from "gsap";
 import { Draggable } from "gsap/dist/Draggable";
 import { InertiaPlugin } from "gsap-bonus/InertiaPlugin";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
-import { Icon, ArrowButton, DotPagination } from "..";
+import { ArrowButton, DotPagination } from "..";
 
 import { useDidMountEffect } from "../../hooks";
 
@@ -25,10 +25,6 @@ export interface Props {
   showGuidelines?: boolean;
   hideArrows?: boolean;
   children: React.ReactNode;
-  lastCard?: {
-    label: string;
-    onClick: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
-  };
   onChange?: (index: number) => void;
 }
 
@@ -40,7 +36,6 @@ const SliderWrapper: React.FC<Props> = (props) => {
   const sliderContainerRef = React.useRef<HTMLDivElement>(null);
   const sliderRef = React.useRef<HTMLDivElement>(null);
   const sliderRefChildren = React.useRef<Array<HTMLDivElement>>([]);
-  const lastCardRef = React.useRef<HTMLDivElement>(null);
 
   const arrowLeftRef = React.useRef<HTMLDivElement>(null);
   const arrowRightRef = React.useRef<HTMLDivElement>(null);
@@ -60,8 +55,8 @@ const SliderWrapper: React.FC<Props> = (props) => {
   const [isArrowButtonDisabled, setIsArrowButtonDisabled] =
     React.useState(false);
 
-  const lastCardWidth = 200;
-  const isLastCard = () => props.lastCard && props.lastCard.label !== "";
+  const [isSliderFocused, setIsSliderFocused] = React.useState(false);
+  const [isSliderWrapFocused, setIsSliderWrapFocused] = React.useState(false);
 
   const setBreakpoint = () => {
     const viewWidth = sliderContainerRef.current.offsetWidth;
@@ -85,25 +80,12 @@ const SliderWrapper: React.FC<Props> = (props) => {
 
   const hideArrowsOnBreakpoint = () => {
     const arrowLeftBoundingBox = arrowLeftRef.current.getBoundingClientRect();
-    const arrowRightBoundingBox = arrowRightRef.current.getBoundingClientRect();
-    const rightArrowXOffset =
-      window.innerWidth - arrowRightBoundingBox.x - arrowRightBoundingBox.width;
     const hidePoint = arrowsOffsetRatio / 2;
 
     if (arrowLeftBoundingBox.x < hidePoint) {
-      arrowLeftRef.current.style.opacity = "0";
-      arrowLeftRef.current.style.pointerEvents = "none";
+      sliderContainerRef.current.style.overflow = "hidden";
     } else {
-      arrowLeftRef.current.style.opacity = "1";
-      arrowLeftRef.current.style.pointerEvents = "all";
-    }
-
-    if (rightArrowXOffset < hidePoint) {
-      arrowRightRef.current.style.opacity = "0";
-      arrowRightRef.current.style.pointerEvents = "none";
-    } else {
-      arrowRightRef.current.style.opacity = "1";
-      arrowRightRef.current.style.pointerEvents = "all";
+      sliderContainerRef.current.style.overflow = "visible";
     }
   };
 
@@ -163,7 +145,9 @@ const SliderWrapper: React.FC<Props> = (props) => {
 
   //
   const goToNextCard = () => {
-    if (activeIndex < sliderRefChildren.current.length - 1) {
+    // console.log(activeIndex, sliderRefChildren.current.length);
+    if (activeIndex < sliderRefChildren.current.length - cardsToShow) {
+      // console.log(activeIndex);
       setIsArrowButtonDisabled(true);
       const newIndex = activeIndex + 1;
 
@@ -208,12 +192,43 @@ const SliderWrapper: React.FC<Props> = (props) => {
     };
   }, []);
 
+  // Prevent scroll
+  React.useEffect(() => {
+    const preventKeyboardScroll = (e: KeyboardEvent) => {
+      if (["ArrowLeft", "ArrowRight"].indexOf(e.code) > -1) {
+        if (isSliderFocused) {
+          e.preventDefault();
+        }
+
+        if (isSliderWrapFocused) {
+          e.stopPropagation();
+          if (e.code === "ArrowLeft") {
+            // console.log("left");
+            goPreviousCard();
+          }
+          if (e.code === "ArrowRight") {
+            // console.log("right");
+
+            goToNextCard();
+          }
+        }
+      }
+    };
+
+    window.addEventListener("keydown", preventKeyboardScroll);
+
+    return () => {
+      window.removeEventListener("keydown", preventKeyboardScroll);
+    };
+  }, [isSliderFocused, isSliderWrapFocused, activeIndex]);
+
   //
   React.useEffect(() => {
+    // console.log(sliderRefChildren);
     if (sliderContainerRef.current && sliderRef.current) {
       // console.log(snapPoints);
       const paginationAmount =
-        sliderRefChildren.current.length - cardsToShow + (isLastCard() ? 2 : 1);
+        sliderRefChildren.current.length - cardsToShow + 1;
       setPaginationAmount(paginationAmount);
 
       const gridWidth =
@@ -232,13 +247,7 @@ const SliderWrapper: React.FC<Props> = (props) => {
         }
       );
 
-      const snapPoints = isLastCard()
-        ? [
-            ...snapPointsWithoutLastCard.slice(0, paginationAmount - 1),
-            snapPointsWithoutLastCard[paginationAmount - 2] +
-              (lastCardWidth + props.spaceBetween),
-          ]
-        : snapPointsWithoutLastCard;
+      const snapPoints = snapPointsWithoutLastCard;
 
       // console.log(paginationAmount);
 
@@ -270,6 +279,13 @@ const SliderWrapper: React.FC<Props> = (props) => {
     <div
       className={`${styles.sliderContainer} ${props.containterClassName}`}
       ref={sliderContainerRef}
+      tabIndex={1}
+      onFocus={() => {
+        setIsSliderWrapFocused(true);
+      }}
+      onBlur={() => {
+        setIsSliderWrapFocused(false);
+      }}
       onWheel={() => {
         sliderRef.current.style.scrollSnapType = "x mandatory";
         updateOnDrag();
@@ -326,7 +342,17 @@ const SliderWrapper: React.FC<Props> = (props) => {
         </>
       ) : null}
 
-      <div className={styles.slider} ref={sliderRef}>
+      <div
+        className={styles.slider}
+        ref={sliderRef}
+        onFocus={() => {
+          setIsSliderFocused(true);
+        }}
+        onBlur={() => {
+          setIsSliderFocused(false);
+        }}
+        tabIndex={1}
+      >
         <div className={styles.sliderCards}>
           {React.Children.map(props.children, (child, index) => {
             return (
@@ -345,35 +371,20 @@ const SliderWrapper: React.FC<Props> = (props) => {
               </div>
             );
           })}
-          {isLastCard() ? (
-            <div
-              className={styles.lastCard}
-              onClick={(e) => props.lastCard.onClick(e)}
-              style={{
-                flex: `1 0 ${lastCardWidth}px`,
-              }}
-              ref={lastCardRef}
-            >
-              <div className={styles.lastCard__content}>
-                <span className={styles.lastCard__text}>
-                  {props.lastCard.label}
-                </span>
-                <Icon
-                  className={styles.lastCard__icon}
-                  name="chevron-in-circle-right"
-                />
-              </div>
-            </div>
-          ) : null}
         </div>
       </div>
 
-      <div className={`${styles.paginationWrap} ${props.paginationClassName}`}>
-        <DotPagination
-          activeIndex={activeIndex}
-          totalAmount={paginationAmount}
-        />
-      </div>
+      {
+        <div
+          className={`${styles.paginationWrap} ${props.paginationClassName}`}
+        >
+          <DotPagination
+            activeIndex={activeIndex}
+            totalAmount={paginationAmount}
+            className={styles.pagination}
+          />
+        </div>
+      }
     </div>
   );
 };

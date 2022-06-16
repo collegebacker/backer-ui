@@ -1,5 +1,6 @@
 import React from "react";
 export interface Props {
+    tabIndex?: number;
     className?: string;
     disabled?: boolean;
     direction?: "left" | "right";

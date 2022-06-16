@@ -6,6 +6,7 @@ import styles from "./styles.module.scss";
 /////////////////////////////////
 
 export interface Props {
+  tabIndex?: number;
   className?: string;
   disabled?: boolean;
   direction?: "left" | "right";
@@ -20,6 +21,7 @@ export interface Props {
 const ArrowButton = React.forwardRef<any, Props>((props, ref) => {
   return (
     <button
+      tabIndex={props.tabIndex}
       ref={ref}
       className={`${styles.arrowButton} ${props.className}`}
       style={{
