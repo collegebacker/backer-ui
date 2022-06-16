@@ -11,10 +11,6 @@ export interface Props {
     showGuidelines?: boolean;
     hideArrows?: boolean;
     children: React.ReactNode;
-    lastCard?: {
-        label: string;
-        onClick: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
-    };
     onChange?: (index: number) => void;
 }
 declare const SliderWrapper: React.FC<Props>;

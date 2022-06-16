@@ -46,16 +46,6 @@ function __rest(s, e) {
     return t;
 }
 
-function __spreadArray(to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-}
-
 var e=[],t=[];function n(n,r){if(n&&"undefined"!=typeof document){var a,s=!0===r.prepend?"prepend":"append",d=!0===r.singleTag,i="string"==typeof r.container?document.querySelector(r.container):document.getElementsByTagName("head")[0];if(d){var u=e.indexOf(i);-1===u&&(u=e.push(i)-1,t[u]={}),a=t[u]&&t[u][s]?t[u][s]:t[u][s]=c();}else a=c();65279===n.charCodeAt(0)&&(n=n.substring(1)),a.styleSheet?a.styleSheet.cssText+=n:a.appendChild(document.createTextNode(n));}function c(){var e=document.createElement("style");if(e.setAttribute("type","text/css"),r.attributes)for(var t=Object.keys(r.attributes),n=0;n<t.length;n++)e.setAttribute(t[n],r.attributes[t[n]]);var a="prepend"===s?"afterbegin":"beforeend";return i.insertAdjacentElement(a,e),e}}
 
 var css$c = ".styles_module_icon__0f281710 {\n  display: flex;\n  height: 24px;\n  width: 24px;\n}\n.styles_module_icon__0f281710 svg {\n  width: 100%;\n  height: 100%;\n  fill: var(--color-main-500);\n}";
@@ -276,8 +266,8 @@ Logo.defaultProps = {
     type: "default",
 };
 
-var css$8 = ".styles_module_sliderContainer__8f5c8887 {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  opacity: 0;\n}\n.styles_module_sliderContainer__8f5c8887:focus {\n  outline: none;\n  border: none;\n}\n.styles_module_sliderContainer__8f5c8887:focus .styles_module_sliderWrap__8f5c8887 {\n  outline: 2px solid var(--color-accent-transparent-200);\n  outline-offset: 10px;\n  border-radius: 5px;\n}\n\n.styles_module_sliderWrap__8f5c8887 {\n  z-index: 1;\n  position: relative;\n  width: 100%;\n  outline-offset: 5px;\n  outline-color: var(--color-accent-transparent-200);\n  transition: outline-offset 0.2s ease, outline-color 0.2s ease;\n}\n.styles_module_sliderWrap__8f5c8887 div:first-child {\n  height: auto;\n}\n.styles_module_sliderWrap__8f5c8887::-webkit-scrollbar {\n  display: none;\n}\n.styles_module_sliderWrap__8f5c8887::after, .styles_module_sliderWrap__8f5c8887::before {\n  pointer-events: none;\n  z-index: 2;\n  content: \"\";\n  position: absolute;\n  top: 0;\n  width: 40px;\n  height: 100%;\n}\n.styles_module_sliderWrap__8f5c8887::after {\n  left: 0;\n  background: linear-gradient(to right, rgb(255, 255, 255), rgba(255, 255, 255, 0));\n}\n.styles_module_sliderWrap__8f5c8887::before {\n  right: 0;\n  background: linear-gradient(to left, rgb(255, 255, 255), rgba(255, 255, 255, 0));\n}\n\n.styles_module_slider__8f5c8887 {\n  width: 100%;\n  padding: 4px 0;\n  position: relative;\n  height: 100%;\n}\n.styles_module_slider__8f5c8887::-webkit-scrollbar {\n  display: none;\n}\n.styles_module_slider__8f5c8887:hover, .styles_module_slider__8f5c8887:focus {\n  border: none;\n  outline: none;\n}\n\n.styles_module_sliderCards__8f5c8887 {\n  display: flex;\n  flex-wrap: nowrap;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  display: grid;\n  grid-auto-flow: column;\n}\n\n.styles_module_itemWrap__8f5c8887 {\n  display: flex;\n  overflow: visible;\n  scroll-snap-align: center;\n  -webkit-backface-visibility: hidden;\n          backface-visibility: hidden;\n  justify-content: center;\n  align-items: center;\n}\n\n.styles_module_item__8f5c8887 {\n  cursor: pointer;\n  overflow: visible;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border: 1px solid var(--color-main-200);\n  border-radius: 15px;\n  width: 76px;\n  height: 76px;\n  color: var(--color-main-200);\n  background-color: var(--color-main-0);\n}\n.styles_module_item__8f5c8887 span {\n  pointer-events: none;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n\n.styles_module_active__8f5c8887 {\n  background-color: var(--color-accent-500);\n  border: 1px solid transparent;\n  transform: scaleY(1.2);\n  transition: all 0.1s ease;\n}\n.styles_module_active__8f5c8887 span {\n  color: var(--color-main-0);\n}\n\n.styles_module_itemCaption__8f5c8887 {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  width: 100%;\n  display: flex;\n  justify-content: center;\n  margin-top: 20px;\n}\n.styles_module_itemCaption__8f5c8887 span {\n  font-weight: 200;\n  font-size: 17px;\n}\n\n.styles_module_arrowButton__8f5c8887 {\n  z-index: 2;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  position: absolute;\n  margin-top: 36px;\n}\n\n.styles_module_arrowLeft__8f5c8887 {\n  left: -75px;\n}\n\n.styles_module_rightArrow__8f5c8887 {\n  right: -75px;\n}";
-var modules_efc4e723$8 = {"sliderContainer":"styles_module_sliderContainer__8f5c8887","sliderWrap":"styles_module_sliderWrap__8f5c8887","slider":"styles_module_slider__8f5c8887","sliderCards":"styles_module_sliderCards__8f5c8887","itemWrap":"styles_module_itemWrap__8f5c8887","item":"styles_module_item__8f5c8887","active":"styles_module_active__8f5c8887","itemCaption":"styles_module_itemCaption__8f5c8887","arrowButton":"styles_module_arrowButton__8f5c8887","arrowLeft":"styles_module_arrowLeft__8f5c8887","rightArrow":"styles_module_rightArrow__8f5c8887"};
+var css$8 = ".styles_module_sliderContainer__c5e03730 {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  opacity: 0;\n}\n.styles_module_sliderContainer__c5e03730:focus {\n  outline: none !important;\n  border: none !important;\n}\n.styles_module_sliderContainer__c5e03730:focus .styles_module_sliderWrap__c5e03730 {\n  outline: 2px solid var(--color-accent-transparent-200);\n  outline-offset: 10px;\n  border-radius: 5px;\n}\n\n.styles_module_sliderWrap__c5e03730 {\n  z-index: 1;\n  position: relative;\n  width: 100%;\n  outline-offset: 5px;\n  outline-color: var(--color-accent-transparent-200);\n  transition: outline-offset 0.2s ease, outline-color 0.2s ease;\n}\n.styles_module_sliderWrap__c5e03730 div:first-child {\n  height: auto;\n}\n.styles_module_sliderWrap__c5e03730::-webkit-scrollbar {\n  display: none;\n}\n.styles_module_sliderWrap__c5e03730::after, .styles_module_sliderWrap__c5e03730::before {\n  pointer-events: none;\n  z-index: 2;\n  content: \"\";\n  position: absolute;\n  top: 0;\n  width: 40px;\n  height: 100%;\n}\n.styles_module_sliderWrap__c5e03730::after {\n  left: 0;\n  background: linear-gradient(to right, rgb(255, 255, 255), rgba(255, 255, 255, 0));\n}\n.styles_module_sliderWrap__c5e03730::before {\n  right: 0;\n  background: linear-gradient(to left, rgb(255, 255, 255), rgba(255, 255, 255, 0));\n}\n\n.styles_module_slider__c5e03730 {\n  width: 100%;\n  padding: 4px 0;\n  position: relative;\n  height: 100%;\n}\n.styles_module_slider__c5e03730::-webkit-scrollbar {\n  display: none;\n}\n.styles_module_slider__c5e03730:hover, .styles_module_slider__c5e03730:focus {\n  border: none !important;\n  outline: none !important;\n}\n\n.styles_module_sliderCards__c5e03730 {\n  display: flex;\n  flex-wrap: nowrap;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  display: grid;\n  grid-auto-flow: column;\n}\n\n.styles_module_itemWrap__c5e03730 {\n  display: flex;\n  overflow: visible;\n  scroll-snap-align: center;\n  -webkit-backface-visibility: hidden;\n          backface-visibility: hidden;\n  justify-content: center;\n  align-items: center;\n}\n\n.styles_module_item__c5e03730 {\n  cursor: pointer;\n  overflow: visible;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border: 1px solid var(--color-main-200);\n  border-radius: 15px;\n  width: 76px;\n  height: 76px;\n  color: var(--color-main-200);\n  background-color: var(--color-main-0);\n}\n.styles_module_item__c5e03730 span {\n  pointer-events: none;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n\n.styles_module_active__c5e03730 {\n  background-color: var(--color-accent-500);\n  border: 1px solid transparent;\n  transform: scaleY(1.2);\n  transition: all 0.1s ease;\n}\n.styles_module_active__c5e03730 span {\n  color: var(--color-main-0);\n}\n\n.styles_module_itemCaption__c5e03730 {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  width: 100%;\n  display: flex;\n  justify-content: center;\n  margin-top: 20px;\n}\n.styles_module_itemCaption__c5e03730 span {\n  font-weight: 200;\n  font-size: 17px;\n}\n\n.styles_module_arrowButton__c5e03730 {\n  z-index: 2;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  position: absolute;\n  margin-top: 36px;\n}\n\n.styles_module_arrowLeft__c5e03730 {\n  left: -75px;\n}\n\n.styles_module_rightArrow__c5e03730 {\n  right: -75px;\n}";
+var modules_efc4e723$8 = {"sliderContainer":"styles_module_sliderContainer__c5e03730","sliderWrap":"styles_module_sliderWrap__c5e03730","slider":"styles_module_slider__c5e03730","sliderCards":"styles_module_sliderCards__c5e03730","itemWrap":"styles_module_itemWrap__c5e03730","item":"styles_module_item__c5e03730","active":"styles_module_active__c5e03730","itemCaption":"styles_module_itemCaption__c5e03730","arrowButton":"styles_module_arrowButton__c5e03730","arrowLeft":"styles_module_arrowLeft__c5e03730","rightArrow":"styles_module_rightArrow__c5e03730"};
 n(css$8,{});
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
@@ -9860,11 +9850,11 @@ var ChipsSlider = function (props) {
                 if (isSliderWrapFocused) {
                     e.stopPropagation();
                     if (e.code === "ArrowLeft") {
-                        console.log("left");
+                        // console.log("left");
                         goPreviousCard();
                     }
                     if (e.code === "ArrowRight") {
-                        console.log("right");
+                        // console.log("right");
                         goToNextCard();
                     }
                 }
@@ -10114,8 +10104,8 @@ ChipsSlider.defaultProps = {
     caption: true,
 };
 
-var css$6 = ".styles_module_sliderContainer__ebbd8da4 {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n}\n.styles_module_sliderContainer__ebbd8da4:after, .styles_module_sliderContainer__ebbd8da4:before {\n  z-index: 1;\n  content: \"\";\n  top: 0;\n  position: absolute;\n  width: 40px;\n  height: 100%;\n}\n.styles_module_sliderContainer__ebbd8da4:after {\n  left: -40px;\n  background-image: linear-gradient(to right, white, transparent);\n}\n.styles_module_sliderContainer__ebbd8da4:before {\n  right: -40px;\n  background-image: linear-gradient(to left, white, transparent);\n}\n\n.styles_module_slider__ebbd8da4 {\n  overflow-x: hidden;\n  position: relative;\n  display: inline-block;\n  -ms-scroll-snap-type: x mandatory;\n      scroll-snap-type: x mandatory;\n  scroll-padding-left: 40px;\n  scroll-padding-right: 40px;\n  margin-left: -40px;\n  margin-right: -40px;\n}\n.styles_module_slider__ebbd8da4::-webkit-scrollbar {\n  display: none;\n}\n.styles_module_slider__ebbd8da4 > div:first-child {\n  margin-left: 40px;\n}\n\n.styles_module_sliderCards__ebbd8da4 {\n  margin-left: 1px;\n  display: flex;\n  flex-wrap: nowrap;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n}\n\n.styles_module_cardWrap__ebbd8da4 {\n  scroll-snap-align: start;\n}\n\n.styles_module_paginationWrap__ebbd8da4 {\n  display: flex;\n  justify-content: center;\n  margin-top: 32px;\n}\n\n.styles_module_arrowButton__ebbd8da4 {\n  z-index: 2;\n  position: absolute;\n  top: calc(50% - 40px);\n  transform: translateY(-50%);\n}\n\n.styles_module_lastCard__ebbd8da4 {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  padding: 30px;\n  border: 1px solid var(--color-main-500);\n  border-radius: 15px;\n}\n.styles_module_lastCard__content__ebbd8da4 {\n  display: flex;\n  align-items: center;\n}\n.styles_module_lastCard__text__ebbd8da4 {\n  font-family: \"ABCMarfa\", sans-serif;\n  font-weight: 300;\n  font-size: 17px;\n  line-height: 130%;\n  margin-right: 15px;\n}\n.styles_module_lastCard__icon__ebbd8da4 {\n  flex: 1 0 auto;\n}";
-var modules_efc4e723$6 = {"sliderContainer":"styles_module_sliderContainer__ebbd8da4","slider":"styles_module_slider__ebbd8da4","sliderCards":"styles_module_sliderCards__ebbd8da4","cardWrap":"styles_module_cardWrap__ebbd8da4","paginationWrap":"styles_module_paginationWrap__ebbd8da4","arrowButton":"styles_module_arrowButton__ebbd8da4","lastCard":"styles_module_lastCard__ebbd8da4","lastCard__content":"styles_module_lastCard__content__ebbd8da4","lastCard__text":"styles_module_lastCard__text__ebbd8da4","lastCard__icon":"styles_module_lastCard__icon__ebbd8da4"};
+var css$6 = ".styles_module_sliderContainer__6eb86fe1 {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n}\n.styles_module_sliderContainer__6eb86fe1:after, .styles_module_sliderContainer__6eb86fe1:before {\n  z-index: 1;\n  content: \"\";\n  top: -2px;\n  position: absolute;\n  width: 40px;\n  height: calc(100% - 36px);\n}\n.styles_module_sliderContainer__6eb86fe1:after {\n  left: -40px;\n  background-image: linear-gradient(to right, white, transparent);\n}\n.styles_module_sliderContainer__6eb86fe1:before {\n  right: -40px;\n  background-image: linear-gradient(to left, white, transparent);\n}\n.styles_module_sliderContainer__6eb86fe1:focus {\n  outline: none !important;\n  border: none !important;\n}\n.styles_module_sliderContainer__6eb86fe1:focus .styles_module_pagination__6eb86fe1 {\n  outline: 2px solid var(--color-accent-transparent-200);\n  outline-offset: 10px;\n  border-radius: 5px;\n}\n\n.styles_module_slider__6eb86fe1 {\n  overflow-x: hidden;\n  position: relative;\n  display: inline-block;\n  -ms-scroll-snap-type: x mandatory;\n      scroll-snap-type: x mandatory;\n  scroll-padding-left: 40px;\n  scroll-padding-right: 40px;\n  margin-left: -40px;\n  margin-right: -40px;\n  outline-offset: 5px;\n  outline-color: var(--color-accent-transparent-200);\n}\n.styles_module_slider__6eb86fe1::-webkit-scrollbar {\n  display: none;\n}\n.styles_module_slider__6eb86fe1 > div:first-child {\n  margin-left: 40px;\n}\n.styles_module_slider__6eb86fe1:hover, .styles_module_slider__6eb86fe1:focus {\n  border: none !important;\n  outline: none !important;\n}\n\n.styles_module_sliderCards__6eb86fe1 {\n  margin-left: 1px;\n  display: flex;\n  flex-wrap: nowrap;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n}\n\n.styles_module_cardWrap__6eb86fe1 {\n  scroll-snap-align: start;\n}\n\n.styles_module_paginationWrap__6eb86fe1 {\n  display: flex;\n  justify-content: center;\n  margin-top: 32px;\n}\n\n.styles_module_pagination__6eb86fe1 {\n  outline-color: var(--color-accent-transparent-200);\n  transition: outline-offset 0.2s ease, outline-color 0.2s ease;\n}\n\n.styles_module_arrowButton__6eb86fe1 {\n  z-index: 2;\n  position: absolute;\n  top: calc(50% - 40px);\n  transform: translateY(-50%);\n}\n\n.styles_module_lastCard__6eb86fe1 {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  padding: 30px;\n  border: 1px solid var(--color-main-500);\n  border-radius: 15px;\n}\n.styles_module_lastCard__content__6eb86fe1 {\n  display: flex;\n  align-items: center;\n}\n.styles_module_lastCard__text__6eb86fe1 {\n  font-family: \"ABCMarfa\", sans-serif;\n  font-weight: 300;\n  font-size: 17px;\n  line-height: 130%;\n  margin-right: 15px;\n}\n.styles_module_lastCard__icon__6eb86fe1 {\n  flex: 1 0 auto;\n}";
+var modules_efc4e723$6 = {"sliderContainer":"styles_module_sliderContainer__6eb86fe1","pagination":"styles_module_pagination__6eb86fe1","slider":"styles_module_slider__6eb86fe1","sliderCards":"styles_module_sliderCards__6eb86fe1","cardWrap":"styles_module_cardWrap__6eb86fe1","paginationWrap":"styles_module_paginationWrap__6eb86fe1","arrowButton":"styles_module_arrowButton__6eb86fe1","lastCard":"styles_module_lastCard__6eb86fe1","lastCard__content":"styles_module_lastCard__content__6eb86fe1","lastCard__text":"styles_module_lastCard__text__6eb86fe1","lastCard__icon":"styles_module_lastCard__icon__6eb86fe1"};
 n(css$6,{});
 
 /////////////////////////////////
@@ -10125,7 +10115,6 @@ var SliderWrapper = function (props) {
     var sliderContainerRef = React__default["default"].useRef(null);
     var sliderRef = React__default["default"].useRef(null);
     var sliderRefChildren = React__default["default"].useRef([]);
-    var lastCardRef = React__default["default"].useRef(null);
     var arrowLeftRef = React__default["default"].useRef(null);
     var arrowRightRef = React__default["default"].useRef(null);
     var _a = React__default["default"].useState(0), activeIndex = _a[0], setActiveIndex = _a[1];
@@ -10135,8 +10124,8 @@ var SliderWrapper = function (props) {
     var _e = React__default["default"].useState(props.breakpoints[0].cardsToShow), cardsToShow = _e[0], setCardsToShow = _e[1];
     var _f = React__default["default"].useState(0), paginationAmount = _f[0], setPaginationAmount = _f[1];
     var _g = React__default["default"].useState(false), isArrowButtonDisabled = _g[0], setIsArrowButtonDisabled = _g[1];
-    var lastCardWidth = 200;
-    var isLastCard = function () { return props.lastCard && props.lastCard.label !== ""; };
+    var _h = React__default["default"].useState(false), isSliderFocused = _h[0], setIsSliderFocused = _h[1];
+    var _j = React__default["default"].useState(false), isSliderWrapFocused = _j[0], setIsSliderWrapFocused = _j[1];
     var setBreakpoint = function () {
         var viewWidth = sliderContainerRef.current.offsetWidth;
         setViewWidth(viewWidth);
@@ -10156,24 +10145,12 @@ var SliderWrapper = function (props) {
     };
     var hideArrowsOnBreakpoint = function () {
         var arrowLeftBoundingBox = arrowLeftRef.current.getBoundingClientRect();
-        var arrowRightBoundingBox = arrowRightRef.current.getBoundingClientRect();
-        var rightArrowXOffset = window.innerWidth - arrowRightBoundingBox.x - arrowRightBoundingBox.width;
         var hidePoint = arrowsOffsetRatio / 2;
         if (arrowLeftBoundingBox.x < hidePoint) {
-            arrowLeftRef.current.style.opacity = "0";
-            arrowLeftRef.current.style.pointerEvents = "none";
+            sliderContainerRef.current.style.overflow = "hidden";
         }
         else {
-            arrowLeftRef.current.style.opacity = "1";
-            arrowLeftRef.current.style.pointerEvents = "all";
-        }
-        if (rightArrowXOffset < hidePoint) {
-            arrowRightRef.current.style.opacity = "0";
-            arrowRightRef.current.style.pointerEvents = "none";
-        }
-        else {
-            arrowRightRef.current.style.opacity = "1";
-            arrowRightRef.current.style.pointerEvents = "all";
+            sliderContainerRef.current.style.overflow = "visible";
         }
     };
     var updateOnDrag = function () {
@@ -10218,7 +10195,9 @@ var SliderWrapper = function (props) {
     };
     //
     var goToNextCard = function () {
-        if (activeIndex < sliderRefChildren.current.length - 1) {
+        // console.log(activeIndex, sliderRefChildren.current.length);
+        if (activeIndex < sliderRefChildren.current.length - cardsToShow) {
+            // console.log(activeIndex);
             setIsArrowButtonDisabled(true);
             var newIndex = activeIndex + 1;
             setActiveIndex(newIndex);
@@ -10253,11 +10232,37 @@ var SliderWrapper = function (props) {
             window.removeEventListener("resize", onWindowResize);
         };
     }, []);
+    // Prevent scroll
+    React__default["default"].useEffect(function () {
+        var preventKeyboardScroll = function (e) {
+            if (["ArrowLeft", "ArrowRight"].indexOf(e.code) > -1) {
+                if (isSliderFocused) {
+                    e.preventDefault();
+                }
+                if (isSliderWrapFocused) {
+                    e.stopPropagation();
+                    if (e.code === "ArrowLeft") {
+                        // console.log("left");
+                        goPreviousCard();
+                    }
+                    if (e.code === "ArrowRight") {
+                        // console.log("right");
+                        goToNextCard();
+                    }
+                }
+            }
+        };
+        window.addEventListener("keydown", preventKeyboardScroll);
+        return function () {
+            window.removeEventListener("keydown", preventKeyboardScroll);
+        };
+    }, [isSliderFocused, isSliderWrapFocused, activeIndex]);
     //
     React__default["default"].useEffect(function () {
+        // console.log(sliderRefChildren);
         if (sliderContainerRef.current && sliderRef.current) {
             // console.log(snapPoints);
-            var paginationAmount_1 = sliderRefChildren.current.length - cardsToShow + (isLastCard() ? 2 : 1);
+            var paginationAmount_1 = sliderRefChildren.current.length - cardsToShow + 1;
             setPaginationAmount(paginationAmount_1);
             var gridWidth_1 = (sliderContainerRef.current.offsetWidth -
                 props.spaceBetween * cardsToShow) /
@@ -10267,11 +10272,7 @@ var SliderWrapper = function (props) {
             var snapPointsWithoutLastCard = sliderRefChildren.current.map(function (item, index) {
                 return ((item.getBoundingClientRect().width + props.spaceBetween) * index);
             });
-            var snapPoints = isLastCard()
-                ? __spreadArray(__spreadArray([], snapPointsWithoutLastCard.slice(0, paginationAmount_1 - 1), true), [
-                    snapPointsWithoutLastCard[paginationAmount_1 - 2] +
-                        (lastCardWidth + props.spaceBetween),
-                ], false) : snapPointsWithoutLastCard;
+            var snapPoints = snapPointsWithoutLastCard;
             // console.log(paginationAmount);
             setTriggerPointsState({
                 left: 0,
@@ -10293,7 +10294,11 @@ var SliderWrapper = function (props) {
         }
     }, [viewWidth]);
     //
-    return (React__default["default"].createElement("div", { className: "".concat(modules_efc4e723$6.sliderContainer, " ").concat(props.containterClassName), ref: sliderContainerRef, onWheel: function () {
+    return (React__default["default"].createElement("div", { className: "".concat(modules_efc4e723$6.sliderContainer, " ").concat(props.containterClassName), ref: sliderContainerRef, tabIndex: 1, onFocus: function () {
+            setIsSliderWrapFocused(true);
+        }, onBlur: function () {
+            setIsSliderWrapFocused(false);
+        }, onWheel: function () {
             sliderRef.current.style.scrollSnapType = "x mandatory";
             updateOnDrag();
         } },
@@ -10323,23 +10328,20 @@ var SliderWrapper = function (props) {
                     right: "".concat(-arrowsOffsetRatio, "px"),
                     pointerEvents: isArrowButtonDisabled ? "none" : "auto",
                 } }))) : null,
-        React__default["default"].createElement("div", { className: modules_efc4e723$6.slider, ref: sliderRef },
-            React__default["default"].createElement("div", { className: modules_efc4e723$6.sliderCards },
-                React__default["default"].Children.map(props.children, function (child, index) {
-                    return (React__default["default"].createElement("div", { ref: function (el) { return (sliderRefChildren.current[index] = el); }, className: modules_efc4e723$6.cardWrap, style: {
-                            flex: "1 0 ".concat((viewWidth - props.spaceBetween * (cardsToShow - 1) - 2) /
-                                cardsToShow, "px"),
-                            marginRight: "".concat(props.spaceBetween, "px"),
-                        } }, child));
-                }),
-                isLastCard() ? (React__default["default"].createElement("div", { className: modules_efc4e723$6.lastCard, onClick: function (e) { return props.lastCard.onClick(e); }, style: {
-                        flex: "1 0 ".concat(lastCardWidth, "px"),
-                    }, ref: lastCardRef },
-                    React__default["default"].createElement("div", { className: modules_efc4e723$6.lastCard__content },
-                        React__default["default"].createElement("span", { className: modules_efc4e723$6.lastCard__text }, props.lastCard.label),
-                        React__default["default"].createElement(Icon, { className: modules_efc4e723$6.lastCard__icon, name: "chevron-in-circle-right" })))) : null)),
+        React__default["default"].createElement("div", { className: modules_efc4e723$6.slider, ref: sliderRef, onFocus: function () {
+                setIsSliderFocused(true);
+            }, onBlur: function () {
+                setIsSliderFocused(false);
+            }, tabIndex: 1 },
+            React__default["default"].createElement("div", { className: modules_efc4e723$6.sliderCards }, React__default["default"].Children.map(props.children, function (child, index) {
+                return (React__default["default"].createElement("div", { ref: function (el) { return (sliderRefChildren.current[index] = el); }, className: modules_efc4e723$6.cardWrap, style: {
+                        flex: "1 0 ".concat((viewWidth - props.spaceBetween * (cardsToShow - 1) - 2) /
+                            cardsToShow, "px"),
+                        marginRight: "".concat(props.spaceBetween, "px"),
+                    } }, child));
+            }))),
         React__default["default"].createElement("div", { className: "".concat(modules_efc4e723$6.paginationWrap, " ").concat(props.paginationClassName) },
-            React__default["default"].createElement(DotPagination, { activeIndex: activeIndex, totalAmount: paginationAmount }))));
+            React__default["default"].createElement(DotPagination, { activeIndex: activeIndex, totalAmount: paginationAmount, className: modules_efc4e723$6.pagination }))));
 };
 SliderWrapper.defaultProps = {
     containterClassName: "",
