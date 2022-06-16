@@ -46,6 +46,27 @@
   }
 }
 
+// EXAMPLES
+
+.modal-example {
+  display: flex;
+  margin: 40px -30px -30px;
+  border-top: 1px solid var(--color-main-50);
+
+  &__button {
+    cursor: pointer;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+
+    &:first-child {
+      border-right: 1px solid var(--color-main-50);
+    }
+  }
+}
+
 // DOCS
 
 hr {

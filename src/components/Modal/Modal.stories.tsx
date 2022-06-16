@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { Modal, Button } from "..";
+import { Modal, Button, Text } from "..";
 
 localStorage.clear();
 
@@ -127,6 +127,47 @@ BottomSheet.args = {
         that’s fun and stress-free. Supercharge your savings with a tax-free 529
         investment account. You need support, and Backer is here to help.
       </p>
+    </>
+  ),
+};
+
+export const NegativeMargin = Template.bind({});
+NegativeMargin.args = {
+  title: "Funds",
+  smallTitle: true,
+  isBottomSheet: true,
+  isOpen: false,
+  customWidth: 400,
+  children: (
+    <>
+      <Text tag="p" context="app" appStyle="body-main">
+        Its expensive to raise a child. Make saving for education a team effort
+        that’s fun and stress-free. Supercharge your savings with a tax-free 529
+        investment account. You need support, and Backer is here to help.
+      </Text>
+
+      <br />
+      <Text tag="p" context="app" appStyle="body-main">
+        Hi, Im the Dumi component. Use me when you need to show that any content
+        can be in my place. You can replace me with any other component. Such
+        components include, for example, popovers, which can have more than just
+        a header and text inside. Here are the steps on how to replace the
+        content inside of me: Create a content frame that you want to see
+        instead of this placeholder.
+      </Text>
+
+      <section className="modal-example">
+        <div className="modal-example__button">
+          <Text tag="p" context="app" appStyle="body-main">
+            Create a fund
+          </Text>
+        </div>
+        <div className="modal-example__button">
+          <Text tag="p" context="app" appStyle="body-main">
+            Send a gift
+          </Text>
+        </div>
+      </section>
     </>
   ),
 };
