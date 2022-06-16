@@ -1,3 +1,5 @@
+@import "../../../tokens/radii";
+
 $card-radius: 15px;
 
 .sliderContainer {
@@ -10,10 +12,10 @@ $card-radius: 15px;
   &:before {
     z-index: 1;
     content: "";
-    top: 0;
+    top: -2px;
     position: absolute;
     width: 40px;
-    height: 100%;
+    height: calc(100% - 36px);
   }
 
   &:after {
@@ -27,6 +29,17 @@ $card-radius: 15px;
     background-image: linear-gradient(to left, white, transparent);
     // background-color: rgba(0, 0, 0, 0.1);
   }
+
+  &:focus {
+    outline: none !important;
+    border: none !important;
+
+    .pagination {
+      outline: 2px solid var(--color-accent-transparent-200);
+      outline-offset: 10px;
+      border-radius: $radius-s;
+    }
+  }
 }
 
 .slider {
@@ -39,6 +52,9 @@ $card-radius: 15px;
   scroll-padding-right: 40px;
   margin-left: -40px;
   margin-right: -40px;
+  outline-offset: 5px;
+  outline-color: var(--color-accent-transparent-200);
+
   // background-color: rgba(0, 0, 0, 0.06);
 
   &::-webkit-scrollbar {
@@ -50,6 +66,12 @@ $card-radius: 15px;
       // margin-right: 40px;
       margin-left: 40px;
     }
+  }
+
+  &:hover,
+  &:focus {
+    border: none !important;
+    outline: none !important;
   }
 }
 
@@ -70,6 +92,11 @@ $card-radius: 15px;
   margin-top: 32px;
 }
 
+.pagination {
+  outline-color: var(--color-accent-transparent-200);
+  transition: outline-offset 0.2s ease, outline-color 0.2s ease;
+}
+
 .arrowButton {
   z-index: 2;
   position: absolute;
@@ -85,7 +112,7 @@ $card-radius: 15px;
   align-items: center;
   padding: 30px;
   border: 1px solid var(--color-main-500);
-  border-radius: $card-radius;
+  border-radius: $radius-m;
 
   &__content {
     display: flex;

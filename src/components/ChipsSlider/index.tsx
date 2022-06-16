@@ -155,11 +155,11 @@ const ChipsSlider: React.FC<Props> = (props) => {
         if (isSliderWrapFocused) {
           e.stopPropagation();
           if (e.code === "ArrowLeft") {
-            console.log("left");
+            // console.log("left");
             goPreviousCard();
           }
           if (e.code === "ArrowRight") {
-            console.log("right");
+            // console.log("right");
             goToNextCard();
           }
         }

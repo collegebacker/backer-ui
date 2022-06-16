@@ -8,8 +8,8 @@
   opacity: 0;
 
   &:focus {
-    outline: none;
-    border: none;
+    outline: none !important;
+    border: none !important;
     .sliderWrap {
       outline: 2px solid var(--color-accent-transparent-200);
       outline-offset: 10px;
@@ -77,8 +77,8 @@
 
   &:hover,
   &:focus {
-    border: none;
-    outline: none;
+    border: none !important;
+    outline: none !important;
   }
 }
 
