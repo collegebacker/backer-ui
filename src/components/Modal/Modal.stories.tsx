@@ -132,8 +132,8 @@ BottomSheet.args = {
   ),
 };
 
-export const NegativeMargin = Template.bind({});
-NegativeMargin.args = {
+export const Buttons = Template.bind({});
+Buttons.args = {
   title: "Funds",
   smallTitle: true,
   isBottomSheet: true,
