@@ -17,28 +17,8 @@ export interface Props {
     | "ol"
     | "li";
   context?: "app" | "marketing";
-  appStyle?:
-    | "title-xlarge"
-    | "title-large"
-    | "title-medium"
-    | "title-small"
-    | "body-large-paragraph"
-    | "body-main"
-    | "body-paragraph"
-    | "body-caption";
-  marketingStyle?:
-    | "xlarge"
-    | "large"
-    | "lead"
-    | "lead-bold"
-    | "lead-small"
-    | "lead-small-bold"
-    | "accent-paragraph"
-    | "accent-paragraph-bold"
-    | "paragraph"
-    | "paragraph-bold"
-    | "caption"
-    | "caption-bold";
+  appStyle?: AppTypographyTypes;
+  marketingStyle?: MarketingTypographyTypes;
   [key: string]: any;
 }
 

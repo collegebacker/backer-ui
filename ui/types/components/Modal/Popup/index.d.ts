@@ -8,6 +8,8 @@ interface Props {
     children: React.ReactNode;
     customWidth?: number;
     style?: React.CSSProperties;
+    closeOutside: boolean;
+    isMobileBreakpoint: boolean;
     onCloseClick?: () => void;
 }
 declare const Popup: React.FC<Props>;

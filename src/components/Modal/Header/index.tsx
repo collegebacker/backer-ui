@@ -13,9 +13,9 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = (props) => {
   return (
     <div className={styles.header}>
-      <div className={styles.closeButton} onClick={props.onCloseClick}>
+      <button className={styles.closeButton} onClick={props.onCloseClick}>
         <div className={styles.closeButton__background} />
-      </div>
+      </button>
       {props.title ? (
         <div className={`${styles.titleWrap}`}>
           <Text
