@@ -29,6 +29,7 @@ type IconTypes = "menu" |
 "chevron-right" |
 "chevron-down" |
 "chevron-top" |
-"chevron-in-circle-right";
+"chevron-in-circle-right" |
+"plus-in-circle-left" |
+"download" ;
 type TargetTypes = "_blank" | "_self" | "_parent" | "_top";
-

@@ -1,6 +1,8 @@
 import React from "react";
 import gsap from "gsap";
 
+import { useOutsideClick } from "../../../hooks";
+
 import styles from "./styles.module.scss";
 import Header from "../Header";
 
@@ -13,6 +15,8 @@ interface Props {
   children: React.ReactNode;
   customWidth?: number;
   style?: React.CSSProperties;
+  closeOutside: boolean;
+  isMobileBreakpoint: boolean;
   onCloseClick?: () => void;
 }
 
@@ -25,7 +29,19 @@ const Popup: React.FC<Props> = (props) => {
   const popupRef = React.useRef<HTMLDivElement>(null);
   const gradients = React.useRef<HTMLDivElement>(null);
 
-  const [isMobileBreakpoint, setIsMobileBreakpoint] = React.useState(false);
+  const [isAppeared, setIsAppeared] = React.useState(false);
+
+  ///////////////
+  //// HOOKS ////
+  ///////////////
+
+  useOutsideClick(popupRef, () => {
+    // console.log(isAppeared, props.closeOutside, props.isMobileBreakpoint);
+    if (isAppeared && props.closeOutside && !props.isMobileBreakpoint) {
+      // console.log("clicked outside");
+      props.onCloseClick();
+    }
+  });
 
   //////////////
   // HANDLERS //
@@ -42,6 +58,7 @@ const Popup: React.FC<Props> = (props) => {
   React.useEffect(() => {
     if (props.isOpen) {
       modalWrapRef.current.style.pointerEvents = "all";
+      modalWrapRef.current.focus();
 
       gsap.to(modalWrapRef.current, {
         opacity: 1,
@@ -57,6 +74,9 @@ const Popup: React.FC<Props> = (props) => {
       gsap.to(gradients.current, {
         opacity: 1,
         scale: 1,
+        onStart: () => {
+          setIsAppeared(true);
+        },
         delay: 0.1,
         duration: 1,
         ease: "circ.out",
@@ -77,30 +97,14 @@ const Popup: React.FC<Props> = (props) => {
       gsap.to(gradients.current, {
         opacity: 0,
         scale: 0.1,
+        onStart: () => {
+          setIsAppeared(false);
+        },
         duration: 0.7,
         ease: "circ.out",
       });
     }
   }, [props.isOpen]);
-
-  React.useEffect(() => {
-    const MobileBreakpoint = 620;
-    const detectMobileBreakpoint = () => {
-      if (window.innerWidth < MobileBreakpoint) {
-        setIsMobileBreakpoint(true);
-      } else {
-        setIsMobileBreakpoint(false);
-      }
-    };
-
-    detectMobileBreakpoint();
-
-    window.addEventListener("resize", detectMobileBreakpoint);
-
-    return () => {
-      window.removeEventListener("resize", detectMobileBreakpoint);
-    };
-  }, []);
 
   ///////////////
   // RENDERING //
@@ -112,6 +116,7 @@ const Popup: React.FC<Props> = (props) => {
       className={`${styles.modalWrap}`}
       style={{ ...props.style }}
     >
+      {/* <FocusTrap> */}
       <section
         className={`${styles.popup} ${
           !props.customWidth && props.customWidth === 0
@@ -123,7 +128,9 @@ const Popup: React.FC<Props> = (props) => {
           ...props.style,
           ...(props.customWidth && props.customWidth > 0
             ? {
-                maxWidth: !isMobileBreakpoint ? props.customWidth : "100%",
+                maxWidth: !props.isMobileBreakpoint
+                  ? props.customWidth
+                  : "100%",
                 width: "100%",
               }
             : {}),
@@ -141,6 +148,7 @@ const Popup: React.FC<Props> = (props) => {
           {props.children}
         </div>
       </section>
+      {/* </FocusTrap> */}
 
       <div className={styles.gradients} ref={gradients}>
         <div className={styles.gradient1} />

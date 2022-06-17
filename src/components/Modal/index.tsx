@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from "react-dom";
 
 import BottomSheet from "./BottomSheet";
 import Popup from "./Popup";
@@ -13,6 +14,7 @@ export interface Props {
   children: React.ReactNode;
   customWidth?: number;
   isBottomSheet?: boolean;
+  closeOutside?: boolean;
   onCloseClick?: () => void;
 }
 
@@ -24,11 +26,19 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
   // IMPERIAL //
   //////////////
   React.useImperativeHandle(ref, () => ({
-    open: () => {
+    open: (callback: () => void) => {
       setIsOpen(true);
+
+      if (callback) {
+        callback();
+      }
     },
-    close: () => {
+    close: (callback: () => void) => {
       setIsOpen(false);
+
+      if (callback) {
+        callback();
+      }
     },
   }));
 
@@ -66,11 +76,13 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
     setIsOpen(false);
   };
 
-  return (
+  return ReactDOM.createPortal(
     <>
       <Popup
         {...props}
+        isMobileBreakpoint={isMobileBreakpoint}
         isOpen={isOpen}
+        closeOutside={props.closeOutside}
         smallTitle={props.smallTitle}
         popupClassName={props.popupClassName}
         popupContentClassName={props.popupContentClassName}
@@ -83,20 +95,23 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
       />
       <BottomSheet
         {...props}
+        isMobileBreakpoint={isMobileBreakpoint}
         isOpen={isOpen}
+        closeOutside={props.closeOutside}
         smallTitle={props.smallTitle}
-        onCloseClick={() => setIsOpen(false)}
+        onCloseClick={handleOnCloseClick}
         onCloseDrag={handleOnCloseClick}
         style={{
           visibility:
             props.isBottomSheet && isMobileBreakpoint ? "visible" : "hidden",
         }}
       />
-    </>
+    </>,
+    document.body
   );
 });
 
-Modal.displayName = "Popup";
+Modal.displayName = "Modal";
 
 Modal.defaultProps = {
   className: "",
@@ -106,6 +121,7 @@ Modal.defaultProps = {
   popupContentClassName: "",
   smallTitle: false,
   isBottomSheet: false,
+  closeOutside: true,
   onCloseClick: () => {},
 } as Partial<Props>;
 

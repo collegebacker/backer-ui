@@ -3,6 +3,18 @@
 
 // HEADER
 
+@mixin hover-mixin {
+  &:before,
+  &:after {
+    height: 22px;
+  }
+
+  .closeButton__background {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .header {
   display: flex;
   flex-direction: column;
@@ -46,6 +58,10 @@
   width: 40px;
   height: 40px;
   margin-left: 20px;
+  border: none;
+  outline: none;
+  background: none;
+  border-radius: 50%;
 
   &__wrap {
     display: flex;
@@ -92,14 +108,10 @@
   }
 
   &:hover {
-    &:before,
-    &:after {
-      height: 22px;
-    }
+    @include hover-mixin;
+  }
 
-    .closeButton__background {
-      opacity: 1;
-      transform: scale(1);
-    }
+  &:focus {
+    border: 1px solid var(--color-main-500);
   }
 }

@@ -10,6 +10,7 @@
   height: 100vh;
   min-height: -webkit-fill-available;
   opacity: 0;
+  pointer-events: none;
 }
 
 .background {
@@ -59,7 +60,7 @@
   position: absolute;
   left: 0;
   // bottom: 100%;
-  padding: 30px 30px 60px;
+  padding: 30px 30px;
   // border: 1px solid black;
   border-radius: $radius-m $radius-m 0 0;
   background-color: var(--color-main-0);

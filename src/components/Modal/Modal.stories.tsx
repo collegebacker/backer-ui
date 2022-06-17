@@ -1,18 +1,18 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { Modal, Button, Text } from "..";
+import { Modal, Button, Text, ModalButtons } from "..";
 
 localStorage.clear();
 
 export default {
-  title: "Misc/Modal",
+  title: "Modal/Modal",
   component: Modal,
   parameters: {
     docs: {
       description: {
         component:
-          "To trigger the component, you need to creare a `ref` to the component `const ModalRef = React.useRef<any>(null)`. Then you can use the `open` method to open the modal like `() => ModalRef.current.open()`. To close the modal, you can use the `close` method.",
+          "To trigger the component, you need to creare a `ref` to the component `const ModalRef = React.useRef<any>(null)`. Then you can use the `open` method to open the modal like `() => ModalRef.current.open(callback)`. To close the modal, you can use the `close` method `() => ModalRef.current.close(callback)`",
       },
     },
   },
@@ -47,14 +47,17 @@ export default {
 const Template: ComponentStory<typeof Modal> = (args) => {
   const ModalRef = React.useRef<any>(null);
 
-  const triggerPopup = () => {
-    ModalRef.current.open();
-  };
-
   return (
     <div className="iconsWrap">
       <Modal ref={ModalRef} {...args} />
-      <Button label="Trigger Popup" onClick={triggerPopup} />
+      <Button
+        label="Trigger Modal"
+        onClick={() => {
+          ModalRef.current.open(() => {
+            console.log("open");
+          });
+        }}
+      />
     </div>
   );
 };
@@ -65,7 +68,6 @@ Popup.args = {
   smallTitle: false,
   isBottomSheet: false,
   isOpen: false,
-  customWidth: 0,
   children: (
     <>
       <p>
@@ -102,7 +104,6 @@ BottomSheet.args = {
   smallTitle: true,
   isBottomSheet: true,
   isOpen: false,
-  customWidth: 0,
   children: (
     <>
       <p>
@@ -137,7 +138,7 @@ NegativeMargin.args = {
   smallTitle: true,
   isBottomSheet: true,
   isOpen: false,
-  customWidth: 400,
+  customWidth: 420,
   children: (
     <>
       <Text tag="p" context="app" appStyle="body-main">
@@ -156,18 +157,20 @@ NegativeMargin.args = {
         instead of this placeholder.
       </Text>
 
-      <section className="modal-example">
-        <div className="modal-example__button">
-          <Text tag="p" context="app" appStyle="body-main">
-            Create a fund
-          </Text>
-        </div>
-        <div className="modal-example__button">
-          <Text tag="p" context="app" appStyle="body-main">
-            Send a gift
-          </Text>
-        </div>
-      </section>
+      <ModalButtons
+        items={[
+          {
+            label: "Create a fund",
+            onClick: () => {},
+            icon: "plus-in-circle-left",
+          },
+          {
+            label: "Send a gift",
+            onClick: () => {},
+            icon: "gift",
+          },
+        ]}
+      />
     </>
   ),
 };

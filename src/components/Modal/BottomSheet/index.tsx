@@ -7,15 +7,17 @@ import { InertiaPlugin } from "gsap-bonus/InertiaPlugin";
 import styles from "./styles.module.scss";
 import Header from "../Header";
 
-import { useDidMountEffect } from "../../../hooks";
+import { useDidMountEffect, useOutsideClick } from "../../../hooks";
 
 interface Props {
   className?: string;
   isOpen: boolean;
+  closeOutside: boolean;
   title?: string;
   smallTitle: boolean;
   children: React.ReactNode;
   topShift?: number;
+  isMobileBreakpoint: boolean;
   style?: React.CSSProperties;
   onCloseClick?: () => void;
   onCloseDrag?: () => void;
@@ -30,16 +32,17 @@ const BottomSheet: React.FC<Props> = (props) => {
   const bottomSheetRef = React.useRef<HTMLDivElement>(null);
   const backgroundRef = React.useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = React.useState(props.isOpen);
+  const [isAppeared, setIsAppeared] = React.useState(false);
   const [resize, setResize] = React.useState(false);
 
   const applyOpenSheetPosition = () => {
     const bottomSheet = bottomSheetRef.current;
 
-    if (bottomSheet.clientHeight > window.innerHeight + props.topShift) {
+    if (bottomSheet.clientHeight > window.innerHeight) {
       return props.topShift;
     }
 
-    return window.innerHeight - bottomSheet.clientHeight + props.topShift;
+    return window.innerHeight - bottomSheet.clientHeight;
   };
 
   const applyDragBounds = () => {
@@ -48,6 +51,17 @@ const BottomSheet: React.FC<Props> = (props) => {
       maxY: window.innerHeight - bottomSheetRef.current.clientHeight,
     };
   };
+
+  //////////////
+  /// HOOKS ////
+  //////////////
+
+  useOutsideClick(bottomSheetRef, () => {
+    if (isAppeared && props.closeOutside && props.isMobileBreakpoint) {
+      // console.log("clicked outside");
+      props.onCloseClick();
+    }
+  });
 
   //////////////
   // HANDLERS //
@@ -62,9 +76,6 @@ const BottomSheet: React.FC<Props> = (props) => {
   /////////////////
 
   React.useEffect(() => {
-    modalWrapRef.current.style.pointerEvents = "none";
-    // modalWrapRef.current.style.opacity = "0";
-
     gsap.set(bottomSheetRef.current, {
       y: window.innerHeight,
     });
@@ -109,7 +120,6 @@ const BottomSheet: React.FC<Props> = (props) => {
           let dragDifference = sheetTopPosition - dragStartPoint;
 
           if (sheetTopPosition > props.topShift && dragDifference > 60) {
-            // console.log("close");
             Draggable.get(bottomSheetRef.current).disable();
             props.onCloseDrag();
           }
@@ -125,6 +135,7 @@ const BottomSheet: React.FC<Props> = (props) => {
   React.useEffect(() => {
     if (props.isOpen) {
       modalWrapRef.current.style.pointerEvents = "all";
+      modalWrapRef.current.focus();
 
       gsap.to(modalWrapRef.current, {
         opacity: 1,
@@ -141,7 +152,11 @@ const BottomSheet: React.FC<Props> = (props) => {
       gsap.to(backgroundRef.current, {
         opacity: 1,
         duration: 0.4,
+        onStart: () => {
+          setIsAppeared(true);
+        },
       });
+
       setIsOpen(true);
     } else {
       modalWrapRef.current.style.pointerEvents = "none";
@@ -158,7 +173,11 @@ const BottomSheet: React.FC<Props> = (props) => {
       gsap.to(backgroundRef.current, {
         opacity: 0,
         duration: 0.4,
+        onStart: () => {
+          setIsAppeared(false);
+        },
       });
+
       setIsOpen(false);
     }
   }, [props.isOpen]);
