@@ -33,3 +33,23 @@ type IconTypes = "menu" |
 "plus-in-circle-left" |
 "download" ;
 type TargetTypes = "_blank" | "_self" | "_parent" | "_top";
+type AppTypographyTypes =  "title-xlarge"
+| "title-large"
+| "title-medium"
+| "title-small"
+| "body-large-paragraph"
+| "body-main"
+| "body-paragraph"
+| "body-caption";
+type MarketingTypographyTypes =  "xlarge"
+| "large"
+| "lead"
+| "lead-bold"
+| "lead-small"
+| "lead-small-bold"
+| "accent-paragraph"
+| "accent-paragraph-bold"
+| "paragraph"
+| "paragraph-bold"
+| "caption"
+| "caption-bold";

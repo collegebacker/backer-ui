@@ -5,10 +5,11 @@ import { Icon, Text } from "..";
 
 export interface Props {
   className?: string;
+  textClassName?: string;
   items: Array<{
     label: string;
     icon?: IconTypes;
-    onClick: () => void;
+    onClick: (event: any) => void;
   }>;
 }
 
@@ -22,7 +23,12 @@ const ModalButtons: React.FC<Props> = (props) => {
               {item.icon ? (
                 <Icon className={styles.icon} name={item.icon} />
               ) : null}
-              <Text context="app" appStyle="body-main" tag="span">
+              <Text
+                context="app"
+                appStyle="body-main"
+                tag="span"
+                className={props.textClassName}
+              >
                 {item.label}
               </Text>
             </div>
@@ -35,6 +41,7 @@ const ModalButtons: React.FC<Props> = (props) => {
 
 ModalButtons.defaultProps = {
   className: "",
+  textClassName: "",
 } as Partial<Props>;
 
 export default ModalButtons;

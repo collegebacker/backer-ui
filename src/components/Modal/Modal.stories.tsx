@@ -68,6 +68,7 @@ Popup.args = {
   smallTitle: false,
   isBottomSheet: false,
   isOpen: false,
+  closeOutside: true,
   children: (
     <>
       <p>
@@ -104,6 +105,7 @@ BottomSheet.args = {
   smallTitle: true,
   isBottomSheet: true,
   isOpen: false,
+  closeOutside: true,
   children: (
     <>
       <p>
@@ -138,6 +140,7 @@ Buttons.args = {
   smallTitle: true,
   isBottomSheet: true,
   isOpen: false,
+  closeOutside: true,
   customWidth: 420,
   children: (
     <>
@@ -166,7 +169,9 @@ Buttons.args = {
           },
           {
             label: "Send a gift",
-            onClick: () => {},
+            onClick: (event) => {
+              console.log(event);
+            },
             icon: "gift",
           },
         ]}
