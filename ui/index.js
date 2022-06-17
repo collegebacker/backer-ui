@@ -10803,11 +10803,12 @@ var ModalButtons = function (props) {
         return (React__default["default"].createElement("button", { className: modules_efc4e723.button, key: index, onClick: item.onClick },
             React__default["default"].createElement("div", { className: modules_efc4e723.content },
                 item.icon ? (React__default["default"].createElement(Icon, { className: modules_efc4e723.icon, name: item.icon })) : null,
-                React__default["default"].createElement(Text, { context: "app", appStyle: "body-main", tag: "span" }, item.label))));
+                React__default["default"].createElement(Text, { context: "app", appStyle: "body-main", tag: "span", className: props.textClassName }, item.label))));
     })));
 };
 ModalButtons.defaultProps = {
     className: "",
+    textClassName: "",
 };
 
 exports.ArrowButton = ArrowButton;

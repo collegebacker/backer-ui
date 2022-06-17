@@ -132,8 +132,8 @@ interface Props$3 {
     style?: React.CSSProperties;
     tag: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span" | "a" | "ul" | "ol" | "li";
     context?: "app" | "marketing";
-    appStyle?: "title-xlarge" | "title-large" | "title-medium" | "title-small" | "body-large-paragraph" | "body-main" | "body-paragraph" | "body-caption";
-    marketingStyle?: "xlarge" | "large" | "lead" | "lead-bold" | "lead-small" | "lead-small-bold" | "accent-paragraph" | "accent-paragraph-bold" | "paragraph" | "paragraph-bold" | "caption" | "caption-bold";
+    appStyle?: AppTypographyTypes;
+    marketingStyle?: MarketingTypographyTypes;
     [key: string]: any;
 }
 declare const Text: React.FC<Props$3>;
@@ -163,10 +163,11 @@ declare const Modal: React.ForwardRefExoticComponent<Props$1 & React.RefAttribut
 
 interface Props {
     className?: string;
+    textClassName?: string;
     items: Array<{
         label: string;
         icon?: IconTypes;
-        onClick: () => void;
+        onClick: (event: any) => void;
     }>;
 }
 declare const ModalButtons: React.FC<Props>;
