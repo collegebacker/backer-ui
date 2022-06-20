@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 const usePreventKeyboardScrolling = () => {
-  const onKeyDown = (e: { code: string; preventDefault: () => void; }) => {
+  const onKeyDown = (e: { code: string; preventDefault: () => void }) => {
     if (
       ["Space", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].indexOf(
         e.code
@@ -17,4 +17,4 @@ const usePreventKeyboardScrolling = () => {
   });
 };
 
-export default usePreventKeyboardScrolling ;
+export default usePreventKeyboardScrolling;
