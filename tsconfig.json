@@ -17,5 +17,5 @@
     "emitDeclarationOnly": true,
     "resolveJsonModule": true,
     "strictNullChecks": false
-  },
+  }
 }

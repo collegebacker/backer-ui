@@ -30,7 +30,7 @@ $card-radius: 15px;
     // background-color: rgba(0, 0, 0, 0.1);
   }
 
-  &:focus {
+  &:focus-visible {
     outline: none !important;
     border: none !important;
 

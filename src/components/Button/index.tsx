@@ -2,7 +2,7 @@ import React from "react";
 import Icon from "../Icon";
 
 import styles from "./styles.module.scss";
-import { Spinner } from "..";
+import Spinner from "../Spinner";
 
 export interface Props {
   className?: string;

@@ -1,2 +1,2 @@
-declare module '*.scss';
-declare module 'gsap-bonus/InertiaPlugin';
+declare module "*.scss";
+declare module "gsap-bonus/InertiaPlugin";

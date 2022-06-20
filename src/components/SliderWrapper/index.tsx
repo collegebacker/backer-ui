@@ -5,7 +5,9 @@ import { gsap } from "gsap";
 import { Draggable } from "gsap/dist/Draggable";
 import { InertiaPlugin } from "gsap-bonus/InertiaPlugin";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
-import { ArrowButton, DotPagination } from "..";
+
+import ArrowButton from "../ArrowButton";
+import DotPagination from "../DotPagination";
 
 import { useDidMountEffect } from "../../hooks";
 

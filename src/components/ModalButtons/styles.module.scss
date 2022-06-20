@@ -22,7 +22,7 @@
   }
 
   &:hover,
-  &:focus {
+  &:focus-visible {
     background-color: var(--color-main-50);
   }
 }
