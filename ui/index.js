@@ -10538,6 +10538,7 @@ var BottomSheet = function (props) {
         if (bottomSheetRef.current) {
             Draggable.exports.Draggable.create(bottomSheetRef.current, {
                 type: "y",
+                allowEventDefault: true,
                 inertia: true,
                 edgeResistance: 0.8,
                 maxDuration: 0.3,
@@ -10547,7 +10548,8 @@ var BottomSheet = function (props) {
                 onDrag: function () {
                     var sheetTopPosition = bottomSheetRef.current.getBoundingClientRect().top;
                     var dragDifference = sheetTopPosition - dragStartPoint;
-                    if (sheetTopPosition > props.topShift && dragDifference > 60) {
+                    if (sheetTopPosition - props.topShift > props.topShift &&
+                        dragDifference > 70) {
                         Draggable.exports.Draggable.get(bottomSheetRef.current).disable();
                         props.onCloseDrag();
                     }
@@ -10794,8 +10796,8 @@ Modal.defaultProps = {
     onCloseClick: function () { },
 };
 
-var css = ".styles_module_wrap__417f29f4 {\n  display: flex;\n  margin: 40px -30px -30px;\n  border-top: 1px solid var(--color-main-50);\n}\n\n.styles_module_button__417f29f4 {\n  cursor: pointer;\n  flex: 1;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 30px;\n  border: none;\n  outline: none;\n  background: none;\n  transition: background 0.15s ease;\n  border-left: 1px solid var(--color-main-50);\n}\n.styles_module_button__417f29f4:first-child {\n  border-left: none;\n}\n.styles_module_button__417f29f4:hover, .styles_module_button__417f29f4:focus-visible {\n  background-color: var(--color-main-50);\n}\n\n.styles_module_content__417f29f4 {\n  display: flex;\n  align-items: center;\n}\n\n.styles_module_icon__417f29f4 {\n  margin-right: 15px;\n  flex: 1 0 auto;\n}";
-var modules_efc4e723 = {"wrap":"styles_module_wrap__417f29f4","button":"styles_module_button__417f29f4","content":"styles_module_content__417f29f4","icon":"styles_module_icon__417f29f4"};
+var css = ".styles_module_wrap__08d66ca3 {\n  display: flex;\n  margin: 40px -30px -30px;\n  border-top: 1px solid var(--color-main-50);\n}\n\n.styles_module_button__08d66ca3 {\n  cursor: pointer;\n  flex: 1;\n  color: var(--color-main-500);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 30px;\n  border: none;\n  outline: none;\n  background: none;\n  transition: background 0.15s ease;\n  border-left: 1px solid var(--color-main-50);\n}\n.styles_module_button__08d66ca3:first-child {\n  border-left: none;\n}\n.styles_module_button__08d66ca3:hover, .styles_module_button__08d66ca3:focus-visible {\n  background-color: var(--color-main-50);\n}\n\n.styles_module_content__08d66ca3 {\n  display: flex;\n  align-items: center;\n}\n\n.styles_module_icon__08d66ca3 {\n  margin-right: 15px;\n  flex: 1 0 auto;\n}";
+var modules_efc4e723 = {"wrap":"styles_module_wrap__08d66ca3","button":"styles_module_button__08d66ca3","content":"styles_module_content__08d66ca3","icon":"styles_module_icon__08d66ca3"};
 n(css,{});
 
 var ModalButtons = function (props) {
