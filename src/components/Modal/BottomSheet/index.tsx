@@ -108,6 +108,7 @@ const BottomSheet: React.FC<Props> = (props) => {
     if (bottomSheetRef.current) {
       Draggable.create(bottomSheetRef.current, {
         type: "y",
+        allowEventDefault: true,
         inertia: true,
         edgeResistance: 0.8,
         maxDuration: 0.3,
@@ -119,7 +120,10 @@ const BottomSheet: React.FC<Props> = (props) => {
             bottomSheetRef.current.getBoundingClientRect().top;
           let dragDifference = sheetTopPosition - dragStartPoint;
 
-          if (sheetTopPosition > props.topShift && dragDifference > 60) {
+          if (
+            sheetTopPosition - props.topShift > props.topShift &&
+            dragDifference > 70
+          ) {
             Draggable.get(bottomSheetRef.current).disable();
             props.onCloseDrag();
           }
