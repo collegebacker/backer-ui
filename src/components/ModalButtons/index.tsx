@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "./styles.module.scss";
 
-import { Icon, Text } from "..";
+import Icon from "../Icon";
+import Text from "../Text";
 
 export interface Props {
   className?: string;
