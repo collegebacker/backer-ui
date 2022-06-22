@@ -230,7 +230,7 @@ const CodeInput = React.forwardRef<any, Props>((props, ref) => {
   );
 });
 
-CodeInput.displayName = "Input";
+CodeInput.displayName = "CodeInput";
 
 CodeInput.defaultProps = {
   className: "",

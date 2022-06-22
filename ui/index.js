@@ -388,7 +388,7 @@ var CodeInput = React__default["default"].forwardRef(function (props, ref) {
             " ",
             resendTimer > 0 ? "(available in ".concat(resendTimer, " seconds)") : null)));
 });
-CodeInput.displayName = "Input";
+CodeInput.displayName = "CodeInput";
 CodeInput.defaultProps = {
     className: "",
     isInvalid: false,
