@@ -50,9 +50,9 @@ function __rest(s, e) {
 
 var e=[],t=[];function n(n,r){if(n&&"undefined"!=typeof document){var a,s=!0===r.prepend?"prepend":"append",d=!0===r.singleTag,i="string"==typeof r.container?document.querySelector(r.container):document.getElementsByTagName("head")[0];if(d){var u=e.indexOf(i);-1===u&&(u=e.push(i)-1,t[u]={}),a=t[u]&&t[u][s]?t[u][s]:t[u][s]=c();}else a=c();65279===n.charCodeAt(0)&&(n=n.substring(1)),a.styleSheet?a.styleSheet.cssText+=n:a.appendChild(document.createTextNode(n));}function c(){var e=document.createElement("style");if(e.setAttribute("type","text/css"),r.attributes)for(var t=Object.keys(r.attributes),n=0;n<t.length;n++)e.setAttribute(t[n],r.attributes[t[n]]);var a="prepend"===s?"afterbegin":"beforeend";return i.insertAdjacentElement(a,e),e}}
 
-var css$d = ".styles_module_icon__0f281710 {\n  display: flex;\n  height: 24px;\n  width: 24px;\n}\n.styles_module_icon__0f281710 svg {\n  width: 100%;\n  height: 100%;\n  fill: var(--color-main-500);\n}";
-var modules_efc4e723$d = {"icon":"styles_module_icon__0f281710"};
-n(css$d,{});
+var css$e = ".styles_module_icon__0f281710 {\n  display: flex;\n  height: 24px;\n  width: 24px;\n}\n.styles_module_icon__0f281710 svg {\n  width: 100%;\n  height: 100%;\n  fill: var(--color-main-500);\n}";
+var modules_efc4e723$e = {"icon":"styles_module_icon__0f281710"};
+n(css$e,{});
 
 var menu = "M24 5.5H0V4.5H24V5.5Z M24 12.5H0V11.5H24V12.5Z M24 19.5H0V18.5H24V19.5Z";
 var cross = "M11.2929 12L3.16117 3.86827L3.86827 3.16116L12 11.2929L20.1317 3.16116L20.8388 3.86827L12.7071 12L20.8388 20.1317L20.1317 20.8388L12 12.7071L3.86827 20.8388L3.16116 20.1317L11.2929 12Z";
@@ -110,7 +110,7 @@ var icons = {
 };
 
 var Icon = function (props) {
-    return (React__default["default"].createElement("i", { className: "".concat(modules_efc4e723$d.icon, " ").concat(props.className), style: __assign({}, props.style) },
+    return (React__default["default"].createElement("i", { className: "".concat(modules_efc4e723$e.icon, " ").concat(props.className), style: __assign({}, props.style) },
         React__default["default"].createElement("svg", { width: "100%", height: "100%", viewBox: "0 0 24 24", fillRule: "evenodd", style: props.color ? { fill: props.color } : {} },
             React__default["default"].createElement("path", { d: icons[props.name] }))));
 };
@@ -121,13 +121,13 @@ Icon.defaultProps = {
     color: "",
 };
 
-var css$c = ".styles_module_button__afac1c95 {\n  cursor: pointer;\n  position: relative;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n  padding: 16px 20px;\n  border-radius: 50px;\n  border: none;\n  outline: none;\n  background: none;\n  text-decoration: none;\n  transition: background 0.16s ease, border 0.16s ease, color 0.16s ease;\n}\n\n.styles_module_text__afac1c95 {\n  font-family: \"ABCMarfa\", sans-serif;\n  font-weight: 500;\n  text-decoration: none;\n}\n\n.styles_module_primary__afac1c95 {\n  background: var(--color-main-500);\n}\n.styles_module_primary__afac1c95 .styles_module_text__afac1c95 {\n  color: var(--color-main-0);\n}\n.styles_module_primary__afac1c95 .styles_module_icon__afac1c95 svg {\n  fill: var(--color-main-0);\n}\n.styles_module_primary__afac1c95 .styles_module_spinner__afac1c95 svg {\n  stroke: var(--color-main-0);\n}\n.styles_module_primary__afac1c95:hover {\n  background: var(--color-main-400);\n}\n.styles_module_primary__afac1c95:focus-visible {\n  outline: 1px solid var(--color-main-500);\n  outline-offset: 4px;\n}\n\n.styles_module_accent__afac1c95 {\n  background: var(--color-accent-500);\n}\n.styles_module_accent__afac1c95 .styles_module_text__afac1c95 {\n  color: var(--color-main-0);\n}\n.styles_module_accent__afac1c95 .styles_module_icon__afac1c95 svg {\n  fill: var(--color-main-0);\n}\n.styles_module_accent__afac1c95 .styles_module_spinner__afac1c95 svg {\n  stroke: var(--color-main-0);\n}\n.styles_module_accent__afac1c95:hover {\n  background: var(--color-accent-800);\n}\n.styles_module_accent__afac1c95:focus-visible {\n  outline: 1px solid var(--color-accent-500);\n  outline-offset: 4px;\n}\n\n.styles_module_outline__afac1c95 {\n  border: 1px solid var(--color-main-500);\n}\n.styles_module_outline__afac1c95 .styles_module_text__afac1c95 {\n  color: var(--color-main-500);\n}\n.styles_module_outline__afac1c95 .styles_module_icon__afac1c95 svg {\n  fill: var(--color-main-500);\n}\n.styles_module_outline__afac1c95 .styles_module_spinner__afac1c95 svg {\n  stroke: var(--color-main-500);\n}\n.styles_module_outline__afac1c95:hover {\n  border: 1px solid var(--color-main-200);\n}\n.styles_module_outline__afac1c95:focus-visible {\n  outline: 1px solid var(--color-main-500);\n  outline-offset: 4px;\n}\n\n.styles_module_ghost__afac1c95 .styles_module_text__afac1c95 {\n  color: var(--color-main-500);\n}\n.styles_module_ghost__afac1c95 .styles_module_icon__afac1c95 svg {\n  fill: var(--color-main-500);\n}\n.styles_module_ghost__afac1c95 .styles_module_spinner__afac1c95 svg {\n  stroke: var(--color-main-500);\n}\n.styles_module_ghost__afac1c95:hover {\n  background-color: var(--color-main-transparent-50);\n}\n.styles_module_ghost__afac1c95:focus-visible {\n  outline: 1px solid var(--color-main-500);\n  outline-offset: 4px;\n}\n\n.styles_module_default__afac1c95 {\n  height: 60px;\n}\n.styles_module_default__afac1c95 .styles_module_text__afac1c95 {\n  font-size: 16px;\n}\n\n.styles_module_fixedSizeDefault__afac1c95 {\n  width: 60px;\n}\n\n.styles_module_minWidthDefault__afac1c95 {\n  min-width: 260px;\n}\n\n.styles_module_small__afac1c95 {\n  height: 45px;\n}\n.styles_module_small__afac1c95 .styles_module_text__afac1c95 {\n  font-size: 16px;\n}\n\n.styles_module_fixedSizeSmall__afac1c95 {\n  width: 45px;\n}\n\n.styles_module_minWidthSmall__afac1c95 {\n  min-width: 180px;\n}\n\n.styles_module_disabled__afac1c95 {\n  pointer-events: none;\n  opacity: 0.2;\n}";
-var modules_efc4e723$c = {"button":"styles_module_button__afac1c95","text":"styles_module_text__afac1c95","primary":"styles_module_primary__afac1c95","icon":"styles_module_icon__afac1c95","spinner":"styles_module_spinner__afac1c95","accent":"styles_module_accent__afac1c95","outline":"styles_module_outline__afac1c95","ghost":"styles_module_ghost__afac1c95","default":"styles_module_default__afac1c95","fixedSize-default":"styles_module_fixedSizeDefault__afac1c95","minWidth-default":"styles_module_minWidthDefault__afac1c95","small":"styles_module_small__afac1c95","fixedSize-small":"styles_module_fixedSizeSmall__afac1c95","minWidth-small":"styles_module_minWidthSmall__afac1c95","disabled":"styles_module_disabled__afac1c95"};
-n(css$c,{});
+var css$d = ".styles_module_button__afac1c95 {\n  cursor: pointer;\n  position: relative;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n  padding: 16px 20px;\n  border-radius: 50px;\n  border: none;\n  outline: none;\n  background: none;\n  text-decoration: none;\n  transition: background 0.16s ease, border 0.16s ease, color 0.16s ease;\n}\n\n.styles_module_text__afac1c95 {\n  font-family: \"ABCMarfa\", sans-serif;\n  font-weight: 500;\n  text-decoration: none;\n}\n\n.styles_module_primary__afac1c95 {\n  background: var(--color-main-500);\n}\n.styles_module_primary__afac1c95 .styles_module_text__afac1c95 {\n  color: var(--color-main-0);\n}\n.styles_module_primary__afac1c95 .styles_module_icon__afac1c95 svg {\n  fill: var(--color-main-0);\n}\n.styles_module_primary__afac1c95 .styles_module_spinner__afac1c95 svg {\n  stroke: var(--color-main-0);\n}\n.styles_module_primary__afac1c95:hover {\n  background: var(--color-main-400);\n}\n.styles_module_primary__afac1c95:focus-visible {\n  outline: 1px solid var(--color-main-500);\n  outline-offset: 4px;\n}\n\n.styles_module_accent__afac1c95 {\n  background: var(--color-accent-500);\n}\n.styles_module_accent__afac1c95 .styles_module_text__afac1c95 {\n  color: var(--color-main-0);\n}\n.styles_module_accent__afac1c95 .styles_module_icon__afac1c95 svg {\n  fill: var(--color-main-0);\n}\n.styles_module_accent__afac1c95 .styles_module_spinner__afac1c95 svg {\n  stroke: var(--color-main-0);\n}\n.styles_module_accent__afac1c95:hover {\n  background: var(--color-accent-800);\n}\n.styles_module_accent__afac1c95:focus-visible {\n  outline: 1px solid var(--color-accent-500);\n  outline-offset: 4px;\n}\n\n.styles_module_outline__afac1c95 {\n  border: 1px solid var(--color-main-500);\n}\n.styles_module_outline__afac1c95 .styles_module_text__afac1c95 {\n  color: var(--color-main-500);\n}\n.styles_module_outline__afac1c95 .styles_module_icon__afac1c95 svg {\n  fill: var(--color-main-500);\n}\n.styles_module_outline__afac1c95 .styles_module_spinner__afac1c95 svg {\n  stroke: var(--color-main-500);\n}\n.styles_module_outline__afac1c95:hover {\n  border: 1px solid var(--color-main-200);\n}\n.styles_module_outline__afac1c95:focus-visible {\n  outline: 1px solid var(--color-main-500);\n  outline-offset: 4px;\n}\n\n.styles_module_ghost__afac1c95 .styles_module_text__afac1c95 {\n  color: var(--color-main-500);\n}\n.styles_module_ghost__afac1c95 .styles_module_icon__afac1c95 svg {\n  fill: var(--color-main-500);\n}\n.styles_module_ghost__afac1c95 .styles_module_spinner__afac1c95 svg {\n  stroke: var(--color-main-500);\n}\n.styles_module_ghost__afac1c95:hover {\n  background-color: var(--color-main-transparent-50);\n}\n.styles_module_ghost__afac1c95:focus-visible {\n  outline: 1px solid var(--color-main-500);\n  outline-offset: 4px;\n}\n\n.styles_module_default__afac1c95 {\n  height: 60px;\n}\n.styles_module_default__afac1c95 .styles_module_text__afac1c95 {\n  font-size: 16px;\n}\n\n.styles_module_fixedSizeDefault__afac1c95 {\n  width: 60px;\n}\n\n.styles_module_minWidthDefault__afac1c95 {\n  min-width: 260px;\n}\n\n.styles_module_small__afac1c95 {\n  height: 45px;\n}\n.styles_module_small__afac1c95 .styles_module_text__afac1c95 {\n  font-size: 16px;\n}\n\n.styles_module_fixedSizeSmall__afac1c95 {\n  width: 45px;\n}\n\n.styles_module_minWidthSmall__afac1c95 {\n  min-width: 180px;\n}\n\n.styles_module_disabled__afac1c95 {\n  pointer-events: none;\n  opacity: 0.2;\n}";
+var modules_efc4e723$d = {"button":"styles_module_button__afac1c95","text":"styles_module_text__afac1c95","primary":"styles_module_primary__afac1c95","icon":"styles_module_icon__afac1c95","spinner":"styles_module_spinner__afac1c95","accent":"styles_module_accent__afac1c95","outline":"styles_module_outline__afac1c95","ghost":"styles_module_ghost__afac1c95","default":"styles_module_default__afac1c95","fixedSize-default":"styles_module_fixedSizeDefault__afac1c95","minWidth-default":"styles_module_minWidthDefault__afac1c95","small":"styles_module_small__afac1c95","fixedSize-small":"styles_module_fixedSizeSmall__afac1c95","minWidth-small":"styles_module_minWidthSmall__afac1c95","disabled":"styles_module_disabled__afac1c95"};
+n(css$d,{});
 
-var css$b = ".styles_module_loaderWrap__d4c8cb11 {\n  position: relative;\n}\n\n.styles_module_loader__d4c8cb11 {\n  width: 100%;\n  height: 100%;\n  -webkit-animation: styles_module_rotate__d4c8cb11 1.2s linear infinite;\n          animation: styles_module_rotate__d4c8cb11 1.2s linear infinite;\n  stroke: var(--color-main-500);\n}\n\n.styles_module_path__d4c8cb11 {\n  transform-origin: center;\n  stroke-dashoffset: 0;\n  stroke-linecap: round;\n  stroke-width: 1px;\n}\n\n.styles_module_backPath__d4c8cb11 {\n  transform-origin: center;\n  stroke-linecap: round;\n  stroke-width: 1px;\n  opacity: 0.2;\n}\n\n.styles_module_small__d4c8cb11 .styles_module_path__d4c8cb11 {\n  stroke-dasharray: 90;\n  -webkit-animation: styles_module_dashSmall__d4c8cb11 2.5s ease-in-out infinite;\n          animation: styles_module_dashSmall__d4c8cb11 2.5s ease-in-out infinite;\n}\n\n.styles_module_mediumSmall__d4c8cb11 .styles_module_path__d4c8cb11 {\n  stroke-dasharray: 100;\n  -webkit-animation: styles_module_dashSmall__d4c8cb11 2.5s ease-in-out infinite;\n          animation: styles_module_dashSmall__d4c8cb11 2.5s ease-in-out infinite;\n}\n\n.styles_module_medium__d4c8cb11 .styles_module_path__d4c8cb11 {\n  stroke-dasharray: 100;\n  -webkit-animation: styles_module_dashMedium__d4c8cb11 2.5s ease-in-out infinite;\n          animation: styles_module_dashMedium__d4c8cb11 2.5s ease-in-out infinite;\n}\n\n.styles_module_large__d4c8cb11 .styles_module_path__d4c8cb11 {\n  stroke-dasharray: 200;\n  -webkit-animation: styles_module_dashLarge__d4c8cb11 3.5s ease-in-out infinite;\n          animation: styles_module_dashLarge__d4c8cb11 3.5s ease-in-out infinite;\n}\n\n@-webkit-keyframes styles_module_rotate__d4c8cb11 {\n  100% {\n    transform: rotate(360deg);\n  }\n}\n\n@keyframes styles_module_rotate__d4c8cb11 {\n  100% {\n    transform: rotate(360deg);\n  }\n}\n@-webkit-keyframes styles_module_dashSmall__d4c8cb11 {\n  0% {\n    stroke-dashoffset: 90;\n  }\n  50% {\n    stroke-dashoffset: 45;\n    transform: rotate(135deg);\n  }\n  100% {\n    stroke-dashoffset: 90;\n    transform: rotate(360deg);\n  }\n}\n@keyframes styles_module_dashSmall__d4c8cb11 {\n  0% {\n    stroke-dashoffset: 90;\n  }\n  50% {\n    stroke-dashoffset: 45;\n    transform: rotate(135deg);\n  }\n  100% {\n    stroke-dashoffset: 90;\n    transform: rotate(360deg);\n  }\n}\n@-webkit-keyframes styles_module_dashMedium__d4c8cb11 {\n  0% {\n    stroke-dashoffset: 100;\n  }\n  50% {\n    stroke-dashoffset: 45;\n    transform: rotate(135deg);\n  }\n  100% {\n    stroke-dashoffset: 100;\n    transform: rotate(360deg);\n  }\n}\n@keyframes styles_module_dashMedium__d4c8cb11 {\n  0% {\n    stroke-dashoffset: 100;\n  }\n  50% {\n    stroke-dashoffset: 45;\n    transform: rotate(135deg);\n  }\n  100% {\n    stroke-dashoffset: 100;\n    transform: rotate(360deg);\n  }\n}\n@-webkit-keyframes styles_module_dashLarge__d4c8cb11 {\n  0% {\n    stroke-dashoffset: 200;\n  }\n  50% {\n    stroke-dashoffset: 45;\n    transform: rotate(135deg);\n  }\n  100% {\n    stroke-dashoffset: 200;\n    transform: rotate(360deg);\n  }\n}\n@keyframes styles_module_dashLarge__d4c8cb11 {\n  0% {\n    stroke-dashoffset: 200;\n  }\n  50% {\n    stroke-dashoffset: 45;\n    transform: rotate(135deg);\n  }\n  100% {\n    stroke-dashoffset: 200;\n    transform: rotate(360deg);\n  }\n}";
-var modules_efc4e723$b = {"loaderWrap":"styles_module_loaderWrap__d4c8cb11","loader":"styles_module_loader__d4c8cb11","rotate":"styles_module_rotate__d4c8cb11","path":"styles_module_path__d4c8cb11","backPath":"styles_module_backPath__d4c8cb11","small":"styles_module_small__d4c8cb11","dash-small":"styles_module_dashSmall__d4c8cb11","medium-small":"styles_module_mediumSmall__d4c8cb11","medium":"styles_module_medium__d4c8cb11","dash-medium":"styles_module_dashMedium__d4c8cb11","large":"styles_module_large__d4c8cb11","dash-large":"styles_module_dashLarge__d4c8cb11"};
-n(css$b,{});
+var css$c = ".styles_module_loaderWrap__d4c8cb11 {\n  position: relative;\n}\n\n.styles_module_loader__d4c8cb11 {\n  width: 100%;\n  height: 100%;\n  -webkit-animation: styles_module_rotate__d4c8cb11 1.2s linear infinite;\n          animation: styles_module_rotate__d4c8cb11 1.2s linear infinite;\n  stroke: var(--color-main-500);\n}\n\n.styles_module_path__d4c8cb11 {\n  transform-origin: center;\n  stroke-dashoffset: 0;\n  stroke-linecap: round;\n  stroke-width: 1px;\n}\n\n.styles_module_backPath__d4c8cb11 {\n  transform-origin: center;\n  stroke-linecap: round;\n  stroke-width: 1px;\n  opacity: 0.2;\n}\n\n.styles_module_small__d4c8cb11 .styles_module_path__d4c8cb11 {\n  stroke-dasharray: 90;\n  -webkit-animation: styles_module_dashSmall__d4c8cb11 2.5s ease-in-out infinite;\n          animation: styles_module_dashSmall__d4c8cb11 2.5s ease-in-out infinite;\n}\n\n.styles_module_mediumSmall__d4c8cb11 .styles_module_path__d4c8cb11 {\n  stroke-dasharray: 100;\n  -webkit-animation: styles_module_dashSmall__d4c8cb11 2.5s ease-in-out infinite;\n          animation: styles_module_dashSmall__d4c8cb11 2.5s ease-in-out infinite;\n}\n\n.styles_module_medium__d4c8cb11 .styles_module_path__d4c8cb11 {\n  stroke-dasharray: 100;\n  -webkit-animation: styles_module_dashMedium__d4c8cb11 2.5s ease-in-out infinite;\n          animation: styles_module_dashMedium__d4c8cb11 2.5s ease-in-out infinite;\n}\n\n.styles_module_large__d4c8cb11 .styles_module_path__d4c8cb11 {\n  stroke-dasharray: 200;\n  -webkit-animation: styles_module_dashLarge__d4c8cb11 3.5s ease-in-out infinite;\n          animation: styles_module_dashLarge__d4c8cb11 3.5s ease-in-out infinite;\n}\n\n@-webkit-keyframes styles_module_rotate__d4c8cb11 {\n  100% {\n    transform: rotate(360deg);\n  }\n}\n\n@keyframes styles_module_rotate__d4c8cb11 {\n  100% {\n    transform: rotate(360deg);\n  }\n}\n@-webkit-keyframes styles_module_dashSmall__d4c8cb11 {\n  0% {\n    stroke-dashoffset: 90;\n  }\n  50% {\n    stroke-dashoffset: 45;\n    transform: rotate(135deg);\n  }\n  100% {\n    stroke-dashoffset: 90;\n    transform: rotate(360deg);\n  }\n}\n@keyframes styles_module_dashSmall__d4c8cb11 {\n  0% {\n    stroke-dashoffset: 90;\n  }\n  50% {\n    stroke-dashoffset: 45;\n    transform: rotate(135deg);\n  }\n  100% {\n    stroke-dashoffset: 90;\n    transform: rotate(360deg);\n  }\n}\n@-webkit-keyframes styles_module_dashMedium__d4c8cb11 {\n  0% {\n    stroke-dashoffset: 100;\n  }\n  50% {\n    stroke-dashoffset: 45;\n    transform: rotate(135deg);\n  }\n  100% {\n    stroke-dashoffset: 100;\n    transform: rotate(360deg);\n  }\n}\n@keyframes styles_module_dashMedium__d4c8cb11 {\n  0% {\n    stroke-dashoffset: 100;\n  }\n  50% {\n    stroke-dashoffset: 45;\n    transform: rotate(135deg);\n  }\n  100% {\n    stroke-dashoffset: 100;\n    transform: rotate(360deg);\n  }\n}\n@-webkit-keyframes styles_module_dashLarge__d4c8cb11 {\n  0% {\n    stroke-dashoffset: 200;\n  }\n  50% {\n    stroke-dashoffset: 45;\n    transform: rotate(135deg);\n  }\n  100% {\n    stroke-dashoffset: 200;\n    transform: rotate(360deg);\n  }\n}\n@keyframes styles_module_dashLarge__d4c8cb11 {\n  0% {\n    stroke-dashoffset: 200;\n  }\n  50% {\n    stroke-dashoffset: 45;\n    transform: rotate(135deg);\n  }\n  100% {\n    stroke-dashoffset: 200;\n    transform: rotate(360deg);\n  }\n}";
+var modules_efc4e723$c = {"loaderWrap":"styles_module_loaderWrap__d4c8cb11","loader":"styles_module_loader__d4c8cb11","rotate":"styles_module_rotate__d4c8cb11","path":"styles_module_path__d4c8cb11","backPath":"styles_module_backPath__d4c8cb11","small":"styles_module_small__d4c8cb11","dash-small":"styles_module_dashSmall__d4c8cb11","medium-small":"styles_module_mediumSmall__d4c8cb11","medium":"styles_module_medium__d4c8cb11","dash-medium":"styles_module_dashMedium__d4c8cb11","large":"styles_module_large__d4c8cb11","dash-large":"styles_module_dashLarge__d4c8cb11"};
+n(css$c,{});
 
 var Spinner = function (props) {
     var getSize = function (size) {
@@ -142,10 +142,10 @@ var Spinner = function (props) {
                 return 80;
         }
     };
-    return (React__default["default"].createElement("div", { className: "".concat(modules_efc4e723$b.loaderWrap, " ").concat(props.className), style: __assign(__assign({}, props.style), { width: getSize(props.size), height: getSize(props.size) }) },
-        React__default["default"].createElement("svg", { width: getSize(props.size), height: getSize(props.size), viewBox: "0 0 ".concat(getSize(props.size), " ").concat(getSize(props.size)), fill: "none", className: "".concat(modules_efc4e723$b.loader, " ").concat(modules_efc4e723$b[props.size]), style: props.color ? { fill: props.color } : {}, xmlns: "http://www.w3.org/2000/svg" },
-            React__default["default"].createElement("circle", { className: modules_efc4e723$b.path, cx: getSize(props.size) / 2, cy: getSize(props.size) / 2, r: getSize(props.size) / 2 - 3 }),
-            React__default["default"].createElement("circle", { className: modules_efc4e723$b.backPath, cx: getSize(props.size) / 2, cy: getSize(props.size) / 2, r: getSize(props.size) / 2 - 3 }))));
+    return (React__default["default"].createElement("div", { className: "".concat(modules_efc4e723$c.loaderWrap, " ").concat(props.className), style: __assign(__assign({}, props.style), { width: getSize(props.size), height: getSize(props.size) }) },
+        React__default["default"].createElement("svg", { width: getSize(props.size), height: getSize(props.size), viewBox: "0 0 ".concat(getSize(props.size), " ").concat(getSize(props.size)), fill: "none", className: "".concat(modules_efc4e723$c.loader, " ").concat(modules_efc4e723$c[props.size]), style: props.color ? { fill: props.color } : {}, xmlns: "http://www.w3.org/2000/svg" },
+            React__default["default"].createElement("circle", { className: modules_efc4e723$c.path, cx: getSize(props.size) / 2, cy: getSize(props.size) / 2, r: getSize(props.size) / 2 - 3 }),
+            React__default["default"].createElement("circle", { className: modules_efc4e723$c.backPath, cx: getSize(props.size) / 2, cy: getSize(props.size) / 2, r: getSize(props.size) / 2 - 3 }))));
 };
 Spinner.defaultProps = {
     className: "",
@@ -156,60 +156,55 @@ Spinner.defaultProps = {
 var ButtonContent = function (_a) {
     var props = __rest(_a, []);
     return (React__default["default"].createElement(React__default["default"].Fragment, null,
-        props.label ? (React__default["default"].createElement("span", { className: "".concat(modules_efc4e723$c.text) }, !props.busy ? props.label : props.busyLabel)) : null,
-        props.icon && !props.busy ? (React__default["default"].createElement(Icon, { name: props.icon, className: modules_efc4e723$c.icon, style: props.label
+        props.label ? (React__default["default"].createElement("span", { className: "".concat(modules_efc4e723$d.text) }, !props.busy ? props.label : props.busyLabel)) : null,
+        props.icon && !props.busy ? (React__default["default"].createElement(Icon, { name: props.icon, className: modules_efc4e723$d.icon, style: props.label
                 ? {
                     marginLeft: "10px",
                 }
                 : {} })) : null,
-        props.busy ? (React__default["default"].createElement(Spinner, { className: modules_efc4e723$c.spinner, size: "medium-small", style: props.busyLabel && props.label
+        props.busy ? (React__default["default"].createElement(Spinner, { className: modules_efc4e723$d.spinner, size: "medium-small", style: props.busyLabel && props.label
                 ? {
                     marginLeft: "10px",
                 }
                 : {} })) : null));
 };
-var ButtonTag = function (props) {
-    var handleClick = function (event) {
-        event.preventDefault();
-        if (props.onClick) {
-            props.onClick(event);
+var Button = React__default["default"].forwardRef(function (props, ref) {
+    var classes = "".concat(props.className, " ").concat(modules_efc4e723$d.button, " ").concat(modules_efc4e723$d[props.mode], " ").concat(modules_efc4e723$d[props.size], " ").concat(props.disabled ? modules_efc4e723$d.disabled : "", " ").concat(props.label
+        ? modules_efc4e723$d["minWidth-".concat(props.size)]
+        : modules_efc4e723$d["fixedSize-".concat(props.size)]);
+    var style = __assign(__assign(__assign({}, (props.maxWidth ? { maxWidth: props.maxWidth } : {})), (props.busy ? { pointerEvents: "none" } : {})), (props.style || {}));
+    var conditionalProps = props.tag === "a"
+        ? {
+            rel: "noreferrer",
+            href: props.href,
+            target: props.target,
+            onSubmit: props.onSubmit,
         }
-    };
-    return (React__default["default"].createElement("button", { tabIndex: props.tabIndex, className: "".concat(props.className, " ").concat(modules_efc4e723$c.button, " ").concat(modules_efc4e723$c[props.mode], " ").concat(modules_efc4e723$c[props.size], " ").concat(props.disabled ? modules_efc4e723$c.disabled : "", " ").concat(props.label
-            ? modules_efc4e723$c["minWidth-".concat(props.size)]
-            : modules_efc4e723$c["fixedSize-".concat(props.size)]), style: __assign(__assign({}, (props.maxWidth ? { maxWidth: props.maxWidth } : {})), (props.busy ? { pointerEvents: "none" } : {})), onClick: handleClick, onKeyPress: props.onKeyPress, onSubmit: props.onSubmit, 
-        //
-        type: props.type, form: props.form },
+        : {
+            type: props.type,
+            form: props.form,
+        };
+    return (React__default["default"].createElement(props.tag, __assign({ ref: ref, className: classes, style: style, onClick: props.onClick, onKeyPress: props.onKeyPress, disabled: props.disabled }, conditionalProps),
         React__default["default"].createElement(ButtonContent, __assign({}, props))));
-};
-var LinkTag = function (props) {
-    return (React__default["default"].createElement("a", { tabIndex: props.tabIndex, className: "".concat(props.className, " ").concat(modules_efc4e723$c.button, " ").concat(modules_efc4e723$c[props.mode], " ").concat(modules_efc4e723$c[props.size], " ").concat(props.disabled ? modules_efc4e723$c.disabled : "", " ").concat(props.label
-            ? modules_efc4e723$c["minWidth-".concat(props.size)]
-            : modules_efc4e723$c["fixedSize-".concat(props.size)]), style: __assign(__assign({}, (props.maxWidth ? { maxWidth: props.maxWidth } : {})), (props.busy ? { pointerEvents: "none" } : {})), onClick: props.onClick, onKeyPress: props.onKeyPress, 
-        //
-        rel: "noreferrer", href: props.href, target: props.target },
-        React__default["default"].createElement(ButtonContent, __assign({}, props))));
-};
-var Button = function (props) {
-    return props.tag === "button" ? (React__default["default"].createElement(ButtonTag, __assign({}, props))) : (React__default["default"].createElement(LinkTag, __assign({}, props)));
-};
+});
 Button.defaultProps = {
     className: "",
+    tabIndex: 0,
     mode: "primary",
     size: "default",
     tag: "button",
+    busy: false,
     type: "button",
     href: "#",
     target: "_self",
-    busy: false,
     busyLabel: "",
     disabled: false,
     label: "Button",
 };
 
-var css$a = ".styles_module_componentWrap__4e96dbbb {\n  position: relative;\n  justify-content: flex-end;\n  display: flex;\n  flex-direction: column;\n}\n\n.styles_module_inputWrap__4e96dbbb {\n  position: relative;\n  justify-content: flex-end;\n  display: flex;\n  flex-direction: column;\n  height: 68px;\n}\n\n.styles_module_label__4e96dbbb {\n  pointer-events: none;\n  position: absolute;\n  bottom: 13px;\n  font-family: \"ABCMarfa\", sans-serif;\n  font-weight: 200;\n  font-size: 24px;\n  line-height: 18px;\n  opacity: 0.3;\n  transform-origin: left;\n  transition: all 0.2s ease;\n  -webkit-transition: all 0.2s ease;\n}\n\n.styles_module_input__4e96dbbb {\n  height: 44px;\n  padding: 0;\n  padding-bottom: 5px;\n  font-family: \"ABCMarfa\", sans-serif;\n  font-weight: 200;\n  font-size: 24px;\n  line-height: 24px;\n  background: none;\n  border: none;\n  outline: none;\n  border-radius: 0;\n  transition: all 0.15s ease;\n  box-shadow: 0 1px 0 0 var(--color-main-500);\n  -webkit-appearance: none;\n}\n.styles_module_input__4e96dbbb:hover, .styles_module_input__4e96dbbb:focus {\n  box-shadow: 0 2px 0 0 var(--color-main-500);\n}\n.styles_module_input__4e96dbbb:focus {\n  box-shadow: 0 2px 0 0 var(--color-main-500);\n}\n.styles_module_input__4e96dbbb:focus + .styles_module_label__4e96dbbb {\n  opacity: 1;\n  transform: translateY(-34px) scale(0.6);\n}\n.styles_module_input__4e96dbbb:not(:-moz-placeholder-shown) + .styles_module_label__4e96dbbb {\n  opacity: 1;\n  transform: translateY(-34px) scale(0.6);\n}\n.styles_module_input__4e96dbbb:not(:-ms-input-placeholder) + .styles_module_label__4e96dbbb {\n  opacity: 1;\n  transform: translateY(-34px) scale(0.6);\n}\n.styles_module_input__4e96dbbb:not(:placeholder-shown) + .styles_module_label__4e96dbbb {\n  opacity: 1;\n  transform: translateY(-34px) scale(0.6);\n}\n\n.styles_module_helperText__4e96dbbb {\n  color: var(--color-main-transparent-200);\n  margin-top: 12px;\n  line-height: 120%;\n}\n\n.styles_module_hideSpinButton__4e96dbbb {\n  /* Chrome, Safari, Edge, Opera */\n  /* Firefox */\n}\n.styles_module_hideSpinButton__4e96dbbb::-webkit-outer-spin-button, .styles_module_hideSpinButton__4e96dbbb::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n.styles_module_hideSpinButton__4e96dbbb[type=number] {\n  -moz-appearance: textfield;\n}\n\n.styles_module_icon__4e96dbbb {\n  position: absolute;\n  cursor: pointer;\n  bottom: 10px;\n  right: 0;\n}\n\n.styles_module_error__4e96dbbb .styles_module_input__4e96dbbb {\n  box-shadow: 0 2px 0 0 var(--color-service-error-main);\n}\n.styles_module_error__4e96dbbb .styles_module_helperText__4e96dbbb {\n  color: var(--color-service-error-main);\n}\n\n.styles_module_shake__4e96dbbb {\n  -webkit-animation-name: styles_module_shakeAnimation__4e96dbbb;\n  animation-name: styles_module_shakeAnimation__4e96dbbb;\n  -webkit-animation-duration: 0.4s;\n  animation-duration: 0.4s;\n  -webkit-animation-iteration-count: 1;\n  animation-iteration-count: 1;\n  -webkit-animation-timing-function: ease;\n  animation-timing-function: ease;\n}\n\n@-webkit-keyframes styles_module_shakeAnimation__4e96dbbb {\n  0% {\n    transform: translateX(0);\n  }\n  30% {\n    transform: translateX(-10px);\n  }\n  40% {\n    transform: translateX(10px);\n  }\n  60% {\n    transform: translateX(-10px);\n  }\n  100% {\n    transform: translateX(0);\n  }\n}\n\n@keyframes styles_module_shakeAnimation__4e96dbbb {\n  0% {\n    transform: translateX(0);\n  }\n  30% {\n    transform: translateX(-10px);\n  }\n  40% {\n    transform: translateX(10px);\n  }\n  60% {\n    transform: translateX(-10px);\n  }\n  100% {\n    transform: translateX(0);\n  }\n}";
-var modules_efc4e723$a = {"componentWrap":"styles_module_componentWrap__4e96dbbb","inputWrap":"styles_module_inputWrap__4e96dbbb","label":"styles_module_label__4e96dbbb","input":"styles_module_input__4e96dbbb","helperText":"styles_module_helperText__4e96dbbb","hideSpinButton":"styles_module_hideSpinButton__4e96dbbb","icon":"styles_module_icon__4e96dbbb","error":"styles_module_error__4e96dbbb","shake":"styles_module_shake__4e96dbbb","shake-animation":"styles_module_shakeAnimation__4e96dbbb"};
-n(css$a,{});
+var css$b = ".styles_module_componentWrap__4e96dbbb {\n  position: relative;\n  justify-content: flex-end;\n  display: flex;\n  flex-direction: column;\n}\n\n.styles_module_inputWrap__4e96dbbb {\n  position: relative;\n  justify-content: flex-end;\n  display: flex;\n  flex-direction: column;\n  height: 68px;\n}\n\n.styles_module_label__4e96dbbb {\n  pointer-events: none;\n  position: absolute;\n  bottom: 13px;\n  font-family: \"ABCMarfa\", sans-serif;\n  font-weight: 200;\n  font-size: 24px;\n  line-height: 18px;\n  opacity: 0.3;\n  transform-origin: left;\n  transition: all 0.2s ease;\n  -webkit-transition: all 0.2s ease;\n}\n\n.styles_module_input__4e96dbbb {\n  height: 44px;\n  padding: 0;\n  padding-bottom: 5px;\n  font-family: \"ABCMarfa\", sans-serif;\n  font-weight: 200;\n  font-size: 24px;\n  line-height: 24px;\n  background: none;\n  border: none;\n  outline: none;\n  border-radius: 0;\n  transition: all 0.15s ease;\n  box-shadow: 0 1px 0 0 var(--color-main-500);\n  -webkit-appearance: none;\n}\n.styles_module_input__4e96dbbb:hover, .styles_module_input__4e96dbbb:focus {\n  box-shadow: 0 2px 0 0 var(--color-main-500);\n}\n.styles_module_input__4e96dbbb:focus {\n  box-shadow: 0 2px 0 0 var(--color-main-500);\n}\n.styles_module_input__4e96dbbb:focus + .styles_module_label__4e96dbbb {\n  opacity: 1;\n  transform: translateY(-34px) scale(0.6);\n}\n.styles_module_input__4e96dbbb:not(:-moz-placeholder-shown) + .styles_module_label__4e96dbbb {\n  opacity: 1;\n  transform: translateY(-34px) scale(0.6);\n}\n.styles_module_input__4e96dbbb:not(:-ms-input-placeholder) + .styles_module_label__4e96dbbb {\n  opacity: 1;\n  transform: translateY(-34px) scale(0.6);\n}\n.styles_module_input__4e96dbbb:not(:placeholder-shown) + .styles_module_label__4e96dbbb {\n  opacity: 1;\n  transform: translateY(-34px) scale(0.6);\n}\n\n.styles_module_helperText__4e96dbbb {\n  color: var(--color-main-transparent-200);\n  margin-top: 12px;\n  line-height: 120%;\n}\n\n.styles_module_hideSpinButton__4e96dbbb {\n  /* Chrome, Safari, Edge, Opera */\n  /* Firefox */\n}\n.styles_module_hideSpinButton__4e96dbbb::-webkit-outer-spin-button, .styles_module_hideSpinButton__4e96dbbb::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n.styles_module_hideSpinButton__4e96dbbb[type=number] {\n  -moz-appearance: textfield;\n}\n\n.styles_module_icon__4e96dbbb {\n  position: absolute;\n  cursor: pointer;\n  bottom: 10px;\n  right: 0;\n}\n\n.styles_module_error__4e96dbbb .styles_module_input__4e96dbbb {\n  box-shadow: 0 2px 0 0 var(--color-service-error-main);\n}\n.styles_module_error__4e96dbbb .styles_module_helperText__4e96dbbb {\n  color: var(--color-service-error-main);\n}\n\n.styles_module_shake__4e96dbbb {\n  -webkit-animation-name: styles_module_shakeAnimation__4e96dbbb;\n  animation-name: styles_module_shakeAnimation__4e96dbbb;\n  -webkit-animation-duration: 0.4s;\n  animation-duration: 0.4s;\n  -webkit-animation-iteration-count: 1;\n  animation-iteration-count: 1;\n  -webkit-animation-timing-function: ease;\n  animation-timing-function: ease;\n}\n\n@-webkit-keyframes styles_module_shakeAnimation__4e96dbbb {\n  0% {\n    transform: translateX(0);\n  }\n  30% {\n    transform: translateX(-10px);\n  }\n  40% {\n    transform: translateX(10px);\n  }\n  60% {\n    transform: translateX(-10px);\n  }\n  100% {\n    transform: translateX(0);\n  }\n}\n\n@keyframes styles_module_shakeAnimation__4e96dbbb {\n  0% {\n    transform: translateX(0);\n  }\n  30% {\n    transform: translateX(-10px);\n  }\n  40% {\n    transform: translateX(10px);\n  }\n  60% {\n    transform: translateX(-10px);\n  }\n  100% {\n    transform: translateX(0);\n  }\n}";
+var modules_efc4e723$b = {"componentWrap":"styles_module_componentWrap__4e96dbbb","inputWrap":"styles_module_inputWrap__4e96dbbb","label":"styles_module_label__4e96dbbb","input":"styles_module_input__4e96dbbb","helperText":"styles_module_helperText__4e96dbbb","hideSpinButton":"styles_module_hideSpinButton__4e96dbbb","icon":"styles_module_icon__4e96dbbb","error":"styles_module_error__4e96dbbb","shake":"styles_module_shake__4e96dbbb","shake-animation":"styles_module_shakeAnimation__4e96dbbb"};
+n(css$b,{});
 
 var Input = React__default["default"].forwardRef(function (props, ref) {
     var inputRef = React__default["default"].useRef(null);
@@ -218,18 +213,18 @@ var Input = React__default["default"].forwardRef(function (props, ref) {
             inputRef.current.focus();
         }
     }, [props.isInvalid]);
-    return (React__default["default"].createElement("div", { ref: ref, className: "".concat(modules_efc4e723$a.componentWrap, " ").concat(props.className, " ").concat(props.isInvalid ? modules_efc4e723$a.error : "", " ").concat(props.isInvalid ? modules_efc4e723$a.shake : "") },
-        React__default["default"].createElement("div", { className: "".concat(modules_efc4e723$a.inputWrap), style: {
+    return (React__default["default"].createElement("div", { ref: ref, className: "".concat(modules_efc4e723$b.componentWrap, " ").concat(props.className, " ").concat(props.isInvalid ? modules_efc4e723$b.error : "", " ").concat(props.isInvalid ? modules_efc4e723$b.shake : "") },
+        React__default["default"].createElement("div", { className: "".concat(modules_efc4e723$b.inputWrap), style: {
                 height: props.label !== "" ? "68px" : "40px",
             } },
-            props.icon ? (React__default["default"].createElement("div", { onClick: props.icon.onClick, className: modules_efc4e723$a.icon, style: {
+            props.icon ? (React__default["default"].createElement("div", { onClick: props.icon.onClick, className: modules_efc4e723$b.icon, style: {
                     pointerEvents: props.icon.onClick !== undefined ? "auto" : "none",
                 } },
                 React__default["default"].createElement(Icon, { name: props.icon.name }))) : null,
-            React__default["default"].createElement("input", { ref: inputRef, tabIndex: props.tabIndex, autoFocus: props.autoFocus, type: props.type, id: props.id ? props.id : props.name, name: props.name, className: "".concat(modules_efc4e723$a.input, " ").concat(props.hideSpinButton ? modules_efc4e723$a.hideSpinButton : ""), placeholder: "\u00A0", value: props.value, required: props.required, onChange: props.onChange, onSubmit: props.onSubmit, onBlur: props.onBlur, onFocus: props.onFocus, onInvalid: props.onInvalid }),
-            props.label !== "" ? (React__default["default"].createElement("label", { className: modules_efc4e723$a.label, htmlFor: props.name }, props.label)) : null),
-        props.helperText && !props.isInvalid ? (React__default["default"].createElement("span", { className: "".concat(modules_efc4e723$a.helperText, " typo-app-body-caption") }, props.helperText)) : null,
-        props.isInvalid ? (React__default["default"].createElement("span", { className: "".concat(modules_efc4e723$a.helperText, " typo-app-body-caption") }, props.errorMessage)) : null));
+            React__default["default"].createElement("input", { ref: inputRef, tabIndex: props.tabIndex, autoFocus: props.autoFocus, type: props.type, id: props.id ? props.id : props.name, name: props.name, className: "".concat(modules_efc4e723$b.input, " ").concat(props.hideSpinButton ? modules_efc4e723$b.hideSpinButton : ""), placeholder: "\u00A0", value: props.value, required: props.required, onChange: props.onChange, onSubmit: props.onSubmit, onBlur: props.onBlur, onFocus: props.onFocus, onInvalid: props.onInvalid }),
+            props.label !== "" ? (React__default["default"].createElement("label", { className: modules_efc4e723$b.label, htmlFor: props.name }, props.label)) : null),
+        props.helperText && !props.isInvalid ? (React__default["default"].createElement("span", { className: "".concat(modules_efc4e723$b.helperText, " typo-app-body-caption") }, props.helperText)) : null,
+        props.isInvalid ? (React__default["default"].createElement("span", { className: "".concat(modules_efc4e723$b.helperText, " typo-app-body-caption") }, props.errorMessage)) : null));
 });
 Input.displayName = "Input";
 Input.defaultProps = {
@@ -241,6 +236,167 @@ Input.defaultProps = {
     isInvalid: false,
     errorMessage: "",
     hideSpinButton: true,
+};
+
+var Text = function (props) {
+    props.className; props.style; props.tag; props.context; props.appStyle; props.marketingStyle; var rest = __rest(props, ["className", "style", "tag", "context", "appStyle", "marketingStyle"]);
+    return (React__default["default"].createElement(props.tag, __assign({ className: "".concat(props.className, " typo-").concat(props.context, "-").concat(props.context === "app" ? props.appStyle : props.marketingStyle), style: __assign({}, props.style) }, rest), props.children));
+};
+Text.defaultProps = {
+    className: "",
+    tag: "p",
+    context: "app",
+    appStyle: "body-main",
+    marketingStyle: "paragraph",
+};
+
+var css$a = ".styles_module_componentWrap__f8a7a78c {\n  position: relative;\n  justify-content: flex-end;\n  display: flex;\n  flex-direction: column;\n}\n\n.styles_module_input__f8a7a78c {\n  height: 65px;\n  width: 35px;\n  margin-right: 5px;\n  text-align: center;\n  padding: 0;\n  padding-bottom: 5px;\n  font-family: \"Gza\", serif;\n  font-weight: 200;\n  font-size: 50px;\n  line-height: 120%;\n  background: none;\n  border: none;\n  outline: none;\n  border-radius: 0;\n  transition: all 0.15s ease;\n  box-shadow: 0 1px 0 0 var(--color-main-500);\n  -webkit-appearance: none;\n}\n.styles_module_input__f8a7a78c::-moz-placeholder {\n  color: rgba(0, 0, 0, 0.1);\n}\n.styles_module_input__f8a7a78c:-ms-input-placeholder {\n  color: rgba(0, 0, 0, 0.1);\n}\n.styles_module_input__f8a7a78c::placeholder {\n  color: rgba(0, 0, 0, 0.1);\n}\n.styles_module_input__f8a7a78c:focus {\n  box-shadow: 0 2px 0 0 var(--color-main-500);\n}\n.styles_module_input__f8a7a78c::-webkit-outer-spin-button, .styles_module_input__f8a7a78c::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n.styles_module_input__f8a7a78c:last-child {\n  margin-right: 0;\n}\n\n.styles_module_helperText__f8a7a78c {\n  color: var(--color-main-transparent-200);\n  max-width: 300px;\n  margin-top: 12px;\n  line-height: 120%;\n}\n\n.styles_module_resendSection__f8a7a78c {\n  margin-top: 20px;\n  color: var(--color-main-100);\n}\n\n.styles_module_resendLink__f8a7a78c {\n  cursor: pointer;\n  text-decoration: underline;\n  color: var(--color-main-500);\n  transition: all 0.15s ease;\n}\n.styles_module_resendLink__f8a7a78c:hover {\n  color: var(--color-accent-500);\n}\n.styles_module_resendLink_disabled__f8a7a78c {\n  opacity: 0.15;\n  pointer-events: none;\n  text-decoration: none;\n}\n\n.styles_module_error__f8a7a78c .styles_module_input__f8a7a78c {\n  box-shadow: 0 2px 0 0 var(--color-service-error-main);\n}\n.styles_module_error__f8a7a78c .styles_module_helperText__f8a7a78c {\n  color: var(--color-service-error-main);\n}\n\n.styles_module_shake__f8a7a78c {\n  -webkit-animation-name: styles_module_shakeAnimation__f8a7a78c;\n  animation-name: styles_module_shakeAnimation__f8a7a78c;\n  -webkit-animation-duration: 0.4s;\n  animation-duration: 0.4s;\n  -webkit-animation-iteration-count: 1;\n  animation-iteration-count: 1;\n  -webkit-animation-timing-function: ease;\n  animation-timing-function: ease;\n}\n\n@-webkit-keyframes styles_module_shakeAnimation__f8a7a78c {\n  0% {\n    transform: translateX(0);\n  }\n  30% {\n    transform: translateX(-10px);\n  }\n  40% {\n    transform: translateX(10px);\n  }\n  60% {\n    transform: translateX(-10px);\n  }\n  100% {\n    transform: translateX(0);\n  }\n}\n\n@keyframes styles_module_shakeAnimation__f8a7a78c {\n  0% {\n    transform: translateX(0);\n  }\n  30% {\n    transform: translateX(-10px);\n  }\n  40% {\n    transform: translateX(10px);\n  }\n  60% {\n    transform: translateX(-10px);\n  }\n  100% {\n    transform: translateX(0);\n  }\n}";
+var modules_efc4e723$a = {"componentWrap":"styles_module_componentWrap__f8a7a78c","input":"styles_module_input__f8a7a78c","helperText":"styles_module_helperText__f8a7a78c","resendSection":"styles_module_resendSection__f8a7a78c","resendLink":"styles_module_resendLink__f8a7a78c","resendLink_disabled":"styles_module_resendLink_disabled__f8a7a78c","error":"styles_module_error__f8a7a78c","shake":"styles_module_shake__f8a7a78c","shake-animation":"styles_module_shakeAnimation__f8a7a78c"};
+n(css$a,{});
+
+var isMobile = function () {
+    return /mobile/i.test(navigator.userAgent);
+};
+var CodeInput = React__default["default"].forwardRef(function (props, ref) {
+    var inputsRefs = React__default["default"].useRef([]);
+    var _a = React__default["default"].useState(Array(props.length).fill("")), nums = _a[0], setNums = _a[1];
+    var _b = React__default["default"].useState(false), isInvalid = _b[0], setIsInvalid = _b[1];
+    var _c = React__default["default"].useState(props.resendTimer), resendTimer = _c[0], setResendTimer = _c[1];
+    React__default["default"].useImperativeHandle(ref, function () { return ({
+        reset: function (callback) {
+            setNums(Array(props.length).fill(""));
+            setIsInvalid(false);
+            if (callback) {
+                callback();
+            }
+        },
+        setIsInvalid: function (isInvalid) {
+            setIsInvalid(isInvalid);
+        },
+    }); });
+    var handlePaste = function (e) {
+        e.preventDefault();
+        var text = e.clipboardData.getData("text/plain");
+        if (text) {
+            var newNums = text.split("").map(function (char) {
+                if (char.match(/^[0-9]*$/)) {
+                    return char;
+                }
+                return "";
+            });
+            setNums(newNums);
+        }
+    };
+    var handleNumsChange = function (event, index) {
+        var _a;
+        // event.preventDefault();
+        var cleanedValue = event.target.value.replace(/[^0-9]/g, "");
+        if (/[0-9]/.test(cleanedValue)) {
+            if (cleanedValue.length === 1 && nums[index].length === 0) {
+                setNums(nums.map(function (item, i) { return (i === index ? cleanedValue : item); }));
+                (_a = inputsRefs.current[index + 1]) === null || _a === void 0 ? void 0 : _a.focus();
+            }
+            // handleFilledCode(index);
+        }
+    };
+    // Handle timer
+    React__default["default"].useEffect(function () {
+        if (resendTimer > 0) {
+            var interval_1 = setInterval(function () {
+                setResendTimer(resendTimer - 1);
+            }, 1000);
+            return function () {
+                clearInterval(interval_1);
+            };
+        }
+    }, [resendTimer]);
+    //
+    React__default["default"].useEffect(function () {
+        var _a;
+        if (!isMobile()) {
+            (_a = inputsRefs.current[0]) === null || _a === void 0 ? void 0 : _a.focus();
+        }
+    }, []);
+    React__default["default"].useEffect(function () {
+        if (props.onChange) {
+            props.onChange(inputsRefs.current.map(function (item) { return item === null || item === void 0 ? void 0 : item.value; }).join(""));
+        }
+    }, [nums]);
+    var handleKeyPress = function (event, index) {
+        var _a, _b, _c, _d;
+        var currentValue = nums[index];
+        var cleanedValue = event.key.replace(/[^0-9]/g, "");
+        if (cleanedValue !== "" && currentValue.length !== 0) {
+            console.log(inputsRefs.current[index + 1]);
+            setNums(nums.map(function (item, i) { return (i === index ? cleanedValue : item); }));
+            if (index !== props.length - 1) {
+                inputsRefs.current[index + 1].focus();
+            }
+            if (index === props.length - 1) {
+                inputsRefs.current[index].blur();
+            }
+        }
+        if (event.key === "Backspace") {
+            setNums(nums.map(function (item, i) { return (i === index ? "" : item); }));
+            if (index === 0) {
+                return;
+            }
+            (_a = inputsRefs.current[index - 1]) === null || _a === void 0 ? void 0 : _a.focus();
+            return;
+        }
+        if (event.key === "ArrowLeft") {
+            if (index === 0) {
+                (_b = inputsRefs.current[nums.length - 1]) === null || _b === void 0 ? void 0 : _b.focus();
+            }
+            var prevIndex = index - 1;
+            (_c = inputsRefs.current[prevIndex]) === null || _c === void 0 ? void 0 : _c.focus();
+        }
+        if (event.key === "ArrowRight") {
+            if (index === props.length - 1) {
+                inputsRefs.current[0].focus();
+            }
+            var nextIndex = index + 1;
+            (_d = inputsRefs.current[nextIndex]) === null || _d === void 0 ? void 0 : _d.focus();
+        }
+    };
+    var handleOnFocus = function () {
+        if (isInvalid) {
+            setIsInvalid(false);
+        }
+    };
+    var handleResend = function (event) {
+        var _a;
+        setResendTimer(props.resendTimer);
+        setIsInvalid(false);
+        setNums(Array(props.length).fill(""));
+        (_a = inputsRefs.current[0]) === null || _a === void 0 ? void 0 : _a.focus();
+        props.onResend(event);
+    };
+    return (React__default["default"].createElement("div", { className: "".concat(modules_efc4e723$a.componentWrap, " ").concat(props.className, " ").concat(isInvalid ? modules_efc4e723$a.error : "", " ").concat(isInvalid ? modules_efc4e723$a.shake : ""), style: props.style },
+        React__default["default"].createElement("section", { ref: ref, onPaste: handlePaste, onFocus: handleOnFocus }, Array.from({ length: props.length }).map(function (_, index) {
+            return (React__default["default"].createElement("input", { type: "text", pattern: "\\d*", placeholder: "*", key: index, className: modules_efc4e723$a.input, ref: function (input) {
+                    inputsRefs.current[index] = input;
+                }, value: nums[index], onFocus: function (e) {
+                    e.target.select();
+                }, onChange: function (event) { return handleNumsChange(event, index); }, onKeyDown: function (event) { return handleKeyPress(event, index); }, maxLength: 1 }));
+        })),
+        isInvalid ? (React__default["default"].createElement(Text, { tag: "span", className: modules_efc4e723$a.helperText, context: "app", appStyle: "body-caption" }, props.errorMessage)) : null,
+        React__default["default"].createElement(Text, { tag: "p", context: "app", appStyle: "body-main", className: modules_efc4e723$a.resendSection },
+            props.resendText,
+            " ",
+            React__default["default"].createElement("a", { className: "".concat(modules_efc4e723$a.resendLink, " ").concat(resendTimer > 0 ? modules_efc4e723$a.resendLink_disabled : ""), onClick: handleResend }, "Resend"),
+            " ",
+            resendTimer > 0 ? "(available in ".concat(resendTimer, " seconds)") : null)));
+});
+CodeInput.displayName = "Input";
+CodeInput.defaultProps = {
+    className: "",
+    isInvalid: false,
+    maxLength: 6,
+    errorMessage: "Confirmation failed. Please check the code and try again.",
+    resendText: "Haven't received?",
+    onResend: function () { },
+    resendTimer: 60,
 };
 
 var css$9 = ".styles_module_logo__64b3d2ef {\n  height: 40px;\n}\n.styles_module_logo__64b3d2ef svg {\n  overflow: visible;\n  fill: var(--color-main-500);\n  width: 100%;\n  height: 100%;\n}\n\n.styles_module_hoverAnimation__64b3d2ef:hover .styles_module_core__64b3d2ef {\n  transform: rotate(90deg) scale(0.9);\n}\n.styles_module_hoverAnimation__64b3d2ef:hover .styles_module_firstrect__64b3d2ef {\n  transform: rotate(-90deg) scale(0.9);\n}\n.styles_module_hoverAnimation__64b3d2ef:hover .styles_module_secondrect__64b3d2ef {\n  transform: rotate(90deg) scale(0.9);\n}\n\n.styles_module_core__64b3d2ef,\n.styles_module_firstrect__64b3d2ef,\n.styles_module_secondrect__64b3d2ef {\n  transform-origin: 21px;\n  transition: all 0.4s ease;\n}";
@@ -10439,18 +10595,6 @@ Divider.defaultProps = {
     className: "",
 };
 
-var Text = function (props) {
-    props.className; props.style; props.tag; props.context; props.appStyle; props.marketingStyle; var rest = __rest(props, ["className", "style", "tag", "context", "appStyle", "marketingStyle"]);
-    return (React__default["default"].createElement(props.tag, __assign({ className: "".concat(props.className, " typo-").concat(props.context, "-").concat(props.context === "app" ? props.appStyle : props.marketingStyle), style: __assign({}, props.style) }, rest), props.children));
-};
-Text.defaultProps = {
-    className: "",
-    tag: "p",
-    context: "app",
-    appStyle: "body-main",
-    marketingStyle: "paragraph",
-};
-
 var css$3 = ".styles_module_modalWrap__6ecfcd31 {\n  position: fixed;\n  z-index: 999;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100vh;\n  min-height: -webkit-fill-available;\n  opacity: 0;\n  pointer-events: none;\n}\n\n.styles_module_background__6ecfcd31 {\n  position: absolute;\n  z-index: 1;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-image: radial-gradient(circle at bottom, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.3) 100%);\n}\n.styles_module_background__6ecfcd31::after {\n  content: \"\";\n  position: absolute;\n  width: 900px;\n  height: 1400px;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%) scale(1) rotate(-45deg);\n  background-image: var(--gradient-peach);\n}\n.styles_module_background__6ecfcd31::before {\n  content: \"\";\n  position: absolute;\n  width: 700px;\n  height: 1000px;\n  top: 30%;\n  left: 90%;\n  transform: translate(-50%, -50%) scale(1) rotate(-33deg);\n  background-image: var(--gradient-velvet);\n}\n\n.styles_module_bottomSheetWrap__6ecfcd31 {\n  z-index: 2;\n  display: flex;\n  flex-direction: column;\n  position: absolute;\n  left: 0;\n  padding: 30px 30px;\n  border-radius: 15px 15px 0 0;\n  background-color: var(--color-main-0);\n  width: 100%;\n}\n.styles_module_bottomSheetWrap__6ecfcd31::after {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  content: \"\";\n  position: absolute;\n  left: 0;\n  bottom: -390px;\n  width: 100%;\n  height: 400px;\n  background-color: var(--color-main-0);\n}";
 var modules_efc4e723$3 = {"modalWrap":"styles_module_modalWrap__6ecfcd31","background":"styles_module_background__6ecfcd31","bottomSheetWrap":"styles_module_bottomSheetWrap__6ecfcd31"};
 n(css$3,{});
@@ -10816,6 +10960,7 @@ ModalButtons.defaultProps = {
 exports.ArrowButton = ArrowButton;
 exports.Button = Button;
 exports.ChipsSlider = ChipsSlider;
+exports.CodeInput = CodeInput;
 exports.Divider = Divider;
 exports.DotPagination = DotPagination;
 exports.Icon = Icon;

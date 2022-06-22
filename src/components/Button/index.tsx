@@ -6,6 +6,7 @@ import Spinner from "../Spinner";
 
 export interface Props {
   className?: string;
+  style?: React.CSSProperties;
   mode?: "primary" | "accent" | "outline" | "ghost";
   size?: "default" | "small";
   type?: "button" | "submit" | "reset";
@@ -15,7 +16,6 @@ export interface Props {
   disabled?: boolean;
   label?: string;
   maxWidth?: number;
-  tabIndex?: number;
   form?: string;
   busy?: boolean;
   busyLabel?: string;
@@ -64,85 +64,59 @@ const ButtonContent = ({ ...props }: Props) => {
   );
 };
 
-const ButtonTag = (props: Props) => {
-  const handleClick = (event: any) => {
-    event.preventDefault();
+const Button = React.forwardRef<any, Props>((props, ref) => {
+  const classes = `${props.className} ${styles.button} ${styles[props.mode]} ${
+    styles[props.size]
+  } ${props.disabled ? styles.disabled : ""} ${
+    props.label
+      ? styles[`minWidth-${props.size}`]
+      : styles[`fixedSize-${props.size}`]
+  }`;
 
-    if (props.onClick) {
-      props.onClick(event);
-    }
-  };
+  const style = {
+    ...(props.maxWidth ? { maxWidth: props.maxWidth } : {}),
+    ...(props.busy ? { pointerEvents: "none" } : {}),
+    ...(props.style || {}),
+  } as React.CSSProperties;
+
+  const conditionalProps =
+    props.tag === "a"
+      ? {
+          rel: "noreferrer",
+          href: props.href,
+          target: props.target,
+          onSubmit: props.onSubmit,
+        }
+      : {
+          type: props.type,
+          form: props.form,
+        };
 
   return (
-    <button
-      tabIndex={props.tabIndex}
-      className={`${props.className} ${styles.button} ${styles[props.mode]} ${
-        styles[props.size]
-      } ${props.disabled ? styles.disabled : ""} ${
-        props.label
-          ? styles[`minWidth-${props.size}`]
-          : styles[`fixedSize-${props.size}`]
-      }`}
-      style={{
-        ...(props.maxWidth ? { maxWidth: props.maxWidth } : {}),
-        ...(props.busy ? { pointerEvents: "none" } : {}),
-      }}
-      onClick={handleClick}
-      onKeyPress={props.onKeyPress}
-      onSubmit={props.onSubmit}
-      //
-      type={props.type}
-      form={props.form}
-    >
-      <ButtonContent {...props} />
-    </button>
-  );
-};
-
-const LinkTag = (props: Props) => {
-  return (
-    <a
-      tabIndex={props.tabIndex}
-      className={`${props.className} ${styles.button} ${styles[props.mode]} ${
-        styles[props.size]
-      } ${props.disabled ? styles.disabled : ""} ${
-        props.label
-          ? styles[`minWidth-${props.size}`]
-          : styles[`fixedSize-${props.size}`]
-      }`}
-      style={{
-        ...(props.maxWidth ? { maxWidth: props.maxWidth } : {}),
-        ...(props.busy ? { pointerEvents: "none" } : {}),
-      }}
+    <props.tag
+      ref={ref}
+      className={classes}
+      style={style}
       onClick={props.onClick}
       onKeyPress={props.onKeyPress}
-      //
-      rel="noreferrer"
-      href={props.href}
-      target={props.target}
+      disabled={props.disabled}
+      {...conditionalProps}
     >
       <ButtonContent {...props} />
-    </a>
+    </props.tag>
   );
-};
-
-const Button: React.FC<Props> = (props) => {
-  return props.tag === "button" ? (
-    <ButtonTag {...props} />
-  ) : (
-    <LinkTag {...props} />
-  );
-};
+});
 
 Button.defaultProps = {
   className: "",
+  tabIndex: 0,
   mode: "primary",
   size: "default",
   tag: "button",
+  busy: false,
   type: "button",
   href: "#",
   target: "_self",
-  busy: false,
   busyLabel: "",
   disabled: false,
   label: "Button",
