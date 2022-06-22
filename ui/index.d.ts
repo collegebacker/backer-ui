@@ -1,7 +1,8 @@
 import React from 'react';
 
-interface Props$c {
+interface Props$d {
     className?: string;
+    style?: React.CSSProperties;
     mode?: "primary" | "accent" | "outline" | "ghost";
     size?: "default" | "small";
     type?: "button" | "submit" | "reset";
@@ -11,7 +12,6 @@ interface Props$c {
     disabled?: boolean;
     label?: string;
     maxWidth?: number;
-    tabIndex?: number;
     form?: string;
     busy?: boolean;
     busyLabel?: string;
@@ -20,17 +20,17 @@ interface Props$c {
     onSubmit?: (event: any) => void;
     onKeyPress?: (event: any) => void;
 }
-declare const Button: React.FC<Props$c>;
+declare const Button: React.ForwardRefExoticComponent<Props$d & React.RefAttributes<any>>;
 
-interface Props$b {
+interface Props$c {
     className?: string;
     style?: React.CSSProperties;
     name: IconTypes;
     color?: string;
 }
-declare const Icon: React.FC<Props$b>;
+declare const Icon: React.FC<Props$c>;
 
-interface Props$a {
+interface Props$b {
     className?: string;
     type?: "text" | "password" | "number" | "email";
     required?: boolean;
@@ -55,7 +55,20 @@ interface Props$a {
     onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
     onInvalid?: (event: React.FormEvent<HTMLInputElement>) => void;
 }
-declare const Input: React.ForwardRefExoticComponent<Props$a & React.RefAttributes<any>>;
+declare const Input: React.ForwardRefExoticComponent<Props$b & React.RefAttributes<any>>;
+
+interface Props$a {
+    tabIndex?: number;
+    className?: string;
+    style?: React.CSSProperties;
+    errorMessage?: string;
+    length?: number;
+    resendText?: string;
+    resendTimer?: number;
+    onChange?: (event: any) => void;
+    onResend?: (event: any) => void;
+}
+declare const CodeInput: React.ForwardRefExoticComponent<Props$a & React.RefAttributes<any>>;
 
 interface Props$9 {
     className?: string;
@@ -172,4 +185,4 @@ interface Props {
 }
 declare const ModalButtons: React.FC<Props>;
 
-export { ArrowButton, Button, ChipsSlider, Divider, DotPagination, Icon, Input, Logo, Modal, ModalButtons, SliderWrapper, Spinner, Text };
+export { ArrowButton, Button, ChipsSlider, CodeInput, Divider, DotPagination, Icon, Input, Logo, Modal, ModalButtons, SliderWrapper, Spinner, Text };

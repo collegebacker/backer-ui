@@ -1,6 +1,7 @@
 import React from "react";
 export interface Props {
     className?: string;
+    style?: React.CSSProperties;
     mode?: "primary" | "accent" | "outline" | "ghost";
     size?: "default" | "small";
     type?: "button" | "submit" | "reset";
@@ -10,7 +11,6 @@ export interface Props {
     disabled?: boolean;
     label?: string;
     maxWidth?: number;
-    tabIndex?: number;
     form?: string;
     busy?: boolean;
     busyLabel?: string;
@@ -19,5 +19,5 @@ export interface Props {
     onSubmit?: (event: any) => void;
     onKeyPress?: (event: any) => void;
 }
-declare const Button: React.FC<Props>;
+declare const Button: React.ForwardRefExoticComponent<Props & React.RefAttributes<any>>;
 export default Button;
