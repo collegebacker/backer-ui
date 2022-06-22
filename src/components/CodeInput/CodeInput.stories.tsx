@@ -79,6 +79,6 @@ Default.args = {
   resendTimer: 60,
   resendText: "Haven't received?",
   onResend: () => {},
-  onchange: () => {},
+  onChange: () => {},
   errorMessage: "Confirmation failed. Please check the code and try again.",
 };
