@@ -16,7 +16,6 @@ export interface Props {
   disabled?: boolean;
   label?: string;
   maxWidth?: number;
-  tabIndex?: number;
   form?: string;
   busy?: boolean;
   busyLabel?: string;
@@ -77,6 +76,7 @@ const Button = React.forwardRef<any, Props>((props, ref) => {
   const style = {
     ...(props.maxWidth ? { maxWidth: props.maxWidth } : {}),
     ...(props.busy ? { pointerEvents: "none" } : {}),
+    ...(props.style || {}),
   } as React.CSSProperties;
 
   const conditionalProps =
@@ -95,12 +95,11 @@ const Button = React.forwardRef<any, Props>((props, ref) => {
   return (
     <props.tag
       ref={ref}
-      tabIndex={props.tabIndex}
       className={classes}
       style={style}
       onClick={props.onClick}
       onKeyPress={props.onKeyPress}
-      // for link
+      disabled={props.disabled}
       {...conditionalProps}
     >
       <ButtonContent {...props} />
@@ -110,6 +109,7 @@ const Button = React.forwardRef<any, Props>((props, ref) => {
 
 Button.defaultProps = {
   className: "",
+  tabIndex: 0,
   mode: "primary",
   size: "default",
   tag: "button",
