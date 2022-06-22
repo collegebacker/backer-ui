@@ -6,6 +6,14 @@ import { CodeInput, Text, Button } from "..";
 export default {
   title: "Forms/CodeInput",
   component: CodeInput,
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "The component also contains two methods `reset` and `setIsInvalid` that can be used to reset the input and set the input to invalid state. Youcan reach these methods from the ref of the component.",
+      },
+    },
+  },
 } as ComponentMeta<typeof CodeInput>;
 
 const Template: ComponentStory<typeof CodeInput> = (args) => {
@@ -43,7 +51,7 @@ const Template: ComponentStory<typeof CodeInput> = (args) => {
         <CodeInput
           {...args}
           ref={codeInputRef}
-          onChange={(code) => {
+          onChange={(code: string) => {
             setCode(code);
           }}
           onResend={() => {
@@ -71,5 +79,6 @@ Default.args = {
   resendTimer: 60,
   resendText: "Haven't received?",
   onResend: () => {},
+  onchange: () => {},
   errorMessage: "Confirmation failed. Please check the code and try again.",
 };
