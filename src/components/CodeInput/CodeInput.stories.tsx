@@ -16,7 +16,7 @@ export default {
   },
 } as ComponentMeta<typeof CodeInput>;
 
-const Template: ComponentStory<typeof CodeInput> = (args) => {
+const ConfirmTemplate: ComponentStory<typeof CodeInput> = (args) => {
   const testCode = "345629";
 
   const codeInputRef = React.useRef<any>(null);
@@ -72,9 +72,62 @@ const Template: ComponentStory<typeof CodeInput> = (args) => {
   );
 };
 
-export const Default = Template.bind({});
+export const ConfirmButton = ConfirmTemplate.bind({});
 
-Default.args = {
+ConfirmButton.args = {
+  length: 6,
+  resendTimer: 60,
+  resendText: "Haven't received?",
+  onResend: () => {},
+  onChange: () => {},
+  errorMessage: "Confirmation failed. Please check the code and try again.",
+};
+
+//
+
+const WithoutButtonTemplate: ComponentStory<typeof CodeInput> = (args) => {
+  const testCode = "345629";
+
+  const codeInputRef = React.useRef<any>(null);
+
+  return (
+    <div>
+      <Text
+        context="app"
+        appStyle="body-caption"
+        tag="span"
+        style={{
+          display: "block",
+          marginBottom: "40px",
+        }}
+      >
+        test code: {testCode}
+      </Text>
+
+      <CodeInput
+        {...args}
+        ref={codeInputRef}
+        onChange={(code: string) => {
+          if (code.length === testCode.length) {
+            if (code === testCode) {
+              codeInputRef.current.setIsInvalid(false);
+              alert("Success!");
+            } else {
+              codeInputRef.current.setIsInvalid(true);
+            }
+          }
+        }}
+        onResend={() => {
+          alert("resend");
+        }}
+      />
+    </div>
+  );
+};
+
+export const WithoutButton = WithoutButtonTemplate.bind({});
+
+WithoutButton.args = {
   length: 6,
   resendTimer: 60,
   resendText: "Haven't received?",
