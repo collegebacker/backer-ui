@@ -111,7 +111,7 @@ const WithoutButtonTemplate: ComponentStory<typeof CodeInput> = (args) => {
           if (code.length === testCode.length) {
             if (code === testCode) {
               codeInputRef.current.setIsInvalid(false);
-              alert("Success!");
+              console.log("Success!");
             } else {
               codeInputRef.current.setIsInvalid(true);
             }

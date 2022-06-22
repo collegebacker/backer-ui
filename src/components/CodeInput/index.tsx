@@ -60,22 +60,6 @@ const CodeInput = React.forwardRef<any, Props>((props, ref) => {
     }
   };
 
-  // const handleNumsChange = (
-  //   event: React.ChangeEvent<HTMLInputElement>,
-  //   index: number
-  // ) => {
-  //   console.log(event.target.value);
-  //   event.preventDefault();
-  //   const cleanedValue = event.target.value.replace(/[^0-9]/g, "");
-  //   if (/[0-9]/.test(cleanedValue)) {
-  //     if (cleanedValue.length === 1 && nums[index].length === 0) {
-  //       setNums(nums.map((item, i) => (i === index ? cleanedValue : item)));
-  //       inputsRefs.current[index + 1]?.focus();
-  //     }
-  //     // handleFilledCode(index);
-  //   }
-  // };
-
   // Handle timer
   React.useEffect(() => {
     if (resendTimer > 0) {
@@ -125,30 +109,30 @@ const CodeInput = React.forwardRef<any, Props>((props, ref) => {
     if (event.key === "Backspace") {
       setNums(nums.map((item, i) => (i === index ? "" : item)));
 
+      if (nums[index] === "") {
+        inputsRefs.current[index - 1]?.focus();
+      }
+
       if (index === 0) {
         return;
       }
-
-      inputsRefs.current[index - 1]?.focus();
-
-      return;
     }
 
-    // if (event.key === "ArrowLeft") {
-    //   if (index === 0) {
-    //     inputsRefs.current[nums.length - 1]?.focus();
-    //   }
-    //   const prevIndex = index - 1;
-    //   inputsRefs.current[prevIndex]?.focus();
-    // }
+    if (event.key === "ArrowLeft") {
+      if (index === 0) {
+        inputsRefs.current[nums.length - 1]?.focus();
+      }
+      const prevIndex = index - 1;
+      inputsRefs.current[prevIndex]?.focus();
+    }
 
-    // if (event.key === "ArrowRight") {
-    //   if (index === props.length - 1) {
-    //     inputsRefs.current[0].focus();
-    //   }
-    //   const nextIndex = index + 1;
-    //   inputsRefs.current[nextIndex]?.focus();
-    // }
+    if (event.key === "ArrowRight") {
+      if (index === props.length - 1) {
+        inputsRefs.current[0].focus();
+      }
+      const nextIndex = index + 1;
+      inputsRefs.current[nextIndex]?.focus();
+    }
   };
 
   const handleOnFocus = () => {
@@ -191,9 +175,6 @@ const CodeInput = React.forwardRef<any, Props>((props, ref) => {
                 inputsRefs.current[index] = input;
               }}
               value={nums[index]}
-              // onFocus={(e) => {
-              //   e.target.select();
-              // }}
               onChange={() => {}}
               onKeyDown={(event) => handleKeyPress(event, index)}
               maxLength={1}
