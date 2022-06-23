@@ -27,6 +27,20 @@
   line-height: $typo-app-title-medium-lineheight;
 }
 
+.typo-app-title-medium-adaptive {
+  font-family: $typo-app-title-medium-fontfamily;
+  font-weight: $typo-app-title-medium-fontweight;
+  font-size: $typo-app-title-medium-fontsize;
+  line-height: $typo-app-title-medium-lineheight;
+
+  @media only screen and (max-width: $grid-mobile-breakpoint) {
+    font-family: $typo-app-title-small-fontfamily;
+    font-weight: $typo-app-title-small-fontweight;
+    font-size: $typo-app-title-small-fontsize;
+    line-height: $typo-app-title-small-lineheight;
+  }
+}
+
 .typo-app-title-small {
   font-family: $typo-app-title-small-fontfamily;
   font-weight: $typo-app-title-small-fontweight;

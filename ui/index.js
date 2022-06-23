@@ -287,21 +287,6 @@ var CodeInput = React__default["default"].forwardRef(function (props, ref) {
             setNums(newNums);
         }
     };
-    // const handleNumsChange = (
-    //   event: React.ChangeEvent<HTMLInputElement>,
-    //   index: number
-    // ) => {
-    //   console.log(event.target.value);
-    //   event.preventDefault();
-    //   const cleanedValue = event.target.value.replace(/[^0-9]/g, "");
-    //   if (/[0-9]/.test(cleanedValue)) {
-    //     if (cleanedValue.length === 1 && nums[index].length === 0) {
-    //       setNums(nums.map((item, i) => (i === index ? cleanedValue : item)));
-    //       inputsRefs.current[index + 1]?.focus();
-    //     }
-    //     // handleFilledCode(index);
-    //   }
-    // };
     // Handle timer
     React__default["default"].useEffect(function () {
         if (resendTimer > 0) {
@@ -326,11 +311,11 @@ var CodeInput = React__default["default"].forwardRef(function (props, ref) {
         }
     }, [nums]);
     var handleKeyPress = function (event, index) {
-        var _a;
+        var _a, _b, _c, _d;
         // const currentValue = nums[index];
         var cleanedValue = event.key.replace(/[^0-9]/g, "");
         if (cleanedValue !== "") {
-            console.log(inputsRefs.current[index + 1]);
+            // console.log(inputsRefs.current[index + 1]);
             setNums(nums.map(function (item, i) { return (i === index ? cleanedValue : item); }));
             if (index !== props.length - 1) {
                 inputsRefs.current[index + 1].focus();
@@ -341,26 +326,27 @@ var CodeInput = React__default["default"].forwardRef(function (props, ref) {
         }
         if (event.key === "Backspace") {
             setNums(nums.map(function (item, i) { return (i === index ? "" : item); }));
+            if (nums[index] === "") {
+                (_a = inputsRefs.current[index - 1]) === null || _a === void 0 ? void 0 : _a.focus();
+            }
             if (index === 0) {
                 return;
             }
-            (_a = inputsRefs.current[index - 1]) === null || _a === void 0 ? void 0 : _a.focus();
-            return;
         }
-        // if (event.key === "ArrowLeft") {
-        //   if (index === 0) {
-        //     inputsRefs.current[nums.length - 1]?.focus();
-        //   }
-        //   const prevIndex = index - 1;
-        //   inputsRefs.current[prevIndex]?.focus();
-        // }
-        // if (event.key === "ArrowRight") {
-        //   if (index === props.length - 1) {
-        //     inputsRefs.current[0].focus();
-        //   }
-        //   const nextIndex = index + 1;
-        //   inputsRefs.current[nextIndex]?.focus();
-        // }
+        if (event.key === "ArrowLeft") {
+            if (index === 0) {
+                (_b = inputsRefs.current[nums.length - 1]) === null || _b === void 0 ? void 0 : _b.focus();
+            }
+            var prevIndex = index - 1;
+            (_c = inputsRefs.current[prevIndex]) === null || _c === void 0 ? void 0 : _c.focus();
+        }
+        if (event.key === "ArrowRight") {
+            if (index === props.length - 1) {
+                inputsRefs.current[0].focus();
+            }
+            var nextIndex = index + 1;
+            (_d = inputsRefs.current[nextIndex]) === null || _d === void 0 ? void 0 : _d.focus();
+        }
     };
     var handleOnFocus = function () {
         if (isInvalid) {
@@ -379,11 +365,7 @@ var CodeInput = React__default["default"].forwardRef(function (props, ref) {
         React__default["default"].createElement("section", { ref: ref, onPaste: handlePaste, onFocus: handleOnFocus, className: "".concat(isInvalid ? modules_efc4e723$a.shake : "") }, Array.from({ length: props.length }).map(function (_, index) {
             return (React__default["default"].createElement("input", { type: "text", pattern: "\\d*", placeholder: "*", key: index, className: modules_efc4e723$a.input, ref: function (input) {
                     inputsRefs.current[index] = input;
-                }, value: nums[index], 
-                // onFocus={(e) => {
-                //   e.target.select();
-                // }}
-                onChange: function () { }, onKeyDown: function (event) { return handleKeyPress(event, index); }, maxLength: 1 }));
+                }, value: nums[index], onChange: function () { }, onKeyDown: function (event) { return handleKeyPress(event, index); }, maxLength: 1 }));
         })),
         isInvalid ? (React__default["default"].createElement(Text, { tag: "span", className: modules_efc4e723$a.helperText, context: "app", appStyle: "body-caption" }, props.errorMessage)) : null,
         React__default["default"].createElement(Text, { tag: "p", context: "app", appStyle: "body-main", className: modules_efc4e723$a.resendSection },

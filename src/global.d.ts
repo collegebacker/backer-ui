@@ -38,6 +38,7 @@ type AppTypographyTypes =
   | "title-xlarge"
   | "title-large"
   | "title-medium"
+  | "title-medium-adaptive"
   | "title-small"
   | "body-large"
   | "body-large-paragraph"
