@@ -207,7 +207,7 @@ const CodeInput = React.forwardRef<any, Props>((props, ref) => {
           }`}
           onClick={handleResend}
         >
-          Resend
+          Resend code
         </a>{" "}
         {resendTimer > 0 ? `(available in ${resendTimer} seconds)` : null}
       </Text>

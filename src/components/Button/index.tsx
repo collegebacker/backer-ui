@@ -109,7 +109,6 @@ const Button = React.forwardRef<any, Props>((props, ref) => {
 
 Button.defaultProps = {
   className: "",
-  tabIndex: 0,
   mode: "primary",
   size: "default",
   tag: "button",

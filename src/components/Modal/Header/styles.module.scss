@@ -24,7 +24,7 @@
     max-width: $max-popup-content-width;
   }
 
-  @media (max-width: $mobile-breakpoint) {
+  @media screen and (max-width: $mobile-breakpoint) {
     flex-direction: row-reverse;
   }
 }
@@ -36,7 +36,7 @@
   width: 100%;
   margin: 0 auto;
 
-  @media (max-width: $mobile-breakpoint) {
+  @media screen and (max-width: $mobile-breakpoint) {
     max-width: none;
   }
 }
@@ -68,7 +68,7 @@
     justify-content: flex-end;
     width: 100%;
 
-    @media (max-width: $mobile-breakpoint) {
+    @media screen and (max-width: $mobile-breakpoint) {
       width: auto;
     }
   }

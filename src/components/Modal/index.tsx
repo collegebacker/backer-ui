@@ -48,7 +48,7 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
   React.useEffect(() => {
     const resize = () => {
       // console.log(window.innerWidth, isMobileBreakpoint);
-      setIsMobileBreakpoint(window.innerWidth < 620);
+      setIsMobileBreakpoint(window.innerWidth < 621);
     };
 
     resize();
