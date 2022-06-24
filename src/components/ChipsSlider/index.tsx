@@ -32,6 +32,7 @@ export interface Props {
   spaceBetween?: number;
   caption?: boolean;
   cardFontSize?: number;
+  triggerExpander?: number;
   onChange?: (index: number) => void;
 }
 
@@ -61,7 +62,7 @@ const ChipsSlider: React.FC<Props> = (props) => {
   const [activeIndex, setActiveIndex] = React.useState(props.defaultIndex);
   const prevIndex = usePrevious(activeIndex);
 
-  const [onThrowComplete, setOnThrowComplete] = React.useState(true);
+  const [isThrowComplete, setIsThrowComplete] = React.useState(true);
   const [isDragLoaded, setIsDragLoaded] = React.useState(false);
   const [snapPoints, setSnapPoints] = React.useState([]);
 
@@ -71,6 +72,8 @@ const ChipsSlider: React.FC<Props> = (props) => {
 
   const [isSliderFocused, setIsSliderFocused] = React.useState(false);
   const [isSliderWrapFocused, setIsSliderWrapFocused] = React.useState(false);
+
+  // const [clickTimeout, setClickTimeout] = React.useState<boolean>(false);
 
   // Animate cards
   const animateItemActiveState = (item: HTMLElement) => {
@@ -83,6 +86,7 @@ const ChipsSlider: React.FC<Props> = (props) => {
       borderColor: getComputedStyle(document.documentElement).getPropertyValue(
         "--color-accent-500"
       ),
+      pointerEvents: "none",
       duration: 0.1,
     });
   };
@@ -97,6 +101,7 @@ const ChipsSlider: React.FC<Props> = (props) => {
       borderColor: getComputedStyle(document.documentElement).getPropertyValue(
         "--color-main-200"
       ),
+      pointerEvents: "auto",
       duration: 0.4,
     });
   };
@@ -123,6 +128,10 @@ const ChipsSlider: React.FC<Props> = (props) => {
       duration: duration,
       scrollTo: {
         x: getSliderPostionByIndex(index),
+      },
+      onStart: () => {
+        setIsArrowButtonDisabled(true);
+        Draggable;
       },
       onComplete: () => {
         setIsArrowButtonDisabled(false);
@@ -198,6 +207,18 @@ const ChipsSlider: React.FC<Props> = (props) => {
     };
   }, []);
 
+  // Reset isThrowComplete after timeout
+  React.useEffect(() => {
+    if (isThrowComplete) {
+      const timeout = setTimeout(() => {
+        console.log("timeout end");
+        setIsThrowComplete(true);
+      }, 150);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [isThrowComplete]);
+
   // Initiate Draggable object on mount; updates on resize only
   React.useEffect(() => {
     const gridWidth = props.cardWidth + props.spaceBetween;
@@ -226,8 +247,16 @@ const ChipsSlider: React.FC<Props> = (props) => {
     };
 
     const triggerPointsState = {
-      left: sliderViewWidth / 2 - gridWidth / 2 - props.spaceBetween / 2,
-      right: sliderViewWidth / 2 + gridWidth / 2 + props.spaceBetween / 2,
+      left:
+        sliderViewWidth / 2 -
+        gridWidth / 2 -
+        props.spaceBetween / 2 -
+        props.triggerExpander,
+      right:
+        sliderViewWidth / 2 +
+        gridWidth / 2 +
+        props.spaceBetween / 2 +
+        props.triggerExpander,
     };
 
     setTriggerPointsState(triggerPointsState);
@@ -236,24 +265,32 @@ const ChipsSlider: React.FC<Props> = (props) => {
       type: "scrollLeft",
       edgeResistance: 0.9,
       inertia: true,
-      maxDuration: 0.6,
-      throwProps: true,
+      maxDuration: 0.1,
       throwResistance: 0.2,
       snap: snapPoints,
+      throwProps: true,
+      ease: "power3.inOut",
 
       onDragStart: () => {
         setIsScrollSnap(false);
-        setOnThrowComplete(false);
+        setIsThrowComplete(false);
       },
       onDrag: updateOnDrag,
       onThrowUpdate: updateOnDrag,
       onThrowComplete: () => {
-        setOnThrowComplete(true);
+        setIsThrowComplete(true);
+        console.log("throw complete");
       },
     });
 
     setIsDragLoaded(true);
-  }, [sliderViewState, snapPoints]);
+  }, []);
+
+  React.useEffect(() => {
+    const draggable = Draggable.get(sliderRef.current);
+    draggable.vars.snap = snapPoints;
+    draggable.update();
+  }, [snapPoints, sliderViewState]);
 
   // Change an active item on aactive index change
   useDidMountEffect(() => {
@@ -313,22 +350,16 @@ const ChipsSlider: React.FC<Props> = (props) => {
   }, [isDragLoaded]);
 
   //
-  const handleCardClick = (clickedIndex: number) => {
-    if (onThrowComplete) {
-      // neutralizing the right margin of the slider
-      if (clickedIndex > activeIndex) {
-        scrollToSelectedIndex(clickedIndex, 0.4);
-      } else {
-        scrollToSelectedIndex(clickedIndex, 0.4);
-      }
-
+  const handleCardClick = (e: any, clickedIndex: number) => {
+    if (isThrowComplete) {
+      console.log("clickedIndex", clickedIndex);
       setActiveIndex(clickedIndex);
+      scrollToSelectedIndex(clickedIndex, 0.4);
     }
   };
 
   const goToNextCard = () => {
     if (activeIndex < props.items.length - 1) {
-      setIsArrowButtonDisabled(true);
       const newIndex = activeIndex + 1;
 
       setActiveIndex(newIndex);
@@ -339,7 +370,6 @@ const ChipsSlider: React.FC<Props> = (props) => {
 
   const goPreviousCard = () => {
     if (activeIndex > 0) {
-      setIsArrowButtonDisabled(true);
       const newIndex = activeIndex - 1;
 
       setActiveIndex(newIndex);
@@ -485,7 +515,7 @@ const ChipsSlider: React.FC<Props> = (props) => {
                     data-index={index}
                     className={`${styles.item}`}
                     ref={(el) => (sliderItemRefs.current[index] = el)}
-                    onClick={() => handleCardClick(index)}
+                    onMouseUp={(e) => handleCardClick(e, index)}
                     style={{
                       height: `${props.cardHeight}px`,
                       width: `${props.cardWidth}px`,
@@ -524,6 +554,7 @@ ChipsSlider.defaultProps = {
   cardWidth: 76,
   cardHeight: 76,
   cardFontSize: 20,
+  triggerExpander: 0,
   showGuidelines: false,
   caption: true,
 } as Partial<Props>;
