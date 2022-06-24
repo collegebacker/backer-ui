@@ -30,6 +30,7 @@ const CodeInput = React.forwardRef<any, Props>((props, ref) => {
   const [isInvalid, setIsInvalid] = React.useState(false);
 
   const [resendTimer, setResendTimer] = React.useState(props.resendTimer);
+  const [isInitialTap, setIsInitialTap] = React.useState(true);
 
   React.useImperativeHandle(ref, () => ({
     reset: (callback: () => void) => {
@@ -136,6 +137,11 @@ const CodeInput = React.forwardRef<any, Props>((props, ref) => {
   };
 
   const handleOnFocus = () => {
+    if (isInitialTap) {
+      setIsInitialTap(false);
+      inputsRefs.current[0]?.focus();
+    }
+
     if (isInvalid) {
       setIsInvalid(false);
     }
