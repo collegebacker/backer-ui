@@ -81,42 +81,59 @@ const CodeInput = React.forwardRef<any, Props>((props, ref) => {
     }
   }, []);
 
-  React.useEffect(() => {
+  const handleOnChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    index: number
+  ) => {
+    // allow only numbers
+    if (e.target.value.match(/^[0-9]*$/)) {
+      setNums((prev) => {
+        const newNums = [...prev];
+        newNums[index] = e.target.value;
+        return newNums;
+      });
+
+      // focus next input
+      if (index < props.length - 1 && inputsRefs.current[index].value !== "") {
+        inputsRefs.current[index + 1].focus();
+      }
+
+      // if last input
+      if (
+        index === props.length - 1 &&
+        inputsRefs.current[index].value !== ""
+      ) {
+        inputsRefs.current[index].blur();
+      }
+    }
+
     if (props.onChange) {
       props.onChange(inputsRefs.current.map((item) => item?.value).join(""));
     }
-  }, [nums]);
+
+    // const newNums = [...nums];
+    // newNums[index] = e.target.value;
+    // setNums(newNums);
+  };
 
   const handleKeyPress = (
     event: React.KeyboardEvent<HTMLInputElement>,
     index: number
   ) => {
-    // const currentValue = nums[index];
-    const cleanedValue = event.key.replace(/[^0-9]/g, "");
+    // console.log(nums[index]);
 
-    if (cleanedValue !== "") {
-      // console.log(inputsRefs.current[index + 1]);
-      setNums(nums.map((item, i) => (i === index ? cleanedValue : item)));
-
-      if (index !== props.length - 1) {
-        inputsRefs.current[index + 1].focus();
+    if (event.key == "Backspace") {
+      console.log(index, inputsRefs.current[index].value);
+      if (index > 0 && inputsRefs.current[index].value === "") {
+        inputsRefs.current[index - 1].focus();
       }
 
-      if (index === props.length - 1) {
-        inputsRefs.current[index].blur();
-      }
-    }
-
-    if (event.key === "Backspace") {
-      setNums(nums.map((item, i) => (i === index ? "" : item)));
-
-      if (nums[index] === "") {
-        inputsRefs.current[index - 1]?.focus();
-      }
-
-      if (index === 0) {
-        return;
-      }
+      // clear current input
+      setNums((prev) => {
+        const newNums = [...prev];
+        newNums[index] = "";
+        return newNums;
+      });
     }
 
     if (event.key === "ArrowLeft") {
@@ -172,7 +189,7 @@ const CodeInput = React.forwardRef<any, Props>((props, ref) => {
         {Array.from({ length: props.length }).map((_, index) => {
           return (
             <input
-              type="text"
+              type="number"
               pattern="\d*"
               placeholder="*"
               key={index}
@@ -181,8 +198,11 @@ const CodeInput = React.forwardRef<any, Props>((props, ref) => {
                 inputsRefs.current[index] = input;
               }}
               value={nums[index]}
-              onChange={() => {}}
+              onChange={(event) => handleOnChange(event, index)}
               onKeyDown={(event) => handleKeyPress(event, index)}
+              // onClick={() => {
+              //   inputsRefs.current[index]?.select();
+              // }}
               maxLength={1}
             />
           );

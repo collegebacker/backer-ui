@@ -42,6 +42,10 @@
     margin: 0;
   }
 
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
   &:last-child {
     margin-right: 0;
   }
