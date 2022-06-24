@@ -48,6 +48,16 @@ function __rest(s, e) {
     return t;
 }
 
+function __spreadArray(to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+}
+
 var e=[],t=[];function n(n,r){if(n&&"undefined"!=typeof document){var a,s=!0===r.prepend?"prepend":"append",d=!0===r.singleTag,i="string"==typeof r.container?document.querySelector(r.container):document.getElementsByTagName("head")[0];if(d){var u=e.indexOf(i);-1===u&&(u=e.push(i)-1,t[u]={}),a=t[u]&&t[u][s]?t[u][s]:t[u][s]=c();}else a=c();65279===n.charCodeAt(0)&&(n=n.substring(1)),a.styleSheet?a.styleSheet.cssText+=n:a.appendChild(document.createTextNode(n));}function c(){var e=document.createElement("style");if(e.setAttribute("type","text/css"),r.attributes)for(var t=Object.keys(r.attributes),n=0;n<t.length;n++)e.setAttribute(t[n],r.attributes[t[n]]);var a="prepend"===s?"afterbegin":"beforeend";return i.insertAdjacentElement(a,e),e}}
 
 var css$e = ".styles_module_icon__0f281710 {\n  display: flex;\n  height: 24px;\n  width: 24px;\n}\n.styles_module_icon__0f281710 svg {\n  width: 100%;\n  height: 100%;\n  fill: var(--color-main-500);\n}";
@@ -249,8 +259,8 @@ Text.defaultProps = {
     marketingStyle: "paragraph",
 };
 
-var css$a = ".styles_module_componentWrap__fbff0eac {\n  position: relative;\n  justify-content: flex-end;\n  display: flex;\n  flex-direction: column;\n}\n\n.styles_module_input__fbff0eac {\n  height: 65px;\n  width: 35px;\n  margin-right: 5px;\n  text-align: center;\n  padding: 0;\n  padding-bottom: 5px;\n  font-family: \"Gza\", serif;\n  font-weight: 200;\n  font-size: 50px;\n  line-height: 120%;\n  background: none;\n  border: none;\n  outline: none;\n  border-radius: 0;\n  transition: all 0.15s ease;\n  box-shadow: 0 1px 0 0 var(--color-main-500);\n  -webkit-appearance: none;\n}\n.styles_module_input__fbff0eac::-moz-placeholder {\n  font-size: 50px;\n  color: rgba(0, 0, 0, 0.1);\n}\n.styles_module_input__fbff0eac:-ms-input-placeholder {\n  font-size: 50px;\n  color: rgba(0, 0, 0, 0.1);\n}\n.styles_module_input__fbff0eac::placeholder {\n  font-size: 50px;\n  color: rgba(0, 0, 0, 0.1);\n}\n.styles_module_input__fbff0eac:focus {\n  box-shadow: 0 2px 0 0 var(--color-main-500);\n}\n.styles_module_input__fbff0eac::-webkit-outer-spin-button, .styles_module_input__fbff0eac::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n.styles_module_input__fbff0eac:last-child {\n  margin-right: 0;\n}\n\n.styles_module_helperText__fbff0eac {\n  color: var(--color-main-transparent-200);\n  max-width: 300px;\n  margin-top: 12px;\n  line-height: 120%;\n}\n\n.styles_module_resendSection__fbff0eac {\n  margin-top: 20px;\n  color: var(--color-main-100);\n}\n\n.styles_module_resendLink__fbff0eac {\n  cursor: pointer;\n  text-decoration: underline;\n  color: var(--color-main-500);\n  transition: all 0.15s ease;\n}\n.styles_module_resendLink__fbff0eac:hover {\n  color: var(--color-accent-500);\n}\n.styles_module_resendLink_disabled__fbff0eac {\n  opacity: 0.15;\n  pointer-events: none;\n  text-decoration: none;\n}\n\n.styles_module_error__fbff0eac .styles_module_input__fbff0eac {\n  box-shadow: 0 2px 0 0 var(--color-service-error-main);\n}\n.styles_module_error__fbff0eac .styles_module_helperText__fbff0eac {\n  color: var(--color-service-error-main);\n}\n\n.styles_module_shake__fbff0eac {\n  -webkit-animation-name: styles_module_shakeAnimation__fbff0eac;\n  animation-name: styles_module_shakeAnimation__fbff0eac;\n  -webkit-animation-duration: 0.4s;\n  animation-duration: 0.4s;\n  -webkit-animation-iteration-count: 1;\n  animation-iteration-count: 1;\n  -webkit-animation-timing-function: ease;\n  animation-timing-function: ease;\n}\n\n@-webkit-keyframes styles_module_shakeAnimation__fbff0eac {\n  0% {\n    transform: translateX(0);\n  }\n  30% {\n    transform: translateX(-10px);\n  }\n  40% {\n    transform: translateX(10px);\n  }\n  60% {\n    transform: translateX(-10px);\n  }\n  100% {\n    transform: translateX(0);\n  }\n}\n\n@keyframes styles_module_shakeAnimation__fbff0eac {\n  0% {\n    transform: translateX(0);\n  }\n  30% {\n    transform: translateX(-10px);\n  }\n  40% {\n    transform: translateX(10px);\n  }\n  60% {\n    transform: translateX(-10px);\n  }\n  100% {\n    transform: translateX(0);\n  }\n}";
-var modules_efc4e723$a = {"componentWrap":"styles_module_componentWrap__fbff0eac","input":"styles_module_input__fbff0eac","helperText":"styles_module_helperText__fbff0eac","resendSection":"styles_module_resendSection__fbff0eac","resendLink":"styles_module_resendLink__fbff0eac","resendLink_disabled":"styles_module_resendLink_disabled__fbff0eac","error":"styles_module_error__fbff0eac","shake":"styles_module_shake__fbff0eac","shake-animation":"styles_module_shakeAnimation__fbff0eac"};
+var css$a = ".styles_module_componentWrap__1065295a {\n  position: relative;\n  justify-content: flex-end;\n  display: flex;\n  flex-direction: column;\n}\n\n.styles_module_input__1065295a {\n  height: 65px;\n  width: 35px;\n  margin-right: 5px;\n  text-align: center;\n  padding: 0;\n  padding-bottom: 5px;\n  font-family: \"Gza\", serif;\n  font-weight: 200;\n  font-size: 50px;\n  line-height: 120%;\n  background: none;\n  border: none;\n  outline: none;\n  border-radius: 0;\n  transition: all 0.15s ease;\n  box-shadow: 0 1px 0 0 var(--color-main-500);\n  -webkit-appearance: none;\n}\n.styles_module_input__1065295a::-moz-placeholder {\n  font-size: 50px;\n  color: rgba(0, 0, 0, 0.1);\n}\n.styles_module_input__1065295a:-ms-input-placeholder {\n  font-size: 50px;\n  color: rgba(0, 0, 0, 0.1);\n}\n.styles_module_input__1065295a::placeholder {\n  font-size: 50px;\n  color: rgba(0, 0, 0, 0.1);\n}\n.styles_module_input__1065295a:focus {\n  box-shadow: 0 2px 0 0 var(--color-main-500);\n}\n.styles_module_input__1065295a::-webkit-outer-spin-button, .styles_module_input__1065295a::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n.styles_module_input__1065295a input[type=number] {\n  -moz-appearance: textfield;\n}\n.styles_module_input__1065295a:last-child {\n  margin-right: 0;\n}\n\n.styles_module_helperText__1065295a {\n  color: var(--color-main-transparent-200);\n  max-width: 300px;\n  margin-top: 12px;\n  line-height: 120%;\n}\n\n.styles_module_resendSection__1065295a {\n  margin-top: 20px;\n  color: var(--color-main-100);\n}\n\n.styles_module_resendLink__1065295a {\n  cursor: pointer;\n  text-decoration: underline;\n  color: var(--color-main-500);\n  transition: all 0.15s ease;\n}\n.styles_module_resendLink__1065295a:hover {\n  color: var(--color-accent-500);\n}\n.styles_module_resendLink_disabled__1065295a {\n  opacity: 0.15;\n  pointer-events: none;\n  text-decoration: none;\n}\n\n.styles_module_error__1065295a .styles_module_input__1065295a {\n  box-shadow: 0 2px 0 0 var(--color-service-error-main);\n}\n.styles_module_error__1065295a .styles_module_helperText__1065295a {\n  color: var(--color-service-error-main);\n}\n\n.styles_module_shake__1065295a {\n  -webkit-animation-name: styles_module_shakeAnimation__1065295a;\n  animation-name: styles_module_shakeAnimation__1065295a;\n  -webkit-animation-duration: 0.4s;\n  animation-duration: 0.4s;\n  -webkit-animation-iteration-count: 1;\n  animation-iteration-count: 1;\n  -webkit-animation-timing-function: ease;\n  animation-timing-function: ease;\n}\n\n@-webkit-keyframes styles_module_shakeAnimation__1065295a {\n  0% {\n    transform: translateX(0);\n  }\n  30% {\n    transform: translateX(-10px);\n  }\n  40% {\n    transform: translateX(10px);\n  }\n  60% {\n    transform: translateX(-10px);\n  }\n  100% {\n    transform: translateX(0);\n  }\n}\n\n@keyframes styles_module_shakeAnimation__1065295a {\n  0% {\n    transform: translateX(0);\n  }\n  30% {\n    transform: translateX(-10px);\n  }\n  40% {\n    transform: translateX(10px);\n  }\n  60% {\n    transform: translateX(-10px);\n  }\n  100% {\n    transform: translateX(0);\n  }\n}";
+var modules_efc4e723$a = {"componentWrap":"styles_module_componentWrap__1065295a","input":"styles_module_input__1065295a","helperText":"styles_module_helperText__1065295a","resendSection":"styles_module_resendSection__1065295a","resendLink":"styles_module_resendLink__1065295a","resendLink_disabled":"styles_module_resendLink_disabled__1065295a","error":"styles_module_error__1065295a","shake":"styles_module_shake__1065295a","shake-animation":"styles_module_shakeAnimation__1065295a"};
 n(css$a,{});
 
 var isMobile = function () {
@@ -305,47 +315,59 @@ var CodeInput = React__default["default"].forwardRef(function (props, ref) {
             (_a = inputsRefs.current[0]) === null || _a === void 0 ? void 0 : _a.focus();
         }
     }, []);
-    React__default["default"].useEffect(function () {
-        if (props.onChange) {
-            props.onChange(inputsRefs.current.map(function (item) { return item === null || item === void 0 ? void 0 : item.value; }).join(""));
-        }
-    }, [nums]);
-    var handleKeyPress = function (event, index) {
-        var _a, _b, _c, _d;
-        // const currentValue = nums[index];
-        var cleanedValue = event.key.replace(/[^0-9]/g, "");
-        if (cleanedValue !== "") {
-            // console.log(inputsRefs.current[index + 1]);
-            setNums(nums.map(function (item, i) { return (i === index ? cleanedValue : item); }));
-            if (index !== props.length - 1) {
+    var handleOnChange = function (e, index) {
+        // allow only numbers
+        if (e.target.value.match(/^[0-9]*$/)) {
+            setNums(function (prev) {
+                var newNums = __spreadArray([], prev, true);
+                newNums[index] = e.target.value;
+                return newNums;
+            });
+            // focus next input
+            if (index < props.length - 1 && inputsRefs.current[index].value !== "") {
                 inputsRefs.current[index + 1].focus();
             }
-            if (index === props.length - 1) {
+            // if last input
+            if (index === props.length - 1 &&
+                inputsRefs.current[index].value !== "") {
                 inputsRefs.current[index].blur();
             }
         }
-        if (event.key === "Backspace") {
-            setNums(nums.map(function (item, i) { return (i === index ? "" : item); }));
-            if (nums[index] === "") {
-                (_a = inputsRefs.current[index - 1]) === null || _a === void 0 ? void 0 : _a.focus();
+        if (props.onChange) {
+            props.onChange(inputsRefs.current.map(function (item) { return item === null || item === void 0 ? void 0 : item.value; }).join(""));
+        }
+        // const newNums = [...nums];
+        // newNums[index] = e.target.value;
+        // setNums(newNums);
+    };
+    var handleKeyPress = function (event, index) {
+        // console.log(nums[index]);
+        var _a, _b, _c;
+        if (event.key == "Backspace") {
+            console.log(index, inputsRefs.current[index].value);
+            if (index > 0 && inputsRefs.current[index].value === "") {
+                inputsRefs.current[index - 1].focus();
             }
-            if (index === 0) {
-                return;
-            }
+            // clear current input
+            setNums(function (prev) {
+                var newNums = __spreadArray([], prev, true);
+                newNums[index] = "";
+                return newNums;
+            });
         }
         if (event.key === "ArrowLeft") {
             if (index === 0) {
-                (_b = inputsRefs.current[nums.length - 1]) === null || _b === void 0 ? void 0 : _b.focus();
+                (_a = inputsRefs.current[nums.length - 1]) === null || _a === void 0 ? void 0 : _a.focus();
             }
             var prevIndex = index - 1;
-            (_c = inputsRefs.current[prevIndex]) === null || _c === void 0 ? void 0 : _c.focus();
+            (_b = inputsRefs.current[prevIndex]) === null || _b === void 0 ? void 0 : _b.focus();
         }
         if (event.key === "ArrowRight") {
             if (index === props.length - 1) {
                 inputsRefs.current[0].focus();
             }
             var nextIndex = index + 1;
-            (_d = inputsRefs.current[nextIndex]) === null || _d === void 0 ? void 0 : _d.focus();
+            (_c = inputsRefs.current[nextIndex]) === null || _c === void 0 ? void 0 : _c.focus();
         }
     };
     var handleOnFocus = function () {
@@ -368,9 +390,13 @@ var CodeInput = React__default["default"].forwardRef(function (props, ref) {
     };
     return (React__default["default"].createElement("div", { className: "".concat(modules_efc4e723$a.componentWrap, " ").concat(props.className, " ").concat(isInvalid ? modules_efc4e723$a.error : ""), style: props.style },
         React__default["default"].createElement("section", { ref: ref, onPaste: handlePaste, onFocus: handleOnFocus, className: "".concat(isInvalid ? modules_efc4e723$a.shake : "") }, Array.from({ length: props.length }).map(function (_, index) {
-            return (React__default["default"].createElement("input", { type: "text", pattern: "\\d*", placeholder: "*", key: index, className: modules_efc4e723$a.input, ref: function (input) {
+            return (React__default["default"].createElement("input", { type: "number", pattern: "\\d*", placeholder: "*", key: index, className: modules_efc4e723$a.input, ref: function (input) {
                     inputsRefs.current[index] = input;
-                }, value: nums[index], onChange: function () { }, onKeyDown: function (event) { return handleKeyPress(event, index); }, maxLength: 1 }));
+                }, value: nums[index], onChange: function (event) { return handleOnChange(event, index); }, onKeyDown: function (event) { return handleKeyPress(event, index); }, 
+                // onClick={() => {
+                //   inputsRefs.current[index]?.select();
+                // }}
+                maxLength: 1 }));
         })),
         isInvalid ? (React__default["default"].createElement(Text, { tag: "span", className: modules_efc4e723$a.helperText, context: "app", appStyle: "body-caption" }, props.errorMessage)) : null,
         React__default["default"].createElement(Text, { tag: "p", context: "app", appStyle: "body-main", className: modules_efc4e723$a.resendSection },
