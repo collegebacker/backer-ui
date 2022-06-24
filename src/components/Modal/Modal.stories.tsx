@@ -179,3 +179,88 @@ Buttons.args = {
     </>
   ),
 };
+
+const FocusTrapTemplate: ComponentStory<typeof Modal> = (args) => {
+  const ModalRef = React.useRef<any>(null);
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <Modal ref={ModalRef} {...args} />
+      <Button
+        label="Trigger Modal"
+        style={{
+          maxWidth: "300px",
+        }}
+        onClick={() => {
+          ModalRef.current.open(() => {
+            console.log("open");
+          });
+        }}
+      />
+
+      <div
+        style={{
+          marginTop: "50px",
+        }}
+      >
+        <h3>Other focus elements</h3>
+        <button>some button</button>
+        <input type="text" />
+        <a href="https://github.com/focus-trap/focus-trap" target="_blank">
+          focus-trap
+        </a>
+      </div>
+    </div>
+  );
+};
+
+export const FocusTrap = FocusTrapTemplate.bind({});
+FocusTrap.args = {
+  title: "Funds",
+  smallTitle: true,
+  isBottomSheet: true,
+  isOpen: false,
+  closeOutside: true,
+  customWidth: 420,
+  children: (
+    <>
+      <Text tag="p" context="app" appStyle="body-main">
+        Its expensive to raise a child. Make saving for education a team effort
+        that’s fun and stress-free. Supercharge your savings with a tax-free 529
+        investment account. You need support, and Backer is here to help.
+      </Text>
+
+      <br />
+      <Text tag="p" context="app" appStyle="body-main">
+        Hi, Im the Dumi component. Use me when you need to show that any content
+        can be in my place. You can replace me with any other component. Such
+        components include, for example, popovers, which can have more than just
+        a header and text inside. Here are the steps on how to replace the
+        content inside of me: Create a content frame that you want to see
+        instead of this placeholder.
+      </Text>
+
+      <ModalButtons
+        items={[
+          {
+            label: "Create a fund",
+            onClick: () => {},
+            icon: "plus-in-circle-left",
+          },
+          {
+            label: "Send a gift",
+            onClick: (event) => {
+              console.log(event);
+            },
+            icon: "gift",
+          },
+        ]}
+      />
+    </>
+  ),
+};

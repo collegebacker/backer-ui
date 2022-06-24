@@ -1,5 +1,6 @@
 import React from "react";
 import gsap from "gsap";
+import FocusTrap from "focus-trap-react";
 
 import { useOutsideClick } from "../../../hooks";
 
@@ -24,12 +25,21 @@ interface Props {
 // COMPONENT //
 ///////////////
 
-const Popup: React.FC<Props> = (props) => {
+const Popup = React.forwardRef<any, Props>((props, ref) => {
   const modalWrapRef = React.useRef<HTMLDivElement>(null);
   const popupRef = React.useRef<HTMLDivElement>(null);
   const gradients = React.useRef<HTMLDivElement>(null);
 
   const [isAppeared, setIsAppeared] = React.useState(false);
+
+  //////////////
+  // IMPERIAL //
+  //////////////
+  React.useImperativeHandle(ref, () => ({
+    getRef: () => {
+      return popupRef.current;
+    },
+  }));
 
   ///////////////
   //// HOOKS ////
@@ -111,52 +121,79 @@ const Popup: React.FC<Props> = (props) => {
   ///////////////
 
   return (
-    <section
-      ref={modalWrapRef}
-      className={`${styles.modalWrap}`}
-      style={{ ...props.style }}
-    >
-      {/* <FocusTrap> */}
-      <section
-        className={`${styles.popup} ${
-          !props.customWidth && props.customWidth === 0
-            ? styles.popup_maxLayout
-            : ""
-        } ${props.popupClassName}`}
-        ref={popupRef}
-        style={{
-          ...props.style,
-          ...(props.customWidth && props.customWidth > 0
-            ? {
-                maxWidth: !props.isMobileBreakpoint
-                  ? props.customWidth
-                  : "100%",
-                width: "100%",
-              }
-            : {}),
+    <>
+      <FocusTrap
+        containerElements={[popupRef.current]}
+        focusTrapOptions={{
+          allowOutsideClick: true,
+          // @ts-ignore
+          checkCanFocusTrap: (trapContainers) => {
+            const results = trapContainers.map((trapContainer) => {
+              return new Promise<void>((resolve) => {
+                const interval = setInterval(() => {
+                  if (getComputedStyle(trapContainer).visibility !== "hidden") {
+                    resolve();
+                    clearInterval(interval);
+                  }
+                }, 5);
+              });
+            });
+            // Return a promise that resolves when all the trap containers are able to receive focus
+            return Promise.all(results);
+          },
         }}
+      />
+      <aside
+        role="dialog"
+        tabIndex={-1}
+        aria-modal
+        aria-hidden={false}
+        ref={modalWrapRef}
+        className={`${styles.modalWrap}`}
+        style={{ ...props.style }}
       >
-        <Header
-          onCloseClick={handleCloseClick}
-          title={props.title}
-          smallTitle={props.smallTitle}
-          noMaxWidth={props.customWidth && props.customWidth > 0 ? true : false}
-        />
-        <div
-          className={`${styles.contentWrapper} ${styles.popupContentClassName}`}
+        <section
+          ref={popupRef}
+          className={`${styles.popup} ${
+            !props.customWidth && props.customWidth === 0
+              ? styles.popup_maxLayout
+              : ""
+          } ${props.popupClassName}`}
+          style={{
+            ...props.style,
+            ...(props.customWidth && props.customWidth > 0
+              ? {
+                  maxWidth: !props.isMobileBreakpoint
+                    ? props.customWidth
+                    : "100%",
+                  width: "100%",
+                }
+              : {}),
+          }}
         >
-          {props.children}
-        </div>
-      </section>
-      {/* </FocusTrap> */}
+          <Header
+            onCloseClick={handleCloseClick}
+            title={props.title}
+            smallTitle={props.smallTitle}
+            noMaxWidth={
+              props.customWidth && props.customWidth > 0 ? true : false
+            }
+          />
+          <div
+            className={`${styles.contentWrapper} ${styles.popupContentClassName}`}
+          >
+            {props.children}
+          </div>
+        </section>
 
-      <div className={styles.gradients} ref={gradients}>
-        <div className={styles.gradient1} />
-        <div className={styles.gradient2} />
-      </div>
-    </section>
+        <div className={styles.gradients} ref={gradients}>
+          <div className={styles.gradient1} />
+          <div className={styles.gradient2} />
+        </div>
+      </aside>
+    </>
   );
-};
+});
 
 Popup.defaultProps = {
   title: "",

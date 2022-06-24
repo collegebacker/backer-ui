@@ -26,7 +26,7 @@ const ModalButtons: React.FC<Props> = (props) => {
               ) : null}
               <Text
                 context="app"
-                appStyle="body-main"
+                appStyle="body-caption"
                 tag="span"
                 className={props.textClassName}
               >

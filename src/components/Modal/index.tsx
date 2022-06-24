@@ -21,6 +21,7 @@ export interface Props {
 const Modal = React.forwardRef<any, Props>((props, ref) => {
   const [isOpen, setIsOpen] = React.useState(props.isOpen);
   const [isMobileBreakpoint, setIsMobileBreakpoint] = React.useState(false);
+  // const [popupEl, setPopupEl] = React.useState<HTMLDivElement | null>(null);
 
   //////////////
   // IMPERIAL //
@@ -29,6 +30,7 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
     open: (callback: () => void) => {
       setIsOpen(true);
 
+      // console.log("open from inside");
       if (callback) {
         callback();
       }
@@ -36,6 +38,7 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
     close: (callback: () => void) => {
       setIsOpen(false);
 
+      // console.log("close");
       if (callback) {
         callback();
       }
@@ -45,10 +48,12 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
   /////////////////
   // USE EFFECTS //
   /////////////////
+
+  const mobilebreakpoint = 621;
+
   React.useEffect(() => {
     const resize = () => {
-      // console.log(window.innerWidth, isMobileBreakpoint);
-      setIsMobileBreakpoint(window.innerWidth < 621);
+      setIsMobileBreakpoint(window.innerWidth < mobilebreakpoint);
     };
 
     resize();
@@ -78,34 +83,29 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
 
   return ReactDOM.createPortal(
     <>
-      <Popup
-        {...props}
-        isMobileBreakpoint={isMobileBreakpoint}
-        isOpen={isOpen}
-        closeOutside={props.closeOutside}
-        smallTitle={props.smallTitle}
-        popupClassName={props.popupClassName}
-        popupContentClassName={props.popupContentClassName}
-        onCloseClick={handleOnCloseClick}
-        customWidth={props.customWidth}
-        style={{
-          visibility:
-            props.isBottomSheet && isMobileBreakpoint ? "hidden" : "visible",
-        }}
-      />
-      <BottomSheet
-        {...props}
-        isMobileBreakpoint={isMobileBreakpoint}
-        isOpen={isOpen}
-        closeOutside={props.closeOutside}
-        smallTitle={props.smallTitle}
-        onCloseClick={handleOnCloseClick}
-        onCloseDrag={handleOnCloseClick}
-        style={{
-          visibility:
-            props.isBottomSheet && isMobileBreakpoint ? "visible" : "hidden",
-        }}
-      />
+      {props.isBottomSheet && isMobileBreakpoint ? (
+        <BottomSheet
+          {...props}
+          isMobileBreakpoint={isMobileBreakpoint}
+          isOpen={isOpen}
+          closeOutside={props.closeOutside}
+          smallTitle={props.smallTitle}
+          onCloseClick={handleOnCloseClick}
+          onCloseDrag={handleOnCloseClick}
+        />
+      ) : (
+        <Popup
+          {...props}
+          isMobileBreakpoint={isMobileBreakpoint}
+          isOpen={isOpen}
+          closeOutside={props.closeOutside}
+          smallTitle={props.smallTitle}
+          popupClassName={props.popupClassName}
+          popupContentClassName={props.popupContentClassName}
+          onCloseClick={handleOnCloseClick}
+          customWidth={props.customWidth}
+        />
+      )}
     </>,
     document.body
   );

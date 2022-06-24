@@ -1,8 +1,8 @@
 import React from "react";
-
 import gsap from "gsap";
 import { Draggable } from "gsap/dist/Draggable";
 import { InertiaPlugin } from "gsap-bonus/InertiaPlugin";
+import FocusTrap from "focus-trap-react";
 
 import styles from "./styles.module.scss";
 import Header from "../Header";
@@ -27,7 +27,7 @@ interface Props {
 // COMPONENT //
 ///////////////
 
-const BottomSheet: React.FC<Props> = (props) => {
+const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
   const modalWrapRef = React.useRef<HTMLDivElement>(null);
   const bottomSheetRef = React.useRef<HTMLDivElement>(null);
   const backgroundRef = React.useRef<HTMLDivElement>(null);
@@ -51,6 +51,15 @@ const BottomSheet: React.FC<Props> = (props) => {
       maxY: window.innerHeight - bottomSheetRef.current.clientHeight,
     };
   };
+
+  //////////////
+  // IMPERIAL //
+  //////////////
+  React.useImperativeHandle(ref, () => ({
+    getRef: () => {
+      return bottomSheetRef.current;
+    },
+  }));
 
   //////////////
   /// HOOKS ////
@@ -191,24 +200,51 @@ const BottomSheet: React.FC<Props> = (props) => {
   ///////////////
 
   return (
-    <section
-      ref={modalWrapRef}
-      className={`${styles.modalWrap}`}
-      style={{ ...props.style }}
-    >
-      <section ref={bottomSheetRef} className={`${styles.bottomSheetWrap}`}>
-        <Header
-          onCloseClick={handleCloseClick}
-          title={props.title}
-          smallTitle={props.smallTitle}
-          noMaxWidth={true}
-        />
-        <div className={styles.contentWrapper}>{props.children}</div>
-      </section>
-      <div ref={backgroundRef} className={styles.background}></div>
-    </section>
+    <>
+      <FocusTrap
+        containerElements={[bottomSheetRef.current]}
+        focusTrapOptions={{
+          allowOutsideClick: true,
+          // @ts-ignore
+          checkCanFocusTrap: (trapContainers) => {
+            const results = trapContainers.map((trapContainer) => {
+              return new Promise<void>((resolve) => {
+                const interval = setInterval(() => {
+                  if (getComputedStyle(trapContainer).visibility !== "hidden") {
+                    resolve();
+                    clearInterval(interval);
+                  }
+                }, 5);
+              });
+            });
+            // Return a promise that resolves when all the trap containers are able to receive focus
+            return Promise.all(results);
+          },
+        }}
+      />
+      <aside
+        role="dialog"
+        tabIndex={-1}
+        aria-modal
+        aria-hidden={false}
+        ref={modalWrapRef}
+        className={`${styles.modalWrap}`}
+        style={{ ...props.style }}
+      >
+        <section ref={bottomSheetRef} className={`${styles.bottomSheetWrap}`}>
+          <Header
+            onCloseClick={handleCloseClick}
+            title={props.title}
+            smallTitle={props.smallTitle}
+            noMaxWidth={true}
+          />
+          <div className={styles.contentWrapper}>{props.children}</div>
+        </section>
+        <div ref={backgroundRef} className={styles.background}></div>
+      </aside>
+    </>
   );
-};
+});
 
 BottomSheet.defaultProps = {
   className: "",
