@@ -12,5 +12,5 @@ interface Props {
     isMobileBreakpoint: boolean;
     onCloseClick?: () => void;
 }
-declare const Popup: React.FC<Props>;
+declare const Popup: React.ForwardRefExoticComponent<Props & React.RefAttributes<any>>;
 export default Popup;

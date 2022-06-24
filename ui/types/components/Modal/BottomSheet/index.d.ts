@@ -12,5 +12,5 @@ interface Props {
     onCloseClick?: () => void;
     onCloseDrag?: () => void;
 }
-declare const BottomSheet: React.FC<Props>;
+declare const BottomSheet: React.ForwardRefExoticComponent<Props & React.RefAttributes<any>>;
 export default BottomSheet;
