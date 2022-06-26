@@ -294,6 +294,9 @@ var CodeInput = React__default["default"].forwardRef(function (props, ref) {
                 }
                 return "";
             });
+            if (props.onChange) {
+                props.onChange(newNums.join(""));
+            }
             setNums(newNums);
         }
     };
@@ -344,14 +347,17 @@ var CodeInput = React__default["default"].forwardRef(function (props, ref) {
         // console.log(nums[index]);
         var _a, _b, _c;
         if (event.key == "Backspace") {
-            console.log(index, inputsRefs.current[index].value);
+            // console.log(index, inputsRefs.current[index].value);
             if (index > 0 && inputsRefs.current[index].value === "") {
                 inputsRefs.current[index - 1].focus();
             }
-            // clear current input
+            // clear current input and handle onChange
             setNums(function (prev) {
                 var newNums = __spreadArray([], prev, true);
                 newNums[index] = "";
+                if (props.onChange) {
+                    props.onChange(newNums.join(""));
+                }
                 return newNums;
             });
         }
@@ -392,11 +398,7 @@ var CodeInput = React__default["default"].forwardRef(function (props, ref) {
         React__default["default"].createElement("section", { ref: ref, onPaste: handlePaste, onFocus: handleOnFocus, className: "".concat(isInvalid ? modules_efc4e723$a.shake : "") }, Array.from({ length: props.length }).map(function (_, index) {
             return (React__default["default"].createElement("input", { type: "number", pattern: "\\d*", placeholder: "*", key: index, className: modules_efc4e723$a.input, ref: function (input) {
                     inputsRefs.current[index] = input;
-                }, value: nums[index], onChange: function (event) { return handleOnChange(event, index); }, onKeyDown: function (event) { return handleKeyPress(event, index); }, 
-                // onClick={() => {
-                //   inputsRefs.current[index]?.select();
-                // }}
-                maxLength: 1 }));
+                }, value: nums[index], onChange: function (event) { return handleOnChange(event, index); }, onKeyDown: function (event) { return handleKeyPress(event, index); }, maxLength: 1 }));
         })),
         isInvalid ? (React__default["default"].createElement(Text, { tag: "span", className: modules_efc4e723$a.helperText, context: "app", appStyle: "body-caption" }, props.errorMessage)) : null,
         React__default["default"].createElement(Text, { tag: "p", context: "app", appStyle: "body-main", className: modules_efc4e723$a.resendSection },

@@ -53,6 +53,7 @@ const ConfirmTemplate: ComponentStory<typeof CodeInput> = (args) => {
           ref={codeInputRef}
           onChange={(code: string) => {
             setCode(code);
+            console.log(`testCode: ${testCode}`, `code: ${code}`);
           }}
           onResend={() => {
             alert("resend");
@@ -108,6 +109,7 @@ const WithoutButtonTemplate: ComponentStory<typeof CodeInput> = (args) => {
         {...args}
         ref={codeInputRef}
         onChange={(code: string) => {
+          console.log(`testCode: ${testCode}`, `code: ${code}`);
           if (code.length === testCode.length) {
             if (code === testCode) {
               codeInputRef.current.setIsInvalid(false);

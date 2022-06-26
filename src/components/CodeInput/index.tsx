@@ -49,6 +49,7 @@ const CodeInput = React.forwardRef<any, Props>((props, ref) => {
   const handlePaste = (e: React.ClipboardEvent<HTMLDivElement>) => {
     e.preventDefault();
     const text = e.clipboardData.getData("text/plain");
+
     if (text) {
       const newNums = text.split("").map((char) => {
         if (char.match(/^[0-9]*$/)) {
@@ -56,6 +57,10 @@ const CodeInput = React.forwardRef<any, Props>((props, ref) => {
         }
         return "";
       });
+
+      if (props.onChange) {
+        props.onChange(newNums.join(""));
+      }
 
       setNums(newNums);
     }
@@ -123,15 +128,21 @@ const CodeInput = React.forwardRef<any, Props>((props, ref) => {
     // console.log(nums[index]);
 
     if (event.key == "Backspace") {
-      console.log(index, inputsRefs.current[index].value);
+      // console.log(index, inputsRefs.current[index].value);
+
       if (index > 0 && inputsRefs.current[index].value === "") {
         inputsRefs.current[index - 1].focus();
       }
 
-      // clear current input
+      // clear current input and handle onChange
       setNums((prev) => {
         const newNums = [...prev];
         newNums[index] = "";
+
+        if (props.onChange) {
+          props.onChange(newNums.join(""));
+        }
+
         return newNums;
       });
     }
@@ -200,9 +211,6 @@ const CodeInput = React.forwardRef<any, Props>((props, ref) => {
               value={nums[index]}
               onChange={(event) => handleOnChange(event, index)}
               onKeyDown={(event) => handleKeyPress(event, index)}
-              // onClick={() => {
-              //   inputsRefs.current[index]?.select();
-              // }}
               maxLength={1}
             />
           );
