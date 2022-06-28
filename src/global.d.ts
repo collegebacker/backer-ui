@@ -41,7 +41,9 @@ type AppTypographyTypes =
   | "title-medium-adaptive"
   | "title-small"
   | "body-large"
+  | "body-large-adaptive"
   | "body-large-paragraph"
+  | "body-large-paragraph-adaptive"
   | "body-main"
   | "body-paragraph"
   | "body-caption";
