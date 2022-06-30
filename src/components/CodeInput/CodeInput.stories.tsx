@@ -53,7 +53,8 @@ const ConfirmTemplate: ComponentStory<typeof CodeInput> = (args) => {
           ref={codeInputRef}
           onChange={(code: string) => {
             setCode(code);
-            console.log(`testCode: ${testCode}`, `code: ${code}`);
+            // console.log(`testCode: ${testCode}`, `code: ${code}`);
+            console.log(code.length, testCode.length);
           }}
           onResend={() => {
             alert("resend");

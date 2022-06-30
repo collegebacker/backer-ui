@@ -229,7 +229,7 @@ n(css$c,{});
 
 var Input = React__default["default"].forwardRef(function (props, ref) {
     var inputRef = React__default["default"].useRef(null);
-    var _a = React__default["default"].useState(props.value); _a[0]; var setVal = _a[1];
+    var _a = React__default["default"].useState(props.value), val = _a[0], setVal = _a[1];
     React__default["default"].useEffect(function () {
         if (props.isInvalid && inputRef.current) {
             inputRef.current.focus();
@@ -249,7 +249,7 @@ var Input = React__default["default"].forwardRef(function (props, ref) {
                     pointerEvents: props.icon.onClick !== undefined ? "auto" : "none",
                 } },
                 React__default["default"].createElement(Icon, { name: props.icon.name }))) : null,
-            React__default["default"].createElement("input", { ref: inputRef, tabIndex: props.tabIndex, autoFocus: props.autoFocus, type: props.type, id: props.id ? props.id : props.name, name: props.name, className: "".concat(modules_efc4e723$c.input, " ").concat(props.hideSpinButton ? modules_efc4e723$c.hideSpinButton : ""), placeholder: "\u00A0", value: props.value, required: props.required, onChange: handleOnChange, onSubmit: props.onSubmit, onBlur: props.onBlur, onFocus: props.onFocus, onInvalid: props.onInvalid }),
+            React__default["default"].createElement("input", { ref: inputRef, tabIndex: props.tabIndex, autoFocus: props.autoFocus, type: props.type, id: props.id ? props.id : props.name, name: props.name, className: "".concat(modules_efc4e723$c.input, " ").concat(props.hideSpinButton ? modules_efc4e723$c.hideSpinButton : ""), placeholder: "\u00A0", value: val, required: props.required, onChange: handleOnChange, onSubmit: props.onSubmit, onBlur: props.onBlur, onFocus: props.onFocus, onInvalid: props.onInvalid }),
             props.label !== "" ? (React__default["default"].createElement("label", { className: modules_efc4e723$c.label, htmlFor: props.name }, props.label)) : null),
         props.helperText && !props.isInvalid ? (React__default["default"].createElement(Text, { className: modules_efc4e723$c.helperText, tag: "span", context: "app", appStyle: "body-caption" }, props.helperText)) : null,
         props.isInvalid ? (React__default["default"].createElement(Text, { className: modules_efc4e723$c.helperText, tag: "span", context: "app", appStyle: "body-caption" }, props.errorMessage)) : null));
@@ -376,12 +376,26 @@ var CodeInput = React__default["default"].forwardRef(function (props, ref) {
             (_a = inputsRefs.current[0]) === null || _a === void 0 ? void 0 : _a.focus();
         }
     }, []);
+    var findNewCharacter = function (currentVal, newVal) {
+        var newNums = currentVal
+            .split("")
+            .map(function (char) {
+            if (char === newVal) {
+                return "";
+            }
+            return char;
+        })
+            .join("");
+        return newNums !== "" ? newNums : newVal;
+    };
     var handleOnChange = function (e, index) {
         // allow only numbers
         if (e.target.value.match(/^[0-9]*$/)) {
+            // find new number in the array
+            var cleanedVal_1 = findNewCharacter(e.target.value, nums[index]);
             setNums(function (prev) {
                 var newNums = __spreadArray([], prev, true);
-                newNums[index] = e.target.value.slice(-1);
+                newNums[index] = cleanedVal_1;
                 return newNums;
             });
             // focus next input
@@ -394,20 +408,16 @@ var CodeInput = React__default["default"].forwardRef(function (props, ref) {
                 inputsRefs.current[index].blur();
             }
         }
-        if (props.onChange) {
-            props.onChange(inputsRefs.current.map(function (item) { return item === null || item === void 0 ? void 0 : item.value; }).join(""));
-        }
-        // const newNums = [...nums];
-        // newNums[index] = e.target.value;
-        // setNums(newNums);
     };
     var handleKeyPress = function (event, index) {
-        // console.log(nums[index]);
         var _a, _b, _c;
         if (event.key == "Backspace") {
             // console.log(index, inputsRefs.current[index].value);
             if (index > 0 && inputsRefs.current[index].value === "") {
                 inputsRefs.current[index - 1].focus();
+            }
+            if (index === 0 && inputsRefs.current[index].value === "") {
+                inputsRefs.current[index].focus();
             }
             // clear current input and handle onChange
             setNums(function (prev) {
@@ -452,6 +462,11 @@ var CodeInput = React__default["default"].forwardRef(function (props, ref) {
         (_a = inputsRefs.current[0]) === null || _a === void 0 ? void 0 : _a.focus();
         props.onResend(event);
     };
+    React__default["default"].useEffect(function () {
+        if (props.onChange) {
+            props.onChange(nums.join(""));
+        }
+    }, [nums]);
     return (React__default["default"].createElement("div", { className: "".concat(modules_efc4e723$a.componentWrap, " ").concat(props.className, " ").concat(isInvalid ? modules_efc4e723$a.error : ""), style: props.style },
         React__default["default"].createElement("section", { ref: ref, onPaste: handlePaste, onFocus: handleOnFocus, className: "".concat(isInvalid ? modules_efc4e723$a.shake : "") }, Array.from({ length: props.length }).map(function (_, index) {
             return (React__default["default"].createElement("input", { type: "number", pattern: "\\d*", placeholder: "*", key: index, className: modules_efc4e723$a.input, ref: function (input) {

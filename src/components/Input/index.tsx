@@ -83,7 +83,7 @@ const Input = React.forwardRef<any, Props>((props, ref) => {
             props.hideSpinButton ? styles.hideSpinButton : ""
           }`}
           placeholder="&nbsp;"
-          value={props.value}
+          value={val}
           required={props.required}
           onChange={handleOnChange}
           onSubmit={props.onSubmit}
