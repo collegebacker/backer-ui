@@ -15,7 +15,8 @@ export interface Props {
     | "a"
     | "ul"
     | "ol"
-    | "li";
+    | "li"
+    | "label";
   context?: "app" | "marketing";
   appStyle?: AppTypographyTypes;
   marketingStyle?: MarketingTypographyTypes;
