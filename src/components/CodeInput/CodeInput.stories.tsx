@@ -19,17 +19,17 @@ export default {
 const ConfirmTemplate: ComponentStory<typeof CodeInput> = (args) => {
   const testCode = "345629";
 
-  const codeInputRef = React.useRef<any>(null);
   const [code, setCode] = React.useState("");
+  const [isInvalid, setIsInvalid] = React.useState(false);
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
 
     if (code === testCode) {
-      codeInputRef.current.setIsInvalid(false);
+      setIsInvalid(false);
       alert("Success!");
     } else {
-      codeInputRef.current.setIsInvalid(true);
+      setIsInvalid(true);
     }
   };
 
@@ -50,11 +50,12 @@ const ConfirmTemplate: ComponentStory<typeof CodeInput> = (args) => {
 
         <CodeInput
           {...args}
-          ref={codeInputRef}
+          isInvalid={isInvalid}
+          onFocus={() => {
+            setIsInvalid(false);
+          }}
           onChange={(code: string) => {
             setCode(code);
-            // console.log(`testCode: ${testCode}`, `code: ${code}`);
-            console.log(code.length, testCode.length);
           }}
           onResend={() => {
             alert("resend");
@@ -90,7 +91,7 @@ ConfirmButton.args = {
 const WithoutButtonTemplate: ComponentStory<typeof CodeInput> = (args) => {
   const testCode = "345629";
 
-  const codeInputRef = React.useRef<any>(null);
+  const [isInvalid, setIsInvalid] = React.useState(false);
 
   return (
     <div>
@@ -108,15 +109,18 @@ const WithoutButtonTemplate: ComponentStory<typeof CodeInput> = (args) => {
 
       <CodeInput
         {...args}
-        ref={codeInputRef}
+        isInvalid={isInvalid}
+        onFocus={() => {
+          setIsInvalid(false);
+        }}
         onChange={(code: string) => {
           console.log(`testCode: ${testCode}`, `code: ${code}`);
           if (code.length === testCode.length) {
             if (code === testCode) {
-              codeInputRef.current.setIsInvalid(false);
+              setIsInvalid(false);
               console.log("Success!");
             } else {
-              codeInputRef.current.setIsInvalid(true);
+              setIsInvalid(true);
             }
           }
         }}

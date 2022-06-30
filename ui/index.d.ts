@@ -85,11 +85,13 @@ interface Props$a {
     tabIndex?: number;
     className?: string;
     style?: React.CSSProperties;
+    isInvalid?: boolean;
     errorMessage?: string;
     length?: number;
     resendText?: string;
     resendTimer?: number;
-    onChange?: (event: any) => void;
+    onChange?: (nums: string) => void;
+    onFocus?: (nums: string) => void;
     onResend?: (event: any) => void;
 }
 declare const CodeInput: React.ForwardRefExoticComponent<Props$a & React.RefAttributes<any>>;

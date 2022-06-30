@@ -8,13 +8,15 @@ export interface Props {
   className?: string;
   style?: React.CSSProperties;
 
+  isInvalid?: boolean;
   errorMessage?: string;
   length?: number;
 
   resendText?: string;
   resendTimer?: number;
 
-  onChange?: (event: any) => void;
+  onChange?: (nums: string) => void;
+  onFocus?: (nums: string) => void;
   onResend?: (event: any) => void;
 }
 
@@ -26,24 +28,9 @@ const CodeInput = React.forwardRef<any, Props>((props, ref) => {
   const inputsRefs = React.useRef<HTMLInputElement[]>([]);
 
   const [nums, setNums] = React.useState(Array(props.length).fill(""));
-  const [isInvalid, setIsInvalid] = React.useState(false);
 
   const [resendTimer, setResendTimer] = React.useState(props.resendTimer);
-  const [isInitialTap, setIsInitialTap] = React.useState(true);
-
-  React.useImperativeHandle(ref, () => ({
-    reset: (callback: () => void) => {
-      setNums(Array(props.length).fill(""));
-      setIsInvalid(false);
-
-      if (callback) {
-        callback();
-      }
-    },
-    setIsInvalid: (isInvalid: boolean) => {
-      setIsInvalid(isInvalid);
-    },
-  }));
+  const [isInitialTap, setIsInitialTap] = React.useState(false);
 
   const handlePaste = (e: React.ClipboardEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -175,19 +162,19 @@ const CodeInput = React.forwardRef<any, Props>((props, ref) => {
   };
 
   const handleOnFocus = () => {
-    if (isInitialTap) {
-      setIsInitialTap(false);
+    if (!isInitialTap) {
+      setIsInitialTap(true);
       inputsRefs.current[0]?.focus();
     }
 
-    if (isInvalid) {
-      setIsInvalid(false);
+    if (props.onFocus) {
+      props.onFocus(nums.join(""));
     }
   };
 
   const handleResend = (event: React.MouseEvent) => {
     setResendTimer(props.resendTimer);
-    setIsInvalid(false);
+    // setIsInvalid(false);
     setNums(Array(props.length).fill(""));
     inputsRefs.current[0]?.focus();
 
@@ -200,10 +187,14 @@ const CodeInput = React.forwardRef<any, Props>((props, ref) => {
     }
   }, [nums]);
 
+  React.useEffect(() => {
+    console.log("CodeInput", props.isInvalid);
+  }, [props.isInvalid]);
+
   return (
     <div
       className={`${styles.componentWrap} ${props.className} ${
-        isInvalid ? styles.error : ""
+        props.isInvalid ? styles.error : ""
       }`}
       style={props.style}
     >
@@ -211,7 +202,7 @@ const CodeInput = React.forwardRef<any, Props>((props, ref) => {
         ref={ref}
         onPaste={handlePaste}
         onFocus={handleOnFocus}
-        className={`${isInvalid ? styles.shake : ""}`}
+        className={`${props.isInvalid ? styles.shake : ""}`}
       >
         {Array.from({ length: props.length }).map((_, index) => {
           return (
@@ -233,7 +224,7 @@ const CodeInput = React.forwardRef<any, Props>((props, ref) => {
         })}
       </section>
 
-      {isInvalid ? (
+      {props.isInvalid ? (
         <Text
           tag="span"
           className={styles.helperText}

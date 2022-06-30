@@ -327,21 +327,8 @@ var isMobile = function () {
 var CodeInput = React__default["default"].forwardRef(function (props, ref) {
     var inputsRefs = React__default["default"].useRef([]);
     var _a = React__default["default"].useState(Array(props.length).fill("")), nums = _a[0], setNums = _a[1];
-    var _b = React__default["default"].useState(false), isInvalid = _b[0], setIsInvalid = _b[1];
-    var _c = React__default["default"].useState(props.resendTimer), resendTimer = _c[0], setResendTimer = _c[1];
-    var _d = React__default["default"].useState(true), isInitialTap = _d[0], setIsInitialTap = _d[1];
-    React__default["default"].useImperativeHandle(ref, function () { return ({
-        reset: function (callback) {
-            setNums(Array(props.length).fill(""));
-            setIsInvalid(false);
-            if (callback) {
-                callback();
-            }
-        },
-        setIsInvalid: function (isInvalid) {
-            setIsInvalid(isInvalid);
-        },
-    }); });
+    var _b = React__default["default"].useState(props.resendTimer), resendTimer = _b[0], setResendTimer = _b[1];
+    var _c = React__default["default"].useState(false), isInitialTap = _c[0], setIsInitialTap = _c[1];
     var handlePaste = function (e) {
         e.preventDefault();
         var text = e.clipboardData.getData("text/plain");
@@ -446,18 +433,18 @@ var CodeInput = React__default["default"].forwardRef(function (props, ref) {
     };
     var handleOnFocus = function () {
         var _a;
-        if (isInitialTap) {
-            setIsInitialTap(false);
+        if (!isInitialTap) {
+            setIsInitialTap(true);
             (_a = inputsRefs.current[0]) === null || _a === void 0 ? void 0 : _a.focus();
         }
-        if (isInvalid) {
-            setIsInvalid(false);
+        if (props.onFocus) {
+            props.onFocus(nums.join(""));
         }
     };
     var handleResend = function (event) {
         var _a;
         setResendTimer(props.resendTimer);
-        setIsInvalid(false);
+        // setIsInvalid(false);
         setNums(Array(props.length).fill(""));
         (_a = inputsRefs.current[0]) === null || _a === void 0 ? void 0 : _a.focus();
         props.onResend(event);
@@ -467,13 +454,16 @@ var CodeInput = React__default["default"].forwardRef(function (props, ref) {
             props.onChange(nums.join(""));
         }
     }, [nums]);
-    return (React__default["default"].createElement("div", { className: "".concat(modules_efc4e723$a.componentWrap, " ").concat(props.className, " ").concat(isInvalid ? modules_efc4e723$a.error : ""), style: props.style },
-        React__default["default"].createElement("section", { ref: ref, onPaste: handlePaste, onFocus: handleOnFocus, className: "".concat(isInvalid ? modules_efc4e723$a.shake : "") }, Array.from({ length: props.length }).map(function (_, index) {
+    React__default["default"].useEffect(function () {
+        console.log("CodeInput", props.isInvalid);
+    }, [props.isInvalid]);
+    return (React__default["default"].createElement("div", { className: "".concat(modules_efc4e723$a.componentWrap, " ").concat(props.className, " ").concat(props.isInvalid ? modules_efc4e723$a.error : ""), style: props.style },
+        React__default["default"].createElement("section", { ref: ref, onPaste: handlePaste, onFocus: handleOnFocus, className: "".concat(props.isInvalid ? modules_efc4e723$a.shake : "") }, Array.from({ length: props.length }).map(function (_, index) {
             return (React__default["default"].createElement("input", { type: "number", pattern: "\\d*", placeholder: "*", key: index, className: modules_efc4e723$a.input, ref: function (input) {
                     inputsRefs.current[index] = input;
                 }, value: nums[index], onChange: function (event) { return handleOnChange(event, index); }, onKeyDown: function (event) { return handleKeyPress(event, index); }, maxLength: 1 }));
         })),
-        isInvalid ? (React__default["default"].createElement(Text, { tag: "span", className: modules_efc4e723$a.helperText, context: "app", appStyle: "body-caption" }, props.errorMessage)) : null,
+        props.isInvalid ? (React__default["default"].createElement(Text, { tag: "span", className: modules_efc4e723$a.helperText, context: "app", appStyle: "body-caption" }, props.errorMessage)) : null,
         React__default["default"].createElement(Text, { tag: "p", context: "app", appStyle: "body-main", className: modules_efc4e723$a.resendSection },
             props.resendText,
             " ",
