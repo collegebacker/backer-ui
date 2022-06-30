@@ -12,11 +12,26 @@ const Template: ComponentStory<typeof GhostInput> = (args) => (
   <GhostInput {...args} />
 );
 
-export const Default = Template.bind({});
+export const Text = Template.bind({});
 
-Default.args = {
+Text.args = {
   label: "Label",
   value: "",
+  type: "text",
+  placeholder: "Placeholder",
+  onChange: () => {},
+  isInvalid: false,
+  errorMessage: "Error message",
+  helperText: "",
+};
+
+export const Money = Template.bind({});
+
+Money.args = {
+  label: "Add your amount",
+  value: "",
+  placeholder: "0",
+  type: "money",
   onChange: () => {},
   isInvalid: false,
   errorMessage: "Error message",

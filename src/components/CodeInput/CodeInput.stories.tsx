@@ -1,7 +1,7 @@
-import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Button, CodeInput, Text } from "..";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
 
-import { CodeInput, Text, Button } from "..";
+import React from "react";
 
 export default {
   title: "Forms/CodeInput",

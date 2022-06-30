@@ -1,6 +1,5 @@
 import React from "react";
 import Text from "../Text";
-
 import styles from "./styles.module.scss";
 
 export interface Props {
@@ -94,7 +93,7 @@ const CodeInput = React.forwardRef<any, Props>((props, ref) => {
     if (e.target.value.match(/^[0-9]*$/)) {
       setNums((prev) => {
         const newNums = [...prev];
-        newNums[index] = e.target.value;
+        newNums[index] = e.target.value.slice(-1);
         return newNums;
       });
 

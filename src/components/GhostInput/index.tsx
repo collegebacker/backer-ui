@@ -43,6 +43,11 @@ const GhostInput = React.forwardRef<any, Props>((props, ref) => {
       setVal(Number(value).toLocaleString("en-US"));
     }
 
+    if (props.type === "number") {
+      const value = e.target.value.replace(/[^0-9]/g, "");
+      setVal(value);
+    }
+
     if (props.type === "text" || props.type === "password") {
       setVal(e.target.value);
     }
@@ -132,7 +137,7 @@ GhostInput.defaultProps = {
   autoFocus: false,
   isInvalid: false,
   errorMessage: "",
-  placeholder: "Your name",
+  placeholder: "",
   hideSpinButton: true,
 } as Partial<Props>;
 

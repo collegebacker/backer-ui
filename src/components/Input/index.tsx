@@ -32,11 +32,21 @@ export interface Props {
 const Input = React.forwardRef<any, Props>((props, ref) => {
   const inputRef = React.useRef<HTMLInputElement>(null);
 
+  const [val, setVal] = React.useState(props.value);
+
   React.useEffect(() => {
     if (props.isInvalid && inputRef.current) {
       inputRef.current.focus();
     }
   }, [props.isInvalid]);
+
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setVal(e.target.value);
+
+    if (props.onChange) {
+      props.onChange(e);
+    }
+  };
 
   return (
     <div
@@ -75,7 +85,7 @@ const Input = React.forwardRef<any, Props>((props, ref) => {
           placeholder="&nbsp;"
           value={props.value}
           required={props.required}
-          onChange={props.onChange}
+          onChange={handleOnChange}
           onSubmit={props.onSubmit}
           onBlur={props.onBlur}
           onFocus={props.onFocus}
