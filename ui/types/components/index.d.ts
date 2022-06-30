@@ -1,6 +1,7 @@
 export { default as Button } from "./Button";
 export { default as Icon } from "./Icon";
 export { default as Input } from "./Input";
+export { default as GhostInput } from "./GhostInput";
 export { default as CodeInput } from "./CodeInput";
 export { default as Logo } from "./Logo";
 export { default as ChipsSlider } from "./ChipsSlider";
