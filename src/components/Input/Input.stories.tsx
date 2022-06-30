@@ -16,6 +16,7 @@ Default.args = {
   isInvalid: false,
   autoFocus: false,
   required: false,
+  value: "",
   hideSpinButton: true,
   helperText: "Hello! I'm a helper text",
   icon: {
