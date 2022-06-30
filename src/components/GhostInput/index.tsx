@@ -5,22 +5,19 @@ import styles from "./styles.module.scss";
 
 export interface Props {
   className?: string;
-  type?: "text" | "password" | "number" | "email";
+  type?: "text" | "password" | "number" | "email" | "money";
   required?: boolean;
   name: string;
   label?: string;
   value?: string;
   autoFocus?: boolean;
+  placeholder?: string;
   isInvalid?: boolean;
   errorMessage?: string;
   helperText?: string;
-  hideSpinButton?: boolean;
-  icon?: {
-    name: IconTypes;
-    onClick?: () => void;
-  };
   id?: string;
   tabIndex?: number;
+  currency?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onSubmit?: (event: React.FormEvent<HTMLInputElement>) => void;
   onEnterKeyPress?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
@@ -29,7 +26,7 @@ export interface Props {
   onInvalid?: (event: React.FormEvent<HTMLInputElement>) => void;
 }
 
-const Input = React.forwardRef<any, Props>((props, ref) => {
+const GhostInput = React.forwardRef<any, Props>((props, ref) => {
   const inputRef = React.useRef<HTMLInputElement>(null);
 
   const [val, setVal] = React.useState(props.value);
@@ -41,7 +38,19 @@ const Input = React.forwardRef<any, Props>((props, ref) => {
   }, [props.isInvalid]);
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setVal(e.target.value);
+    if (props.type === "money") {
+      const value = e.target.value.replace(/[^0-9]/g, "");
+      setVal(Number(value).toLocaleString("en-US"));
+    }
+
+    if (props.type === "number") {
+      const value = e.target.value.replace(/[^0-9]/g, "");
+      setVal(value);
+    }
+
+    if (props.type === "text" || props.type === "password") {
+      setVal(e.target.value);
+    }
 
     if (props.onChange) {
       props.onChange(e);
@@ -53,25 +62,27 @@ const Input = React.forwardRef<any, Props>((props, ref) => {
       ref={ref}
       className={`${styles.componentWrap} ${props.className} ${
         props.isInvalid ? styles.error : ""
-      } ${props.isInvalid ? styles.shake : ""}`}
+      } ${props.type === "money" ? styles.money : ""} ${
+        props.isInvalid ? styles.shake : ""
+      }`}
     >
-      <div
-        className={`${styles.inputWrap}`}
-        style={{
-          height: props.label !== "" ? "68px" : "40px",
-        }}
-      >
-        {props.icon ? (
-          <div
-            onClick={props.icon.onClick}
-            className={styles.icon}
-            style={{
-              pointerEvents: props.icon.onClick !== undefined ? "auto" : "none",
-            }}
-          >
-            <Icon name={props.icon.name} />
-          </div>
+      <div className={`${styles.inputWrap}`}>
+        {props.type === "money" ? (
+          <span className={styles.moneySign}>{props.currency}</span>
         ) : null}
+
+        {props.label !== "" ? (
+          <Text
+            tag="label"
+            className={styles.label}
+            htmlFor={props.name}
+            context="app"
+            appStyle="body-caption"
+          >
+            {props.label}
+          </Text>
+        ) : null}
+
         <input
           ref={inputRef}
           tabIndex={props.tabIndex}
@@ -79,10 +90,8 @@ const Input = React.forwardRef<any, Props>((props, ref) => {
           type={props.type}
           id={props.id ? props.id : props.name}
           name={props.name}
-          className={`${styles.input} ${
-            props.hideSpinButton ? styles.hideSpinButton : ""
-          }`}
-          placeholder="&nbsp;"
+          className={`${styles.input}`}
+          placeholder={props.placeholder}
           value={val}
           required={props.required}
           onChange={handleOnChange}
@@ -91,12 +100,6 @@ const Input = React.forwardRef<any, Props>((props, ref) => {
           onFocus={props.onFocus}
           onInvalid={props.onInvalid}
         />
-
-        {props.label !== "" ? (
-          <label className={styles.label} htmlFor={props.name}>
-            {props.label}
-          </label>
-        ) : null}
       </div>
       {props.helperText && !props.isInvalid ? (
         <Text
@@ -122,17 +125,20 @@ const Input = React.forwardRef<any, Props>((props, ref) => {
   );
 });
 
-Input.displayName = "Input";
+GhostInput.displayName = "GhostInput";
 
-Input.defaultProps = {
+GhostInput.defaultProps = {
   className: "",
   label: "Label",
   type: "text",
+  value: "",
+  currency: "$",
   required: false,
   autoFocus: false,
   isInvalid: false,
   errorMessage: "",
+  placeholder: "",
   hideSpinButton: true,
 } as Partial<Props>;
 
-export default Input;
+export default GhostInput;

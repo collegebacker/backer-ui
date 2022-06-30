@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface Props$d {
+interface Props$e {
     className?: string;
     style?: React.CSSProperties;
     mode?: "primary" | "accent" | "outline" | "ghost";
@@ -20,17 +20,17 @@ interface Props$d {
     onSubmit?: (event: any) => void;
     onKeyPress?: (event: any) => void;
 }
-declare const Button: React.ForwardRefExoticComponent<Props$d & React.RefAttributes<any>>;
+declare const Button: React.ForwardRefExoticComponent<Props$e & React.RefAttributes<any>>;
 
-interface Props$c {
+interface Props$d {
     className?: string;
     style?: React.CSSProperties;
     name: IconTypes;
     color?: string;
 }
-declare const Icon: React.FC<Props$c>;
+declare const Icon: React.FC<Props$d>;
 
-interface Props$b {
+interface Props$c {
     className?: string;
     type?: "text" | "password" | "number" | "email";
     required?: boolean;
@@ -55,7 +55,31 @@ interface Props$b {
     onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
     onInvalid?: (event: React.FormEvent<HTMLInputElement>) => void;
 }
-declare const Input: React.ForwardRefExoticComponent<Props$b & React.RefAttributes<any>>;
+declare const Input: React.ForwardRefExoticComponent<Props$c & React.RefAttributes<any>>;
+
+interface Props$b {
+    className?: string;
+    type?: "text" | "password" | "number" | "email" | "money";
+    required?: boolean;
+    name: string;
+    label?: string;
+    value?: string;
+    autoFocus?: boolean;
+    placeholder?: string;
+    isInvalid?: boolean;
+    errorMessage?: string;
+    helperText?: string;
+    id?: string;
+    tabIndex?: number;
+    currency?: string;
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    onSubmit?: (event: React.FormEvent<HTMLInputElement>) => void;
+    onEnterKeyPress?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+    onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
+    onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
+    onInvalid?: (event: React.FormEvent<HTMLInputElement>) => void;
+}
+declare const GhostInput: React.ForwardRefExoticComponent<Props$b & React.RefAttributes<any>>;
 
 interface Props$a {
     tabIndex?: number;
@@ -143,7 +167,7 @@ declare const Divider: React.FC<Props$4>;
 interface Props$3 {
     className?: string;
     style?: React.CSSProperties;
-    tag: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span" | "a" | "ul" | "ol" | "li";
+    tag: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span" | "a" | "ul" | "ol" | "li" | "label";
     context?: "app" | "marketing";
     appStyle?: AppTypographyTypes;
     marketingStyle?: MarketingTypographyTypes;
@@ -185,4 +209,4 @@ interface Props {
 }
 declare const ModalButtons: React.FC<Props>;
 
-export { ArrowButton, Button, ChipsSlider, CodeInput, Divider, DotPagination, Icon, Input, Logo, Modal, ModalButtons, SliderWrapper, Spinner, Text };
+export { ArrowButton, Button, ChipsSlider, CodeInput, Divider, DotPagination, GhostInput, Icon, Input, Logo, Modal, ModalButtons, SliderWrapper, Spinner, Text };

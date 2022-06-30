@@ -1,7 +1,7 @@
-import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
 
 import { Button } from "..";
+import React from "react";
 import icons from "../Icon/icons.json";
 
 localStorage.clear();
@@ -40,7 +40,6 @@ Primary.args = {
   disabled: false,
   busy: false,
   busyLabel: "",
-  // target: text("label", "Hello Storybook"),
 };
 
 export const Secondary = Template.bind({});

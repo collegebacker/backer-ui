@@ -1,6 +1,5 @@
 import React from "react";
 import Text from "../Text";
-
 import styles from "./styles.module.scss";
 
 export interface Props {
@@ -86,15 +85,32 @@ const CodeInput = React.forwardRef<any, Props>((props, ref) => {
     }
   }, []);
 
+  const findNewCharacter = (currentVal: string, newVal: string) => {
+    const newNums = currentVal
+      .split("")
+      .map((char) => {
+        if (char === newVal) {
+          return "";
+        }
+        return char;
+      })
+      .join("");
+
+    return newNums !== "" ? newNums : newVal;
+  };
+
   const handleOnChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     index: number
   ) => {
     // allow only numbers
     if (e.target.value.match(/^[0-9]*$/)) {
+      // find new number in the array
+      const cleanedVal = findNewCharacter(e.target.value, nums[index]);
+
       setNums((prev) => {
         const newNums = [...prev];
-        newNums[index] = e.target.value;
+        newNums[index] = cleanedVal;
         return newNums;
       });
 
@@ -111,27 +127,21 @@ const CodeInput = React.forwardRef<any, Props>((props, ref) => {
         inputsRefs.current[index].blur();
       }
     }
-
-    if (props.onChange) {
-      props.onChange(inputsRefs.current.map((item) => item?.value).join(""));
-    }
-
-    // const newNums = [...nums];
-    // newNums[index] = e.target.value;
-    // setNums(newNums);
   };
 
   const handleKeyPress = (
     event: React.KeyboardEvent<HTMLInputElement>,
     index: number
   ) => {
-    // console.log(nums[index]);
-
     if (event.key == "Backspace") {
       // console.log(index, inputsRefs.current[index].value);
 
       if (index > 0 && inputsRefs.current[index].value === "") {
         inputsRefs.current[index - 1].focus();
+      }
+
+      if (index === 0 && inputsRefs.current[index].value === "") {
+        inputsRefs.current[index].focus();
       }
 
       // clear current input and handle onChange
@@ -183,6 +193,12 @@ const CodeInput = React.forwardRef<any, Props>((props, ref) => {
 
     props.onResend(event);
   };
+
+  React.useEffect(() => {
+    if (props.onChange) {
+      props.onChange(nums.join(""));
+    }
+  }, [nums]);
 
   return (
     <div

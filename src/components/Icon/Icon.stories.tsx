@@ -1,9 +1,8 @@
-import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
-
-import iconJSON from "./icons.json";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
 
 import { Icon } from "..";
+import React from "react";
+import iconJSON from "./icons.json";
 
 localStorage.clear();
 

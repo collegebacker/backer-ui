@@ -1,7 +1,7 @@
-import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Button, CodeInput, Text } from "..";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
 
-import { CodeInput, Text, Button } from "..";
+import React from "react";
 
 export default {
   title: "Forms/CodeInput",
@@ -53,7 +53,8 @@ const ConfirmTemplate: ComponentStory<typeof CodeInput> = (args) => {
           ref={codeInputRef}
           onChange={(code: string) => {
             setCode(code);
-            console.log(`testCode: ${testCode}`, `code: ${code}`);
+            // console.log(`testCode: ${testCode}`, `code: ${code}`);
+            console.log(code.length, testCode.length);
           }}
           onResend={() => {
             alert("resend");
