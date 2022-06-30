@@ -110,9 +110,6 @@ const WithoutButtonTemplate: ComponentStory<typeof CodeInput> = (args) => {
       <CodeInput
         {...args}
         isInvalid={isInvalid}
-        onFocus={() => {
-          setIsInvalid(false);
-        }}
         onChange={(code: string) => {
           console.log(`testCode: ${testCode}`, `code: ${code}`);
           if (code.length === testCode.length) {
@@ -122,6 +119,8 @@ const WithoutButtonTemplate: ComponentStory<typeof CodeInput> = (args) => {
             } else {
               setIsInvalid(true);
             }
+          } else {
+            setIsInvalid(false);
           }
         }}
         onResend={() => {
