@@ -51,11 +51,12 @@ const ConfirmTemplate: ComponentStory<typeof CodeInput> = (args) => {
         <CodeInput
           {...args}
           isInvalid={isInvalid}
-          onFocus={() => {
-            setIsInvalid(false);
-          }}
           onChange={(code: string) => {
             setCode(code);
+
+            if (code.length !== testCode.length) {
+              setIsInvalid(false);
+            }
           }}
           onResend={() => {
             alert("resend");
