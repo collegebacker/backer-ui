@@ -1,14 +1,13 @@
-import React from "react";
-import styles from "./styles.module.scss";
-
-import { gsap } from "gsap";
-import { Draggable } from "gsap/dist/Draggable";
-import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
-import { InertiaPlugin } from "gsap-bonus/InertiaPlugin";
-
-import { waitForScrollEnd } from "../../utils";
 import { useDidMountEffect, usePrevious } from "../../hooks";
+
 import ArrowButton from "../ArrowButton";
+import { Draggable } from "gsap/dist/Draggable";
+import { InertiaPlugin } from "gsap-bonus/InertiaPlugin";
+import React from "react";
+import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
+import { gsap } from "gsap";
+import styles from "./styles.module.scss";
+import { waitForScrollEnd } from "../../utils";
 
 /////////////////////////////////
 //////// TYPES AND PROPS ////////
@@ -32,6 +31,8 @@ export interface Props {
   spaceBetween?: number;
   caption?: boolean;
   cardFontSize?: number;
+  overlayGradientsClassName?: string;
+  hideOverlayGradients?: boolean;
   onChange?: (index: number) => void;
 }
 
@@ -50,6 +51,9 @@ const ChipsSlider: React.FC<Props> = (props) => {
   const arrowLeftRef = React.useRef<HTMLDivElement>(null);
   const arrowRightRef = React.useRef<HTMLDivElement>(null);
 
+  const overlayGradientLeftRef = React.useRef<HTMLDivElement>(null);
+  const overlayGradientRightRef = React.useRef<HTMLDivElement>(null);
+
   // States
   const [sliderViewState, setSliderViewWidthState] = React.useState(0);
 
@@ -61,7 +65,7 @@ const ChipsSlider: React.FC<Props> = (props) => {
   const [activeIndex, setActiveIndex] = React.useState(props.defaultIndex);
   const prevIndex = usePrevious(activeIndex);
 
-  const [onThrowComplete, setOnThrowComplete] = React.useState(true);
+  const [isThrowComplete, setIsThrowComplete] = React.useState(true);
   const [isDragLoaded, setIsDragLoaded] = React.useState(false);
   const [snapPoints, setSnapPoints] = React.useState([]);
 
@@ -83,7 +87,8 @@ const ChipsSlider: React.FC<Props> = (props) => {
       borderColor: getComputedStyle(document.documentElement).getPropertyValue(
         "--color-accent-500"
       ),
-      duration: 0.1,
+      duration: 0.2,
+      ease: "power3.In",
     });
   };
 
@@ -98,6 +103,7 @@ const ChipsSlider: React.FC<Props> = (props) => {
         "--color-main-200"
       ),
       duration: 0.4,
+      ease: "power3.Out",
     });
   };
 
@@ -141,6 +147,18 @@ const ChipsSlider: React.FC<Props> = (props) => {
       sliderContainerRef.current.style.overflow = "hidden";
     } else {
       sliderContainerRef.current.style.overflow = "visible";
+    }
+
+    const gradientLeftBox =
+      overlayGradientLeftRef.current.getBoundingClientRect();
+
+    // console.log("gradientLeft", gradientLeftBox);
+    if (gradientLeftBox.x <= 0) {
+      overlayGradientLeftRef.current.style.visibility =
+        overlayGradientRightRef.current.style.visibility = "hidden";
+    } else {
+      overlayGradientLeftRef.current.style.visibility =
+        overlayGradientRightRef.current.style.visibility = "visible";
     }
   };
 
@@ -204,6 +222,8 @@ const ChipsSlider: React.FC<Props> = (props) => {
     const sliderViewWidth = sliderViewRef.current.offsetWidth;
 
     const updateOnDrag = () => {
+      // console.log("updateOnDrag");
+
       sliderItemWrapRefs.current.forEach((item, index) => {
         const itemXLeftEdge =
           item.getBoundingClientRect().right -
@@ -234,21 +254,27 @@ const ChipsSlider: React.FC<Props> = (props) => {
 
     Draggable.create(sliderRef.current, {
       type: "scrollLeft",
-      edgeResistance: 0.9,
+      edgeResistance: 0.8,
       inertia: true,
-      maxDuration: 0.6,
+      maxDuration: 0.1,
       throwProps: true,
-      throwResistance: 0.2,
+      throwResistance: 0.4,
       snap: snapPoints,
 
       onDragStart: () => {
+        // console.log("drag start");
         setIsScrollSnap(false);
-        setOnThrowComplete(false);
+        setIsThrowComplete(false);
       },
+      // onDragEnd: () => {
+      //   // console.log("drag end");
+      //   // setIsThrowComplete(true);
+      // },
       onDrag: updateOnDrag,
       onThrowUpdate: updateOnDrag,
       onThrowComplete: () => {
-        setOnThrowComplete(true);
+        // console.log("isThrowComplete");
+        setIsThrowComplete(true);
       },
     });
 
@@ -314,12 +340,12 @@ const ChipsSlider: React.FC<Props> = (props) => {
 
   //
   const handleCardClick = (clickedIndex: number) => {
-    if (onThrowComplete) {
+    if (isThrowComplete) {
       // neutralizing the right margin of the slider
       if (clickedIndex > activeIndex) {
-        scrollToSelectedIndex(clickedIndex, 0.4);
+        scrollToSelectedIndex(clickedIndex, 0.3);
       } else {
-        scrollToSelectedIndex(clickedIndex, 0.4);
+        scrollToSelectedIndex(clickedIndex, 0.3);
       }
 
       setActiveIndex(clickedIndex);
@@ -411,6 +437,19 @@ const ChipsSlider: React.FC<Props> = (props) => {
         }}
       />
       <div className={`${styles.sliderWrap}`} ref={sliderViewRef}>
+        {!props.hideOverlayGradients ? (
+          <>
+            <div
+              className={`${styles.leftGradient} ${props.overlayGradientsClassName}`}
+              ref={overlayGradientLeftRef}
+            />
+            <div
+              className={`${styles.rightGradient} ${props.overlayGradientsClassName}`}
+              ref={overlayGradientRightRef}
+            />
+          </>
+        ) : null}
+
         {props.showGuidelines ? (
           <>
             <div
@@ -518,6 +557,8 @@ const ChipsSlider: React.FC<Props> = (props) => {
 ChipsSlider.defaultProps = {
   containerClassName: "",
   arrowsClassName: "",
+  overlayGradientsClassName: "",
+  hideOverlayGradients: false,
   defaultIndex: 0,
   spaceBetween: 20,
   activeCardScale: 1.3,

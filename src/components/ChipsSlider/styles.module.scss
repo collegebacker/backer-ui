@@ -26,42 +26,42 @@
   outline-color: var(--color-accent-transparent-200);
   transition: outline-offset 0.2s ease, outline-color 0.2s ease;
 
-  div:first-child {
-    height: auto;
-  }
+  // div:first-child {
+  //   height: auto;
+  // }
 
   &::-webkit-scrollbar {
     display: none;
   }
+}
 
-  &::after,
-  &::before {
-    pointer-events: none;
-    z-index: 2;
-    content: "";
-    position: absolute;
-    top: 0;
-    width: 40px;
-    height: 100%;
-  }
+.leftGradient,
+.rightGradient {
+  pointer-events: none;
+  z-index: 2;
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 40px;
+  height: 100%;
+}
 
-  &::after {
-    left: 0;
-    background: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 1),
-      rgba(255, 255, 255, 0)
-    );
-  }
+.leftGradient {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0)
+  );
+}
 
-  &::before {
-    right: 0;
-    background: linear-gradient(
-      to left,
-      rgba(255, 255, 255, 1),
-      rgba(255, 255, 255, 0)
-    );
-  }
+.rightGradient {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0)
+  );
 }
 
 .slider {
