@@ -10150,15 +10150,17 @@ var ChipsSlider = function (props) {
         else {
             sliderContainerRef.current.style.overflow = "visible";
         }
-        var gradientLeftBox = overlayGradientLeftRef.current.getBoundingClientRect();
         // console.log("gradientLeft", gradientLeftBox);
-        if (gradientLeftBox.x <= 0) {
-            overlayGradientLeftRef.current.style.visibility =
-                overlayGradientRightRef.current.style.visibility = "hidden";
-        }
-        else {
-            overlayGradientLeftRef.current.style.visibility =
-                overlayGradientRightRef.current.style.visibility = "visible";
+        if (!props.alwaysShowOverlayGradients && !props.hideOverlayGradients) {
+            var gradientLeftBox = overlayGradientLeftRef.current.getBoundingClientRect();
+            if (gradientLeftBox.x <= 0) {
+                overlayGradientLeftRef.current.style.visibility =
+                    overlayGradientRightRef.current.style.visibility = "hidden";
+            }
+            else {
+                overlayGradientLeftRef.current.style.visibility =
+                    overlayGradientRightRef.current.style.visibility = "visible";
+            }
         }
     };
     // Prevent scroll
@@ -10419,7 +10421,7 @@ var ChipsSlider = function (props) {
                                     fontSize: "".concat(props.cardFontSize, "px"),
                                 } }, item.label))));
                 })))),
-        props.caption ? (React__default["default"].createElement("div", { className: modules_efc4e723$7.itemCaption },
+        props.showCaption ? (React__default["default"].createElement("div", { className: modules_efc4e723$7.itemCaption },
             React__default["default"].createElement("span", null, props.items[activeIndex].caption))) : null));
 };
 ChipsSlider.defaultProps = {
@@ -10427,6 +10429,7 @@ ChipsSlider.defaultProps = {
     arrowsClassName: "",
     overlayGradientsClassName: "",
     hideOverlayGradients: false,
+    alwaysShowOverlayGradients: false,
     defaultIndex: 0,
     spaceBetween: 20,
     activeCardScale: 1.3,
@@ -10434,7 +10437,7 @@ ChipsSlider.defaultProps = {
     cardHeight: 76,
     cardFontSize: 20,
     showGuidelines: false,
-    caption: true,
+    showCaption: true,
 };
 
 var css$6 = ".styles_module_sliderContainer__4ef36e16 {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n}\n.styles_module_sliderContainer__4ef36e16:after, .styles_module_sliderContainer__4ef36e16:before {\n  z-index: 1;\n  content: \"\";\n  top: -2px;\n  position: absolute;\n  width: 40px;\n  height: calc(100% - 36px);\n}\n.styles_module_sliderContainer__4ef36e16:after {\n  left: -40px;\n  background-image: linear-gradient(to right, white, transparent);\n}\n.styles_module_sliderContainer__4ef36e16:before {\n  right: -40px;\n  background-image: linear-gradient(to left, white, transparent);\n}\n.styles_module_sliderContainer__4ef36e16:focus-visible {\n  outline: none !important;\n  border: none !important;\n}\n.styles_module_sliderContainer__4ef36e16:focus-visible .styles_module_pagination__4ef36e16 {\n  outline: 2px solid var(--color-accent-transparent-200);\n  outline-offset: 10px;\n  border-radius: 5px;\n}\n\n.styles_module_slider__4ef36e16 {\n  overflow-x: hidden;\n  position: relative;\n  display: inline-block;\n  -ms-scroll-snap-type: x mandatory;\n      scroll-snap-type: x mandatory;\n  scroll-padding-left: 40px;\n  scroll-padding-right: 40px;\n  margin-left: -40px;\n  margin-right: -40px;\n  outline-offset: 5px;\n  outline-color: var(--color-accent-transparent-200);\n}\n.styles_module_slider__4ef36e16::-webkit-scrollbar {\n  display: none;\n}\n.styles_module_slider__4ef36e16 > div:first-child {\n  margin-left: 40px;\n}\n.styles_module_slider__4ef36e16:hover, .styles_module_slider__4ef36e16:focus {\n  border: none !important;\n  outline: none !important;\n}\n\n.styles_module_sliderCards__4ef36e16 {\n  margin-left: 1px;\n  display: flex;\n  flex-wrap: nowrap;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n}\n\n.styles_module_cardWrap__4ef36e16 {\n  scroll-snap-align: start;\n}\n\n.styles_module_paginationWrap__4ef36e16 {\n  display: flex;\n  justify-content: center;\n  margin-top: 32px;\n}\n\n.styles_module_pagination__4ef36e16 {\n  outline-color: var(--color-accent-transparent-200);\n  transition: outline-offset 0.2s ease, outline-color 0.2s ease;\n}\n\n.styles_module_arrowButton__4ef36e16 {\n  z-index: 2;\n  position: absolute;\n  top: calc(50% - 40px);\n  transform: translateY(-50%);\n}\n\n.styles_module_lastCard__4ef36e16 {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  padding: 30px;\n  border: 1px solid var(--color-main-500);\n  border-radius: 15px;\n}\n.styles_module_lastCard__content__4ef36e16 {\n  display: flex;\n  align-items: center;\n}\n.styles_module_lastCard__text__4ef36e16 {\n  font-family: \"ABCMarfa\", sans-serif;\n  font-weight: 300;\n  font-size: 17px;\n  line-height: 130%;\n  margin-right: 15px;\n}\n.styles_module_lastCard__icon__4ef36e16 {\n  flex: 1 0 auto;\n}";

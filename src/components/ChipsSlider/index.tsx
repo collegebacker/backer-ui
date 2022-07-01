@@ -29,10 +29,11 @@ export interface Props {
   cardHeight?: number;
   activeCardScale?: number;
   spaceBetween?: number;
-  caption?: boolean;
+  showCaption?: boolean;
   cardFontSize?: number;
   overlayGradientsClassName?: string;
   hideOverlayGradients?: boolean;
+  alwaysShowOverlayGradients?: boolean;
   onChange?: (index: number) => void;
 }
 
@@ -149,16 +150,18 @@ const ChipsSlider: React.FC<Props> = (props) => {
       sliderContainerRef.current.style.overflow = "visible";
     }
 
-    const gradientLeftBox =
-      overlayGradientLeftRef.current.getBoundingClientRect();
-
     // console.log("gradientLeft", gradientLeftBox);
-    if (gradientLeftBox.x <= 0) {
-      overlayGradientLeftRef.current.style.visibility =
-        overlayGradientRightRef.current.style.visibility = "hidden";
-    } else {
-      overlayGradientLeftRef.current.style.visibility =
-        overlayGradientRightRef.current.style.visibility = "visible";
+    if (!props.alwaysShowOverlayGradients && !props.hideOverlayGradients) {
+      const gradientLeftBox =
+        overlayGradientLeftRef.current.getBoundingClientRect();
+
+      if (gradientLeftBox.x <= 0) {
+        overlayGradientLeftRef.current.style.visibility =
+          overlayGradientRightRef.current.style.visibility = "hidden";
+      } else {
+        overlayGradientLeftRef.current.style.visibility =
+          overlayGradientRightRef.current.style.visibility = "visible";
+      }
     }
   };
 
@@ -545,7 +548,7 @@ const ChipsSlider: React.FC<Props> = (props) => {
         </div>
       </div>
 
-      {props.caption ? (
+      {props.showCaption ? (
         <div className={styles.itemCaption}>
           <span>{props.items[activeIndex].caption}</span>
         </div>
@@ -559,6 +562,7 @@ ChipsSlider.defaultProps = {
   arrowsClassName: "",
   overlayGradientsClassName: "",
   hideOverlayGradients: false,
+  alwaysShowOverlayGradients: false,
   defaultIndex: 0,
   spaceBetween: 20,
   activeCardScale: 1.3,
@@ -566,7 +570,7 @@ ChipsSlider.defaultProps = {
   cardHeight: 76,
   cardFontSize: 20,
   showGuidelines: false,
-  caption: true,
+  showCaption: true,
 } as Partial<Props>;
 
 export default ChipsSlider;

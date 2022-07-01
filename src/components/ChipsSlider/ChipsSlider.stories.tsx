@@ -1,7 +1,7 @@
-import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
 
 import { ChipsSlider } from "..";
+import React from "react";
 
 localStorage.clear();
 
@@ -18,6 +18,11 @@ const Template: ComponentStory<typeof ChipsSlider> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
+  defaultIndex: 0,
+  hideOverlayGradients: true,
+  alwaysShowOverlayGradients: false,
+  showGuidelines: false,
+  showCaption: true,
   items: [
     {
       label: "💸",
