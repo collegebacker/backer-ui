@@ -120,6 +120,8 @@ interface Props$8 {
     spaceBetween?: number;
     caption?: boolean;
     cardFontSize?: number;
+    overlayGradientsClassName?: string;
+    hideOverlayGradients?: boolean;
     onChange?: (index: number) => void;
 }
 declare const ChipsSlider: React.FC<Props$8>;

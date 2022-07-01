@@ -16,6 +16,8 @@ export interface Props {
     spaceBetween?: number;
     caption?: boolean;
     cardFontSize?: number;
+    overlayGradientsClassName?: string;
+    hideOverlayGradients?: boolean;
     onChange?: (index: number) => void;
 }
 declare const ChipsSlider: React.FC<Props>;
