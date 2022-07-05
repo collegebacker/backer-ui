@@ -8,6 +8,7 @@ export interface Props {
 }
 
 const AccordionItem: React.FC<Props> = (props) => {
+  const contentEl = React.useRef(null);
   const [isOpen, setIsOpen] = React.useState(false);
 
   const haandleOpen = () => {
@@ -39,7 +40,13 @@ const AccordionItem: React.FC<Props> = (props) => {
           </svg>
         </div>
       </div>
-      <div className={`${styles.content}`}>
+      <div
+        className={`${styles.content}`}
+        ref={contentEl}
+        style={{
+          height: isOpen ? `${contentEl.current.scrollHeight}px` : "0px",
+        }}
+      >
         <div className={styles.contentWrap}>{props.content}</div>
       </div>
     </div>
