@@ -19,7 +19,7 @@ const Template: ComponentStory<typeof ChipsSlider> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   defaultIndex: 0,
-  hideOverlayGradients: true,
+  hideOverlayGradients: false,
   alwaysShowOverlayGradients: false,
   showGuidelines: false,
   showCaption: true,
