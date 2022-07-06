@@ -568,7 +568,7 @@ ChipsSlider.defaultProps = {
   activeCardScale: 1.3,
   cardWidth: 76,
   cardHeight: 76,
-  cardFontSize: 20,
+  cardFontSize: 17,
   showGuidelines: false,
   showCaption: true,
 } as Partial<Props>;
