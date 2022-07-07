@@ -1,0 +1,20 @@
+.wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.divider {
+  position: relative;
+  z-index: 10;
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-main-500);
+  opacity: 0.12;
+}
