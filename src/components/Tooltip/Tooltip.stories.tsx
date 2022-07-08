@@ -1,17 +1,17 @@
-import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
 
-import { Divider } from "..";
+import React from "react";
+import { Tooltip } from "..";
 
 localStorage.clear();
 
 export default {
-  title: "Misc/Divider",
-  component: Divider,
-} as ComponentMeta<typeof Divider>;
+  title: "Misc/Tooltip",
+  component: Tooltip,
+} as ComponentMeta<typeof Tooltip>;
 
-const Template: ComponentStory<typeof Divider> = (args) => (
-  <Divider {...args} />
+const Template: ComponentStory<typeof Tooltip> = (args) => (
+  <Tooltip {...args} />
 );
 
 export const Default = Template.bind({});

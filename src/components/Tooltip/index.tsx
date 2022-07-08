@@ -1,16 +1,24 @@
 import React from "react";
 import styles from "./styles.module.scss";
 
+import Icon from "../Icon";
+
 export interface Props {
   className?: string;
 }
 
-const Divider: React.FC<Props> = (props) => {
-  return <div className={`${styles.divider} ${props.className}`} />;
+const Tooltip: React.FC<Props> = (props) => {
+  return (
+    <aside className={`${styles.container} ${props.className}`}>
+      <button>
+        <Icon name="question" />
+      </button>
+    </aside>
+  );
 };
 
-Divider.defaultProps = {
+Tooltip.defaultProps = {
   className: "",
 } as Partial<Props>;
 
-export default Divider;
+export default Tooltip;
