@@ -27,15 +27,15 @@
 
   --color-service-error-main: #f54e5d;
   --color-service-error-dark: #a8333b;
-  --color-service-error-light: #ffebef;
+  --color-service-error-light: #ffeef1;
 
   --color-service-warning-main: #ffca64;
   --color-service-warning-dark: #d07408;
   --color-service-warning-light: #fff6e4;
 
-  --color-service-success-main: #2feea9;
-  --color-service-success-dark: #09896a;
-  --color-service-success-light: #e3fbeb;
+  --color-service-success-main: #d3fb60;
+  --color-service-success-dark: #588909;
+  --color-service-success-light: #f5fced;
 
   --gradient-peach: radial-gradient(
     50% 50% at 50% 50%,

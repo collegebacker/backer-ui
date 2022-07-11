@@ -34,6 +34,11 @@ const Input = React.forwardRef<any, Props>((props, ref) => {
 
   const [val, setVal] = React.useState(props.value);
 
+  React.useImperativeHandle(ref, () => ({
+    getValue: () => val,
+    setValue: (value: string) => setVal(value),
+  }));
+
   React.useEffect(() => {
     if (props.isInvalid && inputRef.current) {
       inputRef.current.focus();

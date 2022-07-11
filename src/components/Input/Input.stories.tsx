@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 
-import { Input } from "..";
+import { Input, Button } from "..";
 import React from "react";
 
 export default {
@@ -12,7 +12,31 @@ const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
 
 export const Default = Template.bind({});
 
-Default.args = {
+const SetValueUseImperativeHandleTemplate: ComponentStory<typeof Input> = (
+  args
+) => {
+  const ref = React.useRef<any>(null);
+
+  return (
+    <>
+      <Input ref={ref} {...args} />
+
+      <Button
+        label="Set Value"
+        style={{
+          marginTop: "40px",
+        }}
+        onClick={() => {
+          ref.current.setValue("Hello");
+        }}
+      />
+    </>
+  );
+};
+
+export const useImperativeHandle = SetValueUseImperativeHandleTemplate.bind({});
+
+useImperativeHandle.args = {
   isInvalid: false,
   autoFocus: false,
   required: false,
