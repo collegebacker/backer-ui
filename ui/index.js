@@ -230,6 +230,10 @@ n(css$e,{});
 var Input = React__default["default"].forwardRef(function (props, ref) {
     var inputRef = React__default["default"].useRef(null);
     var _a = React__default["default"].useState(props.value), val = _a[0], setVal = _a[1];
+    React__default["default"].useImperativeHandle(ref, function () { return ({
+        getValue: function () { return val; },
+        setValue: function (value) { return setVal(value); },
+    }); });
     React__default["default"].useEffect(function () {
         if (props.isInvalid && inputRef.current) {
             inputRef.current.focus();
