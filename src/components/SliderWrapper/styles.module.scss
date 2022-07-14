@@ -37,7 +37,7 @@ $card-radius: 15px;
     .pagination {
       outline: 2px solid var(--color-accent-transparent-200);
       outline-offset: 10px;
-      border-radius: $radius-s;
+      border-radius: var(--radius-s);
     }
   }
 }
@@ -112,7 +112,7 @@ $card-radius: 15px;
   align-items: center;
   padding: 30px;
   border: 1px solid var(--color-main-500);
-  border-radius: $radius-m;
+  border-radius: var(--radius-l);
 
   &__content {
     display: flex;

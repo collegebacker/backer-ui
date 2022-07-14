@@ -1,0 +1,39 @@
+.wrap {
+  position: relative;
+  display: flex;
+  padding: 20px;
+  border-radius: var(--radius-m);
+}
+
+.icon {
+  margin-right: 20px;
+  flex: 0 1 24px;
+}
+
+.text {
+  flex: 1;
+}
+
+.success {
+  background-color: var(--color-service-success-light);
+}
+
+.warning {
+  background-color: var(--color-service-warning-light);
+}
+
+.error {
+  background-color: var(--color-service-error-light);
+}
+
+.success-outline {
+  border: 1px solid var(--color-service-success-dark);
+}
+
+.warning-outline {
+  border: 1px solid var(--color-service-warning-dark);
+}
+
+.error-outline {
+  border: 1px solid var(--color-service-error-dark);
+}

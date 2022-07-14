@@ -35,7 +35,7 @@
   min-height: 200px;
   max-height: calc(100% - 40px);
   padding: 30px;
-  border-radius: $radius-m;
+  border-radius: var(--radius-l);
   opacity: 0;
   transform: translate(-50%, -50%) scale(0.95);
   background-color: var(--color-main-0);
