@@ -14,3 +14,6 @@ export { default as Spinner } from "./Spinner";
 export { default as Modal } from "./Modal";
 export { default as ModalButtons } from "./ModalButtons";
 export { default as Accordion } from "./Accordion";
+export { default as WarnMesssage } from "./WarnMesssage";
+export { default as InfoMesssage } from "./InfoMesssage";
+export { default as ActionMesssage } from "./ActionMesssage";

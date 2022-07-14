@@ -62,7 +62,7 @@
   // bottom: 100%;
   padding: 30px 30px;
   // border: 1px solid black;
-  border-radius: $radius-m $radius-m 0 0;
+  border-radius: var(--radius-l) var(--radius-l) 0 0;
   background-color: var(--color-main-0);
   width: 100%;
 
