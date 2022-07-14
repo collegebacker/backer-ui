@@ -8,6 +8,8 @@ export interface Props {
   type?: "success" | "error" | "warning";
   outline?: boolean;
   text?: string;
+  tabIndex?: number;
+  onClick?: () => void;
 }
 
 const setIcon = (type: "success" | "error" | "warning") => {
@@ -60,6 +62,11 @@ const WarnMesssage: React.FC<Props> = (props) => {
       className={`${styles.wrap} ${
         styles[`${props.outline ? `${props.type}-outline` : props.type}`]
       } ${props.className}`}
+      style={{
+        cursor: props.onClick ? "pointer" : "default",
+      }}
+      tabIndex={props.tabIndex}
+      onClick={props.onClick}
     >
       <svg
         width="24"

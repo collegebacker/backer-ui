@@ -16,3 +16,4 @@ export { default as ModalButtons } from "./ModalButtons";
 export { default as Accordion } from "./Accordion";
 export { default as WarnMesssage } from "./WarnMesssage";
 export { default as InfoMesssage } from "./InfoMesssage";
+export { default as ActionMesssage } from "./ActionMesssage";

@@ -6,40 +6,21 @@ import Text from "../Text";
 
 export interface Props {
   className?: string;
-  orientation?: "left" | "right";
   mode?: "outline" | "grey" | "velvet" | "peach";
-  icon?: IconTypes;
-  emoji?: string;
   title?: string;
   caption?: string;
   tabIndex?: number;
   onClick?: () => void;
 }
 
-const WarnMesssage: React.FC<Props> = (props) => {
+const ActionMesssage: React.FC<Props> = (props) => {
   return (
     <section
       className={`${styles.wrap} ${props.className} ${styles[props.mode]}`}
-      style={{
-        flexDirection: props.orientation === "left" ? "row" : "row-reverse",
-        cursor: props.onClick ? "pointer" : "default",
-      }}
       onClick={props.onClick}
       tabIndex={props.tabIndex}
     >
-      {props.emoji === "" ? (
-        <Icon name={props.icon} />
-      ) : (
-        <span className={styles.emoji}>{props.emoji}</span>
-      )}
-
-      <div
-        className={styles.content}
-        style={{
-          marginLeft: props.orientation === "right" ? "0" : "20px",
-          marginRight: props.orientation === "left" ? "0" : "20px",
-        }}
-      >
+      <div className={styles.content}>
         <Text
           tag="span"
           context="app"
@@ -57,19 +38,19 @@ const WarnMesssage: React.FC<Props> = (props) => {
           {props.caption}
         </Text>
       </div>
+
+      <Icon name="chevron-right" className={styles.arrow} />
     </section>
   );
 };
 
-WarnMesssage.defaultProps = {
+ActionMesssage.defaultProps = {
   className: "",
-  orientation: "left",
   mode: "outline",
   title: "Hi! I'm the info message. I show you things you need to know.",
   caption:
     "This is a caption. You can use it to explain more about the message.",
-  emoji: "",
-  icon: "mail",
+  tabIndex: 0,
 } as Partial<Props>;
 
-export default WarnMesssage;
+export default ActionMesssage;
