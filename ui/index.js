@@ -13998,7 +13998,6 @@ Popup.defaultProps = {
 var Modal = React__default["default"].forwardRef(function (props, ref) {
     var _a = React__default["default"].useState(props.isOpen), isOpen = _a[0], setIsOpen = _a[1];
     var _b = React__default["default"].useState(false), isMobileBreakpoint = _b[0], setIsMobileBreakpoint = _b[1];
-    // const [popupEl, setPopupEl] = React.useState<HTMLDivElement | null>(null);
     //////////////
     // IMPERIAL //
     //////////////
@@ -14037,7 +14036,7 @@ var Modal = React__default["default"].forwardRef(function (props, ref) {
             document.body.style.overflow = "hidden";
         }
         else {
-            document.body.style.overflow = "auto";
+            document.body.style.overflow = "";
         }
     }, [isOpen]);
     var handleOnCloseClick = function () {
