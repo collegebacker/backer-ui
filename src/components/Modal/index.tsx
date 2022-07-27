@@ -21,7 +21,6 @@ export interface Props {
 const Modal = React.forwardRef<any, Props>((props, ref) => {
   const [isOpen, setIsOpen] = React.useState(props.isOpen);
   const [isMobileBreakpoint, setIsMobileBreakpoint] = React.useState(false);
-  // const [popupEl, setPopupEl] = React.useState<HTMLDivElement | null>(null);
 
   //////////////
   // IMPERIAL //
@@ -69,7 +68,7 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = "";
     }
   }, [isOpen]);
 
