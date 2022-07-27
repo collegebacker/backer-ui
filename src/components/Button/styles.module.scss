@@ -11,7 +11,8 @@
   outline: none;
   background: none;
   text-decoration: none;
-  transition: background 0.16s ease, border 0.16s ease, color 0.16s ease;
+  transition: background 0.16s ease, border 0.16s ease, color 0.2s ease,
+    opacity 0.16s ease;
 }
 
 .text {
@@ -169,6 +170,6 @@
 }
 
 .disabled {
-  pointer-events: none;
-  opacity: 0.2;
+  pointer-events: none !important;
+  opacity: 0.2 !important;
 }
