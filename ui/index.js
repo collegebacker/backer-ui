@@ -13887,12 +13887,13 @@ var Popup = React__default["default"].forwardRef(function (props, ref) {
     // USE EFFECTS //
     /////////////////
     React__default["default"].useEffect(function () {
+        var _a;
         if (props.isOpen) {
-            modalWrapRef.current.focus();
-            modalWrapRef.current.style.display = "block";
+            (_a = modalWrapRef.current) === null || _a === void 0 ? void 0 : _a.focus();
+            // modalWrapRef.current.style.display = "block";
             gsapWithCSS.to(modalWrapRef.current, {
                 opacity: 1,
-                // display: "block",
+                display: "block",
                 pointerEvents: "all",
                 backgroundImage: "radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%)",
                 duration: 0.1,
@@ -13948,13 +13949,13 @@ var Popup = React__default["default"].forwardRef(function (props, ref) {
                     var results = trapContainers.map(function (trapContainer) {
                         return new Promise(function (resolve) {
                             var interval = setInterval(function () {
-                                console.log(trapContainer.contains(document.activeElement));
+                                // console.log(trapContainer.contains(document.activeElement));
                                 if (getComputedStyle(trapContainer).display !== "none") {
                                     console.log(getComputedStyle(trapContainer).display);
                                     resolve();
                                     clearInterval(interval);
                                 }
-                            }, 5);
+                            }, 500);
                         });
                     });
                     // Return a promise that resolves when all the trap containers are able to receive focus
