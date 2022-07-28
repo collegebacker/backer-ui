@@ -30,6 +30,7 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
   const popupRef = React.useRef<HTMLDivElement>(null);
   const gradients = React.useRef<HTMLDivElement>(null);
 
+  const [isShown, setIsShown] = React.useState(false);
   const [isAppeared, setIsAppeared] = React.useState(false);
 
   //////////////
@@ -67,12 +68,12 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
 
   React.useEffect(() => {
     if (props.isOpen) {
-      modalWrapRef.current.focus();
-      modalWrapRef.current.style.display = "block";
+      modalWrapRef.current?.focus();
+      // modalWrapRef.current.style.display = "block";
 
       gsap.to(modalWrapRef.current, {
         opacity: 1,
-        // display: "block",
+        display: "block",
         pointerEvents: "all",
         backgroundImage:
           "radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%)",
@@ -80,6 +81,7 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
         duration: 0.1,
         onComplete: () => {
           popupRef.current?.classList.add(styles.popup_show);
+          setIsShown(true);
         },
       });
       gsap.to(gradients.current, {
@@ -104,6 +106,7 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
         duration: 0.4,
         onStart: () => {
           popupRef.current?.classList.remove(styles.popup_show);
+          setIsShown(false);
         },
       });
       gsap.to(gradients.current, {
@@ -124,30 +127,15 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
 
   return (
     <>
-      <FocusTrap
-        containerElements={[popupRef.current]}
-        focusTrapOptions={{
-          allowOutsideClick: true,
-          clickOutsideDeactivates: true,
-          // @ts-ignore
-          checkCanFocusTrap: (trapContainers) => {
-            const results = trapContainers.map((trapContainer) => {
-              return new Promise<void>((resolve) => {
-                const interval = setInterval(() => {
-                  // console.log(trapContainer.contains(document.activeElement));
-                  if (getComputedStyle(trapContainer).display !== "none") {
-                    console.log(getComputedStyle(trapContainer).display);
-                    resolve();
-                    clearInterval(interval);
-                  }
-                }, 5);
-              });
-            });
-            // Return a promise that resolves when all the trap containers are able to receive focus
-            return Promise.all(results);
-          },
-        }}
-      />
+      {isShown ? (
+        <FocusTrap
+          containerElements={[popupRef.current]}
+          focusTrapOptions={{
+            allowOutsideClick: true,
+            clickOutsideDeactivates: true,
+          }}
+        />
+      ) : null}
       <aside
         role="dialog"
         tabIndex={-1}

@@ -13858,7 +13858,8 @@ var Popup = React__default["default"].forwardRef(function (props, ref) {
     var modalWrapRef = React__default["default"].useRef(null);
     var popupRef = React__default["default"].useRef(null);
     var gradients = React__default["default"].useRef(null);
-    var _a = React__default["default"].useState(false), isAppeared = _a[0], setIsAppeared = _a[1];
+    var _a = React__default["default"].useState(false), isShown = _a[0], setIsShown = _a[1];
+    var _b = React__default["default"].useState(false), isAppeared = _b[0], setIsAppeared = _b[1];
     //////////////
     // IMPERIAL //
     //////////////
@@ -13887,18 +13888,20 @@ var Popup = React__default["default"].forwardRef(function (props, ref) {
     // USE EFFECTS //
     /////////////////
     React__default["default"].useEffect(function () {
+        var _a;
         if (props.isOpen) {
-            modalWrapRef.current.focus();
-            modalWrapRef.current.style.display = "block";
+            (_a = modalWrapRef.current) === null || _a === void 0 ? void 0 : _a.focus();
+            // modalWrapRef.current.style.display = "block";
             gsapWithCSS.to(modalWrapRef.current, {
                 opacity: 1,
-                // display: "block",
+                display: "block",
                 pointerEvents: "all",
                 backgroundImage: "radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%)",
                 duration: 0.1,
                 onComplete: function () {
                     var _a;
                     (_a = popupRef.current) === null || _a === void 0 ? void 0 : _a.classList.add(modules_efc4e723$6.popup_show);
+                    setIsShown(true);
                 },
             });
             gsapWithCSS.to(gradients.current, {
@@ -13923,6 +13926,7 @@ var Popup = React__default["default"].forwardRef(function (props, ref) {
                 onStart: function () {
                     var _a;
                     (_a = popupRef.current) === null || _a === void 0 ? void 0 : _a.classList.remove(modules_efc4e723$6.popup_show);
+                    setIsShown(false);
                 },
             });
             gsapWithCSS.to(gradients.current, {
@@ -13940,27 +13944,10 @@ var Popup = React__default["default"].forwardRef(function (props, ref) {
     // RENDERING //
     ///////////////
     return (React__default["default"].createElement(React__default["default"].Fragment, null,
-        React__default["default"].createElement(focusTrapReact, { containerElements: [popupRef.current], focusTrapOptions: {
+        isShown ? (React__default["default"].createElement(focusTrapReact, { containerElements: [popupRef.current], focusTrapOptions: {
                 allowOutsideClick: true,
                 clickOutsideDeactivates: true,
-                // @ts-ignore
-                checkCanFocusTrap: function (trapContainers) {
-                    var results = trapContainers.map(function (trapContainer) {
-                        return new Promise(function (resolve) {
-                            var interval = setInterval(function () {
-                                console.log(trapContainer.contains(document.activeElement));
-                                if (getComputedStyle(trapContainer).display !== "none") {
-                                    console.log(getComputedStyle(trapContainer).display);
-                                    resolve();
-                                    clearInterval(interval);
-                                }
-                            }, 5);
-                        });
-                    });
-                    // Return a promise that resolves when all the trap containers are able to receive focus
-                    return Promise.all(results);
-                },
-            } }),
+            } })) : null,
         React__default["default"].createElement("aside", { role: "dialog", tabIndex: -1, "aria-modal": true, "aria-hidden": false, ref: modalWrapRef, className: "".concat(modules_efc4e723$6.modalWrap), style: __assign({}, props.style) },
             React__default["default"].createElement("section", { ref: popupRef, className: "".concat(modules_efc4e723$6.popup, " ").concat(!props.customWidth && props.customWidth === 0
                     ? modules_efc4e723$6.popup_maxLayout
