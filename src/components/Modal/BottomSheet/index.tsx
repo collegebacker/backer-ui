@@ -2,7 +2,6 @@ import React from "react";
 import gsap from "gsap";
 import { Draggable } from "gsap/dist/Draggable";
 import { InertiaPlugin } from "gsap-bonus/InertiaPlugin";
-import FocusTrap from "focus-trap-react";
 
 import styles from "./styles.module.scss";
 import Header from "../Header";
@@ -147,10 +146,12 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
 
   React.useEffect(() => {
     if (props.isOpen) {
-      modalWrapRef.current.style.pointerEvents = "all";
       modalWrapRef.current.focus();
+      modalWrapRef.current.style.display = "block";
 
       gsap.to(modalWrapRef.current, {
+        // display: "block",
+        pointerEvents: "all",
         opacity: 1,
         duration: 0.1,
       });
@@ -172,9 +173,9 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
 
       setIsOpen(true);
     } else {
-      modalWrapRef.current.style.pointerEvents = "none";
-
       gsap.to(modalWrapRef.current, {
+        display: "none",
+        pointerEvents: "none",
         opacity: 0,
         duration: 0.1,
         delay: 0.4,
@@ -200,49 +201,26 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
   ///////////////
 
   return (
-    <>
-      <FocusTrap
-        containerElements={[bottomSheetRef.current]}
-        focusTrapOptions={{
-          allowOutsideClick: true,
-          // @ts-ignore
-          checkCanFocusTrap: (trapContainers) => {
-            const results = trapContainers.map((trapContainer) => {
-              return new Promise<void>((resolve) => {
-                const interval = setInterval(() => {
-                  if (getComputedStyle(trapContainer).visibility !== "hidden") {
-                    resolve();
-                    clearInterval(interval);
-                  }
-                }, 5);
-              });
-            });
-            // Return a promise that resolves when all the trap containers are able to receive focus
-            return Promise.all(results);
-          },
-        }}
-      />
-      <aside
-        role="dialog"
-        tabIndex={-1}
-        aria-modal
-        aria-hidden={false}
-        ref={modalWrapRef}
-        className={`${styles.modalWrap}`}
-        style={{ ...props.style }}
-      >
-        <section ref={bottomSheetRef} className={`${styles.bottomSheetWrap}`}>
-          <Header
-            onCloseClick={handleCloseClick}
-            title={props.title}
-            smallTitle={props.smallTitle}
-            noMaxWidth={true}
-          />
-          <div className={styles.contentWrapper}>{props.children}</div>
-        </section>
-        <div ref={backgroundRef} className={styles.background}></div>
-      </aside>
-    </>
+    <aside
+      role="dialog"
+      tabIndex={-1}
+      aria-modal
+      aria-hidden={false}
+      ref={modalWrapRef}
+      className={`${styles.modalWrap}`}
+      style={{ ...props.style }}
+    >
+      <section ref={bottomSheetRef} className={`${styles.bottomSheetWrap}`}>
+        <Header
+          onCloseClick={handleCloseClick}
+          title={props.title}
+          smallTitle={props.smallTitle}
+          noMaxWidth={true}
+        />
+        <div className={styles.contentWrapper}>{props.children}</div>
+      </section>
+      <div ref={backgroundRef} className={styles.background}></div>
+    </aside>
   );
 });
 

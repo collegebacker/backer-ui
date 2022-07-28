@@ -10732,6 +10732,188 @@ Divider.defaultProps = {
     className: "",
 };
 
+var css$8 = ".styles_module_modalWrap__3c55a357 {\n  position: fixed;\n  z-index: 999;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100vh;\n  min-height: -webkit-fill-available;\n  opacity: 0;\n  pointer-events: none;\n}\n\n.styles_module_background__3c55a357 {\n  position: absolute;\n  z-index: 1;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-image: radial-gradient(circle at bottom, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.3) 100%);\n}\n.styles_module_background__3c55a357::after {\n  content: \"\";\n  position: absolute;\n  width: 900px;\n  height: 1400px;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%) scale(1) rotate(-45deg);\n  background-image: var(--gradient-peach);\n}\n.styles_module_background__3c55a357::before {\n  content: \"\";\n  position: absolute;\n  width: 700px;\n  height: 1000px;\n  top: 30%;\n  left: 90%;\n  transform: translate(-50%, -50%) scale(1) rotate(-33deg);\n  background-image: var(--gradient-velvet);\n}\n\n.styles_module_bottomSheetWrap__3c55a357 {\n  z-index: 2;\n  display: flex;\n  flex-direction: column;\n  position: absolute;\n  left: 0;\n  padding: 30px 30px;\n  border-radius: var(--radius-l) var(--radius-l) 0 0;\n  background-color: var(--color-main-0);\n  width: 100%;\n}\n.styles_module_bottomSheetWrap__3c55a357::after {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n          user-select: none;\n  content: \"\";\n  position: absolute;\n  left: 0;\n  bottom: -390px;\n  width: 100%;\n  height: 400px;\n  background-color: var(--color-main-0);\n}";
+var modules_efc4e723$8 = {"modalWrap":"styles_module_modalWrap__3c55a357","background":"styles_module_background__3c55a357","bottomSheetWrap":"styles_module_bottomSheetWrap__3c55a357"};
+n(css$8,{});
+
+var css$7 = ".styles_module_header__dd8790c2 {\n  display: flex;\n  flex-direction: column;\n  margin-bottom: 30px;\n}\n.styles_module_header_maxWidth__dd8790c2 {\n  max-width: 440px;\n}\n@media screen and (max-width: 620px) {\n  .styles_module_header__dd8790c2 {\n    flex-direction: row-reverse;\n  }\n}\n\n.styles_module_titleWrap__dd8790c2 {\n  position: relative;\n  display: flex;\n  flex: 1 1 auto;\n  width: 100%;\n  margin: 0 auto;\n}\n@media screen and (max-width: 620px) {\n  .styles_module_titleWrap__dd8790c2 {\n    max-width: none;\n  }\n}\n\n.styles_module_title__dd8790c2 {\n  padding-right: 50px;\n  margin: 0 auto;\n  width: 100%;\n}\n\n.styles_module_closeButton__dd8790c2 {\n  cursor: pointer;\n  z-index: 3;\n  position: absolute;\n  top: 25px;\n  right: 25px;\n  width: 40px;\n  height: 40px;\n  margin-left: 20px;\n  border: none;\n  outline: none;\n  background: none;\n  border-radius: 50%;\n}\n.styles_module_closeButton__wrap__dd8790c2 {\n  display: flex;\n  justify-content: flex-end;\n  width: 100%;\n}\n@media screen and (max-width: 620px) {\n  .styles_module_closeButton__wrap__dd8790c2 {\n    width: auto;\n  }\n}\n.styles_module_closeButton__background__dd8790c2 {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n  opacity: 0;\n  transform: scale(0.7);\n  background-color: var(--color-main-transparent-50);\n  transition: opacity 0.1s ease, transform 0.1s ease;\n}\n.styles_module_closeButton__dd8790c2:before, .styles_module_closeButton__dd8790c2:after {\n  content: \"\";\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  width: 1px;\n  height: 24px;\n  border-radius: 40px;\n  background-color: var(--color-main-500);\n  transition: height 0.1s ease;\n}\n.styles_module_closeButton__dd8790c2:before {\n  transform: translate(-50%, -50%) rotate(45deg);\n}\n.styles_module_closeButton__dd8790c2:after {\n  transform: translate(-50%, -50%) rotate(-45deg);\n}\n.styles_module_closeButton__dd8790c2:hover:before, .styles_module_closeButton__dd8790c2:hover:after {\n  height: 22px;\n}\n.styles_module_closeButton__dd8790c2:hover .styles_module_closeButton__background__dd8790c2 {\n  opacity: 1;\n  transform: scale(1);\n}\n.styles_module_closeButton__dd8790c2:focus-visible {\n  border: 1px solid var(--color-main-500);\n}";
+var modules_efc4e723$7 = {"header":"styles_module_header__dd8790c2","header_maxWidth":"styles_module_header_maxWidth__dd8790c2","titleWrap":"styles_module_titleWrap__dd8790c2","title":"styles_module_title__dd8790c2","closeButton":"styles_module_closeButton__dd8790c2","closeButton__wrap":"styles_module_closeButton__wrap__dd8790c2","closeButton__background":"styles_module_closeButton__background__dd8790c2"};
+n(css$7,{});
+
+var Header = function (props) {
+    return (React__default["default"].createElement("div", { className: modules_efc4e723$7.header },
+        React__default["default"].createElement("button", { className: modules_efc4e723$7.closeButton, onClick: props.onCloseClick },
+            React__default["default"].createElement("div", { className: modules_efc4e723$7.closeButton__background })),
+        props.title ? (React__default["default"].createElement("div", { className: "".concat(modules_efc4e723$7.titleWrap) },
+            React__default["default"].createElement(Text, { className: "".concat(modules_efc4e723$7.title, " ").concat(!props.noMaxWidth ? modules_efc4e723$7.header_maxWidth : ""), tag: "h2", context: "app", appStyle: props.smallTitle ? "title-small" : "title-large" }, props.title))) : null));
+};
+Header.defaultProps = {
+    title: "",
+    smallTitle: false,
+    noMaxWidth: false,
+};
+
+///////////////
+// COMPONENT //
+///////////////
+var BottomSheet = React__default["default"].forwardRef(function (props, ref) {
+    var modalWrapRef = React__default["default"].useRef(null);
+    var bottomSheetRef = React__default["default"].useRef(null);
+    var backgroundRef = React__default["default"].useRef(null);
+    var _a = React__default["default"].useState(props.isOpen), isOpen = _a[0], setIsOpen = _a[1];
+    var _b = React__default["default"].useState(false), isAppeared = _b[0], setIsAppeared = _b[1];
+    var _c = React__default["default"].useState(false), resize = _c[0], setResize = _c[1];
+    var applyOpenSheetPosition = function () {
+        var bottomSheet = bottomSheetRef.current;
+        if (bottomSheet.clientHeight > window.innerHeight) {
+            return props.topShift;
+        }
+        return window.innerHeight - bottomSheet.clientHeight;
+    };
+    var applyDragBounds = function () {
+        Draggable.exports.Draggable.get(bottomSheetRef.current).vars.bounds = {
+            minY: applyOpenSheetPosition(),
+            maxY: window.innerHeight - bottomSheetRef.current.clientHeight,
+        };
+    };
+    //////////////
+    // IMPERIAL //
+    //////////////
+    React__default["default"].useImperativeHandle(ref, function () { return ({
+        getRef: function () {
+            return bottomSheetRef.current;
+        },
+    }); });
+    //////////////
+    /// HOOKS ////
+    //////////////
+    useOutsideClick(bottomSheetRef, function () {
+        if (isAppeared && props.closeOutside && props.isMobileBreakpoint) {
+            // console.log("clicked outside");
+            props.onCloseClick();
+        }
+    });
+    //////////////
+    // HANDLERS //
+    //////////////
+    var handleCloseClick = function () {
+        props.onCloseClick();
+    };
+    /////////////////
+    // USE EFFECTS //
+    /////////////////
+    React__default["default"].useEffect(function () {
+        gsapWithCSS.set(bottomSheetRef.current, {
+            y: window.innerHeight,
+        });
+        var onResize = function () {
+            // console.log(resize);
+            setResize(!resize);
+            if (props.isOpen) {
+                gsapWithCSS.set(bottomSheetRef.current, {
+                    y: window.innerHeight - bottomSheetRef.current.clientHeight,
+                });
+                applyDragBounds();
+            }
+        };
+        window.addEventListener("resize", onResize);
+        return function () {
+            window.removeEventListener("resize", onResize);
+        };
+    }, []);
+    React__default["default"].useEffect(function () {
+        gsapWithCSS.registerPlugin(Draggable.exports.Draggable, InertiaPlugin);
+        var dragStartPoint = 0;
+        if (bottomSheetRef.current) {
+            Draggable.exports.Draggable.create(bottomSheetRef.current, {
+                type: "y",
+                allowEventDefault: true,
+                inertia: true,
+                edgeResistance: 0.8,
+                maxDuration: 0.3,
+                onDragStart: function () {
+                    dragStartPoint = bottomSheetRef.current.getBoundingClientRect().top;
+                },
+                onDrag: function () {
+                    var sheetTopPosition = bottomSheetRef.current.getBoundingClientRect().top;
+                    var dragDifference = sheetTopPosition - dragStartPoint;
+                    if (sheetTopPosition - props.topShift > props.topShift &&
+                        dragDifference > 70) {
+                        Draggable.exports.Draggable.get(bottomSheetRef.current).disable();
+                        props.onCloseDrag();
+                    }
+                },
+            });
+        }
+    }, []);
+    useDidMountEffect(function () {
+        applyDragBounds();
+    }, [isOpen]);
+    React__default["default"].useEffect(function () {
+        if (props.isOpen) {
+            modalWrapRef.current.focus();
+            modalWrapRef.current.style.display = "block";
+            gsapWithCSS.to(modalWrapRef.current, {
+                // display: "block",
+                pointerEvents: "all",
+                opacity: 1,
+                duration: 0.1,
+            });
+            gsapWithCSS.to(bottomSheetRef.current, {
+                y: applyOpenSheetPosition(),
+                duration: 0.4,
+                ease: "expo.out",
+                onComplete: function () {
+                    Draggable.exports.Draggable.get(bottomSheetRef.current).enable();
+                },
+            });
+            gsapWithCSS.to(backgroundRef.current, {
+                opacity: 1,
+                duration: 0.4,
+                onStart: function () {
+                    setIsAppeared(true);
+                },
+            });
+            setIsOpen(true);
+        }
+        else {
+            gsapWithCSS.to(modalWrapRef.current, {
+                display: "none",
+                pointerEvents: "none",
+                opacity: 0,
+                duration: 0.1,
+                delay: 0.4,
+            });
+            gsapWithCSS.to(bottomSheetRef.current, {
+                y: window.innerHeight,
+                duration: 0.2,
+            });
+            gsapWithCSS.to(backgroundRef.current, {
+                opacity: 0,
+                duration: 0.4,
+                onStart: function () {
+                    setIsAppeared(false);
+                },
+            });
+            setIsOpen(false);
+        }
+    }, [props.isOpen]);
+    ///////////////
+    // RENDERING //
+    ///////////////
+    return (React__default["default"].createElement("aside", { role: "dialog", tabIndex: -1, "aria-modal": true, "aria-hidden": false, ref: modalWrapRef, className: "".concat(modules_efc4e723$8.modalWrap), style: __assign({}, props.style) },
+        React__default["default"].createElement("section", { ref: bottomSheetRef, className: "".concat(modules_efc4e723$8.bottomSheetWrap) },
+            React__default["default"].createElement(Header, { onCloseClick: handleCloseClick, title: props.title, smallTitle: props.smallTitle, noMaxWidth: true }),
+            React__default["default"].createElement("div", { className: modules_efc4e723$8.contentWrapper }, props.children)),
+        React__default["default"].createElement("div", { ref: backgroundRef, className: modules_efc4e723$8.background })));
+});
+BottomSheet.defaultProps = {
+    className: "",
+    title: "",
+    topShift: 20,
+    onCloseClick: function () { },
+};
+
 var propTypes = {exports: {}};
 
 var reactIs = {exports: {}};
@@ -13665,204 +13847,6 @@ FocusTrap.defaultProps = {
 };
 var focusTrapReact = FocusTrap;
 
-var css$8 = ".styles_module_modalWrap__3c55a357 {\n  position: fixed;\n  z-index: 999;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100vh;\n  min-height: -webkit-fill-available;\n  opacity: 0;\n  pointer-events: none;\n}\n\n.styles_module_background__3c55a357 {\n  position: absolute;\n  z-index: 1;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-image: radial-gradient(circle at bottom, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.3) 100%);\n}\n.styles_module_background__3c55a357::after {\n  content: \"\";\n  position: absolute;\n  width: 900px;\n  height: 1400px;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%) scale(1) rotate(-45deg);\n  background-image: var(--gradient-peach);\n}\n.styles_module_background__3c55a357::before {\n  content: \"\";\n  position: absolute;\n  width: 700px;\n  height: 1000px;\n  top: 30%;\n  left: 90%;\n  transform: translate(-50%, -50%) scale(1) rotate(-33deg);\n  background-image: var(--gradient-velvet);\n}\n\n.styles_module_bottomSheetWrap__3c55a357 {\n  z-index: 2;\n  display: flex;\n  flex-direction: column;\n  position: absolute;\n  left: 0;\n  padding: 30px 30px;\n  border-radius: var(--radius-l) var(--radius-l) 0 0;\n  background-color: var(--color-main-0);\n  width: 100%;\n}\n.styles_module_bottomSheetWrap__3c55a357::after {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n          user-select: none;\n  content: \"\";\n  position: absolute;\n  left: 0;\n  bottom: -390px;\n  width: 100%;\n  height: 400px;\n  background-color: var(--color-main-0);\n}";
-var modules_efc4e723$8 = {"modalWrap":"styles_module_modalWrap__3c55a357","background":"styles_module_background__3c55a357","bottomSheetWrap":"styles_module_bottomSheetWrap__3c55a357"};
-n(css$8,{});
-
-var css$7 = ".styles_module_header__dd8790c2 {\n  display: flex;\n  flex-direction: column;\n  margin-bottom: 30px;\n}\n.styles_module_header_maxWidth__dd8790c2 {\n  max-width: 440px;\n}\n@media screen and (max-width: 620px) {\n  .styles_module_header__dd8790c2 {\n    flex-direction: row-reverse;\n  }\n}\n\n.styles_module_titleWrap__dd8790c2 {\n  position: relative;\n  display: flex;\n  flex: 1 1 auto;\n  width: 100%;\n  margin: 0 auto;\n}\n@media screen and (max-width: 620px) {\n  .styles_module_titleWrap__dd8790c2 {\n    max-width: none;\n  }\n}\n\n.styles_module_title__dd8790c2 {\n  padding-right: 50px;\n  margin: 0 auto;\n  width: 100%;\n}\n\n.styles_module_closeButton__dd8790c2 {\n  cursor: pointer;\n  z-index: 3;\n  position: absolute;\n  top: 25px;\n  right: 25px;\n  width: 40px;\n  height: 40px;\n  margin-left: 20px;\n  border: none;\n  outline: none;\n  background: none;\n  border-radius: 50%;\n}\n.styles_module_closeButton__wrap__dd8790c2 {\n  display: flex;\n  justify-content: flex-end;\n  width: 100%;\n}\n@media screen and (max-width: 620px) {\n  .styles_module_closeButton__wrap__dd8790c2 {\n    width: auto;\n  }\n}\n.styles_module_closeButton__background__dd8790c2 {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n  opacity: 0;\n  transform: scale(0.7);\n  background-color: var(--color-main-transparent-50);\n  transition: opacity 0.1s ease, transform 0.1s ease;\n}\n.styles_module_closeButton__dd8790c2:before, .styles_module_closeButton__dd8790c2:after {\n  content: \"\";\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  width: 1px;\n  height: 24px;\n  border-radius: 40px;\n  background-color: var(--color-main-500);\n  transition: height 0.1s ease;\n}\n.styles_module_closeButton__dd8790c2:before {\n  transform: translate(-50%, -50%) rotate(45deg);\n}\n.styles_module_closeButton__dd8790c2:after {\n  transform: translate(-50%, -50%) rotate(-45deg);\n}\n.styles_module_closeButton__dd8790c2:hover:before, .styles_module_closeButton__dd8790c2:hover:after {\n  height: 22px;\n}\n.styles_module_closeButton__dd8790c2:hover .styles_module_closeButton__background__dd8790c2 {\n  opacity: 1;\n  transform: scale(1);\n}\n.styles_module_closeButton__dd8790c2:focus-visible {\n  border: 1px solid var(--color-main-500);\n}";
-var modules_efc4e723$7 = {"header":"styles_module_header__dd8790c2","header_maxWidth":"styles_module_header_maxWidth__dd8790c2","titleWrap":"styles_module_titleWrap__dd8790c2","title":"styles_module_title__dd8790c2","closeButton":"styles_module_closeButton__dd8790c2","closeButton__wrap":"styles_module_closeButton__wrap__dd8790c2","closeButton__background":"styles_module_closeButton__background__dd8790c2"};
-n(css$7,{});
-
-var Header = function (props) {
-    return (React__default["default"].createElement("div", { className: modules_efc4e723$7.header },
-        React__default["default"].createElement("button", { className: modules_efc4e723$7.closeButton, onClick: props.onCloseClick },
-            React__default["default"].createElement("div", { className: modules_efc4e723$7.closeButton__background })),
-        props.title ? (React__default["default"].createElement("div", { className: "".concat(modules_efc4e723$7.titleWrap) },
-            React__default["default"].createElement(Text, { className: "".concat(modules_efc4e723$7.title, " ").concat(!props.noMaxWidth ? modules_efc4e723$7.header_maxWidth : ""), tag: "h2", context: "app", appStyle: props.smallTitle ? "title-small" : "title-large" }, props.title))) : null));
-};
-Header.defaultProps = {
-    title: "",
-    smallTitle: false,
-    noMaxWidth: false,
-};
-
-///////////////
-// COMPONENT //
-///////////////
-var BottomSheet = React__default["default"].forwardRef(function (props, ref) {
-    var modalWrapRef = React__default["default"].useRef(null);
-    var bottomSheetRef = React__default["default"].useRef(null);
-    var backgroundRef = React__default["default"].useRef(null);
-    var _a = React__default["default"].useState(props.isOpen), isOpen = _a[0], setIsOpen = _a[1];
-    var _b = React__default["default"].useState(false), isAppeared = _b[0], setIsAppeared = _b[1];
-    var _c = React__default["default"].useState(false), resize = _c[0], setResize = _c[1];
-    var applyOpenSheetPosition = function () {
-        var bottomSheet = bottomSheetRef.current;
-        if (bottomSheet.clientHeight > window.innerHeight) {
-            return props.topShift;
-        }
-        return window.innerHeight - bottomSheet.clientHeight;
-    };
-    var applyDragBounds = function () {
-        Draggable.exports.Draggable.get(bottomSheetRef.current).vars.bounds = {
-            minY: applyOpenSheetPosition(),
-            maxY: window.innerHeight - bottomSheetRef.current.clientHeight,
-        };
-    };
-    //////////////
-    // IMPERIAL //
-    //////////////
-    React__default["default"].useImperativeHandle(ref, function () { return ({
-        getRef: function () {
-            return bottomSheetRef.current;
-        },
-    }); });
-    //////////////
-    /// HOOKS ////
-    //////////////
-    useOutsideClick(bottomSheetRef, function () {
-        if (isAppeared && props.closeOutside && props.isMobileBreakpoint) {
-            // console.log("clicked outside");
-            props.onCloseClick();
-        }
-    });
-    //////////////
-    // HANDLERS //
-    //////////////
-    var handleCloseClick = function () {
-        props.onCloseClick();
-    };
-    /////////////////
-    // USE EFFECTS //
-    /////////////////
-    React__default["default"].useEffect(function () {
-        gsapWithCSS.set(bottomSheetRef.current, {
-            y: window.innerHeight,
-        });
-        var onResize = function () {
-            // console.log(resize);
-            setResize(!resize);
-            if (props.isOpen) {
-                gsapWithCSS.set(bottomSheetRef.current, {
-                    y: window.innerHeight - bottomSheetRef.current.clientHeight,
-                });
-                applyDragBounds();
-            }
-        };
-        window.addEventListener("resize", onResize);
-        return function () {
-            window.removeEventListener("resize", onResize);
-        };
-    }, []);
-    React__default["default"].useEffect(function () {
-        gsapWithCSS.registerPlugin(Draggable.exports.Draggable, InertiaPlugin);
-        var dragStartPoint = 0;
-        if (bottomSheetRef.current) {
-            Draggable.exports.Draggable.create(bottomSheetRef.current, {
-                type: "y",
-                allowEventDefault: true,
-                inertia: true,
-                edgeResistance: 0.8,
-                maxDuration: 0.3,
-                onDragStart: function () {
-                    dragStartPoint = bottomSheetRef.current.getBoundingClientRect().top;
-                },
-                onDrag: function () {
-                    var sheetTopPosition = bottomSheetRef.current.getBoundingClientRect().top;
-                    var dragDifference = sheetTopPosition - dragStartPoint;
-                    if (sheetTopPosition - props.topShift > props.topShift &&
-                        dragDifference > 70) {
-                        Draggable.exports.Draggable.get(bottomSheetRef.current).disable();
-                        props.onCloseDrag();
-                    }
-                },
-            });
-        }
-    }, []);
-    useDidMountEffect(function () {
-        applyDragBounds();
-    }, [isOpen]);
-    React__default["default"].useEffect(function () {
-        if (props.isOpen) {
-            modalWrapRef.current.style.pointerEvents = "all";
-            modalWrapRef.current.focus();
-            gsapWithCSS.to(modalWrapRef.current, {
-                opacity: 1,
-                duration: 0.1,
-            });
-            gsapWithCSS.to(bottomSheetRef.current, {
-                y: applyOpenSheetPosition(),
-                duration: 0.4,
-                ease: "expo.out",
-                onComplete: function () {
-                    Draggable.exports.Draggable.get(bottomSheetRef.current).enable();
-                },
-            });
-            gsapWithCSS.to(backgroundRef.current, {
-                opacity: 1,
-                duration: 0.4,
-                onStart: function () {
-                    setIsAppeared(true);
-                },
-            });
-            setIsOpen(true);
-        }
-        else {
-            modalWrapRef.current.style.pointerEvents = "none";
-            gsapWithCSS.to(modalWrapRef.current, {
-                opacity: 0,
-                duration: 0.1,
-                delay: 0.4,
-            });
-            gsapWithCSS.to(bottomSheetRef.current, {
-                y: window.innerHeight,
-                duration: 0.2,
-            });
-            gsapWithCSS.to(backgroundRef.current, {
-                opacity: 0,
-                duration: 0.4,
-                onStart: function () {
-                    setIsAppeared(false);
-                },
-            });
-            setIsOpen(false);
-        }
-    }, [props.isOpen]);
-    ///////////////
-    // RENDERING //
-    ///////////////
-    return (React__default["default"].createElement(React__default["default"].Fragment, null,
-        React__default["default"].createElement(focusTrapReact, { containerElements: [bottomSheetRef.current], focusTrapOptions: {
-                allowOutsideClick: true,
-                // @ts-ignore
-                checkCanFocusTrap: function (trapContainers) {
-                    var results = trapContainers.map(function (trapContainer) {
-                        return new Promise(function (resolve) {
-                            var interval = setInterval(function () {
-                                if (getComputedStyle(trapContainer).visibility !== "hidden") {
-                                    resolve();
-                                    clearInterval(interval);
-                                }
-                            }, 5);
-                        });
-                    });
-                    // Return a promise that resolves when all the trap containers are able to receive focus
-                    return Promise.all(results);
-                },
-            } }),
-        React__default["default"].createElement("aside", { role: "dialog", tabIndex: -1, "aria-modal": true, "aria-hidden": false, ref: modalWrapRef, className: "".concat(modules_efc4e723$8.modalWrap), style: __assign({}, props.style) },
-            React__default["default"].createElement("section", { ref: bottomSheetRef, className: "".concat(modules_efc4e723$8.bottomSheetWrap) },
-                React__default["default"].createElement(Header, { onCloseClick: handleCloseClick, title: props.title, smallTitle: props.smallTitle, noMaxWidth: true }),
-                React__default["default"].createElement("div", { className: modules_efc4e723$8.contentWrapper }, props.children)),
-            React__default["default"].createElement("div", { ref: backgroundRef, className: modules_efc4e723$8.background }))));
-});
-BottomSheet.defaultProps = {
-    className: "",
-    title: "",
-    topShift: 20,
-    onCloseClick: function () { },
-};
-
 var css$6 = ".styles_module_modalWrap__e31cfb38 {\n  position: fixed;\n  z-index: 999;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 10%);\n  pointer-events: none;\n  opacity: 0;\n}\n\n.styles_module_contentWrapper__e31cfb38 {\n  width: 100%;\n  margin: 0 auto;\n}\n\n.styles_module_popup__e31cfb38 {\n  position: absolute;\n  z-index: 2;\n  -webkit-backface-visibility: hidden;\n          backface-visibility: hidden;\n  display: flex;\n  flex-direction: column;\n  overflow-y: auto;\n  top: 50%;\n  left: 50%;\n  min-height: 200px;\n  max-height: calc(100% - 40px);\n  padding: 30px;\n  border-radius: var(--radius-l);\n  opacity: 0;\n  transform: translate(-50%, -50%) scale(0.95);\n  background-color: var(--color-main-0);\n  transition: opacity 0.3s ease, transform 0.3s ease;\n}\n.styles_module_popup__e31cfb38::-webkit-scrollbar {\n  width: 0;\n}\n.styles_module_popup_maxLayout__e31cfb38 {\n  width: calc(100% - 40px);\n  padding: 90px 30px 90px;\n  max-width: 660px;\n}\n.styles_module_popup_maxLayout__e31cfb38 .styles_module_contentWrapper__e31cfb38 {\n  max-width: 440px;\n}\n@media screen and (max-width: 620px) {\n  .styles_module_popup__e31cfb38 {\n    top: 0;\n    left: 0;\n    transform: none;\n    max-width: none;\n    width: 100%;\n    height: 100%;\n    padding: 30px 30px 80px;\n    max-height: none;\n    border-radius: 0;\n    background-color: var(--color-main-0);\n  }\n}\n.styles_module_popup_show__e31cfb38 {\n  transform: translate(-50%, -50%) scale(1);\n  opacity: 1;\n}\n@media screen and (max-width: 620px) {\n  .styles_module_popup_show__e31cfb38 {\n    transform: translate(0, 0) scale(1);\n  }\n}\n\n.styles_module_gradients__e31cfb38 {\n  z-index: 1;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%) scale(0.1);\n  width: 300px;\n  height: 300px;\n  opacity: 0;\n}\n\n.styles_module_gradient1__e31cfb38 {\n  position: absolute;\n  width: 1200px;\n  height: 1400px;\n  top: 50%;\n  left: 50%;\n  opacity: 0.8;\n  transform: translate(-50%, -50%) scale(1.2) rotate(45deg);\n  background-image: var(--gradient-peach);\n}\n\n.styles_module_gradient2__e31cfb38 {\n  position: absolute;\n  width: 700px;\n  height: 1000px;\n  top: 10%;\n  left: 90%;\n  opacity: 0.8;\n  transform: translate(-50%, -50%) scale(1.2) rotate(33deg);\n  background-image: var(--gradient-velvet);\n}";
 var modules_efc4e723$6 = {"modalWrap":"styles_module_modalWrap__e31cfb38","contentWrapper":"styles_module_contentWrapper__e31cfb38","popup":"styles_module_popup__e31cfb38","popup_maxLayout":"styles_module_popup_maxLayout__e31cfb38","popup_show":"styles_module_popup_show__e31cfb38","gradients":"styles_module_gradients__e31cfb38","gradient1":"styles_module_gradient1__e31cfb38","gradient2":"styles_module_gradient2__e31cfb38"};
 n(css$6,{});
@@ -13904,10 +13888,11 @@ var Popup = React__default["default"].forwardRef(function (props, ref) {
     /////////////////
     React__default["default"].useEffect(function () {
         if (props.isOpen) {
-            modalWrapRef.current.style.pointerEvents = "all";
             modalWrapRef.current.focus();
+            modalWrapRef.current.style.display = "block";
             gsapWithCSS.to(modalWrapRef.current, {
                 opacity: 1,
+                // display: "block",
                 pointerEvents: "all",
                 backgroundImage: "radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%)",
                 duration: 0.1,
@@ -13928,8 +13913,9 @@ var Popup = React__default["default"].forwardRef(function (props, ref) {
             });
         }
         else {
-            modalWrapRef.current.style.pointerEvents = "none";
+            // modalWrapRef.current.style.display = "none";
             gsapWithCSS.to(modalWrapRef.current, {
+                display: "none",
                 pointerEvents: "none",
                 opacity: 0,
                 backgroundImage: "radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 10%)",
@@ -13956,12 +13942,15 @@ var Popup = React__default["default"].forwardRef(function (props, ref) {
     return (React__default["default"].createElement(React__default["default"].Fragment, null,
         React__default["default"].createElement(focusTrapReact, { containerElements: [popupRef.current], focusTrapOptions: {
                 allowOutsideClick: true,
+                clickOutsideDeactivates: true,
                 // @ts-ignore
                 checkCanFocusTrap: function (trapContainers) {
                     var results = trapContainers.map(function (trapContainer) {
                         return new Promise(function (resolve) {
                             var interval = setInterval(function () {
-                                if (getComputedStyle(trapContainer).visibility !== "hidden") {
+                                console.log(trapContainer.contains(document.activeElement));
+                                if (getComputedStyle(trapContainer).display !== "none") {
+                                    console.log(getComputedStyle(trapContainer).display);
                                     resolve();
                                     clearInterval(interval);
                                 }
