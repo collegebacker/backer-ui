@@ -134,7 +134,7 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
             const results = trapContainers.map((trapContainer) => {
               return new Promise<void>((resolve) => {
                 const interval = setInterval(() => {
-                  console.log(trapContainer.contains(document.activeElement));
+                  // console.log(trapContainer.contains(document.activeElement));
                   if (getComputedStyle(trapContainer).display !== "none") {
                     console.log(getComputedStyle(trapContainer).display);
                     resolve();
