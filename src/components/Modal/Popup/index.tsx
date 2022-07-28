@@ -67,11 +67,12 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
 
   React.useEffect(() => {
     if (props.isOpen) {
-      modalWrapRef.current.style.pointerEvents = "all";
       modalWrapRef.current.focus();
+      modalWrapRef.current.style.display = "block";
 
       gsap.to(modalWrapRef.current, {
         opacity: 1,
+        // display: "block",
         pointerEvents: "all",
         backgroundImage:
           "radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%)",
@@ -92,9 +93,10 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
         ease: "circ.out",
       });
     } else {
-      modalWrapRef.current.style.pointerEvents = "none";
+      // modalWrapRef.current.style.display = "none";
 
       gsap.to(modalWrapRef.current, {
+        display: "none",
         pointerEvents: "none",
         opacity: 0,
         backgroundImage:
@@ -126,12 +128,15 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
         containerElements={[popupRef.current]}
         focusTrapOptions={{
           allowOutsideClick: true,
+          clickOutsideDeactivates: true,
           // @ts-ignore
           checkCanFocusTrap: (trapContainers) => {
             const results = trapContainers.map((trapContainer) => {
               return new Promise<void>((resolve) => {
                 const interval = setInterval(() => {
-                  if (getComputedStyle(trapContainer).visibility !== "hidden") {
+                  // console.log(trapContainer.contains(document.activeElement));
+                  if (getComputedStyle(trapContainer).display !== "none") {
+                    console.log(getComputedStyle(trapContainer).display);
                     resolve();
                     clearInterval(interval);
                   }
