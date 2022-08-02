@@ -270,13 +270,29 @@ Input.defaultProps = {
     hideSpinButton: true,
 };
 
-var css$g = ".styles_module_componentWrap__e27a4976 {\n  position: relative;\n  justify-content: flex-end;\n  display: flex;\n  flex-direction: column;\n}\n\n.styles_module_inputWrap__e27a4976 {\n  position: relative;\n  justify-content: flex-end;\n  display: flex;\n  flex-direction: column;\n}\n\n.styles_module_label__e27a4976 {\n  opacity: 0.3;\n  margin-bottom: 5px;\n}\n\n.styles_module_moneySign__e27a4976 {\n  font-family: \"ABCMarfa\", sans-serif;\n  font-weight: 200;\n  font-size: 40px;\n  line-height: 40px;\n  pointer-events: none;\n  position: absolute;\n  bottom: 14px;\n}\n\n.styles_module_input__e27a4976 {\n  font-family: \"ABCMarfa\", sans-serif;\n  font-weight: 200;\n  font-size: 40px;\n  line-height: 40px;\n  padding: 10px 8px;\n  height: 68px;\n  background: none;\n  border: none;\n  outline: none;\n  margin-left: -8px;\n  width: calc(100% + 8px);\n  border-radius: var(--radius-s);\n  transition: background-color 0.15s ease;\n}\n.styles_module_input__e27a4976::-moz-placeholder {\n  color: var(--color-main-transparent-80);\n}\n.styles_module_input__e27a4976::placeholder {\n  color: var(--color-main-transparent-80);\n}\n.styles_module_input__e27a4976:focus-visible {\n  background-color: rgba(0, 0, 0, 0.035);\n}\n\n.styles_module_helperText__e27a4976 {\n  color: var(--color-main-transparent-200);\n  margin-top: 10px;\n  line-height: 120%;\n}\n\n.styles_module_money__e27a4976 .styles_module_input__e27a4976 {\n  padding-left: 45px;\n}\n\n.styles_module_error__e27a4976 .styles_module_helperText__e27a4976 {\n  color: var(--color-service-error-main);\n}\n.styles_module_error__e27a4976 .styles_module_input__e27a4976 {\n  background-color: rgba(255, 68, 85, 0.06);\n}\n\n.styles_module_shake__e27a4976 {\n  -webkit-animation-name: styles_module_shakeAnimation__e27a4976;\n  animation-name: styles_module_shakeAnimation__e27a4976;\n  -webkit-animation-duration: 0.4s;\n  animation-duration: 0.4s;\n  -webkit-animation-iteration-count: 1;\n  animation-iteration-count: 1;\n  -webkit-animation-timing-function: ease;\n  animation-timing-function: ease;\n}\n\n@-webkit-keyframes styles_module_shakeAnimation__e27a4976 {\n  0% {\n    transform: translateX(0);\n  }\n  30% {\n    transform: translateX(-10px);\n  }\n  40% {\n    transform: translateX(10px);\n  }\n  60% {\n    transform: translateX(-10px);\n  }\n  100% {\n    transform: translateX(0);\n  }\n}\n\n@keyframes styles_module_shakeAnimation__e27a4976 {\n  0% {\n    transform: translateX(0);\n  }\n  30% {\n    transform: translateX(-10px);\n  }\n  40% {\n    transform: translateX(10px);\n  }\n  60% {\n    transform: translateX(-10px);\n  }\n  100% {\n    transform: translateX(0);\n  }\n}";
-var modules_efc4e723$g = {"componentWrap":"styles_module_componentWrap__e27a4976","inputWrap":"styles_module_inputWrap__e27a4976","label":"styles_module_label__e27a4976","moneySign":"styles_module_moneySign__e27a4976","input":"styles_module_input__e27a4976","helperText":"styles_module_helperText__e27a4976","money":"styles_module_money__e27a4976","error":"styles_module_error__e27a4976","shake":"styles_module_shake__e27a4976","shake-animation":"styles_module_shakeAnimation__e27a4976"};
+var css$g = ".styles_module_componentWrap__0fd4ed97 {\n  position: relative;\n  justify-content: flex-end;\n  display: flex;\n  flex-direction: column;\n}\n\n.styles_module_inputWrap__0fd4ed97 {\n  position: relative;\n  justify-content: flex-end;\n  display: flex;\n  flex-direction: column;\n}\n\n.styles_module_label__0fd4ed97 {\n  opacity: 0.3;\n  margin-bottom: 5px;\n}\n\n.styles_module_moneySign__0fd4ed97 {\n  font-family: \"ABCMarfa\", sans-serif;\n  font-weight: 200;\n  font-size: 40px;\n  line-height: 40px;\n  pointer-events: none;\n  position: absolute;\n  bottom: 14px;\n}\n\n.styles_module_input__0fd4ed97 {\n  font-family: \"ABCMarfa\", sans-serif;\n  font-weight: 200;\n  font-size: 40px;\n  line-height: 40px;\n  padding: 10px 8px;\n  height: 68px;\n  background: none;\n  border: none;\n  outline: none;\n  margin-left: -8px;\n  width: calc(100% + 8px);\n  border-radius: var(--radius-s);\n  transition: background-color 0.15s ease;\n}\n.styles_module_input__0fd4ed97::-moz-placeholder {\n  color: var(--color-main-transparent-80);\n}\n.styles_module_input__0fd4ed97::placeholder {\n  color: var(--color-main-transparent-80);\n}\n.styles_module_input__0fd4ed97:focus-visible {\n  background-color: rgba(0, 0, 0, 0.035);\n}\n.styles_module_input__0fd4ed97::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n\n.styles_module_helperText__0fd4ed97 {\n  color: var(--color-main-transparent-200);\n  margin-top: 10px;\n  line-height: 120%;\n}\n\n.styles_module_money__0fd4ed97 .styles_module_input__0fd4ed97 {\n  padding-left: 45px;\n}\n\n.styles_module_error__0fd4ed97 .styles_module_helperText__0fd4ed97 {\n  color: var(--color-service-error-main);\n}\n.styles_module_error__0fd4ed97 .styles_module_input__0fd4ed97 {\n  background-color: rgba(255, 68, 85, 0.06);\n}\n\n.styles_module_shake__0fd4ed97 {\n  -webkit-animation-name: styles_module_shakeAnimation__0fd4ed97;\n  animation-name: styles_module_shakeAnimation__0fd4ed97;\n  -webkit-animation-duration: 0.4s;\n  animation-duration: 0.4s;\n  -webkit-animation-iteration-count: 1;\n  animation-iteration-count: 1;\n  -webkit-animation-timing-function: ease;\n  animation-timing-function: ease;\n}\n\n@-webkit-keyframes styles_module_shakeAnimation__0fd4ed97 {\n  0% {\n    transform: translateX(0);\n  }\n  30% {\n    transform: translateX(-10px);\n  }\n  40% {\n    transform: translateX(10px);\n  }\n  60% {\n    transform: translateX(-10px);\n  }\n  100% {\n    transform: translateX(0);\n  }\n}\n\n@keyframes styles_module_shakeAnimation__0fd4ed97 {\n  0% {\n    transform: translateX(0);\n  }\n  30% {\n    transform: translateX(-10px);\n  }\n  40% {\n    transform: translateX(10px);\n  }\n  60% {\n    transform: translateX(-10px);\n  }\n  100% {\n    transform: translateX(0);\n  }\n}";
+var modules_efc4e723$g = {"componentWrap":"styles_module_componentWrap__0fd4ed97","inputWrap":"styles_module_inputWrap__0fd4ed97","label":"styles_module_label__0fd4ed97","moneySign":"styles_module_moneySign__0fd4ed97","input":"styles_module_input__0fd4ed97","helperText":"styles_module_helperText__0fd4ed97","money":"styles_module_money__0fd4ed97","error":"styles_module_error__0fd4ed97","shake":"styles_module_shake__0fd4ed97","shake-animation":"styles_module_shakeAnimation__0fd4ed97"};
 n(css$g,{});
 
 var GhostInput = React__default["default"].forwardRef(function (props, ref) {
     var inputRef = React__default["default"].useRef(null);
     var _a = React__default["default"].useState(props.value), val = _a[0], setVal = _a[1];
+    var convertTypes = function (type) {
+        switch (type) {
+            case "text":
+                return "text";
+            case "password":
+                return "password";
+            case "number":
+                return "number";
+            case "email":
+                return "email";
+            case "money":
+                return "text";
+            default:
+                return "text";
+        }
+    };
     React__default["default"].useEffect(function () {
         if (props.isInvalid && inputRef.current) {
             inputRef.current.focus();
@@ -284,8 +300,23 @@ var GhostInput = React__default["default"].forwardRef(function (props, ref) {
     }, [props.isInvalid]);
     var handleOnChange = function (e) {
         if (props.type === "money") {
-            var value = e.target.value.replace(/[^0-9]/g, "");
-            setVal(Number(value).toLocaleString("en-US"));
+            var cleanedVal = e.target.value.replace(/,/g, ".");
+            var ex = props.allowCents ? /^[0-9]+\.?[0-9]*$/ : /^[0-9]+$/;
+            if (cleanedVal.match(ex) || cleanedVal === "") {
+                var val_1 = cleanedVal.replace(/[^0-9.]/g, "");
+                var roundedVal = parseInt(val_1, 10);
+                if (roundedVal <= props.maximumMoney ||
+                    cleanedVal === "" ||
+                    !props.maximumMoney) {
+                    if (val_1.split(".")[1] && val_1.split(".")[1].length > 2) {
+                        var trimmmedVal = val_1.split(".")[0] + "." + val_1.split(".")[1].slice(0, 2);
+                        setVal(trimmmedVal);
+                    }
+                    else {
+                        setVal(val_1);
+                    }
+                }
+            }
         }
         if (props.type === "number") {
             var value = e.target.value.replace(/[^0-9]/g, "");
@@ -302,7 +333,7 @@ var GhostInput = React__default["default"].forwardRef(function (props, ref) {
         React__default["default"].createElement("div", { className: "".concat(modules_efc4e723$g.inputWrap) },
             props.type === "money" ? (React__default["default"].createElement("span", { className: modules_efc4e723$g.moneySign }, props.currency)) : null,
             props.label !== "" ? (React__default["default"].createElement(Text, { tag: "label", className: modules_efc4e723$g.label, htmlFor: props.name, context: "app", appStyle: "body-caption" }, props.label)) : null,
-            React__default["default"].createElement("input", { ref: inputRef, tabIndex: props.tabIndex, autoFocus: props.autoFocus, type: props.type, id: props.id ? props.id : props.name, name: props.name, className: "".concat(modules_efc4e723$g.input), placeholder: props.placeholder, value: val, required: props.required, onChange: handleOnChange, onSubmit: props.onSubmit, onBlur: props.onBlur, onFocus: props.onFocus, onInvalid: props.onInvalid })),
+            React__default["default"].createElement("input", { ref: inputRef, tabIndex: props.tabIndex, autoFocus: props.autoFocus, type: convertTypes(props.type), id: props.id ? props.id : props.name, name: props.name, className: "".concat(modules_efc4e723$g.input), placeholder: props.placeholder, value: val, required: props.required, onChange: handleOnChange, onSubmit: props.onSubmit, onBlur: props.onBlur, onFocus: props.onFocus, onInvalid: props.onInvalid })),
         props.helperText && !props.isInvalid ? (React__default["default"].createElement(Text, { className: modules_efc4e723$g.helperText, tag: "span", context: "app", appStyle: "body-caption" }, props.helperText)) : null,
         props.isInvalid ? (React__default["default"].createElement(Text, { className: modules_efc4e723$g.helperText, tag: "span", context: "app", appStyle: "body-caption" }, props.errorMessage)) : null));
 });
@@ -319,6 +350,8 @@ GhostInput.defaultProps = {
     errorMessage: "",
     placeholder: "",
     hideSpinButton: true,
+    allowCents: false,
+    maximumMoney: null,
 };
 
 var css$f = ".styles_module_componentWrap__1065295a {\n  position: relative;\n  justify-content: flex-end;\n  display: flex;\n  flex-direction: column;\n}\n\n.styles_module_input__1065295a {\n  height: 65px;\n  width: 35px;\n  margin-right: 5px;\n  text-align: center;\n  padding: 0;\n  padding-bottom: 5px;\n  font-family: \"Gza\", serif;\n  font-weight: 200;\n  font-size: 50px;\n  line-height: 120%;\n  background: none;\n  border: none;\n  outline: none;\n  border-radius: 0;\n  transition: all 0.15s ease;\n  box-shadow: 0 1px 0 0 var(--color-main-500);\n  -webkit-appearance: none;\n}\n.styles_module_input__1065295a::-moz-placeholder {\n  font-size: 50px;\n  color: rgba(0, 0, 0, 0.1);\n}\n.styles_module_input__1065295a::placeholder {\n  font-size: 50px;\n  color: rgba(0, 0, 0, 0.1);\n}\n.styles_module_input__1065295a:focus {\n  box-shadow: 0 2px 0 0 var(--color-main-500);\n}\n.styles_module_input__1065295a::-webkit-outer-spin-button, .styles_module_input__1065295a::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n.styles_module_input__1065295a input[type=number] {\n  -moz-appearance: textfield;\n}\n.styles_module_input__1065295a:last-child {\n  margin-right: 0;\n}\n\n.styles_module_helperText__1065295a {\n  color: var(--color-main-transparent-200);\n  max-width: 300px;\n  margin-top: 12px;\n  line-height: 120%;\n}\n\n.styles_module_resendSection__1065295a {\n  margin-top: 20px;\n  color: var(--color-main-100);\n}\n\n.styles_module_resendLink__1065295a {\n  cursor: pointer;\n  text-decoration: underline;\n  color: var(--color-main-500);\n  transition: all 0.15s ease;\n}\n.styles_module_resendLink__1065295a:hover {\n  color: var(--color-accent-500);\n}\n.styles_module_resendLink_disabled__1065295a {\n  opacity: 0.15;\n  pointer-events: none;\n  text-decoration: none;\n}\n\n.styles_module_error__1065295a .styles_module_input__1065295a {\n  box-shadow: 0 2px 0 0 var(--color-service-error-main);\n}\n.styles_module_error__1065295a .styles_module_helperText__1065295a {\n  color: var(--color-service-error-main);\n}\n\n.styles_module_shake__1065295a {\n  -webkit-animation-name: styles_module_shakeAnimation__1065295a;\n  animation-name: styles_module_shakeAnimation__1065295a;\n  -webkit-animation-duration: 0.4s;\n  animation-duration: 0.4s;\n  -webkit-animation-iteration-count: 1;\n  animation-iteration-count: 1;\n  -webkit-animation-timing-function: ease;\n  animation-timing-function: ease;\n}\n\n@-webkit-keyframes styles_module_shakeAnimation__1065295a {\n  0% {\n    transform: translateX(0);\n  }\n  30% {\n    transform: translateX(-10px);\n  }\n  40% {\n    transform: translateX(10px);\n  }\n  60% {\n    transform: translateX(-10px);\n  }\n  100% {\n    transform: translateX(0);\n  }\n}\n\n@keyframes styles_module_shakeAnimation__1065295a {\n  0% {\n    transform: translateX(0);\n  }\n  30% {\n    transform: translateX(-10px);\n  }\n  40% {\n    transform: translateX(10px);\n  }\n  60% {\n    transform: translateX(-10px);\n  }\n  100% {\n    transform: translateX(0);\n  }\n}";
