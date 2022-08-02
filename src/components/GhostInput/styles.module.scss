@@ -56,6 +56,11 @@
   &:focus-visible {
     background-color: rgba(0, 0, 0, 0.035);
   }
+
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 }
 
 .helperText {
