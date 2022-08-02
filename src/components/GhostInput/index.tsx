@@ -59,24 +59,25 @@ const GhostInput = React.forwardRef<any, Props>((props, ref) => {
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (props.type === "money") {
       const cleanedVal = e.target.value.replace(/,/g, ".");
-      const valBefore = cleanedVal.split(".")[0];
       const ex = props.allowCents ? /^[0-9]+\.?[0-9]*$/ : /^[0-9]+$/;
 
-      if (Number(valBefore) <= props.maximumMoney || cleanedVal === "") {
-        if (cleanedVal.match(ex) || cleanedVal === "") {
-          let val = cleanedVal.replace(/[^0-9.]/g, "");
+      if (cleanedVal.match(ex) || cleanedVal === "") {
+        let val = cleanedVal.replace(/[^0-9.]/g, "");
+        let roundedVal = parseInt(val, 10);
 
+        if (
+          roundedVal <= props.maximumMoney ||
+          cleanedVal === "" ||
+          !props.maximumMoney
+        ) {
           if (val.split(".")[1] && val.split(".")[1].length > 2) {
             let trimmmedVal =
               val.split(".")[0] + "." + val.split(".")[1].slice(0, 2);
             setVal(trimmmedVal);
           } else {
-            // clean all non-numeric characters
             setVal(val);
           }
         }
-      } else {
-        setVal(props.maximumMoney.toString());
       }
     }
 
