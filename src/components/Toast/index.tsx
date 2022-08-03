@@ -24,15 +24,15 @@ const ToastItem: React.FC<ItemProps> = (props) => {
   const [isShown, setIsShown] = React.useState(props.isShown);
   const [isHidden, setIsHidden] = React.useState(false);
 
-  const handleCloseOnClick = () => {
+  const handleCloseOnParentClick = () => {
     console.log(props);
-    if (props.params?.closeOnClick) {
+    if (props.params?.closeOnClick && !props.params?.dismissButton) {
       console.log("closeOnClick");
       setIsShown(false);
     }
   };
 
-  const handleCrossClick = () => {
+  const handleClose = () => {
     console.log("crossClick");
     setIsShown(false);
   };
@@ -42,7 +42,7 @@ const ToastItem: React.FC<ItemProps> = (props) => {
       className={`${styles.toastItemWrap} ${
         isShown ? styles.toastIn : styles.toastOut
       }`}
-      onClick={handleCloseOnClick}
+      onClick={handleCloseOnParentClick}
       onAnimationEnd={() => {
         if (!isShown) {
           console.log("onAnimationEnd");
@@ -56,25 +56,25 @@ const ToastItem: React.FC<ItemProps> = (props) => {
             {props.message}
           </Text>
 
-          <div className={styles.toastItem__buttons}>
-            {props.params?.dismissButton ? (
-              <Button
-                label="Dismiss"
-                size="small"
-                mode="outline"
-                style={{
-                  minWidth: "auto",
-                }}
-              />
-            ) : null}
-          </div>
+          {props.params?.dismissButton ? (
+            <div className={styles.toastItem__buttons}>
+              {props.params?.dismissButton ? (
+                <Button
+                  label="Dismiss"
+                  size="small"
+                  mode="outline"
+                  style={{
+                    minWidth: "auto",
+                  }}
+                  onClick={handleClose}
+                />
+              ) : null}
+            </div>
+          ) : null}
         </div>
 
         {props.params?.showCloseIcon ? (
-          <div
-            className={styles.toastItem__closeIcon}
-            onClick={handleCrossClick}
-          />
+          <div className={styles.toastItem__closeIcon} onClick={handleClose} />
         ) : null}
       </div>
     </div>

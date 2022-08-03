@@ -36,7 +36,7 @@ const Template: ComponentStory<typeof Toast> = (args) => {
         label="With dismiss button"
         onClick={() =>
           toastRef.current.showToast("I'm a toast with a dismiss button", {
-            closeOnClick: false,
+            // closeOnClick: false,
             showCloseIcon: true,
             dismissButton: true,
           })
