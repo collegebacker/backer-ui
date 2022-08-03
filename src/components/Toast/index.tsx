@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import styles from "./styles.module.scss";
 
 import Text from "../Text";
+import Button from "../Button";
 
 export interface Props {
   className?: string;
@@ -14,6 +15,7 @@ interface ItemProps {
     autoClose?: number | false;
     closeOnClick?: boolean;
     showCloseIcon?: boolean;
+    dismissButton?: boolean;
   };
   isShown?: boolean;
 }
@@ -53,6 +55,19 @@ const ToastItem: React.FC<ItemProps> = (props) => {
           <Text tag="p" context="app" appStyle="body-main">
             {props.message}
           </Text>
+
+          <div className={styles.toastItem__buttons}>
+            {props.params?.dismissButton ? (
+              <Button
+                label="Dismiss"
+                size="small"
+                mode="outline"
+                style={{
+                  minWidth: "auto",
+                }}
+              />
+            ) : null}
+          </div>
         </div>
 
         {props.params?.showCloseIcon ? (
@@ -76,6 +91,7 @@ const Toast = React.forwardRef<any, Props>((props, ref) => {
         autoClose?: number | false;
         closeOnClick?: boolean;
         showCloseIcon?: boolean;
+        dismissButton?: boolean;
       }
     ) => {
       setToasts([
@@ -86,6 +102,7 @@ const Toast = React.forwardRef<any, Props>((props, ref) => {
             autoClose: params?.autoClose ?? false,
             closeOnClick: params?.closeOnClick ?? true,
             showCloseIcon: params?.showCloseIcon ?? false,
+            dismissButton: params?.dismissButton ?? false,
           },
         },
       ]);

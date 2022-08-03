@@ -33,6 +33,11 @@ $mobile-breakpoint: 400px;
   max-height: 300px;
   margin-bottom: 10px;
 
+  &__buttons {
+    display: flex;
+    margin-top: 15px;
+  }
+
   &__closeIcon {
     cursor: pointer;
     position: relative;
@@ -42,7 +47,7 @@ $mobile-breakpoint: 400px;
     height: 30px;
     border-radius: 100px;
     background: transparent;
-    transition: all 0.2s ease;
+    transition: background-color 0.2s ease;
 
     &:after,
     &:before {
@@ -53,6 +58,7 @@ $mobile-breakpoint: 400px;
       width: 20px;
       height: 1px;
       background-color: var(--color-main-500);
+      transition: width 0.2s ease;
     }
 
     &:after {
@@ -64,7 +70,12 @@ $mobile-breakpoint: 400px;
     }
 
     &:hover {
-      background: var(--color-main-transparent-50);
+      background-color: var(--color-main-transparent-50);
+
+      &:after,
+      &:before {
+        width: 16px;
+      }
     }
   }
 
