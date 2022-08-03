@@ -150,7 +150,6 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
       modalWrapRef.current.style.display = "block";
 
       gsap.to(modalWrapRef.current, {
-        // display: "block",
         pointerEvents: "all",
         opacity: 1,
         duration: 0.1,
@@ -210,7 +209,14 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
       className={`${styles.modalWrap}`}
       style={{ ...props.style }}
     >
-      <section ref={bottomSheetRef} className={`${styles.bottomSheetWrap}`}>
+      <section
+        ref={bottomSheetRef}
+        className={`${styles.bottomSheetWrap}`}
+        style={{
+          touchAction: "pan-x",
+          background: "red",
+        }}
+      >
         <Header
           onCloseClick={handleCloseClick}
           title={props.title}
