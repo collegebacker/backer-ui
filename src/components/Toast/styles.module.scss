@@ -1,17 +1,21 @@
 $mobile-breakpoint: 400px;
 
 .toastContainer {
+  z-index: 9999;
   pointer-events: none;
   display: flex;
   flex-direction: column;
-  position: absolute;
+  position: fixed;
   align-items: flex-end;
-  right: 0;
-  top: 0;
+  right: 15px;
+  top: 15px;
   // width: 320px;
   @media (max-width: $mobile-breakpoint) {
     width: 100%;
     align-items: stretch;
+    top: unset;
+    bottom: 0;
+    right: 0;
   }
 }
 
@@ -20,16 +24,22 @@ $mobile-breakpoint: 400px;
   position: relative;
   opacity: 0;
   max-width: 340px;
-  // width: 100%;
-  background: rgb(149, 149, 149);
+
+  @media (max-width: $mobile-breakpoint) {
+    max-width: 100%;
+  }
+}
+
+.emoji {
+  font-size: 24px;
+  margin-right: 15px;
 }
 
 .toastItem {
   position: relative;
   display: flex;
   padding: 20px;
-  border: 1px solid black;
-  background: white;
+  border-radius: 10px;
   max-height: 300px;
   margin-bottom: 10px;
 
@@ -38,9 +48,19 @@ $mobile-breakpoint: 400px;
     margin-top: 15px;
   }
 
+  &__button {
+    margin-right: 8px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
   &__closeIcon {
     cursor: pointer;
     position: relative;
+    // margin-right: -10px;
+    // margin-top: -10px;
     flex: 0 1 auto;
     margin-left: 15px;
     width: 30px;
@@ -82,7 +102,33 @@ $mobile-breakpoint: 400px;
   &__content {
     flex: 1;
   }
+
+  @media (max-width: $mobile-breakpoint) {
+    margin-bottom: 0;
+    border-radius: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
 }
+
+// TYPES
+
+.info {
+  background: var(--color-main-50);
+}
+
+.success {
+  background: #eef8e3;
+}
+
+.error {
+  background: #ffeef1;
+}
+
+.warning {
+  background: #fff6e4;
+}
+
+// ANIMATIONS
 
 .toastIn {
   animation: toastIn 0.2s ease-in-out forwards;
@@ -91,6 +137,8 @@ $mobile-breakpoint: 400px;
 .toastOut {
   animation: toastOut 0.4s ease-in-out forwards;
 }
+
+// KEYFRAMES
 
 @keyframes toastIn {
   0% {
