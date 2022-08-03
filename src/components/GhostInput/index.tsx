@@ -6,6 +6,8 @@ import styles from "./styles.module.scss";
 export interface Props {
   className?: string;
   type?: "text" | "password" | "number" | "email" | "money";
+  allowCents?: boolean;
+  maximumMoney?: number;
   required?: boolean;
   name: string;
   label?: string;
@@ -31,6 +33,23 @@ const GhostInput = React.forwardRef<any, Props>((props, ref) => {
 
   const [val, setVal] = React.useState(props.value);
 
+  const convertTypes = (type: string) => {
+    switch (type) {
+      case "text":
+        return "text";
+      case "password":
+        return "password";
+      case "number":
+        return "number";
+      case "email":
+        return "email";
+      case "money":
+        return "text";
+      default:
+        return "text";
+    }
+  };
+
   React.useEffect(() => {
     if (props.isInvalid && inputRef.current) {
       inputRef.current.focus();
@@ -39,8 +58,27 @@ const GhostInput = React.forwardRef<any, Props>((props, ref) => {
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (props.type === "money") {
-      const value = e.target.value.replace(/[^0-9]/g, "");
-      setVal(Number(value).toLocaleString("en-US"));
+      const cleanedVal = e.target.value.replace(/,/g, ".");
+      const ex = props.allowCents ? /^[0-9]+\.?[0-9]*$/ : /^[0-9]+$/;
+
+      if (cleanedVal.match(ex) || cleanedVal === "") {
+        let val = cleanedVal.replace(/[^0-9.]/g, "");
+        let roundedVal = parseInt(val, 10);
+
+        if (
+          roundedVal <= props.maximumMoney ||
+          cleanedVal === "" ||
+          !props.maximumMoney
+        ) {
+          if (val.split(".")[1] && val.split(".")[1].length > 2) {
+            let trimmmedVal =
+              val.split(".")[0] + "." + val.split(".")[1].slice(0, 2);
+            setVal(trimmmedVal);
+          } else {
+            setVal(val);
+          }
+        }
+      }
     }
 
     if (props.type === "number") {
@@ -87,7 +125,7 @@ const GhostInput = React.forwardRef<any, Props>((props, ref) => {
           ref={inputRef}
           tabIndex={props.tabIndex}
           autoFocus={props.autoFocus}
-          type={props.type}
+          type={convertTypes(props.type)}
           id={props.id ? props.id : props.name}
           name={props.name}
           className={`${styles.input}`}
@@ -139,6 +177,8 @@ GhostInput.defaultProps = {
   errorMessage: "",
   placeholder: "",
   hideSpinButton: true,
+  allowCents: false,
+  maximumMoney: null,
 } as Partial<Props>;
 
 export default GhostInput;

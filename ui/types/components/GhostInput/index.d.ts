@@ -2,6 +2,8 @@ import React from "react";
 export interface Props {
     className?: string;
     type?: "text" | "password" | "number" | "email" | "money";
+    allowCents?: boolean;
+    maximumMoney?: number;
     required?: boolean;
     name: string;
     label?: string;

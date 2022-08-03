@@ -23,6 +23,7 @@ Text.args = {
   isInvalid: false,
   errorMessage: "Error message",
   helperText: "",
+  allowCents: false,
 };
 
 export const Money = Template.bind({});
@@ -30,10 +31,12 @@ export const Money = Template.bind({});
 Money.args = {
   label: "Add your amount",
   value: "",
+  maximumMoney: 1000,
   placeholder: "0",
   type: "money",
   onChange: () => {},
   isInvalid: false,
   errorMessage: "Error message",
   helperText: "",
+  allowCents: true,
 };

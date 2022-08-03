@@ -60,6 +60,8 @@ declare const Input: React.ForwardRefExoticComponent<Props$g & React.RefAttribut
 interface Props$f {
     className?: string;
     type?: "text" | "password" | "number" | "email" | "money";
+    allowCents?: boolean;
+    maximumMoney?: number;
     required?: boolean;
     name: string;
     label?: string;
