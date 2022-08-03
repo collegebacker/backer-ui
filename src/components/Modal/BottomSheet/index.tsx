@@ -116,7 +116,6 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
     if (bottomSheetRef.current) {
       Draggable.create(bottomSheetRef.current, {
         type: "y",
-        allowEventDefault: true,
         inertia: true,
         edgeResistance: 0.8,
         maxDuration: 0.3,
@@ -209,14 +208,7 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
       className={`${styles.modalWrap}`}
       style={{ ...props.style }}
     >
-      <section
-        ref={bottomSheetRef}
-        className={`${styles.bottomSheetWrap}`}
-        style={{
-          touchAction: "pan-x",
-          background: "red",
-        }}
-      >
+      <section ref={bottomSheetRef} className={`${styles.bottomSheetWrap}`}>
         <Header
           onCloseClick={handleCloseClick}
           title={props.title}
