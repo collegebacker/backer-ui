@@ -22,7 +22,15 @@ const Template: ComponentStory<typeof Toast> = (args) => {
       />
       <Button
         label="Say Toast!"
-        onClick={() => toastRef.current.showToast("Toast")}
+        onClick={() =>
+          toastRef.current.showToast(
+            "I authorize Backer to debit the bank account indicated in this web form, for the noted amount on the schedule indicated.",
+            {
+              closeOnClick: false,
+              showCloseIcon: true,
+            }
+          )
+        }
       />
     </>
   );
