@@ -131,8 +131,8 @@ Icon.defaultProps = {
     color: "",
 };
 
-var css$j = ".styles_module_button__0e92878a {\n  cursor: pointer;\n  position: relative;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n          user-select: none;\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n  padding: 16px 20px;\n  border-radius: 50px;\n  border: none;\n  outline: none;\n  background: none;\n  text-decoration: none;\n  transition: background 0.16s ease, border 0.16s ease, color 0.2s ease, opacity 0.16s ease;\n}\n\n.styles_module_text__0e92878a {\n  font-family: \"ABCMarfa\", sans-serif;\n  font-weight: 500;\n  text-decoration: none;\n}\n\n.styles_module_primary__0e92878a {\n  background: var(--color-main-500);\n}\n.styles_module_primary__0e92878a .styles_module_text__0e92878a {\n  color: var(--color-main-0);\n}\n.styles_module_primary__0e92878a .styles_module_icon__0e92878a svg {\n  fill: var(--color-main-0);\n}\n.styles_module_primary__0e92878a .styles_module_spinner__0e92878a svg {\n  stroke: var(--color-main-0);\n}\n.styles_module_primary__0e92878a:hover {\n  background: var(--color-main-400);\n}\n.styles_module_primary__0e92878a:focus-visible {\n  outline: 1px solid var(--color-main-500);\n  outline-offset: 4px;\n}\n\n.styles_module_accent__0e92878a {\n  background: var(--color-accent-500);\n}\n.styles_module_accent__0e92878a .styles_module_text__0e92878a {\n  color: var(--color-main-0);\n}\n.styles_module_accent__0e92878a .styles_module_icon__0e92878a svg {\n  fill: var(--color-main-0);\n}\n.styles_module_accent__0e92878a .styles_module_spinner__0e92878a svg {\n  stroke: var(--color-main-0);\n}\n.styles_module_accent__0e92878a:hover {\n  background: var(--color-accent-800);\n}\n.styles_module_accent__0e92878a:focus-visible {\n  outline: 1px solid var(--color-accent-500);\n  outline-offset: 4px;\n}\n\n.styles_module_outline__0e92878a {\n  border: 1px solid var(--color-main-500);\n}\n.styles_module_outline__0e92878a .styles_module_text__0e92878a {\n  color: var(--color-main-500);\n}\n.styles_module_outline__0e92878a .styles_module_icon__0e92878a svg {\n  fill: var(--color-main-500);\n}\n.styles_module_outline__0e92878a .styles_module_spinner__0e92878a svg {\n  stroke: var(--color-main-500);\n}\n.styles_module_outline__0e92878a:hover {\n  border: 1px solid var(--color-main-200);\n}\n.styles_module_outline__0e92878a:focus-visible {\n  outline: 1px solid var(--color-main-500);\n  outline-offset: 4px;\n}\n\n.styles_module_ghost__0e92878a .styles_module_text__0e92878a {\n  color: var(--color-main-500);\n}\n.styles_module_ghost__0e92878a .styles_module_icon__0e92878a svg {\n  fill: var(--color-main-500);\n}\n.styles_module_ghost__0e92878a .styles_module_spinner__0e92878a svg {\n  stroke: var(--color-main-500);\n}\n.styles_module_ghost__0e92878a:hover {\n  background-color: var(--color-main-transparent-50);\n}\n.styles_module_ghost__0e92878a:focus-visible {\n  outline: 1px solid var(--color-main-500);\n  outline-offset: 4px;\n}\n\n.styles_module_default__0e92878a {\n  height: 60px;\n}\n.styles_module_default__0e92878a .styles_module_text__0e92878a {\n  font-size: 16px;\n}\n\n.styles_module_fixedSizeDefault__0e92878a {\n  width: 60px;\n}\n\n.styles_module_minWidthDefault__0e92878a {\n  min-width: 260px;\n}\n\n.styles_module_small__0e92878a {\n  height: 45px;\n}\n.styles_module_small__0e92878a .styles_module_text__0e92878a {\n  font-size: 16px;\n}\n\n.styles_module_fixedSizeSmall__0e92878a {\n  width: 45px;\n}\n\n.styles_module_minWidthSmall__0e92878a {\n  min-width: 180px;\n}\n\n.styles_module_disabled__0e92878a {\n  pointer-events: none !important;\n  opacity: 0.2 !important;\n}";
-var modules_efc4e723$j = {"button":"styles_module_button__0e92878a","text":"styles_module_text__0e92878a","primary":"styles_module_primary__0e92878a","icon":"styles_module_icon__0e92878a","spinner":"styles_module_spinner__0e92878a","accent":"styles_module_accent__0e92878a","outline":"styles_module_outline__0e92878a","ghost":"styles_module_ghost__0e92878a","default":"styles_module_default__0e92878a","fixedSize-default":"styles_module_fixedSizeDefault__0e92878a","minWidth-default":"styles_module_minWidthDefault__0e92878a","small":"styles_module_small__0e92878a","fixedSize-small":"styles_module_fixedSizeSmall__0e92878a","minWidth-small":"styles_module_minWidthSmall__0e92878a","disabled":"styles_module_disabled__0e92878a"};
+var css$j = ".styles_module_button__0c4777ce {\n  cursor: pointer;\n  position: relative;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n          user-select: none;\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n  padding: 16px 20px;\n  border-radius: 50px;\n  border: none;\n  outline: none;\n  background: none;\n  text-decoration: none;\n  transition: background 0.16s ease, border 0.16s ease, color 0.2s ease, opacity 0.16s ease;\n}\n\n.styles_module_text__0c4777ce {\n  font-family: \"ABCMarfa\", sans-serif;\n  font-weight: 500;\n  text-decoration: none;\n}\n\n.styles_module_primary__0c4777ce {\n  background: var(--color-main-500);\n}\n.styles_module_primary__0c4777ce .styles_module_text__0c4777ce {\n  color: var(--color-main-0);\n}\n.styles_module_primary__0c4777ce .styles_module_icon__0c4777ce svg {\n  fill: var(--color-main-0);\n}\n.styles_module_primary__0c4777ce .styles_module_spinner__0c4777ce svg {\n  stroke: var(--color-main-0);\n}\n.styles_module_primary__0c4777ce:hover {\n  background: var(--color-main-400);\n}\n.styles_module_primary__0c4777ce:focus-visible {\n  outline: 1px solid var(--color-main-500);\n  outline-offset: 4px;\n}\n\n.styles_module_accent__0c4777ce {\n  background: var(--color-accent-500);\n}\n.styles_module_accent__0c4777ce .styles_module_text__0c4777ce {\n  color: var(--color-main-0);\n}\n.styles_module_accent__0c4777ce .styles_module_icon__0c4777ce svg {\n  fill: var(--color-main-0);\n}\n.styles_module_accent__0c4777ce .styles_module_spinner__0c4777ce svg {\n  stroke: var(--color-main-0);\n}\n.styles_module_accent__0c4777ce:hover {\n  background: var(--color-accent-800);\n}\n.styles_module_accent__0c4777ce:focus-visible {\n  outline: 1px solid var(--color-accent-500);\n  outline-offset: 4px;\n}\n\n.styles_module_outline__0c4777ce {\n  border: 1px solid var(--color-main-500);\n}\n.styles_module_outline__0c4777ce .styles_module_text__0c4777ce {\n  color: var(--color-main-500);\n}\n.styles_module_outline__0c4777ce .styles_module_icon__0c4777ce svg {\n  fill: var(--color-main-500);\n}\n.styles_module_outline__0c4777ce .styles_module_spinner__0c4777ce svg {\n  stroke: var(--color-main-500);\n}\n.styles_module_outline__0c4777ce:hover {\n  border: 1px solid var(--color-main-200);\n}\n.styles_module_outline__0c4777ce:focus-visible {\n  outline: 1px solid var(--color-main-500);\n  outline-offset: 4px;\n}\n\n.styles_module_ghost__0c4777ce .styles_module_text__0c4777ce {\n  color: var(--color-main-500);\n}\n.styles_module_ghost__0c4777ce .styles_module_icon__0c4777ce svg {\n  fill: var(--color-main-500);\n}\n.styles_module_ghost__0c4777ce .styles_module_spinner__0c4777ce svg {\n  stroke: var(--color-main-500);\n}\n.styles_module_ghost__0c4777ce:hover {\n  background-color: var(--color-main-transparent-50);\n}\n.styles_module_ghost__0c4777ce:focus-visible {\n  outline: 1px solid var(--color-main-500);\n  outline-offset: 4px;\n}\n\n.styles_module_default__0c4777ce {\n  height: 60px;\n}\n.styles_module_default__0c4777ce .styles_module_text__0c4777ce {\n  font-size: 17px;\n}\n\n.styles_module_fixedSizeDefault__0c4777ce {\n  width: 60px;\n}\n\n.styles_module_minWidthDefault__0c4777ce {\n  min-width: 260px;\n}\n\n.styles_module_small__0c4777ce {\n  height: 40px;\n}\n.styles_module_small__0c4777ce .styles_module_text__0c4777ce {\n  font-size: 17px;\n}\n\n.styles_module_fixedSizeSmall__0c4777ce {\n  width: 40px;\n}\n\n.styles_module_minWidthSmall__0c4777ce {\n  min-width: 180px;\n}\n\n.styles_module_disabled__0c4777ce {\n  pointer-events: none !important;\n  opacity: 0.2 !important;\n}";
+var modules_efc4e723$j = {"button":"styles_module_button__0c4777ce","text":"styles_module_text__0c4777ce","primary":"styles_module_primary__0c4777ce","icon":"styles_module_icon__0c4777ce","spinner":"styles_module_spinner__0c4777ce","accent":"styles_module_accent__0c4777ce","outline":"styles_module_outline__0c4777ce","ghost":"styles_module_ghost__0c4777ce","default":"styles_module_default__0c4777ce","fixedSize-default":"styles_module_fixedSizeDefault__0c4777ce","minWidth-default":"styles_module_minWidthDefault__0c4777ce","small":"styles_module_small__0c4777ce","fixedSize-small":"styles_module_fixedSizeSmall__0c4777ce","minWidth-small":"styles_module_minWidthSmall__0c4777ce","disabled":"styles_module_disabled__0c4777ce"};
 n(css$j,{});
 
 var css$i = ".styles_module_loaderWrap__d4c8cb11 {\n  position: relative;\n}\n\n.styles_module_loader__d4c8cb11 {\n  width: 100%;\n  height: 100%;\n  -webkit-animation: styles_module_rotate__d4c8cb11 1.2s linear infinite;\n          animation: styles_module_rotate__d4c8cb11 1.2s linear infinite;\n  stroke: var(--color-main-500);\n}\n\n.styles_module_path__d4c8cb11 {\n  transform-origin: center;\n  stroke-dashoffset: 0;\n  stroke-linecap: round;\n  stroke-width: 1px;\n}\n\n.styles_module_backPath__d4c8cb11 {\n  transform-origin: center;\n  stroke-linecap: round;\n  stroke-width: 1px;\n  opacity: 0.2;\n}\n\n.styles_module_small__d4c8cb11 .styles_module_path__d4c8cb11 {\n  stroke-dasharray: 90;\n  -webkit-animation: styles_module_dashSmall__d4c8cb11 2.5s ease-in-out infinite;\n          animation: styles_module_dashSmall__d4c8cb11 2.5s ease-in-out infinite;\n}\n\n.styles_module_mediumSmall__d4c8cb11 .styles_module_path__d4c8cb11 {\n  stroke-dasharray: 100;\n  -webkit-animation: styles_module_dashSmall__d4c8cb11 2.5s ease-in-out infinite;\n          animation: styles_module_dashSmall__d4c8cb11 2.5s ease-in-out infinite;\n}\n\n.styles_module_medium__d4c8cb11 .styles_module_path__d4c8cb11 {\n  stroke-dasharray: 100;\n  -webkit-animation: styles_module_dashMedium__d4c8cb11 2.5s ease-in-out infinite;\n          animation: styles_module_dashMedium__d4c8cb11 2.5s ease-in-out infinite;\n}\n\n.styles_module_large__d4c8cb11 .styles_module_path__d4c8cb11 {\n  stroke-dasharray: 200;\n  -webkit-animation: styles_module_dashLarge__d4c8cb11 3.5s ease-in-out infinite;\n          animation: styles_module_dashLarge__d4c8cb11 3.5s ease-in-out infinite;\n}\n\n@-webkit-keyframes styles_module_rotate__d4c8cb11 {\n  100% {\n    transform: rotate(360deg);\n  }\n}\n\n@keyframes styles_module_rotate__d4c8cb11 {\n  100% {\n    transform: rotate(360deg);\n  }\n}\n@-webkit-keyframes styles_module_dashSmall__d4c8cb11 {\n  0% {\n    stroke-dashoffset: 90;\n  }\n  50% {\n    stroke-dashoffset: 45;\n    transform: rotate(135deg);\n  }\n  100% {\n    stroke-dashoffset: 90;\n    transform: rotate(360deg);\n  }\n}\n@keyframes styles_module_dashSmall__d4c8cb11 {\n  0% {\n    stroke-dashoffset: 90;\n  }\n  50% {\n    stroke-dashoffset: 45;\n    transform: rotate(135deg);\n  }\n  100% {\n    stroke-dashoffset: 90;\n    transform: rotate(360deg);\n  }\n}\n@-webkit-keyframes styles_module_dashMedium__d4c8cb11 {\n  0% {\n    stroke-dashoffset: 100;\n  }\n  50% {\n    stroke-dashoffset: 45;\n    transform: rotate(135deg);\n  }\n  100% {\n    stroke-dashoffset: 100;\n    transform: rotate(360deg);\n  }\n}\n@keyframes styles_module_dashMedium__d4c8cb11 {\n  0% {\n    stroke-dashoffset: 100;\n  }\n  50% {\n    stroke-dashoffset: 45;\n    transform: rotate(135deg);\n  }\n  100% {\n    stroke-dashoffset: 100;\n    transform: rotate(360deg);\n  }\n}\n@-webkit-keyframes styles_module_dashLarge__d4c8cb11 {\n  0% {\n    stroke-dashoffset: 200;\n  }\n  50% {\n    stroke-dashoffset: 45;\n    transform: rotate(135deg);\n  }\n  100% {\n    stroke-dashoffset: 200;\n    transform: rotate(360deg);\n  }\n}\n@keyframes styles_module_dashLarge__d4c8cb11 {\n  0% {\n    stroke-dashoffset: 200;\n  }\n  50% {\n    stroke-dashoffset: 45;\n    transform: rotate(135deg);\n  }\n  100% {\n    stroke-dashoffset: 200;\n    transform: rotate(360deg);\n  }\n}";
@@ -10793,9 +10793,7 @@ var BottomSheet = React__default["default"].forwardRef(function (props, ref) {
     var modalWrapRef = React__default["default"].useRef(null);
     var bottomSheetRef = React__default["default"].useRef(null);
     var backgroundRef = React__default["default"].useRef(null);
-    var _a = React__default["default"].useState(props.isOpen), isOpen = _a[0], setIsOpen = _a[1];
-    var _b = React__default["default"].useState(false), isAppeared = _b[0], setIsAppeared = _b[1];
-    var _c = React__default["default"].useState(false), resize = _c[0], setResize = _c[1];
+    var _a = React__default["default"].useState(false), resize = _a[0], setResize = _a[1];
     var applyOpenSheetPosition = function () {
         var bottomSheet = bottomSheetRef.current;
         if (bottomSheet.clientHeight > window.innerHeight) {
@@ -10821,7 +10819,7 @@ var BottomSheet = React__default["default"].forwardRef(function (props, ref) {
     /// HOOKS ////
     //////////////
     useOutsideClick(bottomSheetRef, function () {
-        if (isAppeared && props.closeOutside && props.isMobileBreakpoint) {
+        if (props.isOpen && props.closeOutside && props.isMobileBreakpoint) {
             // console.log("clicked outside");
             props.onCloseClick();
         }
@@ -10860,7 +10858,6 @@ var BottomSheet = React__default["default"].forwardRef(function (props, ref) {
         if (bottomSheetRef.current) {
             Draggable.exports.Draggable.create(bottomSheetRef.current, {
                 type: "y",
-                allowEventDefault: true,
                 inertia: true,
                 edgeResistance: 0.8,
                 maxDuration: 0.3,
@@ -10881,37 +10878,10 @@ var BottomSheet = React__default["default"].forwardRef(function (props, ref) {
     }, []);
     useDidMountEffect(function () {
         applyDragBounds();
-    }, [isOpen]);
-    React__default["default"].useEffect(function () {
-        if (props.isOpen) {
-            modalWrapRef.current.focus();
-            modalWrapRef.current.style.display = "block";
+        if (!props.isOpen) {
+            console.log("isOpen", props.isOpen);
             gsapWithCSS.to(modalWrapRef.current, {
-                // display: "block",
-                pointerEvents: "all",
-                opacity: 1,
-                duration: 0.1,
-            });
-            gsapWithCSS.to(bottomSheetRef.current, {
-                y: applyOpenSheetPosition(),
-                duration: 0.4,
-                ease: "expo.out",
-                onComplete: function () {
-                    Draggable.exports.Draggable.get(bottomSheetRef.current).enable();
-                },
-            });
-            gsapWithCSS.to(backgroundRef.current, {
-                opacity: 1,
-                duration: 0.4,
-                onStart: function () {
-                    setIsAppeared(true);
-                },
-            });
-            setIsOpen(true);
-        }
-        else {
-            gsapWithCSS.to(modalWrapRef.current, {
-                display: "none",
+                // display: "none",
                 pointerEvents: "none",
                 opacity: 0,
                 duration: 0.1,
@@ -10924,11 +10894,32 @@ var BottomSheet = React__default["default"].forwardRef(function (props, ref) {
             gsapWithCSS.to(backgroundRef.current, {
                 opacity: 0,
                 duration: 0.4,
-                onStart: function () {
-                    setIsAppeared(false);
+            });
+        }
+    }, [props.isOpen]);
+    React__default["default"].useEffect(function () {
+        // console.log("isOpen", props.isOpen);
+        if (props.isOpen) {
+            modalWrapRef.current.focus();
+            gsapWithCSS.to(modalWrapRef.current, {
+                display: "block",
+                pointerEvents: "all",
+                opacity: 1,
+                duration: 0.1,
+            });
+            gsapWithCSS.to(bottomSheetRef.current, {
+                y: applyOpenSheetPosition(),
+                duration: 0.4,
+                ease: "expo.out",
+                onComplete: function () {
+                    console.log(applyOpenSheetPosition());
+                    Draggable.exports.Draggable.get(bottomSheetRef.current).enable();
                 },
             });
-            setIsOpen(false);
+            gsapWithCSS.to(backgroundRef.current, {
+                opacity: 1,
+                duration: 0.4,
+            });
         }
     }, [props.isOpen]);
     ///////////////
@@ -14069,8 +14060,8 @@ Modal.defaultProps = {
     onCloseClick: function () { },
 };
 
-var css$5 = ".styles_module_wrap__534786f8 {\n  display: flex;\n  margin: 40px -30px -30px;\n  border-top: 1px solid var(--color-main-50);\n}\n\n.styles_module_button__534786f8 {\n  cursor: pointer;\n  flex: 1;\n  color: var(--color-main-500);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 30px;\n  border: none;\n  outline: none;\n  background: none;\n  transition: background 0.15s ease;\n  border-left: 1px solid var(--color-main-50);\n}\n.styles_module_button__534786f8:first-child {\n  border-left: none;\n}\n.styles_module_button__534786f8:hover, .styles_module_button__534786f8:focus-visible {\n  background-color: var(--color-main-50);\n}\n\n.styles_module_content__534786f8 {\n  display: flex;\n  align-items: center;\n}\n\n.styles_module_icon__534786f8 {\n  margin-right: 10px;\n  flex: 1 0 auto;\n}";
-var modules_efc4e723$5 = {"wrap":"styles_module_wrap__534786f8","button":"styles_module_button__534786f8","content":"styles_module_content__534786f8","icon":"styles_module_icon__534786f8"};
+var css$5 = ".styles_module_wrap__59b27358 {\n  position: relative;\n  z-index: 10;\n  display: flex;\n  margin: 40px -30px -30px;\n  border-top: 1px solid var(--color-main-50);\n}\n\n.styles_module_button__59b27358 {\n  cursor: pointer;\n  flex: 1;\n  color: var(--color-main-500);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 30px;\n  border: none;\n  outline: none;\n  background: none;\n  transition: background 0.15s ease;\n  border-left: 1px solid var(--color-main-50);\n}\n.styles_module_button__59b27358:first-child {\n  border-left: none;\n}\n.styles_module_button__59b27358:hover, .styles_module_button__59b27358:focus-visible {\n  background-color: var(--color-main-50);\n}\n\n.styles_module_content__59b27358 {\n  display: flex;\n  align-items: center;\n}\n\n.styles_module_icon__59b27358 {\n  margin-right: 10px;\n  flex: 1 0 auto;\n}";
+var modules_efc4e723$5 = {"wrap":"styles_module_wrap__59b27358","button":"styles_module_button__59b27358","content":"styles_module_content__59b27358","icon":"styles_module_icon__59b27358"};
 n(css$5,{});
 
 var ModalButtons = function (props) {
