@@ -30,8 +30,6 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
   const modalWrapRef = React.useRef<HTMLDivElement>(null);
   const bottomSheetRef = React.useRef<HTMLDivElement>(null);
   const backgroundRef = React.useRef<HTMLDivElement>(null);
-  const [isOpen, setIsOpen] = React.useState(props.isOpen);
-  const [isAppeared, setIsAppeared] = React.useState(false);
   const [resize, setResize] = React.useState(false);
 
   const applyOpenSheetPosition = () => {
@@ -65,7 +63,7 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
   //////////////
 
   useOutsideClick(bottomSheetRef, () => {
-    if (isAppeared && props.closeOutside && props.isMobileBreakpoint) {
+    if (props.isOpen && props.closeOutside && props.isMobileBreakpoint) {
       // console.log("clicked outside");
       props.onCloseClick();
     }
@@ -141,38 +139,12 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
 
   useDidMountEffect(() => {
     applyDragBounds();
-  }, [isOpen]);
 
-  React.useEffect(() => {
-    if (props.isOpen) {
-      modalWrapRef.current.focus();
-      modalWrapRef.current.style.display = "block";
+    if (!props.isOpen) {
+      console.log("isOpen", props.isOpen);
 
       gsap.to(modalWrapRef.current, {
-        pointerEvents: "all",
-        opacity: 1,
-        duration: 0.1,
-      });
-      gsap.to(bottomSheetRef.current, {
-        y: applyOpenSheetPosition(),
-        duration: 0.4,
-        ease: "expo.out",
-        onComplete: () => {
-          Draggable.get(bottomSheetRef.current).enable();
-        },
-      });
-      gsap.to(backgroundRef.current, {
-        opacity: 1,
-        duration: 0.4,
-        onStart: () => {
-          setIsAppeared(true);
-        },
-      });
-
-      setIsOpen(true);
-    } else {
-      gsap.to(modalWrapRef.current, {
-        display: "none",
+        // display: "none",
         pointerEvents: "none",
         opacity: 0,
         duration: 0.1,
@@ -185,12 +157,36 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
       gsap.to(backgroundRef.current, {
         opacity: 0,
         duration: 0.4,
-        onStart: () => {
-          setIsAppeared(false);
-        },
+      });
+    }
+  }, [props.isOpen]);
+
+  React.useEffect(() => {
+    // console.log("isOpen", props.isOpen);
+
+    if (props.isOpen) {
+      modalWrapRef.current.focus();
+
+      gsap.to(modalWrapRef.current, {
+        display: "block",
+        pointerEvents: "all",
+        opacity: 1,
+        duration: 0.1,
       });
 
-      setIsOpen(false);
+      gsap.to(bottomSheetRef.current, {
+        y: applyOpenSheetPosition(),
+        duration: 0.4,
+        ease: "expo.out",
+        onComplete: () => {
+          console.log(applyOpenSheetPosition());
+          Draggable.get(bottomSheetRef.current).enable();
+        },
+      });
+      gsap.to(backgroundRef.current, {
+        opacity: 1,
+        duration: 0.4,
+      });
     }
   }, [props.isOpen]);
 

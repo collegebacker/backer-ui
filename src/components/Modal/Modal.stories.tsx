@@ -119,7 +119,7 @@ const Template: ComponentStory<typeof Modal> = (args) => {
         label="Trigger Modal"
         onClick={() => {
           ModalRef.current.open(() => {
-            console.log("open");
+            // console.log("open");
           });
         }}
       />
