@@ -116,7 +116,6 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
     if (bottomSheetRef.current) {
       Draggable.create(bottomSheetRef.current, {
         type: "y",
-        allowEventDefault: true,
         inertia: true,
         edgeResistance: 0.8,
         maxDuration: 0.3,
@@ -150,7 +149,6 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
       modalWrapRef.current.style.display = "block";
 
       gsap.to(modalWrapRef.current, {
-        // display: "block",
         pointerEvents: "all",
         opacity: 1,
         duration: 0.1,
