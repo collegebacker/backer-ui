@@ -43,31 +43,6 @@ const items = [
       </Text>
     ),
   },
-  {
-    title: "Who can join the fund as a backer?",
-    content: (
-      <Text tag="p" context="marketing" marketingStyle="paragraph">
-        Anyone you invite by sharing your unique fund link can join the fund as
-        a backer and contribute gifts. We see lots of grandparents,
-        uncles/aunts, and even family friends or the child&apos;s mentors at
-        school and through other activities.
-      </Text>
-    ),
-  },
-  {
-    title: "What is Backer like for the backers I invite?",
-    content: (
-      <Text tag="p" context="marketing" marketingStyle="paragraph">
-        With limited access to your child&apos;s fund page, backers can see that
-        they&apos;re part of a team, but you choose how much of the fund&apos;s
-        activity you want to be visible. We send reminders to your backers
-        around the holidays and when your kid&apos;s birthday is coming up. We
-        make it easy to link a bank account via online banking, or they can use
-        a credit or debit card or digital wallet like Apple Pay or, Google Pay –
-        so gifting is a breeze.
-      </Text>
-    ),
-  },
 ];
 
 export default {
@@ -298,16 +273,6 @@ FocusTrap.args = {
         Its expensive to raise a child. Make saving for education a team effort
         that’s fun and stress-free. Supercharge your savings with a tax-free 529
         investment account. You need support, and Backer is here to help.
-      </Text>
-
-      <br />
-      <Text tag="p" context="app" appStyle="body-main">
-        Hi, Im the Dumi component. Use me when you need to show that any content
-        can be in my place. You can replace me with any other component. Such
-        components include, for example, popovers, which can have more than just
-        a header and text inside. Here are the steps on how to replace the
-        content inside of me: Create a content frame that you want to see
-        instead of this placeholder.
       </Text>
 
       <Accordion items={items} />

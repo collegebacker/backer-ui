@@ -86,20 +86,25 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
   }, [props.isOpen]);
 
   React.useEffect(() => {
-    if (stickModal) {
-      gsap.to(bottomSheetRef.current, {
-        maxHeight: "100%",
-        borderRadius: 0,
-        duration: 0.2,
+    const myObserver = new ResizeObserver((entries) => {
+      // this will get called whenever div dimension changes
+      entries.forEach((entry) => {
+        if (
+          window.innerHeight > (entry.target as HTMLDivElement).offsetHeight
+        ) {
+          setStickModal(true);
+        } else {
+          setStickModal(false);
+        }
       });
-    } else {
-      gsap.to(bottomSheetRef.current, {
-        maxHeight: "96%",
-        borderRadius: "15px 15px 0 0",
-        duration: 0.2,
-      });
-    }
-  }, [stickModal]);
+    });
+
+    myObserver.observe(bottomSheetRef.current);
+
+    return () => {
+      myObserver.disconnect();
+    };
+  }, []);
 
   React.useEffect(() => {
     // console.log("isOpen", props.isOpen);
@@ -140,18 +145,9 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
     >
       <section
         ref={bottomSheetRef}
-        className={`${styles.bottomSheetWrap}`}
-        onScroll={() => {
-          const contentPosition =
-            contentWrapperRef.current.getBoundingClientRect().top -
-            contentWrapperRef.current.offsetTop;
-
-          if (contentPosition < 0) {
-            setStickModal(true);
-          } else {
-            setStickModal(false);
-          }
-        }}
+        className={`${styles.bottomSheetWrap} ${
+          stickModal ? "" : styles.overScrolled
+        }`}
       >
         <Header
           onCloseClick={handleCloseClick}
