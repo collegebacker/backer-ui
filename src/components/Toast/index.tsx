@@ -22,45 +22,55 @@ interface ItemProps {
     };
     emoji?: string;
     type?: "success" | "error" | "warning" | "info";
+    timeout?: number;
   };
   isShown?: boolean;
 }
 
-const addEmoji = (
-  type: "success" | "error" | "warning" | "info",
-  emoji: string
-) => {
-  switch (type) {
-    case "success":
-      return "🎉";
-    case "error":
-      return "⛔";
-    case "warning":
-      return "⚠️";
-    case "info":
-      return emoji;
-    default:
-      return emoji;
-  }
-};
-
 const ToastItem: React.FC<ItemProps> = (props) => {
   const [isShown, setIsShown] = React.useState(props.isShown);
-  const [isHidden, setIsHidden] = React.useState(false);
+  const [isNotVisible, setIsNotVisible] = React.useState(false);
+
+  const addEmoji = () => {
+    switch (props.params?.type) {
+      case "success":
+        return "🎉";
+      case "error":
+        return "📛";
+      case "warning":
+        return "⚠️";
+      case "info":
+        return props.params?.emoji;
+      default:
+        return props.params?.emoji;
+    }
+  };
+
+  React.useEffect(() => {
+    if (props.params?.timeout > 0) {
+      const timer = setTimeout(() => {
+        setIsShown(false);
+      }, props.params?.timeout);
+
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+  }, []);
 
   const handleCloseOnParentClick = () => {
     if (props.params?.closeOnClick && !props.params?.dismissButton) {
-      console.log("closeOnClick");
+      // console.log("closeOnClick");
       setIsShown(false);
     }
   };
 
   const handleClose = () => {
-    console.log("crossClick");
+    // console.log("crossClick");
     setIsShown(false);
   };
 
-  return !isHidden ? (
+  return !isNotVisible ? (
     <section
       className={`${styles.toastItemWrap} ${
         isShown ? styles.toastIn : styles.toastOut
@@ -68,16 +78,23 @@ const ToastItem: React.FC<ItemProps> = (props) => {
       onClick={handleCloseOnParentClick}
       onAnimationEnd={() => {
         if (!isShown) {
-          console.log("onAnimationEnd");
-          setIsHidden(true);
+          // console.log("onAnimationEnd");
+          setIsNotVisible(true);
         }
       }}
     >
       <div className={`${styles.toastItem} ${styles[props.params?.type]}`}>
-        {props.params?.emoji !== "" ? (
-          <div className={styles.emoji}>
-            {addEmoji(props.params?.type, props.params?.emoji)}
-          </div>
+        {props.params.timeout > 0 ? (
+          <div
+            className={styles.toastScale}
+            style={{
+              animationDuration: `${props.params.timeout}ms`,
+            }}
+          />
+        ) : null}
+
+        {props.params?.emoji !== "" || props.params?.type !== "info" ? (
+          <div className={styles.emoji}>{addEmoji()}</div>
         ) : null}
 
         <div className={styles.toastItem__content}>
@@ -141,9 +158,10 @@ const Toast = React.forwardRef<any, Props>((props, ref) => {
         };
         emoji?: string;
         type?: "success" | "error" | "warning" | "info";
+        timeout?: number;
       }
     ) => {
-      console.log(params);
+      // console.log(params);
 
       const toastProps = {
         message,
@@ -158,6 +176,7 @@ const Toast = React.forwardRef<any, Props>((props, ref) => {
           },
           emoji: params?.emoji ?? "",
           type: params?.type ?? "info",
+          timeout: params?.timeout ?? 0,
         },
       };
 
