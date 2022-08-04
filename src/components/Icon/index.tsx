@@ -8,6 +8,7 @@ export interface Props {
   style?: React.CSSProperties;
   name: IconTypes;
   color?: string;
+  onClick?: () => void;
 }
 
 const Icon: React.FC<Props> = (props) => {
@@ -15,6 +16,7 @@ const Icon: React.FC<Props> = (props) => {
     <i
       className={`${styles.icon} ${props.className}`}
       style={{ ...props.style }}
+      onClick={props.onClick}
     >
       <svg
         width="100%"
