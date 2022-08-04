@@ -20,37 +20,24 @@
   left: 0;
   width: 100%;
   height: 100%;
+  background-size: 100% 100%;
   background-image: radial-gradient(
-    circle at bottom,
-    rgba(255, 255, 255, 0.3) 0%,
-    rgba(255, 255, 255, 0.3) 100%
-  );
-
-  &::after {
-    content: "";
-    position: absolute;
-    width: 900px;
-    height: 1400px;
-    top: 50%;
-    left: 50%;
-    // opacity: 0;
-    transform: translate(-50%, -50%) scale(1) rotate(-45deg);
-    background-image: var(--gradient-peach);
-    // background-color: aquamarine;
-  }
-
-  &::before {
-    content: "";
-    position: absolute;
-    width: 700px;
-    height: 1000px;
-    top: 30%;
-    left: 90%;
-    // opacity: 0;
-    transform: translate(-50%, -50%) scale(1) rotate(-33deg);
-    background-image: var(--gradient-velvet);
-    // background-color: aquamarine;
-  }
+        98.4% 51.22% at 97.33% 38%,
+        rgba(196, 199, 242, 0.8) 0%,
+        rgba(196, 199, 242, 0) 100%
+      )
+      /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */,
+    radial-gradient(
+        99.07% 36.33% at 65.87% 34.33%,
+        rgba(253, 206, 190, 0.8) 0%,
+        rgba(253, 206, 190, 0) 100%
+      )
+      /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */,
+    radial-gradient(
+      50% 50% at 50% 50%,
+      #ffffff 0%,
+      rgba(255, 255, 255, 0.42) 100%
+    );
 }
 
 .bottomSheetWrap {
@@ -59,21 +46,19 @@
   flex-direction: column;
   position: absolute;
   left: 0;
+  overflow-y: scroll;
+  max-height: calc(100% - 20px);
   // bottom: 100%;
+  bottom: -100%;
+
   padding: 30px 30px;
   // border: 1px solid black;
-  border-radius: var(--radius-l) var(--radius-l) 0 0;
+  border-radius: 15px 15px 0 0;
   background-color: var(--color-main-0);
   width: 100%;
 
-  &::after {
-    user-select: none;
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -390px;
-    width: 100%;
-    height: 400px;
-    background-color: var(--color-main-0);
+  // hide scrollbar
+  &::-webkit-scrollbar {
+    display: none;
   }
 }
