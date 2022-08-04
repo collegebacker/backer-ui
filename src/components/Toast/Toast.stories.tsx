@@ -8,6 +8,28 @@ localStorage.clear();
 export default {
   title: "Misc/Toast",
   component: Toast,
+  parameters: {
+    docs: {
+      description: {
+        component: `Invoke the component eith via Ref to show a toast message \`toastRef.current.showToast(message, params (optional), isShown (optional))\`. Let's break it down:
+
+- \`message: string\`
+- \`params: params object (optional)\`. See the params object below
+- \`isShown: boolean (optional)\`. If set to true, the toast will be shown immediately. If not set, the toast will be shown when the component is mounted.
+
+## Params keys
+
+- \`closeOnClick?: boolean\`. If set to true, the toast will be closed when the user clicks on it. If not set, the toast will not be closed when the user clicks on it.
+- \`showCloseIcon?: boolean\`
+- \`dismissButton?: boolean\`
+- \`button?: {label: string; onClick: () => void;}\`. If set, a button will be shown at the bottom of the toast. It has a label and a callback function.
+- \`emoji?: string\`
+- \`type?: "success" | "error" | "warning" | "info"\`. Yu can change emoji only ro the \`info\` type.
+- \`timeout?: number\`. If set to a number, the toast will be automatically closed after the number of milliseconds. If set to false, the toast will not be automatically closed.
+`,
+      },
+    },
+  },
 } as ComponentMeta<typeof Toast>;
 
 const Template: ComponentStory<typeof Toast> = (args) => {

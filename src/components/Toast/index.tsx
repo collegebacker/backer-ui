@@ -12,7 +12,6 @@ export interface Props {
 interface ItemProps {
   message: string;
   params?: {
-    autoClose?: number | false;
     closeOnClick?: boolean;
     showCloseIcon?: boolean;
     dismissButton?: boolean;
@@ -148,7 +147,6 @@ const Toast = React.forwardRef<any, Props>((props, ref) => {
     showToast: (
       message: string,
       params: {
-        autoClose?: number | false;
         closeOnClick?: boolean;
         showCloseIcon?: boolean;
         dismissButton?: boolean;
@@ -166,7 +164,6 @@ const Toast = React.forwardRef<any, Props>((props, ref) => {
       const toastProps = {
         message,
         params: {
-          autoClose: params?.autoClose ?? false,
           closeOnClick: params?.closeOnClick ?? true,
           showCloseIcon: params?.showCloseIcon ?? false,
           dismissButton: params?.dismissButton ?? false,
