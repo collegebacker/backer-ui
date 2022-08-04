@@ -10765,8 +10765,8 @@ Divider.defaultProps = {
     className: "",
 };
 
-var css$8 = ".styles_module_modalWrap__3c55a357 {\n  position: fixed;\n  z-index: 999;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100vh;\n  min-height: -webkit-fill-available;\n  opacity: 0;\n  pointer-events: none;\n}\n\n.styles_module_background__3c55a357 {\n  position: absolute;\n  z-index: 1;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-image: radial-gradient(circle at bottom, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.3) 100%);\n}\n.styles_module_background__3c55a357::after {\n  content: \"\";\n  position: absolute;\n  width: 900px;\n  height: 1400px;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%) scale(1) rotate(-45deg);\n  background-image: var(--gradient-peach);\n}\n.styles_module_background__3c55a357::before {\n  content: \"\";\n  position: absolute;\n  width: 700px;\n  height: 1000px;\n  top: 30%;\n  left: 90%;\n  transform: translate(-50%, -50%) scale(1) rotate(-33deg);\n  background-image: var(--gradient-velvet);\n}\n\n.styles_module_bottomSheetWrap__3c55a357 {\n  z-index: 2;\n  display: flex;\n  flex-direction: column;\n  position: absolute;\n  left: 0;\n  padding: 30px 30px;\n  border-radius: var(--radius-l) var(--radius-l) 0 0;\n  background-color: var(--color-main-0);\n  width: 100%;\n}\n.styles_module_bottomSheetWrap__3c55a357::after {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n          user-select: none;\n  content: \"\";\n  position: absolute;\n  left: 0;\n  bottom: -390px;\n  width: 100%;\n  height: 400px;\n  background-color: var(--color-main-0);\n}";
-var modules_efc4e723$8 = {"modalWrap":"styles_module_modalWrap__3c55a357","background":"styles_module_background__3c55a357","bottomSheetWrap":"styles_module_bottomSheetWrap__3c55a357"};
+var css$8 = ".styles_module_modalWrap__db92b9db {\n  position: fixed;\n  z-index: 999;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100vh;\n  height: 100svh;\n  min-height: -webkit-fill-available;\n  opacity: 0;\n  pointer-events: none;\n}\n\n.styles_module_background__db92b9db {\n  position: fixed;\n  z-index: 1;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-size: 100% 100%;\n  background-image: radial-gradient(98.4% 51.22% at 97.33% 38%, rgba(196, 199, 242, 0.8) 0%, rgba(196, 199, 242, 0) 100%), radial-gradient(99.07% 36.33% at 65.87% 34.33%, rgba(253, 206, 190, 0.8) 0%, rgba(253, 206, 190, 0) 100%), radial-gradient(50% 50% at 50% 50%, #ffffff 0%, rgba(255, 255, 255, 0.42) 100%);\n}\n\n.styles_module_bottomSheetWrap__db92b9db {\n  z-index: 2;\n  display: flex;\n  flex-direction: column;\n  position: absolute;\n  left: 0;\n  overflow-y: scroll;\n  max-height: calc(100% - 20px);\n  bottom: -100%;\n  -webkit-transform: translateZ(0);\n  padding: 30px 30px;\n  border-radius: 15px 15px 0 0;\n  background-color: var(--color-main-0);\n  width: 100%;\n}\n.styles_module_bottomSheetWrap__db92b9db::-webkit-scrollbar {\n  display: none;\n}";
+var modules_efc4e723$8 = {"modalWrap":"styles_module_modalWrap__db92b9db","background":"styles_module_background__db92b9db","bottomSheetWrap":"styles_module_bottomSheetWrap__db92b9db"};
 n(css$8,{});
 
 var css$7 = ".styles_module_header__dd8790c2 {\n  display: flex;\n  flex-direction: column;\n  margin-bottom: 30px;\n}\n.styles_module_header_maxWidth__dd8790c2 {\n  max-width: 440px;\n}\n@media screen and (max-width: 620px) {\n  .styles_module_header__dd8790c2 {\n    flex-direction: row-reverse;\n  }\n}\n\n.styles_module_titleWrap__dd8790c2 {\n  position: relative;\n  display: flex;\n  flex: 1 1 auto;\n  width: 100%;\n  margin: 0 auto;\n}\n@media screen and (max-width: 620px) {\n  .styles_module_titleWrap__dd8790c2 {\n    max-width: none;\n  }\n}\n\n.styles_module_title__dd8790c2 {\n  padding-right: 50px;\n  margin: 0 auto;\n  width: 100%;\n}\n\n.styles_module_closeButton__dd8790c2 {\n  cursor: pointer;\n  z-index: 3;\n  position: absolute;\n  top: 25px;\n  right: 25px;\n  width: 40px;\n  height: 40px;\n  margin-left: 20px;\n  border: none;\n  outline: none;\n  background: none;\n  border-radius: 50%;\n}\n.styles_module_closeButton__wrap__dd8790c2 {\n  display: flex;\n  justify-content: flex-end;\n  width: 100%;\n}\n@media screen and (max-width: 620px) {\n  .styles_module_closeButton__wrap__dd8790c2 {\n    width: auto;\n  }\n}\n.styles_module_closeButton__background__dd8790c2 {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n  opacity: 0;\n  transform: scale(0.7);\n  background-color: var(--color-main-transparent-50);\n  transition: opacity 0.1s ease, transform 0.1s ease;\n}\n.styles_module_closeButton__dd8790c2:before, .styles_module_closeButton__dd8790c2:after {\n  content: \"\";\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  width: 1px;\n  height: 24px;\n  border-radius: 40px;\n  background-color: var(--color-main-500);\n  transition: height 0.1s ease;\n}\n.styles_module_closeButton__dd8790c2:before {\n  transform: translate(-50%, -50%) rotate(45deg);\n}\n.styles_module_closeButton__dd8790c2:after {\n  transform: translate(-50%, -50%) rotate(-45deg);\n}\n.styles_module_closeButton__dd8790c2:hover:before, .styles_module_closeButton__dd8790c2:hover:after {\n  height: 22px;\n}\n.styles_module_closeButton__dd8790c2:hover .styles_module_closeButton__background__dd8790c2 {\n  opacity: 1;\n  transform: scale(1);\n}\n.styles_module_closeButton__dd8790c2:focus-visible {\n  border: 1px solid var(--color-main-500);\n}";
@@ -10793,20 +10793,8 @@ var BottomSheet = React__default["default"].forwardRef(function (props, ref) {
     var modalWrapRef = React__default["default"].useRef(null);
     var bottomSheetRef = React__default["default"].useRef(null);
     var backgroundRef = React__default["default"].useRef(null);
-    var _a = React__default["default"].useState(false), resize = _a[0], setResize = _a[1];
-    var applyOpenSheetPosition = function () {
-        var bottomSheet = bottomSheetRef.current;
-        if (bottomSheet.clientHeight > window.innerHeight) {
-            return props.topShift;
-        }
-        return window.innerHeight - bottomSheet.clientHeight;
-    };
-    var applyDragBounds = function () {
-        Draggable.exports.Draggable.get(bottomSheetRef.current).vars.bounds = {
-            minY: applyOpenSheetPosition(),
-            maxY: window.innerHeight - bottomSheetRef.current.clientHeight,
-        };
-    };
+    var contentWrapperRef = React__default["default"].useRef(null);
+    var _a = React__default["default"].useState(false), stickModal = _a[0], setStickModal = _a[1];
     //////////////
     // IMPERIAL //
     //////////////
@@ -10833,62 +10821,19 @@ var BottomSheet = React__default["default"].forwardRef(function (props, ref) {
     /////////////////
     // USE EFFECTS //
     /////////////////
-    React__default["default"].useEffect(function () {
-        gsapWithCSS.set(bottomSheetRef.current, {
-            y: window.innerHeight,
-        });
-        var onResize = function () {
-            // console.log(resize);
-            setResize(!resize);
-            if (props.isOpen) {
-                gsapWithCSS.set(bottomSheetRef.current, {
-                    y: window.innerHeight - bottomSheetRef.current.clientHeight,
-                });
-                applyDragBounds();
-            }
-        };
-        window.addEventListener("resize", onResize);
-        return function () {
-            window.removeEventListener("resize", onResize);
-        };
-    }, []);
-    React__default["default"].useEffect(function () {
-        gsapWithCSS.registerPlugin(Draggable.exports.Draggable, InertiaPlugin);
-        var dragStartPoint = 0;
-        if (bottomSheetRef.current) {
-            Draggable.exports.Draggable.create(bottomSheetRef.current, {
-                type: "y",
-                inertia: true,
-                edgeResistance: 0.8,
-                maxDuration: 0.3,
-                onDragStart: function () {
-                    dragStartPoint = bottomSheetRef.current.getBoundingClientRect().top;
-                },
-                onDrag: function () {
-                    var sheetTopPosition = bottomSheetRef.current.getBoundingClientRect().top;
-                    var dragDifference = sheetTopPosition - dragStartPoint;
-                    if (sheetTopPosition - props.topShift > props.topShift &&
-                        dragDifference > 70) {
-                        Draggable.exports.Draggable.get(bottomSheetRef.current).disable();
-                        props.onCloseDrag();
-                    }
-                },
-            });
-        }
-    }, []);
     useDidMountEffect(function () {
-        applyDragBounds();
+        // applyDragBounds();
         if (!props.isOpen) {
-            console.log("isOpen", props.isOpen);
+            // console.log("isOpen", props.isOpen);
             gsapWithCSS.to(modalWrapRef.current, {
-                // display: "none",
+                display: "none",
                 pointerEvents: "none",
                 opacity: 0,
                 duration: 0.1,
                 delay: 0.4,
             });
             gsapWithCSS.to(bottomSheetRef.current, {
-                y: window.innerHeight,
+                bottom: "-100%",
                 duration: 0.2,
             });
             gsapWithCSS.to(backgroundRef.current, {
@@ -10897,6 +10842,22 @@ var BottomSheet = React__default["default"].forwardRef(function (props, ref) {
             });
         }
     }, [props.isOpen]);
+    React__default["default"].useEffect(function () {
+        if (stickModal) {
+            gsapWithCSS.to(bottomSheetRef.current, {
+                maxHeight: "100%",
+                borderRadius: 0,
+                duration: 0.2,
+            });
+        }
+        else {
+            gsapWithCSS.to(bottomSheetRef.current, {
+                maxHeight: "96%",
+                borderRadius: "15px 15px 0 0",
+                duration: 0.2,
+            });
+        }
+    }, [stickModal]);
     React__default["default"].useEffect(function () {
         // console.log("isOpen", props.isOpen);
         if (props.isOpen) {
@@ -10908,13 +10869,9 @@ var BottomSheet = React__default["default"].forwardRef(function (props, ref) {
                 duration: 0.1,
             });
             gsapWithCSS.to(bottomSheetRef.current, {
-                y: applyOpenSheetPosition(),
+                bottom: "0%",
                 duration: 0.4,
                 ease: "expo.out",
-                onComplete: function () {
-                    console.log(applyOpenSheetPosition());
-                    Draggable.exports.Draggable.get(bottomSheetRef.current).enable();
-                },
             });
             gsapWithCSS.to(backgroundRef.current, {
                 opacity: 1,
@@ -10926,15 +10883,23 @@ var BottomSheet = React__default["default"].forwardRef(function (props, ref) {
     // RENDERING //
     ///////////////
     return (React__default["default"].createElement("aside", { role: "dialog", tabIndex: -1, "aria-modal": true, "aria-hidden": false, ref: modalWrapRef, className: "".concat(modules_efc4e723$8.modalWrap), style: __assign({}, props.style) },
-        React__default["default"].createElement("section", { ref: bottomSheetRef, className: "".concat(modules_efc4e723$8.bottomSheetWrap) },
+        React__default["default"].createElement("section", { ref: bottomSheetRef, className: "".concat(modules_efc4e723$8.bottomSheetWrap), onScroll: function () {
+                var contentPosition = contentWrapperRef.current.getBoundingClientRect().top -
+                    contentWrapperRef.current.offsetTop;
+                if (contentPosition < 0) {
+                    setStickModal(true);
+                }
+                else {
+                    setStickModal(false);
+                }
+            } },
             React__default["default"].createElement(Header, { onCloseClick: handleCloseClick, title: props.title, smallTitle: props.smallTitle, noMaxWidth: true }),
-            React__default["default"].createElement("div", { className: modules_efc4e723$8.contentWrapper }, props.children)),
+            React__default["default"].createElement("div", { className: modules_efc4e723$8.contentWrapper, ref: contentWrapperRef }, props.children)),
         React__default["default"].createElement("div", { ref: backgroundRef, className: modules_efc4e723$8.background })));
 });
 BottomSheet.defaultProps = {
     className: "",
     title: "",
-    topShift: 20,
     onCloseClick: function () { },
 };
 

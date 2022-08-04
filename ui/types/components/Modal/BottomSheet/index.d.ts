@@ -6,7 +6,6 @@ interface Props {
     title?: string;
     smallTitle: boolean;
     children: React.ReactNode;
-    topShift?: number;
     isMobileBreakpoint: boolean;
     style?: React.CSSProperties;
     onCloseClick?: () => void;

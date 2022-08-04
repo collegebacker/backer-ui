@@ -1,7 +1,5 @@
 import React from "react";
 import gsap from "gsap";
-import { Draggable } from "gsap/dist/Draggable";
-import { InertiaPlugin } from "gsap-bonus/InertiaPlugin";
 
 import styles from "./styles.module.scss";
 import Header from "../Header";
@@ -15,7 +13,6 @@ interface Props {
   title?: string;
   smallTitle: boolean;
   children: React.ReactNode;
-  topShift?: number;
   isMobileBreakpoint: boolean;
   style?: React.CSSProperties;
   onCloseClick?: () => void;
@@ -30,24 +27,9 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
   const modalWrapRef = React.useRef<HTMLDivElement>(null);
   const bottomSheetRef = React.useRef<HTMLDivElement>(null);
   const backgroundRef = React.useRef<HTMLDivElement>(null);
-  const [resize, setResize] = React.useState(false);
+  const contentWrapperRef = React.useRef<HTMLDivElement>(null);
 
-  const applyOpenSheetPosition = () => {
-    const bottomSheet = bottomSheetRef.current;
-
-    if (bottomSheet.clientHeight > window.innerHeight) {
-      return props.topShift;
-    }
-
-    return window.innerHeight - bottomSheet.clientHeight;
-  };
-
-  const applyDragBounds = () => {
-    Draggable.get(bottomSheetRef.current).vars.bounds = {
-      minY: applyOpenSheetPosition(),
-      maxY: window.innerHeight - bottomSheetRef.current.clientHeight,
-    };
-  };
+  const [stickModal, setStickModal] = React.useState(false);
 
   //////////////
   // IMPERIAL //
@@ -81,77 +63,19 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
   // USE EFFECTS //
   /////////////////
 
-  React.useEffect(() => {
-    gsap.set(bottomSheetRef.current, {
-      y: window.innerHeight,
-    });
-
-    const onResize = () => {
-      // console.log(resize);
-      setResize(!resize);
-
-      if (props.isOpen) {
-        gsap.set(bottomSheetRef.current, {
-          y: window.innerHeight - bottomSheetRef.current.clientHeight,
-        });
-
-        applyDragBounds();
-      }
-    };
-
-    window.addEventListener("resize", onResize);
-
-    return () => {
-      window.removeEventListener("resize", onResize);
-    };
-  }, []);
-
-  React.useEffect(() => {
-    gsap.registerPlugin(Draggable, InertiaPlugin);
-
-    let dragStartPoint = 0;
-
-    if (bottomSheetRef.current) {
-      Draggable.create(bottomSheetRef.current, {
-        type: "y",
-        inertia: true,
-        edgeResistance: 0.8,
-        maxDuration: 0.3,
-        onDragStart: () => {
-          dragStartPoint = bottomSheetRef.current.getBoundingClientRect().top;
-        },
-        onDrag: () => {
-          let sheetTopPosition =
-            bottomSheetRef.current.getBoundingClientRect().top;
-          let dragDifference = sheetTopPosition - dragStartPoint;
-
-          if (
-            sheetTopPosition - props.topShift > props.topShift &&
-            dragDifference > 70
-          ) {
-            Draggable.get(bottomSheetRef.current).disable();
-            props.onCloseDrag();
-          }
-        },
-      });
-    }
-  }, []);
-
   useDidMountEffect(() => {
-    applyDragBounds();
-
+    // applyDragBounds();
     if (!props.isOpen) {
-      console.log("isOpen", props.isOpen);
-
+      // console.log("isOpen", props.isOpen);
       gsap.to(modalWrapRef.current, {
-        // display: "none",
+        display: "none",
         pointerEvents: "none",
         opacity: 0,
         duration: 0.1,
         delay: 0.4,
       });
       gsap.to(bottomSheetRef.current, {
-        y: window.innerHeight,
+        bottom: "-100%",
         duration: 0.2,
       });
       gsap.to(backgroundRef.current, {
@@ -162,8 +86,23 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
   }, [props.isOpen]);
 
   React.useEffect(() => {
-    // console.log("isOpen", props.isOpen);
+    if (stickModal) {
+      gsap.to(bottomSheetRef.current, {
+        maxHeight: "100%",
+        borderRadius: 0,
+        duration: 0.2,
+      });
+    } else {
+      gsap.to(bottomSheetRef.current, {
+        maxHeight: "96%",
+        borderRadius: "15px 15px 0 0",
+        duration: 0.2,
+      });
+    }
+  }, [stickModal]);
 
+  React.useEffect(() => {
+    // console.log("isOpen", props.isOpen);
     if (props.isOpen) {
       modalWrapRef.current.focus();
 
@@ -173,15 +112,10 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
         opacity: 1,
         duration: 0.1,
       });
-
       gsap.to(bottomSheetRef.current, {
-        y: applyOpenSheetPosition(),
+        bottom: "0%",
         duration: 0.4,
         ease: "expo.out",
-        onComplete: () => {
-          console.log(applyOpenSheetPosition());
-          Draggable.get(bottomSheetRef.current).enable();
-        },
       });
       gsap.to(backgroundRef.current, {
         opacity: 1,
@@ -204,14 +138,30 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
       className={`${styles.modalWrap}`}
       style={{ ...props.style }}
     >
-      <section ref={bottomSheetRef} className={`${styles.bottomSheetWrap}`}>
+      <section
+        ref={bottomSheetRef}
+        className={`${styles.bottomSheetWrap}`}
+        onScroll={() => {
+          const contentPosition =
+            contentWrapperRef.current.getBoundingClientRect().top -
+            contentWrapperRef.current.offsetTop;
+
+          if (contentPosition < 0) {
+            setStickModal(true);
+          } else {
+            setStickModal(false);
+          }
+        }}
+      >
         <Header
           onCloseClick={handleCloseClick}
           title={props.title}
           smallTitle={props.smallTitle}
           noMaxWidth={true}
         />
-        <div className={styles.contentWrapper}>{props.children}</div>
+        <div className={styles.contentWrapper} ref={contentWrapperRef}>
+          {props.children}
+        </div>
       </section>
       <div ref={backgroundRef} className={styles.background}></div>
     </aside>
@@ -221,7 +171,6 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
 BottomSheet.defaultProps = {
   className: "",
   title: "",
-  topShift: 20,
   onCloseClick: () => {},
 } as Partial<Props>;
 
