@@ -17,3 +17,4 @@ export { default as Accordion } from "./Accordion";
 export { default as WarnMesssage } from "./WarnMesssage";
 export { default as InfoMesssage } from "./InfoMesssage";
 export { default as ActionMesssage } from "./ActionMesssage";
+export { default as Toast } from "./Toast";

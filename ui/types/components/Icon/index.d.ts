@@ -4,6 +4,7 @@ export interface Props {
     style?: React.CSSProperties;
     name: IconTypes;
     color?: string;
+    onClick?: () => void;
 }
 declare const Icon: React.FC<Props>;
 export default Icon;
