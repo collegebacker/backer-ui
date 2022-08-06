@@ -31,8 +31,15 @@ type IconTypes =
   | "chevron-down"
   | "chevron-top"
   | "chevron-in-circle-right"
+  | "plus-in-circle"
   | "plus-in-circle-left"
-  | "download";
+  | "download"
+  | "minus-in-circle"
+  | "kebab"
+  | "phone"
+  | "like"
+  | "full-screen"
+  | "emoji";
 type TargetTypes = "_blank" | "_self" | "_parent" | "_top";
 type AppTypographyTypes =
   | "title-xlarge"

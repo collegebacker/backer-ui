@@ -20,7 +20,7 @@ Default.args = {
     {
       label: "Create a fund",
       onClick: () => {},
-      icon: "plus-in-circle-left",
+      icon: "plus-in-circle",
     },
     {
       label: "Send a gift",
