@@ -4,6 +4,7 @@ import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 import json from "@rollup/plugin-json";
 import dts from "rollup-plugin-dts";
+import addGlobalTs from "rollup-plugin-add-global-ts";
 import autoprefixer from "autoprefixer";
 import discardDuplicates from "postcss-discard-duplicates";
 import styles from "rollup-plugin-styles";
@@ -46,6 +47,6 @@ export default [
   {
     input: "ui/types/components/index.d.ts",
     output: [{ file: "ui/index.d.ts", format: "esm" }],
-    plugins: [dts()],
+    plugins: [dts(), addGlobalTs(["src/global.d.ts"])],
   },
 ];

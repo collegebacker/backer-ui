@@ -1,3 +1,4 @@
+import { IconTypes, TargetTypes, AppTypographyTypes, MarketingTypographyTypes } from '../../../lib/rollup-plugin-add-global-ts_@global'
 export { default as Button } from "./Button";
 export { default as Icon } from "./Icon";
 export { default as Input } from "./Input";
