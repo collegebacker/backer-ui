@@ -204,14 +204,11 @@ const Template: ComponentStory<typeof Toast> = (args) => {
         }}
         label="Success"
         onClick={() =>
-          toastRef.current.showToast(
-            "This is a toast with a timer of 6 seconds",
-            {
-              type: "success",
-              closeOnClick: true,
-              timeout: 6000,
-            }
-          )
+          toastRef.current.showToast("Fund updated!", {
+            type: "success",
+            closeOnClick: true,
+            timeout: 6000,
+          })
         }
       />
       <Button

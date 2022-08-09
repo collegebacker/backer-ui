@@ -40,7 +40,9 @@ type IconTypes =
   | "like"
   | "full-screen"
   | "emoji";
+
 type TargetTypes = "_blank" | "_self" | "_parent" | "_top";
+
 type AppTypographyTypes =
   | "title-xlarge"
   | "title-large"
@@ -54,6 +56,7 @@ type AppTypographyTypes =
   | "body-main"
   | "body-paragraph"
   | "body-caption";
+
 type MarketingTypographyTypes =
   | "xlarge"
   | "large"
@@ -67,3 +70,16 @@ type MarketingTypographyTypes =
   | "paragraph-bold"
   | "caption"
   | "caption-bold";
+
+type ToastItemProps = {
+  closeOnClick?: boolean;
+  showCloseIcon?: boolean;
+  dismissButton?: boolean;
+  button?: {
+    label: string | null;
+    onClick: () => void | null;
+  };
+  emoji?: string;
+  type?: "success" | "error" | "warning" | "info";
+  timeout?: number;
+};

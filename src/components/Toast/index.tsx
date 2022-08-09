@@ -1,166 +1,26 @@
-import React from "react";
+import React, { useId } from "react";
 import ReactDOM from "react-dom";
 import styles from "./styles.module.scss";
 
-import Text from "../Text";
-import Button from "../Button";
-
-export interface Props {
-  className?: string;
-}
+import ToastItem from "./ToastItem";
 
 interface ItemProps {
   message: string;
-  params?: {
-    closeOnClick?: boolean;
-    showCloseIcon?: boolean;
-    dismissButton?: boolean;
-    button?: {
-      label: string;
-      onClick: () => void;
-    };
-    emoji?: string;
-    type?: "success" | "error" | "warning" | "info";
-    timeout?: number;
-  };
-  isShown?: boolean;
+  params?: ToastItemProps;
 }
 
-const ToastItem: React.FC<ItemProps> = (props) => {
-  const [isShown, setIsShown] = React.useState(props.isShown);
-  const [isNotVisible, setIsNotVisible] = React.useState(false);
-
-  const addEmoji = () => {
-    switch (props.params?.type) {
-      case "success":
-        return "🎉";
-      case "error":
-        return "📛";
-      case "warning":
-        return "⚠️";
-      case "info":
-        return props.params?.emoji;
-      default:
-        return props.params?.emoji;
-    }
+function guidGenerator() {
+  var S4 = function () {
+    return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
   };
+  return S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4();
+}
 
-  React.useEffect(() => {
-    if (props.params?.timeout > 0) {
-      const timer = setTimeout(() => {
-        setIsShown(false);
-      }, props.params?.timeout);
-
-      return () => {
-        clearTimeout(timer);
-      };
-    }
-  }, []);
-
-  const handleCloseOnParentClick = () => {
-    if (props.params?.closeOnClick && !props.params?.dismissButton) {
-      // console.log("closeOnClick");
-      setIsShown(false);
-    }
-  };
-
-  const handleClose = () => {
-    // console.log("crossClick");
-    setIsShown(false);
-  };
-
-  return !isNotVisible ? (
-    <section
-      className={`${styles.toastItemWrap} ${
-        isShown ? styles.toastIn : styles.toastOut
-      }`}
-      onClick={handleCloseOnParentClick}
-      onAnimationEnd={() => {
-        if (!isShown) {
-          // console.log("onAnimationEnd");
-          setIsNotVisible(true);
-        }
-      }}
-    >
-      <div className={`${styles.toastItem} ${styles[props.params?.type]}`}>
-        {props.params.timeout > 0 ? (
-          <div
-            className={styles.toastScale}
-            style={{
-              animationDuration: `${props.params.timeout}ms`,
-            }}
-          />
-        ) : null}
-
-        {props.params?.emoji !== "" || props.params?.type !== "info" ? (
-          <div className={styles.emoji}>{addEmoji()}</div>
-        ) : null}
-
-        <div className={styles.toastItem__content}>
-          <Text tag="p" context="app" appStyle="body-main">
-            {props.message}
-          </Text>
-
-          {props.params?.dismissButton || props.params?.button.label ? (
-            <div className={styles.toastItem__buttons}>
-              {props.params?.button.label ? (
-                <Button
-                  className={styles.toastItem__button}
-                  onClick={props.params?.button.onClick}
-                  label={props.params?.button.label}
-                  size="small"
-                  mode="outline"
-                  style={{
-                    minWidth: "auto",
-                  }}
-                />
-              ) : null}
-
-              {props.params?.dismissButton ? (
-                <Button
-                  className={styles.toastItem__button}
-                  label="Dismiss"
-                  size="small"
-                  mode="outline"
-                  style={{
-                    minWidth: "auto",
-                  }}
-                  onClick={handleClose}
-                />
-              ) : null}
-            </div>
-          ) : null}
-        </div>
-
-        {props.params?.showCloseIcon ? (
-          <div className={styles.toastItem__closeIcon} onClick={handleClose} />
-        ) : null}
-      </div>
-    </section>
-  ) : null;
-};
-
-const Toast = React.forwardRef<any, Props>((props, ref) => {
+const Toast = React.forwardRef((_, ref) => {
   const [toasts, setToasts] = React.useState<Array<ItemProps>>([]);
 
   React.useImperativeHandle(ref, () => ({
-    showToast: (
-      message: string,
-      params: {
-        closeOnClick?: boolean;
-        showCloseIcon?: boolean;
-        dismissButton?: boolean;
-        button?: {
-          label: string | null;
-          onClick: () => void | null;
-        };
-        emoji?: string;
-        type?: "success" | "error" | "warning" | "info";
-        timeout?: number;
-      }
-    ) => {
-      // console.log(params);
-
+    showToast: (message: string, params: ToastItemProps) => {
       const toastProps = {
         message,
         params: {
@@ -173,7 +33,7 @@ const Toast = React.forwardRef<any, Props>((props, ref) => {
           },
           emoji: params?.emoji ?? "",
           type: params?.type ?? "info",
-          timeout: params?.timeout ?? 0,
+          timeout: params?.timeout ?? null,
         },
       };
 
@@ -182,17 +42,9 @@ const Toast = React.forwardRef<any, Props>((props, ref) => {
   }));
 
   return ReactDOM.createPortal(
-    <aside
-      id="backer-toast-container"
-      className={`${styles.toastContainer} ${props.className}`}
-    >
+    <aside id="backer-toast-container" className={styles.toastContainer}>
       {toasts.map((toast, index) => (
-        <ToastItem
-          key={index}
-          message={toast.message}
-          isShown={true}
-          params={toast.params}
-        />
+        <ToastItem key={index} message={toast.message} params={toast.params} />
       ))}
     </aside>,
     document.body
@@ -200,9 +52,5 @@ const Toast = React.forwardRef<any, Props>((props, ref) => {
 });
 
 Toast.displayName = "Toast";
-
-Toast.defaultProps = {
-  className: "",
-} as Partial<Props>;
 
 export default Toast;
