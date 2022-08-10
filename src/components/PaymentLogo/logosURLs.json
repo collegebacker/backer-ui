@@ -1,0 +1,30 @@
+{
+  "visa": {
+    "dark": "https://res.cloudinary.com/dgfjsma5p/image/upload/payment-logos/dark/visa.svg",
+    "light": "https://res.cloudinary.com/dgfjsma5p/image/upload/payment-logos/light/visa.svg"
+  },
+  "paypal": {
+    "dark": "https://res.cloudinary.com/dgfjsma5p/image/upload/payment-logos/dark/paypal.svg",
+    "light": "https://res.cloudinary.com/dgfjsma5p/image/upload/payment-logos/light/paypal.svg"
+  },
+  "apple-pay": {
+    "dark": "https://res.cloudinary.com/dgfjsma5p/image/upload/payment-logos/dark/apple-pay.svg",
+    "light": "https://res.cloudinary.com/dgfjsma5p/image/upload/payment-logos/light/apple-pay.svg"
+  },
+  "apple-pay-framed": {
+    "dark": "https://res.cloudinary.com/dgfjsma5p/image/upload/payment-logos/dark/apple-pay-framed.svg",
+    "light": "https://res.cloudinary.com/dgfjsma5p/image/upload/payment-logos/light/apple-pay-framed.svg"
+  },
+  "g-pay": {
+    "dark": "https://res.cloudinary.com/dgfjsma5p/image/upload/payment-logos/dark/g-pay.svg",
+    "light": "https://res.cloudinary.com/dgfjsma5p/image/upload/payment-logos/light/g-pay.svg"
+  },
+  "g-pay-framed": {
+    "dark": "https://res.cloudinary.com/dgfjsma5p/image/upload/payment-logos/dark/g-pay-framed.svg",
+    "light": "https://res.cloudinary.com/dgfjsma5p/image/upload/payment-logos/light/g-pay-framed.svg"
+  },
+  "mastercard": {
+    "dark": "https://res.cloudinary.com/dgfjsma5p/image/upload/payment-logos/dark/mastercard.svg",
+    "light": "https://res.cloudinary.com/dgfjsma5p/image/upload/payment-logos/light/mastercard.svg"
+  }
+}
