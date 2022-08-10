@@ -7,7 +7,14 @@ export interface Props {
   className?: string;
   style?: React.CSSProperties;
   mode?: "light" | "dark";
-  name: keyof typeof logosURLs;
+  name:
+    | "visa"
+    | "paypal"
+    | "apple-pay"
+    | "apple-pay-framed"
+    | "g-pay"
+    | "g-pay-framed"
+    | "mastercard";
 }
 
 const PaymentLogo: React.FC<Props> = (props) => {

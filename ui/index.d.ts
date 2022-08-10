@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface Props$i {
+interface Props$k {
     className?: string;
     style?: React.CSSProperties;
     mode?: "primary" | "accent" | "outline" | "ghost";
@@ -20,18 +20,26 @@ interface Props$i {
     onSubmit?: (event: any) => void;
     onKeyPress?: (event: any) => void;
 }
-declare const Button: React.ForwardRefExoticComponent<Props$i & React.RefAttributes<any>>;
+declare const Button: React.ForwardRefExoticComponent<Props$k & React.RefAttributes<any>>;
 
-interface Props$h {
+interface Props$j {
     className?: string;
     style?: React.CSSProperties;
     name: IconTypes;
     color?: string;
     onClick?: () => void;
 }
-declare const Icon: React.FC<Props$h>;
+declare const Icon: React.FC<Props$j>;
 
-interface Props$g {
+interface Props$i {
+    className?: string;
+    style?: React.CSSProperties;
+    mode?: "light" | "dark";
+    name: "visa" | "paypal" | "apple-pay" | "apple-pay-framed" | "g-pay" | "g-pay-framed" | "mastercard";
+}
+declare const PaymentLogo: React.FC<Props$i>;
+
+interface Props$h {
     className?: string;
     type?: "text" | "password" | "number" | "email";
     required?: boolean;
@@ -56,9 +64,9 @@ interface Props$g {
     onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
     onInvalid?: (event: React.FormEvent<HTMLInputElement>) => void;
 }
-declare const Input: React.ForwardRefExoticComponent<Props$g & React.RefAttributes<any>>;
+declare const Input: React.ForwardRefExoticComponent<Props$h & React.RefAttributes<any>>;
 
-interface Props$f {
+interface Props$g {
     className?: string;
     type?: "text" | "password" | "number" | "email" | "money";
     allowCents?: boolean;
@@ -82,9 +90,9 @@ interface Props$f {
     onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
     onInvalid?: (event: React.FormEvent<HTMLInputElement>) => void;
 }
-declare const GhostInput: React.ForwardRefExoticComponent<Props$f & React.RefAttributes<any>>;
+declare const GhostInput: React.ForwardRefExoticComponent<Props$g & React.RefAttributes<any>>;
 
-interface Props$e {
+interface Props$f {
     tabIndex?: number;
     className?: string;
     style?: React.CSSProperties;
@@ -97,24 +105,24 @@ interface Props$e {
     onFocus?: (nums: string) => void;
     onResend?: (event: any) => void;
 }
-declare const CodeInput: React.ForwardRefExoticComponent<Props$e & React.RefAttributes<any>>;
+declare const CodeInput: React.ForwardRefExoticComponent<Props$f & React.RefAttributes<any>>;
 
-interface Props$d {
+interface Props$e {
     className?: string;
     type?: "default" | "foundation" | "sign";
     hoverAnimation?: boolean;
 }
-declare const Logo: React.ForwardRefExoticComponent<Props$d & React.RefAttributes<any>>;
+declare const Logo: React.ForwardRefExoticComponent<Props$e & React.RefAttributes<any>>;
 
-declare type ItemType = {
+declare type ItemType$1 = {
     label: string;
     value: any;
     caption?: string;
 };
-interface Props$c {
+interface Props$d {
     containerClassName?: string;
     arrowsClassName?: string;
-    items: Array<ItemType>;
+    items: Array<ItemType$1>;
     defaultIndex?: number;
     showGuidelines?: boolean;
     cardWidth?: number;
@@ -128,7 +136,19 @@ interface Props$c {
     alwaysShowOverlayGradients?: boolean;
     onChange?: (index: number) => void;
 }
-declare const ChipsSlider: React.FC<Props$c>;
+declare const ChipsSlider: React.FC<Props$d>;
+
+declare type ItemType = {
+    label: string;
+    value: any;
+};
+interface Props$c {
+    className?: string;
+    defaultIndex?: number;
+    items: Array<ItemType>;
+    onChange?: (index: number) => void;
+}
+declare const ChipsSelector: React.FC<Props$c>;
 
 interface Props$b {
     containterClassName?: string;
@@ -261,4 +281,4 @@ declare const ActionMesssage: React.FC<Props>;
 
 declare const Toast: React.ForwardRefExoticComponent<React.RefAttributes<unknown>>;
 
-export { Accordion, ActionMesssage, ArrowButton, Button, ChipsSlider, CodeInput, Divider, DotPagination, GhostInput, Icon, WarnMesssage as InfoMesssage, Input, Logo, Modal, ModalButtons, SliderWrapper, Spinner, Text, Toast, WarnMesssage$1 as WarnMesssage };
+export { Accordion, ActionMesssage, ArrowButton, Button, ChipsSelector, ChipsSlider, CodeInput, Divider, DotPagination, GhostInput, Icon, WarnMesssage as InfoMesssage, Input, Logo, Modal, ModalButtons, PaymentLogo, SliderWrapper, Spinner, Text, Toast, WarnMesssage$1 as WarnMesssage };
