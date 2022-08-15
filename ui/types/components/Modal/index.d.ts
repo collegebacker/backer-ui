@@ -1,6 +1,5 @@
 import React from "react";
 export interface Props {
-    className?: string;
     isOpen?: boolean;
     popupClassName?: string;
     popupContentClassName?: string;

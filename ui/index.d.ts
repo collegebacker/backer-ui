@@ -212,7 +212,6 @@ interface Props$6 {
 declare const Spinner: React.FC<Props$6>;
 
 interface Props$5 {
-    className?: string;
     isOpen?: boolean;
     popupClassName?: string;
     popupContentClassName?: string;
