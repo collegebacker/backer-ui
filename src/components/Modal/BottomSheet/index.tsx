@@ -7,7 +7,8 @@ import Header from "../Header";
 import { useDidMountEffect, useOutsideClick } from "../../../hooks";
 
 interface Props {
-  className?: string;
+  popupClassName: string;
+  popupContentClassName: string;
   isOpen: boolean;
   closeOutside: boolean;
   title?: string;
@@ -147,7 +148,7 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
         ref={bottomSheetRef}
         className={`${styles.bottomSheetWrap} ${
           stickModal ? "" : styles.overScrolled
-        }`}
+        } ${props.popupClassName}`}
       >
         <Header
           onCloseClick={handleCloseClick}
@@ -155,7 +156,10 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
           smallTitle={props.smallTitle}
           noMaxWidth={true}
         />
-        <div className={styles.contentWrapper} ref={contentWrapperRef}>
+        <div
+          className={`${styles.contentWrapper} ${styles.popupContentClassName}`}
+          ref={contentWrapperRef}
+        >
           {props.children}
         </div>
       </section>

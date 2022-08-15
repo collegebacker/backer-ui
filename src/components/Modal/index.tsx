@@ -5,7 +5,6 @@ import BottomSheet from "./BottomSheet";
 import Popup from "./Popup";
 
 export interface Props {
-  className?: string;
   isOpen?: boolean;
   popupClassName?: string;
   popupContentClassName?: string;
@@ -89,6 +88,8 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
           isOpen={isOpen}
           closeOutside={props.closeOutside}
           smallTitle={props.smallTitle}
+          popupClassName={props.popupClassName}
+          popupContentClassName={props.popupContentClassName}
           onCloseClick={handleOnCloseClick}
           onCloseDrag={handleOnCloseClick}
         />
@@ -113,7 +114,6 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
 Modal.displayName = "Modal";
 
 Modal.defaultProps = {
-  className: "",
   isOpen: false,
   title: "",
   popupClassName: "",
