@@ -8,5 +8,5 @@ export interface Props {
     marketingStyle?: MarketingTypographyTypes;
     [key: string]: any;
 }
-declare const Text: React.FC<Props>;
+declare const Text: React.ForwardRefExoticComponent<Pick<Props, keyof Props> & React.RefAttributes<any>>;
 export default Text;

@@ -201,7 +201,7 @@ interface Props$7 {
     marketingStyle?: MarketingTypographyTypes;
     [key: string]: any;
 }
-declare const Text: React.FC<Props$7>;
+declare const Text: React.ForwardRefExoticComponent<Pick<Props$7, keyof Props$7> & React.RefAttributes<any>>;
 
 interface Props$6 {
     className?: string;

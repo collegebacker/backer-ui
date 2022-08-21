@@ -23,12 +23,13 @@ export interface Props {
   [key: string]: any;
 }
 
-const Text: React.FC<Props> = (props) => {
+const Text = React.forwardRef<any, Props>((props, ref) => {
   const { className, style, tag, context, appStyle, marketingStyle, ...rest } =
     props;
 
   return (
     <props.tag
+      ref={ref}
       className={`${props.className} typo-${props.context}-${
         props.context === "app" ? props.appStyle : props.marketingStyle
       }`}
@@ -40,7 +41,7 @@ const Text: React.FC<Props> = (props) => {
       {props.children}
     </props.tag>
   );
-};
+});
 
 Text.defaultProps = {
   className: "",

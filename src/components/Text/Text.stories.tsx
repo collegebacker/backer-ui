@@ -55,7 +55,15 @@ Only for \`marketing\` context.
   },
 } as ComponentMeta<typeof Text>;
 
-const Template: ComponentStory<typeof Text> = (args) => <Text {...args} />;
+const Template: ComponentStory<typeof Text> = (args) => {
+  const textRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    console.log(textRef.current);
+  }, [textRef]);
+
+  return <Text {...args} ref={textRef} />;
+};
 
 export const App = Template.bind({});
 App.args = {
