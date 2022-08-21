@@ -43,6 +43,8 @@ const Text = React.forwardRef<any, Props>((props, ref) => {
   );
 });
 
+Text.displayName = "Text";
+
 Text.defaultProps = {
   className: "",
   tag: "p",
