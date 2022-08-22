@@ -32,14 +32,14 @@ type IconTypes =
   | "chevron-top"
   | "chevron-in-circle-right"
   | "plus-in-circle"
-  | "plus-in-circle-left"
   | "download"
   | "minus-in-circle"
   | "kebab"
   | "phone"
   | "like"
   | "full-screen"
-  | "emoji";
+  | "emoji"
+  | "share";
 
 type TargetTypes = "_blank" | "_self" | "_parent" | "_top";
 
