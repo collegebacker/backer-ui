@@ -86,7 +86,7 @@ var kebab = "M7.5 12C7.5 12.8284 6.82843 13.5 6 13.5C5.17157 13.5 4.5 12.8284 4.
 var phone = "M5.83948 1.50397C6.80222 1.43837 7.49631 2.16661 7.75045 2.92903L8.9114 6.41192C9.25515 7.44318 8.83237 8.52453 8.04529 9.17177C7.77477 9.39424 7.52256 9.62725 7.3424 9.84232C7.25251 9.94962 7.18985 10.0416 7.15152 10.1158C7.11454 10.1874 7.1121 10.2196 7.11194 10.2196C7.11194 10.22 7.11192 10.2196 7.11194 10.2196C7.11194 10.3456 7.18686 10.5907 7.39201 10.9585C7.58624 11.3067 7.85992 11.7002 8.1684 12.1001C8.78019 12.8932 9.4952 13.6688 9.90318 14.0968C10.3312 14.5048 11.1068 15.2198 11.8999 15.8316C12.2998 16.1401 12.6933 16.4138 13.0415 16.608C13.4093 16.8131 13.655 16.8881 13.781 16.8881C13.781 16.8879 13.8126 16.8855 13.8842 16.8485C13.9584 16.8102 14.0504 16.7475 14.1577 16.6576C14.3728 16.4774 14.6058 16.2252 14.8282 15.9547C15.4755 15.1676 16.5568 14.7449 17.5881 15.0886L21.071 16.2496C21.8334 16.5037 22.5616 17.1978 22.496 18.1605C22.3914 19.6958 21.489 21.2391 19.5177 22.0839C18.2352 22.6335 16.3191 22.6105 14.4696 22.1801C12.6074 21.7467 10.6936 20.8734 9.41523 19.595L4.40499 14.5848C3.12664 13.3064 2.25329 11.3926 1.81994 9.53038C1.38954 7.68092 1.36648 5.76478 1.91611 4.4823C2.76095 2.511 4.30418 1.60857 5.83948 1.50397ZM6.80176 3.24525C6.63753 2.75255 6.26467 2.47732 5.90746 2.50165C4.7473 2.5807 3.53243 3.24947 2.83526 4.87622C2.40729 5.87482 2.38421 7.5432 2.79391 9.30372C3.20066 11.0515 4.00754 12.7731 5.1121 13.8777L10.1223 18.8879C11.2269 19.9925 12.9485 20.7993 14.6963 21.2061C16.4568 21.6158 18.1252 21.5927 19.1238 21.1647C20.7505 20.4676 21.4193 19.2527 21.4983 18.0925C21.5227 17.7353 21.2475 17.3625 20.7548 17.1982L17.2719 16.0373C16.6959 15.8453 16.0294 16.0684 15.6006 16.5899C15.361 16.8813 15.0831 17.1869 14.7998 17.4242C14.5423 17.6399 14.1788 17.8881 13.781 17.8881C13.3819 17.8881 12.9438 17.6986 12.5544 17.4813C12.1454 17.2532 11.7081 16.9466 11.2891 16.6234C10.4498 15.976 9.6398 15.2276 9.20438 14.8123L9.19587 14.8041L9.18774 14.7956C8.77236 14.3602 8.02404 13.5502 7.37659 12.7109C7.05341 12.2919 6.74681 11.8546 6.51867 11.4456C6.30145 11.0562 6.11193 10.6181 6.11193 10.219C6.11193 9.82124 6.36011 9.45769 6.57581 9.20018C6.81307 8.91694 7.11875 8.639 7.41013 8.39939C7.93156 7.9706 8.15469 7.30407 7.96272 6.72814L6.80176 3.24525Z";
 var like = "M2.61236 4.19695C4.87496 1.93435 8.54336 1.93435 10.806 4.19695L10.8173 4.20829L11.95 5.34101L13.0935 4.19748C15.3561 1.93488 19.025 1.93435 21.2876 4.19695C23.4542 6.36348 23.5462 9.81897 21.5636 12.095L21.5713 12.107L11.9503 21.7279L2.3394 12.1176L2.34613 12.1061C0.353538 9.83028 0.44228 6.36703 2.61236 4.19695ZM11.9497 20.3137L20.5805 11.6835C22.4526 9.81138 22.4526 6.77614 20.5805 4.90406C18.7086 3.03216 15.6738 3.03198 13.8017 4.90353L13.7904 4.91486L11.95 6.75523L10.0989 4.90406C8.22678 3.03198 5.19154 3.03198 3.31946 4.90406C1.44739 6.77614 1.44739 9.81138 3.31946 11.6835L11.9497 20.3137Z";
 var emoji = "M7 10C7.55228 10 8 9.55229 8 9C8 8.44771 7.55228 8 7 8C6.44772 8 6 8.44771 6 9C6 9.55229 6.44772 10 7 10Z M12 19.5C15.1467 19.5 17.842 17.5619 18.955 14.8124L19.8819 15.1876C18.6213 18.3018 15.568 20.5 12 20.5C8.43197 20.5 5.37859 18.3018 4.11802 15.1876L5.04496 14.8124C6.15793 17.5619 8.85322 19.5 12 19.5Z M17 10C17.5523 10 18 9.55229 18 9C18 8.44771 17.5523 8 17 8C16.4477 8 16 8.44771 16 9C16 9.55229 16.4477 10 17 10Z M12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0ZM12 1C5.92487 0.999999 1 5.92487 1 12C0.999999 18.0751 5.92487 23 12 23C18.0751 23 23 18.0751 23 12C23 5.92487 18.0751 1 12 1Z";
-var share = "M13 1.5H1.5V22.5H22.5V13H21.5V21.5H2.5V2.5H13V1.5Z M15.9159 2L23.4138 7.94325L15.9159 13.8865V10.0038C11.467 10.1022 8.9497 12.1132 7 16.5C7 9.6551 9.99921 6.56412 15.9159 5.32036V2Z";
+var share = "M1.5 1.5H12V2.5H2.5V21.5H21.5V14H22.5V22.5H1.5V1.5Z M20.5818 6.5L16.4853 2.40354L17.1924 1.69643L21.996 6.5H22V6.50401L22.4957 6.99974L22 7.49546V7.5H21.9955L17.1924 12.303L16.4853 11.5959L20.5812 7.5H12C10.067 7.5 8.5 9.067 8.5 11V17H7.5V11C7.5 8.51472 9.51472 6.5 12 6.5H20.5818Z";
 var icons = {
 	menu: menu,
 	"arrow-left": "M2.20711 12.5L9.83883 20.1317L9.13173 20.8388L0.292892 12L9.13173 3.16116L9.83883 3.86827L2.20711 11.5H24V12.5H2.20711Z",
@@ -129,6 +129,7 @@ var icons = {
 	"full-screen": "M1.5 15V22.5H9V21.5H2.5V15H1.5Z M1.5 1.5V9H2.5V2.5H9V1.5H1.5Z M15 21.5V22.5H22.5V15H21.5V21.5H15Z M22.5 1.5V9H21.5V2.5H15V1.5H22.5Z",
 	emoji: emoji,
 	share: share,
+	"resize-photo": "M5.5 6.5V18.5H17.5V23H18.5V18.5H23V17.5H18.5V5.5H6.5V1H5.5V5.5H1V6.5H5.5ZM6.5 6.5V17.5H17.5V6.5H6.5Z",
 	"plus-in-circle-left": "M11.5 12.5V19H12.5V12.5H19V11.5H12.5V5H11.5V11.5H5V12.5H11.5Z M12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0ZM12 1C5.92487 0.999999 1 5.92487 1 12C0.999999 18.0751 5.92487 23 12 23C18.0751 23 23 18.0751 23 12C23 5.92487 18.0751 1 12 1Z"
 };
 
@@ -10540,19 +10541,60 @@ var css$d = ":root {\n  --radius-l: 15px;\n  --radius-m: 10px;\n  --radius-s: 5p
 var modules_efc4e723$d = {"sliderContainer":"styles_module_sliderContainer__6f49cce2","pagination":"styles_module_pagination__6f49cce2","slider":"styles_module_slider__6f49cce2","sliderCards":"styles_module_sliderCards__6f49cce2","cardWrap":"styles_module_cardWrap__6f49cce2","paginationWrap":"styles_module_paginationWrap__6f49cce2","arrowButton":"styles_module_arrowButton__6f49cce2","lastCard":"styles_module_lastCard__6f49cce2","lastCard__content":"styles_module_lastCard__content__6f49cce2","lastCard__text":"styles_module_lastCard__text__6f49cce2","lastCard__icon":"styles_module_lastCard__icon__6f49cce2"};
 n(css$d,{});
 
-var css$c = ".styles_module_pagination__774d3d56 {\n  position: relative;\n  display: flex;\n}\n\n.styles_module_paginationDot__774d3d56 {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n          user-select: none;\n  width: 8px;\n  height: 8px;\n  border-radius: 8px;\n  margin-right: 10px;\n  background-color: var(--color-main-500);\n  opacity: 0.2;\n  transition: width 0.3s ease-out, opacity 0.3s ease;\n}\n.styles_module_paginationDot__774d3d56:last-child {\n  margin-right: 0;\n}\n\n.styles_module_activeDot__774d3d56 {\n  width: 20px;\n  opacity: 1;\n}";
-var modules_efc4e723$c = {"pagination":"styles_module_pagination__774d3d56","paginationDot":"styles_module_paginationDot__774d3d56","activeDot":"styles_module_activeDot__774d3d56"};
+var css$c = ".styles_module_container__0da45aaf {\n  position: relative;\n  display: flex;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  overflow: hidden;\n  transition: width 0.3s ease-in-out;\n}\n\n.styles_module_wrap__0da45aaf {\n  position: relative;\n  display: flex;\n  transition: transform 0.3s ease-in-out;\n}\n\n.styles_module_paginationDot__0da45aaf {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n          user-select: none;\n  width: 8px;\n  height: 8px;\n  border-radius: 8px;\n  margin-right: 10px;\n  background-color: var(--color-main-500);\n  opacity: 0.2;\n  transition: all 0.3s ease-out;\n}\n.styles_module_paginationDot__0da45aaf:last-child {\n  margin-right: 0;\n}\n\n.styles_module_activeDot__0da45aaf {\n  width: 20px;\n  opacity: 1;\n}";
+var modules_efc4e723$c = {"container":"styles_module_container__0da45aaf","wrap":"styles_module_wrap__0da45aaf","paginationDot":"styles_module_paginationDot__0da45aaf","activeDot":"styles_module_activeDot__0da45aaf"};
 n(css$c,{});
 
 var DotPagination = function (props) {
-    return (React__default["default"].createElement("div", { className: "".concat(modules_efc4e723$c.pagination, " ").concat(props.className) }, Array.from(Array(props.totalAmount).keys()).map(function (_, index) {
-        return (React__default["default"].createElement("div", { className: "".concat(modules_efc4e723$c.paginationDot, " ").concat(props.activeIndex === index ? modules_efc4e723$c.activeDot : ""), key: index }));
-    })));
+    var limitDots = function (index) {
+        if (index + 1 > props.activeIndex + props.visibleAmount ||
+            index < props.activeIndex) {
+            if (index < props.totalAmount - props.visibleAmount ||
+                index > props.visibleAmount + props.activeIndex - 1) {
+                // console.log("limitDots", index);
+                return true;
+            }
+        }
+    };
+    var spaceBetweenDots = 10;
+    var dotsSize = 8;
+    var activeDot = 20;
+    var stepSize = spaceBetweenDots + dotsSize;
+    var isCornerStep = function () {
+        if (props.activeIndex === 0 ||
+            props.activeIndex + 1 > props.totalAmount - props.visibleAmount) {
+            return activeDot;
+        }
+        else {
+            return stepSize + activeDot;
+        }
+    };
+    var setShiftPosition = function () {
+        if (props.activeIndex < props.totalAmount - props.visibleAmount) {
+            return "translateX(-".concat((props.activeIndex - 1) * stepSize, "px)");
+        }
+        else {
+            return "translateX(-".concat((props.totalAmount - props.visibleAmount - 1) * stepSize, "px)");
+        }
+    };
+    return (React__default["default"].createElement("div", { className: "".concat(modules_efc4e723$c.container, " ").concat(props.className), style: {
+            width: props.visibleAmount < props.totalAmount
+                ? "".concat(props.visibleAmount * stepSize + isCornerStep(), "px")
+                : "fit-content",
+        } },
+        React__default["default"].createElement("div", { className: modules_efc4e723$c.wrap, style: {
+                transform: setShiftPosition(),
+            } }, Array.from(Array(props.totalAmount).keys()).map(function (_, index) {
+            return (React__default["default"].createElement("div", { className: "".concat(modules_efc4e723$c.paginationDot, " ").concat(props.activeIndex === index ? modules_efc4e723$c.activeDot : ""), style: {
+                    transform: "scale(".concat(limitDots(index) ? 0.5 : 1, ")"),
+                }, key: index }));
+        }))));
 };
 DotPagination.defaultProps = {
     className: "",
     totalAmount: 6,
     activeIndex: 0,
+    visibleAmount: 6,
 };
 
 /////////////////////////////////

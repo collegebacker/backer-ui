@@ -184,6 +184,7 @@ interface Props$9 {
     className?: string;
     totalAmount: number;
     activeIndex: number;
+    visibleAmount?: number;
 }
 declare const DotPagination: React.FC<Props$9>;
 

@@ -4,8 +4,8 @@ import styles from "./styles.module.scss";
 export interface Props {
   className?: string;
   totalAmount: number;
-  visibleAmount: number;
   activeIndex: number;
+  visibleAmount?: number;
 }
 
 const DotPagination: React.FC<Props> = (props) => {
