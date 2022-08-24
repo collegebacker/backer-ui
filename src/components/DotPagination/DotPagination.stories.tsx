@@ -9,19 +9,36 @@ export default {
   title: "Forms/DotPagination",
   component: DotPagination,
   argTypes: {
-    activeIndex: {
-      control: { type: "range", min: 0, max: 7, step: 1 },
-    },
-    totalAmount: { control: { type: "range", min: 2, max: 8, step: 1 } },
+    // activeIndex: {
+    //   control: { type: "range", min: 1, max: 20, step: 1 },
+    // },
   },
 } as ComponentMeta<typeof DotPagination>;
 
-const Template: ComponentStory<typeof DotPagination> = (args) => (
-  <DotPagination {...args} />
-);
+const Template: ComponentStory<typeof DotPagination> = (args) => {
+  return (
+    <div
+      style={{
+        padding: "60px",
+      }}
+    >
+      <DotPagination {...args} activeIndex={args.activeIndex} />
+    </div>
+  );
+};
 
 export const Default = Template.bind({});
+
 Default.args = {
   activeIndex: 0,
-  totalAmount: 5,
+  totalAmount: 6,
+  visibleAmount: 6,
+};
+
+export const WithLimit = Template.bind({});
+
+WithLimit.args = {
+  activeIndex: 0,
+  totalAmount: 12,
+  visibleAmount: 6,
 };
