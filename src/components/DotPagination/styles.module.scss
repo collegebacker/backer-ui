@@ -2,13 +2,15 @@
   position: relative;
   display: flex;
   width: fit-content;
-  // overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  // background-color: rgba(0, 0, 0, 0.1);
+  transition: width 0.3s ease-in-out;
 }
 
 .wrap {
   position: relative;
   display: flex;
+  transition: transform 0.3s ease-in-out;
   // background-color: rgba(0, 255, 0, 0.1);
 }
 
@@ -20,7 +22,7 @@
   margin-right: 10px;
   background-color: var(--color-main-500);
   opacity: 0.2;
-  transition: width 0.3s ease-out, opacity 0.3s ease;
+  transition: all 0.3s ease-out;
 
   &:last-child {
     margin-right: 0;
