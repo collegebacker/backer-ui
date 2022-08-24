@@ -1,6 +1,15 @@
-.pagination {
+.container {
   position: relative;
   display: flex;
+  width: fit-content;
+  // overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.wrap {
+  position: relative;
+  display: flex;
+  // background-color: rgba(0, 255, 0, 0.1);
 }
 
 .paginationDot {

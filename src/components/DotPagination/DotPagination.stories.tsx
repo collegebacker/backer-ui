@@ -10,18 +10,27 @@ export default {
   component: DotPagination,
   argTypes: {
     activeIndex: {
-      control: { type: "range", min: 0, max: 7, step: 1 },
+      control: { type: "range", min: 1, max: 20, step: 1 },
     },
-    totalAmount: { control: { type: "range", min: 2, max: 8, step: 1 } },
   },
 } as ComponentMeta<typeof DotPagination>;
 
-const Template: ComponentStory<typeof DotPagination> = (args) => (
-  <DotPagination {...args} />
-);
+const Template: ComponentStory<typeof DotPagination> = (args) => {
+  return (
+    <div
+      style={{
+        padding: "60px",
+      }}
+    >
+      <DotPagination {...args} activeIndex={args.activeIndex - 1} />
+    </div>
+  );
+};
 
 export const Default = Template.bind({});
+
 Default.args = {
   activeIndex: 0,
-  totalAmount: 5,
+  totalAmount: 10,
+  visibleAmount: 6,
 };
