@@ -39,7 +39,8 @@ type IconTypes =
   | "like"
   | "full-screen"
   | "emoji"
-  | "share";
+  | "share"
+  | "resize-photo";
 
 type TargetTypes = "_blank" | "_self" | "_parent" | "_top";
 
