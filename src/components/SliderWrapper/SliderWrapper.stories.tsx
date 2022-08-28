@@ -66,7 +66,12 @@ const CardExample: React.FC<CardExampleProps> = (props) => {
 };
 
 const Template: ComponentStory<typeof SliderWrapper> = (args) => (
-  <div className="pageWrap">
+  <div
+    className="pageWrap"
+    style={{
+      backgroundColor: "rgba(0,0,0,0.1)",
+    }}
+  >
     <SliderWrapper {...args} />
   </div>
 );
@@ -80,12 +85,14 @@ Default.args = {
     {
       breakpoint: 1424,
       cardsToShow: 3,
+      // hideArrows: true,
+      // hidePagination: true,
     },
     {
       breakpoint: 1068,
       cardsToShow: 2,
-      hideArrows: false,
-      hidePagination: true,
+      // hideArrows: false,
+      // hidePagination: true,
     },
     {
       breakpoint: 480,

@@ -125,19 +125,24 @@ const SliderWrapper: React.FC<Props> = (props) => {
     const viewWidth = sliderContainerRef.current.offsetWidth;
     setViewWidth(viewWidth);
 
-    breakpoints.forEach((breakpoint, index) => {
-      if (props.breakpoints[index + 1]) {
-        if (
-          viewWidth < breakpoint.breakpoint &&
-          viewWidth > props.breakpoints[index + 1].breakpoint
-        ) {
-          setCardsToShow(breakpoint.cardsToShow);
-        }
-      } else {
-        if (viewWidth < breakpoint.breakpoint) {
-          setCardsToShow(breakpoint.cardsToShow);
-        }
+    breakpoints.forEach((breakpoint) => {
+      if (window.innerWidth <= breakpoint.breakpoint) {
+        setCardsToShow(breakpoint.cardsToShow);
       }
+
+      // if (props.breakpoints[index + 1]) {
+      //   console.log(breakpoint.cardsToShow);
+      //   if (
+      //     viewWidth < breakpoint.breakpoint &&
+      //     viewWidth > props.breakpoints[index + 1].breakpoint
+      //   ) {
+      //     setCardsToShow(breakpoint.cardsToShow);
+      //   }
+      // } else {
+      //   if (viewWidth < breakpoint.breakpoint) {
+      //     setCardsToShow(breakpoint.cardsToShow);
+      //   }
+      // }
     });
   };
 
@@ -149,7 +154,7 @@ const SliderWrapper: React.FC<Props> = (props) => {
       }
     });
 
-    // console.log(props.breakpoints[currentBreakpoint].hideArrows );
+    //   // console.log(props.breakpoints[currentBreakpoint].hideArrows );
   };
 
   const updateOnDrag = () => {
