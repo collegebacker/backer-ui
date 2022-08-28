@@ -1,6 +1,5 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { action } from "@storybook/addon-actions";
 
 import { SliderWrapper } from "..";
 
@@ -9,6 +8,62 @@ localStorage.clear();
 export default {
   title: "Sliders/SliderWrapper",
   component: SliderWrapper,
+  parameters: {
+    docs: {
+      description: {
+        component: `
+The component has three breakpoints. Here are the sizes:
+\`\`\`
+breakpoints: [
+  {
+    breakpoint: 1024,
+    cardsToShow: 3,
+    sidePaddingOffset: 40,
+    hideArrows: false,
+    hidePagination: false,
+  },
+  {
+    breakpoint: 768,
+    cardsToShow: 2,
+    sidePaddingOffset: 40,
+    hideArrows: true,
+    hidePagination: false,
+  },
+  {
+    breakpoint: 480,
+    cardsToShow: 1,
+    sidePaddingOffset: 40,
+    hideArrows: true,
+    hidePagination: false,
+  },
+]
+\`\`\`
+
+And you can change these breakpoints. But if you want to change the breakpoints, you need to change all the breakpoints in the component. Fore example:
+
+\`\`\`
+breakpoints: [
+  {
+    breakpoint: 1400,
+    cardsToShow: 3,
+    sidePaddingOffset: 40,
+    hideArrows: true,
+    hidePagination: true,
+  },
+  {
+    breakpoint: 1080,
+    cardsToShow: 2,
+  },
+  {
+    breakpoint: 680,
+    cardsToShow: 1,
+  },
+]
+\`\`\`
+        `,
+      },
+    },
+  },
 } as ComponentMeta<typeof SliderWrapper>;
 
 const itemsArray = [
@@ -60,6 +115,7 @@ const CardExample: React.FC<CardExampleProps> = (props) => {
     <div className="sliderWrapper_card">
       <h1>{props.emoji}</h1>
       <h2>{props.title}</h2>
+      <button>button</button>
     </div>
   );
 };
@@ -75,4 +131,26 @@ Default.args = {
   children: itemsArray.map((item, index) => {
     return <CardExample key={index} {...item} />;
   }),
+  breakpoints: [
+    {
+      breakpoint: 1424,
+      cardsToShow: 3,
+      // sidePaddingOffset: 40,
+      // hideArrows: true,
+      // hidePagination: true,
+    },
+    {
+      breakpoint: 1068,
+      cardsToShow: 2,
+      // hideArrows: false,
+      // hidePagination: true,
+    },
+    {
+      breakpoint: 480,
+      cardsToShow: 1,
+    },
+  ],
+  disableSideFading: false,
+  spaceBetween: 20,
+  showGuidelines: false,
 };
