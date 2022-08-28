@@ -85,7 +85,8 @@ Default.args = {
     {
       breakpoint: 1424,
       cardsToShow: 3,
-      // hideArrows: true,
+      sidePaddingOffset: 40,
+      hideArrows: true,
       // hidePagination: true,
     },
     {
@@ -99,6 +100,7 @@ Default.args = {
       cardsToShow: 1,
     },
   ],
+  disableSideFading: true,
   spaceBetween: 20,
   showGuidelines: false,
 };

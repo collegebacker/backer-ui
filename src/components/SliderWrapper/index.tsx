@@ -25,6 +25,7 @@ export interface Props {
     hideArrows?: boolean;
     hidePagination?: boolean;
   }>;
+  disableSideFading?: boolean;
   spaceBetween?: number;
   showGuidelines?: boolean;
   paginationAlignment?: "left" | "right" | "center";
@@ -60,6 +61,7 @@ const defaultProps = {
       hidePagination: false,
     },
   ],
+  disableSideFading: false,
   spaceBetween: 20,
   showGuidelines: false,
 };
@@ -441,8 +443,12 @@ const SliderWrapper: React.FC<Props> = (props) => {
           </>
         ) : null}
 
-        <div className={styles.fadeGradientLeft} />
-        <div className={styles.fadeGradientRight} />
+        {props.disableSideFading ? null : (
+          <>
+            <div className={styles.fadeGradientLeft} />
+            <div className={styles.fadeGradientRight} />
+          </>
+        )}
 
         {breakpoints[currentBreakpoint].hideArrows ? null : (
           <>
