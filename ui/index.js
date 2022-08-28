@@ -10537,8 +10537,8 @@ ChipsSelector.defaultProps = {
     defaultIndex: 0,
 };
 
-var css$d = ":root {\n  --radius-l: 15px;\n  --radius-m: 10px;\n  --radius-s: 5px;\n}\n\n.styles_module_sliderContainer__6f49cce2 {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n}\n.styles_module_sliderContainer__6f49cce2:after, .styles_module_sliderContainer__6f49cce2:before {\n  z-index: 1;\n  content: \"\";\n  top: -2px;\n  position: absolute;\n  width: 40px;\n  height: calc(100% - 36px);\n}\n.styles_module_sliderContainer__6f49cce2:after {\n  left: -40px;\n  background-image: linear-gradient(to right, white, transparent);\n}\n.styles_module_sliderContainer__6f49cce2:before {\n  right: -40px;\n  background-image: linear-gradient(to left, white, transparent);\n}\n.styles_module_sliderContainer__6f49cce2:focus-visible {\n  outline: none !important;\n  border: none !important;\n}\n.styles_module_sliderContainer__6f49cce2:focus-visible .styles_module_pagination__6f49cce2 {\n  outline: 2px solid var(--color-accent-transparent-200);\n  outline-offset: 10px;\n  border-radius: var(--radius-s);\n}\n\n.styles_module_slider__6f49cce2 {\n  overflow-x: hidden;\n  position: relative;\n  display: inline-block;\n  scroll-snap-type: x mandatory;\n  scroll-padding-left: 40px;\n  scroll-padding-right: 40px;\n  margin-left: -40px;\n  margin-right: -40px;\n  outline-offset: 5px;\n  outline-color: var(--color-accent-transparent-200);\n}\n.styles_module_slider__6f49cce2::-webkit-scrollbar {\n  display: none;\n}\n.styles_module_slider__6f49cce2 > div:first-child {\n  margin-left: 40px;\n}\n.styles_module_slider__6f49cce2:hover, .styles_module_slider__6f49cce2:focus {\n  border: none !important;\n  outline: none !important;\n}\n\n.styles_module_sliderCards__6f49cce2 {\n  margin-left: 1px;\n  display: flex;\n  flex-wrap: nowrap;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n}\n\n.styles_module_cardWrap__6f49cce2 {\n  scroll-snap-align: start;\n}\n\n.styles_module_paginationWrap__6f49cce2 {\n  display: flex;\n  justify-content: center;\n  margin-top: 32px;\n}\n\n.styles_module_pagination__6f49cce2 {\n  outline-color: var(--color-accent-transparent-200);\n  transition: outline-offset 0.2s ease, outline-color 0.2s ease;\n}\n\n.styles_module_arrowButton__6f49cce2 {\n  z-index: 2;\n  position: absolute;\n  top: calc(50% - 40px);\n  transform: translateY(-50%);\n}\n\n.styles_module_lastCard__6f49cce2 {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  padding: 30px;\n  border: 1px solid var(--color-main-500);\n  border-radius: var(--radius-l);\n}\n.styles_module_lastCard__content__6f49cce2 {\n  display: flex;\n  align-items: center;\n}\n.styles_module_lastCard__text__6f49cce2 {\n  font-family: \"ABCMarfa\", sans-serif;\n  font-weight: 300;\n  font-size: 17px;\n  line-height: 130%;\n  margin-right: 15px;\n}\n.styles_module_lastCard__icon__6f49cce2 {\n  flex: 1 0 auto;\n}";
-var modules_efc4e723$d = {"sliderContainer":"styles_module_sliderContainer__6f49cce2","pagination":"styles_module_pagination__6f49cce2","slider":"styles_module_slider__6f49cce2","sliderCards":"styles_module_sliderCards__6f49cce2","cardWrap":"styles_module_cardWrap__6f49cce2","paginationWrap":"styles_module_paginationWrap__6f49cce2","arrowButton":"styles_module_arrowButton__6f49cce2","lastCard":"styles_module_lastCard__6f49cce2","lastCard__content":"styles_module_lastCard__content__6f49cce2","lastCard__text":"styles_module_lastCard__text__6f49cce2","lastCard__icon":"styles_module_lastCard__icon__6f49cce2"};
+var css$d = ":root {\n  --radius-l: 15px;\n  --radius-m: 10px;\n  --radius-s: 5px;\n}\n\n.styles_module_sliderContainer__8b0dcef6 {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n}\n.styles_module_sliderContainer__8b0dcef6:focus-visible {\n  outline: none !important;\n  border: none !important;\n}\n.styles_module_sliderContainer__8b0dcef6:focus-visible .styles_module_pagination__8b0dcef6 {\n  outline: 2px solid var(--color-accent-transparent-200);\n  outline-offset: 10px;\n  border-radius: var(--radius-s);\n}\n\n.styles_module_fadeGradientLeft__8b0dcef6,\n.styles_module_fadeGradientRight__8b0dcef6 {\n  z-index: 1;\n  top: -2px;\n  position: absolute;\n  height: calc(100% + 2px);\n}\n\n.styles_module_fadeGradientLeft__8b0dcef6 {\n  background-image: linear-gradient(to right, white, transparent);\n}\n\n.styles_module_fadeGradientRight__8b0dcef6 {\n  background-image: linear-gradient(to left, white, transparent);\n}\n\n.styles_module_slider__8b0dcef6 {\n  overflow-x: hidden;\n  position: relative;\n  display: inline-block;\n  scroll-snap-type: x mandatory;\n  outline-offset: 5px;\n  outline-color: var(--color-accent-transparent-200);\n}\n.styles_module_slider__8b0dcef6::-webkit-scrollbar {\n  display: none;\n}\n.styles_module_slider__8b0dcef6:hover, .styles_module_slider__8b0dcef6:focus {\n  border: none !important;\n  outline: none !important;\n}\n\n.styles_module_sliderCards__8b0dcef6 {\n  margin-left: 1px;\n  display: flex;\n  flex-wrap: nowrap;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n}\n\n.styles_module_cardWrap__8b0dcef6 {\n  scroll-snap-align: start;\n}\n\n.styles_module_paginationWrap__8b0dcef6 {\n  display: flex;\n  margin-top: 30px;\n}\n\n.styles_module_pagination__8b0dcef6 {\n  outline-color: var(--color-accent-transparent-200);\n  transition: outline-offset 0.2s ease, outline-color 0.2s ease;\n}\n\n.styles_module_arrowButtonLeft__8b0dcef6,\n.styles_module_arrowButtonRight__8b0dcef6 {\n  z-index: 2;\n  position: absolute;\n  top: calc(50% - 40px);\n  transform: translateY(-50%);\n}\n\n.styles_module_lastCard__8b0dcef6 {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  padding: 30px;\n  border: 1px solid var(--color-main-500);\n  border-radius: var(--radius-l);\n}\n.styles_module_lastCard__content__8b0dcef6 {\n  display: flex;\n  align-items: center;\n}\n.styles_module_lastCard__text__8b0dcef6 {\n  font-family: \"ABCMarfa\", sans-serif;\n  font-weight: 300;\n  font-size: 17px;\n  line-height: 130%;\n  margin-right: 15px;\n}\n.styles_module_lastCard__icon__8b0dcef6 {\n  flex: 1 0 auto;\n}";
+var modules_efc4e723$d = {"sliderContainer":"styles_module_sliderContainer__8b0dcef6","pagination":"styles_module_pagination__8b0dcef6","fadeGradientLeft":"styles_module_fadeGradientLeft__8b0dcef6","fadeGradientRight":"styles_module_fadeGradientRight__8b0dcef6","slider":"styles_module_slider__8b0dcef6","sliderCards":"styles_module_sliderCards__8b0dcef6","cardWrap":"styles_module_cardWrap__8b0dcef6","paginationWrap":"styles_module_paginationWrap__8b0dcef6","arrowButtonLeft":"styles_module_arrowButtonLeft__8b0dcef6","arrowButtonRight":"styles_module_arrowButtonRight__8b0dcef6","lastCard":"styles_module_lastCard__8b0dcef6","lastCard__content":"styles_module_lastCard__content__8b0dcef6","lastCard__text":"styles_module_lastCard__text__8b0dcef6","lastCard__icon":"styles_module_lastCard__icon__8b0dcef6"};
 n(css$d,{});
 
 var css$c = ".styles_module_container__0da45aaf {\n  position: relative;\n  display: flex;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  overflow: hidden;\n  transition: width 0.3s ease-in-out;\n}\n\n.styles_module_wrap__0da45aaf {\n  position: relative;\n  display: flex;\n  transition: transform 0.3s ease-in-out;\n}\n\n.styles_module_paginationDot__0da45aaf {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n          user-select: none;\n  width: 8px;\n  height: 8px;\n  border-radius: 8px;\n  margin-right: 10px;\n  background-color: var(--color-main-500);\n  opacity: 0.2;\n  transition: all 0.3s ease-out;\n}\n.styles_module_paginationDot__0da45aaf:last-child {\n  margin-right: 0;\n}\n\n.styles_module_activeDot__0da45aaf {\n  width: 20px;\n  opacity: 1;\n}";
@@ -10597,6 +10597,38 @@ DotPagination.defaultProps = {
     visibleAmount: 6,
 };
 
+var defaultProps = {
+    containterClassName: "",
+    paginationClassName: "",
+    arrowsClassName: "",
+    paginationAlignment: "center",
+    breakpoints: [
+        {
+            breakpoint: 1024,
+            cardsToShow: 3,
+            sidePaddingOffset: 40,
+            hideArrows: false,
+            hidePagination: false,
+        },
+        {
+            breakpoint: 768,
+            cardsToShow: 2,
+            sidePaddingOffset: 40,
+            hideArrows: true,
+            hidePagination: false,
+        },
+        {
+            breakpoint: 480,
+            cardsToShow: 1,
+            sidePaddingOffset: 40,
+            hideArrows: true,
+            hidePagination: false,
+        },
+    ],
+    disableSideFading: false,
+    spaceBetween: 20,
+    showGuidelines: false,
+};
 /////////////////////////////////
 ///////// CARDS SLIDER //////////
 /////////////////////////////////
@@ -10615,32 +10647,43 @@ var SliderWrapper = function (props) {
     var _g = React__default["default"].useState(false), isArrowButtonDisabled = _g[0], setIsArrowButtonDisabled = _g[1];
     var _h = React__default["default"].useState(false), isSliderFocused = _h[0], setIsSliderFocused = _h[1];
     var _j = React__default["default"].useState(false), isSliderWrapFocused = _j[0], setIsSliderWrapFocused = _j[1];
-    var setBreakpoint = function () {
+    var _k = React__default["default"].useState(0), currentBreakpoint = _k[0], setCurrentBreakpoint = _k[1];
+    var breakpoints = defaultProps.breakpoints.map(function (item, index) {
+        return {
+            breakpoint: props.breakpoints[index].breakpoint !== undefined
+                ? props.breakpoints[index].breakpoint
+                : item.breakpoint,
+            cardsToShow: props.breakpoints[index].cardsToShow !== undefined
+                ? props.breakpoints[index].cardsToShow
+                : item.cardsToShow,
+            sidePaddingOffset: props.breakpoints[index].sidePaddingOffset !== undefined
+                ? props.breakpoints[index].sidePaddingOffset
+                : item.sidePaddingOffset,
+            hideArrows: props.breakpoints[index].hideArrows !== undefined
+                ? props.breakpoints[index].hideArrows
+                : item.hideArrows,
+            hidePagination: props.breakpoints[index].hidePagination !== undefined
+                ? props.breakpoints[index].hidePagination
+                : item.hidePagination,
+        };
+    });
+    var handleCardsBreakpoint = function () {
         var viewWidth = sliderContainerRef.current.offsetWidth;
         setViewWidth(viewWidth);
-        props.breakpoints.forEach(function (breakpoint, index) {
-            if (props.breakpoints[index + 1]) {
-                if (viewWidth < breakpoint.breakpoint &&
-                    viewWidth > props.breakpoints[index + 1].breakpoint) {
-                    setCardsToShow(breakpoint.cardsToShow);
-                }
-            }
-            else {
-                if (viewWidth < breakpoint.breakpoint) {
-                    setCardsToShow(breakpoint.cardsToShow);
-                }
+        breakpoints.forEach(function (breakpoint) {
+            if (window.innerWidth <= breakpoint.breakpoint) {
+                setCardsToShow(breakpoint.cardsToShow);
             }
         });
     };
-    var hideArrowsOnBreakpoint = function () {
-        var arrowLeftBoundingBox = arrowLeftRef.current.getBoundingClientRect();
-        var hidePoint = arrowsOffsetRatio / 2;
-        if (arrowLeftBoundingBox.x < hidePoint) {
-            sliderContainerRef.current.style.overflow = "hidden";
-        }
-        else {
-            sliderContainerRef.current.style.overflow = "visible";
-        }
+    var handleCurrentBreakpoint = function () {
+        // console.log(props.breakpoints[currentBreakpoint].hideArrows);
+        breakpoints.forEach(function (item, index) {
+            if (window.innerWidth < item.breakpoint) {
+                setCurrentBreakpoint(index);
+            }
+        });
+        //   // console.log(props.breakpoints[currentBreakpoint].hideArrows );
     };
     var updateOnDrag = function () {
         // console.log(sliderRef.current.scrollLeft);
@@ -10659,14 +10702,11 @@ var SliderWrapper = function (props) {
             }
         });
     };
-    var arrowsOffsetRatio = 80;
     //
     var getSliderPostionByIndex = function (index) {
         var currentItem = sliderRefChildren.current[index];
         var clickedItemPosition = currentItem.offsetLeft;
-        var newSliderPosition = clickedItemPosition - (arrowsOffsetRatio / 2 - props.spaceBetween * 2);
-        // console.log(sliderViewWidth);
-        return newSliderPosition;
+        return clickedItemPosition;
     };
     //
     var scrollToSelectedIndex = function (index, duration) {
@@ -10684,6 +10724,7 @@ var SliderWrapper = function (props) {
     };
     //
     var goToNextCard = function () {
+        // console.log(activeIndex);
         // console.log(activeIndex, sliderRefChildren.current.length);
         if (activeIndex < sliderRefChildren.current.length - cardsToShow) {
             // console.log(activeIndex);
@@ -10711,16 +10752,17 @@ var SliderWrapper = function (props) {
     // Resize updates
     React__default["default"].useEffect(function () {
         gsapWithCSS.registerPlugin(Draggable.exports.Draggable, ScrollToPlugin.exports.ScrollToPlugin, InertiaPlugin);
-        setBreakpoint();
+        handleCardsBreakpoint();
+        handleCurrentBreakpoint();
         var onWindowResize = function () {
-            setBreakpoint();
-            hideArrowsOnBreakpoint();
+            handleCardsBreakpoint();
+            handleCurrentBreakpoint();
         };
         window.addEventListener("resize", onWindowResize);
         return function () {
             window.removeEventListener("resize", onWindowResize);
         };
-    }, []);
+    }, [currentBreakpoint]);
     // Prevent scroll
     React__default["default"].useEffect(function () {
         var preventKeyboardScroll = function (e) {
@@ -10746,6 +10788,18 @@ var SliderWrapper = function (props) {
             window.removeEventListener("keydown", preventKeyboardScroll);
         };
     }, [isSliderFocused, isSliderWrapFocused, activeIndex]);
+    var handlePaginationAlignment = function () {
+        switch (props.paginationAlignment) {
+            case "left":
+                return "flex-start";
+            case "center":
+                return "center";
+            case "right":
+                return "flex-end";
+            default:
+                return "center";
+        }
+    };
     //
     React__default["default"].useEffect(function () {
         // console.log(sliderRefChildren);
@@ -10762,7 +10816,6 @@ var SliderWrapper = function (props) {
                 return ((item.getBoundingClientRect().width + props.spaceBetween) * index);
             });
             var snapPoints = snapPointsWithoutLastCard;
-            // console.log(paginationAmount);
             setTriggerPointsState({
                 left: 0,
                 right: gridWidth_1,
@@ -10783,77 +10836,63 @@ var SliderWrapper = function (props) {
         }
     }, [viewWidth]);
     //
-    return (React__default["default"].createElement("div", { className: "".concat(modules_efc4e723$d.sliderContainer, " ").concat(props.containterClassName), ref: sliderContainerRef, tabIndex: 1, onFocus: function () {
-            setIsSliderWrapFocused(true);
-        }, onBlur: function () {
-            setIsSliderWrapFocused(false);
-        }, onWheel: function () {
-            sliderRef.current.style.scrollSnapType = "x mandatory";
-            updateOnDrag();
-        } },
-        props.showGuidelines ? (React__default["default"].createElement(React__default["default"].Fragment, null,
-            React__default["default"].createElement("div", { style: {
-                    position: "absolute",
-                    width: "1px",
-                    height: "100%",
-                    top: 0,
-                    left: "".concat(triggerPointsState.left, "px"),
-                    background: "red",
-                } }),
-            React__default["default"].createElement("div", { style: {
-                    position: "absolute",
-                    width: "1px",
-                    height: "100%",
-                    top: 0,
-                    left: "".concat(triggerPointsState.right, "px"),
-                    background: "blue",
-                } }))) : null,
-        !props.hideArrows ? (React__default["default"].createElement(React__default["default"].Fragment, null,
-            React__default["default"].createElement(ArrowButton, { ref: arrowLeftRef, className: "".concat(modules_efc4e723$d.arrowButton, " ").concat(props.arrowsClassName), disabled: activeIndex === 0, onMouseUp: goPreviousCard, style: {
-                    left: "".concat(-arrowsOffsetRatio, "px"),
-                    pointerEvents: isArrowButtonDisabled ? "none" : "auto",
-                } }),
-            React__default["default"].createElement(ArrowButton, { ref: arrowRightRef, direction: "right", className: "".concat(modules_efc4e723$d.arrowButton, " ").concat(props.arrowsClassName), disabled: activeIndex === paginationAmount - 1, onMouseUp: goToNextCard, style: {
-                    right: "".concat(-arrowsOffsetRatio, "px"),
-                    pointerEvents: isArrowButtonDisabled ? "none" : "auto",
-                } }))) : null,
-        React__default["default"].createElement("div", { className: modules_efc4e723$d.slider, ref: sliderRef, onFocus: function () {
-                setIsSliderFocused(true);
+    return (React__default["default"].createElement(React__default["default"].Fragment, null,
+        React__default["default"].createElement("style", { dangerouslySetInnerHTML: {
+                __html: "\n          \n      .".concat(modules_efc4e723$d.slider, " > div:first-child {\n        margin-left: ").concat(breakpoints[currentBreakpoint].sidePaddingOffset, "px;\n      }\n     \n        .").concat(modules_efc4e723$d.slider, " {\n          scroll-padding-left: ").concat(breakpoints[currentBreakpoint].sidePaddingOffset, "px;\n          scroll-padding-right: ").concat(breakpoints[currentBreakpoint].sidePaddingOffset, "px;\n          margin-left: -").concat(breakpoints[currentBreakpoint].sidePaddingOffset, "px;\n          margin-right: -").concat(breakpoints[currentBreakpoint].sidePaddingOffset, "px;\n        }\n\n        .").concat(modules_efc4e723$d.fadeGradientLeft, " {\n          width: ").concat(breakpoints[currentBreakpoint].sidePaddingOffset, "px;\n          left: -").concat(breakpoints[currentBreakpoint].sidePaddingOffset, "px;\n        }\n\n        .").concat(modules_efc4e723$d.fadeGradientRight, " {\n          width: ").concat(breakpoints[currentBreakpoint].sidePaddingOffset, "px;\n          right: -").concat(breakpoints[currentBreakpoint].sidePaddingOffset, "px;\n        }\n\n        .").concat(modules_efc4e723$d.arrowButtonLeft, " {\n          left: -").concat(breakpoints[currentBreakpoint].sidePaddingOffset * 2, "px;\n        }\n\n        .").concat(modules_efc4e723$d.arrowButtonRight, " {\n          right: -").concat(breakpoints[currentBreakpoint].sidePaddingOffset * 2, "px;\n        }\n      \n  "),
+            } }),
+        React__default["default"].createElement("div", { className: "".concat(modules_efc4e723$d.sliderContainer, " ").concat(props.containterClassName), ref: sliderContainerRef, tabIndex: 1, onFocus: function () {
+                setIsSliderWrapFocused(true);
             }, onBlur: function () {
-                setIsSliderFocused(false);
-            }, tabIndex: 1 },
-            React__default["default"].createElement("div", { className: modules_efc4e723$d.sliderCards }, React__default["default"].Children.map(props.children, function (child, index) {
-                return (React__default["default"].createElement("div", { ref: function (el) { return (sliderRefChildren.current[index] = el); }, className: modules_efc4e723$d.cardWrap, style: {
-                        flex: "1 0 ".concat((viewWidth - props.spaceBetween * (cardsToShow - 1) - 2) /
-                            cardsToShow, "px"),
-                        marginRight: "".concat(props.spaceBetween, "px"),
-                    } }, child));
-            }))),
-        React__default["default"].createElement("div", { className: "".concat(modules_efc4e723$d.paginationWrap, " ").concat(props.paginationClassName) },
-            React__default["default"].createElement(DotPagination, { activeIndex: activeIndex, totalAmount: paginationAmount, className: modules_efc4e723$d.pagination }))));
+                setIsSliderWrapFocused(false);
+            }, onWheel: function () {
+                sliderRef.current.style.scrollSnapType = "x mandatory";
+                updateOnDrag();
+            } },
+            props.showGuidelines ? (React__default["default"].createElement(React__default["default"].Fragment, null,
+                React__default["default"].createElement("div", { style: {
+                        position: "absolute",
+                        width: "1px",
+                        height: "100%",
+                        top: 0,
+                        left: "".concat(triggerPointsState.left, "px"),
+                        background: "red",
+                    } }),
+                React__default["default"].createElement("div", { style: {
+                        position: "absolute",
+                        width: "1px",
+                        height: "100%",
+                        top: 0,
+                        left: "".concat(triggerPointsState.right, "px"),
+                        background: "blue",
+                    } }))) : null,
+            props.disableSideFading ? null : (React__default["default"].createElement(React__default["default"].Fragment, null,
+                React__default["default"].createElement("div", { className: modules_efc4e723$d.fadeGradientLeft }),
+                React__default["default"].createElement("div", { className: modules_efc4e723$d.fadeGradientRight }))),
+            breakpoints[currentBreakpoint].hideArrows ? null : (React__default["default"].createElement(React__default["default"].Fragment, null,
+                React__default["default"].createElement(ArrowButton, { ref: arrowLeftRef, className: "".concat(props.arrowsClassName, " ").concat(modules_efc4e723$d.arrowButtonLeft), disabled: activeIndex === 0, onMouseUp: goPreviousCard, style: {
+                        pointerEvents: isArrowButtonDisabled ? "none" : "auto",
+                    } }),
+                React__default["default"].createElement(ArrowButton, { ref: arrowRightRef, direction: "right", className: "".concat(props.arrowsClassName, " ").concat(modules_efc4e723$d.arrowButtonRight), disabled: activeIndex === paginationAmount - 1, onMouseUp: goToNextCard, style: {
+                        pointerEvents: isArrowButtonDisabled ? "none" : "auto",
+                    } }))),
+            React__default["default"].createElement("div", { className: modules_efc4e723$d.slider, ref: sliderRef, onFocus: function () {
+                    setIsSliderFocused(true);
+                }, onBlur: function () {
+                    setIsSliderFocused(false);
+                }, tabIndex: 1 },
+                React__default["default"].createElement("div", { className: modules_efc4e723$d.sliderCards }, React__default["default"].Children.map(props.children, function (child, index) {
+                    return (React__default["default"].createElement("div", { ref: function (el) { return (sliderRefChildren.current[index] = el); }, className: modules_efc4e723$d.cardWrap, style: {
+                            flex: "1 0 ".concat((viewWidth - props.spaceBetween * (cardsToShow - 1) - 2) /
+                                cardsToShow, "px"),
+                            marginRight: "".concat(props.spaceBetween, "px"),
+                        } }, child));
+                }))),
+            breakpoints[currentBreakpoint].hidePagination ? null : (React__default["default"].createElement("div", { className: "".concat(modules_efc4e723$d.paginationWrap, " ").concat(props.paginationClassName), style: {
+                    justifyContent: handlePaginationAlignment(),
+                } },
+                React__default["default"].createElement(DotPagination, { activeIndex: activeIndex, totalAmount: paginationAmount, className: modules_efc4e723$d.pagination }))))));
 };
-SliderWrapper.defaultProps = {
-    containterClassName: "",
-    paginationClassName: "",
-    arrowsClassName: "",
-    breakpoints: [
-        {
-            breakpoint: 1024,
-            cardsToShow: 3,
-        },
-        {
-            breakpoint: 768,
-            cardsToShow: 2,
-        },
-        {
-            breakpoint: 480,
-            cardsToShow: 1,
-        },
-    ],
-    spaceBetween: 20,
-    showGuidelines: false,
-    hideArrows: false,
-};
+SliderWrapper.defaultProps = defaultProps;
 
 var css$b = ".styles_module_divider__86777761 {\n  position: relative;\n  z-index: 10;\n  display: block;\n  width: 100%;\n  height: 1px;\n  background-color: var(--color-main-500);\n  opacity: 0.12;\n}";
 var modules_efc4e723$b = {"divider":"styles_module_divider__86777761"};

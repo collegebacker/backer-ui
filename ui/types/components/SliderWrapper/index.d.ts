@@ -6,10 +6,14 @@ export interface Props {
     breakpoints?: Array<{
         breakpoint: number;
         cardsToShow: number;
+        sidePaddingOffset?: number;
+        hideArrows?: boolean;
+        hidePagination?: boolean;
     }>;
+    disableSideFading?: boolean;
     spaceBetween?: number;
     showGuidelines?: boolean;
-    hideArrows?: boolean;
+    paginationAlignment?: "left" | "right" | "center";
     children: React.ReactNode;
     onChange?: (index: number) => void;
 }
