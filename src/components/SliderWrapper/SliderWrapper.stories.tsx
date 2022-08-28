@@ -60,6 +60,7 @@ const CardExample: React.FC<CardExampleProps> = (props) => {
     <div className="sliderWrapper_card">
       <h1>{props.emoji}</h1>
       <h2>{props.title}</h2>
+      <button>button</button>
     </div>
   );
 };
@@ -75,4 +76,22 @@ Default.args = {
   children: itemsArray.map((item, index) => {
     return <CardExample key={index} {...item} />;
   }),
+  breakpoints: [
+    {
+      breakpoint: 1424,
+      cardsToShow: 3,
+    },
+    {
+      breakpoint: 1068,
+      cardsToShow: 2,
+      hideArrows: false,
+      hidePagination: true,
+    },
+    {
+      breakpoint: 480,
+      cardsToShow: 1,
+    },
+  ],
+  spaceBetween: 20,
+  showGuidelines: false,
 };

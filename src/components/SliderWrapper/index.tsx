@@ -4,7 +4,6 @@ import styles from "./styles.module.scss";
 import { gsap } from "gsap";
 import { Draggable } from "gsap/dist/Draggable";
 import { InertiaPlugin } from "gsap-bonus/InertiaPlugin";
-import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 
 import ArrowButton from "../ArrowButton";
 import DotPagination from "../DotPagination";
@@ -22,13 +21,48 @@ export interface Props {
   breakpoints?: Array<{
     breakpoint: number;
     cardsToShow: number;
+    sidePaddingOffset?: number;
+    hideArrows?: boolean;
+    hidePagination?: boolean;
   }>;
   spaceBetween?: number;
   showGuidelines?: boolean;
-  hideArrows?: boolean;
+  paginationAlignment?: "left" | "right" | "center";
   children: React.ReactNode;
   onChange?: (index: number) => void;
 }
+
+const defaultProps = {
+  containterClassName: "",
+  paginationClassName: "",
+  arrowsClassName: "",
+  paginationAlignment: "center",
+  breakpoints: [
+    {
+      breakpoint: 1024,
+      cardsToShow: 3,
+      sidePaddingOffset: 40,
+      hideArrows: false,
+      hidePagination: false,
+    },
+    {
+      breakpoint: 768,
+      cardsToShow: 2,
+      sidePaddingOffset: 40,
+      hideArrows: true,
+      hidePagination: false,
+    },
+    {
+      breakpoint: 480,
+      cardsToShow: 1,
+      sidePaddingOffset: 40,
+      hideArrows: true,
+      hidePagination: false,
+    },
+  ],
+  spaceBetween: 20,
+  showGuidelines: false,
+};
 
 /////////////////////////////////
 ///////// CARDS SLIDER //////////
@@ -60,11 +94,38 @@ const SliderWrapper: React.FC<Props> = (props) => {
   const [isSliderFocused, setIsSliderFocused] = React.useState(false);
   const [isSliderWrapFocused, setIsSliderWrapFocused] = React.useState(false);
 
-  const setBreakpoint = () => {
+  const [currentBreakpoint, setCurrentBreakpoint] = React.useState(0);
+
+  const breakpoints = defaultProps.breakpoints.map((item, index) => {
+    return {
+      breakpoint:
+        props.breakpoints[index].breakpoint !== undefined
+          ? props.breakpoints[index].breakpoint
+          : item.breakpoint,
+      cardsToShow:
+        props.breakpoints[index].cardsToShow !== undefined
+          ? props.breakpoints[index].cardsToShow
+          : item.cardsToShow,
+      sidePaddingOffset:
+        props.breakpoints[index].sidePaddingOffset !== undefined
+          ? props.breakpoints[index].sidePaddingOffset
+          : item.sidePaddingOffset,
+      hideArrows:
+        props.breakpoints[index].hideArrows !== undefined
+          ? props.breakpoints[index].hideArrows
+          : item.hideArrows,
+      hidePagination:
+        props.breakpoints[index].hidePagination !== undefined
+          ? props.breakpoints[index].hidePagination
+          : item.hidePagination,
+    };
+  });
+
+  const handleCardsBreakpoint = () => {
     const viewWidth = sliderContainerRef.current.offsetWidth;
     setViewWidth(viewWidth);
 
-    props.breakpoints.forEach((breakpoint, index) => {
+    breakpoints.forEach((breakpoint, index) => {
       if (props.breakpoints[index + 1]) {
         if (
           viewWidth < breakpoint.breakpoint &&
@@ -80,15 +141,15 @@ const SliderWrapper: React.FC<Props> = (props) => {
     });
   };
 
-  const hideArrowsOnBreakpoint = () => {
-    const arrowLeftBoundingBox = arrowLeftRef.current.getBoundingClientRect();
-    const hidePoint = arrowsOffsetRatio / 2;
+  const handleCurrentBreakpoint = () => {
+    // console.log(props.breakpoints[currentBreakpoint].hideArrows);
+    breakpoints.forEach((item, index) => {
+      if (window.innerWidth < item.breakpoint) {
+        setCurrentBreakpoint(index);
+      }
+    });
 
-    if (arrowLeftBoundingBox.x < hidePoint) {
-      sliderContainerRef.current.style.overflow = "hidden";
-    } else {
-      sliderContainerRef.current.style.overflow = "visible";
-    }
+    // console.log(props.breakpoints[currentBreakpoint].hideArrows );
   };
 
   const updateOnDrag = () => {
@@ -116,16 +177,21 @@ const SliderWrapper: React.FC<Props> = (props) => {
     });
   };
 
-  const arrowsOffsetRatio = 80;
-
   //
   const getSliderPostionByIndex = (index: number) => {
     const currentItem = sliderRefChildren.current[index];
     const clickedItemPosition = currentItem.offsetLeft;
 
-    const newSliderPosition =
-      clickedItemPosition - (arrowsOffsetRatio / 2 - props.spaceBetween * 2);
-    // console.log(sliderViewWidth);
+    let newSliderPosition = 0;
+
+    breakpoints.forEach((item) => {
+      if (item.breakpoint > window.innerWidth) {
+        newSliderPosition =
+          clickedItemPosition -
+          (item.sidePaddingOffset - props.spaceBetween * 2);
+        // console.log(sliderViewWidth);
+      }
+    });
 
     return newSliderPosition;
   };
@@ -178,13 +244,14 @@ const SliderWrapper: React.FC<Props> = (props) => {
 
   // Resize updates
   React.useEffect(() => {
-    gsap.registerPlugin(Draggable, ScrollToPlugin, InertiaPlugin);
+    gsap.registerPlugin(Draggable, InertiaPlugin);
 
-    setBreakpoint();
+    handleCardsBreakpoint();
+    handleCurrentBreakpoint();
 
     const onWindowResize = () => {
-      setBreakpoint();
-      hideArrowsOnBreakpoint();
+      handleCardsBreakpoint();
+      handleCurrentBreakpoint();
     };
 
     window.addEventListener("resize", onWindowResize);
@@ -192,7 +259,7 @@ const SliderWrapper: React.FC<Props> = (props) => {
     return () => {
       window.removeEventListener("resize", onWindowResize);
     };
-  }, []);
+  }, [currentBreakpoint]);
 
   // Prevent scroll
   React.useEffect(() => {
@@ -210,7 +277,6 @@ const SliderWrapper: React.FC<Props> = (props) => {
           }
           if (e.code === "ArrowRight") {
             // console.log("right");
-
             goToNextCard();
           }
         }
@@ -223,6 +289,19 @@ const SliderWrapper: React.FC<Props> = (props) => {
       window.removeEventListener("keydown", preventKeyboardScroll);
     };
   }, [isSliderFocused, isSliderWrapFocused, activeIndex]);
+
+  const handlePaginationAlignment = () => {
+    switch (props.paginationAlignment) {
+      case "left":
+        return "flex-start";
+      case "center":
+        return "center";
+      case "right":
+        return "flex-end";
+      default:
+        return "center";
+    }
+  };
 
   //
   React.useEffect(() => {
@@ -251,8 +330,6 @@ const SliderWrapper: React.FC<Props> = (props) => {
 
       const snapPoints = snapPointsWithoutLastCard;
 
-      // console.log(paginationAmount);
-
       setTriggerPointsState({
         left: 0,
         right: gridWidth,
@@ -278,140 +355,165 @@ const SliderWrapper: React.FC<Props> = (props) => {
 
   //
   return (
-    <div
-      className={`${styles.sliderContainer} ${props.containterClassName}`}
-      ref={sliderContainerRef}
-      tabIndex={1}
-      onFocus={() => {
-        setIsSliderWrapFocused(true);
-      }}
-      onBlur={() => {
-        setIsSliderWrapFocused(false);
-      }}
-      onWheel={() => {
-        sliderRef.current.style.scrollSnapType = "x mandatory";
-        updateOnDrag();
-      }}
-    >
-      {props.showGuidelines ? (
-        <>
-          <div
-            style={{
-              position: "absolute",
-              width: "1px",
-              height: "100%",
-              top: 0,
-              left: `${triggerPointsState.left}px`,
-              background: "red",
-            }}
-          />
-          <div
-            style={{
-              position: "absolute",
-              width: "1px",
-              height: "100%",
-              top: 0,
-              left: `${triggerPointsState.right}px`,
-              background: "blue",
-            }}
-          />
-        </>
-      ) : null}
+    <>
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+          
+      .${styles.slider} > div:first-child {
+        margin-left: ${breakpoints[currentBreakpoint].sidePaddingOffset}px;
+      }
+     
+        .${styles.slider} {
+          scroll-padding-left: ${
+            breakpoints[currentBreakpoint].sidePaddingOffset
+          }px;
+          scroll-padding-right: ${
+            breakpoints[currentBreakpoint].sidePaddingOffset
+          }px;
+          margin-left: -${breakpoints[currentBreakpoint].sidePaddingOffset}px;
+          margin-right: -${breakpoints[currentBreakpoint].sidePaddingOffset}px;
+        }
 
-      {!props.hideArrows ? (
-        <>
-          <ArrowButton
-            ref={arrowLeftRef}
-            className={`${styles.arrowButton} ${props.arrowsClassName}`}
-            disabled={activeIndex === 0}
-            onMouseUp={goPreviousCard}
-            style={{
-              left: `${-arrowsOffsetRatio}px`,
-              pointerEvents: isArrowButtonDisabled ? "none" : "auto",
-            }}
-          />
-          <ArrowButton
-            ref={arrowRightRef}
-            direction="right"
-            className={`${styles.arrowButton} ${props.arrowsClassName}`}
-            disabled={activeIndex === paginationAmount - 1}
-            onMouseUp={goToNextCard}
-            style={{
-              right: `${-arrowsOffsetRatio}px`,
-              pointerEvents: isArrowButtonDisabled ? "none" : "auto",
-            }}
-          />
-        </>
-      ) : null}
+        .${styles.fadeGradientLeft} {
+          width: ${breakpoints[currentBreakpoint].sidePaddingOffset}px;
+          left: -${breakpoints[currentBreakpoint].sidePaddingOffset}px;
+        }
 
+        .${styles.fadeGradientRight} {
+          width: ${breakpoints[currentBreakpoint].sidePaddingOffset}px;
+          right: -${breakpoints[currentBreakpoint].sidePaddingOffset}px;
+        }
+
+        .${styles.arrowButtonLeft} {
+          left: -${breakpoints[currentBreakpoint].sidePaddingOffset * 2}px;
+        }
+
+        .${styles.arrowButtonRight} {
+          right: -${breakpoints[currentBreakpoint].sidePaddingOffset * 2}px;
+        }
+      
+  `,
+        }}
+      ></style>
       <div
-        className={styles.slider}
-        ref={sliderRef}
+        className={`${styles.sliderContainer} ${props.containterClassName}`}
+        ref={sliderContainerRef}
+        tabIndex={1}
         onFocus={() => {
-          setIsSliderFocused(true);
+          setIsSliderWrapFocused(true);
         }}
         onBlur={() => {
-          setIsSliderFocused(false);
+          setIsSliderWrapFocused(false);
         }}
-        tabIndex={1}
+        onWheel={() => {
+          sliderRef.current.style.scrollSnapType = "x mandatory";
+          updateOnDrag();
+        }}
       >
-        <div className={styles.sliderCards}>
-          {React.Children.map(props.children, (child, index) => {
-            return (
-              <div
-                ref={(el) => (sliderRefChildren.current[index] = el)}
-                className={styles.cardWrap}
-                style={{
-                  flex: `1 0 ${
-                    (viewWidth - props.spaceBetween * (cardsToShow - 1) - 2) /
-                    cardsToShow
-                  }px`,
-                  marginRight: `${props.spaceBetween}px`,
-                }}
-              >
-                {child}
-              </div>
-            );
-          })}
-        </div>
-      </div>
+        {props.showGuidelines ? (
+          <>
+            <div
+              style={{
+                position: "absolute",
+                width: "1px",
+                height: "100%",
+                top: 0,
+                left: `${triggerPointsState.left}px`,
+                background: "red",
+              }}
+            />
+            <div
+              style={{
+                position: "absolute",
+                width: "1px",
+                height: "100%",
+                top: 0,
+                left: `${triggerPointsState.right}px`,
+                background: "blue",
+              }}
+            />
+          </>
+        ) : null}
 
-      {
+        <div className={styles.fadeGradientLeft} />
+        <div className={styles.fadeGradientRight} />
+
+        {breakpoints[currentBreakpoint].hideArrows ? null : (
+          <>
+            <ArrowButton
+              ref={arrowLeftRef}
+              className={`${props.arrowsClassName} ${styles.arrowButtonLeft}`}
+              disabled={activeIndex === 0}
+              onMouseUp={goPreviousCard}
+              style={{
+                pointerEvents: isArrowButtonDisabled ? "none" : "auto",
+              }}
+            />
+            <ArrowButton
+              ref={arrowRightRef}
+              direction="right"
+              className={`${props.arrowsClassName} ${styles.arrowButtonRight}`}
+              disabled={activeIndex === paginationAmount - 1}
+              onMouseUp={goToNextCard}
+              style={{
+                pointerEvents: isArrowButtonDisabled ? "none" : "auto",
+              }}
+            />
+          </>
+        )}
+
         <div
-          className={`${styles.paginationWrap} ${props.paginationClassName}`}
+          className={styles.slider}
+          ref={sliderRef}
+          onFocus={() => {
+            setIsSliderFocused(true);
+          }}
+          onBlur={() => {
+            setIsSliderFocused(false);
+          }}
+          tabIndex={1}
         >
-          <DotPagination
-            activeIndex={activeIndex}
-            totalAmount={paginationAmount}
-            className={styles.pagination}
-          />
+          <div className={styles.sliderCards}>
+            {React.Children.map(props.children, (child, index) => {
+              return (
+                <div
+                  ref={(el) => (sliderRefChildren.current[index] = el)}
+                  className={styles.cardWrap}
+                  style={{
+                    flex: `1 0 ${
+                      (viewWidth - props.spaceBetween * (cardsToShow - 1) - 2) /
+                      cardsToShow
+                    }px`,
+                    marginRight: `${props.spaceBetween}px`,
+                  }}
+                >
+                  {child}
+                </div>
+              );
+            })}
+          </div>
         </div>
-      }
-    </div>
+
+        {breakpoints[currentBreakpoint].hidePagination ? null : (
+          <div
+            className={`${styles.paginationWrap} ${props.paginationClassName}`}
+            style={{
+              justifyContent: handlePaginationAlignment(),
+            }}
+          >
+            <DotPagination
+              activeIndex={activeIndex}
+              totalAmount={paginationAmount}
+              className={styles.pagination}
+            />
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 
-SliderWrapper.defaultProps = {
-  containterClassName: "",
-  paginationClassName: "",
-  arrowsClassName: "",
-  breakpoints: [
-    {
-      breakpoint: 1024,
-      cardsToShow: 3,
-    },
-    {
-      breakpoint: 768,
-      cardsToShow: 2,
-    },
-    {
-      breakpoint: 480,
-      cardsToShow: 1,
-    },
-  ],
-  spaceBetween: 20,
-  showGuidelines: false,
-  hideArrows: false,
-} as Partial<Props>;
+SliderWrapper.defaultProps = defaultProps as Partial<Props>;
 
 export default SliderWrapper;

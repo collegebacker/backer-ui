@@ -8,28 +8,6 @@ $card-radius: 15px;
   flex-direction: column;
   // background-color: rgba(0, 0, 0, 0.04);
 
-  &:after,
-  &:before {
-    z-index: 1;
-    content: "";
-    top: -2px;
-    position: absolute;
-    width: 40px;
-    height: calc(100% - 36px);
-  }
-
-  &:after {
-    left: -40px;
-    background-image: linear-gradient(to right, white, transparent);
-    // background-color: rgba(0, 0, 0, 0.1);
-  }
-
-  &:before {
-    right: -40px;
-    background-image: linear-gradient(to left, white, transparent);
-    // background-color: rgba(0, 0, 0, 0.1);
-  }
-
   &:focus-visible {
     outline: none !important;
     border: none !important;
@@ -42,30 +20,35 @@ $card-radius: 15px;
   }
 }
 
+.fadeGradientLeft,
+.fadeGradientRight {
+  z-index: 1;
+  top: -2px;
+  position: absolute;
+  height: calc(100% + 2px);
+}
+
+.fadeGradientLeft {
+  background-image: linear-gradient(to right, white, transparent);
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.fadeGradientRight {
+  background-image: linear-gradient(to left, white, transparent);
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
 .slider {
   overflow-x: hidden;
   position: relative;
   display: inline-block;
   // overflow-x: visible;
   scroll-snap-type: x mandatory;
-  scroll-padding-left: 40px;
-  scroll-padding-right: 40px;
-  margin-left: -40px;
-  margin-right: -40px;
   outline-offset: 5px;
   outline-color: var(--color-accent-transparent-200);
 
-  // background-color: rgba(0, 0, 0, 0.06);
-
   &::-webkit-scrollbar {
     display: none;
-  }
-
-  > div {
-    &:first-child {
-      // margin-right: 40px;
-      margin-left: 40px;
-    }
   }
 
   &:hover,
@@ -88,8 +71,8 @@ $card-radius: 15px;
 
 .paginationWrap {
   display: flex;
-  justify-content: center;
-  margin-top: 32px;
+  // justify-content: center;
+  margin-top: 30px;
 }
 
 .pagination {
@@ -97,7 +80,8 @@ $card-radius: 15px;
   transition: outline-offset 0.2s ease, outline-color 0.2s ease;
 }
 
-.arrowButton {
+.arrowButtonLeft,
+.arrowButtonRight {
   z-index: 2;
   position: absolute;
   top: calc(50% - 40px);
