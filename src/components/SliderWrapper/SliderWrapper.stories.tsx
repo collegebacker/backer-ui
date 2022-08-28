@@ -1,6 +1,5 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { action } from "@storybook/addon-actions";
 
 import { SliderWrapper } from "..";
 
@@ -9,6 +8,62 @@ localStorage.clear();
 export default {
   title: "Sliders/SliderWrapper",
   component: SliderWrapper,
+  parameters: {
+    docs: {
+      description: {
+        component: `
+The component has three breakpoints. Here are the sizes:
+\`\`\`
+breakpoints: [
+  {
+    breakpoint: 1024,
+    cardsToShow: 3,
+    sidePaddingOffset: 40,
+    hideArrows: false,
+    hidePagination: false,
+  },
+  {
+    breakpoint: 768,
+    cardsToShow: 2,
+    sidePaddingOffset: 40,
+    hideArrows: true,
+    hidePagination: false,
+  },
+  {
+    breakpoint: 480,
+    cardsToShow: 1,
+    sidePaddingOffset: 40,
+    hideArrows: true,
+    hidePagination: false,
+  },
+]
+\`\`\`
+
+And you can change these breakpoints. But if you want to change the breakpoints, you need to change all the breakpoints in the component. Fore example:
+
+\`\`\`
+breakpoints: [
+  {
+    breakpoint: 1400,
+    cardsToShow: 3,
+    sidePaddingOffset: 40,
+    hideArrows: true,
+    hidePagination: true,
+  },
+  {
+    breakpoint: 1080,
+    cardsToShow: 2,
+  },
+  {
+    breakpoint: 680,
+    cardsToShow: 1,
+  },
+]
+\`\`\`
+        `,
+      },
+    },
+  },
 } as ComponentMeta<typeof SliderWrapper>;
 
 const itemsArray = [
@@ -66,12 +121,7 @@ const CardExample: React.FC<CardExampleProps> = (props) => {
 };
 
 const Template: ComponentStory<typeof SliderWrapper> = (args) => (
-  <div
-    className="pageWrap"
-    style={{
-      backgroundColor: "rgba(0,0,0,0.1)",
-    }}
-  >
+  <div className="pageWrap">
     <SliderWrapper {...args} />
   </div>
 );
@@ -85,8 +135,8 @@ Default.args = {
     {
       breakpoint: 1424,
       cardsToShow: 3,
-      sidePaddingOffset: 40,
-      hideArrows: true,
+      // sidePaddingOffset: 40,
+      // hideArrows: true,
       // hidePagination: true,
     },
     {
@@ -100,7 +150,7 @@ Default.args = {
       cardsToShow: 1,
     },
   ],
-  disableSideFading: true,
+  disableSideFading: false,
   spaceBetween: 20,
   showGuidelines: false,
 };

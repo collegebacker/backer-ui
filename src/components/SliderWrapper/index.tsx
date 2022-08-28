@@ -4,6 +4,7 @@ import styles from "./styles.module.scss";
 import { gsap } from "gsap";
 import { Draggable } from "gsap/dist/Draggable";
 import { InertiaPlugin } from "gsap-bonus/InertiaPlugin";
+import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 
 import ArrowButton from "../ArrowButton";
 import DotPagination from "../DotPagination";
@@ -131,20 +132,6 @@ const SliderWrapper: React.FC<Props> = (props) => {
       if (window.innerWidth <= breakpoint.breakpoint) {
         setCardsToShow(breakpoint.cardsToShow);
       }
-
-      // if (props.breakpoints[index + 1]) {
-      //   console.log(breakpoint.cardsToShow);
-      //   if (
-      //     viewWidth < breakpoint.breakpoint &&
-      //     viewWidth > props.breakpoints[index + 1].breakpoint
-      //   ) {
-      //     setCardsToShow(breakpoint.cardsToShow);
-      //   }
-      // } else {
-      //   if (viewWidth < breakpoint.breakpoint) {
-      //     setCardsToShow(breakpoint.cardsToShow);
-      //   }
-      // }
     });
   };
 
@@ -189,23 +176,13 @@ const SliderWrapper: React.FC<Props> = (props) => {
     const currentItem = sliderRefChildren.current[index];
     const clickedItemPosition = currentItem.offsetLeft;
 
-    let newSliderPosition = 0;
-
-    breakpoints.forEach((item) => {
-      if (item.breakpoint > window.innerWidth) {
-        newSliderPosition =
-          clickedItemPosition -
-          (item.sidePaddingOffset - props.spaceBetween * 2);
-        // console.log(sliderViewWidth);
-      }
-    });
-
-    return newSliderPosition;
+    return clickedItemPosition;
   };
 
   //
   const scrollToSelectedIndex = (index: number, duration: number) => {
     // console.log(getSliderPostionByIndex(index));
+
     gsap.to(sliderRef.current, {
       // x: getSliderPostionByIndex(index, shiftRatio),
       duration: duration,
@@ -220,6 +197,7 @@ const SliderWrapper: React.FC<Props> = (props) => {
 
   //
   const goToNextCard = () => {
+    // console.log(activeIndex);
     // console.log(activeIndex, sliderRefChildren.current.length);
     if (activeIndex < sliderRefChildren.current.length - cardsToShow) {
       // console.log(activeIndex);
@@ -251,7 +229,7 @@ const SliderWrapper: React.FC<Props> = (props) => {
 
   // Resize updates
   React.useEffect(() => {
-    gsap.registerPlugin(Draggable, InertiaPlugin);
+    gsap.registerPlugin(Draggable, ScrollToPlugin, InertiaPlugin);
 
     handleCardsBreakpoint();
     handleCurrentBreakpoint();

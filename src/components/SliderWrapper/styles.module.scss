@@ -30,12 +30,12 @@ $card-radius: 15px;
 
 .fadeGradientLeft {
   background-image: linear-gradient(to right, white, transparent);
-  background-color: rgba(0, 0, 0, 0.1);
+  // background-color: rgba(0, 0, 0, 0.1);
 }
 
 .fadeGradientRight {
   background-image: linear-gradient(to left, white, transparent);
-  background-color: rgba(0, 0, 0, 0.1);
+  // background-color: rgba(0, 0, 0, 0.1);
 }
 
 .slider {
