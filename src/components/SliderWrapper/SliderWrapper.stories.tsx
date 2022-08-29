@@ -12,6 +12,7 @@ export default {
     docs: {
       description: {
         component: `
+## Breakpoints
 The component has three breakpoints. Here are the sizes:
 \`\`\`
 breakpoints: [
@@ -60,7 +61,14 @@ breakpoints: [
   },
 ]
 \`\`\`
-        `,
+
+---
+
+## showHiddenCard
+With this property you can regulate the visibility of the hidden by the right edge card. There are two options:
+- \`boolean\` - the card is visible or not, the default value is 40(px) if it's true
+- \`number\` - if you set a number you can set the precise value of the card visibility
+`,
       },
     },
   },
@@ -151,6 +159,7 @@ Default.args = {
     },
   ],
   disableSideFading: false,
+  showHiddenCard: false,
   spaceBetween: 20,
   showGuidelines: false,
 };

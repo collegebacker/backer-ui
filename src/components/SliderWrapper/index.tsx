@@ -29,6 +29,7 @@ export interface Props {
   disableSideFading?: boolean;
   spaceBetween?: number;
   showGuidelines?: boolean;
+  showHiddenCard?: number | boolean;
   paginationAlignment?: "left" | "right" | "center";
   children: React.ReactNode;
   onChange?: (index: number) => void;
@@ -38,7 +39,6 @@ const defaultProps = {
   containterClassName: "",
   paginationClassName: "",
   arrowsClassName: "",
-  paginationAlignment: "center",
   breakpoints: [
     {
       breakpoint: 1024,
@@ -65,6 +65,8 @@ const defaultProps = {
   disableSideFading: false,
   spaceBetween: 20,
   showGuidelines: false,
+  showHiddenCard: false,
+  paginationAlignment: "center",
 };
 
 /////////////////////////////////
@@ -123,6 +125,14 @@ const SliderWrapper: React.FC<Props> = (props) => {
           : item.hidePagination,
     };
   });
+
+  const isShowHiddenCard = () => {
+    if (typeof props.showHiddenCard === "number") {
+      return props.showHiddenCard;
+    } else if (typeof props.showHiddenCard === "boolean") {
+      return props.showHiddenCard ? 40 : 0;
+    }
+  };
 
   const handleCardsBreakpoint = () => {
     const viewWidth = sliderContainerRef.current.offsetWidth;
@@ -471,7 +481,10 @@ const SliderWrapper: React.FC<Props> = (props) => {
                   className={styles.cardWrap}
                   style={{
                     flex: `1 0 ${
-                      (viewWidth - props.spaceBetween * (cardsToShow - 1) - 2) /
+                      (viewWidth -
+                        isShowHiddenCard() -
+                        props.spaceBetween * (cardsToShow - 1) -
+                        2) /
                       cardsToShow
                     }px`,
                     marginRight: `${props.spaceBetween}px`,
