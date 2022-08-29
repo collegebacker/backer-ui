@@ -10601,7 +10601,6 @@ var defaultProps = {
     containterClassName: "",
     paginationClassName: "",
     arrowsClassName: "",
-    paginationAlignment: "center",
     breakpoints: [
         {
             breakpoint: 1024,
@@ -10628,6 +10627,8 @@ var defaultProps = {
     disableSideFading: false,
     spaceBetween: 20,
     showGuidelines: false,
+    showHiddenCard: false,
+    paginationAlignment: "center",
 };
 /////////////////////////////////
 ///////// CARDS SLIDER //////////
@@ -10667,6 +10668,14 @@ var SliderWrapper = function (props) {
                 : item.hidePagination,
         };
     });
+    var isShowHiddenCard = function () {
+        if (typeof props.showHiddenCard === "number") {
+            return props.showHiddenCard;
+        }
+        else if (typeof props.showHiddenCard === "boolean") {
+            return props.showHiddenCard ? 40 : 0;
+        }
+    };
     var handleCardsBreakpoint = function () {
         var viewWidth = sliderContainerRef.current.offsetWidth;
         setViewWidth(viewWidth);
@@ -10882,7 +10891,10 @@ var SliderWrapper = function (props) {
                 }, tabIndex: 1 },
                 React__default["default"].createElement("div", { className: modules_efc4e723$d.sliderCards }, React__default["default"].Children.map(props.children, function (child, index) {
                     return (React__default["default"].createElement("div", { ref: function (el) { return (sliderRefChildren.current[index] = el); }, className: modules_efc4e723$d.cardWrap, style: {
-                            flex: "1 0 ".concat((viewWidth - props.spaceBetween * (cardsToShow - 1) - 2) /
+                            flex: "1 0 ".concat((viewWidth -
+                                isShowHiddenCard() -
+                                props.spaceBetween * (cardsToShow - 1) -
+                                2) /
                                 cardsToShow, "px"),
                             marginRight: "".concat(props.spaceBetween, "px"),
                         } }, child));

@@ -13,6 +13,7 @@ export interface Props {
     disableSideFading?: boolean;
     spaceBetween?: number;
     showGuidelines?: boolean;
+    showHiddenCard?: number | boolean;
     paginationAlignment?: "left" | "right" | "center";
     children: React.ReactNode;
     onChange?: (index: number) => void;
