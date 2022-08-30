@@ -9,11 +9,11 @@ export interface Props {
         sidePaddingOffset?: number;
         hideArrows?: boolean;
         hidePagination?: boolean;
+        showHiddenCard?: number | boolean;
     }>;
     disableSideFading?: boolean;
     spaceBetween?: number;
     showGuidelines?: boolean;
-    showHiddenCard?: number | boolean;
     paginationAlignment?: "left" | "right" | "center";
     children: React.ReactNode;
     onChange?: (index: number) => void;
