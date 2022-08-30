@@ -164,6 +164,7 @@ Default.args = {
     {
       breakpoint: 1000,
       cardsToShow: 2,
+      sidePaddingOffset: 20,
       showHiddenCard: 80,
     },
     {

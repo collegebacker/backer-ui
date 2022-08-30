@@ -10701,7 +10701,7 @@ var SliderWrapper = function (props) {
         //   // console.log(props.breakpoints[currentBreakpoint].hideArrows );
     };
     var updateOnDrag = function () {
-        console.log(sliderRef.current.scrollLeft);
+        // console.log(sliderRef.current.scrollLeft);
         var activeItemBoundsRatio = gridWidth / 2;
         sliderRefChildren.current.forEach(function (item, index) {
             var itemXLeftEdge = item.getBoundingClientRect().left -

@@ -166,7 +166,7 @@ const SliderWrapper: React.FC<Props> = (props) => {
   };
 
   const updateOnDrag = () => {
-    console.log(sliderRef.current.scrollLeft);
+    // console.log(sliderRef.current.scrollLeft);
 
     const activeItemBoundsRatio = gridWidth / 2;
 
