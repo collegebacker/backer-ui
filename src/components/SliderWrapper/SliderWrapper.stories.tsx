@@ -77,37 +77,37 @@ With this property you can regulate the visibility of the hidden by the right ed
 const itemsArray = [
   {
     emoji: "🤖",
-    title: "Flexible withdrawals",
+    title: "Withdrawal 1",
     description:
       "You’ll always be able to withdraw your contributions with no tax or penalties.",
   },
   {
     emoji: "🤖",
-    title: "Save more together",
+    title: "Save together 2",
     description:
       "Backer is a social fund: save 4x more with gifts from family & friends.",
   },
 
   {
     emoji: "🤖",
-    title: "You win, we win",
+    title: "You win, we win 3",
     description: "We won’t charge our $5 monthly fee if you lose money.",
   },
   {
     emoji: "🤖",
-    title: "Flexible withdrawals",
+    title: "Flexible 4",
     description:
       "You’ll always be able to withdraw your contributions with no tax or penalties.",
   },
   {
     emoji: "🤖",
-    title: "Save more together",
+    title: "Save together 5",
     description:
       "Backer is a social fund: save 4x more with gifts from family & friends.",
   },
   {
     emoji: "🤖",
-    title: "You win, we win",
+    title: "You win 6",
     description: "We won’t charge our $5 monthly fee if you lose money.",
   },
 ];
@@ -157,24 +157,24 @@ Default.args = {
     {
       breakpoint: 1600,
       cardsToShow: 3,
-      sidePaddingOffset: 50,
+      // sidePaddingOffset: 50,
       showHiddenCard: 120,
       hideArrows: true,
     },
     {
       breakpoint: 1000,
       cardsToShow: 2,
-      sidePaddingOffset: 20,
-      showHiddenCard: 80,
+      // sidePaddingOffset: 20,
+      // showHiddenCard: 40,
     },
     {
       breakpoint: 680,
       cardsToShow: 1,
-      showHiddenCard: false,
+      showHiddenCard: 40,
     },
   ],
   disableSideFading: true,
   paginationAlignment: "left",
-  spaceBetween: 20,
-  showGuidelines: true,
+  // spaceBetween: 20,
+  // showGuidelines: true,
 };

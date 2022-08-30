@@ -134,6 +134,7 @@ const SliderWrapper: React.FC<Props> = (props) => {
   });
 
   const isShowHiddenCard = () => {
+    // console.log(breakpoints[currentBreakpoint].showHiddenCard);
     if (typeof breakpoints[currentBreakpoint].showHiddenCard === "number") {
       return breakpoints[currentBreakpoint].showHiddenCard as number;
     } else if (
@@ -161,13 +162,9 @@ const SliderWrapper: React.FC<Props> = (props) => {
         setCurrentBreakpoint(index);
       }
     });
-
-    //   // console.log(props.breakpoints[currentBreakpoint].hideArrows );
   };
 
   const updateOnDrag = () => {
-    // console.log(sliderRef.current.scrollLeft);
-
     const activeItemBoundsRatio = gridWidth / 2;
 
     sliderRefChildren.current.forEach((item: HTMLElement, index) => {
@@ -204,7 +201,6 @@ const SliderWrapper: React.FC<Props> = (props) => {
     // console.log(getSliderPostionByIndex(index));
 
     gsap.to(sliderRef.current, {
-      // x: getSliderPostionByIndex(index, shiftRatio),
       duration: duration,
       scrollTo: {
         x: getSliderPostionByIndex(index),
@@ -217,8 +213,6 @@ const SliderWrapper: React.FC<Props> = (props) => {
 
   //
   const goToNextCard = () => {
-    // console.log(activeIndex);
-    // console.log(activeIndex, sliderRefChildren.current.length);
     if (activeIndex < sliderRefChildren.current.length - cardsToShow) {
       // console.log(activeIndex);
       setIsArrowButtonDisabled(true);
@@ -240,7 +234,19 @@ const SliderWrapper: React.FC<Props> = (props) => {
     }
   };
 
-  // If active index was changed
+  const handlePaginationAlignment = () => {
+    switch (props.paginationAlignment) {
+      case "left":
+        return "flex-start";
+      case "center":
+        return "center";
+      case "right":
+        return "flex-end";
+      default:
+        return "center";
+    }
+  };
+
   useDidMountEffect(() => {
     if (typeof props.onChange === "function") {
       props.onChange(activeIndex);
@@ -264,7 +270,7 @@ const SliderWrapper: React.FC<Props> = (props) => {
     return () => {
       window.removeEventListener("resize", onWindowResize);
     };
-  }, [currentBreakpoint]);
+  }, []);
 
   // Prevent scroll
   React.useEffect(() => {
@@ -295,21 +301,8 @@ const SliderWrapper: React.FC<Props> = (props) => {
     };
   }, [isSliderFocused, isSliderWrapFocused, activeIndex]);
 
-  const handlePaginationAlignment = () => {
-    switch (props.paginationAlignment) {
-      case "left":
-        return "flex-start";
-      case "center":
-        return "center";
-      case "right":
-        return "flex-end";
-      default:
-        return "center";
-    }
-  };
-
   //
-  React.useEffect(() => {
+  useDidMountEffect(() => {
     // console.log(sliderRefChildren);
     if (sliderContainerRef.current && sliderRef.current) {
       // console.log(snapPoints);
@@ -326,7 +319,6 @@ const SliderWrapper: React.FC<Props> = (props) => {
       setGridWidth(gridWidth);
 
       const allSnapPoints = sliderRefChildren.current.map((item, index) => {
-        // console.log(gridWidth);
         return (
           (item.getBoundingClientRect().width + props.spaceBetween) * index
         );
@@ -343,7 +335,7 @@ const SliderWrapper: React.FC<Props> = (props) => {
           (cuttedSnapPoints[1] - isShowHiddenCard()),
       ];
 
-      console.log(snapPointsPlusOffset);
+      // console.log(snapPointsPlusOffset);
 
       setTriggerPointsState({
         left: 0,
@@ -354,8 +346,9 @@ const SliderWrapper: React.FC<Props> = (props) => {
         type: "scrollLeft",
         edgeResistance: 0.9,
         inertia: true,
-        maxDuration: 0.6,
-        throwResistance: 0.2,
+        maxDuration: 0.3,
+        // dragResistance: 0.0,
+        // throwResistance: 0.2,
 
         snap: snapPointsPlusOffset,
 
