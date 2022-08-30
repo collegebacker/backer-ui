@@ -10537,8 +10537,8 @@ ChipsSelector.defaultProps = {
     defaultIndex: 0,
 };
 
-var css$d = ":root {\n  --radius-l: 15px;\n  --radius-m: 10px;\n  --radius-s: 5px;\n}\n\n.styles_module_sliderContainer__8b0dcef6 {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n}\n.styles_module_sliderContainer__8b0dcef6:focus-visible {\n  outline: none !important;\n  border: none !important;\n}\n.styles_module_sliderContainer__8b0dcef6:focus-visible .styles_module_pagination__8b0dcef6 {\n  outline: 2px solid var(--color-accent-transparent-200);\n  outline-offset: 10px;\n  border-radius: var(--radius-s);\n}\n\n.styles_module_fadeGradientLeft__8b0dcef6,\n.styles_module_fadeGradientRight__8b0dcef6 {\n  z-index: 1;\n  top: -2px;\n  position: absolute;\n  height: calc(100% + 2px);\n}\n\n.styles_module_fadeGradientLeft__8b0dcef6 {\n  background-image: linear-gradient(to right, white, transparent);\n}\n\n.styles_module_fadeGradientRight__8b0dcef6 {\n  background-image: linear-gradient(to left, white, transparent);\n}\n\n.styles_module_slider__8b0dcef6 {\n  overflow-x: hidden;\n  position: relative;\n  display: inline-block;\n  scroll-snap-type: x mandatory;\n  outline-offset: 5px;\n  outline-color: var(--color-accent-transparent-200);\n}\n.styles_module_slider__8b0dcef6::-webkit-scrollbar {\n  display: none;\n}\n.styles_module_slider__8b0dcef6:hover, .styles_module_slider__8b0dcef6:focus {\n  border: none !important;\n  outline: none !important;\n}\n\n.styles_module_sliderCards__8b0dcef6 {\n  margin-left: 1px;\n  display: flex;\n  flex-wrap: nowrap;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n}\n\n.styles_module_cardWrap__8b0dcef6 {\n  scroll-snap-align: start;\n}\n\n.styles_module_paginationWrap__8b0dcef6 {\n  display: flex;\n  margin-top: 30px;\n}\n\n.styles_module_pagination__8b0dcef6 {\n  outline-color: var(--color-accent-transparent-200);\n  transition: outline-offset 0.2s ease, outline-color 0.2s ease;\n}\n\n.styles_module_arrowButtonLeft__8b0dcef6,\n.styles_module_arrowButtonRight__8b0dcef6 {\n  z-index: 2;\n  position: absolute;\n  top: calc(50% - 40px);\n  transform: translateY(-50%);\n}\n\n.styles_module_lastCard__8b0dcef6 {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  padding: 30px;\n  border: 1px solid var(--color-main-500);\n  border-radius: var(--radius-l);\n}\n.styles_module_lastCard__content__8b0dcef6 {\n  display: flex;\n  align-items: center;\n}\n.styles_module_lastCard__text__8b0dcef6 {\n  font-family: \"ABCMarfa\", sans-serif;\n  font-weight: 300;\n  font-size: 17px;\n  line-height: 130%;\n  margin-right: 15px;\n}\n.styles_module_lastCard__icon__8b0dcef6 {\n  flex: 1 0 auto;\n}";
-var modules_efc4e723$d = {"sliderContainer":"styles_module_sliderContainer__8b0dcef6","pagination":"styles_module_pagination__8b0dcef6","fadeGradientLeft":"styles_module_fadeGradientLeft__8b0dcef6","fadeGradientRight":"styles_module_fadeGradientRight__8b0dcef6","slider":"styles_module_slider__8b0dcef6","sliderCards":"styles_module_sliderCards__8b0dcef6","cardWrap":"styles_module_cardWrap__8b0dcef6","paginationWrap":"styles_module_paginationWrap__8b0dcef6","arrowButtonLeft":"styles_module_arrowButtonLeft__8b0dcef6","arrowButtonRight":"styles_module_arrowButtonRight__8b0dcef6","lastCard":"styles_module_lastCard__8b0dcef6","lastCard__content":"styles_module_lastCard__content__8b0dcef6","lastCard__text":"styles_module_lastCard__text__8b0dcef6","lastCard__icon":"styles_module_lastCard__icon__8b0dcef6"};
+var css$d = ":root {\n  --radius-l: 15px;\n  --radius-m: 10px;\n  --radius-s: 5px;\n}\n\n.styles_module_sliderContainer__84ea3402 {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n}\n.styles_module_sliderContainer__84ea3402:focus-visible {\n  outline: none !important;\n  border: none !important;\n}\n.styles_module_sliderContainer__84ea3402:focus-visible .styles_module_pagination__84ea3402 {\n  outline: 2px solid var(--color-accent-transparent-200);\n  outline-offset: 10px;\n  border-radius: var(--radius-s);\n}\n\n.styles_module_fadeGradientLeft__84ea3402,\n.styles_module_fadeGradientRight__84ea3402 {\n  z-index: 1;\n  top: -2px;\n  position: absolute;\n  height: calc(100% + 2px);\n}\n\n.styles_module_fadeGradientLeft__84ea3402 {\n  background-image: linear-gradient(to right, white, transparent);\n}\n\n.styles_module_fadeGradientRight__84ea3402 {\n  background-image: linear-gradient(to left, white, transparent);\n}\n\n.styles_module_slider__84ea3402 {\n  overflow-x: hidden;\n  position: relative;\n  display: inline-block;\n  outline-offset: 5px;\n  outline-color: var(--color-accent-transparent-200);\n}\n.styles_module_slider__84ea3402::-webkit-scrollbar {\n  display: none;\n}\n.styles_module_slider__84ea3402:hover, .styles_module_slider__84ea3402:focus {\n  border: none !important;\n  outline: none !important;\n}\n\n.styles_module_sliderCards__84ea3402 {\n  margin-left: 1px;\n  display: flex;\n  flex-wrap: nowrap;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n}\n\n.styles_module_cardWrap__84ea3402 {\n  scroll-snap-align: start;\n}\n\n.styles_module_paginationWrap__84ea3402 {\n  display: flex;\n  margin-top: 30px;\n}\n\n.styles_module_pagination__84ea3402 {\n  outline-color: var(--color-accent-transparent-200);\n  transition: outline-offset 0.2s ease, outline-color 0.2s ease;\n}\n\n.styles_module_arrowButtonLeft__84ea3402,\n.styles_module_arrowButtonRight__84ea3402 {\n  z-index: 2;\n  position: absolute;\n  top: calc(50% - 40px);\n  transform: translateY(-50%);\n}\n\n.styles_module_lastCard__84ea3402 {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  padding: 30px;\n  border: 1px solid var(--color-main-500);\n  border-radius: var(--radius-l);\n}\n.styles_module_lastCard__content__84ea3402 {\n  display: flex;\n  align-items: center;\n}\n.styles_module_lastCard__text__84ea3402 {\n  font-family: \"ABCMarfa\", sans-serif;\n  font-weight: 300;\n  font-size: 17px;\n  line-height: 130%;\n  margin-right: 15px;\n}\n.styles_module_lastCard__icon__84ea3402 {\n  flex: 1 0 auto;\n}";
+var modules_efc4e723$d = {"sliderContainer":"styles_module_sliderContainer__84ea3402","pagination":"styles_module_pagination__84ea3402","fadeGradientLeft":"styles_module_fadeGradientLeft__84ea3402","fadeGradientRight":"styles_module_fadeGradientRight__84ea3402","slider":"styles_module_slider__84ea3402","sliderCards":"styles_module_sliderCards__84ea3402","cardWrap":"styles_module_cardWrap__84ea3402","paginationWrap":"styles_module_paginationWrap__84ea3402","arrowButtonLeft":"styles_module_arrowButtonLeft__84ea3402","arrowButtonRight":"styles_module_arrowButtonRight__84ea3402","lastCard":"styles_module_lastCard__84ea3402","lastCard__content":"styles_module_lastCard__content__84ea3402","lastCard__text":"styles_module_lastCard__text__84ea3402","lastCard__icon":"styles_module_lastCard__icon__84ea3402"};
 n(css$d,{});
 
 var css$c = ".styles_module_container__0da45aaf {\n  position: relative;\n  display: flex;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  overflow: hidden;\n  transition: width 0.3s ease-in-out;\n}\n\n.styles_module_wrap__0da45aaf {\n  position: relative;\n  display: flex;\n  transition: transform 0.3s ease-in-out;\n}\n\n.styles_module_paginationDot__0da45aaf {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n          user-select: none;\n  width: 8px;\n  height: 8px;\n  border-radius: 8px;\n  margin-right: 10px;\n  background-color: var(--color-main-500);\n  opacity: 0.2;\n  transition: all 0.3s ease-out;\n}\n.styles_module_paginationDot__0da45aaf:last-child {\n  margin-right: 0;\n}\n\n.styles_module_activeDot__0da45aaf {\n  width: 20px;\n  opacity: 1;\n}";
@@ -10675,6 +10675,7 @@ var SliderWrapper = function (props) {
         };
     });
     var isShowHiddenCard = function () {
+        // console.log(breakpoints[currentBreakpoint].showHiddenCard);
         if (typeof breakpoints[currentBreakpoint].showHiddenCard === "number") {
             return breakpoints[currentBreakpoint].showHiddenCard;
         }
@@ -10698,10 +10699,8 @@ var SliderWrapper = function (props) {
                 setCurrentBreakpoint(index);
             }
         });
-        //   // console.log(props.breakpoints[currentBreakpoint].hideArrows );
     };
     var updateOnDrag = function () {
-        // console.log(sliderRef.current.scrollLeft);
         var activeItemBoundsRatio = gridWidth / 2;
         sliderRefChildren.current.forEach(function (item, index) {
             var itemXLeftEdge = item.getBoundingClientRect().left -
@@ -10727,7 +10726,6 @@ var SliderWrapper = function (props) {
     var scrollToSelectedIndex = function (index, duration) {
         // console.log(getSliderPostionByIndex(index));
         gsapWithCSS.to(sliderRef.current, {
-            // x: getSliderPostionByIndex(index, shiftRatio),
             duration: duration,
             scrollTo: {
                 x: getSliderPostionByIndex(index),
@@ -10739,8 +10737,6 @@ var SliderWrapper = function (props) {
     };
     //
     var goToNextCard = function () {
-        // console.log(activeIndex);
-        // console.log(activeIndex, sliderRefChildren.current.length);
         if (activeIndex < sliderRefChildren.current.length - cardsToShow) {
             // console.log(activeIndex);
             setIsArrowButtonDisabled(true);
@@ -10758,7 +10754,18 @@ var SliderWrapper = function (props) {
             // console.log("prev", newIndex);
         }
     };
-    // If active index was changed
+    var handlePaginationAlignment = function () {
+        switch (props.paginationAlignment) {
+            case "left":
+                return "flex-start";
+            case "center":
+                return "center";
+            case "right":
+                return "flex-end";
+            default:
+                return "center";
+        }
+    };
     useDidMountEffect(function () {
         if (typeof props.onChange === "function") {
             props.onChange(activeIndex);
@@ -10777,7 +10784,7 @@ var SliderWrapper = function (props) {
         return function () {
             window.removeEventListener("resize", onWindowResize);
         };
-    }, [currentBreakpoint]);
+    }, []);
     // Prevent scroll
     React__default["default"].useEffect(function () {
         var preventKeyboardScroll = function (e) {
@@ -10803,20 +10810,8 @@ var SliderWrapper = function (props) {
             window.removeEventListener("keydown", preventKeyboardScroll);
         };
     }, [isSliderFocused, isSliderWrapFocused, activeIndex]);
-    var handlePaginationAlignment = function () {
-        switch (props.paginationAlignment) {
-            case "left":
-                return "flex-start";
-            case "center":
-                return "center";
-            case "right":
-                return "flex-end";
-            default:
-                return "center";
-        }
-    };
     //
-    React__default["default"].useEffect(function () {
+    useDidMountEffect(function () {
         // console.log(sliderRefChildren);
         if (sliderContainerRef.current && sliderRef.current) {
             // console.log(snapPoints);
@@ -10828,7 +10823,6 @@ var SliderWrapper = function (props) {
                 props.spaceBetween;
             setGridWidth(gridWidth_1);
             var allSnapPoints = sliderRefChildren.current.map(function (item, index) {
-                // console.log(gridWidth);
                 return ((item.getBoundingClientRect().width + props.spaceBetween) * index);
             });
             var cuttedSnapPoints = allSnapPoints.slice(0, paginationAmount_1 - allSnapPoints.length - 1);
@@ -10836,7 +10830,7 @@ var SliderWrapper = function (props) {
                 cuttedSnapPoints[cuttedSnapPoints.length - 1] +
                     (cuttedSnapPoints[1] - isShowHiddenCard()),
             ], false);
-            console.log(snapPointsPlusOffset);
+            // console.log(snapPointsPlusOffset);
             setTriggerPointsState({
                 left: 0,
                 right: gridWidth_1,
@@ -10845,8 +10839,9 @@ var SliderWrapper = function (props) {
                 type: "scrollLeft",
                 edgeResistance: 0.9,
                 inertia: true,
-                maxDuration: 0.6,
-                throwResistance: 0.2,
+                maxDuration: 0.3,
+                // dragResistance: 0.0,
+                // throwResistance: 0.2,
                 snap: snapPointsPlusOffset,
                 onDragStart: function () {
                     sliderRef.current.style.scrollSnapType = "none";
