@@ -77,37 +77,37 @@ With this property you can regulate the visibility of the hidden by the right ed
 const itemsArray = [
   {
     emoji: "🤖",
-    title: "Flexible withdrawals",
+    title: "Withdrawal 1",
     description:
       "You’ll always be able to withdraw your contributions with no tax or penalties.",
   },
   {
     emoji: "🤖",
-    title: "Save more together",
+    title: "Save together 2",
     description:
       "Backer is a social fund: save 4x more with gifts from family & friends.",
   },
 
   {
     emoji: "🤖",
-    title: "You win, we win",
+    title: "You win, we win 3",
     description: "We won’t charge our $5 monthly fee if you lose money.",
   },
   {
     emoji: "🤖",
-    title: "Flexible withdrawals",
+    title: "Flexible 4",
     description:
       "You’ll always be able to withdraw your contributions with no tax or penalties.",
   },
   {
     emoji: "🤖",
-    title: "Save more together",
+    title: "Save together 5",
     description:
       "Backer is a social fund: save 4x more with gifts from family & friends.",
   },
   {
     emoji: "🤖",
-    title: "You win, we win",
+    title: "You win 6",
     description: "We won’t charge our $5 monthly fee if you lose money.",
   },
 ];
@@ -129,8 +129,22 @@ const CardExample: React.FC<CardExampleProps> = (props) => {
 };
 
 const Template: ComponentStory<typeof SliderWrapper> = (args) => (
-  <div className="pageWrap">
-    <SliderWrapper {...args} />
+  <div
+    style={{
+      backgroundColor: "rgba(0, 0, 0, 0.1)",
+      padding: "40px",
+      maxWidth: "1000px",
+      margin: "0 auto",
+      // overflow: "hidden",
+    }}
+  >
+    <div
+      style={{
+        backgroundColor: "rgba(0, 0, 0, 0.05)",
+      }}
+    >
+      <SliderWrapper {...args} />
+    </div>
   </div>
 );
 
@@ -141,25 +155,26 @@ Default.args = {
   }),
   breakpoints: [
     {
-      breakpoint: 1424,
+      breakpoint: 1600,
       cardsToShow: 3,
-      // sidePaddingOffset: 40,
-      // hideArrows: true,
-      // hidePagination: true,
+      // sidePaddingOffset: 50,
+      showHiddenCard: 120,
+      hideArrows: true,
     },
     {
-      breakpoint: 1068,
+      breakpoint: 1000,
       cardsToShow: 2,
-      // hideArrows: false,
-      // hidePagination: true,
+      // sidePaddingOffset: 20,
+      // showHiddenCard: 40,
     },
     {
-      breakpoint: 480,
+      breakpoint: 680,
       cardsToShow: 1,
+      showHiddenCard: 40,
     },
   ],
-  disableSideFading: false,
-  showHiddenCard: false,
-  spaceBetween: 20,
-  showGuidelines: false,
+  disableSideFading: true,
+  paginationAlignment: "left",
+  // spaceBetween: 20,
+  // showGuidelines: true,
 };

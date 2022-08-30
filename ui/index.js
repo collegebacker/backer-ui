@@ -10606,6 +10606,7 @@ var defaultProps = {
             breakpoint: 1024,
             cardsToShow: 3,
             sidePaddingOffset: 40,
+            showHiddenCard: false,
             hideArrows: false,
             hidePagination: false,
         },
@@ -10613,6 +10614,7 @@ var defaultProps = {
             breakpoint: 768,
             cardsToShow: 2,
             sidePaddingOffset: 40,
+            showHiddenCard: false,
             hideArrows: true,
             hidePagination: false,
         },
@@ -10620,6 +10622,7 @@ var defaultProps = {
             breakpoint: 480,
             cardsToShow: 1,
             sidePaddingOffset: 40,
+            showHiddenCard: false,
             hideArrows: true,
             hidePagination: false,
         },
@@ -10666,14 +10669,17 @@ var SliderWrapper = function (props) {
             hidePagination: props.breakpoints[index].hidePagination !== undefined
                 ? props.breakpoints[index].hidePagination
                 : item.hidePagination,
+            showHiddenCard: props.breakpoints[index].showHiddenCard !== undefined
+                ? props.breakpoints[index].showHiddenCard
+                : item.showHiddenCard,
         };
     });
     var isShowHiddenCard = function () {
-        if (typeof props.showHiddenCard === "number") {
-            return props.showHiddenCard;
+        if (typeof breakpoints[currentBreakpoint].showHiddenCard === "number") {
+            return breakpoints[currentBreakpoint].showHiddenCard;
         }
-        else if (typeof props.showHiddenCard === "boolean") {
-            return props.showHiddenCard ? 40 : 0;
+        else if (typeof breakpoints[currentBreakpoint].showHiddenCard === "boolean") {
+            return breakpoints[currentBreakpoint].showHiddenCard ? 40 : 0;
         }
     };
     var handleCardsBreakpoint = function () {
@@ -10821,10 +10827,16 @@ var SliderWrapper = function (props) {
                 cardsToShow +
                 props.spaceBetween;
             setGridWidth(gridWidth_1);
-            var snapPointsWithoutLastCard = sliderRefChildren.current.map(function (item, index) {
+            var allSnapPoints = sliderRefChildren.current.map(function (item, index) {
+                // console.log(gridWidth);
                 return ((item.getBoundingClientRect().width + props.spaceBetween) * index);
             });
-            var snapPoints = snapPointsWithoutLastCard;
+            var cuttedSnapPoints = allSnapPoints.slice(0, paginationAmount_1 - allSnapPoints.length - 1);
+            var snapPointsPlusOffset = __spreadArray(__spreadArray([], cuttedSnapPoints, true), [
+                cuttedSnapPoints[cuttedSnapPoints.length - 1] +
+                    (cuttedSnapPoints[1] - isShowHiddenCard()),
+            ], false);
+            console.log(snapPointsPlusOffset);
             setTriggerPointsState({
                 left: 0,
                 right: gridWidth_1,
@@ -10835,7 +10847,7 @@ var SliderWrapper = function (props) {
                 inertia: true,
                 maxDuration: 0.6,
                 throwResistance: 0.2,
-                snap: snapPoints,
+                snap: snapPointsPlusOffset,
                 onDragStart: function () {
                     sliderRef.current.style.scrollSnapType = "none";
                 },
