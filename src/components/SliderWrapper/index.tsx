@@ -167,7 +167,7 @@ const SliderWrapper: React.FC<Props> = (props) => {
   const updateOnDrag = () => {
     const activeItemBoundsRatio = gridWidth / 2;
 
-    console.log(sliderRef.current.scrollLeft);
+    // console.log(sliderRef.current.scrollLeft);
 
     sliderRefChildren.current.forEach((item: HTMLElement, index) => {
       const itemXLeftEdge =
@@ -325,9 +325,9 @@ const SliderWrapper: React.FC<Props> = (props) => {
       });
 
       const allSnapPoints = sliderRefChildren.current.map((item, index) => {
-        console.log(
-          item.getBoundingClientRect().width + props.spaceBetween - 1
-        );
+        // console.log(
+        //   item.getBoundingClientRect().width + props.spaceBetween - 1
+        // );
         return (
           Math.floor(item.getBoundingClientRect().width + props.spaceBetween) *
             index -
@@ -350,7 +350,7 @@ const SliderWrapper: React.FC<Props> = (props) => {
           (cuttedSnapPoints[0] - isShowHiddenCard()),
       ];
 
-      console.log(cuttedSnapPoints, allSnapPoints.length, paginationAmount);
+      // console.log(cuttedSnapPoints, allSnapPoints.length, paginationAmount);
 
       Draggable.create(sliderRef.current, {
         type: "scrollLeft",

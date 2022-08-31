@@ -12,6 +12,7 @@ interface Props {
   isOpen: boolean;
   closeOutside: boolean;
   title?: string;
+  hideHeader?: boolean;
   smallTitle: boolean;
   children: React.ReactNode;
   isMobileBreakpoint: boolean;
@@ -64,27 +65,27 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
   // USE EFFECTS //
   /////////////////
 
-  useDidMountEffect(() => {
-    // applyDragBounds();
-    if (!props.isOpen) {
-      // console.log("isOpen", props.isOpen);
-      gsap.to(modalWrapRef.current, {
-        display: "none",
-        pointerEvents: "none",
-        opacity: 0,
-        duration: 0.1,
-        delay: 0.4,
-      });
-      gsap.to(bottomSheetRef.current, {
-        bottom: "-100%",
-        duration: 0.2,
-      });
-      gsap.to(backgroundRef.current, {
-        opacity: 0,
-        duration: 0.4,
-      });
-    }
-  }, [props.isOpen]);
+  // useDidMountEffect(() => {
+  //   // applyDragBounds();
+  //   if (!props.isOpen) {
+  //     // console.log("isOpen", props.isOpen);
+  //     gsap.to(modalWrapRef.current, {
+  //       display: "none",
+  //       pointerEvents: "none",
+  //       opacity: 0,
+  //       duration: 0.1,
+  //       delay: 0.4,
+  //     });
+  //     gsap.to(bottomSheetRef.current, {
+  //       bottom: "-100%",
+  //       duration: 0.2,
+  //     });
+  //     gsap.to(backgroundRef.current, {
+  //       opacity: 0,
+  //       duration: 0.4,
+  //     });
+  //   }
+  // }, [props.isOpen]);
 
   React.useEffect(() => {
     const myObserver = new ResizeObserver((entries) => {
@@ -127,6 +128,22 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
         opacity: 1,
         duration: 0.4,
       });
+    } else {
+      gsap.to(modalWrapRef.current, {
+        display: "none",
+        pointerEvents: "none",
+        opacity: 0,
+        duration: 0.1,
+        delay: 0.4,
+      });
+      gsap.to(bottomSheetRef.current, {
+        bottom: "-100%",
+        duration: 0.2,
+      });
+      gsap.to(backgroundRef.current, {
+        opacity: 0,
+        duration: 0.4,
+      });
     }
   }, [props.isOpen]);
 
@@ -150,12 +167,14 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
           stickModal ? "" : styles.overScrolled
         } ${props.popupClassName}`}
       >
-        <Header
-          onCloseClick={handleCloseClick}
-          title={props.title}
-          smallTitle={props.smallTitle}
-          noMaxWidth={true}
-        />
+        {!props.hideHeader ? (
+          <Header
+            onCloseClick={handleCloseClick}
+            title={props.title}
+            smallTitle={props.smallTitle}
+            noMaxWidth={true}
+          />
+        ) : null}
         <div
           className={`${styles.contentWrapper} ${styles.popupContentClassName}`}
           ref={contentWrapperRef}
