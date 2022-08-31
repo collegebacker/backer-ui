@@ -87,7 +87,6 @@ const itemsArray = [
     description:
       "Backer is a social fund: save 4x more with gifts from family & friends.",
   },
-
   {
     emoji: "🤖",
     title: "You win, we win 3",
@@ -99,17 +98,28 @@ const itemsArray = [
     description:
       "You’ll always be able to withdraw your contributions with no tax or penalties.",
   },
-  {
-    emoji: "🤖",
-    title: "Save together 5",
-    description:
-      "Backer is a social fund: save 4x more with gifts from family & friends.",
-  },
-  {
-    emoji: "🤖",
-    title: "You win 6",
-    description: "We won’t charge our $5 monthly fee if you lose money.",
-  },
+  // {
+  //   emoji: "🤖",
+  //   title: "Save together 5",
+  //   description:
+  //     "Backer is a social fund: save 4x more with gifts from family & friends.",
+  // },
+  // {
+  //   emoji: "🤖",
+  //   title: "You win 6",
+  //   description: "We won’t charge our $5 monthly fee if you lose money.",
+  // },
+  // {
+  //   emoji: "🤖",
+  //   title: "Save together 5",
+  //   description:
+  //     "Backer is a social fund: save 4x more with gifts from family & friends.",
+  // },
+  // {
+  //   emoji: "🤖",
+  //   title: "You win 6",
+  //   description: "We won’t charge our $5 monthly fee if you lose money.",
+  // },
 ];
 
 interface CardExampleProps {
@@ -153,6 +163,7 @@ Default.args = {
   children: itemsArray.map((item, index) => {
     return <CardExample key={index} {...item} />;
   }),
+  // spaceBetween: 0
   breakpoints: [
     {
       breakpoint: 1600,
@@ -165,7 +176,7 @@ Default.args = {
       breakpoint: 1000,
       cardsToShow: 2,
       // sidePaddingOffset: 20,
-      // showHiddenCard: 40,
+      showHiddenCard: 40,
     },
     {
       breakpoint: 680,
@@ -173,8 +184,8 @@ Default.args = {
       showHiddenCard: 40,
     },
   ],
-  disableSideFading: true,
-  paginationAlignment: "left",
+  // disableSideFading: true,
+  // paginationAlignment: "left",
   // spaceBetween: 20,
   // showGuidelines: true,
 };
