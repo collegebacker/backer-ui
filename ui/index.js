@@ -14160,7 +14160,7 @@ var Modal = React__default["default"].forwardRef(function (props, ref) {
             document.body.style.overflow = "hidden";
         }
         else {
-            document.body.style.overflow = "";
+            document.body.style.removeProperty("overflow");
         }
     }, [isOpen]);
     var handleOnCloseClick = function () {
