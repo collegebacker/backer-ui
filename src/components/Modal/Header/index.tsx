@@ -18,16 +18,13 @@ const Header: React.FC<HeaderProps> = (props) => {
       </button>
       {props.title ? (
         <div className={`${styles.titleWrap}`}>
-          <Text
+          <h2
             className={`${styles.title} ${
               !props.noMaxWidth ? styles.header_maxWidth : ""
-            }`}
-            tag="h2"
-            context="app"
-            appStyle={props.smallTitle ? "title-small" : "title-large"}
+            } ${styles[props.smallTitle ? "smallTitle" : "title"]}`}
           >
             {props.title}
-          </Text>
+          </h2>
         </div>
       ) : null}
     </div>

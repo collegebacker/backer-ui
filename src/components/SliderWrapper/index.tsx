@@ -167,6 +167,8 @@ const SliderWrapper: React.FC<Props> = (props) => {
   const updateOnDrag = () => {
     const activeItemBoundsRatio = gridWidth / 2;
 
+    // console.log(sliderRef.current.scrollLeft);
+
     sliderRefChildren.current.forEach((item: HTMLElement, index) => {
       const itemXLeftEdge =
         item.getBoundingClientRect().left -
@@ -302,7 +304,7 @@ const SliderWrapper: React.FC<Props> = (props) => {
   }, [isSliderFocused, isSliderWrapFocused, activeIndex]);
 
   //
-  useDidMountEffect(() => {
+  React.useEffect(() => {
     // console.log(sliderRefChildren);
     if (sliderContainerRef.current && sliderRef.current) {
       // console.log(snapPoints);
@@ -317,39 +319,44 @@ const SliderWrapper: React.FC<Props> = (props) => {
         props.spaceBetween;
 
       setGridWidth(gridWidth);
+      setTriggerPointsState({
+        left: 0,
+        right: gridWidth,
+      });
 
       const allSnapPoints = sliderRefChildren.current.map((item, index) => {
+        // console.log(
+        //   item.getBoundingClientRect().width + props.spaceBetween - 1
+        // );
         return (
-          (item.getBoundingClientRect().width + props.spaceBetween) * index
+          Math.floor(item.getBoundingClientRect().width + props.spaceBetween) *
+            index -
+          1
         );
       });
 
+      const pagesToCut = paginationAmount - allSnapPoints.length;
+
+      // pagesToCut !== 0 ? pagesToCut : allSnapPoints.length
+
       const cuttedSnapPoints = allSnapPoints.slice(
         0,
-        paginationAmount - allSnapPoints.length - 1
+        pagesToCut !== 0 ? pagesToCut : allSnapPoints.length
       );
 
       const snapPointsPlusOffset = [
         ...cuttedSnapPoints,
         cuttedSnapPoints[cuttedSnapPoints.length - 1] +
-          (cuttedSnapPoints[1] - isShowHiddenCard()),
+          (cuttedSnapPoints[0] - isShowHiddenCard()),
       ];
 
-      // console.log(snapPointsPlusOffset);
-
-      setTriggerPointsState({
-        left: 0,
-        right: gridWidth,
-      });
+      // console.log(cuttedSnapPoints, allSnapPoints.length, paginationAmount);
 
       Draggable.create(sliderRef.current, {
         type: "scrollLeft",
         edgeResistance: 0.9,
         inertia: true,
         maxDuration: 0.3,
-        // dragResistance: 0.0,
-        // throwResistance: 0.2,
-
         snap: snapPointsPlusOffset,
 
         onDragStart: () => {

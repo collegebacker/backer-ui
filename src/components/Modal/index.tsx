@@ -10,8 +10,10 @@ export interface Props {
   popupContentClassName?: string;
   title?: string;
   smallTitle?: boolean;
+  hideHeader?: boolean;
   children: React.ReactNode;
   customWidth?: number;
+  customPaddings?: string;
   isBottomSheet?: boolean;
   closeOutside?: boolean;
   onCloseClick?: () => void;
@@ -67,7 +69,7 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "";
+      document.body.style.removeProperty("overflow");
     }
   }, [isOpen]);
 
@@ -88,6 +90,7 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
           isOpen={isOpen}
           closeOutside={props.closeOutside}
           smallTitle={props.smallTitle}
+          hideHeader={props.hideHeader}
           popupClassName={props.popupClassName}
           popupContentClassName={props.popupContentClassName}
           onCloseClick={handleOnCloseClick}
@@ -99,7 +102,9 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
           isMobileBreakpoint={isMobileBreakpoint}
           isOpen={isOpen}
           closeOutside={props.closeOutside}
+          hideHeader={props.hideHeader}
           smallTitle={props.smallTitle}
+          customPaddings={props.customPaddings}
           popupClassName={props.popupClassName}
           popupContentClassName={props.popupContentClassName}
           onCloseClick={handleOnCloseClick}
@@ -118,6 +123,7 @@ Modal.defaultProps = {
   title: "",
   popupClassName: "",
   popupContentClassName: "",
+  hideHeader: false,
   smallTitle: false,
   isBottomSheet: false,
   closeOutside: true,

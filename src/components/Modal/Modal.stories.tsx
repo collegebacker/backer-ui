@@ -81,6 +81,16 @@ export default {
       description:
         "Custom width of the popup window (desctop only). If the value is more than 0, the default layout size will be reseted. By default the maximum width of the popup is `660px` and the content is `420px`.",
     },
+    hideHeader: {
+      control: "boolean",
+      description:
+        "You can hide the header of the modal. It's useful when you want to use the modal as a bottom sheet.",
+    },
+    customPaddings: {
+      control: { type: "text" },
+      description:
+        "You can set custom paddings for the modal. Write it like the usual css style. For example: `20px 40px`",
+    },
   },
 } as ComponentMeta<typeof Modal>;
 
@@ -109,6 +119,7 @@ Popup.args = {
   isBottomSheet: false,
   isOpen: false,
   closeOutside: true,
+  hideHeader: false,
   children: (
     <>
       <p>
@@ -146,6 +157,7 @@ BottomSheet.args = {
   isBottomSheet: true,
   isOpen: false,
   closeOutside: true,
+  hideHeader: false,
   children: (
     <>
       <p>
@@ -182,6 +194,7 @@ Buttons.args = {
   isOpen: false,
   closeOutside: true,
   customWidth: 420,
+  hideHeader: false,
   children: (
     <>
       <Text tag="p" context="app" appStyle="body-main">
@@ -267,6 +280,7 @@ FocusTrap.args = {
   isOpen: false,
   closeOutside: true,
   customWidth: 420,
+  hideHeader: false,
   children: (
     <>
       <Text tag="p" context="app" appStyle="body-main">

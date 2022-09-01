@@ -15,6 +15,27 @@
   }
 }
 
+.title {
+  font-family: "Gza", serif;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 120%;
+
+  @media screen and (max-width: $mobile-breakpoint) {
+    font-family: "ABCMarfa", sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 130%;
+  }
+}
+
+.smallTitle {
+  font-family: "ABCMarfa", sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 130%;
+}
+
 .header {
   display: flex;
   flex-direction: column;

@@ -10,8 +10,10 @@ import Header from "../Header";
 interface Props {
   popupClassName: string;
   popupContentClassName: string;
+  customPaddings?: string;
   isOpen: boolean;
   title?: string;
+  hideHeader?: boolean;
   smallTitle: boolean;
   children: React.ReactNode;
   customWidth?: number;
@@ -121,6 +123,22 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
     }
   }, [props.isOpen]);
 
+  const handleCustomPaddings = () => {
+    if (!props.isMobileBreakpoint) {
+      if (props.customPaddings) {
+        return props.customPaddings;
+      }
+
+      if (props.customWidth) {
+        return "30px";
+      }
+
+      return "90px 30px 90px";
+    } else {
+      return "30px 30px 80px";
+    }
+  };
+
   ///////////////
   // RENDERING //
   ///////////////
@@ -138,7 +156,6 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
       ) : null}
       <aside
         role="dialog"
-        tabIndex={-1}
         aria-modal
         aria-hidden={false}
         ref={modalWrapRef}
@@ -162,17 +179,23 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
                   width: "100%",
                 }
               : {}),
+            ...{
+              padding: handleCustomPaddings(),
+            },
           }}
         >
-          <Header
-            onCloseClick={handleCloseClick}
-            title={props.title}
-            smallTitle={props.smallTitle}
-            noMaxWidth={
-              props.customWidth && props.customWidth > 0 ? true : false
-            }
-          />
+          {!props.hideHeader ? (
+            <Header
+              onCloseClick={handleCloseClick}
+              title={props.title}
+              smallTitle={props.smallTitle}
+              noMaxWidth={
+                props.customWidth && props.customWidth > 0 ? true : false
+              }
+            />
+          ) : null}
           <div
+            tabIndex={0}
             className={`${styles.contentWrapper} ${styles.popupContentClassName}`}
           >
             {props.children}
@@ -191,6 +214,7 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
 Popup.defaultProps = {
   title: "",
   customWidth: 0,
+  customPaddings: null,
   onCloseClick: () => {},
 } as Partial<Props>;
 

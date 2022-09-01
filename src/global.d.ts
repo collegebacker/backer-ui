@@ -40,7 +40,9 @@ type IconTypes =
   | "full-screen"
   | "emoji"
   | "share"
-  | "resize-photo";
+  | "resize-photo"
+  | "chevron-in-circle-down"
+  | "chevron-in-circle-up";
 
 type TargetTypes = "_blank" | "_self" | "_parent" | "_top";
 
