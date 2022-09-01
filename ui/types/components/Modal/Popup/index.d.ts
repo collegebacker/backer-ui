@@ -2,8 +2,10 @@ import React from "react";
 interface Props {
     popupClassName: string;
     popupContentClassName: string;
+    customPaddings?: string;
     isOpen: boolean;
     title?: string;
+    hideHeader?: boolean;
     smallTitle: boolean;
     children: React.ReactNode;
     customWidth?: number;

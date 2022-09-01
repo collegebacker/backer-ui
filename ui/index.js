@@ -10706,7 +10706,7 @@ var SliderWrapper = function (props) {
     };
     var updateOnDrag = function () {
         var activeItemBoundsRatio = gridWidth / 2;
-        console.log(sliderRef.current.scrollLeft);
+        // console.log(sliderRef.current.scrollLeft);
         sliderRefChildren.current.forEach(function (item, index) {
             var itemXLeftEdge = item.getBoundingClientRect().left -
                 sliderContainerRef.current.getBoundingClientRect().left +
@@ -10832,7 +10832,9 @@ var SliderWrapper = function (props) {
                 right: gridWidth_1,
             });
             var allSnapPoints = sliderRefChildren.current.map(function (item, index) {
-                console.log(item.getBoundingClientRect().width + props.spaceBetween - 1);
+                // console.log(
+                //   item.getBoundingClientRect().width + props.spaceBetween - 1
+                // );
                 return (Math.floor(item.getBoundingClientRect().width + props.spaceBetween) *
                     index -
                     1);
@@ -10844,7 +10846,7 @@ var SliderWrapper = function (props) {
                 cuttedSnapPoints[cuttedSnapPoints.length - 1] +
                     (cuttedSnapPoints[0] - isShowHiddenCard()),
             ], false);
-            console.log(cuttedSnapPoints, allSnapPoints.length, paginationAmount_1);
+            // console.log(cuttedSnapPoints, allSnapPoints.length, paginationAmount);
             Draggable.exports.Draggable.create(sliderRef.current, {
                 type: "scrollLeft",
                 edgeResistance: 0.9,
@@ -10936,8 +10938,8 @@ var css$a = ".styles_module_modalWrap__fb843805 {\n  position: fixed;\n  z-index
 var modules_efc4e723$a = {"modalWrap":"styles_module_modalWrap__fb843805","background":"styles_module_background__fb843805","bottomSheetWrap":"styles_module_bottomSheetWrap__fb843805","overScrolled":"styles_module_overScrolled__fb843805"};
 n(css$a,{});
 
-var css$9 = ".styles_module_header__dd8790c2 {\n  display: flex;\n  flex-direction: column;\n  margin-bottom: 30px;\n}\n.styles_module_header_maxWidth__dd8790c2 {\n  max-width: 440px;\n}\n@media screen and (max-width: 620px) {\n  .styles_module_header__dd8790c2 {\n    flex-direction: row-reverse;\n  }\n}\n\n.styles_module_titleWrap__dd8790c2 {\n  position: relative;\n  display: flex;\n  flex: 1 1 auto;\n  width: 100%;\n  margin: 0 auto;\n}\n@media screen and (max-width: 620px) {\n  .styles_module_titleWrap__dd8790c2 {\n    max-width: none;\n  }\n}\n\n.styles_module_title__dd8790c2 {\n  padding-right: 50px;\n  margin: 0 auto;\n  width: 100%;\n}\n\n.styles_module_closeButton__dd8790c2 {\n  cursor: pointer;\n  z-index: 3;\n  position: absolute;\n  top: 25px;\n  right: 25px;\n  width: 40px;\n  height: 40px;\n  margin-left: 20px;\n  border: none;\n  outline: none;\n  background: none;\n  border-radius: 50%;\n}\n.styles_module_closeButton__wrap__dd8790c2 {\n  display: flex;\n  justify-content: flex-end;\n  width: 100%;\n}\n@media screen and (max-width: 620px) {\n  .styles_module_closeButton__wrap__dd8790c2 {\n    width: auto;\n  }\n}\n.styles_module_closeButton__background__dd8790c2 {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n  opacity: 0;\n  transform: scale(0.7);\n  background-color: var(--color-main-transparent-50);\n  transition: opacity 0.1s ease, transform 0.1s ease;\n}\n.styles_module_closeButton__dd8790c2:before, .styles_module_closeButton__dd8790c2:after {\n  content: \"\";\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  width: 1px;\n  height: 24px;\n  border-radius: 40px;\n  background-color: var(--color-main-500);\n  transition: height 0.1s ease;\n}\n.styles_module_closeButton__dd8790c2:before {\n  transform: translate(-50%, -50%) rotate(45deg);\n}\n.styles_module_closeButton__dd8790c2:after {\n  transform: translate(-50%, -50%) rotate(-45deg);\n}\n.styles_module_closeButton__dd8790c2:hover:before, .styles_module_closeButton__dd8790c2:hover:after {\n  height: 22px;\n}\n.styles_module_closeButton__dd8790c2:hover .styles_module_closeButton__background__dd8790c2 {\n  opacity: 1;\n  transform: scale(1);\n}\n.styles_module_closeButton__dd8790c2:focus-visible {\n  border: 1px solid var(--color-main-500);\n}";
-var modules_efc4e723$9 = {"header":"styles_module_header__dd8790c2","header_maxWidth":"styles_module_header_maxWidth__dd8790c2","titleWrap":"styles_module_titleWrap__dd8790c2","title":"styles_module_title__dd8790c2","closeButton":"styles_module_closeButton__dd8790c2","closeButton__wrap":"styles_module_closeButton__wrap__dd8790c2","closeButton__background":"styles_module_closeButton__background__dd8790c2"};
+var css$9 = ".styles_module_title__2080c166 {\n  font-family: \"Gza\", serif;\n  font-weight: 700;\n  font-size: 40px;\n  line-height: 120%;\n}\n@media screen and (max-width: 620px) {\n  .styles_module_title__2080c166 {\n    font-family: \"ABCMarfa\", sans-serif;\n    font-weight: 500;\n    font-size: 24px;\n    line-height: 130%;\n  }\n}\n\n.styles_module_smallTitle__2080c166 {\n  font-family: \"ABCMarfa\", sans-serif;\n  font-weight: 500;\n  font-size: 24px;\n  line-height: 130%;\n}\n\n.styles_module_header__2080c166 {\n  display: flex;\n  flex-direction: column;\n  margin-bottom: 30px;\n}\n.styles_module_header_maxWidth__2080c166 {\n  max-width: 440px;\n}\n@media screen and (max-width: 620px) {\n  .styles_module_header__2080c166 {\n    flex-direction: row-reverse;\n  }\n}\n\n.styles_module_titleWrap__2080c166 {\n  position: relative;\n  display: flex;\n  flex: 1 1 auto;\n  width: 100%;\n  margin: 0 auto;\n}\n@media screen and (max-width: 620px) {\n  .styles_module_titleWrap__2080c166 {\n    max-width: none;\n  }\n}\n\n.styles_module_title__2080c166 {\n  padding-right: 50px;\n  margin: 0 auto;\n  width: 100%;\n}\n\n.styles_module_closeButton__2080c166 {\n  cursor: pointer;\n  z-index: 3;\n  position: absolute;\n  top: 25px;\n  right: 25px;\n  width: 40px;\n  height: 40px;\n  margin-left: 20px;\n  border: none;\n  outline: none;\n  background: none;\n  border-radius: 50%;\n}\n.styles_module_closeButton__wrap__2080c166 {\n  display: flex;\n  justify-content: flex-end;\n  width: 100%;\n}\n@media screen and (max-width: 620px) {\n  .styles_module_closeButton__wrap__2080c166 {\n    width: auto;\n  }\n}\n.styles_module_closeButton__background__2080c166 {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n  opacity: 0;\n  transform: scale(0.7);\n  background-color: var(--color-main-transparent-50);\n  transition: opacity 0.1s ease, transform 0.1s ease;\n}\n.styles_module_closeButton__2080c166:before, .styles_module_closeButton__2080c166:after {\n  content: \"\";\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  width: 1px;\n  height: 24px;\n  border-radius: 40px;\n  background-color: var(--color-main-500);\n  transition: height 0.1s ease;\n}\n.styles_module_closeButton__2080c166:before {\n  transform: translate(-50%, -50%) rotate(45deg);\n}\n.styles_module_closeButton__2080c166:after {\n  transform: translate(-50%, -50%) rotate(-45deg);\n}\n.styles_module_closeButton__2080c166:hover:before, .styles_module_closeButton__2080c166:hover:after {\n  height: 22px;\n}\n.styles_module_closeButton__2080c166:hover .styles_module_closeButton__background__2080c166 {\n  opacity: 1;\n  transform: scale(1);\n}\n.styles_module_closeButton__2080c166:focus-visible {\n  border: 1px solid var(--color-main-500);\n}";
+var modules_efc4e723$9 = {"title":"styles_module_title__2080c166","smallTitle":"styles_module_smallTitle__2080c166","header":"styles_module_header__2080c166","header_maxWidth":"styles_module_header_maxWidth__2080c166","titleWrap":"styles_module_titleWrap__2080c166","closeButton":"styles_module_closeButton__2080c166","closeButton__wrap":"styles_module_closeButton__wrap__2080c166","closeButton__background":"styles_module_closeButton__background__2080c166"};
 n(css$9,{});
 
 var Header = function (props) {
@@ -10945,7 +10947,7 @@ var Header = function (props) {
         React__default["default"].createElement("button", { className: modules_efc4e723$9.closeButton, onClick: props.onCloseClick },
             React__default["default"].createElement("div", { className: modules_efc4e723$9.closeButton__background })),
         props.title ? (React__default["default"].createElement("div", { className: "".concat(modules_efc4e723$9.titleWrap) },
-            React__default["default"].createElement(Text, { className: "".concat(modules_efc4e723$9.title, " ").concat(!props.noMaxWidth ? modules_efc4e723$9.header_maxWidth : ""), tag: "h2", context: "app", appStyle: props.smallTitle ? "title-small" : "title-large" }, props.title))) : null));
+            React__default["default"].createElement("h2", { className: "".concat(modules_efc4e723$9.title, " ").concat(!props.noMaxWidth ? modules_efc4e723$9.header_maxWidth : "", " ").concat(modules_efc4e723$9[props.smallTitle ? "smallTitle" : "title"]) }, props.title))) : null));
 };
 Header.defaultProps = {
     title: "",
@@ -10988,27 +10990,27 @@ var BottomSheet = React__default["default"].forwardRef(function (props, ref) {
     /////////////////
     // USE EFFECTS //
     /////////////////
-    useDidMountEffect(function () {
-        // applyDragBounds();
-        if (!props.isOpen) {
-            // console.log("isOpen", props.isOpen);
-            gsapWithCSS.to(modalWrapRef.current, {
-                display: "none",
-                pointerEvents: "none",
-                opacity: 0,
-                duration: 0.1,
-                delay: 0.4,
-            });
-            gsapWithCSS.to(bottomSheetRef.current, {
-                bottom: "-100%",
-                duration: 0.2,
-            });
-            gsapWithCSS.to(backgroundRef.current, {
-                opacity: 0,
-                duration: 0.4,
-            });
-        }
-    }, [props.isOpen]);
+    // useDidMountEffect(() => {
+    //   // applyDragBounds();
+    //   if (!props.isOpen) {
+    //     // console.log("isOpen", props.isOpen);
+    //     gsap.to(modalWrapRef.current, {
+    //       display: "none",
+    //       pointerEvents: "none",
+    //       opacity: 0,
+    //       duration: 0.1,
+    //       delay: 0.4,
+    //     });
+    //     gsap.to(bottomSheetRef.current, {
+    //       bottom: "-100%",
+    //       duration: 0.2,
+    //     });
+    //     gsap.to(backgroundRef.current, {
+    //       opacity: 0,
+    //       duration: 0.4,
+    //     });
+    //   }
+    // }, [props.isOpen]);
     React__default["default"].useEffect(function () {
         var myObserver = new ResizeObserver(function (entries) {
             // this will get called whenever div dimension changes
@@ -11046,13 +11048,30 @@ var BottomSheet = React__default["default"].forwardRef(function (props, ref) {
                 duration: 0.4,
             });
         }
+        else {
+            gsapWithCSS.to(modalWrapRef.current, {
+                display: "none",
+                pointerEvents: "none",
+                opacity: 0,
+                duration: 0.1,
+                delay: 0.4,
+            });
+            gsapWithCSS.to(bottomSheetRef.current, {
+                bottom: "-100%",
+                duration: 0.2,
+            });
+            gsapWithCSS.to(backgroundRef.current, {
+                opacity: 0,
+                duration: 0.4,
+            });
+        }
     }, [props.isOpen]);
     ///////////////
     // RENDERING //
     ///////////////
     return (React__default["default"].createElement("aside", { role: "dialog", tabIndex: -1, "aria-modal": true, "aria-hidden": false, ref: modalWrapRef, className: "".concat(modules_efc4e723$a.modalWrap), style: __assign({}, props.style) },
         React__default["default"].createElement("section", { ref: bottomSheetRef, className: "".concat(modules_efc4e723$a.bottomSheetWrap, " ").concat(stickModal ? "" : modules_efc4e723$a.overScrolled, " ").concat(props.popupClassName) },
-            React__default["default"].createElement(Header, { onCloseClick: handleCloseClick, title: props.title, smallTitle: props.smallTitle, noMaxWidth: true }),
+            !props.hideHeader ? (React__default["default"].createElement(Header, { onCloseClick: handleCloseClick, title: props.title, smallTitle: props.smallTitle, noMaxWidth: true })) : null,
             React__default["default"].createElement("div", { className: "".concat(modules_efc4e723$a.contentWrapper, " ").concat(modules_efc4e723$a.popupContentClassName), ref: contentWrapperRef }, props.children)),
         React__default["default"].createElement("div", { ref: backgroundRef, className: modules_efc4e723$a.background })));
 });
@@ -13995,8 +14014,8 @@ FocusTrap.defaultProps = {
 };
 var focusTrapReact = FocusTrap;
 
-var css$8 = ".styles_module_modalWrap__e31cfb38 {\n  position: fixed;\n  z-index: 999;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 10%);\n  pointer-events: none;\n  opacity: 0;\n}\n\n.styles_module_contentWrapper__e31cfb38 {\n  width: 100%;\n  margin: 0 auto;\n}\n\n.styles_module_popup__e31cfb38 {\n  position: absolute;\n  z-index: 2;\n  -webkit-backface-visibility: hidden;\n          backface-visibility: hidden;\n  display: flex;\n  flex-direction: column;\n  overflow-y: auto;\n  top: 50%;\n  left: 50%;\n  min-height: 200px;\n  max-height: calc(100% - 40px);\n  padding: 30px;\n  border-radius: var(--radius-l);\n  opacity: 0;\n  transform: translate(-50%, -50%) scale(0.95);\n  background-color: var(--color-main-0);\n  transition: opacity 0.3s ease, transform 0.3s ease;\n}\n.styles_module_popup__e31cfb38::-webkit-scrollbar {\n  width: 0;\n}\n.styles_module_popup_maxLayout__e31cfb38 {\n  width: calc(100% - 40px);\n  padding: 90px 30px 90px;\n  max-width: 660px;\n}\n.styles_module_popup_maxLayout__e31cfb38 .styles_module_contentWrapper__e31cfb38 {\n  max-width: 440px;\n}\n@media screen and (max-width: 620px) {\n  .styles_module_popup__e31cfb38 {\n    top: 0;\n    left: 0;\n    transform: none;\n    max-width: none;\n    width: 100%;\n    height: 100%;\n    padding: 30px 30px 80px;\n    max-height: none;\n    border-radius: 0;\n    background-color: var(--color-main-0);\n  }\n}\n.styles_module_popup_show__e31cfb38 {\n  transform: translate(-50%, -50%) scale(1);\n  opacity: 1;\n}\n@media screen and (max-width: 620px) {\n  .styles_module_popup_show__e31cfb38 {\n    transform: translate(0, 0) scale(1);\n  }\n}\n\n.styles_module_gradients__e31cfb38 {\n  z-index: 1;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%) scale(0.1);\n  width: 300px;\n  height: 300px;\n  opacity: 0;\n}\n\n.styles_module_gradient1__e31cfb38 {\n  position: absolute;\n  width: 1200px;\n  height: 1400px;\n  top: 50%;\n  left: 50%;\n  opacity: 0.8;\n  transform: translate(-50%, -50%) scale(1.2) rotate(45deg);\n  background-image: var(--gradient-peach);\n}\n\n.styles_module_gradient2__e31cfb38 {\n  position: absolute;\n  width: 700px;\n  height: 1000px;\n  top: 10%;\n  left: 90%;\n  opacity: 0.8;\n  transform: translate(-50%, -50%) scale(1.2) rotate(33deg);\n  background-image: var(--gradient-velvet);\n}";
-var modules_efc4e723$8 = {"modalWrap":"styles_module_modalWrap__e31cfb38","contentWrapper":"styles_module_contentWrapper__e31cfb38","popup":"styles_module_popup__e31cfb38","popup_maxLayout":"styles_module_popup_maxLayout__e31cfb38","popup_show":"styles_module_popup_show__e31cfb38","gradients":"styles_module_gradients__e31cfb38","gradient1":"styles_module_gradient1__e31cfb38","gradient2":"styles_module_gradient2__e31cfb38"};
+var css$8 = ".styles_module_modalWrap__46e26bc6 {\n  position: fixed;\n  z-index: 999;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 10%);\n  pointer-events: none;\n  opacity: 0;\n}\n\n.styles_module_contentWrapper__46e26bc6 {\n  width: 100%;\n  margin: 0 auto;\n}\n.styles_module_contentWrapper__46e26bc6:focus {\n  outline: none;\n}\n\n.styles_module_popup__46e26bc6 {\n  position: absolute;\n  z-index: 2;\n  -webkit-backface-visibility: hidden;\n          backface-visibility: hidden;\n  display: flex;\n  flex-direction: column;\n  overflow-y: auto;\n  top: 50%;\n  left: 50%;\n  min-height: 200px;\n  max-height: calc(100% - 40px);\n  padding: 30px;\n  border-radius: var(--radius-l);\n  opacity: 0;\n  transform: translate(-50%, -50%) scale(0.95);\n  background-color: var(--color-main-0);\n  transition: opacity 0.3s ease, transform 0.3s ease;\n}\n.styles_module_popup__46e26bc6::-webkit-scrollbar {\n  width: 0;\n}\n.styles_module_popup_maxLayout__46e26bc6 {\n  width: calc(100% - 40px);\n  max-width: 660px;\n}\n.styles_module_popup_maxLayout__46e26bc6 .styles_module_contentWrapper__46e26bc6 {\n  max-width: 440px;\n}\n@media screen and (max-width: 620px) {\n  .styles_module_popup__46e26bc6 {\n    top: 0;\n    left: 0;\n    transform: none;\n    max-width: none;\n    width: 100%;\n    height: 100%;\n    max-height: none;\n    border-radius: 0;\n    background-color: var(--color-main-0);\n  }\n}\n.styles_module_popup_show__46e26bc6 {\n  transform: translate(-50%, -50%) scale(1);\n  opacity: 1;\n}\n@media screen and (max-width: 620px) {\n  .styles_module_popup_show__46e26bc6 {\n    transform: translate(0, 0) scale(1);\n  }\n}\n\n.styles_module_gradients__46e26bc6 {\n  z-index: 1;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%) scale(0.1);\n  width: 300px;\n  height: 300px;\n  opacity: 0;\n}\n\n.styles_module_gradient1__46e26bc6 {\n  position: absolute;\n  width: 1200px;\n  height: 1400px;\n  top: 50%;\n  left: 50%;\n  opacity: 0.8;\n  transform: translate(-50%, -50%) scale(1.2) rotate(45deg);\n  background-image: var(--gradient-peach);\n}\n\n.styles_module_gradient2__46e26bc6 {\n  position: absolute;\n  width: 700px;\n  height: 1000px;\n  top: 10%;\n  left: 90%;\n  opacity: 0.8;\n  transform: translate(-50%, -50%) scale(1.2) rotate(33deg);\n  background-image: var(--gradient-velvet);\n}";
+var modules_efc4e723$8 = {"modalWrap":"styles_module_modalWrap__46e26bc6","contentWrapper":"styles_module_contentWrapper__46e26bc6","popup":"styles_module_popup__46e26bc6","popup_maxLayout":"styles_module_popup_maxLayout__46e26bc6","popup_show":"styles_module_popup_show__46e26bc6","gradients":"styles_module_gradients__46e26bc6","gradient1":"styles_module_gradient1__46e26bc6","gradient2":"styles_module_gradient2__46e26bc6"};
 n(css$8,{});
 
 ///////////////
@@ -14088,6 +14107,20 @@ var Popup = React__default["default"].forwardRef(function (props, ref) {
             });
         }
     }, [props.isOpen]);
+    var handleCustomPaddings = function () {
+        if (!props.isMobileBreakpoint) {
+            if (props.customPaddings) {
+                return props.customPaddings;
+            }
+            if (props.customWidth) {
+                return "30px";
+            }
+            return "90px 30px 90px";
+        }
+        else {
+            return "30px 30px 80px";
+        }
+    };
     ///////////////
     // RENDERING //
     ///////////////
@@ -14096,19 +14129,21 @@ var Popup = React__default["default"].forwardRef(function (props, ref) {
                 allowOutsideClick: true,
                 clickOutsideDeactivates: true,
             } })) : null,
-        React__default["default"].createElement("aside", { role: "dialog", tabIndex: -1, "aria-modal": true, "aria-hidden": false, ref: modalWrapRef, className: "".concat(modules_efc4e723$8.modalWrap), style: __assign({}, props.style) },
+        React__default["default"].createElement("aside", { role: "dialog", "aria-modal": true, "aria-hidden": false, ref: modalWrapRef, className: "".concat(modules_efc4e723$8.modalWrap), style: __assign({}, props.style) },
             React__default["default"].createElement("section", { ref: popupRef, className: "".concat(modules_efc4e723$8.popup, " ").concat(!props.customWidth && props.customWidth === 0
                     ? modules_efc4e723$8.popup_maxLayout
-                    : "", " ").concat(props.popupClassName), style: __assign(__assign({}, props.style), (props.customWidth && props.customWidth > 0
+                    : "", " ").concat(props.popupClassName), style: __assign(__assign(__assign({}, props.style), (props.customWidth && props.customWidth > 0
                     ? {
                         maxWidth: !props.isMobileBreakpoint
                             ? props.customWidth
                             : "100%",
                         width: "100%",
                     }
-                    : {})) },
-                React__default["default"].createElement(Header, { onCloseClick: handleCloseClick, title: props.title, smallTitle: props.smallTitle, noMaxWidth: props.customWidth && props.customWidth > 0 ? true : false }),
-                React__default["default"].createElement("div", { className: "".concat(modules_efc4e723$8.contentWrapper, " ").concat(modules_efc4e723$8.popupContentClassName) }, props.children)),
+                    : {})), {
+                    padding: handleCustomPaddings(),
+                }) },
+                !props.hideHeader ? (React__default["default"].createElement(Header, { onCloseClick: handleCloseClick, title: props.title, smallTitle: props.smallTitle, noMaxWidth: props.customWidth && props.customWidth > 0 ? true : false })) : null,
+                React__default["default"].createElement("div", { tabIndex: 0, className: "".concat(modules_efc4e723$8.contentWrapper, " ").concat(modules_efc4e723$8.popupContentClassName) }, props.children)),
             React__default["default"].createElement("div", { className: modules_efc4e723$8.gradients, ref: gradients },
                 React__default["default"].createElement("div", { className: modules_efc4e723$8.gradient1 }),
                 React__default["default"].createElement("div", { className: modules_efc4e723$8.gradient2 })))));
@@ -14116,6 +14151,7 @@ var Popup = React__default["default"].forwardRef(function (props, ref) {
 Popup.defaultProps = {
     title: "",
     customWidth: 0,
+    customPaddings: null,
     onCloseClick: function () { },
 };
 
@@ -14169,7 +14205,7 @@ var Modal = React__default["default"].forwardRef(function (props, ref) {
         }
         setIsOpen(false);
     };
-    return ReactDOM__default["default"].createPortal(React__default["default"].createElement(React__default["default"].Fragment, null, props.isBottomSheet && isMobileBreakpoint ? (React__default["default"].createElement(BottomSheet, __assign({}, props, { isMobileBreakpoint: isMobileBreakpoint, isOpen: isOpen, closeOutside: props.closeOutside, smallTitle: props.smallTitle, popupClassName: props.popupClassName, popupContentClassName: props.popupContentClassName, onCloseClick: handleOnCloseClick, onCloseDrag: handleOnCloseClick }))) : (React__default["default"].createElement(Popup, __assign({}, props, { isMobileBreakpoint: isMobileBreakpoint, isOpen: isOpen, closeOutside: props.closeOutside, smallTitle: props.smallTitle, popupClassName: props.popupClassName, popupContentClassName: props.popupContentClassName, onCloseClick: handleOnCloseClick, customWidth: props.customWidth })))), document.body);
+    return ReactDOM__default["default"].createPortal(React__default["default"].createElement(React__default["default"].Fragment, null, props.isBottomSheet && isMobileBreakpoint ? (React__default["default"].createElement(BottomSheet, __assign({}, props, { isMobileBreakpoint: isMobileBreakpoint, isOpen: isOpen, closeOutside: props.closeOutside, smallTitle: props.smallTitle, hideHeader: props.hideHeader, popupClassName: props.popupClassName, popupContentClassName: props.popupContentClassName, onCloseClick: handleOnCloseClick, onCloseDrag: handleOnCloseClick }))) : (React__default["default"].createElement(Popup, __assign({}, props, { isMobileBreakpoint: isMobileBreakpoint, isOpen: isOpen, closeOutside: props.closeOutside, hideHeader: props.hideHeader, smallTitle: props.smallTitle, customPaddings: props.customPaddings, popupClassName: props.popupClassName, popupContentClassName: props.popupContentClassName, onCloseClick: handleOnCloseClick, customWidth: props.customWidth })))), document.body);
 });
 Modal.displayName = "Modal";
 Modal.defaultProps = {
@@ -14177,6 +14213,7 @@ Modal.defaultProps = {
     title: "",
     popupClassName: "",
     popupContentClassName: "",
+    hideHeader: false,
     smallTitle: false,
     isBottomSheet: false,
     closeOutside: true,

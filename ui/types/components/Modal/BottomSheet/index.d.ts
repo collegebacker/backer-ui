@@ -5,6 +5,7 @@ interface Props {
     isOpen: boolean;
     closeOutside: boolean;
     title?: string;
+    hideHeader?: boolean;
     smallTitle: boolean;
     children: React.ReactNode;
     isMobileBreakpoint: boolean;

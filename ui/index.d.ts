@@ -223,8 +223,10 @@ interface Props$5 {
     popupContentClassName?: string;
     title?: string;
     smallTitle?: boolean;
+    hideHeader?: boolean;
     children: React.ReactNode;
     customWidth?: number;
+    customPaddings?: string;
     isBottomSheet?: boolean;
     closeOutside?: boolean;
     onCloseClick?: () => void;
