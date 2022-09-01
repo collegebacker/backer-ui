@@ -21,6 +21,11 @@
 .contentWrapper {
   width: 100%;
   margin: 0 auto;
+
+  // clear focus
+  &:focus {
+    outline: none;
+  }
 }
 
 .popup {
