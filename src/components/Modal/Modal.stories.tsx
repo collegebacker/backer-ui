@@ -87,7 +87,7 @@ export default {
         "You can hide the header of the modal. It's useful when you want to use the modal as a bottom sheet.",
     },
     customPaddings: {
-      control: { type: "string" },
+      control: { type: "text" },
       description:
         "You can set custom paddings for the modal. Write it like the usual css style. For example: `20px 40px`",
     },
