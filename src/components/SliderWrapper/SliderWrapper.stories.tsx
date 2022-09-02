@@ -181,6 +181,7 @@ Default.args = {
     {
       breakpoint: 680,
       cardsToShow: 1,
+
       // showHiddenCard: 40,
     },
   ],

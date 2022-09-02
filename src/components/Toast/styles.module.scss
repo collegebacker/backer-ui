@@ -2,13 +2,16 @@ $mobile-breakpoint: 400px;
 
 .toastContainer {
   z-index: 9999;
-  pointer-events: none;
+  // pointer-events: none;
+  overflow-y: scroll;
+  max-height: 100%;
   display: flex;
   flex-direction: column;
   position: fixed;
   align-items: flex-end;
-  right: 15px;
-  top: 15px;
+  top: 0;
+  right: 0;
+  padding: 15px 15px 0 15px;
 
   @media (max-width: $mobile-breakpoint) {
     width: 100%;
@@ -16,5 +19,11 @@ $mobile-breakpoint: 400px;
     top: unset;
     bottom: 0;
     right: 0;
+  }
+
+  // hide scrollbar
+  &::-webkit-scrollbar {
+    width: 0;
+    display: none;
   }
 }

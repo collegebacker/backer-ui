@@ -26,8 +26,8 @@ export interface Props {
     hideArrows?: boolean;
     hidePagination?: boolean;
     showHiddenCard?: number | boolean;
+    disableSideFading?: boolean;
   }>;
-  disableSideFading?: boolean;
   spaceBetween?: number;
   showGuidelines?: boolean;
   paginationAlignment?: "left" | "right" | "center";
@@ -47,6 +47,7 @@ const defaultProps = {
       showHiddenCard: false,
       hideArrows: false,
       hidePagination: false,
+      disableSideFading: false,
     },
     {
       breakpoint: 768,
@@ -55,6 +56,7 @@ const defaultProps = {
       showHiddenCard: false,
       hideArrows: true,
       hidePagination: false,
+      disableSideFading: false,
     },
     {
       breakpoint: 480,
@@ -63,9 +65,9 @@ const defaultProps = {
       showHiddenCard: false,
       hideArrows: true,
       hidePagination: false,
+      disableSideFading: false,
     },
   ],
-  disableSideFading: false,
   spaceBetween: 20,
   showGuidelines: false,
   showHiddenCard: false,
@@ -130,6 +132,10 @@ const SliderWrapper: React.FC<Props> = (props) => {
         props.breakpoints[index].showHiddenCard !== undefined
           ? props.breakpoints[index].showHiddenCard
           : item.showHiddenCard,
+      disableSideFading:
+        props.breakpoints[index].disableSideFading !== undefined
+          ? props.breakpoints[index].disableSideFading
+          : item.disableSideFading,
     };
   });
 
@@ -451,7 +457,7 @@ const SliderWrapper: React.FC<Props> = (props) => {
           </>
         ) : null}
 
-        {props.disableSideFading ? null : (
+        {props.breakpoints[currentBreakpoint].disableSideFading ? null : (
           <>
             <div className={styles.fadeGradientLeft} />
             <div className={styles.fadeGradientRight} />
