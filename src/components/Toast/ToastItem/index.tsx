@@ -70,8 +70,20 @@ const ToastItem: React.FC<ItemProps> = (props) => {
           <div className={styles.emoji}>{addEmoji()}</div>
         ) : null}
 
-        <div className={styles.toastItem__content}>
-          <Text tag="p" context="app" appStyle="body-main">
+        <div
+          className={styles.toastItem__content}
+          style={{
+            width: `calc(100% - ${
+              props.params?.showCloseIcon ? "84px" : "40px"
+            })`,
+          }}
+        >
+          <Text
+            tag="p"
+            context="app"
+            appStyle="body-main"
+            className={styles.toastItem__text}
+          >
             {props.message}
           </Text>
 

@@ -16,7 +16,7 @@ $mobile-breakpoint: 400px;
   pointer-events: auto;
   position: relative;
   opacity: 0;
-  max-width: 340px;
+  max-width: 360px;
 
   @media (max-width: $mobile-breakpoint) {
     max-width: 100%;
@@ -97,6 +97,13 @@ $mobile-breakpoint: 400px;
   &__content {
     flex: 1;
     margin-top: 2px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__text {
+    word-break: keep-all;
+    word-wrap: break-word;
   }
 
   @media (max-width: $mobile-breakpoint) {

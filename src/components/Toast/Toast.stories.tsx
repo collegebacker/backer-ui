@@ -52,7 +52,7 @@ const Template: ComponentStory<typeof Toast> = (args) => {
         style={{
           margin: "0 15px 15px 0",
         }}
-        label="Show Toast"
+        label="Close on click"
         onClick={() => toastRef.current.showToast("hello", { emoji: "🤩" })}
       />
       <Button
@@ -241,6 +241,49 @@ const Template: ComponentStory<typeof Toast> = (args) => {
               type: "error",
               closeOnClick: true,
               timeout: 10000,
+            }
+          )
+        }
+      />
+
+      <Text
+        tag="h2"
+        appStyle="title-small"
+        context="app"
+        style={{ marginBottom: "20px" }}
+      >
+        Corner caases
+      </Text>
+
+      <Button
+        size="small"
+        style={{
+          margin: "0 15px 15px 0",
+        }}
+        label="Long message with cross"
+        onClick={() =>
+          toastRef.current.showToast(
+            "`Aurbus_places_50csdk_longfilename_dicos_DMKKS-12122_canonDIGITAL_Canon_EOS_M.jpg` is a very long message",
+            {
+              type: "error",
+              showCloseIcon: true,
+              dismissButton: true,
+            }
+          )
+        }
+      />
+      <Button
+        size="small"
+        style={{
+          margin: "0 15px 15px 0",
+        }}
+        label="Long message. no cross"
+        onClick={() =>
+          toastRef.current.showToast(
+            "`Aurbus_places_50csdk_longfilename_dicos_DMKKS-12122_canonDIGITAL_Canon_EOS_M.jpg` is a very long message",
+            {
+              type: "error",
+              dismissButton: true,
             }
           )
         }
