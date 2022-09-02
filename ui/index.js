@@ -10613,6 +10613,7 @@ var defaultProps = {
             showHiddenCard: false,
             hideArrows: false,
             hidePagination: false,
+            disableSideFading: false,
         },
         {
             breakpoint: 768,
@@ -10621,6 +10622,7 @@ var defaultProps = {
             showHiddenCard: false,
             hideArrows: true,
             hidePagination: false,
+            disableSideFading: false,
         },
         {
             breakpoint: 480,
@@ -10629,9 +10631,9 @@ var defaultProps = {
             showHiddenCard: false,
             hideArrows: true,
             hidePagination: false,
+            disableSideFading: false,
         },
     ],
-    disableSideFading: false,
     spaceBetween: 20,
     showGuidelines: false,
     showHiddenCard: false,
@@ -10676,6 +10678,9 @@ var SliderWrapper = function (props) {
             showHiddenCard: props.breakpoints[index].showHiddenCard !== undefined
                 ? props.breakpoints[index].showHiddenCard
                 : item.showHiddenCard,
+            disableSideFading: props.breakpoints[index].disableSideFading !== undefined
+                ? props.breakpoints[index].disableSideFading
+                : item.disableSideFading,
         };
     });
     var isShowHiddenCard = function () {
@@ -10891,7 +10896,7 @@ var SliderWrapper = function (props) {
                         left: "".concat(triggerPointsState.right, "px"),
                         background: "blue",
                     } }))) : null,
-            props.disableSideFading ? null : (React__default["default"].createElement(React__default["default"].Fragment, null,
+            props.breakpoints[currentBreakpoint].disableSideFading ? null : (React__default["default"].createElement(React__default["default"].Fragment, null,
                 React__default["default"].createElement("div", { className: modules_efc4e723$d.fadeGradientLeft }),
                 React__default["default"].createElement("div", { className: modules_efc4e723$d.fadeGradientRight }))),
             breakpoints[currentBreakpoint].hideArrows ? null : (React__default["default"].createElement(React__default["default"].Fragment, null,
@@ -14362,8 +14367,8 @@ ActionMesssage.defaultProps = {
     tabIndex: 0,
 };
 
-var css$1 = ".styles_module_toastContainer__d10569e7 {\n  z-index: 9999;\n  pointer-events: none;\n  display: flex;\n  flex-direction: column;\n  position: fixed;\n  align-items: flex-end;\n  right: 15px;\n  top: 15px;\n}\n@media (max-width: 400px) {\n  .styles_module_toastContainer__d10569e7 {\n    width: 100%;\n    align-items: stretch;\n    top: unset;\n    bottom: 0;\n    right: 0;\n  }\n}";
-var modules_efc4e723$1 = {"toastContainer":"styles_module_toastContainer__d10569e7"};
+var css$1 = ".styles_module_toastContainer__55cab938 {\n  z-index: 9999;\n  overflow-y: scroll;\n  max-height: 100%;\n  display: flex;\n  flex-direction: column;\n  position: fixed;\n  align-items: flex-end;\n  top: 0;\n  right: 0;\n  padding: 15px 15px 0 15px;\n}\n@media (max-width: 400px) {\n  .styles_module_toastContainer__55cab938 {\n    width: 100%;\n    align-items: stretch;\n    top: unset;\n    bottom: 0;\n    right: 0;\n  }\n}\n.styles_module_toastContainer__55cab938::-webkit-scrollbar {\n  width: 0;\n  display: none;\n}";
+var modules_efc4e723$1 = {"toastContainer":"styles_module_toastContainer__55cab938"};
 n(css$1,{});
 
 var css = ".styles_module_toastScale__d438a341 {\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 3px;\n  background-color: #000;\n  -webkit-animation-name: styles_module_toastScale__d438a341;\n          animation-name: styles_module_toastScale__d438a341;\n  transform: scaleX(0);\n  transform-origin: left;\n}\n\n.styles_module_toastItemWrap__d438a341 {\n  pointer-events: auto;\n  position: relative;\n  opacity: 0;\n  max-width: 340px;\n}\n@media (max-width: 400px) {\n  .styles_module_toastItemWrap__d438a341 {\n    max-width: 100%;\n  }\n}\n\n.styles_module_emoji__d438a341 {\n  font-size: 24px;\n  margin-right: 15px;\n}\n\n.styles_module_toastItem__d438a341 {\n  overflow: hidden;\n  position: relative;\n  display: flex;\n  padding: 20px;\n  border-radius: 10px;\n  max-height: 300px;\n  margin-bottom: 10px;\n  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);\n}\n.styles_module_toastItem__buttons__d438a341 {\n  display: flex;\n  margin-top: 15px;\n}\n.styles_module_toastItem__button__d438a341 {\n  margin-right: 8px;\n}\n.styles_module_toastItem__button__d438a341:last-child {\n  margin-right: 0;\n}\n.styles_module_toastItem__closeIcon__d438a341 {\n  cursor: pointer;\n  position: relative;\n  flex: 0 1 auto;\n  margin-left: 15px;\n  width: 30px;\n  height: 30px;\n  border-radius: 100px;\n  background: transparent;\n  transition: background-color 0.2s ease;\n}\n.styles_module_toastItem__closeIcon__d438a341:after, .styles_module_toastItem__closeIcon__d438a341:before {\n  content: \"\";\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  width: 20px;\n  height: 1px;\n  background-color: var(--color-main-500);\n  transition: width 0.2s ease;\n}\n.styles_module_toastItem__closeIcon__d438a341:after {\n  transform: translate(-50%, -50%) rotate(135deg);\n}\n.styles_module_toastItem__closeIcon__d438a341:before {\n  transform: translate(-50%, -50%) rotate(45deg);\n}\n.styles_module_toastItem__closeIcon__d438a341:hover {\n  background-color: var(--color-main-transparent-50);\n}\n.styles_module_toastItem__closeIcon__d438a341:hover:after, .styles_module_toastItem__closeIcon__d438a341:hover:before {\n  width: 16px;\n}\n.styles_module_toastItem__content__d438a341 {\n  flex: 1;\n  margin-top: 2px;\n}\n@media (max-width: 400px) {\n  .styles_module_toastItem__d438a341 {\n    margin-bottom: 0;\n    border-radius: 0;\n  }\n}\n\n.styles_module_info__d438a341 {\n  background: #fff;\n  border: 1px solid #cbcbcb;\n}\n.styles_module_info__d438a341 .styles_module_toastScale__d438a341 {\n  background-color: #cbcbcb;\n}\n\n.styles_module_success__d438a341 {\n  background: #eef8e3;\n  border: 1px solid #c7e3a7;\n}\n.styles_module_success__d438a341 .styles_module_toastScale__d438a341 {\n  background-color: #c7e3a7;\n}\n\n.styles_module_error__d438a341 {\n  background: #ffeef1;\n  border: 1px solid #f1c4c4;\n}\n.styles_module_error__d438a341 .styles_module_toastScale__d438a341 {\n  background-color: #f1c4c4;\n}\n\n.styles_module_warning__d438a341 {\n  background: #fff6e4;\n  border: 1px solid #e8d1bc;\n}\n.styles_module_warning__d438a341 .styles_module_toastScale__d438a341 {\n  background-color: #e8d1bc;\n}\n\n.styles_module_toastIn__d438a341 {\n  -webkit-animation: styles_module_toastIn__d438a341 0.2s ease-in-out forwards;\n          animation: styles_module_toastIn__d438a341 0.2s ease-in-out forwards;\n}\n\n.styles_module_toastOut__d438a341 {\n  -webkit-animation: styles_module_toastOut__d438a341 0.4s ease-in-out forwards;\n          animation: styles_module_toastOut__d438a341 0.4s ease-in-out forwards;\n}\n\n@-webkit-keyframes styles_module_toastIn__d438a341 {\n  0% {\n    transform: translateY(-20px);\n    opacity: 0;\n  }\n  100% {\n    transform: translateY(0);\n    opacity: 1;\n  }\n}\n\n@keyframes styles_module_toastIn__d438a341 {\n  0% {\n    transform: translateY(-20px);\n    opacity: 0;\n  }\n  100% {\n    transform: translateY(0);\n    opacity: 1;\n  }\n}\n@-webkit-keyframes styles_module_toastOut__d438a341 {\n  0% {\n    opacity: 1;\n    max-height: 300px;\n  }\n  50% {\n    opacity: 0;\n  }\n  100% {\n    max-height: 0;\n  }\n}\n@keyframes styles_module_toastOut__d438a341 {\n  0% {\n    opacity: 1;\n    max-height: 300px;\n  }\n  50% {\n    opacity: 0;\n  }\n  100% {\n    max-height: 0;\n  }\n}";

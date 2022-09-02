@@ -161,8 +161,8 @@ interface Props$b {
         hideArrows?: boolean;
         hidePagination?: boolean;
         showHiddenCard?: number | boolean;
+        disableSideFading?: boolean;
     }>;
-    disableSideFading?: boolean;
     spaceBetween?: number;
     showGuidelines?: boolean;
     paginationAlignment?: "left" | "right" | "center";
