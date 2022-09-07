@@ -13,13 +13,14 @@ export default {
       description: {
         component: `
 ## Breakpoints
-The component has three breakpoints. Here are the sizes:
+The component has three breakpoints. Here are the sizes. This is only an example:
 \`\`\`
 breakpoints: [
   {
     breakpoint: 1024,
     cardsToShow: 3,
     sidePaddingOffset: 40,
+    showHiddenCard: 0,
     hideArrows: false,
     hidePagination: false,
   },
@@ -27,6 +28,7 @@ breakpoints: [
     breakpoint: 768,
     cardsToShow: 2,
     sidePaddingOffset: 40,
+    showHiddenCard: 40,
     hideArrows: true,
     hidePagination: false,
   },
@@ -34,6 +36,7 @@ breakpoints: [
     breakpoint: 480,
     cardsToShow: 1,
     sidePaddingOffset: 40,
+    showHiddenCard: 80,
     hideArrows: true,
     hidePagination: false,
   },
@@ -48,6 +51,7 @@ breakpoints: [
     breakpoint: 1400,
     cardsToShow: 3,
     sidePaddingOffset: 40,
+    showHiddenCard: 80,
     hideArrows: true,
     hidePagination: true,
   },
@@ -57,6 +61,7 @@ breakpoints: [
   },
   {
     breakpoint: 680,
+    
     cardsToShow: 1,
   },
 ]
@@ -109,17 +114,6 @@ const itemsArray = [
     title: "You win 6",
     description: "We won’t charge our $5 monthly fee if you lose money.",
   },
-  // {
-  //   emoji: "🤖",
-  //   title: "Save together 5",
-  //   description:
-  //     "Backer is a social fund: save 4x more with gifts from family & friends.",
-  // },
-  // {
-  //   emoji: "🤖",
-  //   title: "You win 6",
-  //   description: "We won’t charge our $5 monthly fee if you lose money.",
-  // },
 ];
 
 interface CardExampleProps {
@@ -145,7 +139,6 @@ const Template: ComponentStory<typeof SliderWrapper> = (args) => (
       padding: "40px",
       maxWidth: "1000px",
       margin: "0 auto",
-      // overflow: "hidden",
     }}
   >
     <div
@@ -176,13 +169,13 @@ Default.args = {
       breakpoint: 1000,
       cardsToShow: 2,
       // sidePaddingOffset: 20,
-      // showHiddenCard: 40,
+      showHiddenCard: 80,
     },
     {
       breakpoint: 680,
       cardsToShow: 1,
       disableSideFading: true,
-      // showHiddenCard: 40,
+      showHiddenCard: 80,
     },
   ],
   // disableSideFading: true,

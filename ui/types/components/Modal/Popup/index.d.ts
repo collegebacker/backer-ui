@@ -1,17 +1,17 @@
 import React from "react";
 interface Props {
-    popupClassName: string;
-    popupContentClassName: string;
+    popupClassName?: string;
+    popupContentClassName?: string;
     customPaddings?: string;
     isOpen: boolean;
+    children: React.ReactNode;
+    isMobileBreakpoint: boolean;
     title?: string;
     hideHeader?: boolean;
-    smallTitle: boolean;
-    children: React.ReactNode;
+    smallTitle?: boolean;
     customWidth?: number;
-    style?: React.CSSProperties;
-    closeOutside: boolean;
-    isMobileBreakpoint: boolean;
+    closeOutside?: boolean;
+    dataAttrs?: Record<string, string>;
     onCloseClick?: () => void;
 }
 declare const Popup: React.ForwardRefExoticComponent<Props & React.RefAttributes<any>>;

@@ -7,18 +7,17 @@ import Header from "../Header";
 import { useDidMountEffect, useOutsideClick } from "../../../hooks";
 
 interface Props {
-  popupClassName: string;
-  popupContentClassName: string;
+  popupClassName?: string;
+  popupContentClassName?: string;
   isOpen: boolean;
-  closeOutside: boolean;
-  title?: string;
-  hideHeader?: boolean;
-  smallTitle: boolean;
   children: React.ReactNode;
   isMobileBreakpoint: boolean;
-  style?: React.CSSProperties;
+  closeOutside?: boolean;
+  title?: string;
+  hideHeader?: boolean;
+  smallTitle?: boolean;
+  dataAttrs?: Record<string, string>;
   onCloseClick?: () => void;
-  onCloseDrag?: () => void;
 }
 
 ///////////////
@@ -64,28 +63,6 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
   /////////////////
   // USE EFFECTS //
   /////////////////
-
-  // useDidMountEffect(() => {
-  //   // applyDragBounds();
-  //   if (!props.isOpen) {
-  //     // console.log("isOpen", props.isOpen);
-  //     gsap.to(modalWrapRef.current, {
-  //       display: "none",
-  //       pointerEvents: "none",
-  //       opacity: 0,
-  //       duration: 0.1,
-  //       delay: 0.4,
-  //     });
-  //     gsap.to(bottomSheetRef.current, {
-  //       bottom: "-100%",
-  //       duration: 0.2,
-  //     });
-  //     gsap.to(backgroundRef.current, {
-  //       opacity: 0,
-  //       duration: 0.4,
-  //     });
-  //   }
-  // }, [props.isOpen]);
 
   React.useEffect(() => {
     const myObserver = new ResizeObserver((entries) => {
@@ -159,7 +136,7 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
       aria-hidden={false}
       ref={modalWrapRef}
       className={`${styles.modalWrap}`}
-      style={{ ...props.style }}
+      {...props.dataAttrs}
     >
       <section
         ref={bottomSheetRef}
@@ -188,8 +165,6 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
 });
 
 BottomSheet.defaultProps = {
-  className: "",
-  title: "",
   onCloseClick: () => {},
 } as Partial<Props>;
 

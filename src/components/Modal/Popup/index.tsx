@@ -8,18 +8,18 @@ import styles from "./styles.module.scss";
 import Header from "../Header";
 
 interface Props {
-  popupClassName: string;
-  popupContentClassName: string;
+  popupClassName?: string;
+  popupContentClassName?: string;
   customPaddings?: string;
   isOpen: boolean;
+  children: React.ReactNode;
+  isMobileBreakpoint: boolean;
   title?: string;
   hideHeader?: boolean;
-  smallTitle: boolean;
-  children: React.ReactNode;
+  smallTitle?: boolean;
   customWidth?: number;
-  style?: React.CSSProperties;
-  closeOutside: boolean;
-  isMobileBreakpoint: boolean;
+  closeOutside?: boolean;
+  dataAttrs?: Record<string, string>;
   onCloseClick?: () => void;
 }
 
@@ -160,7 +160,7 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
         aria-hidden={false}
         ref={modalWrapRef}
         className={`${styles.modalWrap}`}
-        style={{ ...props.style }}
+        {...props.dataAttrs}
       >
         <section
           ref={popupRef}
@@ -170,7 +170,6 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
               : ""
           } ${props.popupClassName}`}
           style={{
-            ...props.style,
             ...(props.customWidth && props.customWidth > 0
               ? {
                   maxWidth: !props.isMobileBreakpoint
@@ -212,7 +211,6 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
 });
 
 Popup.defaultProps = {
-  title: "",
   customWidth: 0,
   customPaddings: null,
   onCloseClick: () => {},

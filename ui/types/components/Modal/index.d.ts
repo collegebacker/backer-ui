@@ -11,6 +11,7 @@ export interface Props {
     customPaddings?: string;
     isBottomSheet?: boolean;
     closeOutside?: boolean;
+    dataAttrs?: Record<string, string>;
     onCloseClick?: () => void;
 }
 declare const Modal: React.ForwardRefExoticComponent<Props & React.RefAttributes<any>>;

@@ -229,6 +229,7 @@ interface Props$5 {
     customPaddings?: string;
     isBottomSheet?: boolean;
     closeOutside?: boolean;
+    dataAttrs?: Record<string, string>;
     onCloseClick?: () => void;
 }
 declare const Modal: React.ForwardRefExoticComponent<Props$5 & React.RefAttributes<any>>;

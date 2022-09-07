@@ -10995,27 +10995,6 @@ var BottomSheet = React__default["default"].forwardRef(function (props, ref) {
     /////////////////
     // USE EFFECTS //
     /////////////////
-    // useDidMountEffect(() => {
-    //   // applyDragBounds();
-    //   if (!props.isOpen) {
-    //     // console.log("isOpen", props.isOpen);
-    //     gsap.to(modalWrapRef.current, {
-    //       display: "none",
-    //       pointerEvents: "none",
-    //       opacity: 0,
-    //       duration: 0.1,
-    //       delay: 0.4,
-    //     });
-    //     gsap.to(bottomSheetRef.current, {
-    //       bottom: "-100%",
-    //       duration: 0.2,
-    //     });
-    //     gsap.to(backgroundRef.current, {
-    //       opacity: 0,
-    //       duration: 0.4,
-    //     });
-    //   }
-    // }, [props.isOpen]);
     React__default["default"].useEffect(function () {
         var myObserver = new ResizeObserver(function (entries) {
             // this will get called whenever div dimension changes
@@ -11074,15 +11053,13 @@ var BottomSheet = React__default["default"].forwardRef(function (props, ref) {
     ///////////////
     // RENDERING //
     ///////////////
-    return (React__default["default"].createElement("aside", { role: "dialog", tabIndex: -1, "aria-modal": true, "aria-hidden": false, ref: modalWrapRef, className: "".concat(modules_efc4e723$a.modalWrap), style: __assign({}, props.style) },
+    return (React__default["default"].createElement("aside", __assign({ role: "dialog", tabIndex: -1, "aria-modal": true, "aria-hidden": false, ref: modalWrapRef, className: "".concat(modules_efc4e723$a.modalWrap) }, props.dataAttrs),
         React__default["default"].createElement("section", { ref: bottomSheetRef, className: "".concat(modules_efc4e723$a.bottomSheetWrap, " ").concat(stickModal ? "" : modules_efc4e723$a.overScrolled, " ").concat(props.popupClassName) },
             !props.hideHeader ? (React__default["default"].createElement(Header, { onCloseClick: handleCloseClick, title: props.title, smallTitle: props.smallTitle, noMaxWidth: true })) : null,
             React__default["default"].createElement("div", { className: "".concat(modules_efc4e723$a.contentWrapper, " ").concat(modules_efc4e723$a.popupContentClassName), ref: contentWrapperRef }, props.children)),
         React__default["default"].createElement("div", { ref: backgroundRef, className: modules_efc4e723$a.background })));
 });
 BottomSheet.defaultProps = {
-    className: "",
-    title: "",
     onCloseClick: function () { },
 };
 
@@ -14134,10 +14111,10 @@ var Popup = React__default["default"].forwardRef(function (props, ref) {
                 allowOutsideClick: true,
                 clickOutsideDeactivates: true,
             } })) : null,
-        React__default["default"].createElement("aside", { role: "dialog", "aria-modal": true, "aria-hidden": false, ref: modalWrapRef, className: "".concat(modules_efc4e723$8.modalWrap), style: __assign({}, props.style) },
+        React__default["default"].createElement("aside", __assign({ role: "dialog", "aria-modal": true, "aria-hidden": false, ref: modalWrapRef, className: "".concat(modules_efc4e723$8.modalWrap) }, props.dataAttrs),
             React__default["default"].createElement("section", { ref: popupRef, className: "".concat(modules_efc4e723$8.popup, " ").concat(!props.customWidth && props.customWidth === 0
                     ? modules_efc4e723$8.popup_maxLayout
-                    : "", " ").concat(props.popupClassName), style: __assign(__assign(__assign({}, props.style), (props.customWidth && props.customWidth > 0
+                    : "", " ").concat(props.popupClassName), style: __assign(__assign({}, (props.customWidth && props.customWidth > 0
                     ? {
                         maxWidth: !props.isMobileBreakpoint
                             ? props.customWidth
@@ -14154,7 +14131,6 @@ var Popup = React__default["default"].forwardRef(function (props, ref) {
                 React__default["default"].createElement("div", { className: modules_efc4e723$8.gradient2 })))));
 });
 Popup.defaultProps = {
-    title: "",
     customWidth: 0,
     customPaddings: null,
     onCloseClick: function () { },
@@ -14210,7 +14186,7 @@ var Modal = React__default["default"].forwardRef(function (props, ref) {
         }
         setIsOpen(false);
     };
-    return ReactDOM__default["default"].createPortal(React__default["default"].createElement(React__default["default"].Fragment, null, props.isBottomSheet && isMobileBreakpoint ? (React__default["default"].createElement(BottomSheet, __assign({}, props, { isMobileBreakpoint: isMobileBreakpoint, isOpen: isOpen, closeOutside: props.closeOutside, smallTitle: props.smallTitle, hideHeader: props.hideHeader, popupClassName: props.popupClassName, popupContentClassName: props.popupContentClassName, onCloseClick: handleOnCloseClick, onCloseDrag: handleOnCloseClick }))) : (React__default["default"].createElement(Popup, __assign({}, props, { isMobileBreakpoint: isMobileBreakpoint, isOpen: isOpen, closeOutside: props.closeOutside, hideHeader: props.hideHeader, smallTitle: props.smallTitle, customPaddings: props.customPaddings, popupClassName: props.popupClassName, popupContentClassName: props.popupContentClassName, onCloseClick: handleOnCloseClick, customWidth: props.customWidth })))), document.body);
+    return ReactDOM__default["default"].createPortal(React__default["default"].createElement(React__default["default"].Fragment, null, props.isBottomSheet && isMobileBreakpoint ? (React__default["default"].createElement(BottomSheet, __assign({}, props, { isMobileBreakpoint: isMobileBreakpoint, isOpen: isOpen, onCloseClick: handleOnCloseClick }))) : (React__default["default"].createElement(Popup, __assign({}, props, { isMobileBreakpoint: isMobileBreakpoint, isOpen: isOpen, onCloseClick: handleOnCloseClick })))), document.body);
 });
 Modal.displayName = "Modal";
 Modal.defaultProps = {

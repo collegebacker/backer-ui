@@ -99,7 +99,13 @@ const Template: ComponentStory<typeof Modal> = (args) => {
 
   return (
     <div className="iconsWrap">
-      <Modal ref={ModalRef} {...args} />
+      <Modal
+        ref={ModalRef}
+        {...args}
+        dataAttrs={{
+          "data-attr": "test",
+        }}
+      />
       <Button
         label="Trigger Modal"
         onClick={() => {

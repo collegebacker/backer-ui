@@ -16,6 +16,7 @@ export interface Props {
   customPaddings?: string;
   isBottomSheet?: boolean;
   closeOutside?: boolean;
+  dataAttrs?: Record<string, string>;
   onCloseClick?: () => void;
 }
 
@@ -88,27 +89,14 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
           {...props}
           isMobileBreakpoint={isMobileBreakpoint}
           isOpen={isOpen}
-          closeOutside={props.closeOutside}
-          smallTitle={props.smallTitle}
-          hideHeader={props.hideHeader}
-          popupClassName={props.popupClassName}
-          popupContentClassName={props.popupContentClassName}
           onCloseClick={handleOnCloseClick}
-          onCloseDrag={handleOnCloseClick}
         />
       ) : (
         <Popup
           {...props}
           isMobileBreakpoint={isMobileBreakpoint}
           isOpen={isOpen}
-          closeOutside={props.closeOutside}
-          hideHeader={props.hideHeader}
-          smallTitle={props.smallTitle}
-          customPaddings={props.customPaddings}
-          popupClassName={props.popupClassName}
-          popupContentClassName={props.popupContentClassName}
           onCloseClick={handleOnCloseClick}
-          customWidth={props.customWidth}
         />
       )}
     </>,
