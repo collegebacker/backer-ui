@@ -294,7 +294,7 @@ interface Props {
     zIndex?: number;
     delay?: number;
     text?: string;
-    actions?: Array<{
+    actions: Array<{
         label: string;
         onClick: () => void;
     }>;
