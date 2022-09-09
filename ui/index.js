@@ -14471,30 +14471,34 @@ var ActionSheet = React__default["default"].forwardRef(function (props, ref) {
         if (show) {
             setUnmount(false);
             document.body.style.overflow = "hidden";
-            gsapWithCSS.to(pageWrapperRef.current, {
-                duration: 0.2,
-                opacity: 1,
-            });
-            gsapWithCSS.to(actionSheetRef.current, {
-                duration: 0.2,
-                y: 0,
-                opacity: 1,
-                delay: 0.1,
-            });
+            if (pageWrapperRef.current && actionSheetRef.current) {
+                gsapWithCSS.to(pageWrapperRef.current, {
+                    duration: 0.2,
+                    opacity: 1,
+                });
+                gsapWithCSS.to(actionSheetRef.current, {
+                    duration: 0.2,
+                    y: 0,
+                    opacity: 1,
+                    delay: 0.1,
+                });
+            }
             return;
         }
         document.body.style.removeProperty("overflow");
-        gsapWithCSS.to(pageWrapperRef.current, {
-            duration: 0.15,
-            opacity: 0,
-        });
-        gsapWithCSS.to(actionSheetRef.current, {
-            duration: 0.15,
-            y: 20,
-            onComplete: function () {
-                setUnmount(true);
-            },
-        });
+        if (pageWrapperRef.current && actionSheetRef.current) {
+            gsapWithCSS.to(pageWrapperRef.current, {
+                duration: 0.15,
+                opacity: 0,
+            });
+            gsapWithCSS.to(actionSheetRef.current, {
+                duration: 0.15,
+                y: 20,
+                onComplete: function () {
+                    setUnmount(true);
+                },
+            });
+        }
     }, [show, unmount]);
     return ReactDOM__default["default"].createPortal(unmount ? (React__default["default"].createElement(React__default["default"].Fragment, null)) : (React__default["default"].createElement("aside", { role: "dialog", "aria-modal": true, "aria-hidden": false, className: modules_efc4e723.pageWrapper, ref: pageWrapperRef, style: {
             zIndex: props.zIndex,

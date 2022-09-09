@@ -48,33 +48,37 @@ const ActionSheet = React.forwardRef<any, Props>((props, ref) => {
       setUnmount(false);
       document.body.style.overflow = "hidden";
 
-      gsap.to(pageWrapperRef.current, {
-        duration: 0.2,
-        opacity: 1,
-      });
-      gsap.to(actionSheetRef.current, {
-        duration: 0.2,
-        y: 0,
-        opacity: 1,
-        delay: 0.1,
-      });
+      if (pageWrapperRef.current && actionSheetRef.current) {
+        gsap.to(pageWrapperRef.current, {
+          duration: 0.2,
+          opacity: 1,
+        });
+        gsap.to(actionSheetRef.current, {
+          duration: 0.2,
+          y: 0,
+          opacity: 1,
+          delay: 0.1,
+        });
+      }
 
       return;
     }
 
     document.body.style.removeProperty("overflow");
 
-    gsap.to(pageWrapperRef.current, {
-      duration: 0.15,
-      opacity: 0,
-    });
-    gsap.to(actionSheetRef.current, {
-      duration: 0.15,
-      y: 20,
-      onComplete: () => {
-        setUnmount(true);
-      },
-    });
+    if (pageWrapperRef.current && actionSheetRef.current) {
+      gsap.to(pageWrapperRef.current, {
+        duration: 0.15,
+        opacity: 0,
+      });
+      gsap.to(actionSheetRef.current, {
+        duration: 0.15,
+        y: 20,
+        onComplete: () => {
+          setUnmount(true);
+        },
+      });
+    }
   }, [show, unmount]);
 
   return ReactDOM.createPortal(
