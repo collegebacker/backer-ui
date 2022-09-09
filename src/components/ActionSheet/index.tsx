@@ -76,7 +76,9 @@ const ActionSheet = React.forwardRef<any, Props>((props, ref) => {
     });
   }, [show, unmount]);
 
-  return unmount ? null : (
+  return unmount ? (
+    <></>
+  ) : (
     <aside
       role="dialog"
       aria-modal

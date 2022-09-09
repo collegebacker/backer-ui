@@ -14496,7 +14496,7 @@ var ActionSheet = React__default["default"].forwardRef(function (props, ref) {
             },
         });
     }, [show, unmount]);
-    return unmount ? null : (React__default["default"].createElement("aside", { role: "dialog", "aria-modal": true, "aria-hidden": false, className: modules_efc4e723.pageWrapper, ref: pageWrapperRef, style: {
+    return unmount ? (React__default["default"].createElement(React__default["default"].Fragment, null)) : (React__default["default"].createElement("aside", { role: "dialog", "aria-modal": true, "aria-hidden": false, className: modules_efc4e723.pageWrapper, ref: pageWrapperRef, style: {
             zIndex: props.zIndex,
         } },
         React__default["default"].createElement("div", { ref: actionSheetRef, className: modules_efc4e723.actionSheet },
