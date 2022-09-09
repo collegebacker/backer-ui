@@ -4,7 +4,7 @@ import styles from "./styles.module.scss";
 
 import ToastItem from "./ToastItem";
 
-interface ItemProps {
+export interface ItemProps {
   message: string;
   params?: ToastItemProps;
 }
