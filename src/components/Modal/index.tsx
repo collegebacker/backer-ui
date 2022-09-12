@@ -69,8 +69,10 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
   React.useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
+      document.body.style.position = "fixed";
     } else {
       document.body.style.removeProperty("overflow");
+      document.body.style.removeProperty("position");
     }
   }, [isOpen]);
 

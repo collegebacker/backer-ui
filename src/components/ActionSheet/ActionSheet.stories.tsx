@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { ActionSheet, Button, Text } from "..";
+import { ActionSheet, Button } from "..";
 
 localStorage.clear();
 

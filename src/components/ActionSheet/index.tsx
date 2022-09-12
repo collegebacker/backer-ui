@@ -95,7 +95,7 @@ const ActionSheet = React.forwardRef<any, Props>((props, ref) => {
           zIndex: props.zIndex,
         }}
       >
-        <div ref={actionSheetRef} className={styles.actionSheet}>
+        <section ref={actionSheetRef} className={styles.actionSheet}>
           {props.text !== "" ? (
             <span className={styles.text}>{props.text}</span>
           ) : null}
@@ -114,7 +114,7 @@ const ActionSheet = React.forwardRef<any, Props>((props, ref) => {
               </button>
             ))}
           </div>
-        </div>
+        </section>
       </aside>
     ),
     document.body

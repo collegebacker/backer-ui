@@ -274,6 +274,36 @@ const FocusTrapTemplate: ComponentStory<typeof Modal> = (args) => {
           focus-trap
         </a>
       </div>
+
+      <Text tag="p" context="app" appStyle="body-paragraph">
+        Hey there! We’ve started thinking about the future, and are putting
+        together a team of people who want to support us along the way. We’d
+        love to have you join us! You’ll be able to follow along as our kid
+        grows up. And if you want to contribute to their college fund, you can
+        do that too. 🎓 Hope you enjoy this first update! Tester Jr
+      </Text>
+      <Text tag="p" context="app" appStyle="body-paragraph">
+        We in Readymag are often asked how we choose to add exact features. In
+        this landing page we shed light on the topic and wrap up the product
+        updates rolled out in 2021. When deciding on the course of the
+        development of Readymag, we lean on several sources of information:
+        product interviews with all groups of users, customer support requests,
+        feedback from our beta testers and communities in the social media along
+        with the ideas of our design team. We use our tool for marketing
+        purposes: all our landing pages, educational editorials, users stories
+        and our main page are created with Readymag. Our slogan ‘Made by
+        designers for designers’ is proven by practice every day.
+      </Text>
+
+      <div
+        style={{
+          width: "100%",
+          height: "400px",
+          backgroundColor: "grey",
+        }}
+      >
+        <span>div to create a scroll</span>
+      </div>
     </div>
   );
 };
