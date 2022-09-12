@@ -12,6 +12,7 @@ interface Props {
   isOpen: boolean;
   children: React.ReactNode;
   isMobileBreakpoint: boolean;
+  customPaddingsMobile?: string;
   closeOutside?: boolean;
   title?: string;
   hideHeader?: boolean;
@@ -124,6 +125,14 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
     }
   }, [props.isOpen]);
 
+  const handleCustomPaddings = () => {
+    if (props.customPaddingsMobile) {
+      return props.customPaddingsMobile;
+    }
+
+    return "30px";
+  };
+
   ///////////////
   // RENDERING //
   ///////////////
@@ -143,6 +152,9 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
         className={`${styles.bottomSheetWrap} ${
           stickModal ? "" : styles.overScrolled
         } ${props.popupClassName}`}
+        style={{
+          padding: handleCustomPaddings(),
+        }}
       >
         {!props.hideHeader ? (
           <Header

@@ -227,6 +227,7 @@ interface Props$6 {
     children: React.ReactNode;
     customWidth?: number;
     customPaddings?: string;
+    customPaddingsMobile?: string;
     isBottomSheet?: boolean;
     closeOutside?: boolean;
     dataAttrs?: Record<string, string>;
