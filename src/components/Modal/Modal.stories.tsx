@@ -89,7 +89,12 @@ export default {
     customPaddings: {
       control: { type: "text" },
       description:
-        "You can set custom paddings for the modal. Write it like the usual css style. For example: `20px 40px`",
+        "You can set custom desktop paddings for the modal. Write it like the usual css style. For example: `20px 40px`",
+    },
+    customPaddingsMobile: {
+      control: { type: "text" },
+      description:
+        "You can set custom mobile paddings for the modal. Write it like the usual css style. For example: `20px 40px`",
     },
   },
 } as ComponentMeta<typeof Modal>;
