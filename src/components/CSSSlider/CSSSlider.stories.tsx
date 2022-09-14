@@ -12,58 +12,26 @@ export default {
     docs: {
       description: {
         component: `
-## Breakpoints
-The component has three breakpoints. Here are the sizes. This is only an example:
-\`\`\`
-breakpoints: [
-  {
-    breakpoint: 1024,
-    cardsToShow: 3,
-    sidePaddingOffset: 40,
-    showHiddenCard: 0,
-  },
-  {
-    breakpoint: 768,
-    cardsToShow: 2,
-    sidePaddingOffset: 40,
-    showHiddenCard: 40,
-  },
-  {
-    breakpoint: 480,
-    cardsToShow: 1,
-    sidePaddingOffset: 40,
-    showHiddenCard: 80,
-  },
-]
-\`\`\`
+## Common props
 
-And you can change these breakpoints. But if you want to change the breakpoints, you need to change all the breakpoints in the component. Fore example:
+- \`containterClassName?: string\`. The class name for the container.
+- \`spaceBetween?: number\`. The space between cards in pixels.
+- \`arrowsOffset?: number\`. The offset for arrows in pixels.
+- \`paginationAlignment?: "center" | "left" | "right"\`. The alignment of the pagination.
+- \`onChange?: (index: number) => void\`. The callback function that is called when the active index changes.
+- \`desktopBreakpoint?: BreakpointProps\`. The props for the desktop breakpoint.
+- \`tabletBreakpoint?: BreakpointProps\`. The props for the tablet breakpoint.
+- \`mobileBreakpoint?: BreakpointProps\`. The props for the mobile breakpoint.
+- \`children: React.ReactNode\`. The children of the component.
 
-\`\`\`
-breakpoints: [
-  {
-    breakpoint: 1400,
-    cardsToShow: 3,
-    sidePaddingOffset: 40,
-    showHiddenCard: 80,
-  },
-  {
-    breakpoint: 1080,
-    cardsToShow: 2,
-  },
-  {
-    breakpoint: 680,
-    cardsToShow: 1,
-  },
-]
-\`\`\`
+## BreakpointProps
 
----
+- \`cardsToShow: number\`. How many cards to show
+- \`sidePaddingOffset?: number\`. Offset from the sides. If you need to add paddings to the slider but want to keep cards visible, you can use this prop.
+- \`shiftHiddenCard?: number\`. How much to shift the next hidden card. 
+- \`disableSideFading?: boolean\`. Disable side fading. By default it's \`true\`.
+- \`hideArrows?: boolean\`. Hide arrows. By default it's \`false\` and \`true\` for mobile.
 
-## showHiddenCard
-With this property you can regulate the visibility of the hidden by the right edge card. There are two options:
-- \`boolean\` - the card is visible or not, the default value is 40(px) if it's true
-- \`number\` - if you set a number you can set the precise value of the card visibility
 `,
       },
     },
@@ -105,6 +73,18 @@ const itemsArray = [
     title: "You win 6",
     description: "We won’t charge our $5 monthly fee if you lose money.",
   },
+  // {
+  //   emoji: "🤖",
+  //   title: "Flexible 7",
+  //   description:
+  //     "You’ll always be able to withdraw your contributions with no tax or penalties.",
+  // },
+  // {
+  //   emoji: "🤖",
+  //   title: "Save together 8",
+  //   description:
+  //     "Backer is a social fund: save 4x more with gifts from family & friends.",
+  // },
 ];
 
 interface CardExampleProps {
@@ -127,7 +107,7 @@ const Template: ComponentStory<typeof CSSSlider> = (args) => (
   <div
     style={{
       backgroundColor: "rgba(0, 0, 0, 0.1)",
-      padding: "40px",
+      padding: "40px 0",
       maxWidth: "1000px",
       margin: "0 auto",
     }}
@@ -137,7 +117,12 @@ const Template: ComponentStory<typeof CSSSlider> = (args) => (
         backgroundColor: "rgba(0, 0, 0, 0.05)",
       }}
     >
-      <CSSSlider {...args} />
+      <CSSSlider
+        {...args}
+        onChange={(num) => {
+          console.log(num);
+        }}
+      />
     </div>
   </div>
 );
