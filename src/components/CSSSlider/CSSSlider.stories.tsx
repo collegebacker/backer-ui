@@ -117,17 +117,17 @@ const Template: ComponentStory<typeof CSSSlider> = (args) => (
         backgroundColor: "rgba(0, 0, 0, 0.05)",
       }}
     >
-      <div
+      {/* <div
         style={{
           height: "800px",
         }}
-      />
+      /> */}
       <CSSSlider {...args} />
-      <div
+      {/* <div
         style={{
           height: "800px",
         }}
-      />
+      /> */}
     </div>
   </div>
 );
