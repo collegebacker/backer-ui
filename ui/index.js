@@ -14584,27 +14584,32 @@ var CSSSlider = function (props) {
     var handlePrevious = function () {
         if (activeIndex > 0) {
             var newIndex = activeIndex - 1;
+            // console.log(activeIndex);
             childrenRefs.current[newIndex].scrollIntoView({
                 behavior: "smooth",
-                inline: "center",
+                block: "nearest",
+                inline: "start",
             });
         }
     };
     var handleNext = function () {
         if (activeIndex < childrenRefs.current.length - 1) {
-            var newIndex = activeIndex + currentBreakpoint.cardsToShow;
+            var newIndex = activeIndex + 1;
             // setActiveIndex(newIndex);
             // console.log(newIndex);
+            // console.log(childrenRefs.current[newIndex]);
             childrenRefs.current[newIndex].scrollIntoView({
                 behavior: "smooth",
-                inline: "center",
+                block: "nearest",
+                inline: "start",
             });
         }
     };
     var handleScroll = function (e) {
         childrenRefs.current.forEach(function (ref, index) {
             var rect = ref.getBoundingClientRect();
-            if (rect.left >= 0 && rect.left <= rect.width) {
+            var relativeLeft = rect.left - e.currentTarget.getBoundingClientRect().left;
+            if (relativeLeft >= 0 && relativeLeft <= rect.width) {
                 // console.log(index);
                 setActiveIndex(index);
             }
