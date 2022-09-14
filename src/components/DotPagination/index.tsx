@@ -3,6 +3,7 @@ import styles from "./styles.module.scss";
 
 export interface Props {
   className?: string;
+  style?: React.CSSProperties;
   totalAmount: number;
   activeIndex: number;
   visibleAmount?: number;
@@ -58,6 +59,7 @@ const DotPagination: React.FC<Props> = (props) => {
           props.visibleAmount < props.totalAmount
             ? `${props.visibleAmount * stepSize + isCornerStep()}px`
             : "fit-content",
+        ...props.style,
       }}
     >
       <div
@@ -89,6 +91,7 @@ DotPagination.defaultProps = {
   totalAmount: 6,
   activeIndex: 0,
   visibleAmount: 6,
+  style: {},
 } as Partial<Props>;
 
 export default DotPagination;

@@ -1,6 +1,7 @@
 import React from "react";
 export interface Props {
     className?: string;
+    style?: React.CSSProperties;
     totalAmount: number;
     activeIndex: number;
     visibleAmount?: number;
