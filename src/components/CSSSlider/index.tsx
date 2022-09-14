@@ -101,24 +101,28 @@ const CSSSlider: React.FC<Props> = (props) => {
   const handlePrevious = () => {
     if (activeIndex > 0) {
       const newIndex = activeIndex - 1;
+      // console.log(activeIndex);
 
       childrenRefs.current[newIndex].scrollIntoView({
         behavior: "smooth",
-        inline: "center",
+        block: "nearest",
+        inline: "start",
       });
     }
   };
 
   const handleNext = () => {
     if (activeIndex < childrenRefs.current.length - 1) {
-      const newIndex = activeIndex + currentBreakpoint.cardsToShow;
+      const newIndex = activeIndex + 1;
       // setActiveIndex(newIndex);
 
       // console.log(newIndex);
+      // console.log(childrenRefs.current[newIndex]);
 
       childrenRefs.current[newIndex].scrollIntoView({
         behavior: "smooth",
-        inline: "center",
+        block: "nearest",
+        inline: "start",
       });
     }
   };
@@ -126,8 +130,10 @@ const CSSSlider: React.FC<Props> = (props) => {
   const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
     childrenRefs.current.forEach((ref, index) => {
       const rect = ref.getBoundingClientRect();
+      const relativeLeft =
+        rect.left - e.currentTarget.getBoundingClientRect().left;
 
-      if (rect.left >= 0 && rect.left <= rect.width) {
+      if (relativeLeft >= 0 && relativeLeft <= rect.width) {
         // console.log(index);
         setActiveIndex(index);
       }

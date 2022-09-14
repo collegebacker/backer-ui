@@ -117,10 +117,15 @@ const Template: ComponentStory<typeof CSSSlider> = (args) => (
         backgroundColor: "rgba(0, 0, 0, 0.05)",
       }}
     >
-      <CSSSlider
-        {...args}
-        onChange={(num) => {
-          console.log(num);
+      <div
+        style={{
+          height: "800px",
+        }}
+      />
+      <CSSSlider {...args} />
+      <div
+        style={{
+          height: "800px",
         }}
       />
     </div>
@@ -132,6 +137,9 @@ Default.args = {
   children: itemsArray.map((item, index) => {
     return <CardExample key={index} {...item} />;
   }),
+  // desktopBreakpoint: {
+  //   cardsToShow: 6,
+  // },
   // spaceBetween: 0
 
   // disableSideFading: true,
