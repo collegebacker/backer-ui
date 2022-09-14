@@ -1,0 +1,21 @@
+.container {
+  position: relative;
+  display: flex;
+  width: 100%;
+}
+
+.slider {
+  display: grid;
+  flex-wrap: nowrap;
+  overflow: scroll;
+  scroll-snap-type: x mandatory;
+
+  // hide scrollbar
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.card {
+  scroll-snap-align: start;
+}
