@@ -14183,10 +14183,12 @@ var Modal = React__default["default"].forwardRef(function (props, ref) {
         if (isOpen) {
             document.body.style.overflow = "hidden";
             document.body.style.position = "fixed";
+            document.body.style.width = "100%";
         }
         else {
             document.body.style.removeProperty("overflow");
             document.body.style.removeProperty("position");
+            document.body.style.removeProperty("width");
         }
     }, [isOpen]);
     var handleOnCloseClick = function () {
