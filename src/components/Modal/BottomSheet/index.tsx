@@ -4,7 +4,7 @@ import gsap from "gsap";
 import styles from "./styles.module.scss";
 import Header from "../Header";
 
-import { useDidMountEffect, useOutsideClick } from "../../../hooks";
+import { useOutsideClick } from "../../../hooks";
 
 interface Props {
   popupClassName?: string;
@@ -32,6 +32,7 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
   const contentWrapperRef = React.useRef<HTMLDivElement>(null);
 
   const [stickModal, setStickModal] = React.useState(false);
+  const [windowHeight, setWindowHeight] = React.useState(0);
 
   //////////////
   // IMPERIAL //
@@ -69,6 +70,7 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
     const myObserver = new ResizeObserver((entries) => {
       // this will get called whenever div dimension changes
       entries.forEach((entry) => {
+        // console.log("entry", entry);
         if (
           window.innerHeight > (entry.target as HTMLDivElement).offsetHeight
         ) {
@@ -85,6 +87,22 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
       myObserver.disconnect();
     };
   }, []);
+
+  // React.useEffect(() => {
+  //   const handleResize = () => {
+  //     console.log("resize");
+  //     setWindowHeight(window.innerHeight);
+  //     document.body.style.height = `${window.innerHeight}px`;
+  //   };
+
+  //   window.addEventListener("resize", handleResize);
+
+  //   handleResize();
+
+  //   return () => {
+  //     window.removeEventListener("resize", handleResize);
+  //   };
+  // }, []);
 
   React.useEffect(() => {
     // console.log("isOpen", props.isOpen);
@@ -148,6 +166,7 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
       {...props.dataAttrs}
     >
       <section
+        area-aria-disabled={false}
         ref={bottomSheetRef}
         className={`${styles.bottomSheetWrap} ${
           stickModal ? "" : styles.overScrolled

@@ -10938,8 +10938,8 @@ Divider.defaultProps = {
     className: "",
 };
 
-var css$c = ".styles_module_modalWrap__f9c79323 {\n  position: fixed;\n  z-index: 999;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: -webkit-fill-available;\n  opacity: 0;\n  pointer-events: none;\n}\n\n.styles_module_background__f9c79323 {\n  position: fixed;\n  z-index: 1;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-size: 100% 100%;\n  background-image: radial-gradient(98.4% 51.22% at 97.33% 38%, rgba(196, 199, 242, 0.9) 0%, rgba(196, 199, 242, 0) 100%), radial-gradient(99.07% 36.33% at 65.87% 34.33%, rgba(253, 206, 190, 0.9) 0%, rgba(253, 206, 190, 0) 100%), radial-gradient(50% 50% at 50% 50%, #ffffff 0%, rgba(255, 255, 255, 0.42) 100%);\n}\n\n.styles_module_bottomSheetWrap__f9c79323 {\n  z-index: 2;\n  display: flex;\n  flex-direction: column;\n  position: absolute;\n  left: 0;\n  overflow-y: scroll;\n  max-height: 100%;\n  bottom: -100%;\n  border-radius: 15px 15px 0 0;\n  background-color: var(--color-main-0);\n  width: 100%;\n}\n.styles_module_bottomSheetWrap__f9c79323::-webkit-scrollbar {\n  display: none;\n}\n\n.styles_module_overScrolled__f9c79323 {\n  border-radius: 0;\n}";
-var modules_efc4e723$c = {"modalWrap":"styles_module_modalWrap__f9c79323","background":"styles_module_background__f9c79323","bottomSheetWrap":"styles_module_bottomSheetWrap__f9c79323","overScrolled":"styles_module_overScrolled__f9c79323"};
+var css$c = ".styles_module_modalWrap__531103b0 {\n  position: realtive;\n  z-index: 999;\n  width: 100%;\n  opacity: 0;\n  pointer-events: none;\n}\n\n.styles_module_background__531103b0 {\n  position: fixed;\n  z-index: 1;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-size: 100% 100%;\n  touch-action: none;\n  background-image: radial-gradient(98.4% 51.22% at 97.33% 38%, rgba(196, 199, 242, 0.9) 0%, rgba(196, 199, 242, 0) 100%), radial-gradient(99.07% 36.33% at 65.87% 34.33%, rgba(253, 206, 190, 0.9) 0%, rgba(253, 206, 190, 0) 100%), radial-gradient(50% 50% at 50% 50%, #ffffff 0%, rgba(255, 255, 255, 0.42) 100%);\n}\n\n.styles_module_bottomSheetWrap__531103b0 {\n  z-index: 2;\n  display: flex;\n  flex-direction: column;\n  position: fixed;\n  left: 0;\n  overflow-y: scroll;\n  max-height: 100%;\n  bottom: -100%;\n  border-radius: 15px 15px 0 0;\n  background-color: var(--color-main-0);\n  width: 100%;\n}\n.styles_module_bottomSheetWrap__531103b0::-webkit-scrollbar {\n  display: none;\n}\n\n.styles_module_overScrolled__531103b0 {\n  border-radius: 0;\n}";
+var modules_efc4e723$c = {"modalWrap":"styles_module_modalWrap__531103b0","background":"styles_module_background__531103b0","bottomSheetWrap":"styles_module_bottomSheetWrap__531103b0","overScrolled":"styles_module_overScrolled__531103b0"};
 n(css$c,{});
 
 var css$b = ".styles_module_title__2080c166 {\n  font-family: \"Gza\", serif;\n  font-weight: 700;\n  font-size: 40px;\n  line-height: 120%;\n}\n@media screen and (max-width: 620px) {\n  .styles_module_title__2080c166 {\n    font-family: \"ABCMarfa\", sans-serif;\n    font-weight: 500;\n    font-size: 24px;\n    line-height: 130%;\n  }\n}\n\n.styles_module_smallTitle__2080c166 {\n  font-family: \"ABCMarfa\", sans-serif;\n  font-weight: 500;\n  font-size: 24px;\n  line-height: 130%;\n}\n\n.styles_module_header__2080c166 {\n  display: flex;\n  flex-direction: column;\n  margin-bottom: 30px;\n}\n.styles_module_header_maxWidth__2080c166 {\n  max-width: 440px;\n}\n@media screen and (max-width: 620px) {\n  .styles_module_header__2080c166 {\n    flex-direction: row-reverse;\n  }\n}\n\n.styles_module_titleWrap__2080c166 {\n  position: relative;\n  display: flex;\n  flex: 1 1 auto;\n  width: 100%;\n  margin: 0 auto;\n}\n@media screen and (max-width: 620px) {\n  .styles_module_titleWrap__2080c166 {\n    max-width: none;\n  }\n}\n\n.styles_module_title__2080c166 {\n  padding-right: 50px;\n  margin: 0 auto;\n  width: 100%;\n}\n\n.styles_module_closeButton__2080c166 {\n  cursor: pointer;\n  z-index: 3;\n  position: absolute;\n  top: 25px;\n  right: 25px;\n  width: 40px;\n  height: 40px;\n  margin-left: 20px;\n  border: none;\n  outline: none;\n  background: none;\n  border-radius: 50%;\n}\n.styles_module_closeButton__wrap__2080c166 {\n  display: flex;\n  justify-content: flex-end;\n  width: 100%;\n}\n@media screen and (max-width: 620px) {\n  .styles_module_closeButton__wrap__2080c166 {\n    width: auto;\n  }\n}\n.styles_module_closeButton__background__2080c166 {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n  opacity: 0;\n  transform: scale(0.7);\n  background-color: var(--color-main-transparent-50);\n  transition: opacity 0.1s ease, transform 0.1s ease;\n}\n.styles_module_closeButton__2080c166:before, .styles_module_closeButton__2080c166:after {\n  content: \"\";\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  width: 1px;\n  height: 24px;\n  border-radius: 40px;\n  background-color: var(--color-main-500);\n  transition: height 0.1s ease;\n}\n.styles_module_closeButton__2080c166:before {\n  transform: translate(-50%, -50%) rotate(45deg);\n}\n.styles_module_closeButton__2080c166:after {\n  transform: translate(-50%, -50%) rotate(-45deg);\n}\n.styles_module_closeButton__2080c166:hover:before, .styles_module_closeButton__2080c166:hover:after {\n  height: 22px;\n}\n.styles_module_closeButton__2080c166:hover .styles_module_closeButton__background__2080c166 {\n  opacity: 1;\n  transform: scale(1);\n}\n.styles_module_closeButton__2080c166:focus-visible {\n  border: 1px solid var(--color-main-500);\n}";
@@ -10968,6 +10968,7 @@ var BottomSheet = React__default["default"].forwardRef(function (props, ref) {
     var backgroundRef = React__default["default"].useRef(null);
     var contentWrapperRef = React__default["default"].useRef(null);
     var _a = React__default["default"].useState(false), stickModal = _a[0], setStickModal = _a[1];
+    var _b = React__default["default"].useState(0); _b[0]; _b[1];
     //////////////
     // IMPERIAL //
     //////////////
@@ -10998,6 +10999,7 @@ var BottomSheet = React__default["default"].forwardRef(function (props, ref) {
         var myObserver = new ResizeObserver(function (entries) {
             // this will get called whenever div dimension changes
             entries.forEach(function (entry) {
+                // console.log("entry", entry);
                 if (window.innerHeight > entry.target.offsetHeight) {
                     setStickModal(true);
                 }
@@ -11011,6 +11013,18 @@ var BottomSheet = React__default["default"].forwardRef(function (props, ref) {
             myObserver.disconnect();
         };
     }, []);
+    // React.useEffect(() => {
+    //   const handleResize = () => {
+    //     console.log("resize");
+    //     setWindowHeight(window.innerHeight);
+    //     document.body.style.height = `${window.innerHeight}px`;
+    //   };
+    //   window.addEventListener("resize", handleResize);
+    //   handleResize();
+    //   return () => {
+    //     window.removeEventListener("resize", handleResize);
+    //   };
+    // }, []);
     React__default["default"].useEffect(function () {
         // console.log("isOpen", props.isOpen);
         if (props.isOpen) {
@@ -11059,7 +11073,7 @@ var BottomSheet = React__default["default"].forwardRef(function (props, ref) {
     // RENDERING //
     ///////////////
     return (React__default["default"].createElement("aside", __assign({ role: "dialog", tabIndex: -1, "aria-modal": true, "aria-hidden": false, ref: modalWrapRef, className: "".concat(modules_efc4e723$c.modalWrap) }, props.dataAttrs),
-        React__default["default"].createElement("section", { ref: bottomSheetRef, className: "".concat(modules_efc4e723$c.bottomSheetWrap, " ").concat(stickModal ? "" : modules_efc4e723$c.overScrolled, " ").concat(props.popupClassName), style: {
+        React__default["default"].createElement("section", { "area-aria-disabled": false, ref: bottomSheetRef, className: "".concat(modules_efc4e723$c.bottomSheetWrap, " ").concat(stickModal ? "" : modules_efc4e723$c.overScrolled, " ").concat(props.popupClassName), style: {
                 padding: handleCustomPaddings(),
             } },
             !props.hideHeader ? (React__default["default"].createElement(Header, { onCloseClick: handleCloseClick, title: props.title, smallTitle: props.smallTitle, noMaxWidth: true })) : null,
@@ -14180,15 +14194,27 @@ var Modal = React__default["default"].forwardRef(function (props, ref) {
         };
     }, []);
     React__default["default"].useEffect(function () {
+        window.pageYOffset || document.documentElement.scrollTop;
         if (isOpen) {
+            // document.body.style.top = `-${scrollTop}px`;
             document.body.style.overflow = "hidden";
-            document.body.style.position = "fixed";
-            document.body.style.width = "100%";
+            document.body.style.touchAction = "none";
+            // document.body.style.position = "fixed";
+            // document.body.style.height = "100%";
+            // document.body.style.overflowY = "scroll";
+            // get body top scroll position
+            // console.log(scrollTop);
+            // console.log("body top scroll position", window.scrollY);
         }
         else {
+            // document.body.style.removeProperty("position");
+            // const scrollTop = Number(document.body.style.top.replace(/[^0-9.]/g, ""));
+            // document.body.style.removeProperty("top");
             document.body.style.removeProperty("overflow");
-            document.body.style.removeProperty("position");
-            document.body.style.removeProperty("width");
+            document.body.style.removeProperty("touch-action");
+            // console.log(scrollTop);
+            // window.scrollTo(0, scrollTop);
+            // document.body.scrollTop = scrollTop; // For Safari
         }
     }, [isOpen]);
     var handleOnCloseClick = function () {

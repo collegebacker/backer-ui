@@ -255,6 +255,13 @@ const FocusTrapTemplate: ComponentStory<typeof Modal> = (args) => {
       }}
     >
       <Modal ref={ModalRef} {...args} />
+      <Text tag="p" context="app" appStyle="body-paragraph">
+        Hey there! We’ve started thinking about the future, and are putting
+        together a team of people who want to support us along the way. We’d
+        love to have you join us! You’ll be able to follow along as our kid
+        grows up. And if you want to contribute to their college fund, you can
+        do that too. 🎓 Hope you enjoy this first update! Tester Jr
+      </Text>
       <Button
         label="Trigger Modal"
         style={{
@@ -262,7 +269,7 @@ const FocusTrapTemplate: ComponentStory<typeof Modal> = (args) => {
         }}
         onClick={() => {
           ModalRef.current.open(() => {
-            console.log("open");
+            console.log("storybook, open");
           });
         }}
       />
@@ -303,12 +310,40 @@ const FocusTrapTemplate: ComponentStory<typeof Modal> = (args) => {
       <div
         style={{
           width: "100%",
-          height: "400px",
+          height: "600px",
           backgroundColor: "grey",
         }}
       >
         <span>div to create a scroll</span>
       </div>
+
+      <Text tag="p" context="app" appStyle="body-paragraph">
+        Hey there! We’ve started thinking about the future, and are putting
+        together a team of people who want to support us along the way. We’d
+        love to have you join us! You’ll be able to follow along as our kid
+        grows up. And if you want to contribute to their college fund, you can
+        do that too. 🎓 Hope you enjoy this first update! Tester Jr
+      </Text>
+
+      <Button
+        label="Trigger Modal"
+        style={{
+          maxWidth: "300px",
+        }}
+        onClick={() => {
+          ModalRef.current.open(() => {
+            console.log("storybook, open");
+          });
+        }}
+      />
+
+      <Text tag="p" context="app" appStyle="body-paragraph">
+        Hey there! We’ve started thinking about the future, and are putting
+        together a team of people who want to support us along the way. We’d
+        love to have you join us! You’ll be able to follow along as our kid
+        grows up. And if you want to contribute to their college fund, you can
+        do that too. 🎓 Hope you enjoy this first update! Tester Jr
+      </Text>
     </div>
   );
 };

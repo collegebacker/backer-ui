@@ -68,14 +68,14 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
   }, []);
 
   React.useEffect(() => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
     if (isOpen) {
       document.body.style.overflow = "hidden";
-      document.body.style.position = "fixed";
-      document.body.style.width = "100%";
+      document.body.style.touchAction = "none";
     } else {
       document.body.style.removeProperty("overflow");
-      document.body.style.removeProperty("position");
-      document.body.style.removeProperty("width");
+      document.body.style.removeProperty("touch-action");
     }
   }, [isOpen]);
 
