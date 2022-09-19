@@ -22,3 +22,4 @@ export { default as ActionMesssage } from "./ActionMesssage";
 export { default as Toast } from "./Toast";
 export { default as ActionSheet } from "./ActionSheet";
 export { default as CSSSlider } from "./CSSSlider";
+export { default as CountBadge } from "./CountBadge";
