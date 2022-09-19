@@ -7,7 +7,7 @@ import Spinner from "../Spinner";
 export interface Props {
   className?: string;
   style?: React.CSSProperties;
-  mode?: "primary" | "accent" | "outline" | "ghost";
+  mode?: "primary" | "accent" | "outline" | "ghost" | "outline-inverse";
   size?: "default" | "small";
   type?: "button" | "submit" | "reset";
   target?: TargetTypes;

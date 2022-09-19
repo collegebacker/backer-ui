@@ -53,10 +53,21 @@ Secondary.args = {
   busyLabel: "",
 };
 
-export const Tertiary = Template.bind({});
-Tertiary.args = {
+export const Outline = Template.bind({});
+Outline.args = {
   mode: "outline",
   label: "Outline",
+  size: "default",
+  tag: "a",
+  disabled: false,
+  busy: false,
+  busyLabel: "",
+};
+
+export const OutlineInverse = Template.bind({});
+OutlineInverse.args = {
+  mode: "outline-inverse",
+  label: "Outline inverse",
   size: "default",
   tag: "a",
   disabled: false,
