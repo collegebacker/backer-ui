@@ -3,16 +3,16 @@ import styles from "./styles.module.scss";
 
 export interface Props {
   className?: string;
-  amount?: number;
+  count?: number;
   limit?: number;
 }
 
 const CountBadge: React.FC<Props> = (props) => {
   const handleLimit = () => {
-    if (props.amount > props.limit) {
+    if (props.count > props.limit) {
       return `+${props.limit}`;
     } else {
-      return props.amount;
+      return props.count;
     }
   };
 
@@ -25,7 +25,7 @@ const CountBadge: React.FC<Props> = (props) => {
 
 CountBadge.defaultProps = {
   className: "",
-  amount: 0,
+  count: 0,
   limit: 99,
 } as Partial<Props>;
 

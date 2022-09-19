@@ -16,6 +16,6 @@ const Template: ComponentStory<typeof CountBadge> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  amount: 2,
+  count: 2,
   className: "",
 };

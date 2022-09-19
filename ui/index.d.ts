@@ -326,7 +326,7 @@ declare const CSSSlider: React.FC<Props$1>;
 
 interface Props {
     className?: string;
-    amount?: number;
+    count?: number;
     limit?: number;
 }
 declare const CountBadge: React.FC<Props>;

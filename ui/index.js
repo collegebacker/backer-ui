@@ -14707,11 +14707,11 @@ n(css,{});
 
 var CountBadge = function (props) {
     var handleLimit = function () {
-        if (props.amount > props.limit) {
+        if (props.count > props.limit) {
             return "+".concat(props.limit);
         }
         else {
-            return props.amount;
+            return props.count;
         }
     };
     return (React__default["default"].createElement("div", { className: "".concat(modules_efc4e723.wrap, " ").concat(props.className) },
@@ -14719,7 +14719,7 @@ var CountBadge = function (props) {
 };
 CountBadge.defaultProps = {
     className: "",
-    amount: 0,
+    count: 0,
     limit: 99,
 };
 
