@@ -11072,8 +11072,8 @@ var BottomSheet = React__default["default"].forwardRef(function (props, ref) {
     ///////////////
     // RENDERING //
     ///////////////
-    return (React__default["default"].createElement("aside", __assign({ role: "dialog", tabIndex: -1, "aria-modal": true, "aria-hidden": false, ref: modalWrapRef, className: "".concat(modules_efc4e723$d.modalWrap) }, props.dataAttrs),
-        React__default["default"].createElement("section", { "area-aria-disabled": false, ref: bottomSheetRef, className: "".concat(modules_efc4e723$d.bottomSheetWrap, " ").concat(stickModal ? "" : modules_efc4e723$d.overScrolled, " ").concat(props.popupClassName), style: {
+    return (React__default["default"].createElement("aside", __assign({ role: "dialog", tabIndex: -1, "aria-modal": true, "aria-hidden": "false", ref: modalWrapRef, className: "".concat(modules_efc4e723$d.modalWrap) }, props.dataAttrs),
+        React__default["default"].createElement("section", { "area-aria-disabled": "false", ref: bottomSheetRef, className: "".concat(modules_efc4e723$d.bottomSheetWrap, " ").concat(stickModal ? "" : modules_efc4e723$d.overScrolled, " ").concat(props.popupClassName), style: {
                 padding: handleCustomPaddings(),
             } },
             !props.hideHeader ? (React__default["default"].createElement(Header, { onCloseClick: handleCloseClick, title: props.title, smallTitle: props.smallTitle, noMaxWidth: true })) : null,
@@ -11082,6 +11082,8 @@ var BottomSheet = React__default["default"].forwardRef(function (props, ref) {
 });
 BottomSheet.defaultProps = {
     onCloseClick: function () { },
+    popupClassName: "",
+    popupContentClassName: "",
 };
 
 var propTypes = {exports: {}};
@@ -14155,6 +14157,8 @@ Popup.defaultProps = {
     customWidth: 0,
     customPaddings: null,
     onCloseClick: function () { },
+    popupClassName: "",
+    popupContentClassName: "",
 };
 
 var Modal = React__default["default"].forwardRef(function (props, ref) {
