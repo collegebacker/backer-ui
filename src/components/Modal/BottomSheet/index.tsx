@@ -160,13 +160,13 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
       role="dialog"
       tabIndex={-1}
       aria-modal
-      aria-hidden={false}
+      aria-hidden="false"
       ref={modalWrapRef}
       className={`${styles.modalWrap}`}
       {...props.dataAttrs}
     >
       <section
-        area-aria-disabled={false}
+        area-aria-disabled="false"
         ref={bottomSheetRef}
         className={`${styles.bottomSheetWrap} ${
           stickModal ? "" : styles.overScrolled
@@ -197,6 +197,8 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
 
 BottomSheet.defaultProps = {
   onCloseClick: () => {},
+  popupClassName: "",
+  popupContentClassName: "",
 } as Partial<Props>;
 
 export default BottomSheet;

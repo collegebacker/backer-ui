@@ -214,6 +214,8 @@ Popup.defaultProps = {
   customWidth: 0,
   customPaddings: null,
   onCloseClick: () => {},
+  popupClassName: "",
+  popupContentClassName: "",
 } as Partial<Props>;
 
 export default Popup;
