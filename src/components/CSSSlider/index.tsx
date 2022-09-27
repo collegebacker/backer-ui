@@ -8,8 +8,8 @@ import DotPagination from "../DotPagination";
 /////////////////////////////////
 
 export interface BreakpointProps {
-  breakpoint: number;
-  cardsToShow: number;
+  breakpoint?: number;
+  cardsToShow?: number;
   sidePaddingOffset?: number;
   shiftHiddenCard?: number;
   disableSideFading?: boolean;
@@ -48,31 +48,33 @@ const arrowSVG = (
 /////////////////////////////////
 
 const CSSSlider: React.FC<Props> = (props) => {
+  console.log(props);
+
   const desktopBreakpoint = {
-    breakpoint: props.desktopBreakpoint?.breakpoint || 1024,
-    cardsToShow: props.desktopBreakpoint?.cardsToShow || 3,
-    sidePaddingOffset: props.desktopBreakpoint?.sidePaddingOffset || 40,
-    shiftHiddenCard: props.desktopBreakpoint?.shiftHiddenCard || 0,
-    disableSideFading: props.desktopBreakpoint?.disableSideFading || true,
-    hideArrows: props.desktopBreakpoint?.hideArrows || false,
+    breakpoint: props.desktopBreakpoint?.breakpoint ?? 1024,
+    cardsToShow: props.desktopBreakpoint?.cardsToShow ?? 3,
+    sidePaddingOffset: props.desktopBreakpoint?.sidePaddingOffset ?? 40,
+    shiftHiddenCard: props.desktopBreakpoint?.shiftHiddenCard ?? 0,
+    disableSideFading: props.desktopBreakpoint?.disableSideFading ?? true,
+    hideArrows: props.desktopBreakpoint?.hideArrows ?? false,
   } as BreakpointProps;
 
   const tabletBreakpoint = {
-    breakpoint: props.tabletBreakpoint?.breakpoint || 768,
-    cardsToShow: props.tabletBreakpoint?.cardsToShow || 2,
-    sidePaddingOffset: props.tabletBreakpoint?.sidePaddingOffset || 40,
-    shiftHiddenCard: props.tabletBreakpoint?.shiftHiddenCard || 0,
-    disableSideFading: props.tabletBreakpoint?.disableSideFading || true,
-    hideArrows: props.tabletBreakpoint?.hideArrows || false,
+    breakpoint: props.tabletBreakpoint?.breakpoint ?? 768,
+    cardsToShow: props.tabletBreakpoint?.cardsToShow ?? 2,
+    sidePaddingOffset: props.tabletBreakpoint?.sidePaddingOffset ?? 40,
+    shiftHiddenCard: props.tabletBreakpoint?.shiftHiddenCard ?? 0,
+    disableSideFading: props.tabletBreakpoint?.disableSideFading ?? true,
+    hideArrows: props.tabletBreakpoint?.hideArrows ?? false,
   } as BreakpointProps;
 
   const mobileBreakpoint = {
-    breakpoint: props.mobileBreakpoint?.breakpoint || 480,
-    cardsToShow: props.mobileBreakpoint?.cardsToShow || 1,
-    sidePaddingOffset: props.mobileBreakpoint?.sidePaddingOffset || 20,
-    shiftHiddenCard: props.mobileBreakpoint?.shiftHiddenCard || 0,
-    disableSideFading: props.mobileBreakpoint?.disableSideFading || true,
-    hideArrows: props.mobileBreakpoint?.hideArrows || true,
+    breakpoint: props.mobileBreakpoint?.breakpoint ?? 480,
+    cardsToShow: props.mobileBreakpoint?.cardsToShow ?? 1,
+    sidePaddingOffset: props.mobileBreakpoint?.sidePaddingOffset ?? 20,
+    shiftHiddenCard: props.mobileBreakpoint?.shiftHiddenCard ?? 0,
+    disableSideFading: props.mobileBreakpoint?.disableSideFading ?? true,
+    hideArrows: props.mobileBreakpoint?.hideArrows ?? true,
   } as BreakpointProps;
 
   const childrenRefs = React.useRef<HTMLDivElement[]>([]);
@@ -168,6 +170,8 @@ const CSSSlider: React.FC<Props> = (props) => {
     if (props.onChange) {
       props.onChange(activeIndex);
     }
+
+    console.log(currentBreakpoint);
 
     // console.log(activeIndex, childrenArray.length);
   }, [activeIndex]);

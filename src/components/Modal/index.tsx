@@ -22,6 +22,9 @@ export interface Props {
 }
 
 const Modal = React.forwardRef<any, Props>((props, ref) => {
+  const popupRef = React.useRef<any>(null);
+  const bottomSheetRef = React.useRef<any>(null);
+
   const [isOpen, setIsOpen] = React.useState(props.isOpen);
   const [isMobileBreakpoint, setIsMobileBreakpoint] = React.useState(false);
 
@@ -68,16 +71,30 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
   }, []);
 
   React.useEffect(() => {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
     if (isOpen) {
       document.body.style.overflow = "hidden";
       document.body.style.touchAction = "none";
+
+      popupRef.current?.open();
+
+      if (props.isBottomSheet && isMobileBreakpoint) {
+        bottomSheetRef.current?.open();
+      }
     } else {
       document.body.style.removeProperty("overflow");
       document.body.style.removeProperty("touch-action");
+
+      popupRef.current?.close();
+
+      if (props.isBottomSheet && isMobileBreakpoint) {
+        bottomSheetRef.current?.close();
+      }
     }
   }, [isOpen]);
+
+  React.useEffect(() => {
+    setIsOpen(false);
+  }, [props.isBottomSheet, isMobileBreakpoint]);
 
   const handleOnCloseClick = () => {
     if (props.onCloseClick) {
@@ -93,15 +110,15 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
         <BottomSheet
           {...props}
           isMobileBreakpoint={isMobileBreakpoint}
-          isOpen={isOpen}
           onCloseClick={handleOnCloseClick}
+          ref={bottomSheetRef}
         />
       ) : (
         <Popup
           {...props}
           isMobileBreakpoint={isMobileBreakpoint}
-          isOpen={isOpen}
           onCloseClick={handleOnCloseClick}
+          ref={popupRef}
         />
       )}
     </>,

@@ -9,7 +9,6 @@ import { useOutsideClick } from "../../../hooks";
 interface Props {
   popupClassName?: string;
   popupContentClassName?: string;
-  isOpen: boolean;
   children: React.ReactNode;
   isMobileBreakpoint: boolean;
   customPaddingsMobile?: string;
@@ -29,10 +28,9 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
   const modalWrapRef = React.useRef<HTMLDivElement>(null);
   const bottomSheetRef = React.useRef<HTMLDivElement>(null);
   const backgroundRef = React.useRef<HTMLDivElement>(null);
-  const contentWrapperRef = React.useRef<HTMLDivElement>(null);
 
+  const [isOpen, setIsOpen] = React.useState(false);
   const [stickModal, setStickModal] = React.useState(false);
-  const [windowHeight, setWindowHeight] = React.useState(0);
 
   //////////////
   // IMPERIAL //
@@ -41,26 +39,32 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
     getRef: () => {
       return bottomSheetRef.current;
     },
+    open: () => {
+      setIsOpen(true);
+    },
+    close: () => {
+      setIsOpen(false);
+    },
   }));
-
-  //////////////
-  /// HOOKS ////
-  //////////////
-
-  useOutsideClick(bottomSheetRef, () => {
-    if (props.isOpen && props.closeOutside && props.isMobileBreakpoint) {
-      // console.log("clicked outside");
-      props.onCloseClick();
-    }
-  });
 
   //////////////
   // HANDLERS //
   //////////////
 
   const handleCloseClick = () => {
-    props.onCloseClick();
+    if (isOpen && props.closeOutside && props.isMobileBreakpoint) {
+      // console.log("clicked outside");
+      props.onCloseClick();
+    }
   };
+
+  //////////////
+  /// HOOKS ////
+  //////////////
+
+  useOutsideClick(bottomSheetRef, () => {
+    handleCloseClick();
+  });
 
   /////////////////
   // USE EFFECTS //
@@ -88,25 +92,9 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
     };
   }, []);
 
-  // React.useEffect(() => {
-  //   const handleResize = () => {
-  //     console.log("resize");
-  //     setWindowHeight(window.innerHeight);
-  //     document.body.style.height = `${window.innerHeight}px`;
-  //   };
-
-  //   window.addEventListener("resize", handleResize);
-
-  //   handleResize();
-
-  //   return () => {
-  //     window.removeEventListener("resize", handleResize);
-  //   };
-  // }, []);
-
   React.useEffect(() => {
     // console.log("isOpen", props.isOpen);
-    if (props.isOpen) {
+    if (isOpen) {
       modalWrapRef.current.focus();
 
       gsap.to(modalWrapRef.current, {
@@ -141,7 +129,7 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
         duration: 0.4,
       });
     }
-  }, [props.isOpen]);
+  }, [isOpen]);
 
   const handleCustomPaddings = () => {
     if (props.customPaddingsMobile) {
@@ -185,7 +173,6 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
         ) : null}
         <div
           className={`${styles.contentWrapper} ${styles.popupContentClassName}`}
-          ref={contentWrapperRef}
         >
           {props.children}
         </div>

@@ -138,7 +138,9 @@ Default.args = {
     return <CardExample key={index} {...item} />;
   }),
   // desktopBreakpoint: {
-  //   cardsToShow: 6,
+  //   cardsToShow: 2,
+  //   sidePaddingOffset: 0,
+  //   disableSideFading: false,
   // },
   // spaceBetween: 0
 

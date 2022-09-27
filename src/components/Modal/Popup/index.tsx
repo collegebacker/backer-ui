@@ -11,7 +11,6 @@ interface Props {
   popupClassName?: string;
   popupContentClassName?: string;
   customPaddings?: string;
-  isOpen: boolean;
   children: React.ReactNode;
   isMobileBreakpoint: boolean;
   title?: string;
@@ -32,17 +31,34 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
   const popupRef = React.useRef<HTMLDivElement>(null);
   const gradients = React.useRef<HTMLDivElement>(null);
 
+  const [isOpen, setIsOpen] = React.useState(false);
   const [isShown, setIsShown] = React.useState(false);
-  const [isAppeared, setIsAppeared] = React.useState(false);
 
   //////////////
   // IMPERIAL //
   //////////////
+
   React.useImperativeHandle(ref, () => ({
     getRef: () => {
       return popupRef.current;
     },
+    open: () => {
+      setIsOpen(true);
+    },
+    close: () => {
+      setIsOpen(false);
+    },
   }));
+
+  //////////////
+  // HANDLERS //
+  //////////////
+
+  const handleCloseClick = () => {
+    if (isShown && props.closeOutside && !props.isMobileBreakpoint) {
+      props.onCloseClick();
+    }
+  };
 
   ///////////////
   //// HOOKS ////
@@ -50,28 +66,17 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
 
   useOutsideClick(popupRef, () => {
     // console.log(isAppeared, props.closeOutside, props.isMobileBreakpoint);
-    if (isAppeared && props.closeOutside && !props.isMobileBreakpoint) {
-      // console.log("clicked outside");
-      props.onCloseClick();
-    }
+    // console.log("clicked outside");
+    handleCloseClick();
   });
-
-  //////////////
-  // HANDLERS //
-  //////////////
-
-  const handleCloseClick = () => {
-    props.onCloseClick();
-  };
 
   /////////////////
   // USE EFFECTS //
   /////////////////
 
   React.useEffect(() => {
-    if (props.isOpen) {
+    if (isOpen) {
       modalWrapRef.current?.focus();
-      // modalWrapRef.current.style.display = "block";
 
       gsap.to(modalWrapRef.current, {
         opacity: 1,
@@ -89,16 +94,11 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
       gsap.to(gradients.current, {
         opacity: 1,
         scale: 1,
-        onStart: () => {
-          setIsAppeared(true);
-        },
         delay: 0.1,
         duration: 1,
         ease: "circ.out",
       });
     } else {
-      // modalWrapRef.current.style.display = "none";
-
       gsap.to(modalWrapRef.current, {
         display: "none",
         pointerEvents: "none",
@@ -114,14 +114,11 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
       gsap.to(gradients.current, {
         opacity: 0,
         scale: 0.1,
-        onStart: () => {
-          setIsAppeared(false);
-        },
         duration: 0.7,
         ease: "circ.out",
       });
     }
-  }, [props.isOpen]);
+  }, [isOpen]);
 
   const handleCustomPaddings = () => {
     if (!props.isMobileBreakpoint) {
