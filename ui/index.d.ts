@@ -304,8 +304,8 @@ interface Props$2 {
 declare const ActionSheet: React.ForwardRefExoticComponent<Props$2 & React.RefAttributes<any>>;
 
 interface BreakpointProps {
-    breakpoint: number;
-    cardsToShow: number;
+    breakpoint?: number;
+    cardsToShow?: number;
     sidePaddingOffset?: number;
     shiftHiddenCard?: number;
     disableSideFading?: boolean;

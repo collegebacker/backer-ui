@@ -2,7 +2,6 @@ import React from "react";
 interface Props {
     popupClassName?: string;
     popupContentClassName?: string;
-    isOpen: boolean;
     children: React.ReactNode;
     isMobileBreakpoint: boolean;
     customPaddingsMobile?: string;

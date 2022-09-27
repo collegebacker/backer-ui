@@ -1,7 +1,7 @@
 import React from "react";
 export interface BreakpointProps {
-    breakpoint: number;
-    cardsToShow: number;
+    breakpoint?: number;
+    cardsToShow?: number;
     sidePaddingOffset?: number;
     shiftHiddenCard?: number;
     disableSideFading?: boolean;

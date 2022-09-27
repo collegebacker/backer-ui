@@ -3,7 +3,6 @@ interface Props {
     popupClassName?: string;
     popupContentClassName?: string;
     customPaddings?: string;
-    isOpen: boolean;
     children: React.ReactNode;
     isMobileBreakpoint: boolean;
     title?: string;

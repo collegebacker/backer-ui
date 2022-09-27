@@ -10966,9 +10966,8 @@ var BottomSheet = React__default["default"].forwardRef(function (props, ref) {
     var modalWrapRef = React__default["default"].useRef(null);
     var bottomSheetRef = React__default["default"].useRef(null);
     var backgroundRef = React__default["default"].useRef(null);
-    var contentWrapperRef = React__default["default"].useRef(null);
-    var _a = React__default["default"].useState(false), stickModal = _a[0], setStickModal = _a[1];
-    var _b = React__default["default"].useState(0); _b[0]; _b[1];
+    var _a = React__default["default"].useState(false), isOpen = _a[0], setIsOpen = _a[1];
+    var _b = React__default["default"].useState(false), stickModal = _b[0], setStickModal = _b[1];
     //////////////
     // IMPERIAL //
     //////////////
@@ -10976,22 +10975,28 @@ var BottomSheet = React__default["default"].forwardRef(function (props, ref) {
         getRef: function () {
             return bottomSheetRef.current;
         },
+        open: function () {
+            setIsOpen(true);
+        },
+        close: function () {
+            setIsOpen(false);
+        },
     }); });
-    //////////////
-    /// HOOKS ////
-    //////////////
-    useOutsideClick(bottomSheetRef, function () {
-        if (props.isOpen && props.closeOutside && props.isMobileBreakpoint) {
-            // console.log("clicked outside");
-            props.onCloseClick();
-        }
-    });
     //////////////
     // HANDLERS //
     //////////////
     var handleCloseClick = function () {
-        props.onCloseClick();
+        if (isOpen && props.closeOutside && props.isMobileBreakpoint) {
+            // console.log("clicked outside");
+            props.onCloseClick();
+        }
     };
+    //////////////
+    /// HOOKS ////
+    //////////////
+    useOutsideClick(bottomSheetRef, function () {
+        handleCloseClick();
+    });
     /////////////////
     // USE EFFECTS //
     /////////////////
@@ -11013,21 +11018,9 @@ var BottomSheet = React__default["default"].forwardRef(function (props, ref) {
             myObserver.disconnect();
         };
     }, []);
-    // React.useEffect(() => {
-    //   const handleResize = () => {
-    //     console.log("resize");
-    //     setWindowHeight(window.innerHeight);
-    //     document.body.style.height = `${window.innerHeight}px`;
-    //   };
-    //   window.addEventListener("resize", handleResize);
-    //   handleResize();
-    //   return () => {
-    //     window.removeEventListener("resize", handleResize);
-    //   };
-    // }, []);
     React__default["default"].useEffect(function () {
         // console.log("isOpen", props.isOpen);
-        if (props.isOpen) {
+        if (isOpen) {
             modalWrapRef.current.focus();
             gsapWithCSS.to(modalWrapRef.current, {
                 display: "block",
@@ -11062,7 +11055,7 @@ var BottomSheet = React__default["default"].forwardRef(function (props, ref) {
                 duration: 0.4,
             });
         }
-    }, [props.isOpen]);
+    }, [isOpen]);
     var handleCustomPaddings = function () {
         if (props.customPaddingsMobile) {
             return props.customPaddingsMobile;
@@ -11077,7 +11070,7 @@ var BottomSheet = React__default["default"].forwardRef(function (props, ref) {
                 padding: handleCustomPaddings(),
             } },
             !props.hideHeader ? (React__default["default"].createElement(Header, { onCloseClick: handleCloseClick, title: props.title, smallTitle: props.smallTitle, noMaxWidth: true })) : null,
-            React__default["default"].createElement("div", { className: "".concat(modules_efc4e723$d.contentWrapper, " ").concat(modules_efc4e723$d.popupContentClassName), ref: contentWrapperRef }, props.children)),
+            React__default["default"].createElement("div", { className: "".concat(modules_efc4e723$d.contentWrapper, " ").concat(modules_efc4e723$d.popupContentClassName) }, props.children)),
         React__default["default"].createElement("div", { ref: backgroundRef, className: modules_efc4e723$d.background })));
 });
 BottomSheet.defaultProps = {
@@ -14030,8 +14023,8 @@ var Popup = React__default["default"].forwardRef(function (props, ref) {
     var modalWrapRef = React__default["default"].useRef(null);
     var popupRef = React__default["default"].useRef(null);
     var gradients = React__default["default"].useRef(null);
-    var _a = React__default["default"].useState(false), isShown = _a[0], setIsShown = _a[1];
-    var _b = React__default["default"].useState(false), isAppeared = _b[0], setIsAppeared = _b[1];
+    var _a = React__default["default"].useState(false), isOpen = _a[0], setIsOpen = _a[1];
+    var _b = React__default["default"].useState(false), isShown = _b[0], setIsShown = _b[1];
     //////////////
     // IMPERIAL //
     //////////////
@@ -14039,31 +14032,36 @@ var Popup = React__default["default"].forwardRef(function (props, ref) {
         getRef: function () {
             return popupRef.current;
         },
+        open: function () {
+            setIsOpen(true);
+        },
+        close: function () {
+            setIsOpen(false);
+        },
     }); });
+    //////////////
+    // HANDLERS //
+    //////////////
+    var handleCloseClick = function () {
+        if (isShown && props.closeOutside && !props.isMobileBreakpoint) {
+            props.onCloseClick();
+        }
+    };
     ///////////////
     //// HOOKS ////
     ///////////////
     useOutsideClick(popupRef, function () {
         // console.log(isAppeared, props.closeOutside, props.isMobileBreakpoint);
-        if (isAppeared && props.closeOutside && !props.isMobileBreakpoint) {
-            // console.log("clicked outside");
-            props.onCloseClick();
-        }
+        // console.log("clicked outside");
+        handleCloseClick();
     });
-    //////////////
-    // HANDLERS //
-    //////////////
-    var handleCloseClick = function () {
-        props.onCloseClick();
-    };
     /////////////////
     // USE EFFECTS //
     /////////////////
     React__default["default"].useEffect(function () {
         var _a;
-        if (props.isOpen) {
+        if (isOpen) {
             (_a = modalWrapRef.current) === null || _a === void 0 ? void 0 : _a.focus();
-            // modalWrapRef.current.style.display = "block";
             gsapWithCSS.to(modalWrapRef.current, {
                 opacity: 1,
                 display: "block",
@@ -14079,16 +14077,12 @@ var Popup = React__default["default"].forwardRef(function (props, ref) {
             gsapWithCSS.to(gradients.current, {
                 opacity: 1,
                 scale: 1,
-                onStart: function () {
-                    setIsAppeared(true);
-                },
                 delay: 0.1,
                 duration: 1,
                 ease: "circ.out",
             });
         }
         else {
-            // modalWrapRef.current.style.display = "none";
             gsapWithCSS.to(modalWrapRef.current, {
                 display: "none",
                 pointerEvents: "none",
@@ -14104,14 +14098,11 @@ var Popup = React__default["default"].forwardRef(function (props, ref) {
             gsapWithCSS.to(gradients.current, {
                 opacity: 0,
                 scale: 0.1,
-                onStart: function () {
-                    setIsAppeared(false);
-                },
                 duration: 0.7,
                 ease: "circ.out",
             });
         }
-    }, [props.isOpen]);
+    }, [isOpen]);
     var handleCustomPaddings = function () {
         if (!props.isMobileBreakpoint) {
             if (props.customPaddings) {
@@ -14162,6 +14153,8 @@ Popup.defaultProps = {
 };
 
 var Modal = React__default["default"].forwardRef(function (props, ref) {
+    var popupRef = React__default["default"].useRef(null);
+    var bottomSheetRef = React__default["default"].useRef(null);
     var _a = React__default["default"].useState(props.isOpen), isOpen = _a[0], setIsOpen = _a[1];
     var _b = React__default["default"].useState(false), isMobileBreakpoint = _b[0], setIsMobileBreakpoint = _b[1];
     //////////////
@@ -14198,23 +14191,34 @@ var Modal = React__default["default"].forwardRef(function (props, ref) {
         };
     }, []);
     React__default["default"].useEffect(function () {
-        window.pageYOffset || document.documentElement.scrollTop;
+        var _a, _b, _c, _d;
         if (isOpen) {
             document.body.style.overflow = "hidden";
             document.body.style.touchAction = "none";
+            (_a = popupRef.current) === null || _a === void 0 ? void 0 : _a.open();
+            if (props.isBottomSheet && isMobileBreakpoint) {
+                (_b = bottomSheetRef.current) === null || _b === void 0 ? void 0 : _b.open();
+            }
         }
         else {
             document.body.style.removeProperty("overflow");
             document.body.style.removeProperty("touch-action");
+            (_c = popupRef.current) === null || _c === void 0 ? void 0 : _c.close();
+            if (props.isBottomSheet && isMobileBreakpoint) {
+                (_d = bottomSheetRef.current) === null || _d === void 0 ? void 0 : _d.close();
+            }
         }
     }, [isOpen]);
+    React__default["default"].useEffect(function () {
+        setIsOpen(false);
+    }, [props.isBottomSheet, isMobileBreakpoint]);
     var handleOnCloseClick = function () {
         if (props.onCloseClick) {
             props.onCloseClick();
         }
         setIsOpen(false);
     };
-    return ReactDOM__default["default"].createPortal(React__default["default"].createElement(React__default["default"].Fragment, null, props.isBottomSheet && isMobileBreakpoint ? (React__default["default"].createElement(BottomSheet, __assign({}, props, { isMobileBreakpoint: isMobileBreakpoint, isOpen: isOpen, onCloseClick: handleOnCloseClick }))) : (React__default["default"].createElement(Popup, __assign({}, props, { isMobileBreakpoint: isMobileBreakpoint, isOpen: isOpen, onCloseClick: handleOnCloseClick })))), document.body);
+    return ReactDOM__default["default"].createPortal(React__default["default"].createElement(React__default["default"].Fragment, null, props.isBottomSheet && isMobileBreakpoint ? (React__default["default"].createElement(BottomSheet, __assign({}, props, { isMobileBreakpoint: isMobileBreakpoint, onCloseClick: handleOnCloseClick, ref: bottomSheetRef }))) : (React__default["default"].createElement(Popup, __assign({}, props, { isMobileBreakpoint: isMobileBreakpoint, onCloseClick: handleOnCloseClick, ref: popupRef })))), document.body);
 });
 Modal.displayName = "Modal";
 Modal.defaultProps = {
@@ -14557,35 +14561,36 @@ var arrowSVG = (React__default["default"].createElement("svg", { width: "10", he
 ///////// CARDS SLIDER //////////
 /////////////////////////////////
 var CSSSlider = function (props) {
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x, _y, _z, _0, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11;
+    console.log(props);
     var desktopBreakpoint = {
-        breakpoint: ((_a = props.desktopBreakpoint) === null || _a === void 0 ? void 0 : _a.breakpoint) || 1024,
-        cardsToShow: ((_b = props.desktopBreakpoint) === null || _b === void 0 ? void 0 : _b.cardsToShow) || 3,
-        sidePaddingOffset: ((_c = props.desktopBreakpoint) === null || _c === void 0 ? void 0 : _c.sidePaddingOffset) || 40,
-        shiftHiddenCard: ((_d = props.desktopBreakpoint) === null || _d === void 0 ? void 0 : _d.shiftHiddenCard) || 0,
-        disableSideFading: ((_e = props.desktopBreakpoint) === null || _e === void 0 ? void 0 : _e.disableSideFading) || true,
-        hideArrows: ((_f = props.desktopBreakpoint) === null || _f === void 0 ? void 0 : _f.hideArrows) || false,
+        breakpoint: (_b = (_a = props.desktopBreakpoint) === null || _a === void 0 ? void 0 : _a.breakpoint) !== null && _b !== void 0 ? _b : 1024,
+        cardsToShow: (_d = (_c = props.desktopBreakpoint) === null || _c === void 0 ? void 0 : _c.cardsToShow) !== null && _d !== void 0 ? _d : 3,
+        sidePaddingOffset: (_f = (_e = props.desktopBreakpoint) === null || _e === void 0 ? void 0 : _e.sidePaddingOffset) !== null && _f !== void 0 ? _f : 40,
+        shiftHiddenCard: (_h = (_g = props.desktopBreakpoint) === null || _g === void 0 ? void 0 : _g.shiftHiddenCard) !== null && _h !== void 0 ? _h : 0,
+        disableSideFading: (_k = (_j = props.desktopBreakpoint) === null || _j === void 0 ? void 0 : _j.disableSideFading) !== null && _k !== void 0 ? _k : true,
+        hideArrows: (_m = (_l = props.desktopBreakpoint) === null || _l === void 0 ? void 0 : _l.hideArrows) !== null && _m !== void 0 ? _m : false,
     };
     var tabletBreakpoint = {
-        breakpoint: ((_g = props.tabletBreakpoint) === null || _g === void 0 ? void 0 : _g.breakpoint) || 768,
-        cardsToShow: ((_h = props.tabletBreakpoint) === null || _h === void 0 ? void 0 : _h.cardsToShow) || 2,
-        sidePaddingOffset: ((_j = props.tabletBreakpoint) === null || _j === void 0 ? void 0 : _j.sidePaddingOffset) || 40,
-        shiftHiddenCard: ((_k = props.tabletBreakpoint) === null || _k === void 0 ? void 0 : _k.shiftHiddenCard) || 0,
-        disableSideFading: ((_l = props.tabletBreakpoint) === null || _l === void 0 ? void 0 : _l.disableSideFading) || true,
-        hideArrows: ((_m = props.tabletBreakpoint) === null || _m === void 0 ? void 0 : _m.hideArrows) || false,
+        breakpoint: (_p = (_o = props.tabletBreakpoint) === null || _o === void 0 ? void 0 : _o.breakpoint) !== null && _p !== void 0 ? _p : 768,
+        cardsToShow: (_r = (_q = props.tabletBreakpoint) === null || _q === void 0 ? void 0 : _q.cardsToShow) !== null && _r !== void 0 ? _r : 2,
+        sidePaddingOffset: (_t = (_s = props.tabletBreakpoint) === null || _s === void 0 ? void 0 : _s.sidePaddingOffset) !== null && _t !== void 0 ? _t : 40,
+        shiftHiddenCard: (_v = (_u = props.tabletBreakpoint) === null || _u === void 0 ? void 0 : _u.shiftHiddenCard) !== null && _v !== void 0 ? _v : 0,
+        disableSideFading: (_x = (_w = props.tabletBreakpoint) === null || _w === void 0 ? void 0 : _w.disableSideFading) !== null && _x !== void 0 ? _x : true,
+        hideArrows: (_z = (_y = props.tabletBreakpoint) === null || _y === void 0 ? void 0 : _y.hideArrows) !== null && _z !== void 0 ? _z : false,
     };
     var mobileBreakpoint = {
-        breakpoint: ((_o = props.mobileBreakpoint) === null || _o === void 0 ? void 0 : _o.breakpoint) || 480,
-        cardsToShow: ((_p = props.mobileBreakpoint) === null || _p === void 0 ? void 0 : _p.cardsToShow) || 1,
-        sidePaddingOffset: ((_q = props.mobileBreakpoint) === null || _q === void 0 ? void 0 : _q.sidePaddingOffset) || 20,
-        shiftHiddenCard: ((_r = props.mobileBreakpoint) === null || _r === void 0 ? void 0 : _r.shiftHiddenCard) || 0,
-        disableSideFading: ((_s = props.mobileBreakpoint) === null || _s === void 0 ? void 0 : _s.disableSideFading) || true,
-        hideArrows: ((_t = props.mobileBreakpoint) === null || _t === void 0 ? void 0 : _t.hideArrows) || true,
+        breakpoint: (_1 = (_0 = props.mobileBreakpoint) === null || _0 === void 0 ? void 0 : _0.breakpoint) !== null && _1 !== void 0 ? _1 : 480,
+        cardsToShow: (_3 = (_2 = props.mobileBreakpoint) === null || _2 === void 0 ? void 0 : _2.cardsToShow) !== null && _3 !== void 0 ? _3 : 1,
+        sidePaddingOffset: (_5 = (_4 = props.mobileBreakpoint) === null || _4 === void 0 ? void 0 : _4.sidePaddingOffset) !== null && _5 !== void 0 ? _5 : 20,
+        shiftHiddenCard: (_7 = (_6 = props.mobileBreakpoint) === null || _6 === void 0 ? void 0 : _6.shiftHiddenCard) !== null && _7 !== void 0 ? _7 : 0,
+        disableSideFading: (_9 = (_8 = props.mobileBreakpoint) === null || _8 === void 0 ? void 0 : _8.disableSideFading) !== null && _9 !== void 0 ? _9 : true,
+        hideArrows: (_11 = (_10 = props.mobileBreakpoint) === null || _10 === void 0 ? void 0 : _10.hideArrows) !== null && _11 !== void 0 ? _11 : true,
     };
     var childrenRefs = React__default["default"].useRef([]);
-    var _u = React__default["default"].useState(desktopBreakpoint), currentBreakpoint = _u[0], setCurrentBreakpoint = _u[1];
-    var _v = React__default["default"].useState(0), activeIndex = _v[0], setActiveIndex = _v[1];
-    var _w = React__default["default"].useState(0), paginationAmount = _w[0], setPaginationAmount = _w[1];
+    var _12 = React__default["default"].useState(desktopBreakpoint), currentBreakpoint = _12[0], setCurrentBreakpoint = _12[1];
+    var _13 = React__default["default"].useState(0), activeIndex = _13[0], setActiveIndex = _13[1];
+    var _14 = React__default["default"].useState(0), paginationAmount = _14[0], setPaginationAmount = _14[1];
     var childrenArray = React__default["default"].Children.toArray(props.children);
     var setPaginationAlignment = function () {
         // console.log(props);
@@ -14658,6 +14663,7 @@ var CSSSlider = function (props) {
         if (props.onChange) {
             props.onChange(activeIndex);
         }
+        console.log(currentBreakpoint);
         // console.log(activeIndex, childrenArray.length);
     }, [activeIndex]);
     return (React__default["default"].createElement("section", { className: "".concat(modules_efc4e723$1.container, " ").concat(props.containterClassName) },
