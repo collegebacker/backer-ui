@@ -48,8 +48,6 @@ const arrowSVG = (
 /////////////////////////////////
 
 const CSSSlider: React.FC<Props> = (props) => {
-  console.log(props);
-
   const desktopBreakpoint = {
     breakpoint: props.desktopBreakpoint?.breakpoint ?? 1024,
     cardsToShow: props.desktopBreakpoint?.cardsToShow ?? 3,
@@ -170,8 +168,6 @@ const CSSSlider: React.FC<Props> = (props) => {
     if (props.onChange) {
       props.onChange(activeIndex);
     }
-
-    console.log(currentBreakpoint);
 
     // console.log(activeIndex, childrenArray.length);
   }, [activeIndex]);

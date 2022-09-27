@@ -14562,7 +14562,6 @@ var arrowSVG = (React__default["default"].createElement("svg", { width: "10", he
 /////////////////////////////////
 var CSSSlider = function (props) {
     var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x, _y, _z, _0, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11;
-    console.log(props);
     var desktopBreakpoint = {
         breakpoint: (_b = (_a = props.desktopBreakpoint) === null || _a === void 0 ? void 0 : _a.breakpoint) !== null && _b !== void 0 ? _b : 1024,
         cardsToShow: (_d = (_c = props.desktopBreakpoint) === null || _c === void 0 ? void 0 : _c.cardsToShow) !== null && _d !== void 0 ? _d : 3,
@@ -14663,7 +14662,6 @@ var CSSSlider = function (props) {
         if (props.onChange) {
             props.onChange(activeIndex);
         }
-        console.log(currentBreakpoint);
         // console.log(activeIndex, childrenArray.length);
     }, [activeIndex]);
     return (React__default["default"].createElement("section", { className: "".concat(modules_efc4e723$1.container, " ").concat(props.containterClassName) },
