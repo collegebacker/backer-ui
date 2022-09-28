@@ -10999,7 +10999,7 @@ var BottomSheet = React__default["default"].forwardRef(function (props, ref) {
     }, []);
     useDidMountEffect(function () {
         // console.log("isOpen", props.isOpen);
-        // gsap.killTweensOf(modalWrapRef.current);
+        gsapWithCSS.killTweensOf(modalWrapRef.current);
         if (isOpen) {
             modalWrapRef.current.focus();
             // console.log("open");
