@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+import { useDidMountEffect } from "../../hooks";
 import BottomSheet from "./BottomSheet";
 import Popup from "./Popup";
 
@@ -76,6 +77,7 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
       document.body.style.touchAction = "none";
 
       popupRef.current?.open();
+      // console.log("open");
 
       if (props.isBottomSheet && isMobileBreakpoint) {
         bottomSheetRef.current?.open();
@@ -85,6 +87,7 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
       document.body.style.removeProperty("touch-action");
 
       popupRef.current?.close();
+      // console.log("close");
 
       if (props.isBottomSheet && isMobileBreakpoint) {
         bottomSheetRef.current?.close();
@@ -92,7 +95,7 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
     }
   }, [isOpen]);
 
-  React.useEffect(() => {
+  useDidMountEffect(() => {
     setIsOpen(false);
   }, [props.isBottomSheet, isMobileBreakpoint]);
 

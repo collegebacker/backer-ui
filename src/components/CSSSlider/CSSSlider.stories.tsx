@@ -140,9 +140,14 @@ Default.args = {
   // desktopBreakpoint: {
   //   cardsToShow: 2,
   //   sidePaddingOffset: 0,
-  //   disableSideFading: false,
   // },
-  // spaceBetween: 0
+  // tabletBreakpoint: {
+  //   sidePaddingOffset: 0,
+  // },
+  mobileBreakpoint: {
+    sidePaddingOffset: 0,
+  },
+  // spaceBetween: 0,
 
   // disableSideFading: true,
   // paginationAlignment: "left",

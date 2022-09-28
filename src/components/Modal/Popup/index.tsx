@@ -2,7 +2,7 @@ import React from "react";
 import gsap from "gsap";
 import FocusTrap from "focus-trap-react";
 
-import { useOutsideClick } from "../../../hooks";
+import { useOutsideClick, useDidMountEffect } from "../../../hooks";
 
 import styles from "./styles.module.scss";
 import Header from "../Header";
@@ -74,9 +74,12 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
   // USE EFFECTS //
   /////////////////
 
-  React.useEffect(() => {
+  useDidMountEffect(() => {
+    // kill all animations
+    gsap.killTweensOf(modalWrapRef.current);
+
     if (isOpen) {
-      modalWrapRef.current?.focus();
+      // console.log("open");
 
       gsap.to(modalWrapRef.current, {
         opacity: 1,
@@ -99,6 +102,8 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
         ease: "circ.out",
       });
     } else {
+      // console.log("close");
+
       gsap.to(modalWrapRef.current, {
         display: "none",
         pointerEvents: "none",
@@ -146,6 +151,7 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
         <FocusTrap
           containerElements={[popupRef.current]}
           focusTrapOptions={{
+            initialFocus: popupRef.current,
             allowOutsideClick: true,
             clickOutsideDeactivates: true,
           }}
