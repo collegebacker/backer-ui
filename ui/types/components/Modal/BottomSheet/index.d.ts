@@ -10,6 +10,7 @@ interface Props {
     hideHeader?: boolean;
     smallTitle?: boolean;
     dataAttrs?: Record<string, string>;
+    maxSheetHeight?: string;
     onCloseClick?: () => void;
 }
 declare const BottomSheet: React.ForwardRefExoticComponent<Props & React.RefAttributes<any>>;

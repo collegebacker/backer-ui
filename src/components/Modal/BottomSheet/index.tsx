@@ -17,6 +17,7 @@ interface Props {
   hideHeader?: boolean;
   smallTitle?: boolean;
   dataAttrs?: Record<string, string>;
+  maxSheetHeight?: string;
   onCloseClick?: () => void;
 }
 
@@ -167,6 +168,7 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
         } ${props.popupClassName}`}
         style={{
           padding: handleCustomPaddings(),
+          maxHeight: props.maxSheetHeight ?? "100%",
         }}
       >
         {!props.hideHeader ? (

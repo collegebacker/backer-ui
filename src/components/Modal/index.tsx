@@ -19,6 +19,7 @@ export interface Props {
   isBottomSheet?: boolean;
   closeOutside?: boolean;
   dataAttrs?: Record<string, string>;
+  maxSheetHeight?: string;
   onCloseClick?: () => void;
 }
 
@@ -141,6 +142,7 @@ Modal.defaultProps = {
   isBottomSheet: false,
   closeOutside: true,
   onCloseClick: () => {},
+  maxSheetHeight: null,
 } as Partial<Props>;
 
 export default Modal;

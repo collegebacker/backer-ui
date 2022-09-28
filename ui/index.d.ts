@@ -232,6 +232,7 @@ interface Props$8 {
     isBottomSheet?: boolean;
     closeOutside?: boolean;
     dataAttrs?: Record<string, string>;
+    maxSheetHeight?: string;
     onCloseClick?: () => void;
 }
 declare const Modal: React.ForwardRefExoticComponent<Props$8 & React.RefAttributes<any>>;
