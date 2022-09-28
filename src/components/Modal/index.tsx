@@ -72,32 +72,32 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
   }, []);
 
   React.useEffect(() => {
+    // console.log("isOpen", isOpen);
+
     if (isOpen) {
       document.body.style.overflow = "hidden";
       document.body.style.touchAction = "none";
 
+      bottomSheetRef.current?.open();
       popupRef.current?.open();
-      // console.log("open");
 
       if (props.isBottomSheet && isMobileBreakpoint) {
+        // console.log("open out");
         bottomSheetRef.current?.open();
+      } else {
+        popupRef.current?.open();
       }
     } else {
       document.body.style.removeProperty("overflow");
       document.body.style.removeProperty("touch-action");
 
-      popupRef.current?.close();
-      // console.log("close");
-
       if (props.isBottomSheet && isMobileBreakpoint) {
         bottomSheetRef.current?.close();
+      } else {
+        popupRef.current?.close();
       }
     }
-  }, [isOpen]);
-
-  useDidMountEffect(() => {
-    setIsOpen(false);
-  }, [props.isBottomSheet, isMobileBreakpoint]);
+  }, [isOpen, isMobileBreakpoint, props.isBottomSheet]);
 
   const handleOnCloseClick = () => {
     if (props.onCloseClick) {

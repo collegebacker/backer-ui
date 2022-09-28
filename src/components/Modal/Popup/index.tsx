@@ -87,19 +87,20 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
         pointerEvents: "all",
         backgroundImage:
           "radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%)",
-
         duration: 0.1,
         onComplete: () => {
           popupRef.current?.classList.add(styles.popup_show);
-          setIsShown(true);
         },
       });
       gsap.to(gradients.current, {
         opacity: 1,
         scale: 1,
         delay: 0.1,
-        duration: 1,
+        duration: 0.5,
         ease: "circ.out",
+        onComplete: () => {
+          setIsShown(true);
+        },
       });
     } else {
       // console.log("close");
@@ -147,7 +148,7 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
 
   return (
     <>
-      {isShown ? (
+      {/* {isShown ? (
         <FocusTrap
           containerElements={[popupRef.current]}
           focusTrapOptions={{
@@ -156,7 +157,7 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
             clickOutsideDeactivates: true,
           }}
         />
-      ) : null}
+      ) : null} */}
       <aside
         role="dialog"
         aria-modal

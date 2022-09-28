@@ -4,7 +4,7 @@ import gsap from "gsap";
 import styles from "./styles.module.scss";
 import Header from "../Header";
 
-import { useOutsideClick } from "../../../hooks";
+import { useOutsideClick, useDidMountEffect } from "../../../hooks";
 
 interface Props {
   popupClassName?: string;
@@ -92,10 +92,14 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
     };
   }, []);
 
-  React.useEffect(() => {
+  useDidMountEffect(() => {
     // console.log("isOpen", props.isOpen);
+    // gsap.killTweensOf(modalWrapRef.current);
+
     if (isOpen) {
       modalWrapRef.current.focus();
+
+      // console.log("open");
 
       gsap.to(modalWrapRef.current, {
         display: "block",
@@ -113,6 +117,8 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
         duration: 0.4,
       });
     } else {
+      // console.log("close");
+
       gsap.to(modalWrapRef.current, {
         display: "none",
         pointerEvents: "none",
