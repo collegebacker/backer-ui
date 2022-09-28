@@ -14058,10 +14058,11 @@ var Popup = React__default["default"].forwardRef(function (props, ref) {
     /////////////////
     // USE EFFECTS //
     /////////////////
-    React__default["default"].useEffect(function () {
-        var _a;
+    useDidMountEffect(function () {
+        // kill all animations
+        gsapWithCSS.killTweensOf(modalWrapRef.current);
         if (isOpen) {
-            (_a = modalWrapRef.current) === null || _a === void 0 ? void 0 : _a.focus();
+            // console.log("open");
             gsapWithCSS.to(modalWrapRef.current, {
                 opacity: 1,
                 display: "block",
@@ -14083,6 +14084,7 @@ var Popup = React__default["default"].forwardRef(function (props, ref) {
             });
         }
         else {
+            // console.log("close");
             gsapWithCSS.to(modalWrapRef.current, {
                 display: "none",
                 pointerEvents: "none",
@@ -14122,6 +14124,7 @@ var Popup = React__default["default"].forwardRef(function (props, ref) {
     ///////////////
     return (React__default["default"].createElement(React__default["default"].Fragment, null,
         isShown ? (React__default["default"].createElement(focusTrapReact, { containerElements: [popupRef.current], focusTrapOptions: {
+                initialFocus: popupRef.current,
                 allowOutsideClick: true,
                 clickOutsideDeactivates: true,
             } })) : null,
@@ -14196,6 +14199,7 @@ var Modal = React__default["default"].forwardRef(function (props, ref) {
             document.body.style.overflow = "hidden";
             document.body.style.touchAction = "none";
             (_a = popupRef.current) === null || _a === void 0 ? void 0 : _a.open();
+            // console.log("open");
             if (props.isBottomSheet && isMobileBreakpoint) {
                 (_b = bottomSheetRef.current) === null || _b === void 0 ? void 0 : _b.open();
             }
@@ -14204,12 +14208,13 @@ var Modal = React__default["default"].forwardRef(function (props, ref) {
             document.body.style.removeProperty("overflow");
             document.body.style.removeProperty("touch-action");
             (_c = popupRef.current) === null || _c === void 0 ? void 0 : _c.close();
+            // console.log("close");
             if (props.isBottomSheet && isMobileBreakpoint) {
                 (_d = bottomSheetRef.current) === null || _d === void 0 ? void 0 : _d.close();
             }
         }
     }, [isOpen]);
-    React__default["default"].useEffect(function () {
+    useDidMountEffect(function () {
         setIsOpen(false);
     }, [props.isBottomSheet, isMobileBreakpoint]);
     var handleOnCloseClick = function () {
