@@ -7,6 +7,7 @@ export interface Props {
   className?: string;
   type?: "text" | "password" | "number" | "email";
   required?: boolean;
+  disabled?: boolean;
   name: string;
   label?: string;
   value?: string;
@@ -58,7 +59,9 @@ const Input = React.forwardRef<any, Props>((props, ref) => {
       ref={ref}
       className={`${styles.componentWrap} ${props.className} ${
         props.isInvalid ? styles.error : ""
-      } ${props.isInvalid ? styles.shake : ""}`}
+      } ${props.isInvalid ? styles.shake : ""}
+        ${props.disabled ? styles.disabled : ""}
+      `}
     >
       <div
         className={`${styles.inputWrap}`}
@@ -95,6 +98,7 @@ const Input = React.forwardRef<any, Props>((props, ref) => {
           onBlur={props.onBlur}
           onFocus={props.onFocus}
           onInvalid={props.onInvalid}
+          disabled={props.disabled}
         />
 
         {props.label !== "" ? (
@@ -135,6 +139,7 @@ Input.defaultProps = {
   type: "text",
   required: false,
   autoFocus: false,
+  disabled: false,
   isInvalid: false,
   errorMessage: "",
   hideSpinButton: true,

@@ -3,6 +3,7 @@ export interface Props {
     className?: string;
     type?: "text" | "password" | "number" | "email";
     required?: boolean;
+    disabled?: boolean;
     name: string;
     label?: string;
     value?: string;

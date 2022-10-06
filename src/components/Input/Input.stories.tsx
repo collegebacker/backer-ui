@@ -39,6 +39,7 @@ export const useImperativeHandle = SetValueUseImperativeHandleTemplate.bind({});
 useImperativeHandle.args = {
   isInvalid: false,
   autoFocus: false,
+  disabled: false,
   required: false,
   value: "",
   hideSpinButton: true,
