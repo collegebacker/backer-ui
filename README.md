@@ -81,3 +81,44 @@ import { Button } from "@collegebacker/backer-ui/ui";
 
 14. Create tag.
 15. Gongratulations! You have successfully released a new version of the project. 🎉
+
+---
+
+# Style guide
+
+1. Use `@media`, `pseudo-classes`, `pseudo-elements` etc. only inside classes — no in the end of the file
+
+```scss
+.dot {
+  opacity: 0.3;
+  margin-right: 12px;
+  transition: all 0.1s ease;
+  
+  &:last-child {
+    margin-right: 0;
+  }
+  
+  @media only screen and (max-width: $grid-tablet-breakpoint) {
+    opacity: 0.4;
+  }
+}
+```
+
+2. Use `@media` from desktop to mobile
+
+```scss
+.dot {
+  // default desktop
+
+  @media only screen and (max-width: $grid-tablet-breakpoint) {
+    // tablet
+  }
+  
+  @media only screen and (max-width: $grid-mobile-breakpoint) {
+    // mobile
+  }
+}
+
+```
+
+3. There are no cases where we use unproportional paddings or margins like `padding: 23px 0 35px 29px;`
