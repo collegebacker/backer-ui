@@ -121,4 +121,4 @@ import { Button } from "@collegebacker/backer-ui/ui";
 
 ```
 
-3. There are no cases where we use unproportional paddings or margins like `padding: 23px 0 35px 29px;`
+3. There are no cases where we use unproportional paddings or margins like `padding: 23px 0 35px 29px;`. If you see sizes like this — write to a  designer
