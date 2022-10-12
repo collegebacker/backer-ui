@@ -5,14 +5,15 @@ import Text from '../../Text'
 
 import styles from './styles.module.scss'
 
+interface Props {
+  handle: string;
+  appUrl: string;
+}
 
 const FundContributionSection = ({
   handle,
   appUrl
-} : {
-  handle: string
-  appUrl: string
-}) => {
+} : Props) => {
   const planData = [
     {
       planNum: 1,
