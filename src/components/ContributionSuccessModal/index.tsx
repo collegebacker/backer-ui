@@ -132,7 +132,7 @@ const ContributionSuccessModal = React.forwardRef<any, Props>((props, ref) => {
   const queryParams = getQuery();
   const firstContribution = queryParams.get("type") === "firstContribution";
   const gift = queryParams.get("type") === "gift";
-
+  console.log(history)
   const {
     amount,
     frequency,
@@ -157,6 +157,8 @@ const ContributionSuccessModal = React.forwardRef<any, Props>((props, ref) => {
       isOpen={firstContribution || gift}
       onCloseClick={() => {
         if (queryParams) {
+          console.log(history)
+          console.log(queryParams)
           queryParams.delete("type");
           history.replace({
             search: queryParams.toString(),
