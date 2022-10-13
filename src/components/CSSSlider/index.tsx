@@ -169,7 +169,7 @@ const CSSSlider: React.FC<Props> = (props) => {
       props.onChange(activeIndex);
     }
 
-    // console.log(activeIndex, childrenArray.length);
+    console.log(currentBreakpoint.cardsToShow, paginationAmount);
   }, [activeIndex]);
 
   return (

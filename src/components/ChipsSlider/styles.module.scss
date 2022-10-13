@@ -26,10 +26,6 @@
   outline-color: var(--color-accent-transparent-200);
   transition: outline-offset 0.2s ease, outline-color 0.2s ease;
 
-  // div:first-child {
-  //   height: auto;
-  // }
-
   &::-webkit-scrollbar {
     display: none;
   }
