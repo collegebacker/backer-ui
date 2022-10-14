@@ -156,6 +156,7 @@ const ContributionSuccessModal = React.forwardRef<any, Props>((props, ref) => {
       title=""
       isOpen={firstContribution || gift}
       onCloseClick={() => {
+        alert('HEEEEY YO!')
         if (queryParams) {
           console.log(history)
           console.log(queryParams)
