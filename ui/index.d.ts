@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface Props$o {
+interface Props$p {
     className?: string;
     style?: React.CSSProperties;
     mode?: "primary" | "accent" | "outline" | "ghost" | "outline-inverse";
@@ -20,26 +20,26 @@ interface Props$o {
     onSubmit?: (event: any) => void;
     onKeyPress?: (event: any) => void;
 }
-declare const Button: React.ForwardRefExoticComponent<Props$o & React.RefAttributes<any>>;
+declare const Button: React.ForwardRefExoticComponent<Props$p & React.RefAttributes<any>>;
 
-interface Props$n {
+interface Props$o {
     className?: string;
     style?: React.CSSProperties;
     name: IconTypes;
     color?: string;
     onClick?: () => void;
 }
-declare const Icon: React.FC<Props$n>;
+declare const Icon: React.FC<Props$o>;
 
-interface Props$m {
+interface Props$n {
     className?: string;
     style?: React.CSSProperties;
     mode?: "light" | "dark";
     name: "visa" | "paypal" | "apple-pay" | "apple-pay-framed" | "g-pay" | "g-pay-framed" | "mastercard";
 }
-declare const PaymentLogo: React.FC<Props$m>;
+declare const PaymentLogo: React.FC<Props$n>;
 
-interface Props$l {
+interface Props$m {
     className?: string;
     type?: "text" | "password" | "number" | "email";
     required?: boolean;
@@ -65,9 +65,9 @@ interface Props$l {
     onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
     onInvalid?: (event: React.FormEvent<HTMLInputElement>) => void;
 }
-declare const Input: React.ForwardRefExoticComponent<Props$l & React.RefAttributes<any>>;
+declare const Input: React.ForwardRefExoticComponent<Props$m & React.RefAttributes<any>>;
 
-interface Props$k {
+interface Props$l {
     className?: string;
     type?: "text" | "password" | "number" | "email" | "money";
     allowCents?: boolean;
@@ -91,9 +91,9 @@ interface Props$k {
     onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
     onInvalid?: (event: React.FormEvent<HTMLInputElement>) => void;
 }
-declare const GhostInput: React.ForwardRefExoticComponent<Props$k & React.RefAttributes<any>>;
+declare const GhostInput: React.ForwardRefExoticComponent<Props$l & React.RefAttributes<any>>;
 
-interface Props$j {
+interface Props$k {
     tabIndex?: number;
     className?: string;
     style?: React.CSSProperties;
@@ -106,21 +106,21 @@ interface Props$j {
     onFocus?: (nums: string) => void;
     onResend?: (event: any) => void;
 }
-declare const CodeInput: React.ForwardRefExoticComponent<Props$j & React.RefAttributes<any>>;
+declare const CodeInput: React.ForwardRefExoticComponent<Props$k & React.RefAttributes<any>>;
 
-interface Props$i {
+interface Props$j {
     className?: string;
     type?: "default" | "foundation" | "sign";
     hoverAnimation?: boolean;
 }
-declare const Logo: React.ForwardRefExoticComponent<Props$i & React.RefAttributes<any>>;
+declare const Logo: React.ForwardRefExoticComponent<Props$j & React.RefAttributes<any>>;
 
 declare type ItemType$1 = {
     label: string;
     value: any;
     caption?: string;
 };
-interface Props$h {
+interface Props$i {
     containerClassName?: string;
     arrowsClassName?: string;
     items: Array<ItemType$1>;
@@ -137,21 +137,21 @@ interface Props$h {
     alwaysShowOverlayGradients?: boolean;
     onChange?: (index: number) => void;
 }
-declare const ChipsSlider: React.FC<Props$h>;
+declare const ChipsSlider: React.FC<Props$i>;
 
 declare type ItemType = {
     label: string;
     value: any;
 };
-interface Props$g {
+interface Props$h {
     className?: string;
     defaultIndex?: number;
     items: Array<ItemType>;
     onChange?: (index: number) => void;
 }
-declare const ChipsSelector: React.FC<Props$g>;
+declare const ChipsSelector: React.FC<Props$h>;
 
-interface Props$f {
+interface Props$g {
     containterClassName?: string;
     paginationClassName?: string;
     arrowsClassName?: string;
@@ -170,9 +170,9 @@ interface Props$f {
     children: React.ReactNode;
     onChange?: (index: number) => void;
 }
-declare const SliderWrapper: React.FC<Props$f>;
+declare const SliderWrapper: React.FC<Props$g>;
 
-interface Props$e {
+interface Props$f {
     tabIndex?: number;
     className?: string;
     disabled?: boolean;
@@ -184,23 +184,23 @@ interface Props$e {
     onKeyDown?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
     onKeyUp?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
 }
-declare const ArrowButton: React.ForwardRefExoticComponent<Props$e & React.RefAttributes<any>>;
+declare const ArrowButton: React.ForwardRefExoticComponent<Props$f & React.RefAttributes<any>>;
 
-interface Props$d {
+interface Props$e {
     className?: string;
     style?: React.CSSProperties;
     totalAmount: number;
     activeIndex: number;
     visibleAmount?: number;
 }
-declare const DotPagination: React.FC<Props$d>;
+declare const DotPagination: React.FC<Props$e>;
 
-interface Props$c {
+interface Props$d {
     className?: string;
 }
-declare const Divider: React.FC<Props$c>;
+declare const Divider: React.FC<Props$d>;
 
-interface Props$b {
+interface Props$c {
     className?: string;
     style?: React.CSSProperties;
     tag: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span" | "a" | "ul" | "ol" | "li" | "label";
@@ -209,17 +209,17 @@ interface Props$b {
     marketingStyle?: MarketingTypographyTypes;
     [key: string]: any;
 }
-declare const Text: React.ForwardRefExoticComponent<Pick<Props$b, keyof Props$b> & React.RefAttributes<any>>;
+declare const Text: React.ForwardRefExoticComponent<Pick<Props$c, keyof Props$c> & React.RefAttributes<any>>;
 
-interface Props$a {
+interface Props$b {
     className?: string;
     style?: React.CSSProperties;
     size?: "small" | "medium-small" | "medium" | "large";
     color?: string;
 }
-declare const Spinner: React.FC<Props$a>;
+declare const Spinner: React.FC<Props$b>;
 
-interface Props$9 {
+interface Props$a {
     isOpen?: boolean;
     popupClassName?: string;
     popupContentClassName?: string;
@@ -236,9 +236,9 @@ interface Props$9 {
     maxSheetHeight?: string;
     onCloseClick?: () => void;
 }
-declare const Modal: React.ForwardRefExoticComponent<Props$9 & React.RefAttributes<any>>;
+declare const Modal: React.ForwardRefExoticComponent<Props$a & React.RefAttributes<any>>;
 
-interface Props$8 {
+interface Props$9 {
     className?: string;
     textClassName?: string;
     items: Array<{
@@ -247,18 +247,18 @@ interface Props$8 {
         onClick: (event: any) => void;
     }>;
 }
-declare const ModalButtons: React.FC<Props$8>;
+declare const ModalButtons: React.FC<Props$9>;
 
-interface Props$7 {
+interface Props$8 {
     className?: string;
     items: Array<{
         title: string;
         content: React.ReactElement;
     }>;
 }
-declare const Accordion: React.FC<Props$7>;
+declare const Accordion: React.FC<Props$8>;
 
-interface Props$6 {
+interface Props$7 {
     className?: string;
     type?: "success" | "error" | "warning";
     outline?: boolean;
@@ -266,9 +266,9 @@ interface Props$6 {
     tabIndex?: number;
     onClick?: () => void;
 }
-declare const WarnMesssage$1: React.FC<Props$6>;
+declare const WarnMesssage$1: React.FC<Props$7>;
 
-interface Props$5 {
+interface Props$6 {
     className?: string;
     orientation?: "left" | "right";
     mode?: "outline" | "grey" | "velvet" | "peach";
@@ -279,9 +279,9 @@ interface Props$5 {
     tabIndex?: number;
     onClick?: () => void;
 }
-declare const WarnMesssage: React.FC<Props$5>;
+declare const WarnMesssage: React.FC<Props$6>;
 
-interface Props$4 {
+interface Props$5 {
     className?: string;
     mode?: "outline" | "grey" | "velvet" | "peach";
     title?: string;
@@ -289,11 +289,11 @@ interface Props$4 {
     tabIndex?: number;
     onClick?: () => void;
 }
-declare const ActionMesssage: React.FC<Props$4>;
+declare const ActionMesssage: React.FC<Props$5>;
 
 declare const Toast: React.ForwardRefExoticComponent<React.RefAttributes<unknown>>;
 
-interface Props$3 {
+interface Props$4 {
     isOpen?: boolean;
     zIndex?: number;
     delay?: number;
@@ -303,7 +303,7 @@ interface Props$3 {
         onClick: () => void;
     }>;
 }
-declare const ActionSheet: React.ForwardRefExoticComponent<Props$3 & React.RefAttributes<any>>;
+declare const ActionSheet: React.ForwardRefExoticComponent<Props$4 & React.RefAttributes<any>>;
 
 interface BreakpointProps {
     breakpoint?: number;
@@ -313,7 +313,7 @@ interface BreakpointProps {
     disableSideFading?: boolean;
     hideArrows?: boolean;
 }
-interface Props$2 {
+interface Props$3 {
     containterClassName?: string;
     spaceBetween?: number;
     arrowsOffset?: number;
@@ -324,18 +324,18 @@ interface Props$2 {
     tabletBreakpoint?: BreakpointProps;
     mobileBreakpoint?: BreakpointProps;
 }
-declare const CSSSlider: React.FC<Props$2>;
+declare const CSSSlider: React.FC<Props$3>;
 
-interface Props$1 {
+interface Props$2 {
     className?: string;
     count?: number;
     limit?: number;
 }
-declare const CountBadge: React.FC<Props$1>;
+declare const CountBadge: React.FC<Props$2>;
 
 declare type durationType = "onetime" | "3months" | "6months" | "1year" | "untilcollege";
 declare type frequencyType = "onetime" | "monthly" | "semimonthly";
-interface Props {
+interface Props$1 {
     onCloseClick?: any;
     contribution: {
         amount: number;
@@ -351,7 +351,7 @@ interface Props {
     fund?: boolean;
     ref: React.RefObject<any>;
 }
-declare const ContributionSuccessModal: React.ForwardRefExoticComponent<Pick<Props, "onCloseClick" | "contribution" | "fund"> & React.RefAttributes<any>>;
+declare const ContributionSuccessModal: React.ForwardRefExoticComponent<Pick<Props$1, "onCloseClick" | "contribution" | "fund"> & React.RefAttributes<any>>;
 
 interface ContributionProps {
     handle: string;
@@ -359,4 +359,12 @@ interface ContributionProps {
 }
 declare const FundContributionSection: React.FC<ContributionProps>;
 
-export { Accordion, ActionMesssage, ActionSheet, ArrowButton, Button, CSSSlider, ChipsSelector, ChipsSlider, CodeInput, ContributionSuccessModal, CountBadge, Divider, DotPagination, FundContributionSection, GhostInput, Icon, WarnMesssage as InfoMesssage, Input, Logo, Modal, ModalButtons, PaymentLogo, SliderWrapper, Spinner, Text, Toast, WarnMesssage$1 as WarnMesssage };
+interface Props {
+    className?: string;
+    name: string;
+    image?: string;
+    onClick?: () => void;
+}
+declare const FundProfilePic: React.FC<Props>;
+
+export { Accordion, ActionMesssage, ActionSheet, ArrowButton, Button, CSSSlider, ChipsSelector, ChipsSlider, CodeInput, ContributionSuccessModal, CountBadge, Divider, DotPagination, FundContributionSection, FundProfilePic, GhostInput, Icon, WarnMesssage as InfoMesssage, Input, Logo, Modal, ModalButtons, PaymentLogo, SliderWrapper, Spinner, Text, Toast, WarnMesssage$1 as WarnMesssage };

@@ -25,3 +25,4 @@ export { default as CSSSlider } from "./CSSSlider";
 export { default as CountBadge } from "./CountBadge";
 export { default as ContributionSuccessModal } from "./ContributionSuccessModal";
 export { default as FundContributionSection } from "./FundContributionSection";
+export { default as FundProfilePic } from "./FundProfilePic";
