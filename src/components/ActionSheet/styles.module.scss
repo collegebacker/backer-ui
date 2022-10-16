@@ -60,7 +60,7 @@
   border-top: 1px solid var(--color-main-transparent-80);
   transition: background-color 0.1s ease;
 
-  &:first-child {
+  &:first-of-type {
     border-top: none;
   }
 

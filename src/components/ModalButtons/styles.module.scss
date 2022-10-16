@@ -20,7 +20,7 @@
   transition: background 0.15s ease;
   border-left: 1px solid var(--color-main-50);
 
-  &:first-child {
+  &:first-of-type {
     border-left: none;
   }
 

@@ -39,7 +39,6 @@
 .header {
   display: flex;
   flex-direction: column;
-  margin-bottom: 30px;
 
   &_maxWidth {
     max-width: $max-popup-content-width;
@@ -47,7 +46,12 @@
 
   @media screen and (max-width: $mobile-breakpoint) {
     flex-direction: row-reverse;
+    margin-bottom: 30px;
   }
+}
+
+.bottomMargin {
+  margin-bottom: 30px;
 }
 
 .titleWrap {

@@ -1,0 +1,16 @@
+.fund {
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+}
+
+.letterPlaceholder {
+  width: 100%;
+  height: 100%;
+
+  text {
+    font-size: 22px;
+    font-weight: bold;
+    fill: white;
+  }
+}

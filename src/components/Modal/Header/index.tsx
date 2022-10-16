@@ -12,11 +12,13 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = (props) => {
   return (
-    <div className={styles.header}>
+    <div
+      className={`${styles.header} ${props.title ? styles.bottomMargin : ""}`}
+    >
       <button className={styles.closeButton} onClick={props.onCloseClick}>
         <div className={styles.closeButton__background} />
       </button>
-      {props.title ? (
+      {props.title || props.title !== "" ? (
         <div className={`${styles.titleWrap}`}>
           <h2
             className={`${styles.title} ${

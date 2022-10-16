@@ -47,27 +47,6 @@
   }
 }
 
-// EXAMPLES
-
-.modal-example {
-  display: flex;
-  margin: 40px -30px -30px;
-  border-top: 1px solid var(--color-main-50);
-
-  &__button {
-    cursor: pointer;
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 30px;
-
-    &:first-child {
-      border-right: 1px solid var(--color-main-50);
-    }
-  }
-}
-
 // DOCS
 
 hr {
@@ -91,14 +70,13 @@ hr {
   margin-bottom: 30px !important;
 }
 
-.sbdocs-p {
-  // font-size: 16px !important;
-  // max-width: 680px;
-  // margin-bottom: 24px !important;
-}
-
 .iframe {
   width: 100%;
   height: 500px;
   border: none;
+}
+
+.fundProfilePicClass {
+  width: 60px;
+  height: 60px;
 }

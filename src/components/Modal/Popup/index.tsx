@@ -148,16 +148,6 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
 
   return (
     <>
-      {/* {isShown ? (
-        <FocusTrap
-          containerElements={[popupRef.current]}
-          focusTrapOptions={{
-            initialFocus: popupRef.current,
-            allowOutsideClick: true,
-            clickOutsideDeactivates: true,
-          }}
-        />
-      ) : null} */}
       <aside
         role="dialog"
         aria-modal

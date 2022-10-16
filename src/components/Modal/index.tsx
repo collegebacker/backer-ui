@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import { useDidMountEffect } from "../../hooks";
 import BottomSheet from "./BottomSheet";
 import Popup from "./Popup";
 
