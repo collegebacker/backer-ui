@@ -16291,8 +16291,8 @@ var FundContributionSection = function (props) {
                 React__default["default"].createElement("p", { className: "typo-app-body-paragraph" }, "You can set the duration of your contribution on\u00A0the next step.")))));
 };
 
-var css = ".styles_module_fund__92eb6f90 {\n  border-radius: 50%;\n  background-size: cover;\n  background-position: center;\n}\n\n.styles_module_letterPlaceholder__92eb6f90 {\n  width: 100%;\n  height: 100%;\n}\n.styles_module_letterPlaceholder__92eb6f90 text {\n  font-size: 22px;\n  font-weight: bold;\n  fill: white;\n}";
-var modules_efc4e723 = {"fund":"styles_module_fund__92eb6f90","letterPlaceholder":"styles_module_letterPlaceholder__92eb6f90"};
+var css = ".styles_module_fund__2a0726b0 {\n  border-radius: 50%;\n  background-size: cover;\n  background-position: center;\n}\n\n.styles_module_letterPlaceholder__2a0726b0 {\n  width: 100%;\n  height: 100%;\n}\n.styles_module_letterPlaceholder__2a0726b0 text {\n  font-family: Arial, sans-serif;\n  font-size: 22px;\n  font-weight: 600;\n  fill: white;\n  text-decoration: none;\n}";
+var modules_efc4e723 = {"fund":"styles_module_fund__2a0726b0","letterPlaceholder":"styles_module_letterPlaceholder__2a0726b0"};
 n(css,{});
 
 /////////////////////////////////
