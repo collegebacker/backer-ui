@@ -1,29 +1,33 @@
-const colors = [
-  "hsla(277, 51%, 69%)",
-  "hsla(270, 49%, 61%)",
-  "hsla(240, 49%, 61%)",
-  "hsla(15, 91%, 68%)",
-  "hsla(198, 88%, 55%)",
-  "hsla(15, 85%, 70%)",
-  "hsla(225, 25%, 60%)",
-  "hsla(2, 65%, 71%)",
-  "hsla(349, 90%, 73%)",
-  "hsla(0, 68%, 66%)",
-  "hsla(41, 100%, 59%)",
-  "hsla(58, 64%, 53%)",
-  "hsla(166, 45%, 67%)",
-  "hsla(164, 61%, 51%)",
-  "hsla(145, 4%, 62%)",
+const gradients = [
+  ["#f6d365", "#fda085"],
+  ["#85D1BF", "#78B8B0"],
+  ["#FBB199", "#FFD12E"],
+  ["#77A3FA", "#C3ECB5"],
+  ["#E2ECA6", "#E58784"],
+  ["#E2ECA6", "#77A3FA"],
+  ["#A7A0EF", "#77A3FA"],
+  ["#F89D81", "#E7B7C5"],
+  ["#F1DCFC", "#C999CC"],
+  ["#5D6AD8", "#85D1BF"],
+  ["#FBB199", "#78B8B0"],
+  ["#E36C6C", "#FFB6B4"],
+  ["#B988D8", "#C3ECB5"],
+  ["#A7A0EF", "#88D6F8"],
+  ["#A6ECE8", "#DF8BD7"],
+  ["#EF819C", "#FADD77"],
+  ["#81CDF8", "#8D56AE"],
+  ["#FDCEBE", "#D981C0"],
+  ["#8CE8B1", "#4885E0"],
+  ["#9780D8", "#E3C8A0"],
+  ["#94BE39", "#FFF3B4"],
+  ["#F6ED96", "#727EF1"],
+  ["#EFA0E7", "#88D6F8"],
+  ["#DEA6EC", "#DFB48B"],
+  ["#FFA4A4", "#737ABB"],
+  ["#F8819D", "#A3E598"],
+  ["#FDCEBE", "#818AD9"],
+  ["#B17DC3", "#FFCFF2"],
 ];
-
-const darkerColors = colors.map((color) => {
-  const [h, s, l] = color
-    .replace("hsla(", "")
-    .replace(")", "")
-    .split(",")
-    .map((x) => parseInt(x));
-  return `hsla(${h + 120}, ${s + 20}%, ${l + 20}%)`;
-});
 
 const stringToGradient = (string: string) => {
   const trimmedString = string.trim().replace(/\s/g, "");
@@ -32,12 +36,9 @@ const stringToGradient = (string: string) => {
     .split("")
     .reduce((acc, char) => acc + char.charCodeAt(0), 0);
 
-  const startColor = colors[startHash % colors.length];
-  const endColor = darkerColors[startHash % darkerColors.length];
+  const gradient = startHash % gradients.length;
 
-  console.log(startColor, endColor);
-
-  return `linear-gradient(200deg, ${startColor} 0%, ${endColor} 100%)`;
+  return `linear-gradient(45deg, ${gradients[gradient][0]} 15%, ${gradients[gradient][1]} 90%)`;
 };
 
 export default stringToGradient;
