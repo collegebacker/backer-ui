@@ -1,48 +1,29 @@
 const colors = [
-  "#D09FCC",
-  "#B988D8",
-  "#9C6CCD",
-  "#F39271",
-  "#88D6F8",
-  "#77A3FA",
-  "#5D6AD8",
-  "#A7A0EF",
-  "#FBB199",
-  "#F18497",
-  "#E36C6C",
-  "#6171FD",
-  "#FFBD2E",
-  "#60B093",
-  "#85D1BF",
+  "hsla(277, 51%, 69%)",
+  "hsla(270, 49%, 61%)",
+  "hsla(240, 49%, 61%)",
+  "hsla(15, 91%, 68%)",
+  "hsla(198, 88%, 55%)",
+  "hsla(15, 85%, 70%)",
+  "hsla(225, 25%, 60%)",
+  "hsla(2, 65%, 71%)",
+  "hsla(349, 90%, 73%)",
+  "hsla(0, 68%, 66%)",
+  "hsla(41, 100%, 59%)",
+  "hsla(58, 64%, 53%)",
+  "hsla(166, 45%, 67%)",
+  "hsla(164, 61%, 51%)",
+  "hsla(145, 4%, 62%)",
 ];
 
-const lightenDarkenHex = (hex: string, amount: number) => {
-  let usePound = false;
-
-  if (hex[0] === "#") {
-    hex = hex.slice(1);
-    usePound = true;
-  }
-
-  const num = parseInt(hex, 16);
-
-  let r = (num >> 16) + amount;
-
-  if (r > 255) r = 255;
-  else if (r < 0) r = 0;
-
-  let b = ((num >> 8) & 0x00ff) + amount;
-
-  if (b > 255) b = 255;
-  else if (b < 0) b = 0;
-
-  let g = (num & 0x0000ff) + amount;
-
-  if (g > 255) g = 255;
-  else if (g < 0) g = 0;
-
-  return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16);
-};
+const darkerColors = colors.map((color) => {
+  const [h, s, l] = color
+    .replace("hsla(", "")
+    .replace(")", "")
+    .split(",")
+    .map((x) => parseInt(x));
+  return `hsla(${h + 120}, ${s + 20}%, ${l + 20}%)`;
+});
 
 const stringToGradient = (string: string) => {
   const trimmedString = string.trim().replace(/\s/g, "");
@@ -52,7 +33,7 @@ const stringToGradient = (string: string) => {
     .reduce((acc, char) => acc + char.charCodeAt(0), 0);
 
   const startColor = colors[startHash % colors.length];
-  const endColor = lightenDarkenHex(startColor, 50);
+  const endColor = darkerColors[startHash % darkerColors.length];
 
   console.log(startColor, endColor);
 
