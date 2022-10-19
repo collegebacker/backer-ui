@@ -1,2 +1,2 @@
-declare const stringToGradient: (string: string, saturation?: number, lightness?: number) => string;
+declare const stringToGradient: (string: string) => string;
 export default stringToGradient;
