@@ -360,6 +360,7 @@ interface ContributionProps {
 declare const FundContributionSection: React.FC<ContributionProps>;
 
 interface Props {
+    fundsArray: any;
     className?: string;
     name: string;
     image?: string;
@@ -367,4 +368,4 @@ interface Props {
 }
 declare const FundProfilePic: React.FC<Props>;
 
-export { Accordion, ActionMesssage, ActionSheet, ArrowButton, Button, CSSSlider, ChipsSelector, ChipsSlider, CodeInput, ContributionSuccessModal, CountBadge, Divider, DotPagination, FundContributionSection, FundProfilePic, GhostInput, Icon, WarnMesssage as InfoMesssage, Input, Logo, Modal, ModalButtons, PaymentLogo, SliderWrapper, Spinner, Text, Toast, WarnMesssage$1 as WarnMesssage };
+export { Accordion, ActionMesssage, ActionSheet, ArrowButton, Button, CSSSlider, ChipsSelector, ChipsSlider, CodeInput, ContributionSuccessModal, CountBadge, Divider, DotPagination, FundContributionSection, GhostInput, Icon, WarnMesssage as InfoMesssage, Input, Logo, Modal, ModalButtons, PaymentLogo, FundProfilePic as ProfilePic, SliderWrapper, Spinner, Text, Toast, WarnMesssage$1 as WarnMesssage };
