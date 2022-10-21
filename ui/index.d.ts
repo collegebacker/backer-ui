@@ -360,7 +360,6 @@ interface ContributionProps {
 declare const FundContributionSection: React.FC<ContributionProps>;
 
 interface Props {
-    fundsArray: any;
     className?: string;
     name: string;
     image?: string;

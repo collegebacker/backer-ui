@@ -1,6 +1,5 @@
 import React from "react";
 export interface Props {
-    fundsArray: any;
     className?: string;
     name: string;
     image?: string;

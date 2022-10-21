@@ -8,7 +8,6 @@ import { stringToGradient } from "../../utils";
 /////////////////////////////////
 
 export interface Props {
-  fundsArray: any;
   className?: string;
   name: string;
   image?: string;
