@@ -3,7 +3,7 @@
   "version": "0.15.3",
   "description": "A Backer component library",
   "scripts": {
-    "rollup": "rimraf ui && rollup -c",
+    "rollup": "rimraf ui && rimraf utils && rollup -c",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "chromatic": "npx chromatic --auto-accept-changes --project-token"

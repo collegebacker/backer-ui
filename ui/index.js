@@ -12312,6 +12312,25 @@ CountBadge.defaultProps = {
     limit: 99,
 };
 
+var css$2 = ".styles_module_fund__2a0726b0 {\n  border-radius: 50%;\n  background-size: cover;\n  background-position: center;\n}\n\n.styles_module_letterPlaceholder__2a0726b0 {\n  width: 100%;\n  height: 100%;\n}\n.styles_module_letterPlaceholder__2a0726b0 text {\n  font-family: Arial, sans-serif;\n  font-size: 22px;\n  font-weight: 600;\n  fill: white;\n  text-decoration: none;\n}";
+var modules_efc4e723$2 = {"fund":"styles_module_fund__2a0726b0","letterPlaceholder":"styles_module_letterPlaceholder__2a0726b0"};
+n(css$2,{});
+
+/////////////////////////////////
+///////// CARDS SLIDER //////////
+/////////////////////////////////
+var FundProfilePic = function (props) {
+    //
+    return (React__default["default"].createElement("div", { className: "".concat(modules_efc4e723$2.fund, " ").concat(props.className ? props.className : ""), style: {
+            backgroundImage: "url(".concat(props.image, "), ").concat(stringToGradient(props.name)),
+        }, onClick: props.onClick }, !props.image && (React__default["default"].createElement("svg", { className: modules_efc4e723$2.letterPlaceholder, viewBox: "0 0 60 60" },
+        React__default["default"].createElement("text", { x: "50%", y: "52%", textAnchor: "middle", alignmentBaseline: "middle" }, Array.from(props.name)[0].toUpperCase())))));
+};
+FundProfilePic.defaultProps = {
+    className: "",
+    image: "",
+};
+
 function _setPrototypeOf(o, p) {
   _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
     o.__proto__ = p;
@@ -16088,9 +16107,9 @@ if (process.env.NODE_ENV !== "production") {
   });
 }
 
-var css$2 = ".styles_module_title__32d3a7e8 {\n  padding-bottom: 10px;\n}\n\n.styles_module_subtitle__32d3a7e8 {\n  padding-bottom: 40px;\n}\n\n.styles_module_frequency__32d3a7e8 {\n  padding-bottom: 15px;\n}\n\n.styles_module_fundRecipient__32d3a7e8 {\n  padding-bottom: 24px;\n}\n\n.styles_module_bottomText__32d3a7e8 {\n  display: flex;\n  justify-content: space-between;\n  margin-bottom: 40px;\n}\n\n.styles_module_img__32d3a7e8 {\n  margin-right: 20px;\n  height: 30px;\n}\n\n.styles_module_polaroidContainer__32d3a7e8 {\n  position: relative;\n  transform-origin: center;\n  transform: rotate(5deg);\n  margin-top: 20px;\n}\n\n.styles_module_frame__32d3a7e8 {\n  width: 100px;\n  z-index: 2;\n  position: relative;\n}\n\n.styles_module_polaroidImage__32d3a7e8 {\n  z-index: 1;\n  position: absolute;\n  top: 8px;\n  left: 6px;\n  width: 90px;\n  height: 100px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  background: white;\n}\n\n.styles_module_divider__32d3a7e8 {\n  margin: 30px 0 40px;\n}";
-var modules_efc4e723$2 = {"title":"styles_module_title__32d3a7e8","subtitle":"styles_module_subtitle__32d3a7e8","frequency":"styles_module_frequency__32d3a7e8","fundRecipient":"styles_module_fundRecipient__32d3a7e8","bottomText":"styles_module_bottomText__32d3a7e8","img":"styles_module_img__32d3a7e8","polaroidContainer":"styles_module_polaroidContainer__32d3a7e8","frame":"styles_module_frame__32d3a7e8","polaroidImage":"styles_module_polaroidImage__32d3a7e8","divider":"styles_module_divider__32d3a7e8"};
-n(css$2,{});
+var css$1 = ".styles_module_title__32d3a7e8 {\n  padding-bottom: 10px;\n}\n\n.styles_module_subtitle__32d3a7e8 {\n  padding-bottom: 40px;\n}\n\n.styles_module_frequency__32d3a7e8 {\n  padding-bottom: 15px;\n}\n\n.styles_module_fundRecipient__32d3a7e8 {\n  padding-bottom: 24px;\n}\n\n.styles_module_bottomText__32d3a7e8 {\n  display: flex;\n  justify-content: space-between;\n  margin-bottom: 40px;\n}\n\n.styles_module_img__32d3a7e8 {\n  margin-right: 20px;\n  height: 30px;\n}\n\n.styles_module_polaroidContainer__32d3a7e8 {\n  position: relative;\n  transform-origin: center;\n  transform: rotate(5deg);\n  margin-top: 20px;\n}\n\n.styles_module_frame__32d3a7e8 {\n  width: 100px;\n  z-index: 2;\n  position: relative;\n}\n\n.styles_module_polaroidImage__32d3a7e8 {\n  z-index: 1;\n  position: absolute;\n  top: 8px;\n  left: 6px;\n  width: 90px;\n  height: 100px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  background: white;\n}\n\n.styles_module_divider__32d3a7e8 {\n  margin: 30px 0 40px;\n}";
+var modules_efc4e723$1 = {"title":"styles_module_title__32d3a7e8","subtitle":"styles_module_subtitle__32d3a7e8","frequency":"styles_module_frequency__32d3a7e8","fundRecipient":"styles_module_fundRecipient__32d3a7e8","bottomText":"styles_module_bottomText__32d3a7e8","img":"styles_module_img__32d3a7e8","polaroidContainer":"styles_module_polaroidContainer__32d3a7e8","frame":"styles_module_frame__32d3a7e8","polaroidImage":"styles_module_polaroidImage__32d3a7e8","divider":"styles_module_divider__32d3a7e8"};
+n(css$1,{});
 
 var _a;
 var durationTextMapping = (_a = {
@@ -16182,32 +16201,32 @@ var ContributionSuccessModal = React__default["default"].forwardRef(function (pr
             if (props.onCloseClick)
                 props.onCloseClick();
         }, ref: ref },
-        React__default["default"].createElement(Text, { tag: "h1", context: "app", appStyle: "title-medium", className: modules_efc4e723$2.title }, getTitle({ gift: gift, firstContribution: firstContribution })),
-        React__default["default"].createElement(Text, { tag: "p", context: "app", appStyle: "body-main", className: modules_efc4e723$2.subtitle }, getSubtitle({
+        React__default["default"].createElement(Text, { tag: "h1", context: "app", appStyle: "title-medium", className: modules_efc4e723$1.title }, getTitle({ gift: gift, firstContribution: firstContribution })),
+        React__default["default"].createElement(Text, { tag: "p", context: "app", appStyle: "body-main", className: modules_efc4e723$1.subtitle }, getSubtitle({
             gift: gift,
             firstContribution: firstContribution,
             fundName: fundName,
             recipientParentName: recipientParentName,
         })),
-        React__default["default"].createElement(Text, { tag: "p", context: "app", appStyle: "title-small", className: modules_efc4e723$2.frequency },
+        React__default["default"].createElement(Text, { tag: "p", context: "app", appStyle: "title-small", className: modules_efc4e723$1.frequency },
             currencyFormatter(amount),
             " ",
             getFrequencyLabel(frequency),
             " ",
             getDurationText(duration)),
-        React__default["default"].createElement(Text, { tag: "p", context: "app", appStyle: "body-main", className: modules_efc4e723$2.fundRecipient }, getPaymentText({
+        React__default["default"].createElement(Text, { tag: "p", context: "app", appStyle: "body-main", className: modules_efc4e723$1.fundRecipient }, getPaymentText({
             gift: gift,
             firstContribution: firstContribution,
             fundName: fundName,
             recipientName: recipientName,
         })),
-        photoUrl && (React__default["default"].createElement("div", { className: modules_efc4e723$2.polaroidContainer },
-            React__default["default"].createElement("img", { src: "https://storage.googleapis.com/backer_web_assets/frame.webp", alt: "", className: modules_efc4e723$2.frame }),
-            React__default["default"].createElement("img", { src: photoUrl, alt: "", className: modules_efc4e723$2.polaroidImage }))),
-        React__default["default"].createElement(Divider, { className: modules_efc4e723$2.divider }),
-        React__default["default"].createElement("div", { className: modules_efc4e723$2.bottomText },
-            React__default["default"].createElement("img", { alt: "", className: modules_efc4e723$2.img, src: "https://storage.googleapis.com/backer_web_assets/transaction.svg" }),
-            React__default["default"].createElement(Text, { tag: "p", context: "app", appStyle: "body-main", className: modules_efc4e723$2.confirmation }, getTransactionText({ gift: gift, firstContribution: firstContribution }))),
+        photoUrl && (React__default["default"].createElement("div", { className: modules_efc4e723$1.polaroidContainer },
+            React__default["default"].createElement("img", { src: "https://storage.googleapis.com/backer_web_assets/frame.webp", alt: "", className: modules_efc4e723$1.frame }),
+            React__default["default"].createElement("img", { src: photoUrl, alt: "", className: modules_efc4e723$1.polaroidImage }))),
+        React__default["default"].createElement(Divider, { className: modules_efc4e723$1.divider }),
+        React__default["default"].createElement("div", { className: modules_efc4e723$1.bottomText },
+            React__default["default"].createElement("img", { alt: "", className: modules_efc4e723$1.img, src: "https://storage.googleapis.com/backer_web_assets/transaction.svg" }),
+            React__default["default"].createElement(Text, { tag: "p", context: "app", appStyle: "body-main", className: modules_efc4e723$1.confirmation }, getTransactionText({ gift: gift, firstContribution: firstContribution }))),
         React__default["default"].createElement(Button, { label: "View your ".concat(props.fund ? "fund" : "gift"), onClick: function () {
                 // @ts-ignore
                 ref.current.close();
@@ -16218,25 +16237,25 @@ var ContributionSuccessModal = React__default["default"].forwardRef(function (pr
 });
 ContributionSuccessModal.displayName = "ContributionSuccessModal";
 
-var css$1 = ".styles_module_sectionBackerContribution__1482a5ad {\n  max-width: 500px;\n  margin: 0 auto;\n  position: relative;\n  z-index: 1;\n  padding: 0 20px;\n}\n@media only screen and (min-width: 961px) {\n  .styles_module_sectionBackerContribution__1482a5ad {\n    max-width: 886px;\n  }\n}\n\n.styles_module_slider__1482a5ad {\n  margin: 0 -20px;\n  width: calc(100% + 40px);\n}\n@media only screen and (min-width: 961px) {\n  .styles_module_slider__1482a5ad {\n    display: none;\n  }\n}\n\n.styles_module_contributionTitle__1482a5ad {\n  margin-bottom: 20px;\n}\n\n.styles_module_topCopyContainer__1482a5ad {\n  margin-bottom: 50px;\n}\n\n.styles_module_cardsContainer__1482a5ad {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  margin-bottom: 20px;\n}\n.styles_module_cardsContainer__1482a5ad .styles_module_card__1482a5ad {\n  margin-right: 20px;\n}\n.styles_module_cardsContainer__1482a5ad .styles_module_card__1482a5ad:last-child {\n  margin-right: 0;\n}\n\n.styles_module_card__1482a5ad {\n  height: 280px;\n  padding: 20px 30px 30px;\n  border-radius: 15px;\n  text-decoration: none;\n}\n.styles_module_card__1482a5ad p,\n.styles_module_card__1482a5ad h4 {\n  color: var(--color-main-500);\n}\n\n.styles_module_cardInnerContainer__1482a5ad {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  justify-content: space-between;\n  height: 100%;\n}\n\n.styles_module_amtContainer__1482a5ad {\n  display: flex;\n  align-items: baseline;\n}\n\n.styles_module_cardDescription__1482a5ad {\n  padding-bottom: 20px;\n}\n\n.styles_module_card1__1482a5ad {\n  background: radial-gradient(67.79% 83.21% at 50% 46.43%, #fdcebe 0%, #f6f0f9 100%);\n}\n\n.styles_module_card2__1482a5ad {\n  background: radial-gradient(65.2% 74.29% at 50% 50%, #c4c7f2 0%, #f6f0f9 100%);\n}\n\n.styles_module_card3__1482a5ad {\n  background: radial-gradient(50.7% 66.43% at 50% 50%, #ffc2ff 0%, #f6f0f9 100%);\n}\n\n.styles_module_card4__1482a5ad {\n  border: 1px solid var(--color-main-500);\n}\n\n.styles_module_customAmtContainer__1482a5ad {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  height: 180px;\n  width: 100%;\n  border: 1px solid var(--color-main-500);\n  border-radius: 15px;\n  padding: 23px 0 35px 29px;\n  text-decoration: none;\n}\n.styles_module_customAmtContainer__1482a5ad h3,\n.styles_module_customAmtContainer__1482a5ad p {\n  color: var(--color-main-500);\n}\n.styles_module_customAmtContainer__1482a5ad h3 {\n  margin-bottom: 10px;\n}\n\n.styles_module_customBtn__1482a5ad {\n  height: 30px;\n  width: -moz-fit-content;\n  width: fit-content;\n  padding: 5px 20px;\n  border-radius: 15px;\n  background-color: var(--color-main-500);\n}\n.styles_module_customBtn__1482a5ad span {\n  font-family: \"ABCMArfa\", sans-serif;\n  font-size: 12px;\n  font-weight: 500;\n  color: var(--color-main-0);\n}\n\n.styles_module_durationContainer__1482a5ad {\n  width: 100%;\n  margin-top: 30px;\n}\n\n.styles_module_durationInnerContainer__1482a5ad {\n  display: flex;\n  align-items: center;\n}\n\n.styles_module_desktopContainer__1482a5ad {\n  display: none;\n}\n@media only screen and (min-width: 961px) {\n  .styles_module_desktopContainer__1482a5ad {\n    display: flex;\n    flex-direction: column;\n  }\n}\n\n.styles_module_pointingHand__1482a5ad {\n  margin-right: 10px;\n}";
-var modules_efc4e723$1 = {"sectionBackerContribution":"styles_module_sectionBackerContribution__1482a5ad","slider":"styles_module_slider__1482a5ad","contributionTitle":"styles_module_contributionTitle__1482a5ad","topCopyContainer":"styles_module_topCopyContainer__1482a5ad","cardsContainer":"styles_module_cardsContainer__1482a5ad","card":"styles_module_card__1482a5ad","cardInnerContainer":"styles_module_cardInnerContainer__1482a5ad","amtContainer":"styles_module_amtContainer__1482a5ad","cardDescription":"styles_module_cardDescription__1482a5ad","card1":"styles_module_card1__1482a5ad","card2":"styles_module_card2__1482a5ad","card3":"styles_module_card3__1482a5ad","card4":"styles_module_card4__1482a5ad","customAmtContainer":"styles_module_customAmtContainer__1482a5ad","customBtn":"styles_module_customBtn__1482a5ad","durationContainer":"styles_module_durationContainer__1482a5ad","durationInnerContainer":"styles_module_durationInnerContainer__1482a5ad","desktopContainer":"styles_module_desktopContainer__1482a5ad","pointingHand":"styles_module_pointingHand__1482a5ad"};
-n(css$1,{});
+var css = ".styles_module_sectionBackerContribution__1482a5ad {\n  max-width: 500px;\n  margin: 0 auto;\n  position: relative;\n  z-index: 1;\n  padding: 0 20px;\n}\n@media only screen and (min-width: 961px) {\n  .styles_module_sectionBackerContribution__1482a5ad {\n    max-width: 886px;\n  }\n}\n\n.styles_module_slider__1482a5ad {\n  margin: 0 -20px;\n  width: calc(100% + 40px);\n}\n@media only screen and (min-width: 961px) {\n  .styles_module_slider__1482a5ad {\n    display: none;\n  }\n}\n\n.styles_module_contributionTitle__1482a5ad {\n  margin-bottom: 20px;\n}\n\n.styles_module_topCopyContainer__1482a5ad {\n  margin-bottom: 50px;\n}\n\n.styles_module_cardsContainer__1482a5ad {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  margin-bottom: 20px;\n}\n.styles_module_cardsContainer__1482a5ad .styles_module_card__1482a5ad {\n  margin-right: 20px;\n}\n.styles_module_cardsContainer__1482a5ad .styles_module_card__1482a5ad:last-child {\n  margin-right: 0;\n}\n\n.styles_module_card__1482a5ad {\n  height: 280px;\n  padding: 20px 30px 30px;\n  border-radius: 15px;\n  text-decoration: none;\n}\n.styles_module_card__1482a5ad p,\n.styles_module_card__1482a5ad h4 {\n  color: var(--color-main-500);\n}\n\n.styles_module_cardInnerContainer__1482a5ad {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  justify-content: space-between;\n  height: 100%;\n}\n\n.styles_module_amtContainer__1482a5ad {\n  display: flex;\n  align-items: baseline;\n}\n\n.styles_module_cardDescription__1482a5ad {\n  padding-bottom: 20px;\n}\n\n.styles_module_card1__1482a5ad {\n  background: radial-gradient(67.79% 83.21% at 50% 46.43%, #fdcebe 0%, #f6f0f9 100%);\n}\n\n.styles_module_card2__1482a5ad {\n  background: radial-gradient(65.2% 74.29% at 50% 50%, #c4c7f2 0%, #f6f0f9 100%);\n}\n\n.styles_module_card3__1482a5ad {\n  background: radial-gradient(50.7% 66.43% at 50% 50%, #ffc2ff 0%, #f6f0f9 100%);\n}\n\n.styles_module_card4__1482a5ad {\n  border: 1px solid var(--color-main-500);\n}\n\n.styles_module_customAmtContainer__1482a5ad {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  height: 180px;\n  width: 100%;\n  border: 1px solid var(--color-main-500);\n  border-radius: 15px;\n  padding: 23px 0 35px 29px;\n  text-decoration: none;\n}\n.styles_module_customAmtContainer__1482a5ad h3,\n.styles_module_customAmtContainer__1482a5ad p {\n  color: var(--color-main-500);\n}\n.styles_module_customAmtContainer__1482a5ad h3 {\n  margin-bottom: 10px;\n}\n\n.styles_module_customBtn__1482a5ad {\n  height: 30px;\n  width: -moz-fit-content;\n  width: fit-content;\n  padding: 5px 20px;\n  border-radius: 15px;\n  background-color: var(--color-main-500);\n}\n.styles_module_customBtn__1482a5ad span {\n  font-family: \"ABCMArfa\", sans-serif;\n  font-size: 12px;\n  font-weight: 500;\n  color: var(--color-main-0);\n}\n\n.styles_module_durationContainer__1482a5ad {\n  width: 100%;\n  margin-top: 30px;\n}\n\n.styles_module_durationInnerContainer__1482a5ad {\n  display: flex;\n  align-items: center;\n}\n\n.styles_module_desktopContainer__1482a5ad {\n  display: none;\n}\n@media only screen and (min-width: 961px) {\n  .styles_module_desktopContainer__1482a5ad {\n    display: flex;\n    flex-direction: column;\n  }\n}\n\n.styles_module_pointingHand__1482a5ad {\n  margin-right: 10px;\n}";
+var modules_efc4e723 = {"sectionBackerContribution":"styles_module_sectionBackerContribution__1482a5ad","slider":"styles_module_slider__1482a5ad","contributionTitle":"styles_module_contributionTitle__1482a5ad","topCopyContainer":"styles_module_topCopyContainer__1482a5ad","cardsContainer":"styles_module_cardsContainer__1482a5ad","card":"styles_module_card__1482a5ad","cardInnerContainer":"styles_module_cardInnerContainer__1482a5ad","amtContainer":"styles_module_amtContainer__1482a5ad","cardDescription":"styles_module_cardDescription__1482a5ad","card1":"styles_module_card1__1482a5ad","card2":"styles_module_card2__1482a5ad","card3":"styles_module_card3__1482a5ad","card4":"styles_module_card4__1482a5ad","customAmtContainer":"styles_module_customAmtContainer__1482a5ad","customBtn":"styles_module_customBtn__1482a5ad","durationContainer":"styles_module_durationContainer__1482a5ad","durationInnerContainer":"styles_module_durationInnerContainer__1482a5ad","desktopContainer":"styles_module_desktopContainer__1482a5ad","pointingHand":"styles_module_pointingHand__1482a5ad"};
+n(css,{});
 
 var Card = function (props) {
-    return (React__default["default"].createElement("a", { className: "".concat(modules_efc4e723$1.card, " ").concat((props.planNum === 1 && modules_efc4e723$1.card1) ||
-            (props.planNum === 2 && modules_efc4e723$1.card2) ||
-            (props.planNum === 3 && modules_efc4e723$1.card3) ||
-            (props.planNum === 4 && modules_efc4e723$1.card4)), href: props.url },
-        React__default["default"].createElement("div", { className: modules_efc4e723$1.cardInnerContainer },
-            React__default["default"].createElement("div", { className: modules_efc4e723$1.amtContainer },
+    return (React__default["default"].createElement("a", { className: "".concat(modules_efc4e723.card, " ").concat((props.planNum === 1 && modules_efc4e723.card1) ||
+            (props.planNum === 2 && modules_efc4e723.card2) ||
+            (props.planNum === 3 && modules_efc4e723.card3) ||
+            (props.planNum === 4 && modules_efc4e723.card4)), href: props.url },
+        React__default["default"].createElement("div", { className: modules_efc4e723.cardInnerContainer },
+            React__default["default"].createElement("div", { className: modules_efc4e723.amtContainer },
                 React__default["default"].createElement("h4", { className: "".concat(props.headingSmall
                         ? "typo-app-title-small"
                         : "typo-app-title-medium") }, props.heading),
                 props.monthly && React__default["default"].createElement("p", { className: "typo-app-body-caption" }, "/month")),
             React__default["default"].createElement("div", null,
-                React__default["default"].createElement("p", { className: "".concat(modules_efc4e723$1.cardDescription, " typo-app-body-caption") }, props.description),
-                props.monthly ? (React__default["default"].createElement("div", { className: modules_efc4e723$1.customBtn },
-                    React__default["default"].createElement("span", null, "Select"))) : (React__default["default"].createElement("div", { className: modules_efc4e723$1.customBtn },
+                React__default["default"].createElement("p", { className: "".concat(modules_efc4e723.cardDescription, " typo-app-body-caption") }, props.description),
+                props.monthly ? (React__default["default"].createElement("div", { className: modules_efc4e723.customBtn },
+                    React__default["default"].createElement("span", null, "Select"))) : (React__default["default"].createElement("div", { className: modules_efc4e723.customBtn },
                     React__default["default"].createElement("span", null, "Customize")))))));
 };
 var FundContributionSection = function (props) {
@@ -16278,22 +16297,22 @@ var FundContributionSection = function (props) {
             url: "".concat(props.appUrl, "/").concat(props.handle, "/gift/amount?amount=0"),
         },
     ];
-    return (React__default["default"].createElement("section", { className: modules_efc4e723$1.sectionBackerContribution },
-        React__default["default"].createElement("div", { className: modules_efc4e723$1.topCopyContainer },
-            React__default["default"].createElement("h3", { className: "".concat(modules_efc4e723$1.contributionTitle, " typo-app-title-small") }, "Become a backer"),
-            React__default["default"].createElement("p", { className: "".concat(modules_efc4e723$1.contributionSubtitle, " typo-app-body-paragraph") }, "Show your support for a kid you love.")),
-        React__default["default"].createElement("div", { className: modules_efc4e723$1.desktopContainer },
-            React__default["default"].createElement("div", { className: modules_efc4e723$1.cardsContainer }, planData.slice(0, 3).map(function (card) {
+    return (React__default["default"].createElement("section", { className: modules_efc4e723.sectionBackerContribution },
+        React__default["default"].createElement("div", { className: modules_efc4e723.topCopyContainer },
+            React__default["default"].createElement("h3", { className: "".concat(modules_efc4e723.contributionTitle, " typo-app-title-small") }, "Become a backer"),
+            React__default["default"].createElement("p", { className: "".concat(modules_efc4e723.contributionSubtitle, " typo-app-body-paragraph") }, "Show your support for a kid you love.")),
+        React__default["default"].createElement("div", { className: modules_efc4e723.desktopContainer },
+            React__default["default"].createElement("div", { className: modules_efc4e723.cardsContainer }, planData.slice(0, 3).map(function (card) {
                 var planNum = card.planNum, heading = card.heading, amt = card.amt, monthly = card.monthly, description = card.description, url = card.url;
                 return (React__default["default"].createElement(Card, { key: planNum, planNum: planNum, heading: heading, amt: amt, monthly: monthly, description: description, url: url }));
             })),
-            React__default["default"].createElement("a", { className: modules_efc4e723$1.customAmtContainer, href: "".concat(props.appUrl, "/").concat(props.handle, "/gift/amount?amount=0") },
+            React__default["default"].createElement("a", { className: modules_efc4e723.customAmtContainer, href: "".concat(props.appUrl, "/").concat(props.handle, "/gift/amount?amount=0") },
                 React__default["default"].createElement("div", null,
                     React__default["default"].createElement("h3", { className: "typo-app-title-small" }, "Choose a custom amount"),
                     React__default["default"].createElement("p", { className: "typo-app-body-caption" }, "Choose a custom amount or give a one-time gift.")),
-                React__default["default"].createElement("div", { className: modules_efc4e723$1.customBtn },
+                React__default["default"].createElement("div", { className: modules_efc4e723.customBtn },
                     React__default["default"].createElement("span", null, "Customize")))),
-        React__default["default"].createElement(CSSSlider, { containterClassName: modules_efc4e723$1.slider, paginationAlignment: "left", spaceBetween: 15, mobileBreakpoint: {
+        React__default["default"].createElement(CSSSlider, { containterClassName: modules_efc4e723.slider, paginationAlignment: "left", spaceBetween: 15, mobileBreakpoint: {
                 breakpoint: 465,
                 cardsToShow: 1,
                 shiftHiddenCard: 60,
@@ -16311,29 +16330,10 @@ var FundContributionSection = function (props) {
             } }, planData.map(function (card) {
             return (React__default["default"].createElement(Card, { key: card.planNum, planNum: card.planNum, heading: card.heading, amt: card.amt, monthly: card.monthly, description: card.description, headingSmall: card.headingSmall, url: card.url }));
         })),
-        React__default["default"].createElement("div", { className: modules_efc4e723$1.durationContainer },
-            React__default["default"].createElement("div", { className: modules_efc4e723$1.durationInnerContainer },
-                React__default["default"].createElement("img", { src: "https://storage.googleapis.com/backer_web_assets/finger-up.svg", alt: "pointing hand", className: modules_efc4e723$1.pointingHand }),
+        React__default["default"].createElement("div", { className: modules_efc4e723.durationContainer },
+            React__default["default"].createElement("div", { className: modules_efc4e723.durationInnerContainer },
+                React__default["default"].createElement("img", { src: "https://storage.googleapis.com/backer_web_assets/finger-up.svg", alt: "pointing hand", className: modules_efc4e723.pointingHand }),
                 React__default["default"].createElement("p", { className: "typo-app-body-paragraph" }, "You can set the duration of your contribution on\u00A0the next step.")))));
-};
-
-var css = ".styles_module_fund__2a0726b0 {\n  border-radius: 50%;\n  background-size: cover;\n  background-position: center;\n}\n\n.styles_module_letterPlaceholder__2a0726b0 {\n  width: 100%;\n  height: 100%;\n}\n.styles_module_letterPlaceholder__2a0726b0 text {\n  font-family: Arial, sans-serif;\n  font-size: 22px;\n  font-weight: 600;\n  fill: white;\n  text-decoration: none;\n}";
-var modules_efc4e723 = {"fund":"styles_module_fund__2a0726b0","letterPlaceholder":"styles_module_letterPlaceholder__2a0726b0"};
-n(css,{});
-
-/////////////////////////////////
-///////// CARDS SLIDER //////////
-/////////////////////////////////
-var FundProfilePic = function (props) {
-    //
-    return (React__default["default"].createElement("div", { className: "".concat(modules_efc4e723.fund, " ").concat(props.className ? props.className : ""), style: {
-            backgroundImage: "url(".concat(props.image, "), ").concat(stringToGradient(props.name)),
-        }, onClick: props.onClick }, !props.image && (React__default["default"].createElement("svg", { className: modules_efc4e723.letterPlaceholder, viewBox: "0 0 60 60" },
-        React__default["default"].createElement("text", { x: "50%", y: "52%", textAnchor: "middle", alignmentBaseline: "middle" }, Array.from(props.name)[0].toUpperCase())))));
-};
-FundProfilePic.defaultProps = {
-    className: "",
-    image: "",
 };
 
 exports.Accordion = Accordion;

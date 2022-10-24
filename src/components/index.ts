@@ -1,3 +1,4 @@
+// COMPONENTS
 export { default as Button } from "./Button";
 export { default as Icon } from "./Icon";
 export { default as PaymentLogo } from "./PaymentLogo";
@@ -23,6 +24,8 @@ export { default as Toast } from "./Toast";
 export { default as ActionSheet } from "./ActionSheet";
 export { default as CSSSlider } from "./CSSSlider";
 export { default as CountBadge } from "./CountBadge";
+export { default as ProfilePic } from "./ProfilePic";
+
+// SHARAED
 export { default as ContributionSuccessModal } from "./ContributionSuccessModal";
 export { default as FundContributionSection } from "./FundContributionSection";
-export { default as ProfilePic } from "./ProfilePic";

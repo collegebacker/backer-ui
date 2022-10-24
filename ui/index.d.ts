@@ -333,9 +333,17 @@ interface Props$2 {
 }
 declare const CountBadge: React.FC<Props$2>;
 
+interface Props$1 {
+    className?: string;
+    name: string;
+    image?: string;
+    onClick?: () => void;
+}
+declare const FundProfilePic: React.FC<Props$1>;
+
 declare type durationType = "onetime" | "3months" | "6months" | "1year" | "untilcollege";
 declare type frequencyType = "onetime" | "monthly" | "semimonthly";
-interface Props$1 {
+interface Props {
     onCloseClick?: any;
     contribution: {
         amount: number;
@@ -351,20 +359,12 @@ interface Props$1 {
     fund?: boolean;
     ref: React.RefObject<any>;
 }
-declare const ContributionSuccessModal: React.ForwardRefExoticComponent<Pick<Props$1, "onCloseClick" | "contribution" | "fund"> & React.RefAttributes<any>>;
+declare const ContributionSuccessModal: React.ForwardRefExoticComponent<Pick<Props, "onCloseClick" | "contribution" | "fund"> & React.RefAttributes<any>>;
 
 interface ContributionProps {
     handle: string;
     appUrl: string;
 }
 declare const FundContributionSection: React.FC<ContributionProps>;
-
-interface Props {
-    className?: string;
-    name: string;
-    image?: string;
-    onClick?: () => void;
-}
-declare const FundProfilePic: React.FC<Props>;
 
 export { Accordion, ActionMesssage, ActionSheet, ArrowButton, Button, CSSSlider, ChipsSelector, ChipsSlider, CodeInput, ContributionSuccessModal, CountBadge, Divider, DotPagination, FundContributionSection, GhostInput, Icon, WarnMesssage as InfoMesssage, Input, Logo, Modal, ModalButtons, PaymentLogo, FundProfilePic as ProfilePic, SliderWrapper, Spinner, Text, Toast, WarnMesssage$1 as WarnMesssage };
