@@ -11618,7 +11618,7 @@ var Popup = React__default["default"].forwardRef(function (props, ref) {
     // HANDLERS //
     //////////////
     var handleCloseClick = function () {
-        if (isShown && props.closeOutside && !props.isMobileBreakpoint) {
+        if (isShown) {
             props.onCloseClick();
         }
     };
@@ -11628,7 +11628,7 @@ var Popup = React__default["default"].forwardRef(function (props, ref) {
     useOutsideClick(popupRef, function () {
         // console.log(isAppeared, props.closeOutside, props.isMobileBreakpoint);
         // console.log("clicked outside");
-        handleCloseClick();
+        props.closeOutside && handleCloseClick();
     });
     /////////////////
     // USE EFFECTS //
@@ -12312,8 +12312,8 @@ CountBadge.defaultProps = {
     limit: 99,
 };
 
-var css$2 = ".styles_module_fund__2a0726b0 {\n  border-radius: 50%;\n  background-size: cover;\n  background-position: center;\n}\n\n.styles_module_letterPlaceholder__2a0726b0 {\n  width: 100%;\n  height: 100%;\n}\n.styles_module_letterPlaceholder__2a0726b0 text {\n  font-family: Arial, sans-serif;\n  font-size: 22px;\n  font-weight: 600;\n  fill: white;\n  text-decoration: none;\n}";
-var modules_efc4e723$2 = {"fund":"styles_module_fund__2a0726b0","letterPlaceholder":"styles_module_letterPlaceholder__2a0726b0"};
+var css$2 = ".styles_module_pic__1b6caca4 {\n  border-radius: 50%;\n  background-size: cover;\n  background-position: center;\n}\n\n.styles_module_letterPlaceholder__1b6caca4 {\n  width: 100%;\n  height: 100%;\n}\n.styles_module_letterPlaceholder__1b6caca4 text {\n  font-family: Arial, sans-serif;\n  font-size: 22px;\n  font-weight: 600;\n  fill: white;\n  text-decoration: none;\n}";
+var modules_efc4e723$2 = {"pic":"styles_module_pic__1b6caca4","letterPlaceholder":"styles_module_letterPlaceholder__1b6caca4"};
 n(css$2,{});
 
 /////////////////////////////////
@@ -12321,7 +12321,7 @@ n(css$2,{});
 /////////////////////////////////
 var FundProfilePic = function (props) {
     //
-    return (React__default["default"].createElement("div", { className: "".concat(modules_efc4e723$2.fund, " ").concat(props.className ? props.className : ""), style: {
+    return (React__default["default"].createElement("div", { className: "".concat(modules_efc4e723$2.pic, " ").concat(props.className ? props.className : ""), style: {
             backgroundImage: "url(".concat(props.image, "), ").concat(stringToGradient(props.name)),
         }, onClick: props.onClick }, !props.image && (React__default["default"].createElement("svg", { className: modules_efc4e723$2.letterPlaceholder, viewBox: "0 0 60 60" },
         React__default["default"].createElement("text", { x: "50%", y: "52%", textAnchor: "middle", alignmentBaseline: "middle" }, Array.from(props.name)[0].toUpperCase())))));
