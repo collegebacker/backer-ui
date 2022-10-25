@@ -22,7 +22,7 @@ const FundProfilePic: React.FC<Props> = (props) => {
   //
   return (
     <div
-      className={`${styles.fund} ${props.className ? props.className : ""}`}
+      className={`${styles.pic} ${props.className ? props.className : ""}`}
       style={{
         backgroundImage: `url(${props.image}), ${stringToGradient(props.name)}`,
       }}

@@ -55,7 +55,7 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
   //////////////
 
   const handleCloseClick = () => {
-    if (isShown && props.closeOutside && !props.isMobileBreakpoint) {
+    if (isShown) {
       props.onCloseClick();
     }
   };
@@ -67,7 +67,7 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
   useOutsideClick(popupRef, () => {
     // console.log(isAppeared, props.closeOutside, props.isMobileBreakpoint);
     // console.log("clicked outside");
-    handleCloseClick();
+    props.closeOutside && handleCloseClick();
   });
 
   /////////////////
