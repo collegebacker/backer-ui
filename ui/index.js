@@ -11578,7 +11578,7 @@ var BottomSheet = React__default["default"].forwardRef(function (props, ref) {
                 maxHeight: (_a = props.maxSheetHeight) !== null && _a !== void 0 ? _a : "100%",
             } },
             !props.hideHeader ? (React__default["default"].createElement(Header, { onCloseClick: handleCloseClick, title: props.title, smallTitle: props.smallTitle, noMaxWidth: true })) : null,
-            React__default["default"].createElement("div", { className: "".concat(modules_efc4e723$g.contentWrapper, " ").concat(modules_efc4e723$g.popupContentClassName) }, props.children)),
+            React__default["default"].createElement("div", { className: "".concat(props.popupContentClassName) }, props.children)),
         React__default["default"].createElement("div", { ref: backgroundRef, className: modules_efc4e723$g.background })));
 });
 BottomSheet.defaultProps = {
@@ -11714,7 +11714,7 @@ var Popup = React__default["default"].forwardRef(function (props, ref) {
                     padding: handleCustomPaddings(),
                 }) },
                 !props.hideHeader ? (React__default["default"].createElement(Header, { onCloseClick: handleCloseClick, title: props.title, smallTitle: props.smallTitle, noMaxWidth: props.customWidth && props.customWidth > 0 ? true : false })) : null,
-                React__default["default"].createElement("div", { tabIndex: 0, className: "".concat(modules_efc4e723$e.contentWrapper, " ").concat(modules_efc4e723$e.popupContentClassName) }, props.children)),
+                React__default["default"].createElement("div", { tabIndex: 0, className: "".concat(modules_efc4e723$e.contentWrapper, " ").concat(props.popupContentClassName) }, props.children)),
             React__default["default"].createElement("div", { className: modules_efc4e723$e.gradients, ref: gradients },
                 React__default["default"].createElement("div", { className: modules_efc4e723$e.gradient1 }),
                 React__default["default"].createElement("div", { className: modules_efc4e723$e.gradient2 })))));
