@@ -11565,6 +11565,7 @@ var BottomSheet = React__default["default"].forwardRef(function (props, ref) {
     }, [isOpen]);
     var handleCustomPaddings = function () {
         if (props.customPaddingsMobile) {
+            console.log("props.customPaddingsMobile", props.customPaddingsMobile);
             return props.customPaddingsMobile;
         }
         return "30px";
@@ -11693,7 +11694,12 @@ var Popup = React__default["default"].forwardRef(function (props, ref) {
             return "90px 30px 90px";
         }
         else {
-            return "30px 30px 80px";
+            if (props.customPaddingsMobile) {
+                return props.customPaddingsMobile;
+            }
+            else {
+                return "30px 30px 80px";
+            }
         }
     };
     ///////////////

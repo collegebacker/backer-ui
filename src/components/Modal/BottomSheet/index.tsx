@@ -140,6 +140,7 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
 
   const handleCustomPaddings = () => {
     if (props.customPaddingsMobile) {
+      console.log("props.customPaddingsMobile", props.customPaddingsMobile);
       return props.customPaddingsMobile;
     }
 

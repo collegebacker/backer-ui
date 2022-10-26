@@ -11,6 +11,7 @@ interface Props {
   popupClassName?: string;
   popupContentClassName?: string;
   customPaddings?: string;
+  customPaddingsMobile?: string;
   children: React.ReactNode;
   isMobileBreakpoint: boolean;
   title?: string;
@@ -138,7 +139,11 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
 
       return "90px 30px 90px";
     } else {
-      return "30px 30px 80px";
+      if (props.customPaddingsMobile) {
+        return props.customPaddingsMobile;
+      } else {
+        return "30px 30px 80px";
+      }
     }
   };
 
