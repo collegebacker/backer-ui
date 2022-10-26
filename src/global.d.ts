@@ -42,7 +42,8 @@ type IconTypes =
   | "share"
   | "resize-photo"
   | "chevron-in-circle-down"
-  | "chevron-in-circle-up";
+  | "chevron-in-circle-up"
+  | "share-arrow";
 
 type TargetTypes = "_blank" | "_self" | "_parent" | "_top";
 
