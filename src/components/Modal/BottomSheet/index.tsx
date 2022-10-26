@@ -179,11 +179,7 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
             noMaxWidth={true}
           />
         ) : null}
-        <div
-          className={`${styles.contentWrapper} ${styles.popupContentClassName}`}
-        >
-          {props.children}
-        </div>
+        <div className={`${props.popupContentClassName}`}>{props.children}</div>
       </section>
       <div ref={backgroundRef} className={styles.background}></div>
     </aside>

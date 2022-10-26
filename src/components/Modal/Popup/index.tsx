@@ -189,7 +189,7 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
           ) : null}
           <div
             tabIndex={0}
-            className={`${styles.contentWrapper} ${styles.popupContentClassName}`}
+            className={`${styles.contentWrapper} ${props.popupContentClassName}`}
           >
             {props.children}
           </div>
