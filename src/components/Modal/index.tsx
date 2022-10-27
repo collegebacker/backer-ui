@@ -13,6 +13,7 @@ export interface Props {
   hideHeader?: boolean;
   children: React.ReactNode;
   customWidth?: number;
+  minHeight?: string;
   customPaddings?: string;
   customPaddingsMobile?: string;
   isBottomSheet?: boolean;
@@ -20,6 +21,7 @@ export interface Props {
   dataAttrs?: Record<string, string>;
   maxSheetHeight?: string;
   onCloseClick?: () => void;
+  animateSize?: (width: number, height: number) => void;
 }
 
 const Modal = React.forwardRef<any, Props>((props, ref) => {
@@ -48,6 +50,15 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
       if (callback) {
         callback();
       }
+    },
+    getPopupRef: () => {
+      return popupRef.current;
+    },
+    getBottomSheetRef: () => {
+      return bottomSheetRef.current;
+    },
+    animateSize: (props: ModalAnimationSizeProps) => {
+      popupRef.current.animateSize(props);
     },
   }));
 

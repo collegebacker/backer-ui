@@ -30,7 +30,7 @@ const gradients = [
 ];
 
 const stringToGradient = (string: string) => {
-  const trimmedString = string.trim().replace(/\s/g, "");
+  const trimmedString = string.toUpperCase().trim().replace(/\s/g, "");
 
   const startHash = trimmedString
     .split("")

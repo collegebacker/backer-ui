@@ -1,6 +1,8 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
+import gsap from "gsap";
+
 import { Modal, Button, Text, ModalButtons, Accordion } from "..";
 
 localStorage.clear();
@@ -52,7 +54,7 @@ export default {
     docs: {
       description: {
         component:
-          "To trigger the component, you need to creare a `ref` to the component `const ModalRef = React.useRef<any>(null)`. Then you can use the `open` method to open the modal like `() => ModalRef.current.open(callback)`. To close the modal, you can use the `close` method `() => ModalRef.current.close(callback)`",
+          "To trigger the component, you need to creare a `ref` to the component `const modalRef = React.useRef<any>(null)`. Then you can use the `open` method to open the modal like `() => modalRef.current.open(callback)`. To close the modal, you can use the `close` method `() => modalRef.current.close(callback)`",
       },
     },
   },
@@ -100,12 +102,12 @@ export default {
 } as ComponentMeta<typeof Modal>;
 
 const Template: ComponentStory<typeof Modal> = (args) => {
-  const ModalRef = React.useRef<any>(null);
+  const modalRef = React.useRef<any>(null);
 
   return (
     <div className="iconsWrap">
       <Modal
-        ref={ModalRef}
+        ref={modalRef}
         {...args}
         dataAttrs={{
           "data-attr": "test",
@@ -114,7 +116,7 @@ const Template: ComponentStory<typeof Modal> = (args) => {
       <Button
         label="Trigger Modal"
         onClick={() => {
-          ModalRef.current.open(() => {
+          modalRef.current.open(() => {
             // console.log("open");
           });
         }}
@@ -245,7 +247,7 @@ Buttons.args = {
 };
 
 const FocusTrapTemplate: ComponentStory<typeof Modal> = (args) => {
-  const ModalRef = React.useRef<any>(null);
+  const modalRef = React.useRef<any>(null);
 
   return (
     <div
@@ -254,7 +256,7 @@ const FocusTrapTemplate: ComponentStory<typeof Modal> = (args) => {
         flexDirection: "column",
       }}
     >
-      <Modal ref={ModalRef} {...args} />
+      <Modal ref={modalRef} {...args} />
       <Text tag="p" context="app" appStyle="body-paragraph">
         Hey there! We’ve started thinking about the future, and are putting
         together a team of people who want to support us along the way. We’d
@@ -268,7 +270,7 @@ const FocusTrapTemplate: ComponentStory<typeof Modal> = (args) => {
           maxWidth: "300px",
         }}
         onClick={() => {
-          ModalRef.current.open(() => {
+          modalRef.current.open(() => {
             console.log("storybook, open");
           });
         }}
@@ -331,7 +333,7 @@ const FocusTrapTemplate: ComponentStory<typeof Modal> = (args) => {
           maxWidth: "300px",
         }}
         onClick={() => {
-          ModalRef.current.open(() => {
+          modalRef.current.open(() => {
             console.log("storybook, open");
           });
         }}
@@ -385,4 +387,158 @@ FocusTrap.args = {
       />
     </>
   ),
+};
+
+const SizeAnimationTemplate: ComponentStory<typeof Modal> = (args) => {
+  const modalRef = React.useRef<any>(null);
+  const contentRefs = React.useRef<any>([]);
+
+  const animateModalContent = (
+    fadeInIndex: number,
+    fadeOutIndex: number,
+    modalWidth: number
+  ) => {
+    const previousContent = contentRefs.current[fadeInIndex];
+    const nextContent = contentRefs.current[fadeOutIndex];
+
+    const animDuration = 0.4;
+    const animEase = "power1.out";
+
+    console.log("animateModalContent", nextContent.scrollHeight);
+
+    if (previousContent) {
+      gsap.to(previousContent, {
+        opacity: 0,
+        duration: animDuration,
+        ease: animEase,
+        onComplete: () => {
+          gsap.to(previousContent, {
+            height: 0,
+            duration: animDuration,
+            ease: animEase,
+          });
+
+          modalRef.current.animateSize({
+            size: {
+              width: modalWidth,
+            },
+            delay: animDuration,
+          });
+        },
+      });
+    }
+
+    if (nextContent) {
+      gsap.to(nextContent, {
+        // display: "block",
+        height: "auto",
+        delay: animDuration,
+        duration: animDuration,
+        onComplete: () => {
+          gsap.to(nextContent, {
+            opacity: 1,
+            duration: animDuration,
+            delay: animDuration,
+            ease: animEase,
+          });
+        },
+      });
+    }
+  };
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <Modal ref={modalRef} {...args}>
+        <div
+          ref={(el) => {
+            contentRefs.current[0] = el;
+          }}
+        >
+          <Text
+            tag="p"
+            context="app"
+            appStyle="body-paragraph"
+            style={{ marginBottom: "30px" }}
+          >
+            Hey there! We’ve started thinking about the future, and are putting
+            together a team of people who want to support us along the way. We’d
+            love to have you join us! You’ll be able to follow along as our kid
+            grows up. And if you want to contribute to their college fund, you
+            can do that too. 🎓 Hope you enjoy this first update! Tester Jr Hey
+            there! We’ve started thinking about the future, and are putting
+            together a team of people who want to support us along the way. We’d
+            love to have you join us! You’ll be able to follow along as our kid
+            grows up. And if you want to contribute to their college fund, you
+            can do that too. 🎓 Hope you enjoy this first update! Tester Jr
+          </Text>
+          <Button
+            label="animate to 600px"
+            onClick={() => {
+              animateModalContent(0, 1, 400);
+            }}
+            size="small"
+          />
+        </div>
+
+        <div
+          ref={(el) => {
+            contentRefs.current[1] = el;
+          }}
+          style={{
+            height: 0,
+            opacity: 0,
+          }}
+        >
+          <Text
+            tag="p"
+            context="app"
+            appStyle="body-paragraph"
+            style={{ marginBottom: "30px" }}
+          >
+            The age-old saying goes: it takes a village. But today’s parents are
+            more likely than ever to be raising their kid in isolation. We no
+            longer have grandparents living just down the road, and new parents
+            instead juggle full-time baby-raising alongside dual incomes, and
+            little material or face-to-face support.
+          </Text>
+          <Button
+            label="animate to 400px"
+            onClick={() => {
+              animateModalContent(1, 0, 600);
+            }}
+            size="small"
+          />
+        </div>
+      </Modal>
+
+      <Button
+        label="Trigger Modal"
+        style={{
+          maxWidth: "300px",
+        }}
+        onClick={() => {
+          modalRef.current.open(() => {
+            console.log("storybook, open");
+          });
+        }}
+      />
+    </div>
+  );
+};
+
+export const SizeAnimation = SizeAnimationTemplate.bind({});
+SizeAnimation.args = {
+  title: "Funds",
+  smallTitle: true,
+  isBottomSheet: true,
+  isOpen: false,
+  closeOutside: true,
+  customWidth: 420,
+  minHeight: "300px",
+  hideHeader: false,
 };

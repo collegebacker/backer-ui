@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
 import gsap from "gsap";
-import FocusTrap from "focus-trap-react";
 
 import { useOutsideClick, useDidMountEffect } from "../../../hooks";
 
@@ -15,6 +14,7 @@ interface Props {
   children: React.ReactNode;
   isMobileBreakpoint: boolean;
   title?: string;
+  minHeight?: string;
   hideHeader?: boolean;
   smallTitle?: boolean;
   customWidth?: number;
@@ -48,6 +48,51 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
     },
     close: () => {
       setIsOpen(false);
+    },
+    animateSize: ({
+      size = {
+        width: null,
+        height: null,
+      },
+      delay = 0,
+      onAnimationStart = () => {},
+      onAnimationEnd = () => {},
+    }: ModalAnimationSizeProps) => {
+      console.log(size);
+
+      const animationProps = {
+        duration: 0.5,
+        ease: "power1.out",
+        delay: delay,
+        onStart: () => {
+          onAnimationStart();
+        },
+        onComplete: () => {
+          onAnimationEnd();
+        },
+      } as gsap.TimelineVars;
+
+      if (size.height && size.width) {
+        gsap.to(popupRef.current, {
+          height: size.height,
+          maxWidth: size.width,
+          ...animationProps,
+        });
+      }
+
+      if (size.height) {
+        gsap.to(popupRef.current, {
+          height: size.height,
+          ...animationProps,
+        });
+      }
+
+      if (size.width) {
+        gsap.to(popupRef.current, {
+          maxWidth: size.width,
+          ...animationProps,
+        });
+      }
     },
   }));
 
@@ -104,8 +149,6 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
         },
       });
     } else {
-      // console.log("close");
-
       gsap.to(modalWrapRef.current, {
         display: "none",
         pointerEvents: "none",
@@ -126,6 +169,10 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
       });
     }
   }, [isOpen]);
+
+  /////////////////
+  /// FUNCTIONS ///
+  /////////////////
 
   const handleCustomPaddings = () => {
     if (!props.isMobileBreakpoint) {
@@ -174,11 +221,12 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
                   maxWidth: !props.isMobileBreakpoint
                     ? props.customWidth
                     : "100%",
-                  width: "100%",
                 }
               : {}),
             ...{
               padding: handleCustomPaddings(),
+              minHeight: props.minHeight ?? "200px",
+              width: "100%",
             },
           }}
         >

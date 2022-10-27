@@ -87,3 +87,13 @@ type ToastItemProps = {
   type?: "success" | "error" | "warning" | "info";
   timeout?: number;
 };
+
+type ModalAnimationSizeProps = {
+  size: {
+    width: number;
+    height: number;
+  };
+  delay: number;
+  onAnimationStart: () => void;
+  onAnimationEnd: () => void;
+};
