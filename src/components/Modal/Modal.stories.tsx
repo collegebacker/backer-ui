@@ -389,6 +389,10 @@ FocusTrap.args = {
   ),
 };
 
+const contentStyles = {
+  overflow: "auto",
+} as React.CSSProperties;
+
 const SizeAnimationTemplate: ComponentStory<typeof Modal> = (args) => {
   const modalRef = React.useRef<any>(null);
   const contentRefs = React.useRef<any>([]);
@@ -458,6 +462,7 @@ const SizeAnimationTemplate: ComponentStory<typeof Modal> = (args) => {
           ref={(el) => {
             contentRefs.current[0] = el;
           }}
+          style={{ ...contentStyles }}
         >
           <Text
             tag="p"
@@ -492,6 +497,7 @@ const SizeAnimationTemplate: ComponentStory<typeof Modal> = (args) => {
           style={{
             height: 0,
             opacity: 0,
+            ...contentStyles,
           }}
         >
           <Text
