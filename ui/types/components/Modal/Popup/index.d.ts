@@ -7,6 +7,7 @@ interface Props {
     children: React.ReactNode;
     isMobileBreakpoint: boolean;
     title?: string;
+    minHeight?: string;
     hideHeader?: boolean;
     smallTitle?: boolean;
     customWidth?: number;

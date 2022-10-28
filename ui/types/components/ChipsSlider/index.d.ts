@@ -15,6 +15,7 @@ export interface Props {
     activeCardScale?: number;
     spaceBetween?: number;
     showCaption?: boolean;
+    showArrows?: boolean;
     cardFontSize?: number;
     overlayGradientsClassName?: string;
     hideOverlayGradients?: boolean;

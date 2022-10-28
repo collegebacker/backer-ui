@@ -58,7 +58,7 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
       onAnimationStart = () => {},
       onAnimationEnd = () => {},
     }: ModalAnimationSizeProps) => {
-      console.log(size);
+      // console.log(size);
 
       const animationProps = {
         duration: 0.5,

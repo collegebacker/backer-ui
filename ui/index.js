@@ -10636,7 +10636,7 @@ var gradients = [
     ["#B17DC3", "#FFCFF2"],
 ];
 var stringToGradient = function (string) {
-    var trimmedString = string.trim().replace(/\s/g, "");
+    var trimmedString = string.toUpperCase().trim().replace(/\s/g, "");
     var startHash = trimmedString
         .split("")
         .reduce(function (acc, char) { return acc + char.charCodeAt(0); }, 0);
@@ -10715,14 +10715,16 @@ var ChipsSlider = function (props) {
     };
     //
     var updateOnResize = function () {
-        setSliderViewWidthState(sliderViewRef.current.offsetWidth);
-        var arrowLeftBoundingBox = arrowLeftRef.current.getBoundingClientRect();
-        var hidePoint = 40;
-        if (arrowLeftBoundingBox.x < hidePoint) {
-            sliderContainerRef.current.style.overflow = "hidden";
-        }
-        else {
-            sliderContainerRef.current.style.overflow = "visible";
+        if (arrowLeftRef.current) {
+            setSliderViewWidthState(sliderViewRef.current.offsetWidth);
+            var arrowLeftBoundingBox = arrowLeftRef.current.getBoundingClientRect();
+            var hidePoint = 40;
+            if (arrowLeftBoundingBox.x < hidePoint) {
+                sliderContainerRef.current.style.overflow = "hidden";
+            }
+            else {
+                sliderContainerRef.current.style.overflow = "visible";
+            }
         }
         // console.log("gradientLeft", gradientLeftBox);
         if (!props.alwaysShowOverlayGradients && !props.hideOverlayGradients) {
@@ -10937,12 +10939,13 @@ var ChipsSlider = function (props) {
                 });
             });
         } },
-        React__default["default"].createElement(ArrowButton, { ref: arrowLeftRef, className: "".concat(modules_efc4e723$l.arrowLeft, " ").concat(modules_efc4e723$l.arrowButton, " ").concat(props.arrowsClassName), direction: "left", onMouseUp: goPreviousCard, disabled: activeIndex === 0, style: {
-                pointerEvents: isArrowButtonDisabled ? "none" : "auto",
-            } }),
-        React__default["default"].createElement(ArrowButton, { ref: arrowRightRef, className: "".concat(modules_efc4e723$l.rightArrow, " ").concat(modules_efc4e723$l.arrowButton, " ").concat(props.arrowsClassName), direction: "right", onMouseUp: goToNextCard, disabled: activeIndex === props.items.length - 1, style: {
-                pointerEvents: isArrowButtonDisabled ? "none" : "auto",
-            } }),
+        props.showArrows && (React__default["default"].createElement(React__default["default"].Fragment, null,
+            React__default["default"].createElement(ArrowButton, { ref: arrowLeftRef, className: "".concat(modules_efc4e723$l.arrowLeft, " ").concat(modules_efc4e723$l.arrowButton, " ").concat(props.arrowsClassName), direction: "left", onMouseUp: goPreviousCard, disabled: activeIndex === 0, style: {
+                    pointerEvents: isArrowButtonDisabled ? "none" : "auto",
+                } }),
+            React__default["default"].createElement(ArrowButton, { ref: arrowRightRef, className: "".concat(modules_efc4e723$l.rightArrow, " ").concat(modules_efc4e723$l.arrowButton, " ").concat(props.arrowsClassName), direction: "right", onMouseUp: goToNextCard, disabled: activeIndex === props.items.length - 1, style: {
+                    pointerEvents: isArrowButtonDisabled ? "none" : "auto",
+                } }))),
         React__default["default"].createElement("div", { className: "".concat(modules_efc4e723$l.sliderWrap), ref: sliderViewRef },
             !props.hideOverlayGradients ? (React__default["default"].createElement(React__default["default"].Fragment, null,
                 React__default["default"].createElement("div", { className: "".concat(modules_efc4e723$l.leftGradient, " ").concat(props.overlayGradientsClassName), ref: overlayGradientLeftRef }),
@@ -11012,6 +11015,7 @@ ChipsSlider.defaultProps = {
     cardFontSize: 20,
     showGuidelines: false,
     showCaption: true,
+    showArrows: true,
 };
 
 var css$k = ":root {\n  --radius-l: 15px;\n  --radius-m: 10px;\n  --radius-s: 5px;\n}\n\n.styles_module_wrapper__913d8421 {\n  display: flex;\n  align-items: center;\n}\n\n.styles_module_list__913d8421 {\n  width: 100%;\n  overflow-x: scroll;\n  scroll-snap-type: x mandatory;\n  list-style: none;\n  display: flex;\n  align-items: center;\n  margin: -7px;\n  padding: 7px;\n}\n.styles_module_list__913d8421 li {\n  margin-right: 15px;\n  padding: 0;\n}\n.styles_module_list__913d8421 li:last-child {\n  margin-right: 0;\n}\n.styles_module_list__913d8421::-webkit-scrollbar {\n  width: 0;\n  height: 0;\n}\n\n.styles_module_chip__913d8421 {\n  cursor: pointer;\n  scroll-snap-align: start;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 10px;\n  width: 75px;\n  height: 75px;\n  border: 1px solid var(--color-main-200);\n  border-radius: var(--radius-l);\n  transition: transform 0.1s ease, border 0.1s ease;\n}\n.styles_module_chip__913d8421 span {\n  font-family: \"ABCMarfa\", sans-serif;\n  font-weight: 500;\n  font-size: 17px;\n  color: var(--color-main-500);\n}\n.styles_module_chip__913d8421:hover {\n  border: 1px solid var(--color-main-400);\n}\n.styles_module_chip__913d8421:focus-visible {\n  outline-offset: 5px;\n  outline: 2px solid var(--color-accent-200);\n}\n\n.styles_module_activeChip__913d8421 {\n  pointer-events: none;\n  background-color: var(--color-accent-500);\n  border: 1px solid var(--color-accent-500);\n}\n.styles_module_activeChip__913d8421:hover {\n  background-color: var(--color-accent-500);\n  border: 1px solid var(--color-accent-500);\n}\n.styles_module_activeChip__913d8421:focus-visible {\n  outline: none;\n}\n.styles_module_activeChip__913d8421 span {\n  color: var(--color-main-0);\n}";
@@ -11589,19 +11593,20 @@ BottomSheet.defaultProps = {
     popupContentClassName: "",
 };
 
-var css$e = ".styles_module_modalWrap__46e26bc6 {\n  position: fixed;\n  z-index: 999;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 10%);\n  pointer-events: none;\n  opacity: 0;\n}\n\n.styles_module_contentWrapper__46e26bc6 {\n  width: 100%;\n  margin: 0 auto;\n}\n.styles_module_contentWrapper__46e26bc6:focus {\n  outline: none;\n}\n\n.styles_module_popup__46e26bc6 {\n  position: absolute;\n  z-index: 2;\n  -webkit-backface-visibility: hidden;\n          backface-visibility: hidden;\n  display: flex;\n  flex-direction: column;\n  overflow-y: auto;\n  top: 50%;\n  left: 50%;\n  min-height: 200px;\n  max-height: calc(100% - 40px);\n  padding: 30px;\n  border-radius: var(--radius-l);\n  opacity: 0;\n  transform: translate(-50%, -50%) scale(0.95);\n  background-color: var(--color-main-0);\n  transition: opacity 0.3s ease, transform 0.3s ease;\n}\n.styles_module_popup__46e26bc6::-webkit-scrollbar {\n  width: 0;\n}\n.styles_module_popup_maxLayout__46e26bc6 {\n  width: calc(100% - 40px);\n  max-width: 660px;\n}\n.styles_module_popup_maxLayout__46e26bc6 .styles_module_contentWrapper__46e26bc6 {\n  max-width: 440px;\n}\n@media screen and (max-width: 620px) {\n  .styles_module_popup__46e26bc6 {\n    top: 0;\n    left: 0;\n    transform: none;\n    max-width: none;\n    width: 100%;\n    height: 100%;\n    max-height: none;\n    border-radius: 0;\n    background-color: var(--color-main-0);\n  }\n}\n.styles_module_popup_show__46e26bc6 {\n  transform: translate(-50%, -50%) scale(1);\n  opacity: 1;\n}\n@media screen and (max-width: 620px) {\n  .styles_module_popup_show__46e26bc6 {\n    transform: translate(0, 0) scale(1);\n  }\n}\n\n.styles_module_gradients__46e26bc6 {\n  z-index: 1;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%) scale(0.1);\n  width: 300px;\n  height: 300px;\n  opacity: 0;\n}\n\n.styles_module_gradient1__46e26bc6 {\n  position: absolute;\n  width: 1200px;\n  height: 1400px;\n  top: 50%;\n  left: 50%;\n  opacity: 0.8;\n  transform: translate(-50%, -50%) scale(1.2) rotate(45deg);\n  background-image: var(--gradient-peach);\n}\n\n.styles_module_gradient2__46e26bc6 {\n  position: absolute;\n  width: 700px;\n  height: 1000px;\n  top: 10%;\n  left: 90%;\n  opacity: 0.8;\n  transform: translate(-50%, -50%) scale(1.2) rotate(33deg);\n  background-image: var(--gradient-velvet);\n}";
-var modules_efc4e723$e = {"modalWrap":"styles_module_modalWrap__46e26bc6","contentWrapper":"styles_module_contentWrapper__46e26bc6","popup":"styles_module_popup__46e26bc6","popup_maxLayout":"styles_module_popup_maxLayout__46e26bc6","popup_show":"styles_module_popup_show__46e26bc6","gradients":"styles_module_gradients__46e26bc6","gradient1":"styles_module_gradient1__46e26bc6","gradient2":"styles_module_gradient2__46e26bc6"};
+var css$e = ".styles_module_modalWrap__60dcc0d7 {\n  position: fixed;\n  z-index: 999;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 10%);\n  pointer-events: none;\n  opacity: 0;\n}\n\n.styles_module_contentWrapper__60dcc0d7 {\n  width: 100%;\n  margin: 0 auto;\n}\n.styles_module_contentWrapper__60dcc0d7:focus {\n  outline: none;\n}\n\n.styles_module_popup__60dcc0d7 {\n  position: absolute;\n  z-index: 2;\n  -webkit-backface-visibility: hidden;\n          backface-visibility: hidden;\n  display: flex;\n  flex-direction: column;\n  overflow-y: auto;\n  top: 50%;\n  left: 50%;\n  max-height: calc(100% - 40px);\n  padding: 30px;\n  border-radius: var(--radius-l);\n  opacity: 0;\n  transform: translate(-50%, -50%) scale(0.95);\n  background-color: var(--color-main-0);\n  transition: opacity 0.3s ease, transform 0.3s ease;\n}\n.styles_module_popup__60dcc0d7::-webkit-scrollbar {\n  width: 0;\n}\n.styles_module_popup_maxLayout__60dcc0d7 {\n  width: calc(100% - 40px);\n  max-width: 660px;\n}\n.styles_module_popup_maxLayout__60dcc0d7 .styles_module_contentWrapper__60dcc0d7 {\n  max-width: 440px;\n}\n@media screen and (max-width: 620px) {\n  .styles_module_popup__60dcc0d7 {\n    top: 0;\n    left: 0;\n    transform: none;\n    max-width: none;\n    width: 100%;\n    height: 100%;\n    max-height: none;\n    border-radius: 0;\n    background-color: var(--color-main-0);\n  }\n}\n.styles_module_popup_show__60dcc0d7 {\n  transform: translate(-50%, -50%) scale(1);\n  opacity: 1;\n}\n@media screen and (max-width: 620px) {\n  .styles_module_popup_show__60dcc0d7 {\n    transform: translate(0, 0) scale(1);\n  }\n}\n\n.styles_module_gradients__60dcc0d7 {\n  z-index: 1;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%) scale(0.1);\n  width: 300px;\n  height: 300px;\n  opacity: 0;\n}\n\n.styles_module_gradient1__60dcc0d7 {\n  position: absolute;\n  width: 1200px;\n  height: 1400px;\n  top: 50%;\n  left: 50%;\n  opacity: 0.8;\n  transform: translate(-50%, -50%) scale(1.2) rotate(45deg);\n  background-image: var(--gradient-peach);\n}\n\n.styles_module_gradient2__60dcc0d7 {\n  position: absolute;\n  width: 700px;\n  height: 1000px;\n  top: 10%;\n  left: 90%;\n  opacity: 0.8;\n  transform: translate(-50%, -50%) scale(1.2) rotate(33deg);\n  background-image: var(--gradient-velvet);\n}";
+var modules_efc4e723$e = {"modalWrap":"styles_module_modalWrap__60dcc0d7","contentWrapper":"styles_module_contentWrapper__60dcc0d7","popup":"styles_module_popup__60dcc0d7","popup_maxLayout":"styles_module_popup_maxLayout__60dcc0d7","popup_show":"styles_module_popup_show__60dcc0d7","gradients":"styles_module_gradients__60dcc0d7","gradient1":"styles_module_gradient1__60dcc0d7","gradient2":"styles_module_gradient2__60dcc0d7"};
 n(css$e,{});
 
 ///////////////
 // COMPONENT //
 ///////////////
 var Popup = React__default["default"].forwardRef(function (props, ref) {
+    var _a;
     var modalWrapRef = React__default["default"].useRef(null);
     var popupRef = React__default["default"].useRef(null);
     var gradients = React__default["default"].useRef(null);
-    var _a = React__default["default"].useState(false), isOpen = _a[0], setIsOpen = _a[1];
-    var _b = React__default["default"].useState(false), isShown = _b[0], setIsShown = _b[1];
+    var _b = React__default["default"].useState(false), isOpen = _b[0], setIsOpen = _b[1];
+    var _c = React__default["default"].useState(false), isShown = _c[0], setIsShown = _c[1];
     //////////////
     // IMPERIAL //
     //////////////
@@ -11614,6 +11619,33 @@ var Popup = React__default["default"].forwardRef(function (props, ref) {
         },
         close: function () {
             setIsOpen(false);
+        },
+        animateSize: function (_a) {
+            // console.log(size);
+            var _b = _a.size, size = _b === void 0 ? {
+                width: null,
+                height: null,
+            } : _b, _c = _a.delay, delay = _c === void 0 ? 0 : _c, _d = _a.onAnimationStart, onAnimationStart = _d === void 0 ? function () { } : _d, _e = _a.onAnimationEnd, onAnimationEnd = _e === void 0 ? function () { } : _e;
+            var animationProps = {
+                duration: 0.5,
+                ease: "power1.out",
+                delay: delay,
+                onStart: function () {
+                    onAnimationStart();
+                },
+                onComplete: function () {
+                    onAnimationEnd();
+                },
+            };
+            if (size.height && size.width) {
+                gsapWithCSS.to(popupRef.current, __assign({ height: size.height, maxWidth: size.width }, animationProps));
+            }
+            if (size.height) {
+                gsapWithCSS.to(popupRef.current, __assign({ height: size.height }, animationProps));
+            }
+            if (size.width) {
+                gsapWithCSS.to(popupRef.current, __assign({ maxWidth: size.width }, animationProps));
+            }
         },
     }); });
     //////////////
@@ -11663,7 +11695,6 @@ var Popup = React__default["default"].forwardRef(function (props, ref) {
             });
         }
         else {
-            // console.log("close");
             gsapWithCSS.to(modalWrapRef.current, {
                 display: "none",
                 pointerEvents: "none",
@@ -11684,6 +11715,9 @@ var Popup = React__default["default"].forwardRef(function (props, ref) {
             });
         }
     }, [isOpen]);
+    /////////////////
+    /// FUNCTIONS ///
+    /////////////////
     var handleCustomPaddings = function () {
         if (!props.isMobileBreakpoint) {
             if (props.customPaddings) {
@@ -11715,10 +11749,11 @@ var Popup = React__default["default"].forwardRef(function (props, ref) {
                         maxWidth: !props.isMobileBreakpoint
                             ? props.customWidth
                             : "100%",
-                        width: "100%",
                     }
                     : {})), {
                     padding: handleCustomPaddings(),
+                    minHeight: (_a = props.minHeight) !== null && _a !== void 0 ? _a : "200px",
+                    width: "100%",
                 }) },
                 !props.hideHeader ? (React__default["default"].createElement(Header, { onCloseClick: handleCloseClick, title: props.title, smallTitle: props.smallTitle, noMaxWidth: props.customWidth && props.customWidth > 0 ? true : false })) : null,
                 React__default["default"].createElement("div", { tabIndex: 0, className: "".concat(modules_efc4e723$e.contentWrapper, " ").concat(props.popupContentClassName) }, props.children)),
@@ -11756,6 +11791,15 @@ var Modal = React__default["default"].forwardRef(function (props, ref) {
             if (callback) {
                 callback();
             }
+        },
+        getPopupRef: function () {
+            return popupRef.current;
+        },
+        getBottomSheetRef: function () {
+            return bottomSheetRef.current;
+        },
+        animateSize: function (props) {
+            popupRef.current.animateSize(props);
         },
     }); });
     /////////////////

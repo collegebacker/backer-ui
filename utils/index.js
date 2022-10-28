@@ -58,7 +58,7 @@ var gradients = [
     ["#B17DC3", "#FFCFF2"],
 ];
 var stringToGradient = function (string) {
-    var trimmedString = string.trim().replace(/\s/g, "");
+    var trimmedString = string.toUpperCase().trim().replace(/\s/g, "");
     var startHash = trimmedString
         .split("")
         .reduce(function (acc, char) { return acc + char.charCodeAt(0); }, 0);

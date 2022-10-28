@@ -8,6 +8,7 @@ export interface Props {
     hideHeader?: boolean;
     children: React.ReactNode;
     customWidth?: number;
+    minHeight?: string;
     customPaddings?: string;
     customPaddingsMobile?: string;
     isBottomSheet?: boolean;
@@ -15,6 +16,7 @@ export interface Props {
     dataAttrs?: Record<string, string>;
     maxSheetHeight?: string;
     onCloseClick?: () => void;
+    animateSize?: (width: number, height: number) => void;
 }
 declare const Modal: React.ForwardRefExoticComponent<Props & React.RefAttributes<any>>;
 export default Modal;

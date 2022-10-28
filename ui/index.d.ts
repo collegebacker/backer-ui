@@ -131,6 +131,7 @@ interface Props$i {
     activeCardScale?: number;
     spaceBetween?: number;
     showCaption?: boolean;
+    showArrows?: boolean;
     cardFontSize?: number;
     overlayGradientsClassName?: string;
     hideOverlayGradients?: boolean;
@@ -228,6 +229,7 @@ interface Props$a {
     hideHeader?: boolean;
     children: React.ReactNode;
     customWidth?: number;
+    minHeight?: string;
     customPaddings?: string;
     customPaddingsMobile?: string;
     isBottomSheet?: boolean;
@@ -235,6 +237,7 @@ interface Props$a {
     dataAttrs?: Record<string, string>;
     maxSheetHeight?: string;
     onCloseClick?: () => void;
+    animateSize?: (width: number, height: number) => void;
 }
 declare const Modal: React.ForwardRefExoticComponent<Props$a & React.RefAttributes<any>>;
 
