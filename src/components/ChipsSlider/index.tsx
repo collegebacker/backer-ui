@@ -140,15 +140,17 @@ const ChipsSlider: React.FC<Props> = (props) => {
 
   //
   const updateOnResize = () => {
-    setSliderViewWidthState(sliderViewRef.current.offsetWidth);
+    if (arrowLeftRef.current) {
+      setSliderViewWidthState(sliderViewRef.current.offsetWidth);
 
-    const arrowLeftBoundingBox = arrowLeftRef.current.getBoundingClientRect();
-    const hidePoint = 40;
+      const arrowLeftBoundingBox = arrowLeftRef.current.getBoundingClientRect();
+      const hidePoint = 40;
 
-    if (arrowLeftBoundingBox.x < hidePoint) {
-      sliderContainerRef.current.style.overflow = "hidden";
-    } else {
-      sliderContainerRef.current.style.overflow = "visible";
+      if (arrowLeftBoundingBox.x < hidePoint) {
+        sliderContainerRef.current.style.overflow = "hidden";
+      } else {
+        sliderContainerRef.current.style.overflow = "visible";
+      }
     }
 
     // console.log("gradientLeft", gradientLeftBox);
