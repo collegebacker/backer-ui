@@ -30,6 +30,7 @@ export interface Props {
   activeCardScale?: number;
   spaceBetween?: number;
   showCaption?: boolean;
+  showArrows?: boolean;
   cardFontSize?: number;
   overlayGradientsClassName?: string;
   hideOverlayGradients?: boolean;
@@ -419,26 +420,30 @@ const ChipsSlider: React.FC<Props> = (props) => {
         });
       }}
     >
-      <ArrowButton
-        ref={arrowLeftRef}
-        className={`${styles.arrowLeft} ${styles.arrowButton} ${props.arrowsClassName}`}
-        direction="left"
-        onMouseUp={goPreviousCard}
-        disabled={activeIndex === 0}
-        style={{
-          pointerEvents: isArrowButtonDisabled ? "none" : "auto",
-        }}
-      />
-      <ArrowButton
-        ref={arrowRightRef}
-        className={`${styles.rightArrow} ${styles.arrowButton} ${props.arrowsClassName}`}
-        direction="right"
-        onMouseUp={goToNextCard}
-        disabled={activeIndex === props.items.length - 1}
-        style={{
-          pointerEvents: isArrowButtonDisabled ? "none" : "auto",
-        }}
-      />
+      {props.showArrows && (
+        <>
+          <ArrowButton
+            ref={arrowLeftRef}
+            className={`${styles.arrowLeft} ${styles.arrowButton} ${props.arrowsClassName}`}
+            direction="left"
+            onMouseUp={goPreviousCard}
+            disabled={activeIndex === 0}
+            style={{
+              pointerEvents: isArrowButtonDisabled ? "none" : "auto",
+            }}
+          />
+          <ArrowButton
+            ref={arrowRightRef}
+            className={`${styles.rightArrow} ${styles.arrowButton} ${props.arrowsClassName}`}
+            direction="right"
+            onMouseUp={goToNextCard}
+            disabled={activeIndex === props.items.length - 1}
+            style={{
+              pointerEvents: isArrowButtonDisabled ? "none" : "auto",
+            }}
+          />
+        </>
+      )}
       <div className={`${styles.sliderWrap}`} ref={sliderViewRef}>
         {!props.hideOverlayGradients ? (
           <>
@@ -571,6 +576,7 @@ ChipsSlider.defaultProps = {
   cardFontSize: 20,
   showGuidelines: false,
   showCaption: true,
+  showArrows: true,
 } as Partial<Props>;
 
 export default ChipsSlider;
