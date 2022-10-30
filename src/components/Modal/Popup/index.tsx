@@ -21,6 +21,8 @@ interface Props {
   closeOutside?: boolean;
   dataAttrs?: Record<string, string>;
   onCloseClick?: () => void;
+  showBackButton?: boolean;
+  onBackClick?: () => void;
 }
 
 ///////////////
@@ -238,6 +240,8 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
               noMaxWidth={
                 props.customWidth && props.customWidth > 0 ? true : false
               }
+              showBackButton={props.showBackButton}
+              onBackClick={props.onBackClick}
             />
           ) : null}
           <div

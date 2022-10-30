@@ -20,6 +20,8 @@ export interface Props {
   closeOutside?: boolean;
   dataAttrs?: Record<string, string>;
   maxSheetHeight?: string;
+  showBackButton?: boolean;
+  onBackClick?: () => void;
   onCloseClick?: () => void;
   animateSize?: (width: number, height: number) => void;
 }
@@ -83,8 +85,6 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
   }, []);
 
   React.useEffect(() => {
-    // console.log("isOpen", isOpen);
-
     if (isOpen) {
       document.body.style.overflow = "hidden";
       document.body.style.touchAction = "none";

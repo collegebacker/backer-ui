@@ -1,19 +1,39 @@
 @import "../../../../tokens/all.scss";
 @import "../variables.scss";
 
-// HEADER
+// MIXINS
 
-@mixin hover-mixin {
-  &:before,
-  &:after {
-    height: 22px;
-  }
+$btns-offset: 25px;
 
-  .closeButton__background {
-    opacity: 1;
-    transform: scale(1);
+@mixin button {
+  cursor: pointer;
+  z-index: 3;
+  position: absolute;
+
+  width: 40px;
+  height: 40px;
+
+  border: none;
+  outline: none;
+  background: none;
+  // background-color: aquamarine;
+  border-radius: 100px;
+
+  &__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0.7);
+    background-color: var(--color-main-transparent-50);
+    transition: opacity 0.1s ease, transform 0.1s ease;
   }
 }
+
+//
 
 .title {
   font-family: "Gza", serif;
@@ -38,7 +58,8 @@
 
 .header {
   display: flex;
-  flex-direction: column;
+  min-height: 30px;
+  // flex-direction: column;
 
   &_maxWidth {
     max-width: $max-popup-content-width;
@@ -51,7 +72,7 @@
 }
 
 .bottomMargin {
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
 .titleWrap {
@@ -72,21 +93,62 @@
   width: 100%;
 }
 
+// BACK BUTTON
+
+.backButton {
+  @include button;
+  top: $btns-offset;
+  left: $btns-offset;
+
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transition: transform 0.15s ease, width 0.15s ease;
+  }
+
+  &::after {
+    width: 13px;
+    height: 13px;
+    transform: translate(11px, -50%) rotate(45deg);
+    border: 1px solid var(--color-main-500);
+    border-top: none;
+    border-right: none;
+  }
+
+  &::before {
+    width: 22px;
+    height: 1px;
+    transform: translate(9px, -50%);
+    background-color: var(--color-main-500);
+  }
+
+  &:hover {
+    &::after {
+      transform: translate(8px, -50%) rotate(45deg);
+    }
+
+    &::before {
+      width: 26px;
+      transform: translate(7px, -50%);
+    }
+
+    .backButton__background {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+
 // CLOSE BUTTON
 
 .closeButton {
-  cursor: pointer;
-  z-index: 3;
-  position: absolute;
-  top: 25px;
-  right: 25px;
-  width: 40px;
-  height: 40px;
+  @include button;
+  top: $btns-offset;
+  right: $btns-offset;
   margin-left: 20px;
-  border: none;
-  outline: none;
-  background: none;
-  border-radius: 50%;
 
   &__wrap {
     display: flex;
@@ -96,19 +158,6 @@
     @media screen and (max-width: $mobile-breakpoint) {
       width: auto;
     }
-  }
-
-  &__background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    opacity: 0;
-    transform: scale(0.7);
-    background-color: var(--color-main-transparent-50);
-    transition: opacity 0.1s ease, transform 0.1s ease;
   }
 
   &:before,
@@ -133,7 +182,15 @@
   }
 
   &:hover {
-    @include hover-mixin;
+    &:before,
+    &:after {
+      height: 20px;
+    }
+
+    .closeButton__background {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 
   &:focus-visible {

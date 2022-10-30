@@ -19,6 +19,8 @@ interface Props {
   dataAttrs?: Record<string, string>;
   maxSheetHeight?: string;
   onCloseClick?: () => void;
+  showBackButton?: boolean;
+  onBackClick?: () => void;
 }
 
 ///////////////
@@ -178,6 +180,8 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
             title={props.title}
             smallTitle={props.smallTitle}
             noMaxWidth={true}
+            showBackButton={props.showBackButton}
+            onBackClick={props.onBackClick}
           />
         ) : null}
         <div className={`${props.popupContentClassName}`}>{props.children}</div>
