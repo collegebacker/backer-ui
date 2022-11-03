@@ -1,0 +1,24 @@
+.wrap {
+  position: relative;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  padding: 3px;
+  margin-right: 12px;
+}
+
+.checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkboxMock {
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  border-radius: var(--radius-s);
+  border: 1px solid var(--color-main-500);
+}

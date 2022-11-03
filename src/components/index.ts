@@ -25,6 +25,7 @@ export { default as ActionSheet } from "./ActionSheet";
 export { default as CSSSlider } from "./CSSSlider";
 export { default as CountBadge } from "./CountBadge";
 export { default as ProfilePic } from "./ProfilePic";
+export { default as Checkbox } from "./Checkbox";
 
 // SHARAED
 export { default as ContributionSuccessModal } from "./ContributionSuccessModal";
