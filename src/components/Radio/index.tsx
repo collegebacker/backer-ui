@@ -14,7 +14,7 @@ export interface Props {
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
-const Checkbox: React.FC<Props> = (props) => {
+const Radio: React.FC<Props> = (props) => {
   const [checked, setChecked] = React.useState(props.checked);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,11 +23,15 @@ const Checkbox: React.FC<Props> = (props) => {
   };
 
   return (
-    <span className={`${styles.wrap} ${props.className}`}>
+    <span
+      className={`${styles.wrap} ${checked ? styles.checked : ""} ${
+        props.className
+      } ${props.disabled ? styles.disabled : ""}`}
+    >
       <input
         id={props.id}
         name={props.name}
-        type="checkbox"
+        type="radio"
         checked={checked}
         value={props.value}
         disabled={props.disabled}
@@ -36,27 +40,15 @@ const Checkbox: React.FC<Props> = (props) => {
         onBlur={props.onBlur}
         onKeyDown={props.onKeyDown}
       />
-      <span className={styles.checkboxMock}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className={styles.tick}
-          width="12"
-          height="8"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M11.0426.48219c.2859.299647.2749.77439-.0248 1.06037l-6.28675 6c-.14572.13907-.34125.21368-.54257.20703-.20131-.00665-.3915-.09399-.52772-.24237l-3.213236-3.5c-.280126-.30513-.25986-.77957.045266-1.0597.305127-.28013.77957-.25986 1.05969.04527l2.69611 2.93672L9.98219.457441c.29961-.285979.77441-.274899 1.06041.024749Z"
-          />
-        </svg>
-      </span>
+      <span className={styles.radioMock} />
     </span>
   );
 };
 
-Checkbox.defaultProps = {
+Radio.defaultProps = {
   className: "",
   disabled: false,
   checked: false,
 } as Partial<Props>;
 
-export default Checkbox;
+export default Radio;

@@ -3,16 +3,77 @@
   display: inline-block;
   width: 24px;
   height: 24px;
-  padding: 3px;
   margin-right: 12px;
-}
 
-.checkbox {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
+  input[type="checkbox"] {
+    z-index: 1;
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+
+    &:hover {
+      + .checkboxMock {
+        background-color: rgba(0, 0, 0, 0.04);
+
+        .tick {
+          opacity: 0.5;
+        }
+      }
+    }
+
+    &:checked {
+      + .checkboxMock {
+        background-color: var(--color-main-400);
+
+        .tick {
+          fill: var(--color-main-0);
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1);
+        }
+      }
+    }
+
+    &:checked:hover {
+      + .checkboxMock {
+        background-color: var(--color-main-400);
+
+        .tick {
+          opacity: 0.8;
+          transform: translate(-50%, -50%) scale(1);
+        }
+      }
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+
+      + .checkboxMock {
+        opacity: 0.3;
+        background-color: rgba(0, 0, 0, 0.15);
+
+        .tick {
+          opacity: 0;
+        }
+      }
+    }
+
+    &:checked:disabled {
+      + .checkboxMock {
+        background-color: var(--color-main-400);
+
+        .tick {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1);
+        }
+      }
+    }
+  }
 }
 
 .checkboxMock {
@@ -21,4 +82,20 @@
   width: 18px;
   border-radius: var(--radius-s);
   border: 1px solid var(--color-main-500);
+  margin: 3px;
+  transition: all 0.1s ease-in-out;
 }
+
+.tick {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.7);
+  opacity: 0;
+  fill: var(--color-main-500);
+  transition: all 0.2s ease-in-out;
+}
+
+// TODO
+// 1. Add a focus state
+// 2. check multiple radios

@@ -26,6 +26,7 @@ export { default as CSSSlider } from "./CSSSlider";
 export { default as CountBadge } from "./CountBadge";
 export { default as ProfilePic } from "./ProfilePic";
 export { default as Checkbox } from "./Checkbox";
+export { default as Radio } from "./Radio";
 
 // SHARAED
 export { default as ContributionSuccessModal } from "./ContributionSuccessModal";

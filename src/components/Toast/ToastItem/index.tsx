@@ -5,7 +5,7 @@ import Text from "../../Text";
 import Button from "../../Button";
 
 interface ItemProps {
-  message: string;
+  message: string | React.ReactNode;
   params?: ToastItemProps;
 }
 
