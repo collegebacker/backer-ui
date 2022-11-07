@@ -38,14 +38,18 @@ const Checkbox: React.FC<Props> = (props) => {
       />
       <span className={styles.checkboxMock}>
         <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className={styles.tick}
-          width="12"
+          width="10"
           height="8"
+          viewBox="0 0 10 8"
+          className={styles.tick}
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            fill-rule="evenodd"
-            d="M11.0426.48219c.2859.299647.2749.77439-.0248 1.06037l-6.28675 6c-.14572.13907-.34125.21368-.54257.20703-.20131-.00665-.3915-.09399-.52772-.24237l-3.213236-3.5c-.280126-.30513-.25986-.77957.045266-1.0597.305127-.28013.77957-.25986 1.05969.04527l2.69611 2.93672L9.98219.457441c.29961-.285979.77441-.274899 1.06041.024749Z"
+            d="M1.5 3.58333L3.86765 6.5L8.5 1.5"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </svg>
       </span>
