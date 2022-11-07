@@ -1,6 +1,5 @@
 import Icon from "../Icon";
 import React from "react";
-import Text from "../Text";
 import styles from "./styles.module.scss";
 
 export interface Props {
@@ -110,15 +109,12 @@ const GhostInput = React.forwardRef<any, Props>((props, ref) => {
         ) : null}
 
         {props.label !== "" ? (
-          <Text
-            tag="label"
-            className={styles.label}
+          <label
+            className={`typo-app-body-caption ${styles.label}`}
             htmlFor={props.name}
-            context="app"
-            appStyle="body-caption"
           >
             {props.label}
-          </Text>
+          </label>
         ) : null}
 
         <input
@@ -140,24 +136,14 @@ const GhostInput = React.forwardRef<any, Props>((props, ref) => {
         />
       </div>
       {props.helperText && !props.isInvalid ? (
-        <Text
-          className={styles.helperText}
-          tag="span"
-          context="app"
-          appStyle="body-caption"
-        >
+        <span className={`typo-app-body-caption ${styles.helperText}`}>
           {props.helperText}
-        </Text>
+        </span>
       ) : null}
       {props.isInvalid ? (
-        <Text
-          className={styles.helperText}
-          tag="span"
-          context="app"
-          appStyle="body-caption"
-        >
+        <span className={`typo-app-body-caption ${styles.helperText}`}>
           {props.errorMessage}
-        </Text>
+        </span>
       ) : null}
     </div>
   );

@@ -1,8 +1,6 @@
 import React from "react";
 import styles from "./styles.module.scss";
 
-import Text from "../Text";
-
 export interface Props {
   className?: string;
   type?: "success" | "error" | "warning";
@@ -78,14 +76,7 @@ const WarnMesssage: React.FC<Props> = (props) => {
       >
         {setIcon(props.type)}
       </svg>
-      <Text
-        tag="span"
-        context="app"
-        appStyle="body-main"
-        className={styles.text}
-      >
-        {props.text}
-      </Text>
+      <span className={`typo-app-body-main ${styles.text}`}>{props.text}</span>
     </section>
   );
 };

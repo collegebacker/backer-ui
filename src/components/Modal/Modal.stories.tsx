@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import gsap from "gsap";
 
-import { Modal, Button, Text, ModalButtons, Accordion } from "..";
+import { Modal, Button, ModalButtons, Accordion } from "..";
 
 localStorage.clear();
 
@@ -12,27 +12,27 @@ const items = [
     title: "Why should I use Backer?",
     content: (
       <>
-        <Text tag="p" context="marketing" marketingStyle="paragraph">
+        <p className="typo-marketing-paragraph">
           Backer is the easiest way to save for college with help from family
           and friends. We&apos;ll help you invest your savings with a tax-free
           529 Savings Plan, which is like a retirement account for your
           child&apos;s education. It&apos;s a government-sponsored account and
           is the smartest way to avoid future student debt.
-        </Text>
-        <Text tag="p" context="marketing" marketingStyle="paragraph">
+        </p>
+        <p className="typo-marketing-paragraph">
           With Backer, it&apos;s simple to involve family and friends in the
           process. These “backers” can quickly and easily contribute to your
           child&apos;s education fund and stay involved as your child gets
           closer to college. Our most active customers save 4x more by building
           a team of backers for their kids.
-        </Text>
+        </p>
       </>
     ),
   },
   {
     title: "How does Backer help me save more for college?",
     content: (
-      <Text tag="p" context="marketing" marketingStyle="paragraph">
+      <p className="typo-marketing-paragraph">
         Studies have shown that simply having a college fund can dramatically
         improve educational outcomes. Backer amplifies this effect by having
         your family and friends chip in, and then investing all of the savings
@@ -42,7 +42,7 @@ const items = [
         for the ride. Just like it&apos;s helpful to have a gym buddy or study
         buddy, having a team of backers for your kids is super motivating and
         helps you make much faster progress toward your savings goals.
-      </Text>
+      </p>
     ),
   },
 ];
@@ -210,21 +210,21 @@ Buttons.args = {
   hideHeader: false,
   children: (
     <>
-      <Text tag="p" context="app" appStyle="body-main">
+      <p className="typo-app-body-main">
         Its expensive to raise a child. Make saving for education a team effort
         that’s fun and stress-free. Supercharge your savings with a tax-free 529
         investment account. You need support, and Backer is here to help.
-      </Text>
+      </p>
 
       <br />
-      <Text tag="p" context="app" appStyle="body-main">
+      <p className="typo-app-body-main">
         Hi, Im the Dumi component. Use me when you need to show that any content
         can be in my place. You can replace me with any other component. Such
         components include, for example, popovers, which can have more than just
         a header and text inside. Here are the steps on how to replace the
         content inside of me: Create a content frame that you want to see
         instead of this placeholder.
-      </Text>
+      </p>
 
       <ModalButtons
         items={[
@@ -257,13 +257,13 @@ const FocusTrapTemplate: ComponentStory<typeof Modal> = (args) => {
       }}
     >
       <Modal ref={modalRef} {...args} />
-      <Text tag="p" context="app" appStyle="body-paragraph">
+      <p className="typo-app-body-paragraph">
         Hey there! We’ve started thinking about the future, and are putting
         together a team of people who want to support us along the way. We’d
         love to have you join us! You’ll be able to follow along as our kid
         grows up. And if you want to contribute to their college fund, you can
         do that too. 🎓 Hope you enjoy this first update! Tester Jr
-      </Text>
+      </p>
       <Button
         label="Trigger Modal"
         style={{
@@ -289,14 +289,14 @@ const FocusTrapTemplate: ComponentStory<typeof Modal> = (args) => {
         </a>
       </div>
 
-      <Text tag="p" context="app" appStyle="body-paragraph">
+      <p className="typo-app-body-paragraph">
         Hey there! We’ve started thinking about the future, and are putting
         together a team of people who want to support us along the way. We’d
         love to have you join us! You’ll be able to follow along as our kid
         grows up. And if you want to contribute to their college fund, you can
         do that too. 🎓 Hope you enjoy this first update! Tester Jr
-      </Text>
-      <Text tag="p" context="app" appStyle="body-paragraph">
+      </p>
+      <p className="typo-app-body-paragraph">
         We in Readymag are often asked how we choose to add exact features. In
         this landing page we shed light on the topic and wrap up the product
         updates rolled out in 2021. When deciding on the course of the
@@ -307,7 +307,7 @@ const FocusTrapTemplate: ComponentStory<typeof Modal> = (args) => {
         purposes: all our landing pages, educational editorials, users stories
         and our main page are created with Readymag. Our slogan ‘Made by
         designers for designers’ is proven by practice every day.
-      </Text>
+      </p>
 
       <div
         style={{
@@ -319,13 +319,13 @@ const FocusTrapTemplate: ComponentStory<typeof Modal> = (args) => {
         <span>div to create a scroll</span>
       </div>
 
-      <Text tag="p" context="app" appStyle="body-paragraph">
+      <p className="typo-app-body-paragraph">
         Hey there! We’ve started thinking about the future, and are putting
         together a team of people who want to support us along the way. We’d
         love to have you join us! You’ll be able to follow along as our kid
         grows up. And if you want to contribute to their college fund, you can
         do that too. 🎓 Hope you enjoy this first update! Tester Jr
-      </Text>
+      </p>
 
       <Button
         label="Trigger Modal"
@@ -339,13 +339,13 @@ const FocusTrapTemplate: ComponentStory<typeof Modal> = (args) => {
         }}
       />
 
-      <Text tag="p" context="app" appStyle="body-paragraph">
+      <p className="typo-app-body-paragraph">
         Hey there! We’ve started thinking about the future, and are putting
         together a team of people who want to support us along the way. We’d
         love to have you join us! You’ll be able to follow along as our kid
         grows up. And if you want to contribute to their college fund, you can
         do that too. 🎓 Hope you enjoy this first update! Tester Jr
-      </Text>
+      </p>
     </div>
   );
 };
@@ -361,11 +361,11 @@ FocusTrap.args = {
   hideHeader: false,
   children: (
     <>
-      <Text tag="p" context="app" appStyle="body-main">
+      <p className="typo-app-body-main">
         Its expensive to raise a child. Make saving for education a team effort
         that’s fun and stress-free. Supercharge your savings with a tax-free 529
         investment account. You need support, and Backer is here to help.
-      </Text>
+      </p>
 
       <Accordion items={items} />
 
@@ -464,10 +464,8 @@ const SizeAnimationTemplate: ComponentStory<typeof Modal> = (args) => {
           }}
           style={{ ...contentStyles }}
         >
-          <Text
-            tag="p"
-            context="app"
-            appStyle="body-paragraph"
+          <p
+            className="typo-app-body-paragraph"
             style={{ marginBottom: "30px" }}
           >
             Hey there! We’ve started thinking about the future, and are putting
@@ -480,7 +478,7 @@ const SizeAnimationTemplate: ComponentStory<typeof Modal> = (args) => {
             love to have you join us! You’ll be able to follow along as our kid
             grows up. And if you want to contribute to their college fund, you
             can do that too. 🎓 Hope you enjoy this first update! Tester Jr
-          </Text>
+          </p>
           <Button
             label="animate to 600px"
             onClick={() => {
@@ -500,10 +498,8 @@ const SizeAnimationTemplate: ComponentStory<typeof Modal> = (args) => {
             ...contentStyles,
           }}
         >
-          <Text
-            tag="p"
-            context="app"
-            appStyle="body-paragraph"
+          <p
+            className="typo-app-body-paragraph"
             style={{ marginBottom: "30px" }}
           >
             The age-old saying goes: it takes a village. But today’s parents are
@@ -511,7 +507,7 @@ const SizeAnimationTemplate: ComponentStory<typeof Modal> = (args) => {
             longer have grandparents living just down the road, and new parents
             instead juggle full-time baby-raising alongside dual incomes, and
             little material or face-to-face support.
-          </Text>
+          </p>
           <Button
             label="animate to 400px"
             onClick={() => {

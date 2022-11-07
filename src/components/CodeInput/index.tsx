@@ -1,5 +1,4 @@
 import React from "react";
-import Text from "../Text";
 import styles from "./styles.module.scss";
 
 export interface Props {
@@ -225,22 +224,12 @@ const CodeInput = React.forwardRef<any, Props>((props, ref) => {
       </section>
 
       {props.isInvalid ? (
-        <Text
-          tag="span"
-          className={styles.helperText}
-          context="app"
-          appStyle="body-caption"
-        >
+        <span className={`typo-app-body-caption ${styles.helperText}`}>
           {props.errorMessage}
-        </Text>
+        </span>
       ) : null}
 
-      <Text
-        tag="p"
-        context="app"
-        appStyle="body-main"
-        className={styles.resendSection}
-      >
+      <p className={`typo-app-body-main ${styles.resendSection}`}>
         {props.resendText}{" "}
         <a
           className={`${styles.resendLink} ${
@@ -251,7 +240,7 @@ const CodeInput = React.forwardRef<any, Props>((props, ref) => {
           Resend code
         </a>{" "}
         {resendTimer > 0 ? `(available in ${resendTimer} seconds)` : null}
-      </Text>
+      </p>
     </div>
   );
 });

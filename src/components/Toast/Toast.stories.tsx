@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { Toast, Button, Text } from "..";
+import { Toast, Button } from "..";
 
 localStorage.clear();
 
@@ -39,14 +39,9 @@ const Template: ComponentStory<typeof Toast> = (args) => {
     <>
       <Toast ref={toastRef} {...args} />
 
-      <Text
-        tag="h2"
-        appStyle="title-small"
-        context="app"
-        style={{ marginBottom: "20px" }}
-      >
+      <h2 className="typo-app-title-small" style={{ marginBottom: "20px" }}>
         Basic toasts
-      </Text>
+      </h2>
       <Button
         size="small"
         style={{
@@ -120,14 +115,9 @@ const Template: ComponentStory<typeof Toast> = (args) => {
         }
       />
 
-      <Text
-        tag="h2"
-        appStyle="title-small"
-        context="app"
-        style={{ marginBottom: "20px" }}
-      >
+      <h2 className="typo-app-title-small" style={{ marginBottom: "20px" }}>
         Service toasts
-      </Text>
+      </h2>
 
       <Button
         size="small"
@@ -172,14 +162,9 @@ const Template: ComponentStory<typeof Toast> = (args) => {
         }
       />
 
-      <Text
-        tag="h2"
-        appStyle="title-small"
-        context="app"
-        style={{ marginBottom: "20px" }}
-      >
+      <h2 className="typo-app-title-small" style={{ marginBottom: "20px" }}>
         Timer toasts
-      </Text>
+      </h2>
 
       <Button
         size="small"
@@ -246,14 +231,9 @@ const Template: ComponentStory<typeof Toast> = (args) => {
         }
       />
 
-      <Text
-        tag="h2"
-        appStyle="title-small"
-        context="app"
-        style={{ marginBottom: "20px" }}
-      >
+      <h2 className="typo-app-title-small" style={{ marginBottom: "20px" }}>
         Corner caases
-      </Text>
+      </h2>
 
       <Button
         size="small"

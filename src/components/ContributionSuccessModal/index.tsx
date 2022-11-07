@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom";
 
 import Button from "../Button";
 import Divider from "../Divider";
-import Text from "../Text";
 import Modal from "../Modal";
 
 import styles from "./styles.module.scss";
@@ -132,7 +131,7 @@ const ContributionSuccessModal = React.forwardRef<any, Props>((props, ref) => {
   const queryParams = getQuery();
   const firstContribution = queryParams.get("type") === "firstContribution";
   const gift = queryParams.get("type") === "gift";
-  console.log(history)
+  console.log(history);
   const {
     amount,
     frequency,
@@ -156,10 +155,10 @@ const ContributionSuccessModal = React.forwardRef<any, Props>((props, ref) => {
       title=""
       isOpen={firstContribution || gift}
       onCloseClick={() => {
-        alert('HEEEEY YO!')
+        alert("HEEEEY YO!");
         if (queryParams) {
-          console.log(history)
-          console.log(queryParams)
+          console.log(history);
+          console.log(queryParams);
           queryParams.delete("type");
           history.replace({
             search: queryParams.toString(),
@@ -169,52 +168,32 @@ const ContributionSuccessModal = React.forwardRef<any, Props>((props, ref) => {
       }}
       ref={ref}
     >
-      <Text
-        tag="h1"
-        context="app"
-        appStyle="title-medium"
-        className={styles.title}
-      >
+      <h1 className={`typo-app-title-medium ${styles.title}`}>
         {getTitle({ gift, firstContribution })}
-      </Text>
+      </h1>
 
-      <Text
-        tag="p"
-        context="app"
-        appStyle="body-main"
-        className={styles.subtitle}
-      >
+      <p className={`typo-app-body-main ${styles.subtitle}`}>
         {getSubtitle({
           gift,
           firstContribution,
           fundName,
           recipientParentName,
         })}
-      </Text>
+      </p>
 
-      <Text
-        tag="p"
-        context="app"
-        appStyle="title-small"
-        className={styles.frequency}
-      >
+      <p className={`typo-app-title-small ${styles.frequency}`}>
         {currencyFormatter(amount)} {getFrequencyLabel(frequency)}{" "}
         {getDurationText(duration)}
-      </Text>
+      </p>
 
-      <Text
-        tag="p"
-        context="app"
-        appStyle="body-main"
-        className={styles.fundRecipient}
-      >
+      <p className={`typo-app-body-main ${styles.fundRecipient}`}>
         {getPaymentText({
           gift,
           firstContribution,
           fundName,
           recipientName,
         })}
-      </Text>
+      </p>
 
       {photoUrl && (
         <div className={styles.polaroidContainer}>
@@ -235,14 +214,9 @@ const ContributionSuccessModal = React.forwardRef<any, Props>((props, ref) => {
           className={styles.img}
           src="https://storage.googleapis.com/backer_web_assets/transaction.svg"
         />
-        <Text
-          tag="p"
-          context="app"
-          appStyle="body-main"
-          className={styles.confirmation}
-        >
+        <p className={`typo-app-body-main ${styles.confirmation}`}>
           {getTransactionText({ gift, firstContribution })}
-        </Text>
+        </p>
       </div>
 
       <Button
