@@ -54,7 +54,7 @@ export default {
     docs: {
       description: {
         component:
-          "To trigger the component, you need to creare a `ref` to the component `const modalRef = React.useRef<any>(null)`. Then you can use the `open` method to open the modal like `() => modalRef.current.open(callback)`. To close the modal, you can use the `close` method `() => modalRef.current.close(callback)`",
+          "To trigger the component, you need to creare a `ref` to the component `const modalRef = React.useRef<any>(null)`. Then you can use the `open` method to open the modal like `() => modalRef.current.open(callback)`. To close the modal, you can use the `close` method `() => modalRef.current.close(callback)`. In order ti animate the modal, you need to pass a `ref` to the `Modal` component like `ref={modalRef}` and then call the method `modalRef.current.animateSize()`. Thismethod could contain `modalRef.current.animateSize({ size: { width: 500, height: 500 }, delay: 0.5, onAnimationStart, onAnimationEnd })`.",
       },
     },
   },
