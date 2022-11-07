@@ -3,7 +3,7 @@ export interface Props {
     className?: string;
     type?: "success" | "error" | "warning";
     outline?: boolean;
-    text?: string;
+    text?: string | React.ReactNode;
     tabIndex?: number;
     onClick?: () => void;
 }

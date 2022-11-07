@@ -1,6 +1,6 @@
 import React from "react";
 interface ItemProps {
-    message: string;
+    message: string | React.ReactNode;
     params?: ToastItemProps;
 }
 declare const ToastItem: React.FC<ItemProps>;

@@ -12,6 +12,8 @@ interface Props {
     dataAttrs?: Record<string, string>;
     maxSheetHeight?: string;
     onCloseClick?: () => void;
+    showBackButton?: boolean;
+    onBackClick?: () => void;
 }
 declare const BottomSheet: React.ForwardRefExoticComponent<Props & React.RefAttributes<any>>;
 export default BottomSheet;

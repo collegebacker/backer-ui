@@ -6,7 +6,7 @@ export interface Props {
     icon?: IconTypes;
     emoji?: string;
     title?: string;
-    caption?: string;
+    caption?: string | React.ReactNode;
     tabIndex?: number;
     onClick?: () => void;
 }

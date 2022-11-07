@@ -3,7 +3,9 @@ interface HeaderProps {
     title?: string;
     smallTitle?: boolean;
     noMaxWidth?: boolean;
-    onCloseClick: (e: React.MouseEvent) => void;
+    showBackButton?: boolean;
+    onBackClick?: () => void;
+    onCloseClick: () => void;
 }
 declare const Header: React.FC<HeaderProps>;
 export default Header;

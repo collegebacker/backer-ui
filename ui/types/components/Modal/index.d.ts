@@ -15,6 +15,8 @@ export interface Props {
     closeOutside?: boolean;
     dataAttrs?: Record<string, string>;
     maxSheetHeight?: string;
+    showBackButton?: boolean;
+    onBackClick?: () => void;
     onCloseClick?: () => void;
     animateSize?: (width: number, height: number) => void;
 }
