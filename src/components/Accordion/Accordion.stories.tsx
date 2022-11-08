@@ -1,4 +1,4 @@
-import { Accordion, Text } from "..";
+import { Accordion } from "..";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 
 import React from "react";
@@ -19,27 +19,27 @@ const items = [
     title: "Why should I use Backer?",
     content: (
       <>
-        <Text tag="p" context="marketing" marketingStyle="paragraph">
+        <p className="typo-marketing-paragraph">
           Backer is the easiest way to save for college with help from family
           and friends. We&apos;ll help you invest your savings with a tax-free
           529 Savings Plan, which is like a retirement account for your
           child&apos;s education. It&apos;s a government-sponsored account and
           is the smartest way to avoid future student debt.
-        </Text>
-        <Text tag="p" context="marketing" marketingStyle="paragraph">
+        </p>
+        <p className="typo-marketing-paragraph">
           With Backer, it&apos;s simple to involve family and friends in the
           process. These “backers” can quickly and easily contribute to your
           child&apos;s education fund and stay involved as your child gets
           closer to college. Our most active customers save 4x more by building
           a team of backers for their kids.
-        </Text>
+        </p>
       </>
     ),
   },
   {
     title: "How does Backer help me save more for college?",
     content: (
-      <Text tag="p" context="marketing" marketingStyle="paragraph">
+      <p className="typo-marketing-paragraph">
         Studies have shown that simply having a college fund can dramatically
         improve educational outcomes. Backer amplifies this effect by having
         your family and friends chip in, and then investing all of the savings
@@ -49,24 +49,24 @@ const items = [
         for the ride. Just like it&apos;s helpful to have a gym buddy or study
         buddy, having a team of backers for your kids is super motivating and
         helps you make much faster progress toward your savings goals.
-      </Text>
+      </p>
     ),
   },
   {
     title: "Who can join the fund as a backer?",
     content: (
-      <Text tag="p" context="marketing" marketingStyle="paragraph">
+      <p className="typo-marketing-paragraph">
         Anyone you invite by sharing your unique fund link can join the fund as
         a backer and contribute gifts. We see lots of grandparents,
         uncles/aunts, and even family friends or the child&apos;s mentors at
         school and through other activities.
-      </Text>
+      </p>
     ),
   },
   {
     title: "What is Backer like for the backers I invite?",
     content: (
-      <Text tag="p" context="marketing" marketingStyle="paragraph">
+      <p className="typo-marketing-paragraph">
         With limited access to your child&apos;s fund page, backers can see that
         they&apos;re part of a team, but you choose how much of the fund&apos;s
         activity you want to be visible. We send reminders to your backers
@@ -74,7 +74,7 @@ const items = [
         make it easy to link a bank account via online banking, or they can use
         a credit or debit card or digital wallet like Apple Pay or, Google Pay –
         so gifting is a breeze.
-      </Text>
+      </p>
     ),
   },
 ];

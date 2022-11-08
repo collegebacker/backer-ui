@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./styles.module.scss";
 
-import Text from "../../Text";
 import Button from "../../Button";
 
 interface ItemProps {
@@ -78,14 +77,9 @@ const ToastItem: React.FC<ItemProps> = (props) => {
             })`,
           }}
         >
-          <Text
-            tag="p"
-            context="app"
-            appStyle="body-main"
-            className={styles.toastItem__text}
-          >
+          <p className={`typo-app-body-main ${styles.toastItem__text}`}>
             {props.message}
-          </Text>
+          </p>
 
           {props.params?.dismissButton || props.params?.button.label ? (
             <div className={styles.toastItem__buttons}>

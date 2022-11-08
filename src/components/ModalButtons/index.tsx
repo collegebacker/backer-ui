@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./styles.module.scss";
 
 import Icon from "../Icon";
-import Text from "../Text";
 
 export interface Props {
   className?: string;
@@ -24,14 +23,9 @@ const ModalButtons: React.FC<Props> = (props) => {
               {item.icon ? (
                 <Icon className={styles.icon} name={item.icon} />
               ) : null}
-              <Text
-                context="app"
-                appStyle="body-caption"
-                tag="span"
-                className={props.textClassName}
-              >
+              <span className={`typo-app-body-caption ${props.textClassName}`}>
                 {item.label}
-              </Text>
+              </span>
             </div>
           </button>
         );

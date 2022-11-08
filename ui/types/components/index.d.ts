@@ -11,7 +11,6 @@ export { default as SliderWrapper } from "./SliderWrapper";
 export { default as ArrowButton } from "./ArrowButton";
 export { default as DotPagination } from "./DotPagination";
 export { default as Divider } from "./Divider";
-export { default as Text } from "./Text";
 export { default as Spinner } from "./Spinner";
 export { default as Modal } from "./Modal";
 export { default as ModalButtons } from "./ModalButtons";

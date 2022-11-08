@@ -1,4 +1,4 @@
-import { Button, CodeInput, Text } from "..";
+import { Button, CodeInput } from "..";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 
 import React from "react";
@@ -36,17 +36,15 @@ const ConfirmTemplate: ComponentStory<typeof CodeInput> = (args) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <Text
-          context="app"
-          appStyle="body-caption"
-          tag="span"
+        <span
+          className="typo-app-body-caption"
           style={{
             display: "block",
             marginBottom: "40px",
           }}
         >
           test code: {testCode}
-        </Text>
+        </span>
 
         <CodeInput
           {...args}
@@ -96,17 +94,15 @@ const WithoutButtonTemplate: ComponentStory<typeof CodeInput> = (args) => {
 
   return (
     <div>
-      <Text
-        context="app"
-        appStyle="body-caption"
-        tag="span"
+      <span
+        className="typo-app-body-caption"
         style={{
           display: "block",
           marginBottom: "40px",
         }}
       >
         test code: {testCode}
-      </Text>
+      </span>
 
       <CodeInput
         {...args}

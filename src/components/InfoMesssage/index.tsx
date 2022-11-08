@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./styles.module.scss";
 
 import Icon from "../Icon";
-import Text from "../Text";
 
 export interface Props {
   className?: string;
@@ -40,22 +39,12 @@ const WarnMesssage: React.FC<Props> = (props) => {
           marginRight: props.orientation === "left" ? "0" : "20px",
         }}
       >
-        <Text
-          tag="span"
-          context="app"
-          appStyle="body-main"
-          className={styles.title}
-        >
+        <span className={`typo-app-body-main ${styles.title}`}>
           {props.title}
-        </Text>
-        <Text
-          tag="span"
-          context="app"
-          appStyle="body-caption"
-          className={styles.caption}
-        >
+        </span>
+        <span className={`typo-app-body-caption ${styles.caption}`}>
           {props.caption}
-        </Text>
+        </span>
       </div>
     </section>
   );
