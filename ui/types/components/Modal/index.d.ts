@@ -18,7 +18,7 @@ export interface Props {
     showBackButton?: boolean;
     onBackClick?: () => void;
     onCloseClick?: () => void;
-    animateSize?: (width: number, height: number) => void;
+    animateSize?: (props: ModalAnimationSizeProps) => void;
 }
 declare const Modal: React.ForwardRefExoticComponent<Props & React.RefAttributes<any>>;
 export default Modal;

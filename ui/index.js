@@ -11450,12 +11450,12 @@ var css$i = ".styles_module_modalWrap__3408261c {\n  position: relative;\n  z-in
 var modules_efc4e723$i = {"modalWrap":"styles_module_modalWrap__3408261c","background":"styles_module_background__3408261c","bottomSheetWrap":"styles_module_bottomSheetWrap__3408261c","overScrolled":"styles_module_overScrolled__3408261c"};
 n(css$i,{});
 
-var css$h = ".styles_module_title__e20faab5 {\n  font-family: \"Gza\", serif;\n  font-weight: 700;\n  font-size: 40px;\n  line-height: 120%;\n}\n@media screen and (max-width: 620px) {\n  .styles_module_title__e20faab5 {\n    font-family: \"ABCMarfa\", sans-serif;\n    font-weight: 500;\n    font-size: 24px;\n    line-height: 130%;\n  }\n}\n\n.styles_module_smallTitle__e20faab5 {\n  font-family: \"ABCMarfa\", sans-serif;\n  font-weight: 500;\n  font-size: 24px;\n  line-height: 130%;\n}\n\n.styles_module_header__e20faab5 {\n  display: flex;\n  min-height: 30px;\n}\n.styles_module_header_maxWidth__e20faab5 {\n  max-width: 440px;\n}\n@media screen and (max-width: 620px) {\n  .styles_module_header__e20faab5 {\n    flex-direction: row-reverse;\n    margin-bottom: 30px;\n  }\n}\n\n.styles_module_bottomMargin__e20faab5 {\n  margin-bottom: 25px;\n}\n\n.styles_module_titleWrap__e20faab5 {\n  position: relative;\n  display: flex;\n  flex: 1 1 auto;\n  width: 100%;\n  margin: 0 auto;\n}\n@media screen and (max-width: 620px) {\n  .styles_module_titleWrap__e20faab5 {\n    max-width: none;\n  }\n}\n\n.styles_module_title__e20faab5 {\n  padding-right: 50px;\n  margin: 0 auto;\n  width: 100%;\n}\n\n.styles_module_backButton__e20faab5 {\n  cursor: pointer;\n  z-index: 3;\n  position: absolute;\n  width: 40px;\n  height: 40px;\n  border: none;\n  outline: none;\n  background: none;\n  border-radius: 100px;\n  top: 25px;\n  left: 25px;\n}\n.styles_module_backButton__background__e20faab5 {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n  opacity: 0;\n  transform: scale(0.7);\n  background-color: var(--color-main-transparent-50);\n  transition: opacity 0.1s ease, transform 0.1s ease;\n}\n.styles_module_backButton__e20faab5::after, .styles_module_backButton__e20faab5::before {\n  content: \"\";\n  position: absolute;\n  top: 50%;\n  left: 0;\n  transition: transform 0.15s ease, width 0.15s ease;\n}\n.styles_module_backButton__e20faab5::after {\n  width: 13px;\n  height: 13px;\n  transform: translate(11px, -50%) rotate(45deg);\n  border: 1px solid var(--color-main-500);\n  border-top: none;\n  border-right: none;\n}\n.styles_module_backButton__e20faab5::before {\n  width: 22px;\n  height: 1px;\n  transform: translate(9px, -50%);\n  background-color: var(--color-main-500);\n}\n.styles_module_backButton__e20faab5:hover::after {\n  transform: translate(8px, -50%) rotate(45deg);\n}\n.styles_module_backButton__e20faab5:hover::before {\n  width: 26px;\n  transform: translate(7px, -50%);\n}\n.styles_module_backButton__e20faab5:hover .styles_module_backButton__background__e20faab5 {\n  opacity: 1;\n  transform: scale(1);\n}\n\n.styles_module_closeButton__e20faab5 {\n  cursor: pointer;\n  z-index: 3;\n  position: absolute;\n  width: 40px;\n  height: 40px;\n  border: none;\n  outline: none;\n  background: none;\n  border-radius: 100px;\n  top: 25px;\n  right: 25px;\n  margin-left: 20px;\n}\n.styles_module_closeButton__background__e20faab5 {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n  opacity: 0;\n  transform: scale(0.7);\n  background-color: var(--color-main-transparent-50);\n  transition: opacity 0.1s ease, transform 0.1s ease;\n}\n.styles_module_closeButton__wrap__e20faab5 {\n  display: flex;\n  justify-content: flex-end;\n  width: 100%;\n}\n@media screen and (max-width: 620px) {\n  .styles_module_closeButton__wrap__e20faab5 {\n    width: auto;\n  }\n}\n.styles_module_closeButton__e20faab5:before, .styles_module_closeButton__e20faab5:after {\n  content: \"\";\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  width: 1px;\n  height: 24px;\n  border-radius: 40px;\n  background-color: var(--color-main-500);\n  transition: height 0.1s ease;\n}\n.styles_module_closeButton__e20faab5:before {\n  transform: translate(-50%, -50%) rotate(45deg);\n}\n.styles_module_closeButton__e20faab5:after {\n  transform: translate(-50%, -50%) rotate(-45deg);\n}\n.styles_module_closeButton__e20faab5:hover:before, .styles_module_closeButton__e20faab5:hover:after {\n  height: 20px;\n}\n.styles_module_closeButton__e20faab5:hover .styles_module_closeButton__background__e20faab5 {\n  opacity: 1;\n  transform: scale(1);\n}\n.styles_module_closeButton__e20faab5:focus-visible {\n  border: 1px solid var(--color-main-500);\n}";
-var modules_efc4e723$h = {"title":"styles_module_title__e20faab5","smallTitle":"styles_module_smallTitle__e20faab5","header":"styles_module_header__e20faab5","header_maxWidth":"styles_module_header_maxWidth__e20faab5","bottomMargin":"styles_module_bottomMargin__e20faab5","titleWrap":"styles_module_titleWrap__e20faab5","backButton":"styles_module_backButton__e20faab5","backButton__background":"styles_module_backButton__background__e20faab5","closeButton":"styles_module_closeButton__e20faab5","closeButton__background":"styles_module_closeButton__background__e20faab5","closeButton__wrap":"styles_module_closeButton__wrap__e20faab5"};
+var css$h = ".styles_module_title__24e94945 {\n  font-family: \"Gza\", serif;\n  font-weight: 700;\n  font-size: 40px;\n  line-height: 120%;\n}\n@media screen and (max-width: 620px) {\n  .styles_module_title__24e94945 {\n    font-family: \"ABCMarfa\", sans-serif;\n    font-weight: 500;\n    font-size: 24px;\n    line-height: 130%;\n  }\n}\n\n.styles_module_smallTitle__24e94945 {\n  font-family: \"ABCMarfa\", sans-serif;\n  font-weight: 500;\n  font-size: 24px;\n  line-height: 130%;\n}\n\n.styles_module_header__24e94945 {\n  display: flex;\n}\n.styles_module_header_maxWidth__24e94945 {\n  max-width: 440px;\n}\n@media screen and (max-width: 620px) {\n  .styles_module_header__24e94945 {\n    flex-direction: row-reverse;\n    margin-bottom: 25px;\n    min-height: 30px;\n  }\n}\n\n.styles_module_minHeight__24e94945 {\n  min-height: 30px;\n}\n\n.styles_module_bottomMargin__24e94945 {\n  margin-bottom: 25px;\n}\n\n.styles_module_titleWrap__24e94945 {\n  position: relative;\n  display: flex;\n  flex: 1 1 auto;\n  width: 100%;\n  margin: 0 auto;\n}\n@media screen and (max-width: 620px) {\n  .styles_module_titleWrap__24e94945 {\n    max-width: none;\n  }\n}\n\n.styles_module_title__24e94945 {\n  padding-right: 50px;\n  margin: 0 auto;\n  width: 100%;\n}\n\n.styles_module_backButton__24e94945 {\n  cursor: pointer;\n  z-index: 3;\n  position: absolute;\n  width: 40px;\n  height: 40px;\n  border: none;\n  outline: none;\n  background: none;\n  border-radius: 100px;\n  top: 25px;\n  left: 25px;\n}\n.styles_module_backButton__background__24e94945 {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n  opacity: 0;\n  transform: scale(0.7);\n  background-color: var(--color-main-transparent-50);\n  transition: opacity 0.1s ease, transform 0.1s ease;\n}\n.styles_module_backButton__24e94945::after, .styles_module_backButton__24e94945::before {\n  content: \"\";\n  position: absolute;\n  top: 50%;\n  left: 0;\n  transition: transform 0.15s ease, width 0.15s ease;\n}\n.styles_module_backButton__24e94945::after {\n  width: 13px;\n  height: 13px;\n  transform: translate(11px, -50%) rotate(45deg);\n  border: 1px solid var(--color-main-500);\n  border-top: none;\n  border-right: none;\n}\n.styles_module_backButton__24e94945::before {\n  width: 22px;\n  height: 1px;\n  transform: translate(9px, -50%);\n  background-color: var(--color-main-500);\n}\n.styles_module_backButton__24e94945:hover::after {\n  transform: translate(8px, -50%) rotate(45deg);\n}\n.styles_module_backButton__24e94945:hover::before {\n  width: 26px;\n  transform: translate(7px, -50%);\n}\n.styles_module_backButton__24e94945:hover .styles_module_backButton__background__24e94945 {\n  opacity: 1;\n  transform: scale(1);\n}\n\n.styles_module_closeButton__24e94945 {\n  cursor: pointer;\n  z-index: 3;\n  position: absolute;\n  width: 40px;\n  height: 40px;\n  border: none;\n  outline: none;\n  background: none;\n  border-radius: 100px;\n  top: 25px;\n  right: 25px;\n  margin-left: 20px;\n}\n.styles_module_closeButton__background__24e94945 {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n  opacity: 0;\n  transform: scale(0.7);\n  background-color: var(--color-main-transparent-50);\n  transition: opacity 0.1s ease, transform 0.1s ease;\n}\n.styles_module_closeButton__wrap__24e94945 {\n  display: flex;\n  justify-content: flex-end;\n  width: 100%;\n}\n@media screen and (max-width: 620px) {\n  .styles_module_closeButton__wrap__24e94945 {\n    width: auto;\n  }\n}\n.styles_module_closeButton__24e94945:before, .styles_module_closeButton__24e94945:after {\n  content: \"\";\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  width: 1px;\n  height: 24px;\n  border-radius: 40px;\n  background-color: var(--color-main-500);\n  transition: height 0.1s ease;\n}\n.styles_module_closeButton__24e94945:before {\n  transform: translate(-50%, -50%) rotate(45deg);\n}\n.styles_module_closeButton__24e94945:after {\n  transform: translate(-50%, -50%) rotate(-45deg);\n}\n.styles_module_closeButton__24e94945:hover:before, .styles_module_closeButton__24e94945:hover:after {\n  height: 20px;\n}\n.styles_module_closeButton__24e94945:hover .styles_module_closeButton__background__24e94945 {\n  opacity: 1;\n  transform: scale(1);\n}\n.styles_module_closeButton__24e94945:focus-visible {\n  border: 1px solid var(--color-main-500);\n}";
+var modules_efc4e723$h = {"title":"styles_module_title__24e94945","smallTitle":"styles_module_smallTitle__24e94945","header":"styles_module_header__24e94945","header_maxWidth":"styles_module_header_maxWidth__24e94945","minHeight":"styles_module_minHeight__24e94945","bottomMargin":"styles_module_bottomMargin__24e94945","titleWrap":"styles_module_titleWrap__24e94945","backButton":"styles_module_backButton__24e94945","backButton__background":"styles_module_backButton__background__24e94945","closeButton":"styles_module_closeButton__24e94945","closeButton__background":"styles_module_closeButton__background__24e94945","closeButton__wrap":"styles_module_closeButton__wrap__24e94945"};
 n(css$h,{});
 
 var Header = function (props) {
-    return (React__default["default"].createElement("div", { className: "".concat(modules_efc4e723$h.header, " ").concat(props.title ? modules_efc4e723$h.bottomMargin : "") },
+    return (React__default["default"].createElement("div", { className: "".concat(modules_efc4e723$h.header, " ").concat(props.title || !props.showBackButton ? modules_efc4e723$h.bottomMargin : "", "\n      ").concat(props.noMaxWidth ? modules_efc4e723$h.minHeight : "", "\n      ") },
         props.showBackButton && (React__default["default"].createElement("button", { className: modules_efc4e723$h.backButton, onClick: props.onBackClick },
             React__default["default"].createElement("div", { className: modules_efc4e723$h.backButton__background }))),
         React__default["default"].createElement("button", { className: modules_efc4e723$h.closeButton, onClick: props.onCloseClick },
@@ -11607,7 +11607,8 @@ var Popup = React__default["default"].forwardRef(function (props, ref) {
     var _a;
     var modalWrapRef = React__default["default"].useRef(null);
     var popupRef = React__default["default"].useRef(null);
-    var gradients = React__default["default"].useRef(null);
+    var contentRef = React__default["default"].useRef(null);
+    var gradientsRef = React__default["default"].useRef(null);
     var _b = React__default["default"].useState(false), isOpen = _b[0], setIsOpen = _b[1];
     var _c = React__default["default"].useState(false), isShown = _c[0], setIsShown = _c[1];
     //////////////
@@ -11624,6 +11625,7 @@ var Popup = React__default["default"].forwardRef(function (props, ref) {
             setIsOpen(false);
         },
         animateSize: function (_a) {
+            // console.log(size);
             var _b = _a.size, size = _b === void 0 ? {
                 width: null,
                 height: null,
@@ -11685,7 +11687,7 @@ var Popup = React__default["default"].forwardRef(function (props, ref) {
                     (_a = popupRef.current) === null || _a === void 0 ? void 0 : _a.classList.add(modules_efc4e723$g.popup_show);
                 },
             });
-            gsapWithCSS.to(gradients.current, {
+            gsapWithCSS.to(gradientsRef.current, {
                 opacity: 1,
                 scale: 1,
                 delay: 0.1,
@@ -11709,7 +11711,7 @@ var Popup = React__default["default"].forwardRef(function (props, ref) {
                     setIsShown(false);
                 },
             });
-            gsapWithCSS.to(gradients.current, {
+            gsapWithCSS.to(gradientsRef.current, {
                 opacity: 0,
                 scale: 0.1,
                 duration: 0.7,
@@ -11735,7 +11737,7 @@ var Popup = React__default["default"].forwardRef(function (props, ref) {
                 return props.customPaddingsMobile;
             }
             else {
-                return "30px 30px 80px";
+                return "30px 20px 40px";
             }
         }
     };
@@ -11758,8 +11760,8 @@ var Popup = React__default["default"].forwardRef(function (props, ref) {
                     width: "100%",
                 }) },
                 !props.hideHeader ? (React__default["default"].createElement(Header, { onCloseClick: handleCloseClick, title: props.title, smallTitle: props.smallTitle, noMaxWidth: props.customWidth && props.customWidth > 0 ? true : false, showBackButton: props.showBackButton, onBackClick: props.onBackClick })) : null,
-                React__default["default"].createElement("div", { tabIndex: 0, className: "".concat(modules_efc4e723$g.contentWrapper, " ").concat(props.popupContentClassName) }, props.children)),
-            React__default["default"].createElement("div", { className: modules_efc4e723$g.gradients, ref: gradients },
+                React__default["default"].createElement("div", { tabIndex: 0, ref: contentRef, className: "".concat(modules_efc4e723$g.contentWrapper, " ").concat(props.popupContentClassName) }, props.children)),
+            React__default["default"].createElement("div", { className: modules_efc4e723$g.gradients, ref: gradientsRef },
                 React__default["default"].createElement("div", { className: modules_efc4e723$g.gradient1 }),
                 React__default["default"].createElement("div", { className: modules_efc4e723$g.gradient2 })))));
 });
@@ -11795,10 +11797,10 @@ var Modal = React__default["default"].forwardRef(function (props, ref) {
             }
         },
         getPopupRef: function () {
-            return popupRef.current;
+            return popupRef.current.getRef();
         },
         getBottomSheetRef: function () {
-            return bottomSheetRef.current;
+            return bottomSheetRef.current.getRef();
         },
         animateSize: function (props) {
             popupRef.current.animateSize(props);
@@ -11826,7 +11828,6 @@ var Modal = React__default["default"].forwardRef(function (props, ref) {
             (_a = bottomSheetRef.current) === null || _a === void 0 ? void 0 : _a.open();
             (_b = popupRef.current) === null || _b === void 0 ? void 0 : _b.open();
             if (props.isBottomSheet && isMobileBreakpoint) {
-                // console.log("open out");
                 (_c = bottomSheetRef.current) === null || _c === void 0 ? void 0 : _c.open();
             }
             else {
