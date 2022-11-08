@@ -32,7 +32,8 @@ interface Props {
 const Popup = React.forwardRef<any, Props>((props, ref) => {
   const modalWrapRef = React.useRef<HTMLDivElement>(null);
   const popupRef = React.useRef<HTMLDivElement>(null);
-  const gradients = React.useRef<HTMLDivElement>(null);
+  const contentRef = React.useRef<HTMLDivElement>(null);
+  const gradientsRef = React.useRef<HTMLDivElement>(null);
 
   const [isOpen, setIsOpen] = React.useState(false);
   const [isShown, setIsShown] = React.useState(false);
@@ -60,6 +61,8 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
       onAnimationStart = () => {},
       onAnimationEnd = () => {},
     }: ModalAnimationSizeProps) => {
+      // console.log(size);
+
       const animationProps = {
         duration: 0.5,
         ease: "power1.out",
@@ -138,7 +141,7 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
           popupRef.current?.classList.add(styles.popup_show);
         },
       });
-      gsap.to(gradients.current, {
+      gsap.to(gradientsRef.current, {
         opacity: 1,
         scale: 1,
         delay: 0.1,
@@ -161,7 +164,7 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
           setIsShown(false);
         },
       });
-      gsap.to(gradients.current, {
+      gsap.to(gradientsRef.current, {
         opacity: 0,
         scale: 0.1,
         duration: 0.7,
@@ -189,7 +192,7 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
       if (props.customPaddingsMobile) {
         return props.customPaddingsMobile;
       } else {
-        return "30px 30px 80px";
+        return "30px 20px 40px";
       }
     }
   };
@@ -244,13 +247,14 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
           ) : null}
           <div
             tabIndex={0}
+            ref={contentRef}
             className={`${styles.contentWrapper} ${props.popupContentClassName}`}
           >
             {props.children}
           </div>
         </section>
 
-        <div className={styles.gradients} ref={gradients}>
+        <div className={styles.gradients} ref={gradientsRef}>
           <div className={styles.gradient1} />
           <div className={styles.gradient2} />
         </div>

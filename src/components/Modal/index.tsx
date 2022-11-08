@@ -23,7 +23,7 @@ export interface Props {
   showBackButton?: boolean;
   onBackClick?: () => void;
   onCloseClick?: () => void;
-  animateSize?: (width: number, height: number) => void;
+  animateSize?: (props: ModalAnimationSizeProps) => void;
 }
 
 const Modal = React.forwardRef<any, Props>((props, ref) => {
@@ -54,10 +54,10 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
       }
     },
     getPopupRef: () => {
-      return popupRef.current;
+      return popupRef.current.getRef();
     },
     getBottomSheetRef: () => {
-      return bottomSheetRef.current;
+      return bottomSheetRef.current.getRef();
     },
     animateSize: (props: ModalAnimationSizeProps) => {
       popupRef.current.animateSize(props);
@@ -93,7 +93,6 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
       popupRef.current?.open();
 
       if (props.isBottomSheet && isMobileBreakpoint) {
-        // console.log("open out");
         bottomSheetRef.current?.open();
       } else {
         popupRef.current?.open();

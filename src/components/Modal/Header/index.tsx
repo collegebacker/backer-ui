@@ -15,7 +15,11 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = (props) => {
   return (
     <div
-      className={`${styles.header} ${props.title ? styles.bottomMargin : ""}`}
+      className={`${styles.header} ${
+        props.title || !props.showBackButton ? styles.bottomMargin : ""
+      }
+      ${props.noMaxWidth ? styles.minHeight : ""}
+      `}
     >
       {props.showBackButton && (
         <button className={styles.backButton} onClick={props.onBackClick}>

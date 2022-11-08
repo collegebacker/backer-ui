@@ -54,7 +54,7 @@ export default {
     docs: {
       description: {
         component:
-          "To trigger the component, you need to creare a `ref` to the component `const modalRef = React.useRef<any>(null)`. Then you can use the `open` method to open the modal like `() => modalRef.current.open(callback)`. To close the modal, you can use the `close` method `() => modalRef.current.close(callback)`. In order ti animate the modal, you need to pass a `ref` to the `Modal` component like `ref={modalRef}` and then call the method `modalRef.current.animateSize()`. Thismethod could contain `modalRef.current.animateSize({ size: { width: 500, height: 500 }, delay: 0.5, onAnimationStart, onAnimationEnd })`.",
+          "To trigger the component, you need to creare a `ref` to the component `const modalRef = React.useRef<any>(null)`. Then you can use the `open` method to open the modal like `() => modalRef.current.open(callback)`. To close the modal, you can use the `close` method `() => modalRef.current.close(callback)`",
       },
     },
   },
@@ -389,9 +389,42 @@ FocusTrap.args = {
   ),
 };
 
-const contentStyles = {
-  overflow: "auto",
-} as React.CSSProperties;
+const getContentHeight = (
+  parentEl: HTMLDialogElement,
+  contentEl: any,
+  width: number
+) => {
+  // get parent paddings
+  const parentElStyles = window.getComputedStyle(parentEl);
+  const parentElPaddings =
+    parseInt(parentElStyles.paddingLeft, 10) +
+    parseInt(parentElStyles.paddingRight, 10);
+
+  const newContentEl = contentEl.cloneNode(true);
+
+  newContentEl.style.position = "absolute";
+  newContentEl.style.top = "-9999px";
+  newContentEl.style.left = "-9999px";
+  newContentEl.style.height = "auto";
+  newContentEl.style.width = `${width - parentElPaddings}px`;
+  newContentEl.style.visibility = "hidden";
+  newContentEl.style.overflow = "auto";
+
+  document.body.appendChild(newContentEl);
+
+  const height = newContentEl.offsetHeight;
+
+  document.body.removeChild(newContentEl);
+
+  // console.log("height", height);
+  console.log("paddings", parentElPaddings);
+
+  return height;
+};
+
+const isMobileBreakpoint = () => {
+  return window.innerWidth < 621;
+};
 
 const SizeAnimationTemplate: ComponentStory<typeof Modal> = (args) => {
   const modalRef = React.useRef<any>(null);
@@ -408,9 +441,7 @@ const SizeAnimationTemplate: ComponentStory<typeof Modal> = (args) => {
     const animDuration = 0.4;
     const animEase = "power1.out";
 
-    console.log("animateModalContent", nextContent.scrollHeight);
-
-    if (previousContent) {
+    if (!isMobileBreakpoint()) {
       gsap.to(previousContent, {
         opacity: 0,
         duration: animDuration,
@@ -430,21 +461,54 @@ const SizeAnimationTemplate: ComponentStory<typeof Modal> = (args) => {
           });
         },
       });
-    }
 
-    if (nextContent) {
       gsap.to(nextContent, {
-        // display: "block",
-        height: "auto",
+        height: getContentHeight(
+          modalRef.current.getPopupRef(),
+          nextContent,
+          modalWidth
+        ),
         delay: animDuration,
         duration: animDuration,
         onComplete: () => {
           gsap.to(nextContent, {
             opacity: 1,
             duration: animDuration,
-            delay: animDuration,
+            delay: animDuration + 0.1,
             ease: animEase,
+
+            onComplete: () => {
+              gsap.to(nextContent, {
+                height: "auto",
+              });
+            },
           });
+        },
+      });
+    } else {
+      gsap.to(previousContent, {
+        opacity: 0,
+        height: 0,
+        x: -5,
+        duration: animDuration,
+
+        onComplete: () => {
+          gsap.set(previousContent, {
+            overflow: "hidden",
+          });
+
+          gsap.fromTo(
+            nextContent,
+            {
+              x: 5,
+            },
+            {
+              overflow: "visible",
+              opacity: 1,
+              height: "auto",
+              duration: animDuration,
+            }
+          );
         },
       });
     }
@@ -462,7 +526,6 @@ const SizeAnimationTemplate: ComponentStory<typeof Modal> = (args) => {
           ref={(el) => {
             contentRefs.current[0] = el;
           }}
-          style={{ ...contentStyles }}
         >
           <Text
             tag="p"
@@ -470,19 +533,17 @@ const SizeAnimationTemplate: ComponentStory<typeof Modal> = (args) => {
             appStyle="body-paragraph"
             style={{ marginBottom: "30px" }}
           >
-            Hey there! We’ve started thinking about the future, and are putting
-            together a team of people who want to support us along the way. We’d
-            love to have you join us! You’ll be able to follow along as our kid
-            grows up. And if you want to contribute to their college fund, you
-            can do that too. 🎓 Hope you enjoy this first update! Tester Jr Hey
-            there! We’ve started thinking about the future, and are putting
-            together a team of people who want to support us along the way. We’d
-            love to have you join us! You’ll be able to follow along as our kid
-            grows up. And if you want to contribute to their college fund, you
-            can do that too. 🎓 Hope you enjoy this first update! Tester Jr
+            The items are packed flush to each other against the edge of the
+            alignment container depending on the flex container's cross-end
+            side. This only applies to flex layout items. For items that are not
+            children of a flex container, this value is treated like end.
+            Specifies participation in first- or last-baseline alignment: aligns
+            the alignment baseline of the box's first or last baseline set with
+            the corresponding baseline in the shared first or last baseline set
+            of all the boxes in its baseline-sharing group.
           </Text>
           <Button
-            label="animate to 600px"
+            label="animate to 400px"
             onClick={() => {
               animateModalContent(0, 1, 400);
             }}
@@ -497,7 +558,7 @@ const SizeAnimationTemplate: ComponentStory<typeof Modal> = (args) => {
           style={{
             height: 0,
             opacity: 0,
-            ...contentStyles,
+            overflow: "hidden",
           }}
         >
           <Text
@@ -506,16 +567,49 @@ const SizeAnimationTemplate: ComponentStory<typeof Modal> = (args) => {
             appStyle="body-paragraph"
             style={{ marginBottom: "30px" }}
           >
-            The age-old saying goes: it takes a village. But today’s parents are
-            more likely than ever to be raising their kid in isolation. We no
-            longer have grandparents living just down the road, and new parents
-            instead juggle full-time baby-raising alongside dual incomes, and
-            little material or face-to-face support.
+            Similar to hidden, the content is clipped to the element's padding
+            box. The difference between clip and hidden is that the clip keyword
+            also forbids all scrolling, including programmatic scrolling. The
+            box is not a scroll container, and does not start a new formatting
+            context. If you wish to start a new formatting context, you can use
+            display: flow-root to do so.
           </Text>
           <Button
-            label="animate to 400px"
+            label="animate to 800px"
             onClick={() => {
-              animateModalContent(1, 0, 600);
+              animateModalContent(1, 2, 800);
+            }}
+            size="small"
+          />
+        </div>
+
+        <div
+          ref={(el) => {
+            contentRefs.current[2] = el;
+          }}
+          style={{
+            height: 0,
+            opacity: 0,
+            overflow: "hidden",
+          }}
+        >
+          <Text
+            tag="p"
+            context="app"
+            appStyle="body-paragraph"
+            style={{ marginBottom: "30px" }}
+          >
+            The items are evenly distributed within the alignment container
+            along the cross axis. The spacing between each pair of adjacent
+            items is the same. The first item is flush with the start edge of
+            the alignment container in the cross axis, and the last item is
+            flush with the end edge of the alignment container in the cross
+            axis.
+          </Text>
+          <Button
+            label="animate to 600px"
+            onClick={() => {
+              animateModalContent(2, 0, 600);
             }}
             size="small"
           />
@@ -541,7 +635,8 @@ export const SizeAnimation = SizeAnimationTemplate.bind({});
 SizeAnimation.args = {
   title: "Funds",
   smallTitle: true,
-  isBottomSheet: true,
+  isBottomSheet: false,
+  showBackButton: true,
   isOpen: false,
   closeOutside: true,
   customWidth: 420,
