@@ -244,19 +244,6 @@ PaymentLogo.defaultProps = {
     style: {},
 };
 
-var Text = React__default["default"].forwardRef(function (props, ref) {
-    props.className; props.style; props.tag; props.context; props.appStyle; props.marketingStyle; var rest = __rest(props, ["className", "style", "tag", "context", "appStyle", "marketingStyle"]);
-    return (React__default["default"].createElement(props.tag, __assign({ ref: ref, className: "".concat(props.className, " typo-").concat(props.context, "-").concat(props.context === "app" ? props.appStyle : props.marketingStyle), style: __assign({}, props.style) }, rest), props.children));
-});
-Text.displayName = "Text";
-Text.defaultProps = {
-    className: "",
-    tag: "p",
-    context: "app",
-    appStyle: "body-main",
-    marketingStyle: "paragraph",
-};
-
 var css$s = ".styles_module_componentWrap__c42ebd4a {\n  position: relative;\n  justify-content: flex-end;\n  display: flex;\n  flex-direction: column;\n}\n\n.styles_module_inputWrap__c42ebd4a {\n  position: relative;\n  justify-content: flex-end;\n  display: flex;\n  flex-direction: column;\n  height: 68px;\n}\n\n.styles_module_label__c42ebd4a {\n  pointer-events: none;\n  position: absolute;\n  bottom: 13px;\n  font-family: \"ABCMarfa\", sans-serif;\n  font-weight: 200;\n  font-size: 24px;\n  line-height: 18px;\n  opacity: 0.3;\n  transform-origin: left;\n  transition: all 0.2s ease;\n  -webkit-transition: all 0.2s ease;\n}\n\n.styles_module_input__c42ebd4a {\n  height: 44px;\n  padding: 0;\n  padding-bottom: 5px;\n  font-family: \"ABCMarfa\", sans-serif;\n  font-weight: 200;\n  font-size: 24px;\n  line-height: 24px;\n  background: none;\n  border: none;\n  outline: none;\n  border-radius: 0;\n  transition: all 0.15s ease;\n  box-shadow: 0 1px 0 0 var(--color-main-500);\n  -webkit-appearance: none;\n}\n.styles_module_input__c42ebd4a:hover, .styles_module_input__c42ebd4a:focus {\n  box-shadow: 0 2px 0 0 var(--color-main-500);\n}\n.styles_module_input__c42ebd4a:focus {\n  box-shadow: 0 2px 0 0 var(--color-main-500);\n}\n.styles_module_input__c42ebd4a:focus + .styles_module_label__c42ebd4a {\n  opacity: 1;\n  transform: translateY(-34px) scale(0.6);\n}\n.styles_module_input__c42ebd4a:not(:-moz-placeholder-shown) + .styles_module_label__c42ebd4a {\n  opacity: 1;\n  transform: translateY(-34px) scale(0.6);\n}\n.styles_module_input__c42ebd4a:not(:placeholder-shown) + .styles_module_label__c42ebd4a {\n  opacity: 1;\n  transform: translateY(-34px) scale(0.6);\n}\n\n.styles_module_helperText__c42ebd4a {\n  color: var(--color-main-transparent-200);\n  margin-top: 12px;\n  line-height: 120%;\n}\n\n.styles_module_hideSpinButton__c42ebd4a {\n  /* Chrome, Safari, Edge, Opera */\n  /* Firefox */\n}\n.styles_module_hideSpinButton__c42ebd4a::-webkit-outer-spin-button, .styles_module_hideSpinButton__c42ebd4a::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n.styles_module_hideSpinButton__c42ebd4a[type=number] {\n  -moz-appearance: textfield;\n}\n\n.styles_module_icon__c42ebd4a {\n  position: absolute;\n  cursor: pointer;\n  bottom: 10px;\n  right: 0;\n}\n\n.styles_module_error__c42ebd4a .styles_module_input__c42ebd4a {\n  box-shadow: 0 2px 0 0 var(--color-service-error-main);\n}\n.styles_module_error__c42ebd4a .styles_module_helperText__c42ebd4a {\n  color: var(--color-service-error-main);\n}\n\n.styles_module_disabled__c42ebd4a {\n  opacity: 0.3;\n  pointer-events: none;\n}\n\n.styles_module_shake__c42ebd4a {\n  animation-name: styles_module_shakeAnimation__c42ebd4a;\n  animation-duration: 0.4s;\n  animation-iteration-count: 1;\n  animation-timing-function: ease;\n}\n\n@keyframes styles_module_shakeAnimation__c42ebd4a {\n  0% {\n    transform: translateX(0);\n  }\n  30% {\n    transform: translateX(-10px);\n  }\n  40% {\n    transform: translateX(10px);\n  }\n  60% {\n    transform: translateX(-10px);\n  }\n  100% {\n    transform: translateX(0);\n  }\n}";
 var modules_efc4e723$s = {"componentWrap":"styles_module_componentWrap__c42ebd4a","inputWrap":"styles_module_inputWrap__c42ebd4a","label":"styles_module_label__c42ebd4a","input":"styles_module_input__c42ebd4a","helperText":"styles_module_helperText__c42ebd4a","hideSpinButton":"styles_module_hideSpinButton__c42ebd4a","icon":"styles_module_icon__c42ebd4a","error":"styles_module_error__c42ebd4a","disabled":"styles_module_disabled__c42ebd4a","shake":"styles_module_shake__c42ebd4a","shake-animation":"styles_module_shakeAnimation__c42ebd4a"};
 n(css$s,{});
@@ -289,8 +276,8 @@ var Input = React__default["default"].forwardRef(function (props, ref) {
                 React__default["default"].createElement(Icon, { name: props.icon.name }))) : null,
             React__default["default"].createElement("input", { ref: inputRef, tabIndex: props.tabIndex, autoFocus: props.autoFocus, type: props.type, id: props.id ? props.id : props.name, name: props.name, className: "".concat(modules_efc4e723$s.input, " ").concat(props.hideSpinButton ? modules_efc4e723$s.hideSpinButton : ""), placeholder: "\u00A0", value: val, required: props.required, onChange: handleOnChange, onSubmit: props.onSubmit, onBlur: props.onBlur, onFocus: props.onFocus, onInvalid: props.onInvalid, disabled: props.disabled }),
             props.label !== "" ? (React__default["default"].createElement("label", { className: modules_efc4e723$s.label, htmlFor: props.name }, props.label)) : null),
-        props.helperText && !props.isInvalid ? (React__default["default"].createElement(Text, { className: modules_efc4e723$s.helperText, tag: "span", context: "app", appStyle: "body-caption" }, props.helperText)) : null,
-        props.isInvalid ? (React__default["default"].createElement(Text, { className: modules_efc4e723$s.helperText, tag: "span", context: "app", appStyle: "body-caption" }, props.errorMessage)) : null));
+        props.helperText && !props.isInvalid ? (React__default["default"].createElement("span", { className: "typo-app-body-caption ".concat(modules_efc4e723$s.helperText) }, props.helperText)) : null,
+        props.isInvalid ? (React__default["default"].createElement("span", { className: "typo-app-body-caption ".concat(modules_efc4e723$s.helperText) }, props.errorMessage)) : null));
 });
 Input.displayName = "Input";
 Input.defaultProps = {
@@ -367,10 +354,10 @@ var GhostInput = React__default["default"].forwardRef(function (props, ref) {
     return (React__default["default"].createElement("div", { ref: ref, className: "".concat(modules_efc4e723$r.componentWrap, " ").concat(props.className, " ").concat(props.isInvalid ? modules_efc4e723$r.error : "", " ").concat(props.type === "money" ? modules_efc4e723$r.money : "", " ").concat(props.isInvalid ? modules_efc4e723$r.shake : "") },
         React__default["default"].createElement("div", { className: "".concat(modules_efc4e723$r.inputWrap) },
             props.type === "money" ? (React__default["default"].createElement("span", { className: modules_efc4e723$r.moneySign }, props.currency)) : null,
-            props.label !== "" ? (React__default["default"].createElement(Text, { tag: "label", className: modules_efc4e723$r.label, htmlFor: props.name, context: "app", appStyle: "body-caption" }, props.label)) : null,
+            props.label !== "" ? (React__default["default"].createElement("label", { className: "typo-app-body-caption ".concat(modules_efc4e723$r.label), htmlFor: props.name }, props.label)) : null,
             React__default["default"].createElement("input", { ref: inputRef, tabIndex: props.tabIndex, autoFocus: props.autoFocus, type: convertTypes(props.type), id: props.id ? props.id : props.name, name: props.name, className: "".concat(modules_efc4e723$r.input), placeholder: props.placeholder, value: val, required: props.required, onChange: handleOnChange, onSubmit: props.onSubmit, onBlur: props.onBlur, onFocus: props.onFocus, onInvalid: props.onInvalid })),
-        props.helperText && !props.isInvalid ? (React__default["default"].createElement(Text, { className: modules_efc4e723$r.helperText, tag: "span", context: "app", appStyle: "body-caption" }, props.helperText)) : null,
-        props.isInvalid ? (React__default["default"].createElement(Text, { className: modules_efc4e723$r.helperText, tag: "span", context: "app", appStyle: "body-caption" }, props.errorMessage)) : null));
+        props.helperText && !props.isInvalid ? (React__default["default"].createElement("span", { className: "typo-app-body-caption ".concat(modules_efc4e723$r.helperText) }, props.helperText)) : null,
+        props.isInvalid ? (React__default["default"].createElement("span", { className: "typo-app-body-caption ".concat(modules_efc4e723$r.helperText) }, props.errorMessage)) : null));
 });
 GhostInput.displayName = "GhostInput";
 GhostInput.defaultProps = {
@@ -535,8 +522,8 @@ var CodeInput = React__default["default"].forwardRef(function (props, ref) {
                     inputsRefs.current[index] = input;
                 }, value: nums[index], onChange: function (event) { return handleOnChange(event, index); }, onKeyDown: function (event) { return handleKeyPress(event, index); }, maxLength: 1 }));
         })),
-        props.isInvalid ? (React__default["default"].createElement(Text, { tag: "span", className: modules_efc4e723$q.helperText, context: "app", appStyle: "body-caption" }, props.errorMessage)) : null,
-        React__default["default"].createElement(Text, { tag: "p", context: "app", appStyle: "body-main", className: modules_efc4e723$q.resendSection },
+        props.isInvalid ? (React__default["default"].createElement("span", { className: "typo-app-body-caption ".concat(modules_efc4e723$q.helperText) }, props.errorMessage)) : null,
+        React__default["default"].createElement("p", { className: "typo-app-body-main ".concat(modules_efc4e723$q.resendSection) },
             props.resendText,
             " ",
             React__default["default"].createElement("a", { className: "".concat(modules_efc4e723$q.resendLink, " ").concat(resendTimer > 0 ? modules_efc4e723$q.resendLink_disabled : ""), onClick: handleResend }, "Resend code"),
@@ -11876,7 +11863,7 @@ var ModalButtons = function (props) {
         return (React__default["default"].createElement("button", { className: modules_efc4e723$f.button, key: index, onClick: item.onClick },
             React__default["default"].createElement("div", { className: modules_efc4e723$f.content },
                 item.icon ? (React__default["default"].createElement(Icon, { className: modules_efc4e723$f.icon, name: item.icon })) : null,
-                React__default["default"].createElement(Text, { context: "app", appStyle: "body-caption", tag: "span", className: props.textClassName }, item.label))));
+                React__default["default"].createElement("span", { className: "typo-app-body-caption ".concat(props.textClassName) }, item.label))));
     })));
 };
 ModalButtons.defaultProps = {
@@ -11954,7 +11941,7 @@ var WarnMesssage$1 = function (props) {
             cursor: props.onClick ? "pointer" : "default",
         }, tabIndex: props.tabIndex, onClick: props.onClick },
         React__default["default"].createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "none", xmlns: "http://www.w3.org/2000/svg", className: modules_efc4e723$c.icon }, setIcon(props.type)),
-        React__default["default"].createElement(Text, { tag: "span", context: "app", appStyle: "body-main", className: modules_efc4e723$c.text }, props.text)));
+        React__default["default"].createElement("span", { className: "typo-app-body-main ".concat(modules_efc4e723$c.text) }, props.text)));
 };
 WarnMesssage$1.defaultProps = {
     className: "",
@@ -11977,8 +11964,8 @@ var WarnMesssage = function (props) {
                 marginLeft: props.orientation === "right" ? "0" : "20px",
                 marginRight: props.orientation === "left" ? "0" : "20px",
             } },
-            React__default["default"].createElement(Text, { tag: "span", context: "app", appStyle: "body-main", className: modules_efc4e723$b.title }, props.title),
-            React__default["default"].createElement(Text, { tag: "span", context: "app", appStyle: "body-caption", className: modules_efc4e723$b.caption }, props.caption))));
+            React__default["default"].createElement("span", { className: "typo-app-body-main ".concat(modules_efc4e723$b.title) }, props.title),
+            React__default["default"].createElement("span", { className: "typo-app-body-caption ".concat(modules_efc4e723$b.caption) }, props.caption))));
 };
 WarnMesssage.defaultProps = {
     className: "",
@@ -11997,8 +11984,8 @@ n(css$a,{});
 var ActionMesssage = function (props) {
     return (React__default["default"].createElement("section", { className: "".concat(modules_efc4e723$a.wrap, " ").concat(props.className, " ").concat(modules_efc4e723$a[props.mode]), onClick: props.onClick, tabIndex: props.tabIndex },
         React__default["default"].createElement("div", { className: modules_efc4e723$a.content },
-            React__default["default"].createElement(Text, { tag: "span", context: "app", appStyle: "body-main", className: modules_efc4e723$a.title }, props.title),
-            React__default["default"].createElement(Text, { tag: "span", context: "app", appStyle: "body-caption", className: modules_efc4e723$a.caption }, props.caption)),
+            React__default["default"].createElement("span", { className: "typo-app-body-main ".concat(modules_efc4e723$a.title) }, props.title),
+            React__default["default"].createElement("span", { className: "typo-app-body-caption ".concat(modules_efc4e723$a.caption) }, props.caption)),
         React__default["default"].createElement(Icon, { name: "chevron-right", className: modules_efc4e723$a.arrow })));
 };
 ActionMesssage.defaultProps = {
@@ -12069,7 +12056,7 @@ var ToastItem = function (props) {
             React__default["default"].createElement("div", { className: modules_efc4e723$8.toastItem__content, style: {
                     width: "calc(100% - ".concat(((_d = props.params) === null || _d === void 0 ? void 0 : _d.showCloseIcon) ? "84px" : "40px", ")"),
                 } },
-                React__default["default"].createElement(Text, { tag: "p", context: "app", appStyle: "body-main", className: modules_efc4e723$8.toastItem__text }, props.message),
+                React__default["default"].createElement("p", { className: "typo-app-body-main ".concat(modules_efc4e723$8.toastItem__text) }, props.message),
                 ((_e = props.params) === null || _e === void 0 ? void 0 : _e.dismissButton) || ((_f = props.params) === null || _f === void 0 ? void 0 : _f.button.label) ? (React__default["default"].createElement("div", { className: modules_efc4e723$8.toastItem__buttons },
                     ((_g = props.params) === null || _g === void 0 ? void 0 : _g.button.label) ? (React__default["default"].createElement(Button, { className: modules_efc4e723$8.toastItem__button, onClick: (_h = props.params) === null || _h === void 0 ? void 0 : _h.button.onClick, label: (_j = props.params) === null || _j === void 0 ? void 0 : _j.button.label, size: "small", mode: "outline", style: {
                             minWidth: "auto",
@@ -16284,7 +16271,7 @@ var ContributionSuccessModal = React__default["default"].forwardRef(function (pr
         };
     }, []);
     return (React__default["default"].createElement(Modal, { title: "", isOpen: firstContribution || gift, onCloseClick: function () {
-            alert('HEEEEY YO!');
+            alert("HEEEEY YO!");
             if (queryParams) {
                 console.log(history);
                 console.log(queryParams);
@@ -16296,20 +16283,20 @@ var ContributionSuccessModal = React__default["default"].forwardRef(function (pr
             if (props.onCloseClick)
                 props.onCloseClick();
         }, ref: ref },
-        React__default["default"].createElement(Text, { tag: "h1", context: "app", appStyle: "title-medium", className: modules_efc4e723$1.title }, getTitle({ gift: gift, firstContribution: firstContribution })),
-        React__default["default"].createElement(Text, { tag: "p", context: "app", appStyle: "body-main", className: modules_efc4e723$1.subtitle }, getSubtitle({
+        React__default["default"].createElement("h1", { className: "typo-app-title-medium ".concat(modules_efc4e723$1.title) }, getTitle({ gift: gift, firstContribution: firstContribution })),
+        React__default["default"].createElement("p", { className: "typo-app-body-main ".concat(modules_efc4e723$1.subtitle) }, getSubtitle({
             gift: gift,
             firstContribution: firstContribution,
             fundName: fundName,
             recipientParentName: recipientParentName,
         })),
-        React__default["default"].createElement(Text, { tag: "p", context: "app", appStyle: "title-small", className: modules_efc4e723$1.frequency },
+        React__default["default"].createElement("p", { className: "typo-app-title-small ".concat(modules_efc4e723$1.frequency) },
             currencyFormatter(amount),
             " ",
             getFrequencyLabel(frequency),
             " ",
             getDurationText(duration)),
-        React__default["default"].createElement(Text, { tag: "p", context: "app", appStyle: "body-main", className: modules_efc4e723$1.fundRecipient }, getPaymentText({
+        React__default["default"].createElement("p", { className: "typo-app-body-main ".concat(modules_efc4e723$1.fundRecipient) }, getPaymentText({
             gift: gift,
             firstContribution: firstContribution,
             fundName: fundName,
@@ -16321,7 +16308,7 @@ var ContributionSuccessModal = React__default["default"].forwardRef(function (pr
         React__default["default"].createElement(Divider, { className: modules_efc4e723$1.divider }),
         React__default["default"].createElement("div", { className: modules_efc4e723$1.bottomText },
             React__default["default"].createElement("img", { alt: "", className: modules_efc4e723$1.img, src: "https://storage.googleapis.com/backer_web_assets/transaction.svg" }),
-            React__default["default"].createElement(Text, { tag: "p", context: "app", appStyle: "body-main", className: modules_efc4e723$1.confirmation }, getTransactionText({ gift: gift, firstContribution: firstContribution }))),
+            React__default["default"].createElement("p", { className: "typo-app-body-main ".concat(modules_efc4e723$1.confirmation) }, getTransactionText({ gift: gift, firstContribution: firstContribution }))),
         React__default["default"].createElement(Button, { label: "View your ".concat(props.fund ? "fund" : "gift"), onClick: function () {
                 // @ts-ignore
                 ref.current.close();
@@ -16458,7 +16445,6 @@ exports.ProfilePic = FundProfilePic;
 exports.Radio = Radio;
 exports.SliderWrapper = SliderWrapper;
 exports.Spinner = Spinner;
-exports.Text = Text;
 exports.Toast = Toast;
 exports.WarnMesssage = WarnMesssage$1;
 //# sourceMappingURL=index.js.map
