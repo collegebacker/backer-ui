@@ -12413,6 +12413,19 @@ Radio.defaultProps = {
     checked: false,
 };
 
+var Text = React__default["default"].forwardRef(function (props, ref) {
+    props.className; props.style; props.tag; props.context; props.appStyle; props.marketingStyle; var rest = __rest(props, ["className", "style", "tag", "context", "appStyle", "marketingStyle"]);
+    return (React__default["default"].createElement(props.tag, __assign({ ref: ref, className: "".concat(props.className, " typo-").concat(props.context, "-").concat(props.context === "app" ? props.appStyle : props.marketingStyle), style: __assign({}, props.style) }, rest), props.children));
+});
+Text.displayName = "Text";
+Text.defaultProps = {
+    className: "",
+    tag: "p",
+    context: "app",
+    appStyle: "body-main",
+    marketingStyle: "paragraph",
+};
+
 function _setPrototypeOf(o, p) {
   _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
     o.__proto__ = p;
@@ -16445,6 +16458,7 @@ exports.ProfilePic = FundProfilePic;
 exports.Radio = Radio;
 exports.SliderWrapper = SliderWrapper;
 exports.Spinner = Spinner;
+exports.Text = Text;
 exports.Toast = Toast;
 exports.WarnMesssage = WarnMesssage$1;
 //# sourceMappingURL=index.js.map
