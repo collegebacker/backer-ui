@@ -1,5 +1,3 @@
-@import "../../../tokens/radii";
-
 $card-radius: 15px;
 
 .sliderContainer {
@@ -39,12 +37,8 @@ $card-radius: 15px;
 }
 
 .slider {
-  // overflow-x: hidden;
-  // padding-right: 4px;
   position: relative;
   display: inline-block;
-  // overflow-x: visible;
-  // scroll-snap-type: x mandatory;
   outline-offset: 5px;
   outline-color: var(--color-accent-transparent-200);
 
@@ -60,9 +54,6 @@ $card-radius: 15px;
 }
 
 .sliderCards {
-  // margin-left: 2px;
-  // margin-right: 2px;
-  // padding-right: 4px;
   display: flex;
   flex-wrap: nowrap;
   width: fit-content;
@@ -74,7 +65,6 @@ $card-radius: 15px;
 
 .paginationWrap {
   display: flex;
-  // justify-content: center;
   margin-top: 30px;
 }
 

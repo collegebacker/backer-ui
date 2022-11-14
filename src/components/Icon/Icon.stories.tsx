@@ -17,9 +17,9 @@ export default {
 const Template: ComponentStory<typeof Icon> = () => {
   return (
     <div className="iconsWrap">
-      {Object.keys(iconJSON).map((key) => {
+      {Object.keys(iconJSON).map((key, index) => {
         return (
-          <div className="iconsWrap_card">
+          <div className="iconsWrap_card" key={index}>
             <Icon
               className="iconsWrap_icon"
               key={key}
