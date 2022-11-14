@@ -7,6 +7,9 @@ import dts from "rollup-plugin-dts";
 import autoprefixer from "autoprefixer";
 import discardDuplicates from "postcss-discard-duplicates";
 import styles from "rollup-plugin-styles";
+import { terser } from "rollup-plugin-terser";
+import size from "rollup-plugin-size";
+import analyze from "rollup-plugin-analyzer";
 
 export default [
   {
@@ -41,6 +44,9 @@ export default [
           "src/**/*.test.tsx",
         ],
       }),
+      terser(),
+      analyze({ summaryOnly: true }),
+      size(),
     ],
   },
   {
