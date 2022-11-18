@@ -26,21 +26,25 @@ const radiosArr = [
     name: "checkbox1",
     checked: false,
     label: "Hit the gym",
+    disabled: false,
   },
   {
     name: "checkbox2",
     checked: false,
-    label: "Pay bills",
+    label: "Pay bills a React.KeyboardEvent<HTMLInputElement >",
+    disabled: false,
   },
   {
     name: "checkbox3",
     checked: false,
     label: "Meet George",
+    disabled: true,
   },
   {
     name: "checkbox4",
     checked: false,
     label: "Buy eggs",
+    disabled: false,
   },
 ];
 
@@ -49,26 +53,15 @@ const RadiogroupTemplate: ComponentStory<typeof Radio> = () => {
     // radio group
     <form>
       {radiosArr.map((radio) => (
-        <label
+        <Radio
           key={radio.name}
-          htmlFor={radio.name}
-          style={{
-            display: "flex",
-            marginBottom: "10px",
-          }}
-        >
-          <Radio
-            id={radio.name}
-            name={"radio-group"}
-            checked={radio.checked}
-            value={radio.label}
-          />
-          <span
-            style={{ marginTop: "4px", fontWeight: "300", fontSize: "16px" }}
-          >
-            {radio.label}
-          </span>
-        </label>
+          id={radio.name}
+          name={"radio-group"}
+          disabled={radio.disabled}
+          checked={radio.checked}
+          value={radio.label}
+          label={radio.label}
+        />
       ))}
     </form>
   );

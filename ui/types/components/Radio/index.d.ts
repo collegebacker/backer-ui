@@ -3,8 +3,10 @@ export interface Props {
     id: string;
     name: string;
     value?: string;
+    label?: string;
     disabled?: boolean;
     className?: string;
+    labelClassName?: string;
     checked?: boolean;
     onChange?: (checked: boolean) => void;
     onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;

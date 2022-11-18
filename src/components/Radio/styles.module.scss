@@ -1,9 +1,11 @@
+@import "../../../styles/mixins.scss";
+
 .wrap {
   display: inline-block;
   position: relative;
   width: 24px;
   height: 24px;
-  margin-right: 10px;
+  margin-right: 8px;
 
   input[type="radio"] {
     z-index: 2;
@@ -64,6 +66,17 @@
         }
       }
     }
+  }
+}
+
+.label {
+  @include input-label;
+}
+
+.disabled {
+  .labelText {
+    opacity: 0.6;
+    cursor: not-allowed;
   }
 }
 

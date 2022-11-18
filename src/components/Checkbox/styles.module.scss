@@ -1,9 +1,11 @@
+@import "../../../styles/mixins.scss";
+
 .wrap {
   position: relative;
   display: inline-block;
   width: 24px;
   height: 24px;
-  margin-right: 10px;
+  margin-right: 8px;
 
   input[type="checkbox"] {
     z-index: 1;
@@ -95,4 +97,15 @@
   opacity: 0;
   stroke: var(--color-main-500);
   transition: all 0.1s ease-in-out;
+}
+
+.label {
+  @include input-label;
+}
+
+.disabled {
+  .labelText {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
 }

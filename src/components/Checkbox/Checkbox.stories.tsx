@@ -54,31 +54,15 @@ const LabelTemplate: ComponentStory<typeof Checkbox> = () => {
   return (
     <div>
       {checkboxesArr.map((checkbox) => (
-        <label
+        <Checkbox
           key={checkbox.name}
-          htmlFor={checkbox.name}
-          style={{
-            display: "flex",
-            marginBottom: "10px",
-          }}
-        >
-          <Checkbox
-            name={checkbox.name}
-            id={checkbox.name}
-            checked={checkbox.checked}
-            value={checkbox.label}
-            disabled={checkbox.disabled}
-          />
-          <span
-            style={{
-              marginTop: "4px",
-              fontWeight: "300",
-              fontSize: "16px",
-            }}
-          >
-            {checkbox.label}
-          </span>
-        </label>
+          name={checkbox.name}
+          id={checkbox.name}
+          checked={checkbox.checked}
+          value={checkbox.label}
+          disabled={checkbox.disabled}
+          label={checkbox.label}
+        />
       ))}
     </div>
   );
