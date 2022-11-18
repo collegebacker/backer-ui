@@ -187,6 +187,7 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
             ...{
               padding: handleCustomPaddings(),
               minHeight: props.minHeight ?? "200px",
+              width: "calc(100% - 40px)",
             },
           }}
         >
