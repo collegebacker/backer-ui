@@ -4,6 +4,7 @@
 // MIXINS
 
 $btns-offset: 25px;
+$btns-offset-mobile: 18px;
 
 @mixin button {
   cursor: pointer;
@@ -78,7 +79,6 @@ $btns-offset: 25px;
 
 .bottomMargin {
   margin-bottom: 25px;
-  // min-height: 30px;
 }
 
 .titleWrap {
@@ -146,6 +146,10 @@ $btns-offset: 25px;
       transform: scale(1);
     }
   }
+
+  @media screen and (max-width: $mobile-breakpoint) {
+    left: $btns-offset-mobile;
+  }
 }
 
 // CLOSE BUTTON
@@ -154,7 +158,6 @@ $btns-offset: 25px;
   @include button;
   top: $btns-offset;
   right: $btns-offset;
-  margin-left: 20px;
 
   &__wrap {
     display: flex;
@@ -201,5 +204,9 @@ $btns-offset: 25px;
 
   &:focus-visible {
     border: 1px solid var(--color-main-500);
+  }
+
+  @media screen and (max-width: $mobile-breakpoint) {
+    right: $btns-offset-mobile;
   }
 }
