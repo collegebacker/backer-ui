@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import gsap from "gsap";
+import Autocomplete from "react-google-autocomplete";
 
 import { Modal, Button, ModalButtons, Accordion } from "..";
 
@@ -389,130 +389,8 @@ FocusTrap.args = {
   ),
 };
 
-const getContentHeight = (
-  parentEl: HTMLDialogElement,
-  contentEl: any,
-  width: number
-) => {
-  // get parent paddings
-  const parentElStyles = window.getComputedStyle(parentEl);
-  const parentElPaddings =
-    parseInt(parentElStyles.paddingLeft, 10) +
-    parseInt(parentElStyles.paddingRight, 10);
-
-  const newContentEl = contentEl.cloneNode(true);
-
-  newContentEl.style.position = "absolute";
-  newContentEl.style.top = "-9999px";
-  newContentEl.style.left = "-9999px";
-  newContentEl.style.height = "auto";
-  newContentEl.style.width = `${width - parentElPaddings}px`;
-  newContentEl.style.visibility = "hidden";
-  newContentEl.style.overflow = "auto";
-
-  document.body.appendChild(newContentEl);
-
-  const height = newContentEl.offsetHeight;
-
-  document.body.removeChild(newContentEl);
-
-  // console.log("height", height);
-  console.log("paddings", parentElPaddings);
-
-  return height;
-};
-
-const isMobileBreakpoint = () => {
-  return window.innerWidth < 621;
-};
-
-const SizeAnimationTemplate: ComponentStory<typeof Modal> = (args) => {
+const PlaygroundTemplate: ComponentStory<typeof Modal> = (args) => {
   const modalRef = React.useRef<any>(null);
-  const contentRefs = React.useRef<any>([]);
-
-  const animateModalContent = (
-    fadeInIndex: number,
-    fadeOutIndex: number,
-    modalWidth: number
-  ) => {
-    const previousContent = contentRefs.current[fadeInIndex];
-    const nextContent = contentRefs.current[fadeOutIndex];
-
-    const animDuration = 0.4;
-    const animEase = "power1.out";
-
-    if (!isMobileBreakpoint()) {
-      gsap.to(previousContent, {
-        opacity: 0,
-        duration: animDuration,
-        ease: animEase,
-        onComplete: () => {
-          gsap.to(previousContent, {
-            height: 0,
-            duration: animDuration,
-            ease: animEase,
-          });
-
-          modalRef.current.animateSize({
-            size: {
-              width: modalWidth,
-            },
-            delay: animDuration,
-          });
-        },
-      });
-
-      gsap.to(nextContent, {
-        height: getContentHeight(
-          modalRef.current.getPopupRef(),
-          nextContent,
-          modalWidth
-        ),
-        delay: animDuration,
-        duration: animDuration,
-        onComplete: () => {
-          gsap.to(nextContent, {
-            opacity: 1,
-            duration: animDuration,
-            delay: animDuration + 0.1,
-            ease: animEase,
-
-            onComplete: () => {
-              gsap.to(nextContent, {
-                height: "auto",
-              });
-            },
-          });
-        },
-      });
-    } else {
-      gsap.to(previousContent, {
-        opacity: 0,
-        height: 0,
-        x: -5,
-        duration: animDuration,
-
-        onComplete: () => {
-          gsap.set(previousContent, {
-            overflow: "hidden",
-          });
-
-          gsap.fromTo(
-            nextContent,
-            {
-              x: 5,
-            },
-            {
-              overflow: "visible",
-              opacity: 1,
-              height: "auto",
-              duration: animDuration,
-            }
-          );
-        },
-      });
-    }
-  };
 
   return (
     <div
@@ -522,11 +400,19 @@ const SizeAnimationTemplate: ComponentStory<typeof Modal> = (args) => {
       }}
     >
       <Modal ref={modalRef} {...args}>
-        <div
-          ref={(el) => {
-            contentRefs.current[0] = el;
-          }}
-        >
+        <div>
+          <h1 className="typo-app-title-large" style={{ marginBottom: "30px" }}>
+            Title
+          </h1>
+
+          <Autocomplete
+            apiKey={"AIzaSyDJEbjtm72mjATqlYwd9ZYAKF9mAbRLHPw"}
+            onPlaceSelected={(place) => {
+              console.log(place);
+            }}
+            style={{ marginBottom: "30px" }}
+          />
+
           <p
             className="typo-app-body-paragraph"
             style={{ marginBottom: "30px" }}
@@ -535,81 +421,29 @@ const SizeAnimationTemplate: ComponentStory<typeof Modal> = (args) => {
             together a team of people who want to support us along the way. We’d
             love to have you join us! You’ll be able to follow along as our kid
             grows up. And if you want to contribute to their college fund, you
-            can do that too. 🎓 Hope you enjoy this first update! Tester Jr Hey
-            there! We’ve started thinking about the future, and are putting
+            can do that too. 🎓
+          </p>
+
+          <p
+            className="typo-app-body-paragraph"
+            style={{ marginBottom: "30px" }}
+          >
+            Hey there! We’ve started thinking about the future, and are putting
             together a team of people who want to support us along the way. We’d
             love to have you join us! You’ll be able to follow along as our kid
             grows up. And if you want to contribute to their college fund, you
-            can do that too. 🎓 Hope you enjoy this first update! Tester Jr
+            can do that too. 🎓
           </p>
-          <Button
-            label="animate to 400px"
-            onClick={() => {
-              animateModalContent(0, 1, 400);
-            }}
-            size="small"
-          />
-        </div>
-
-        <div
-          ref={(el) => {
-            contentRefs.current[1] = el;
-          }}
-          style={{
-            height: 0,
-            opacity: 0,
-            overflow: "hidden",
-          }}
-        >
-          <p
-            className="typo-app-body-paragraph"
-            style={{ marginBottom: "30px" }}
-          >
-            The age-old saying goes: it takes a village. But today’s parents are
-            more likely than ever to be raising their kid in isolation. We no
-            longer have grandparents living just down the road, and new parents
-            instead juggle full-time baby-raising alongside dual incomes, and
-            little material or face-to-face support.
-          </p>
-          <Button
-            label="animate to 800px"
-            onClick={() => {
-              animateModalContent(1, 2, 800);
-            }}
-            size="small"
-          />
-        </div>
-
-        <div
-          ref={(el) => {
-            contentRefs.current[2] = el;
-          }}
-          style={{
-            height: 0,
-            opacity: 0,
-            overflow: "hidden",
-          }}
-        >
-          <p
-            className="typo-app-body-paragraph"
-            style={{ marginBottom: "30px" }}
-          >
-            The items are evenly distributed within the alignment container
-            along the cross axis. The spacing between each pair of adjacent
-            items is the same. The first item is flush with the start edge of
-            the alignment container in the cross axis, and the last item is
-            flush with the end edge of the alignment container in the cross
-            axis.
-          </p>
-          <Button
-            label="animate to 600px"
-            onClick={() => {
-              animateModalContent(2, 0, 600);
-            }}
-            size="small"
-          />
         </div>
       </Modal>
+
+      <Autocomplete
+        apiKey={"AIzaSyDJEbjtm72mjATqlYwd9ZYAKF9mAbRLHPw"}
+        onPlaceSelected={(place) => {
+          console.log(place);
+        }}
+        style={{ marginBottom: "30px" }}
+      />
 
       <Button
         label="Trigger Modal"
@@ -626,15 +460,14 @@ const SizeAnimationTemplate: ComponentStory<typeof Modal> = (args) => {
   );
 };
 
-export const SizeAnimation = SizeAnimationTemplate.bind({});
-SizeAnimation.args = {
+export const Playground = PlaygroundTemplate.bind({});
+Playground.args = {
   title: "Funds",
   smallTitle: true,
-  isBottomSheet: false,
+  isBottomSheet: true,
   showBackButton: true,
   isOpen: false,
-  closeOutside: true,
-  customWidth: 420,
+  closeOutside: false,
   minHeight: "300px",
   hideHeader: false,
 };

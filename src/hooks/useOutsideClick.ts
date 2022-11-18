@@ -2,10 +2,13 @@ import React from "react";
 
 const useOutsideClick = (
   ref: React.MutableRefObject<HTMLDivElement>,
-  callback: () => void
+  callback: () => void,
+  enabled: boolean
 ) => {
   const handleClick = (e: MouseEvent) => {
-    if (ref.current && !ref.current.contains(e.target as any)) {
+    if (ref.current && !ref.current.contains(e.target as any) && enabled) {
+      console.log(e.target);
+      // e.stopPropagation();
       callback();
     }
   };

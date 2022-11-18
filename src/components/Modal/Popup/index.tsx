@@ -52,51 +52,6 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
     close: () => {
       setIsOpen(false);
     },
-    animateSize: ({
-      size = {
-        width: null,
-        height: null,
-      },
-      delay = 0,
-      onAnimationStart = () => {},
-      onAnimationEnd = () => {},
-    }: ModalAnimationSizeProps) => {
-      // console.log(size);
-
-      const animationProps = {
-        duration: 0.5,
-        ease: "power1.out",
-        delay: delay,
-        onStart: () => {
-          onAnimationStart();
-        },
-        onComplete: () => {
-          onAnimationEnd();
-        },
-      } as gsap.TimelineVars;
-
-      if (size.height && size.width) {
-        gsap.to(popupRef.current, {
-          height: size.height,
-          maxWidth: size.width,
-          ...animationProps,
-        });
-      }
-
-      if (size.height) {
-        gsap.to(popupRef.current, {
-          height: size.height,
-          ...animationProps,
-        });
-      }
-
-      if (size.width) {
-        gsap.to(popupRef.current, {
-          maxWidth: size.width,
-          ...animationProps,
-        });
-      }
-    },
   }));
 
   //////////////
@@ -113,11 +68,15 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
   //// HOOKS ////
   ///////////////
 
-  useOutsideClick(popupRef, () => {
-    // console.log(isAppeared, props.closeOutside, props.isMobileBreakpoint);
-    // console.log("clicked outside");
-    props.closeOutside && handleCloseClick();
-  });
+  useOutsideClick(
+    popupRef,
+    () => {
+      // console.log(isAppeared, props.closeOutside, props.isMobileBreakpoint);
+      console.log("clicked outside");
+      props.closeOutside && handleCloseClick();
+    },
+    isShown
+  );
 
   /////////////////
   // USE EFFECTS //
@@ -241,6 +200,8 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
               noMaxWidth={
                 props.customWidth && props.customWidth > 0 ? true : false
               }
+              parentRef={popupRef}
+              contentRef={contentRef}
               showBackButton={props.showBackButton}
               onBackClick={props.onBackClick}
             />
@@ -266,7 +227,6 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
 Popup.defaultProps = {
   customWidth: 0,
   customPaddings: null,
-  onCloseClick: () => {},
   popupClassName: "",
   popupContentClassName: "",
 } as Partial<Props>;

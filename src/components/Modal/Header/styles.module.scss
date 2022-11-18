@@ -7,7 +7,6 @@ $btns-offset: 25px;
 
 @mixin button {
   cursor: pointer;
-  z-index: 3;
   position: absolute;
 
   width: 40px;
@@ -15,9 +14,11 @@ $btns-offset: 25px;
 
   border: none;
   outline: none;
-  background: none;
-  // background-color: aquamarine;
   border-radius: 100px;
+  background-color: transparent;
+  border: 1px solid transparent;
+
+  transition: background-color 0.1s ease;
 
   &__background {
     position: absolute;
@@ -58,8 +59,6 @@ $btns-offset: 25px;
 
 .header {
   display: flex;
-  // min-height: 30px;
-  // flex-direction: column;
 
   &_maxWidth {
     max-width: $max-popup-content-width;
@@ -78,7 +77,7 @@ $btns-offset: 25px;
 
 .bottomMargin {
   margin-bottom: 25px;
-  // min-height: 30px;
+  min-height: 30px;
 }
 
 .titleWrap {
@@ -99,12 +98,35 @@ $btns-offset: 25px;
   width: 100%;
 }
 
+// BUTTIONS
+
+.buttons {
+  position: sticky;
+  z-index: 3;
+  top: 0;
+  height: 40px;
+  width: 100%;
+  // display: flex;
+  // justify-content: space-between;
+  flex: 0 0 auto;
+  // background: rgba(0, 0, 0, 0.04);
+}
+
+.sticky {
+  // background: rgba(0, 0, 0, 0.4);
+
+  .closeButton,
+  .backButton {
+    background-color: white;
+    border: 1px solid var(--color-main-transparent-50);
+  }
+}
+
 // BACK BUTTON
 
 .backButton {
   @include button;
-  top: $btns-offset;
-  left: $btns-offset;
+  left: 0;
 
   &::after,
   &::before {
@@ -152,9 +174,8 @@ $btns-offset: 25px;
 
 .closeButton {
   @include button;
-  top: $btns-offset;
-  right: $btns-offset;
-  margin-left: 20px;
+  right: 0;
+  // align-self: flex-end;
 
   &__wrap {
     display: flex;

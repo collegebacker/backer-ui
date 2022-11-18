@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 
 import BottomSheet from "./BottomSheet";
 import Popup from "./Popup";
+import { useOutsideClick } from "../../hooks";
 
 export interface Props {
   isOpen?: boolean;
@@ -55,12 +56,6 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
     },
     getPopupRef: () => {
       return popupRef.current.getRef();
-    },
-    getBottomSheetRef: () => {
-      return bottomSheetRef.current.getRef();
-    },
-    animateSize: (props: ModalAnimationSizeProps) => {
-      popupRef.current.animateSize(props);
     },
   }));
 
@@ -117,6 +112,10 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
     setIsOpen(false);
   };
 
+  //////////////
+  /// RENDER ///
+  //////////////
+
   return ReactDOM.createPortal(
     <>
       {props.isBottomSheet && isMobileBreakpoint ? (
@@ -150,7 +149,6 @@ Modal.defaultProps = {
   smallTitle: false,
   isBottomSheet: false,
   closeOutside: true,
-  onCloseClick: () => {},
   maxSheetHeight: null,
 } as Partial<Props>;
 

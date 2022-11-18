@@ -55,7 +55,7 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
   //////////////
 
   const handleCloseClick = () => {
-    if (isOpen && props.closeOutside && props.isMobileBreakpoint) {
+    if (isOpen) {
       // console.log("clicked outside");
       props.onCloseClick();
     }
@@ -65,9 +65,13 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
   /// HOOKS ////
   //////////////
 
-  useOutsideClick(bottomSheetRef, () => {
-    handleCloseClick();
-  });
+  useOutsideClick(
+    bottomSheetRef,
+    () => {
+      handleCloseClick();
+    },
+    isOpen
+  );
 
   /////////////////
   // USE EFFECTS //
@@ -192,7 +196,6 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
 });
 
 BottomSheet.defaultProps = {
-  onCloseClick: () => {},
   popupClassName: "",
   popupContentClassName: "",
 } as Partial<Props>;
