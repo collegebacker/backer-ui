@@ -7,6 +7,7 @@ $btns-offset: 25px;
 
 @mixin button {
   cursor: pointer;
+  z-index: 3;
   position: absolute;
 
   width: 40px;
@@ -57,7 +58,6 @@ $btns-offset: 25px;
 
 .header {
   display: flex;
-  // position: sticky;
   // min-height: 30px;
   // flex-direction: column;
 
@@ -68,7 +68,7 @@ $btns-offset: 25px;
   @media screen and (max-width: $mobile-breakpoint) {
     flex-direction: row-reverse;
     margin-bottom: 25px;
-    // min-height: 30px;
+    min-height: 30px;
   }
 }
 
@@ -99,25 +99,12 @@ $btns-offset: 25px;
   width: 100%;
 }
 
-// BUTTIONS
-
-.buttons {
-  position: sticky;
-  z-index: 3;
-  top: 0;
-  height: 40px;
-  width: 100%;
-  // display: flex;
-  // justify-content: space-between;
-  flex: 0 0 auto;
-  background: rgba(0, 0, 0, 0.04);
-}
-
 // BACK BUTTON
 
 .backButton {
   @include button;
-  left: 0;
+  top: $btns-offset;
+  left: $btns-offset;
 
   &::after,
   &::before {
@@ -165,8 +152,9 @@ $btns-offset: 25px;
 
 .closeButton {
   @include button;
-  right: 0;
-  // align-self: flex-end;
+  top: $btns-offset;
+  right: $btns-offset;
+  margin-left: 20px;
 
   &__wrap {
     display: flex;
