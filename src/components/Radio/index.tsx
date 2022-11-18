@@ -9,6 +9,7 @@ export interface Props {
   disabled?: boolean;
   className?: string;
   labelClassName?: string;
+  symbolClassName?: string;
   checked?: boolean;
   onChange?: (checked: boolean) => void;
   onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
@@ -27,11 +28,13 @@ const Radio: React.FC<Props> = (props) => {
   return (
     <label
       htmlFor={props.id}
-      className={`${styles.label} ${props.disabled ? styles.disabled : ""}`}
+      className={`${styles.label} ${props.disabled ? styles.disabled : ""} ${
+        props.className
+      }`}
     >
       <span
         className={`${styles.wrap} ${checked ? styles.checked : ""} ${
-          props.className
+          props.symbolClassName
         }`}
       >
         <input
@@ -60,6 +63,7 @@ const Radio: React.FC<Props> = (props) => {
 Radio.defaultProps = {
   className: "",
   labelClassName: "",
+  symbolClassName: "",
   disabled: false,
   checked: false,
 } as Partial<Props>;

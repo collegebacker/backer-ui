@@ -343,6 +343,7 @@ interface Props$3 {
     disabled?: boolean;
     className?: string;
     labelClassName?: string;
+    symbolClassName?: string;
     checked?: boolean;
     onChange?: (checked: boolean) => void;
     onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
@@ -359,6 +360,7 @@ interface Props$2 {
     disabled?: boolean;
     className?: string;
     labelClassName?: string;
+    symbolClassName?: string;
     checked?: boolean;
     onChange?: (checked: boolean) => void;
     onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
