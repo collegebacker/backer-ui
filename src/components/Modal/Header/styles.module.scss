@@ -14,11 +14,9 @@ $btns-offset: 25px;
 
   border: none;
   outline: none;
+  background: none;
+  // background-color: aquamarine;
   border-radius: 100px;
-  background-color: transparent;
-  border: 1px solid transparent;
-
-  transition: background-color 0.1s ease;
 
   &__background {
     position: absolute;
@@ -59,6 +57,9 @@ $btns-offset: 25px;
 
 .header {
   display: flex;
+  // position: sticky;
+  // min-height: 30px;
+  // flex-direction: column;
 
   &_maxWidth {
     max-width: $max-popup-content-width;
@@ -67,7 +68,7 @@ $btns-offset: 25px;
   @media screen and (max-width: $mobile-breakpoint) {
     flex-direction: row-reverse;
     margin-bottom: 25px;
-    min-height: 30px;
+    // min-height: 30px;
   }
 }
 
@@ -77,7 +78,7 @@ $btns-offset: 25px;
 
 .bottomMargin {
   margin-bottom: 25px;
-  min-height: 30px;
+  // min-height: 30px;
 }
 
 .titleWrap {
@@ -109,17 +110,7 @@ $btns-offset: 25px;
   // display: flex;
   // justify-content: space-between;
   flex: 0 0 auto;
-  // background: rgba(0, 0, 0, 0.04);
-}
-
-.sticky {
-  // background: rgba(0, 0, 0, 0.4);
-
-  .closeButton,
-  .backButton {
-    background-color: white;
-    border: 1px solid var(--color-main-transparent-50);
-  }
+  background: rgba(0, 0, 0, 0.04);
 }
 
 // BACK BUTTON

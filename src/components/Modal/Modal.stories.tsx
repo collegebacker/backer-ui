@@ -1,8 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import Autocomplete from "react-google-autocomplete";
-
 import { Modal, Button, ModalButtons, Accordion } from "..";
 
 localStorage.clear();
@@ -401,29 +399,6 @@ const PlaygroundTemplate: ComponentStory<typeof Modal> = (args) => {
     >
       <Modal ref={modalRef} {...args}>
         <div>
-          <h1 className="typo-app-title-large" style={{ marginBottom: "30px" }}>
-            Title
-          </h1>
-
-          <Autocomplete
-            apiKey={"AIzaSyDJEbjtm72mjATqlYwd9ZYAKF9mAbRLHPw"}
-            onPlaceSelected={(place) => {
-              console.log(place);
-            }}
-            style={{ marginBottom: "30px" }}
-          />
-
-          <p
-            className="typo-app-body-paragraph"
-            style={{ marginBottom: "30px" }}
-          >
-            Hey there! We’ve started thinking about the future, and are putting
-            together a team of people who want to support us along the way. We’d
-            love to have you join us! You’ll be able to follow along as our kid
-            grows up. And if you want to contribute to their college fund, you
-            can do that too. 🎓
-          </p>
-
           <p
             className="typo-app-body-paragraph"
             style={{ marginBottom: "30px" }}
@@ -436,14 +411,6 @@ const PlaygroundTemplate: ComponentStory<typeof Modal> = (args) => {
           </p>
         </div>
       </Modal>
-
-      <Autocomplete
-        apiKey={"AIzaSyDJEbjtm72mjATqlYwd9ZYAKF9mAbRLHPw"}
-        onPlaceSelected={(place) => {
-          console.log(place);
-        }}
-        style={{ marginBottom: "30px" }}
-      />
 
       <Button
         label="Trigger Modal"

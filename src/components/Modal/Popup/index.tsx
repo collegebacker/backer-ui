@@ -32,7 +32,6 @@ interface Props {
 const Popup = React.forwardRef<any, Props>((props, ref) => {
   const modalWrapRef = React.useRef<HTMLDivElement>(null);
   const popupRef = React.useRef<HTMLDivElement>(null);
-  const contentRef = React.useRef<HTMLDivElement>(null);
   const gradientsRef = React.useRef<HTMLDivElement>(null);
 
   const [isOpen, setIsOpen] = React.useState(false);
@@ -200,15 +199,12 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
               noMaxWidth={
                 props.customWidth && props.customWidth > 0 ? true : false
               }
-              parentRef={popupRef}
-              contentRef={contentRef}
               showBackButton={props.showBackButton}
               onBackClick={props.onBackClick}
             />
           ) : null}
           <div
             tabIndex={0}
-            ref={contentRef}
             className={`${styles.contentWrapper} ${props.popupContentClassName}`}
           >
             {props.children}
