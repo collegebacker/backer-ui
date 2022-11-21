@@ -314,6 +314,13 @@ const ChipsSlider: React.FC<Props> = (props) => {
     });
   }, [activeIndex, prevIndex]);
 
+  // if props.defaultIndex was changed
+  useDidMountEffect(() => {
+    if (props.defaultIndex !== activeIndex) {
+      handleCardClick(props.defaultIndex);
+    }
+  }, [props.defaultIndex]);
+
   // Animate slider to the initial state when drag object and the document are loaded
   React.useEffect(() => {
     const executeAnimation = () => {
