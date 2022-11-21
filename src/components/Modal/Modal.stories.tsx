@@ -389,6 +389,16 @@ FocusTrap.args = {
 
 const PlaygroundTemplate: ComponentStory<typeof Modal> = (args) => {
   const modalRef = React.useRef<any>(null);
+  const modalRef2 = React.useRef<any>(null);
+
+  React.useEffect(() => {
+    if (modalRef.current) {
+      console.log("modalRef.current open");
+      modalRef.current.open();
+    }
+  }, [modalRef.current]);
+
+  console.log("rerender");
 
   return (
     <div
@@ -412,15 +422,38 @@ const PlaygroundTemplate: ComponentStory<typeof Modal> = (args) => {
         </div>
       </Modal>
 
+      <Modal ref={modalRef2} {...args}>
+        <div>
+          <h1>Hello!</h1>
+          <p
+            className="typo-app-body-paragraph"
+            style={{ marginBottom: "30px" }}
+          >
+            The react developer tool used to show why a component was rendered,
+            e.g. due to state change, context update or because of a rerender of
+            the parent. This information can not be found in the flamegraph
+            anymore.
+          </p>
+        </div>
+      </Modal>
+
       <Button
         label="Trigger Modal"
         style={{
           maxWidth: "300px",
         }}
         onClick={() => {
-          modalRef.current.open(() => {
-            console.log("storybook, open");
-          });
+          modalRef.current.open();
+        }}
+      />
+
+      <Button
+        label="Trigger Modal"
+        style={{
+          maxWidth: "300px",
+        }}
+        onClick={() => {
+          modalRef2.current.open();
         }}
       />
     </div>

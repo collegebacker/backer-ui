@@ -11,6 +11,7 @@ export interface Props {
     disabled?: boolean;
     label?: string;
     maxWidth?: number;
+    minWidth?: boolean;
     form?: string;
     busy?: boolean;
     busyLabel?: string;

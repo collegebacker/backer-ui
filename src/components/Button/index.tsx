@@ -16,6 +16,7 @@ export interface Props {
   disabled?: boolean;
   label?: string;
   maxWidth?: number;
+  minWidth?: boolean;
   form?: string;
   busy?: boolean;
   busyLabel?: string;
@@ -69,7 +70,9 @@ const Button = React.forwardRef<any, Props>((props, ref) => {
     styles[props.size]
   } ${props.disabled ? styles.disabled : ""} ${
     props.label
-      ? styles[`minWidth-${props.size}`]
+      ? props.minWidth
+        ? styles[`minWidth-${props.size}`]
+        : ""
       : styles[`fixedSize-${props.size}`]
   }`;
 
@@ -119,6 +122,7 @@ Button.defaultProps = {
   busyLabel: "",
   disabled: false,
   label: "Button",
+  minWidth: true,
 } as Partial<Props>;
 
 export default Button;
