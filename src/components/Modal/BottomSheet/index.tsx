@@ -32,7 +32,8 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
   const bottomSheetRef = React.useRef<HTMLDivElement>(null);
   const backgroundRef = React.useRef<HTMLDivElement>(null);
 
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isMount, setIsMount] = React.useState(false);
+  const [isOpenTriggered, setIsPpenTriggered] = React.useState(false);
   const [stickModal, setStickModal] = React.useState(false);
 
   //////////////
@@ -43,10 +44,10 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
       return bottomSheetRef.current;
     },
     open: () => {
-      setIsOpen(true);
+      setIsPpenTriggered(true);
     },
     close: () => {
-      setIsOpen(false);
+      setIsPpenTriggered(false);
     },
   }));
 
@@ -55,7 +56,7 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
   //////////////
 
   const handleCloseClick = () => {
-    if (isOpen) {
+    if (isOpenTriggered) {
       // console.log("clicked outside");
       props.onCloseClick();
     }
@@ -70,14 +71,14 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
     () => {
       handleCloseClick();
     },
-    isOpen
+    isOpenTriggered
   );
 
   /////////////////
   // USE EFFECTS //
   /////////////////
 
-  React.useEffect(() => {
+  useDidMountEffect(() => {
     const myObserver = new ResizeObserver((entries) => {
       // this will get called whenever div dimension changes
       entries.forEach((entry) => {
@@ -91,58 +92,71 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
         }
       });
     });
+    if (isMount) {
+      myObserver.observe(bottomSheetRef.current);
 
-    myObserver.observe(bottomSheetRef.current);
-
-    return () => {
+      return () => {
+        myObserver.disconnect();
+      };
+    } else {
       myObserver.disconnect();
-    };
-  }, []);
+    }
+  }, [isMount]);
 
   useDidMountEffect(() => {
-    // console.log("isOpen", props.isOpen);
+    // console.log("isOpenTriggered", props.isOpenTriggered);
     gsap.killTweensOf(modalWrapRef.current);
 
-    if (isOpen) {
-      modalWrapRef.current.focus();
+    if (isMount) {
+      if (isOpenTriggered) {
+        modalWrapRef.current.focus();
 
-      // console.log("open");
-
-      gsap.to(modalWrapRef.current, {
-        display: "block",
-        pointerEvents: "all",
-        opacity: 1,
-        duration: 0.1,
-      });
-      gsap.to(bottomSheetRef.current, {
-        bottom: "0%",
-        duration: 0.4,
-        ease: "expo.out",
-      });
-      gsap.to(backgroundRef.current, {
-        opacity: 1,
-        duration: 0.4,
-      });
-    } else {
-      // console.log("close");
-
-      gsap.to(modalWrapRef.current, {
-        display: "none",
-        pointerEvents: "none",
-        opacity: 0,
-        duration: 0.1,
-        delay: 0.4,
-      });
-      gsap.to(bottomSheetRef.current, {
-        bottom: "-100%",
-        duration: 0.2,
-      });
-      gsap.to(backgroundRef.current, {
-        opacity: 0,
-        duration: 0.4,
-      });
+        gsap.to(modalWrapRef.current, {
+          pointerEvents: "all",
+          opacity: 1,
+          duration: 0.1,
+        });
+        gsap.to(bottomSheetRef.current, {
+          bottom: "0%",
+          duration: 0.4,
+          ease: "expo.out",
+        });
+        gsap.to(backgroundRef.current, {
+          opacity: 1,
+          duration: 0.4,
+        });
+      } else {
+        gsap.to(modalWrapRef.current, {
+          pointerEvents: "none",
+          opacity: 0,
+          duration: 0.1,
+          delay: 0.4,
+          onComplete: () => {
+            modalWrapRef.current.blur();
+            setIsMount(false);
+          },
+        });
+        gsap.to(bottomSheetRef.current, {
+          bottom: "-100%",
+          duration: 0.2,
+        });
+        gsap.to(backgroundRef.current, {
+          opacity: 0,
+          duration: 0.4,
+        });
+      }
     }
-  }, [isOpen]);
+  }, [isOpenTriggered, isMount]);
+
+  React.useEffect(() => {
+    if (isOpenTriggered) {
+      setIsMount(true);
+    }
+  }, [isOpenTriggered]);
+
+  ///////////////
+  // FUNCTIONS //
+  ///////////////
 
   const handleCustomPaddings = () => {
     if (props.customPaddingsMobile) {
@@ -158,40 +172,43 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
   ///////////////
 
   return (
-    <aside
-      role="dialog"
-      tabIndex={-1}
-      aria-modal
-      aria-hidden="false"
-      ref={modalWrapRef}
-      className={`${styles.modalWrap}`}
-      {...props.dataAttrs}
-    >
-      <section
-        area-aria-disabled="false"
-        ref={bottomSheetRef}
-        className={`${styles.bottomSheetWrap} ${
-          stickModal ? "" : styles.overScrolled
-        } ${props.popupClassName}`}
-        style={{
-          padding: handleCustomPaddings(),
-          maxHeight: props.maxSheetHeight ?? "100%",
-        }}
+    isMount && (
+      <aside
+        role="dialog"
+        aria-modal
+        aria-hidden="false"
+        ref={modalWrapRef}
+        className={`${styles.modalWrap}`}
+        {...props.dataAttrs}
       >
-        {!props.hideHeader ? (
-          <Header
-            onCloseClick={handleCloseClick}
-            title={props.title}
-            smallTitle={props.smallTitle}
-            noMaxWidth={true}
-            showBackButton={props.showBackButton}
-            onBackClick={props.onBackClick}
-          />
-        ) : null}
-        <div className={`${props.popupContentClassName}`}>{props.children}</div>
-      </section>
-      <div ref={backgroundRef} className={styles.background}></div>
-    </aside>
+        <section
+          area-aria-disabled="false"
+          ref={bottomSheetRef}
+          className={`${styles.bottomSheetWrap} ${
+            stickModal ? "" : styles.overScrolled
+          } ${props.popupClassName}`}
+          style={{
+            padding: handleCustomPaddings(),
+            maxHeight: props.maxSheetHeight ?? "100%",
+          }}
+        >
+          {!props.hideHeader ? (
+            <Header
+              onCloseClick={handleCloseClick}
+              title={props.title}
+              smallTitle={props.smallTitle}
+              noMaxWidth={true}
+              showBackButton={props.showBackButton}
+              onBackClick={props.onBackClick}
+            />
+          ) : null}
+          <div className={`${props.popupContentClassName}`}>
+            {props.children}
+          </div>
+        </section>
+        <div ref={backgroundRef} className={styles.background} />
+      </aside>
+    )
   );
 });
 

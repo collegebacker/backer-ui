@@ -34,7 +34,8 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
   const popupRef = React.useRef<HTMLDivElement>(null);
   const gradientsRef = React.useRef<HTMLDivElement>(null);
 
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isMount, setIsMount] = React.useState(false);
+  const [isOpenTriggered, setIsOpenTriggered] = React.useState(false);
   const [isShown, setIsShown] = React.useState(false);
 
   //////////////
@@ -46,10 +47,10 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
       return popupRef.current;
     },
     open: () => {
-      setIsOpen(true);
+      setIsOpenTriggered(true);
     },
     close: () => {
-      setIsOpen(false);
+      setIsOpenTriggered(false);
     },
   }));
 
@@ -85,51 +86,61 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
     // kill all animations
     gsap.killTweensOf(modalWrapRef.current);
 
-    if (isOpen) {
-      // console.log("open");
+    if (isMount) {
+      if (isOpenTriggered) {
+        // console.log("open");
 
-      gsap.to(modalWrapRef.current, {
-        opacity: 1,
-        display: "block",
-        pointerEvents: "all",
-        backgroundImage:
-          "radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%)",
-        duration: 0.1,
-        onComplete: () => {
-          popupRef.current?.classList.add(styles.popup_show);
-        },
-      });
-      gsap.to(gradientsRef.current, {
-        opacity: 1,
-        scale: 1,
-        delay: 0.1,
-        duration: 0.5,
-        ease: "circ.out",
-        onComplete: () => {
-          setIsShown(true);
-        },
-      });
-    } else {
-      gsap.to(modalWrapRef.current, {
-        display: "none",
-        pointerEvents: "none",
-        opacity: 0,
-        backgroundImage:
-          "radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 10%)",
-        duration: 0.4,
-        onStart: () => {
-          popupRef.current?.classList.remove(styles.popup_show);
-          setIsShown(false);
-        },
-      });
-      gsap.to(gradientsRef.current, {
-        opacity: 0,
-        scale: 0.1,
-        duration: 0.7,
-        ease: "circ.out",
-      });
+        gsap.to(modalWrapRef.current, {
+          opacity: 1,
+          pointerEvents: "all",
+          backgroundImage:
+            "radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%)",
+          duration: 0.1,
+          onComplete: () => {
+            popupRef.current?.classList.add(styles.popup_show);
+          },
+        });
+        gsap.to(gradientsRef.current, {
+          opacity: 1,
+          scale: 1,
+          delay: 0.1,
+          duration: 0.5,
+          ease: "circ.out",
+          onComplete: () => {
+            setIsShown(true);
+          },
+        });
+      } else {
+        gsap.to(modalWrapRef.current, {
+          pointerEvents: "none",
+          opacity: 0,
+          backgroundImage:
+            "radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 10%)",
+          duration: 0.4,
+          onStart: () => {
+            popupRef.current?.classList.remove(styles.popup_show);
+            setIsShown(false);
+          },
+        });
+        gsap.to(gradientsRef.current, {
+          opacity: 0,
+          scale: 0.1,
+          duration: 0.7,
+          ease: "circ.out",
+          onComplete: () => {
+            modalWrapRef.current.blur();
+            setIsMount(false);
+          },
+        });
+      }
     }
-  }, [isOpen]);
+  }, [isOpenTriggered, isMount]);
+
+  React.useEffect(() => {
+    if (isOpenTriggered) {
+      setIsMount(true);
+    }
+  }, [isOpenTriggered]);
 
   /////////////////
   /// FUNCTIONS ///
@@ -160,7 +171,7 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
   ///////////////
 
   return (
-    <>
+    isMount && (
       <aside
         role="dialog"
         aria-modal
@@ -215,7 +226,7 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
           <div className={styles.gradient2} />
         </div>
       </aside>
-    </>
+    )
   );
 });
 
