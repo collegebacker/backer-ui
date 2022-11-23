@@ -1,6 +1,6 @@
 {
   "name": "@collegebacker/backer-ui",
-  "version": "17.15",
+  "version": "0.17.15",
   "description": "A Backer component library",
   "scripts": {
     "rollup": "rimraf ui && rimraf utils && rollup -c",
