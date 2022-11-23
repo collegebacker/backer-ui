@@ -97,7 +97,7 @@ const ChipsSlider: React.FC<Props> = (props) => {
   const animateItemNormalState = (item: HTMLElement) => {
     gsap.to(item, {
       scale: 1,
-      backgroundColor: "#fff",
+      backgroundColor: "transparent",
       color: getComputedStyle(document.documentElement).getPropertyValue(
         "--color-main-200"
       ),
