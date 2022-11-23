@@ -31,31 +31,77 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
   const popupRef = React.useRef<any>(null);
   const bottomSheetRef = React.useRef<any>(null);
 
-  const [isOpen, setIsOpen] = React.useState(props.isOpen);
+  // const [isOpen, setIsOpen] = React.useState(props.isOpen);
+  // // const [isPopupOpen, setIsPopupOpen] = React.useState(props.isOpen);
   const [isMobileBreakpoint, setIsMobileBreakpoint] = React.useState(false);
+
+  const handleOpen = (callback: () => void) => {
+    if (props.isBottomSheet && isMobileBreakpoint) {
+      bottomSheetRef.current.onAnimationFinished(
+        (isAnimationFinished: boolean) => {
+          if (isAnimationFinished) {
+            bottomSheetRef.current?.open();
+
+            if (callback) {
+              callback();
+            }
+          }
+        }
+      );
+    } else {
+      popupRef.current.onAnimationFinished((isAnimationFinished: boolean) => {
+        if (isAnimationFinished) {
+          popupRef.current?.open();
+
+          if (callback) {
+            callback();
+          }
+        }
+      });
+    }
+  };
+
+  const handleClose = (callback: () => void) => {
+    if (props.isBottomSheet && isMobileBreakpoint) {
+      bottomSheetRef.current.onAnimationFinished(
+        (isAnimationFinished: boolean) => {
+          if (isAnimationFinished) {
+            bottomSheetRef.current?.close();
+
+            if (callback) {
+              callback();
+            }
+          }
+        }
+      );
+    } else {
+      popupRef.current.onAnimationFinished((isAnimationFinished: boolean) => {
+        if (isAnimationFinished) {
+          popupRef.current?.close();
+
+          if (callback) {
+            callback();
+          }
+        }
+      });
+    }
+  };
 
   //////////////
   // IMPERIAL //
   //////////////
   React.useImperativeHandle(ref, () => ({
     open: (callback: () => void) => {
-      setIsOpen(true);
-
-      // console.log("open from inside");
-      if (callback) {
-        callback();
-      }
+      handleOpen(callback);
     },
     close: (callback: () => void) => {
-      setIsOpen(false);
-
-      // console.log("close");
-      if (callback) {
-        callback();
-      }
+      handleClose(callback);
     },
     getPopupRef: () => {
       return popupRef.current.getRef();
+    },
+    getBottomSheetRef: () => {
+      return bottomSheetRef.current.getRef();
     },
   }));
 
@@ -79,37 +125,32 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
     };
   }, []);
 
-  React.useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-      document.body.style.touchAction = "none";
-
-      bottomSheetRef.current?.open();
-      popupRef.current?.open();
-
-      if (props.isBottomSheet && isMobileBreakpoint) {
-        bottomSheetRef.current?.open();
-      } else {
-        popupRef.current?.open();
-      }
-    } else {
-      document.body.style.removeProperty("overflow");
-      document.body.style.removeProperty("touch-action");
-
-      if (props.isBottomSheet && isMobileBreakpoint) {
-        bottomSheetRef.current?.close();
-      } else {
-        popupRef.current?.close();
-      }
-    }
-  }, [isOpen, isMobileBreakpoint, props.isBottomSheet]);
+  // React.useEffect(() => {
+  //   // console.log("isAnimationFinished");
+  //   // if (isOpen) {
+  //   //   document.body.style.overflow = "hidden";
+  //   //   document.body.style.touchAction = "none";
+  //   //   // bottomSheetRef.current?.open();
+  //   //   // popupRef.current?.open();
+  //   //   if (props.isBottomSheet && isMobileBreakpoint) {
+  //   //     bottomSheetRef.current?.open();
+  //   //   } else {
+  //   //     // console.log("bottomSheetRef.current", bottomSheetRef.current);
+  //   //     popupRef.current?.open();
+  //   //   }
+  //   // } else {
+  //   //   document.body.style.removeProperty("overflow");
+  //   //   document.body.style.removeProperty("touch-action");
+  //   //   if (props.isBottomSheet && isMobileBreakpoint) {
+  //   //     bottomSheetRef.current?.close();
+  //   //   } else {
+  //   //     popupRef.current?.close();
+  //   //   }
+  //   // }
+  // }, [isOpen, isMobileBreakpoint, props.isBottomSheet]);
 
   const handleOnCloseClick = () => {
-    if (props.onCloseClick) {
-      props.onCloseClick();
-    }
-
-    setIsOpen(false);
+    handleClose(() => props.onCloseClick());
   };
 
   //////////////

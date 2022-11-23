@@ -33,7 +33,9 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
   const backgroundRef = React.useRef<HTMLDivElement>(null);
 
   const [isMount, setIsMount] = React.useState(false);
-  const [isOpenTriggered, setIsPpenTriggered] = React.useState(false);
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [isAnimationFinished, setIsAnimationFinished] = React.useState(true);
+
   const [stickModal, setStickModal] = React.useState(false);
 
   //////////////
@@ -44,10 +46,13 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
       return bottomSheetRef.current;
     },
     open: () => {
-      setIsPpenTriggered(true);
+      setIsOpen(true);
     },
     close: () => {
-      setIsPpenTriggered(false);
+      setIsOpen(false);
+    },
+    onAnimationFinished: (callback: (isAnimationFinished: boolean) => void) => {
+      callback(isAnimationFinished);
     },
   }));
 
@@ -56,7 +61,7 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
   //////////////
 
   const handleCloseClick = () => {
-    if (isOpenTriggered) {
+    if (isOpen) {
       // console.log("clicked outside");
       props.onCloseClick();
     }
@@ -71,7 +76,7 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
     () => {
       handleCloseClick();
     },
-    isOpenTriggered
+    isOpen
   );
 
   /////////////////
@@ -104,17 +109,20 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
   }, [isMount]);
 
   useDidMountEffect(() => {
-    // console.log("isOpenTriggered", props.isOpenTriggered);
+    // console.log("isOpen", props.isOpen);
     gsap.killTweensOf(modalWrapRef.current);
 
     if (isMount) {
-      if (isOpenTriggered) {
+      if (isOpen) {
         modalWrapRef.current.focus();
 
         gsap.to(modalWrapRef.current, {
           pointerEvents: "all",
           opacity: 1,
           duration: 0.1,
+          onStart: () => {
+            setIsAnimationFinished(false);
+          },
         });
         gsap.to(bottomSheetRef.current, {
           bottom: "0%",
@@ -124,6 +132,9 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
         gsap.to(backgroundRef.current, {
           opacity: 1,
           duration: 0.4,
+          onComplete: () => {
+            setIsAnimationFinished(true);
+          },
         });
       } else {
         gsap.to(modalWrapRef.current, {
@@ -134,11 +145,15 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
           onComplete: () => {
             modalWrapRef.current.blur();
             setIsMount(false);
+            setIsAnimationFinished(true);
           },
         });
         gsap.to(bottomSheetRef.current, {
           bottom: "-100%",
           duration: 0.2,
+          onStart: () => {
+            setIsAnimationFinished(false);
+          },
         });
         gsap.to(backgroundRef.current, {
           opacity: 0,
@@ -146,13 +161,13 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
         });
       }
     }
-  }, [isOpenTriggered, isMount]);
+  }, [isOpen, isMount]);
 
   React.useEffect(() => {
-    if (isOpenTriggered) {
+    if (isOpen) {
       setIsMount(true);
     }
-  }, [isOpenTriggered]);
+  }, [isOpen]);
 
   ///////////////
   // FUNCTIONS //

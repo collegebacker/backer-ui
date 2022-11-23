@@ -35,8 +35,9 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
   const gradientsRef = React.useRef<HTMLDivElement>(null);
 
   const [isMount, setIsMount] = React.useState(false);
-  const [isOpenTriggered, setIsOpenTriggered] = React.useState(false);
+  const [isOpen, setIsOpen] = React.useState(false);
   const [isShown, setIsShown] = React.useState(false);
+  const [isAnimationFinished, setIsAnimationFinished] = React.useState(true);
 
   //////////////
   // IMPERIAL //
@@ -47,10 +48,20 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
       return popupRef.current;
     },
     open: () => {
-      setIsOpenTriggered(true);
+      if (isAnimationFinished) {
+        // console.log("isAnimationFinished", isAnimationFinished);
+        setIsOpen(true);
+      }
     },
     close: () => {
-      setIsOpenTriggered(false);
+      // console.log("isAnimationFinished", isAnimationFinished);
+      if (isAnimationFinished) {
+        // console.log("mounted");
+        setIsOpen(false);
+      }
+    },
+    onAnimationFinished: (callback: (isAnimationFinished: boolean) => void) => {
+      callback(isAnimationFinished);
     },
   }));
 
@@ -59,7 +70,7 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
   //////////////
 
   const handleCloseClick = () => {
-    if (isShown) {
+    if (isShown && isAnimationFinished) {
       props.onCloseClick();
     }
   };
@@ -87,7 +98,7 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
     gsap.killTweensOf(modalWrapRef.current);
 
     if (isMount) {
-      if (isOpenTriggered) {
+      if (isOpen) {
         // console.log("open");
 
         gsap.to(modalWrapRef.current, {
@@ -96,6 +107,9 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
           backgroundImage:
             "radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%)",
           duration: 0.1,
+          onStart: () => {
+            setIsAnimationFinished(false);
+          },
           onComplete: () => {
             popupRef.current?.classList.add(styles.popup_show);
           },
@@ -108,6 +122,7 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
           ease: "circ.out",
           onComplete: () => {
             setIsShown(true);
+            setIsAnimationFinished(true);
           },
         });
       } else {
@@ -120,6 +135,7 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
           onStart: () => {
             popupRef.current?.classList.remove(styles.popup_show);
             setIsShown(false);
+            setIsAnimationFinished(false);
           },
         });
         gsap.to(gradientsRef.current, {
@@ -130,17 +146,18 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
           onComplete: () => {
             modalWrapRef.current.blur();
             setIsMount(false);
+            setIsAnimationFinished(true);
           },
         });
       }
     }
-  }, [isOpenTriggered, isMount]);
+  }, [isOpen, isMount]);
 
   React.useEffect(() => {
-    if (isOpenTriggered) {
+    if (isOpen) {
       setIsMount(true);
     }
-  }, [isOpenTriggered]);
+  }, [isOpen]);
 
   /////////////////
   /// FUNCTIONS ///
