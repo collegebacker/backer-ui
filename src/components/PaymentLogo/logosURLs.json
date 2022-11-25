@@ -26,5 +26,9 @@
   "mastercard": {
     "dark": "https://res.cloudinary.com/dgfjsma5p/image/upload/payment-logos/dark/mastercard.svg",
     "light": "https://res.cloudinary.com/dgfjsma5p/image/upload/payment-logos/light/mastercard.svg"
+  },
+  "mastercard-nocaption": {
+    "dark": "https://res.cloudinary.com/dgfjsma5p/image/upload/payment-logos/mastercard-nocaption.svg",
+    "light": "https://res.cloudinary.com/dgfjsma5p/image/upload/payment-logos/mastercard-nocaption.svg"
   }
 }

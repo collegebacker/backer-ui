@@ -47,6 +47,16 @@ type IconTypes =
 
 type TargetTypes = "_blank" | "_self" | "_parent" | "_top";
 
+type PaymentLogoTypes =
+  | "visa"
+  | "paypal"
+  | "apple-pay"
+  | "apple-pay-framed"
+  | "g-pay"
+  | "g-pay-framed"
+  | "mastercard"
+  | "mastercard-nocaption";
+
 type AppTypographyTypes =
   | "title-xlarge"
   | "title-large"

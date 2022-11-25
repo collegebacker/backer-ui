@@ -7,20 +7,13 @@ export interface Props {
   className?: string;
   style?: React.CSSProperties;
   mode?: "light" | "dark";
-  name:
-    | "visa"
-    | "paypal"
-    | "apple-pay"
-    | "apple-pay-framed"
-    | "g-pay"
-    | "g-pay-framed"
-    | "mastercard";
+  name: PaymentLogoTypes;
 }
 
 const PaymentLogo: React.FC<Props> = (props) => {
   return (
     <img
-      src={`https://res.cloudinary.com/dgfjsma5p/image/upload/payment-logos/${props.mode}/${props.name}.svg`}
+      src={logosURLs[props.name][props.mode]}
       alt={props.name}
       className={`${styles.icon} ${props.className}`}
       style={props.style}
