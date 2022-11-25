@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface Props$r {
+interface Props$s {
     className?: string;
     style?: React.CSSProperties;
     mode?: "primary" | "accent" | "outline" | "ghost" | "outline-inverse";
@@ -21,7 +21,24 @@ interface Props$r {
     onSubmit?: (event: any) => void;
     onKeyPress?: (event: any) => void;
 }
-declare const Button: React.ForwardRefExoticComponent<Props$r & React.RefAttributes<any>>;
+declare const Button: React.ForwardRefExoticComponent<Props$s & React.RefAttributes<any>>;
+
+interface Props$r {
+    className?: string;
+    style?: React.CSSProperties;
+    type?: "button" | "submit" | "reset";
+    icon?: IconTypes;
+    paymentIcon?: PaymentLogoTypes;
+    href?: string;
+    target?: TargetTypes;
+    label?: string;
+    tag?: "button" | "a";
+    isActive?: boolean;
+    onClick?: (event: any) => void;
+    onSubmit?: (event: any) => void;
+    onKeyPress?: (event: any) => void;
+}
+declare const PillButton: React.ForwardRefExoticComponent<Props$r & React.RefAttributes<any>>;
 
 interface Props$q {
     className?: string;
@@ -36,7 +53,7 @@ interface Props$p {
     className?: string;
     style?: React.CSSProperties;
     mode?: "light" | "dark";
-    name: "visa" | "paypal" | "apple-pay" | "apple-pay-framed" | "g-pay" | "g-pay-framed" | "mastercard";
+    name: PaymentLogoTypes;
 }
 declare const PaymentLogo: React.FC<Props$p>;
 
@@ -407,4 +424,4 @@ interface ContributionProps {
 }
 declare const FundContributionSection: React.FC<ContributionProps>;
 
-export { Accordion, ActionMesssage, ActionSheet, ArrowButton, Button, CSSSlider, Checkbox, ChipsSelector, ChipsSlider, CodeInput, ContributionSuccessModal, CountBadge, Divider, DotPagination, FundContributionSection, GhostInput, Icon, WarnMesssage as InfoMesssage, Input, Logo, Modal, ModalButtons, PaymentLogo, FundProfilePic as ProfilePic, Radio, SliderWrapper, Spinner, Text, Toast, WarnMesssage$1 as WarnMesssage };
+export { Accordion, ActionMesssage, ActionSheet, ArrowButton, Button, CSSSlider, Checkbox, ChipsSelector, ChipsSlider, CodeInput, ContributionSuccessModal, CountBadge, Divider, DotPagination, FundContributionSection, GhostInput, Icon, WarnMesssage as InfoMesssage, Input, Logo, Modal, ModalButtons, PaymentLogo, PillButton, FundProfilePic as ProfilePic, Radio, SliderWrapper, Spinner, Text, Toast, WarnMesssage$1 as WarnMesssage };

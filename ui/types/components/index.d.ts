@@ -1,4 +1,5 @@
 export { default as Button } from "./Button";
+export { default as PillButton } from "./PillButton";
 export { default as Icon } from "./Icon";
 export { default as PaymentLogo } from "./PaymentLogo";
 export { default as Input } from "./Input";
