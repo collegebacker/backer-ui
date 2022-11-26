@@ -13,6 +13,8 @@ export interface Props {
     onClick?: (event: any) => void;
     onSubmit?: (event: any) => void;
     onKeyPress?: (event: any) => void;
+    areaLabel?: string;
+    areaLabelledBy?: string;
 }
 declare const PillButton: React.ForwardRefExoticComponent<Props & React.RefAttributes<any>>;
 export default PillButton;

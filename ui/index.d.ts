@@ -37,6 +37,8 @@ interface Props$r {
     onClick?: (event: any) => void;
     onSubmit?: (event: any) => void;
     onKeyPress?: (event: any) => void;
+    areaLabel?: string;
+    areaLabelledBy?: string;
 }
 declare const PillButton: React.ForwardRefExoticComponent<Props$r & React.RefAttributes<any>>;
 
