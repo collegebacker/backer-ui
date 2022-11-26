@@ -18,6 +18,8 @@ export interface Props {
   onClick?: (event: any) => void;
   onSubmit?: (event: any) => void;
   onKeyPress?: (event: any) => void;
+  areaLabel?: string;
+  areaLabelledBy?: string;
 }
 
 const ButtonContent = ({ ...props }: Props) => {
@@ -77,6 +79,8 @@ const PillButton = React.forwardRef<any, Props>((props, ref) => {
       style={style}
       onClick={props.onClick}
       onKeyPress={props.onKeyPress}
+      aria-label={props.areaLabel}
+      aria-labelledby={props.areaLabelledBy}
       {...conditionalProps}
     >
       <ButtonContent {...props} />
