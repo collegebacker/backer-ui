@@ -135,7 +135,7 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
     } else {
       handleClose(() => {});
     }
-  }, []);
+  }, [props.isOpen]);
 
   const handleOnCloseClick = () => {
     handleClose(() => props.onCloseClick());
