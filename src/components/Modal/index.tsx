@@ -31,11 +31,12 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
   const popupRef = React.useRef<any>(null);
   const bottomSheetRef = React.useRef<any>(null);
 
-  // const [isOpen, setIsOpen] = React.useState(props.isOpen);
-  // // const [isPopupOpen, setIsPopupOpen] = React.useState(props.isOpen);
   const [isMobileBreakpoint, setIsMobileBreakpoint] = React.useState(false);
 
   const handleOpen = (callback: () => void) => {
+    document.body.style.overflow = "hidden";
+    document.body.style.touchAction = "none";
+
     if (props.isBottomSheet && isMobileBreakpoint) {
       bottomSheetRef.current.onAnimationFinished(
         (isAnimationFinished: boolean) => {
@@ -62,6 +63,9 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
   };
 
   const handleClose = (callback: () => void) => {
+    document.body.style.removeProperty("overflow");
+    document.body.style.removeProperty("touch-action");
+
     if (props.isBottomSheet && isMobileBreakpoint) {
       bottomSheetRef.current.onAnimationFinished(
         (isAnimationFinished: boolean) => {
@@ -127,27 +131,27 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
 
   // React.useEffect(() => {
   //   // console.log("isAnimationFinished");
-  //   // if (isOpen) {
-  //   //   document.body.style.overflow = "hidden";
-  //   //   document.body.style.touchAction = "none";
-  //   //   // bottomSheetRef.current?.open();
-  //   //   // popupRef.current?.open();
-  //   //   if (props.isBottomSheet && isMobileBreakpoint) {
-  //   //     bottomSheetRef.current?.open();
-  //   //   } else {
-  //   //     // console.log("bottomSheetRef.current", bottomSheetRef.current);
-  //   //     popupRef.current?.open();
-  //   //   }
-  //   // } else {
-  //   //   document.body.style.removeProperty("overflow");
-  //   //   document.body.style.removeProperty("touch-action");
-  //   //   if (props.isBottomSheet && isMobileBreakpoint) {
-  //   //     bottomSheetRef.current?.close();
-  //   //   } else {
-  //   //     popupRef.current?.close();
-  //   //   }
-  //   // }
-  // }, [isOpen, isMobileBreakpoint, props.isBottomSheet]);
+  //   if (isOpen) {
+  //     document.body.style.overflow = "hidden";
+  //     document.body.style.touchAction = "none";
+  //     // bottomSheetRef.current?.open();
+  //     // popupRef.current?.open();
+  //     if (props.isBottomSheet && isMobileBreakpoint) {
+  //       bottomSheetRef.current?.open();
+  //     } else {
+  //       // console.log("bottomSheetRef.current", bottomSheetRef.current);
+  //       popupRef.current?.open();
+  //     }
+  //   } else {
+  //     document.body.style.removeProperty("overflow");
+  //     document.body.style.removeProperty("touch-action");
+  //     if (props.isBottomSheet && isMobileBreakpoint) {
+  //       bottomSheetRef.current?.close();
+  //     } else {
+  //       popupRef.current?.close();
+  //     }
+  //   }
+  // }, [isMobileBreakpoint, props.isBottomSheet]);
 
   const handleOnCloseClick = () => {
     handleClose(() => props.onCloseClick());
