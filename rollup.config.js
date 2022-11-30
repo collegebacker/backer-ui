@@ -5,6 +5,7 @@ import typescript from "@rollup/plugin-typescript";
 import json from "@rollup/plugin-json";
 import dts from "rollup-plugin-dts";
 import postcss from "rollup-plugin-postcss";
+import cssMerge from "rollup-plugin-merge-and-inject-css";
 // import autoprefixer from "autoprefixer";
 // import discardDuplicates from "postcss-discard-duplicates";
 // import styles from "rollup-plugin-styles";
@@ -30,6 +31,9 @@ export default [
         extract: false,
         modules: true,
         use: ["sass"],
+      }),
+      cssMerge({
+        id: "backer-ui",
       }),
       json(),
       commonjs(),
