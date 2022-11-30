@@ -26,7 +26,7 @@ export default [
       resolve(),
       postcss({
         plugins: [autoprefixer()],
-        extract: true,
+        extract: "ui.css",
         modules: true,
         minimize: true,
         use: ["sass"],
