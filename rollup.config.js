@@ -27,13 +27,13 @@ export default [
     plugins: [
       peerDepsExternal(),
       resolve(),
-      postcss({
-        extract: false,
-        modules: true,
-        use: ["sass"],
-      }),
       cssMerge({
         id: "backer-ui",
+      }),
+      postcss({
+        extract: true,
+        modules: true,
+        use: ["sass"],
       }),
       json(),
       commonjs(),
