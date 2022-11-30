@@ -5,10 +5,7 @@ import typescript from "@rollup/plugin-typescript";
 import json from "@rollup/plugin-json";
 import dts from "rollup-plugin-dts";
 import postcss from "rollup-plugin-postcss";
-import cssMerge from "rollup-plugin-merge-and-inject-css";
 import autoprefixer from "autoprefixer";
-// import discardDuplicates from "postcss-discard-duplicates";
-// import styles from "rollup-plugin-styles";
 import { terser } from "rollup-plugin-terser";
 import size from "rollup-plugin-size";
 import analyze from "rollup-plugin-analyzer";
@@ -27,15 +24,12 @@ export default [
     plugins: [
       peerDepsExternal(),
       resolve(),
-      cssMerge({
-        id: "backer-ui",
-      }),
       postcss({
         plugins: [autoprefixer()],
         extract: true,
         modules: true,
-        use: ["sass"],
         minimize: true,
+        use: ["sass"],
       }),
       json(),
       commonjs(),
