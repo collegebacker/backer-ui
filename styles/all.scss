@@ -1,8 +1,2 @@
-@import "./reset.css";
-@import "./fonts.css";
-@import "./global.css";
-@import "../tokens/colors.css";
-@import "../tokens/radii.css";
-
-@import "./typography-app.scss";
-@import "./typography-marketing.scss";
+@import "./base.scss";
+@import "../ui/index.css";
