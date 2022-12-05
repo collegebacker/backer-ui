@@ -1,5 +1,4 @@
 import React from "react";
-import "./defaultCalendar.scss";
 import ReactCalendar from "react-calendar";
 
 // import calendar types

@@ -1,4 +1,5 @@
 import React from 'react';
+import { CalendarProps } from 'react-calendar';
 
 interface Props$s {
     className?: string;
@@ -400,6 +401,8 @@ interface Props$1 {
 }
 declare const Text: React.ForwardRefExoticComponent<Pick<Props$1, keyof Props$1> & React.RefAttributes<any>>;
 
+declare const Calendar: React.FC<CalendarProps>;
+
 declare type durationType = "onetime" | "3months" | "6months" | "1year" | "untilcollege";
 declare type frequencyType = "onetime" | "monthly" | "semimonthly";
 interface Props {
@@ -426,4 +429,4 @@ interface ContributionProps {
 }
 declare const FundContributionSection: React.FC<ContributionProps>;
 
-export { Accordion, ActionMesssage, ActionSheet, ArrowButton, Button, CSSSlider, Checkbox, ChipsSelector, ChipsSlider, CodeInput, ContributionSuccessModal, CountBadge, Divider, DotPagination, FundContributionSection, GhostInput, Icon, WarnMesssage as InfoMesssage, Input, Logo, Modal, ModalButtons, PaymentLogo, PillButton, FundProfilePic as ProfilePic, Radio, SliderWrapper, Spinner, Text, Toast, WarnMesssage$1 as WarnMesssage };
+export { Accordion, ActionMesssage, ActionSheet, ArrowButton, Button, CSSSlider, Calendar, Checkbox, ChipsSelector, ChipsSlider, CodeInput, ContributionSuccessModal, CountBadge, Divider, DotPagination, FundContributionSection, GhostInput, Icon, WarnMesssage as InfoMesssage, Input, Logo, Modal, ModalButtons, PaymentLogo, PillButton, FundProfilePic as ProfilePic, Radio, SliderWrapper, Spinner, Text, Toast, WarnMesssage$1 as WarnMesssage };

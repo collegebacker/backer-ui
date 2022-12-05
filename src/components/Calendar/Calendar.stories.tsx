@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { Calendar, Modal, Button } from "..";
+import { Calendar } from "..";
 
 localStorage.clear();
 
