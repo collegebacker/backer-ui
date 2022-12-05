@@ -28,6 +28,7 @@ export { default as ProfilePic } from "./ProfilePic";
 export { default as Checkbox } from "./Checkbox";
 export { default as Radio } from "./Radio";
 export { default as Text } from "./Text";
+export { default as Calendar } from "./Calendar";
 
 // SHARAED
 export { default as ContributionSuccessModal } from "./ContributionSuccessModal";
