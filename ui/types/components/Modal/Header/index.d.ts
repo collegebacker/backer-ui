@@ -4,6 +4,8 @@ interface HeaderProps {
     smallTitle?: boolean;
     noMaxWidth?: boolean;
     showBackButton?: boolean;
+    disableMarginDesktop?: boolean;
+    disableMarginMobile?: boolean;
     onBackClick?: () => void;
     onCloseClick: () => void;
 }

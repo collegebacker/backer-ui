@@ -247,6 +247,8 @@ interface Props$d {
     dataAttrs?: Record<string, string>;
     maxSheetHeight?: string;
     showBackButton?: boolean;
+    disableHeaderMarginMobile?: boolean;
+    disableHeaderMarginDesktop?: boolean;
     onBackClick?: () => void;
     onCloseClick?: () => void;
     animateSize?: (props: ModalAnimationSizeProps) => void;

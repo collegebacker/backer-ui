@@ -14,6 +14,7 @@ interface Props {
     onCloseClick?: () => void;
     showBackButton?: boolean;
     onBackClick?: () => void;
+    disableHeaderBottomMargin?: boolean;
 }
 declare const BottomSheet: React.ForwardRefExoticComponent<Props & React.RefAttributes<any>>;
 export default BottomSheet;

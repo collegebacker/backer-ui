@@ -23,7 +23,6 @@ export interface Props {
   showBackButton?: boolean;
   disableHeaderMarginMobile?: boolean;
   disableHeaderMarginDesktop?: boolean;
-  largeTitle?: boolean;
   onBackClick?: () => void;
   onCloseClick?: () => void;
   animateSize?: (props: ModalAnimationSizeProps) => void;

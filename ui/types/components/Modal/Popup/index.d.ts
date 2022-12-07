@@ -16,6 +16,7 @@ interface Props {
     onCloseClick?: () => void;
     showBackButton?: boolean;
     onBackClick?: () => void;
+    disableHeaderBottomMargin?: boolean;
 }
 declare const Popup: React.ForwardRefExoticComponent<Props & React.RefAttributes<any>>;
 export default Popup;

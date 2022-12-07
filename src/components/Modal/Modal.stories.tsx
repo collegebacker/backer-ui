@@ -138,7 +138,6 @@ const Template: ComponentStory<typeof Modal> = (args) => {
 export const Popup = Template.bind({});
 Popup.args = {
   title: "Modal Title",
-  largeTitle: false,
   smallTitle: false,
   isBottomSheet: false,
   isOpen: false,

@@ -5,7 +5,6 @@ import styles from "./styles.module.scss";
 
 interface HeaderProps {
   title?: string;
-  largeTitle?: boolean;
   smallTitle?: boolean;
   noMaxWidth?: boolean;
   showBackButton?: boolean;
@@ -16,8 +15,6 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = (props) => {
-  console.log("Header", props);
-
   return (
     <div
       className={`${styles.header} ${
@@ -42,11 +39,9 @@ const Header: React.FC<HeaderProps> = (props) => {
       {(props.title || props.title !== "") && !props.showBackButton ? (
         <div className={`${styles.titleWrap}`}>
           <h2
-            className={` ${
-              !props.largeTitle ? styles.adaptiveTitle : styles.largeTitle
-            } ${!props.noMaxWidth ? styles.header_maxWidth : ""} ${
-              styles[props.smallTitle ? "smallTitle" : "title"]
-            }`}
+            className={`${styles.adaptiveTitle} ${
+              !props.noMaxWidth ? styles.header_maxWidth : ""
+            } ${styles[props.smallTitle ? "smallTitle" : "title"]}`}
           >
             {props.title}
           </h2>
@@ -63,7 +58,6 @@ Header.defaultProps = {
   showBackButton: false,
   disableMarginDesktop: false,
   disableMarginMobile: false,
-  largeTitle: false,
 };
 
 export default Header;
