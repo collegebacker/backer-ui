@@ -57,10 +57,24 @@ export default {
     },
   },
   argTypes: {
+    disableHeaderMarginDesktop: {
+      control: "boolean",
+      description:
+        "You can disable the header margin on the desktop breakpoint. It's useful when you want to use the modal without the header.",
+    },
+    disableHeaderMarginMobile: {
+      control: "boolean",
+      description:
+        "You can disable the header margin on the mobile breakpoint. It's useful when you want to use the modal without the header.",
+    },
     title: {
       control: "text",
       description:
         "Title of the modal. If the string is empty we don't render the title.",
+    },
+    largeTitle: {
+      control: "boolean",
+      description: "This prop disables the small title size on mobile.",
     },
     smallTitle: {
       control: "boolean",
@@ -124,6 +138,7 @@ const Template: ComponentStory<typeof Modal> = (args) => {
 export const Popup = Template.bind({});
 Popup.args = {
   title: "Modal Title",
+  largeTitle: false,
   smallTitle: false,
   isBottomSheet: false,
   isOpen: false,
@@ -461,6 +476,8 @@ const PlaygroundTemplate: ComponentStory<typeof Modal> = (args) => {
 export const Playground = PlaygroundTemplate.bind({});
 Playground.args = {
   title: "Funds",
+  disableHeaderMarginDesktop: false,
+  disableHeaderMarginMobile: false,
   smallTitle: true,
   isBottomSheet: true,
   showBackButton: true,

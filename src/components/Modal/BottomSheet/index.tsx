@@ -21,6 +21,8 @@ interface Props {
   onCloseClick?: () => void;
   showBackButton?: boolean;
   onBackClick?: () => void;
+  disableHeaderBottomMargin?: boolean;
+  largeTitle?: boolean;
 }
 
 ///////////////
@@ -215,6 +217,8 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
               noMaxWidth={true}
               showBackButton={props.showBackButton}
               onBackClick={props.onBackClick}
+              disableMarginMobile={props.disableHeaderBottomMargin}
+              largeTitle={props.largeTitle}
             />
           ) : null}
           <div className={`${props.popupContentClassName}`}>

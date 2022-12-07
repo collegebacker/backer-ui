@@ -36,11 +36,17 @@ $btns-offset-mobile: 18px;
 
 //
 
-.title {
+.largeTitle {
   font-family: "Gza", serif;
   font-weight: 700;
   font-size: 40px;
   line-height: 120%;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.adaptiveTitle {
+  @extend .largeTitle;
 
   @media screen and (max-width: $mobile-breakpoint) {
     font-family: "ABCMarfa", sans-serif;
@@ -68,7 +74,7 @@ $btns-offset-mobile: 18px;
 
   @media screen and (max-width: $mobile-breakpoint) {
     flex-direction: row-reverse;
-    margin-bottom: 25px;
+    // margin-bottom: 25px;
     min-height: 30px;
   }
 }
@@ -77,8 +83,16 @@ $btns-offset-mobile: 18px;
   min-height: 30px;
 }
 
-.bottomMargin {
-  margin-bottom: 25px;
+.bottomMarginDesktop {
+  @media screen and (min-width: $mobile-breakpoint) {
+    margin-bottom: 25px;
+  }
+}
+
+.bottomMarginMobile {
+  @media screen and (max-width: $mobile-breakpoint) {
+    margin-bottom: 25px;
+  }
 }
 
 .titleWrap {
@@ -93,11 +107,11 @@ $btns-offset-mobile: 18px;
   }
 }
 
-.title {
-  padding-right: 50px;
-  margin: 0 auto;
-  width: 100%;
-}
+// .title {
+//   // padding-right: 50px;
+//   margin: 0 auto;
+//   width: 100%;
+// }
 
 // BACK BUTTON
 
