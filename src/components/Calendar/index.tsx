@@ -25,14 +25,9 @@ const Calendar: React.FC<CalendarProps> = (props) => {
     <ReactCalendar
       inputRef={calendarRef}
       minDetail="month"
-      className={props.className}
       prevLabel={<Icon name="chevron-left" />}
       nextLabel={<Icon name="chevron-right" />}
-      onChange={props.onChange}
-      defaultValue={props.defaultValue}
-      formatLongDate={props.formatLongDate as any}
-      minDate={props.minDate}
-      maxDate={props.maxDate}
+      {...props}
     />
   );
 };

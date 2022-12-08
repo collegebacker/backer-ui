@@ -26,4 +26,7 @@ Default.args = {
   onChange: (date: Date) => console.log(date),
   defaultValue: new Date(),
   className: "",
+  onClickDay: (value: Date) => {
+    console.log(value);
+  },
 };

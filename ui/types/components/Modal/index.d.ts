@@ -8,7 +8,6 @@ export interface Props {
     hideHeader?: boolean;
     children: React.ReactNode;
     customWidth?: number;
-    minHeight?: string;
     customPaddings?: string;
     customPaddingsMobile?: string;
     isBottomSheet?: boolean;

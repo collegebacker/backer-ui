@@ -239,7 +239,6 @@ interface Props$d {
     hideHeader?: boolean;
     children: React.ReactNode;
     customWidth?: number;
-    minHeight?: string;
     customPaddings?: string;
     customPaddingsMobile?: string;
     isBottomSheet?: boolean;
