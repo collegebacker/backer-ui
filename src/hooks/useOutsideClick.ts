@@ -7,7 +7,7 @@ const useOutsideClick = (
 ) => {
   const handleClick = (e: MouseEvent) => {
     if (ref.current && !ref.current.contains(e.target as any) && enabled) {
-      console.log(e.target);
+      // console.log(e.target);
       // e.stopPropagation();
       callback();
     }

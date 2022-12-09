@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import gsap from "gsap";
 
 import { useOutsideClick, useDidMountEffect } from "../../../hooks";
@@ -57,12 +57,8 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
     close: () => {
       // console.log("isAnimationFinished", isAnimationFinished);
       if (isAnimationFinished) {
-        // console.log("mounted");
         setIsOpen(false);
       }
-    },
-    onAnimationFinished: (callback: (isAnimationFinished: boolean) => void) => {
-      callback(isAnimationFinished);
     },
   }));
 
@@ -71,6 +67,7 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
   //////////////
 
   const handleCloseClick = () => {
+    // console.log("close click");
     if (isShown && isAnimationFinished) {
       props.onCloseClick();
     }
@@ -84,7 +81,7 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
     popupRef,
     () => {
       // console.log(isAppeared, props.closeOutside, props.isMobileBreakpoint);
-      console.log("clicked outside");
+      // console.log("clicked outside");
       props.closeOutside && handleCloseClick();
     },
     isShown

@@ -2,11 +2,11 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var waitForScrollEnd = function () {
-    var last_changed_frame = 0;
-    var last_x = window.scrollX;
-    var last_y = window.scrollY;
-    return new Promise(function (resolve) {
+const waitForScrollEnd = () => {
+    let last_changed_frame = 0;
+    let last_x = window.scrollX;
+    let last_y = window.scrollY;
+    return new Promise((resolve) => {
         function tick(frames) {
             // We requestAnimationFrame either for 500 frames or until 20 frames with
             // no change have been observed.
@@ -27,7 +27,7 @@ var waitForScrollEnd = function () {
     });
 };
 
-var gradients = [
+const gradients = [
     ["#f6d365", "#fda085"],
     ["#85D1BF", "#78B8B0"],
     ["#FBB199", "#FFD12E"],
@@ -57,13 +57,13 @@ var gradients = [
     ["#FDCEBE", "#818AD9"],
     ["#B17DC3", "#FFCFF2"],
 ];
-var stringToGradient = function (string) {
-    var trimmedString = string.toUpperCase().trim().replace(/\s/g, "");
-    var startHash = trimmedString
+const stringToGradient = (string) => {
+    const trimmedString = string.toUpperCase().trim().replace(/\s/g, "");
+    const startHash = trimmedString
         .split("")
-        .reduce(function (acc, char) { return acc + char.charCodeAt(0); }, 0);
-    var gradient = startHash % gradients.length;
-    return "linear-gradient(45deg, ".concat(gradients[gradient][0], " 15%, ").concat(gradients[gradient][1], " 90%)");
+        .reduce((acc, char) => acc + char.charCodeAt(0), 0);
+    const gradient = startHash % gradients.length;
+    return `linear-gradient(45deg, ${gradients[gradient][0]} 15%, ${gradients[gradient][1]} 90%)`;
 };
 
 exports.stringToGradient = stringToGradient;

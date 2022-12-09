@@ -47,13 +47,14 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
       return bottomSheetRef.current;
     },
     open: () => {
-      setIsOpen(true);
+      if (isAnimationFinished) {
+        setIsOpen(true);
+      }
     },
     close: () => {
-      setIsOpen(false);
-    },
-    onAnimationFinished: (callback: (isAnimationFinished: boolean) => void) => {
-      callback(isAnimationFinished);
+      if (isAnimationFinished) {
+        setIsOpen(false);
+      }
     },
   }));
 
@@ -62,7 +63,7 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
   //////////////
 
   const handleCloseClick = () => {
-    if (isOpen) {
+    if (isOpen && isAnimationFinished) {
       // console.log("clicked outside");
       props.onCloseClick();
     }

@@ -46,7 +46,7 @@ export default [
           "src/**/*.test.tsx",
         ],
       }),
-      terser(),
+      terser({ compress: { drop_console: true } }),
       analyze({ summaryOnly: true }),
       size(),
     ],

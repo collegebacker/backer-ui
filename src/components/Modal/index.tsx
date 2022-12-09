@@ -38,27 +38,17 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
     document.body.style.touchAction = "none";
 
     if (props.isBottomSheet && isMobileBreakpoint) {
-      bottomSheetRef.current.onAnimationFinished(
-        (isAnimationFinished: boolean) => {
-          if (isAnimationFinished) {
-            bottomSheetRef.current?.open();
+      bottomSheetRef.current?.open();
 
-            if (callback) {
-              callback();
-            }
-          }
-        }
-      );
+      if (callback) {
+        callback();
+      }
     } else {
-      popupRef.current.onAnimationFinished((isAnimationFinished: boolean) => {
-        if (isAnimationFinished) {
-          popupRef.current?.open();
+      popupRef.current?.open();
 
-          if (callback) {
-            callback();
-          }
-        }
-      });
+      if (callback) {
+        callback();
+      }
     }
   };
 
@@ -67,27 +57,17 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
     document.body.style.removeProperty("touch-action");
 
     if (props.isBottomSheet && isMobileBreakpoint) {
-      bottomSheetRef.current.onAnimationFinished(
-        (isAnimationFinished: boolean) => {
-          if (isAnimationFinished) {
-            bottomSheetRef.current?.close();
+      bottomSheetRef.current?.close();
 
-            if (callback) {
-              callback();
-            }
-          }
-        }
-      );
+      if (callback) {
+        callback();
+      }
     } else {
-      popupRef.current.onAnimationFinished((isAnimationFinished: boolean) => {
-        if (isAnimationFinished) {
-          popupRef.current?.close();
+      popupRef.current?.close();
 
-          if (callback) {
-            callback();
-          }
-        }
-      });
+      if (callback) {
+        callback();
+      }
     }
   };
 
@@ -138,7 +118,7 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
   }, [props.isOpen]);
 
   const handleOnCloseClick = () => {
-    handleClose(() => props.onCloseClick());
+    handleClose(() => (props.onCloseClick ? props.onCloseClick() : null));
   };
 
   //////////////
