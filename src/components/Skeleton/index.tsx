@@ -32,15 +32,8 @@ export interface SkeletonTextProps extends SkeletonBoneProps {
 }
 
 export interface SkeletonButtonProps extends SkeletonBoneProps {
-  size: "default" | "small" | "pill";
+  size?: "default" | "small" | "pill";
 }
-
-export type CompoundComponent = React.FC<SkeletonBodyProps> & {
-  Bone?: React.FC<SkeletonBoneProps>;
-  Text?: React.FC<SkeletonTextProps>;
-  Button?: React.FC<SkeletonButtonProps>;
-  ProfilePic?: React.FC<SkeletonBoneProps>;
-};
 
 ////////////////
 // COMPONENTS //
@@ -59,7 +52,7 @@ const SkeletonBody: React.FC<SkeletonBodyProps> = (props) => {
   );
 };
 
-const Bone: React.FC<SkeletonBoneProps> = (props) => {
+const SkeletonBone: React.FC<SkeletonBoneProps> = (props) => {
   return (
     <div
       className={`${styles.bone} ${props.className}`}
@@ -79,7 +72,7 @@ const TextLine: React.FC<SkeletonTextProps> = (props) => {
   );
 };
 
-const Text: React.FC<SkeletonTextProps> = (props) => {
+const SkeletonText: React.FC<SkeletonTextProps> = (props) => {
   return props.lines > 1 ? (
     <div
       className={`${styles.textWrap} ${props.className}`}
@@ -98,7 +91,7 @@ const Text: React.FC<SkeletonTextProps> = (props) => {
   );
 };
 
-const Button: React.FC<SkeletonButtonProps> = (props) => {
+const SkeletonButton: React.FC<SkeletonButtonProps> = (props) => {
   return (
     <div
       className={`${styles.bone} ${styles.button} ${
@@ -109,7 +102,7 @@ const Button: React.FC<SkeletonButtonProps> = (props) => {
   );
 };
 
-const ProfilePic: React.FC<SkeletonBoneProps> = (props) => {
+const SkeletonProfilePic: React.FC<SkeletonBoneProps> = (props) => {
   return (
     <div
       className={`${styles.bone} ${styles.profilePic} ${props.className}`}
@@ -118,20 +111,47 @@ const ProfilePic: React.FC<SkeletonBoneProps> = (props) => {
   );
 };
 
-////////////////////////////////
-// COMPOUND COMPONENT EXPORTS //
-////////////////////////////////
+///////////////////
+// DEFAULT PROPS //
+///////////////////
 
-Bone.defaultProps = Text.defaultProps = {
+const commonProps = {
   className: "",
   style: {},
 };
 
-const Skeleton = SkeletonBody as CompoundComponent;
+SkeletonBody.defaultProps = {
+  ...commonProps,
+  showBackground: true,
+};
 
-Skeleton.Bone = Bone;
-Skeleton.Text = Text;
-Skeleton.Button = Button;
-Skeleton.ProfilePic = ProfilePic;
+SkeletonBone.defaultProps = {
+  ...commonProps,
+};
 
-export default Skeleton;
+SkeletonText.defaultProps = {
+  ...commonProps,
+  fontSize: "body-main",
+  lines: 2,
+};
+
+SkeletonButton.defaultProps = {
+  ...commonProps,
+  size: "default",
+};
+
+SkeletonProfilePic.defaultProps = {
+  ...commonProps,
+};
+
+///////////////////////
+// EXPORT COMPONENTS //
+///////////////////////
+
+export {
+  SkeletonBody,
+  SkeletonBone,
+  SkeletonText,
+  SkeletonButton,
+  SkeletonProfilePic,
+};

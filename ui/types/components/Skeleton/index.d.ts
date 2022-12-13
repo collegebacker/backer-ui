@@ -14,13 +14,11 @@ export interface SkeletonTextProps extends SkeletonBoneProps {
     lines: number;
 }
 export interface SkeletonButtonProps extends SkeletonBoneProps {
-    size: "default" | "small" | "pill";
+    size?: "default" | "small" | "pill";
 }
-export declare type CompoundComponent = React.FC<SkeletonBodyProps> & {
-    Bone?: React.FC<SkeletonBoneProps>;
-    Text?: React.FC<SkeletonTextProps>;
-    Button?: React.FC<SkeletonButtonProps>;
-    ProfilePic?: React.FC<SkeletonBoneProps>;
-};
-declare const Skeleton: CompoundComponent;
-export default Skeleton;
+declare const SkeletonBody: React.FC<SkeletonBodyProps>;
+declare const SkeletonBone: React.FC<SkeletonBoneProps>;
+declare const SkeletonText: React.FC<SkeletonTextProps>;
+declare const SkeletonButton: React.FC<SkeletonButtonProps>;
+declare const SkeletonProfilePic: React.FC<SkeletonBoneProps>;
+export { SkeletonBody, SkeletonBone, SkeletonText, SkeletonButton, SkeletonProfilePic, };

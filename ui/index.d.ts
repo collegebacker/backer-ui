@@ -419,15 +419,13 @@ interface SkeletonTextProps extends SkeletonBoneProps {
     lines: number;
 }
 interface SkeletonButtonProps extends SkeletonBoneProps {
-    size: "default" | "small" | "pill";
+    size?: "default" | "small" | "pill";
 }
-declare type CompoundComponent = React.FC<SkeletonBodyProps> & {
-    Bone?: React.FC<SkeletonBoneProps>;
-    Text?: React.FC<SkeletonTextProps>;
-    Button?: React.FC<SkeletonButtonProps>;
-    ProfilePic?: React.FC<SkeletonBoneProps>;
-};
-declare const Skeleton: CompoundComponent;
+declare const SkeletonBody: React.FC<SkeletonBodyProps>;
+declare const SkeletonBone: React.FC<SkeletonBoneProps>;
+declare const SkeletonText: React.FC<SkeletonTextProps>;
+declare const SkeletonButton: React.FC<SkeletonButtonProps>;
+declare const SkeletonProfilePic: React.FC<SkeletonBoneProps>;
 
 declare type durationType = "onetime" | "3months" | "6months" | "1year" | "untilcollege";
 declare type frequencyType = "onetime" | "monthly" | "semimonthly";
@@ -455,4 +453,4 @@ interface ContributionProps {
 }
 declare const FundContributionSection: React.FC<ContributionProps>;
 
-export { Accordion, ActionMesssage, ActionSheet, ArrowButton, Button, CSSSlider, Calendar, Checkbox, ChipsSelector, ChipsSlider, CodeInput, ContributionSuccessModal, CountBadge, Divider, DotPagination, FundContributionSection, GhostInput, Icon, WarnMesssage as InfoMesssage, Input, Logo, Modal, ModalButtons, PaymentLogo, PillButton, FundProfilePic as ProfilePic, Radio, Skeleton, SliderWrapper, Spinner, Text, Toast, WarnMesssage$1 as WarnMesssage };
+export { Accordion, ActionMesssage, ActionSheet, ArrowButton, Button, CSSSlider, Calendar, Checkbox, ChipsSelector, ChipsSlider, CodeInput, ContributionSuccessModal, CountBadge, Divider, DotPagination, FundContributionSection, GhostInput, Icon, WarnMesssage as InfoMesssage, Input, Logo, Modal, ModalButtons, PaymentLogo, PillButton, FundProfilePic as ProfilePic, Radio, SkeletonBody, SkeletonBone, SkeletonButton, SkeletonProfilePic, SkeletonText, SliderWrapper, Spinner, Text, Toast, WarnMesssage$1 as WarnMesssage };
