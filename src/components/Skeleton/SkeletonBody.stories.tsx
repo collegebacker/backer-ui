@@ -12,7 +12,7 @@ export default {
     docs: {
       description: {
         component:
-          "`Skeleton` component is a wrapper for `Skeleton.Bone`, `Skeleton.ProfilePic`, `Skeleton.Button` and `Skeleton.Text` components. It is used to create a skeleton loading effect for your components.",
+          "`SkeletonBody` component is a wrapper for `SkeletonText`, `SkeletonProfilePic`, `SkeletonBone` and `SkeletonButton` components. It is used to create a skeleton loading screen for a page.",
       },
     },
   },
@@ -24,12 +24,15 @@ const bodyeStyle = {
   padding: "40px",
 } as React.CSSProperties;
 
-const Template: ComponentStory<typeof SkeletonBody> = (args) => (
+// SkeletonBody
+
+const BodyTemplate: ComponentStory<typeof SkeletonBody> = (args) => (
   <SkeletonBody {...args} />
 );
 
-export const Main = Template.bind({});
-Main.args = {
+export const Body = BodyTemplate.bind({});
+
+Body.args = {
   className: "",
   style: bodyeStyle,
   showBackground: true,
