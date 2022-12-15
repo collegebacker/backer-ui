@@ -18,6 +18,7 @@ $button-hover: rgba(20, 20, 20, 0.05);
 .react-calendar__viewContainer {
   display: flex;
   flex: 1;
+  width: 100%;
 }
 
 .react-calendar__year-view,
@@ -34,6 +35,13 @@ $button-hover: rgba(20, 20, 20, 0.05);
   display: flex;
   flex: 1;
   flex-wrap: wrap;
+}
+
+.react-calendar__month-view,
+.react-calendar__year-view,
+.react-calendar__decade-view,
+.react-calendar__century-view {
+  width: 100%;
 }
 
 //
