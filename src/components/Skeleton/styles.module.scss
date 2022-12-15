@@ -14,11 +14,11 @@ $animation-timing: 2.2s ease infinite;
   border-radius: $radius;
   background: linear-gradient(
     to right,
-    rgba(0, 0, 0, 0.03) 8%,
-    rgba(0, 0, 0, 0.05) 18%,
-    rgba(0, 0, 0, 0.03) 33%
+    rgba(0, 0, 0, 0.05) 16.78%,
+    rgba(0, 0, 0, 0.02) 26.34%,
+    rgba(0, 0, 0, 0.05) 100%
   );
-  background-size: 800px 104px;
+  background-size: 800px 100px;
   animation: shimmer $animation-timing;
 }
 
