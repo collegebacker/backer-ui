@@ -1,4 +1,7 @@
 import React from "react";
 import { CalendarProps } from "react-calendar";
-declare const Calendar: React.FC<CalendarProps>;
+export interface Props extends CalendarProps {
+    hideYearArrows?: boolean;
+}
+declare const Calendar: React.FC<Props>;
 export default Calendar;

@@ -29,6 +29,13 @@ export { default as Checkbox } from "./Checkbox";
 export { default as Radio } from "./Radio";
 export { default as Text } from "./Text";
 export { default as Calendar } from "./Calendar";
+export {
+  SkeletonBody,
+  SkeletonBone,
+  SkeletonText,
+  SkeletonButton,
+  SkeletonProfilePic,
+} from "./Skeleton";
 
 // SHARAED
 export { default as ContributionSuccessModal } from "./ContributionSuccessModal";

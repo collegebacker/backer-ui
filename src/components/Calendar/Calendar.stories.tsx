@@ -15,6 +15,14 @@ export default {
       },
     },
   },
+  argTypes: {
+    minDetail: {
+      control: {
+        type: "select",
+        options: ["century", "decade", "year", "month", "date"],
+      },
+    },
+  },
 } as ComponentMeta<typeof Calendar>;
 
 const Template: ComponentStory<typeof Calendar> = (args) => (
@@ -23,9 +31,11 @@ const Template: ComponentStory<typeof Calendar> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  onChange: (date: Date) => console.log(date),
+  minDetail: "month",
+  hideYearArrows: true,
   defaultValue: new Date(),
   className: "",
+  onChange: (date: Date) => console.log(date),
   onClickDay: (value: Date) => {
     console.log(value);
   },
