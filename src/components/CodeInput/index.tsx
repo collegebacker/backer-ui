@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./styles.module.scss";
 
+import { isMobile } from "../../utils";
+
 export interface Props {
   tabIndex?: number;
 
@@ -18,10 +20,6 @@ export interface Props {
   onFocus?: (nums: string) => void;
   onResend?: (event: any) => void;
 }
-
-const isMobile = () => {
-  return /mobile/i.test(navigator.userAgent);
-};
 
 const CodeInput = React.forwardRef<any, Props>((props, ref) => {
   const inputsRefs = React.useRef<HTMLInputElement[]>([]);

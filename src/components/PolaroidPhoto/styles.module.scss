@@ -1,0 +1,76 @@
+.polaroidWrapper {
+  --default-size: 300px;
+  --aspect-ratio: 0.88;
+  --image-padding: 10%;
+  --height: calc(var(--default-size) * var(--aspect-ratio));
+
+  position: relative;
+  perspective: 600px;
+  width: var(--size, var(--default-size));
+  height: calc(var(--size, var(--default-size)) / var(--aspect-ratio));
+  transform: rotate(3deg);
+}
+
+.polaroid {
+  position: relative;
+  border-radius: 4px;
+  background-image: linear-gradient(
+    173.98deg,
+    #f7f7f7 -12.42%,
+    #f3f3f3 81.71%,
+    #dcdfe0 112.22%
+  );
+  width: 100%;
+  height: 100%;
+
+  box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.06),
+    0px 20px 34px rgba(151, 137, 147, 0.1);
+}
+
+.photo {
+  position: absolute;
+  width: calc(var(--size, var(--default-size)) - var(--image-padding));
+  height: calc(var(--size, var(--default-size)) - var(--image-padding));
+  top: calc(var(--image-padding) / 2);
+  left: calc(var(--image-padding) / 2);
+  border-radius: 4px;
+}
+
+.photo {
+  z-index: 1;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.uploadPhoto {
+  z-index: 2;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  input {
+    opacity: 0;
+    position: relative;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.uploadPhotoPlaceholderImage {
+  --upload-placeholder-size: 50%;
+
+  pointer-events: none;
+  z-index: 1;
+  position: absolute;
+  top: calc(50% - var(--image-padding) / 2);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: var(--upload-placeholder-size);
+  height: calc(var(--upload-placeholder-size) / 1.5);
+  background-image: url(https://res.cloudinary.com/dgfjsma5p/image/upload/v1671231866/backer-ui/polaroidPhoto/polaroid-upload-image.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
