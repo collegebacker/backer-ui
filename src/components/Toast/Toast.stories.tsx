@@ -24,7 +24,7 @@ export default {
 - \`dismissButton?: boolean\`
 - \`button?: {label: string; onClick: () => void;}\`. If set, a button will be shown at the bottom of the toast. It has a label and a callback function.
 - \`emoji?: string\`
-- \`type?: "success" | "error" | "warning" | "info"\`. Yu can change emoji only ro the \`info\` type.
+- \`type?: "success" | "error" | "warning" | "info"\`. Yu can change emoji on any type.
 - \`timeout?: number\`. If set to a number, the toast will be automatically closed after the number of milliseconds. If set to false, the toast will not be automatically closed.
 `,
       },
