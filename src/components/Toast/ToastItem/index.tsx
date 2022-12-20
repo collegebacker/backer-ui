@@ -13,6 +13,10 @@ const ToastItem: React.FC<ItemProps> = (props) => {
   const [isMount, setIsMount] = React.useState(true);
 
   const addEmoji = () => {
+    if (props.params?.emoji) {
+      return props.params?.emoji;
+    }
+
     switch (props.params?.type) {
       case "success":
         return "🎉";
