@@ -32,5 +32,3 @@ export { default as Slider } from "./Slider";
 export { default as PolaroidPhoto } from "./PolaroidPhoto";
 export { default as ImageEditor } from "./ImageEditor";
 export { SkeletonBody, SkeletonBone, SkeletonText, SkeletonButton, SkeletonProfilePic, } from "./Skeleton";
-export { default as ContributionSuccessModal } from "./ContributionSuccessModal";
-export { default as FundContributionSection } from "./FundContributionSection";
