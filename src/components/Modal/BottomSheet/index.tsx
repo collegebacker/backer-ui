@@ -47,11 +47,13 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
       return bottomSheetRef.current;
     },
     open: () => {
+      console.log("close iiner foo");
       if (isAnimationFinished) {
         setIsOpen(true);
       }
     },
     close: () => {
+      // console.log("isAnimationFinished", isAnimationFinished);
       if (isAnimationFinished) {
         setIsOpen(false);
       }
@@ -76,7 +78,7 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
   useOutsideClick(
     bottomSheetRef,
     () => {
-      handleCloseClick();
+      props.closeOutside && handleCloseClick();
     },
     isOpen
   );
@@ -111,7 +113,7 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
   }, [isMount]);
 
   useDidMountEffect(() => {
-    // console.log("isOpen", props.isOpen);
+    console.log("isOpen", isOpen);
     gsap.killTweensOf(modalWrapRef.current);
 
     if (isMount) {

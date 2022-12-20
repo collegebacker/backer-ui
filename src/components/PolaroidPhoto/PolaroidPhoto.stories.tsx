@@ -16,11 +16,13 @@ const Template: ComponentStory<typeof PolaroidPhoto> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
+  uploadMode: false,
+  className: "",
   style: {
+    // @ts-ignore: Unreachable code error
     "--size": "200px",
     margin: "40px",
   },
-  className: "",
-  fundName: "",
+  name: "Lily Sharpe’sEducation Fund 🐰🌿",
   imageSrc: "",
 };

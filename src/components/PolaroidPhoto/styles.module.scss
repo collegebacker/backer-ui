@@ -59,18 +59,25 @@
 }
 
 .uploadPhotoPlaceholderImage {
-  --upload-placeholder-size: 50%;
-
-  pointer-events: none;
-  z-index: 1;
   position: absolute;
-  top: calc(50% - var(--image-padding) / 2);
+  top: calc(45%);
   left: 50%;
   transform: translate(-50%, -50%);
-  width: var(--upload-placeholder-size);
-  height: calc(var(--upload-placeholder-size) / 1.5);
-  background-image: url(https://res.cloudinary.com/dgfjsma5p/image/upload/v1671231866/backer-ui/polaroidPhoto/polaroid-upload-image.svg);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
+  background-color: white;
+  padding: 10px;
+  border-radius: var(--radius-m);
+}
+
+.letterPlaceholder {
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+
+  text {
+    font-family: Arial, sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    fill: white;
+    text-decoration: none;
+  }
 }

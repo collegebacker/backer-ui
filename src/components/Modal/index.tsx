@@ -32,54 +32,67 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
   const bottomSheetRef = React.useRef<any>(null);
 
   const [isMobileBreakpoint, setIsMobileBreakpoint] = React.useState(false);
+  const mobilebreakpoint = 621;
 
-  const handleOpen = (callback: () => void) => {
+  const checkMobileBreakpoint = () => {
+    // console.log("window.innerWidth", window.innerWidth < mobilebreakpoint);
+    setIsMobileBreakpoint(window.innerWidth < mobilebreakpoint);
+  };
+
+  const handleOpen = () => {
     document.body.style.overflow = "hidden";
     document.body.style.touchAction = "none";
 
-    if (props.isBottomSheet && isMobileBreakpoint) {
+    // console.log(bottomSheetRef);
+
+    if (props.isBottomSheet && window.innerWidth < mobilebreakpoint) {
+      // console.log("mobile");
       bottomSheetRef.current?.open();
-
-      if (callback) {
-        callback();
-      }
     } else {
+      // console.log(bottomSheetRef.current);
+      // console.log("desktop");
       popupRef.current?.open();
-
-      if (callback) {
-        callback();
-      }
     }
   };
 
-  const handleClose = (callback: () => void) => {
+  const handleClose = () => {
     document.body.style.removeProperty("overflow");
     document.body.style.removeProperty("touch-action");
 
-    if (props.isBottomSheet && isMobileBreakpoint) {
-      bottomSheetRef.current?.close();
+    // console.log("close");
 
-      if (callback) {
-        callback();
-      }
+    if (props.isBottomSheet && window.innerWidth < mobilebreakpoint) {
+      bottomSheetRef.current?.close();
     } else {
       popupRef.current?.close();
-
-      if (callback) {
-        callback();
-      }
     }
   };
 
   //////////////
   // IMPERIAL //
   //////////////
+
   React.useImperativeHandle(ref, () => ({
     open: (callback: () => void) => {
-      handleOpen(callback);
+      // set timer to make sure that all refs are set
+      setTimeout(() => {
+        handleOpen();
+      }, 10);
+
+      // handleOpen();
+
+      if (callback) {
+        callback();
+      }
     },
     close: (callback: () => void) => {
-      handleClose(callback);
+      if (callback) {
+        callback();
+      }
+
+      if (props.onCloseClick) {
+        props.onCloseClick();
+      }
     },
     getPopupRef: () => {
       return popupRef.current.getRef();
@@ -93,32 +106,28 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
   // USE EFFECTS //
   /////////////////
 
-  const mobilebreakpoint = 621;
-
   React.useEffect(() => {
-    const resize = () => {
-      setIsMobileBreakpoint(window.innerWidth < mobilebreakpoint);
-    };
+    checkMobileBreakpoint();
 
-    resize();
-
-    window.addEventListener("resize", resize);
+    window.addEventListener("resize", checkMobileBreakpoint);
 
     return () => {
-      window.removeEventListener("resize", resize);
+      window.removeEventListener("resize", checkMobileBreakpoint);
     };
   }, []);
 
   React.useEffect(() => {
     if (props.isOpen) {
-      handleOpen(() => {});
+      // console.log("open foo");
+      handleOpen();
     } else {
-      handleClose(() => {});
+      // console.log("close foo");
+      handleClose();
     }
-  }, [props.isOpen]);
+  }, [props.isOpen, isMobileBreakpoint]);
 
   const handleOnCloseClick = () => {
-    handleClose(() => (props.onCloseClick ? props.onCloseClick() : null));
+    handleClose();
   };
 
   //////////////

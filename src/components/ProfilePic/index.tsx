@@ -18,7 +18,7 @@ export interface Props {
 ///////// CARDS SLIDER //////////
 /////////////////////////////////
 
-const FundProfilePic: React.FC<Props> = (props) => {
+const ProfilePic: React.FC<Props> = (props) => {
   //
   return (
     <div
@@ -39,9 +39,9 @@ const FundProfilePic: React.FC<Props> = (props) => {
   );
 };
 
-FundProfilePic.defaultProps = {
+ProfilePic.defaultProps = {
   className: "",
   image: "",
 } as Partial<Props>;
 
-export default FundProfilePic;
+export default ProfilePic;
