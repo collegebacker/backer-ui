@@ -12,14 +12,16 @@ export interface Props {
   name: string;
   uploadMode?: boolean;
   imageSrc?: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onImageSubmit?: (imageData: string) => void;
+  isImageLoading?: boolean;
+  isEditorOpen?: boolean;
 }
 
 const PolaroidPhoto: React.FC<Props> = (props) => {
   const photoRef = React.useRef<HTMLDivElement>(null);
   const [imageSrc, setImageSrc] = React.useState<string | undefined>(undefined);
   const [imageFile, setImageFile] = React.useState<File | undefined>(undefined);
-  const [isEditorOpen, setIsEditorOpen] = React.useState(false);
+  const [isEditorOpen, setIsEditorOpen] = React.useState(props.isEditorOpen);
 
   React.useEffect(() => {
     setImageSrc(props.imageSrc);
@@ -31,9 +33,25 @@ const PolaroidPhoto: React.FC<Props> = (props) => {
     }
   }, [imageFile]);
 
+  React.useEffect(() => {
+    setIsEditorOpen(props.isEditorOpen);
+  }, [props.isEditorOpen]);
+
+  const handleImageEditorSubmit = (imageData: string) => {
+    if (props.onImageSubmit) {
+      console.log("imageData", imageData);
+      props.onImageSubmit(imageData);
+    }
+  };
+
   return (
     <>
-      <ImageEditor isOpen={isEditorOpen} imageFile={imageFile} />
+      <ImageEditor
+        isOpen={isEditorOpen}
+        imageFile={imageFile}
+        onSubmit={handleImageEditorSubmit}
+        isLoaded={props.isImageLoading}
+      />
       <div
         className={`${styles.polaroidWrapper} ${props.className}`}
         style={props.style}
@@ -137,6 +155,8 @@ PolaroidPhoto.defaultProps = {
   className: "",
   style: {},
   uploadMode: true,
+  isEditorOpen: false,
+  isImageLoading: false,
 } as Partial<Props>;
 
 export default PolaroidPhoto;

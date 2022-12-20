@@ -41,7 +41,3 @@ export {
   SkeletonButton,
   SkeletonProfilePic,
 } from "./Skeleton";
-
-// SHARAED
-export { default as ContributionSuccessModal } from "./ContributionSuccessModal";
-export { default as FundContributionSection } from "./FundContributionSection";
