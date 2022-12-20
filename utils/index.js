@@ -66,6 +66,11 @@ const stringToGradient = (string) => {
     return `linear-gradient(45deg, ${gradients[gradient][0]} 15%, ${gradients[gradient][1]} 90%)`;
 };
 
+const isMobile = () => {
+    return /mobile/i.test(navigator.userAgent);
+};
+
+exports.isMobile = isMobile;
 exports.stringToGradient = stringToGradient;
 exports.waitForScrollEnd = waitForScrollEnd;
 //# sourceMappingURL=index.js.map

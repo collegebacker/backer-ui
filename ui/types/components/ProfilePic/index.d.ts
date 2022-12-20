@@ -5,5 +5,5 @@ export interface Props {
     image?: string;
     onClick?: () => void;
 }
-declare const FundProfilePic: React.FC<Props>;
-export default FundProfilePic;
+declare const ProfilePic: React.FC<Props>;
+export default ProfilePic;
