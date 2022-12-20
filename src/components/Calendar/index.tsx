@@ -6,11 +6,11 @@ import { CalendarProps } from "react-calendar";
 
 import Icon from "../Icon";
 
-export interface Props extends CalendarProps {
+export interface Props {
   hideYearArrows?: boolean; // show or hide the month arrows
 }
 
-const Calendar: React.FC<Props> = (props) => {
+const Calendar: React.FC<Props & CalendarProps> = (props) => {
   const calendarRef = React.useRef<HTMLInputElement>(null);
 
   React.useEffect(() => {

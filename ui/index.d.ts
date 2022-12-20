@@ -402,10 +402,10 @@ interface Props$5 {
 }
 declare const Text: React.ForwardRefExoticComponent<Pick<Props$5, keyof Props$5> & React.RefAttributes<any>>;
 
-interface Props$4 extends CalendarProps {
+interface Props$4 {
     hideYearArrows?: boolean;
 }
-declare const Calendar: React.FC<Props$4>;
+declare const Calendar: React.FC<Props$4 & CalendarProps>;
 
 interface Props$3 {
     className?: string;
