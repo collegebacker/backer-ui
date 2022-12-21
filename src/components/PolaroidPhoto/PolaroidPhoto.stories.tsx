@@ -56,5 +56,4 @@ Default.args = {
     margin: "40px",
   },
   name: "Lily Sharpe’sEducation Fund 🐰🌿",
-  imageSrc: "",
 };

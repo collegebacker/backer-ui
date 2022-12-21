@@ -1,8 +1,6 @@
 import React from "react";
 import styles from "./styles.module.scss";
 
-import ImageEditor from "../ImageEditor";
-
 import gsap from "gsap";
 import { stringToGradient, isMobile } from "../../utils";
 
