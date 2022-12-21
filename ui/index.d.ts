@@ -351,6 +351,7 @@ declare const CountBadge: React.FC<Props$8>;
 
 interface Props$7 {
     className?: string;
+    style?: React.CSSProperties;
     name: string;
     image?: string;
     onClick?: () => void;
