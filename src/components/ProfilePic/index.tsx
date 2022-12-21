@@ -9,6 +9,7 @@ import { stringToGradient } from "../../utils";
 
 export interface Props {
   className?: string;
+  style?: React.CSSProperties;
   name: string;
   image?: string;
   onClick?: () => void;
@@ -25,6 +26,7 @@ const ProfilePic: React.FC<Props> = (props) => {
       className={`${styles.pic} ${props.className ? props.className : ""}`}
       style={{
         backgroundImage: `url(${props.image}), ${stringToGradient(props.name)}`,
+        ...props.style,
       }}
       onClick={props.onClick}
     >

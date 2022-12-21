@@ -2,6 +2,8 @@
   border-radius: 50%;
   background-size: cover;
   background-position: center;
+  width: var(--size, 100px);
+  height: var(--size, 100px);
 }
 
 .letterPlaceholder {
