@@ -87,6 +87,7 @@ const SkeletonText: React.FC<SkeletonTextProps> = (props) => {
       className={props.className}
       fontSize={props.fontSize}
       lines={props.lines}
+      style={{ ...props.style }}
     />
   );
 };
