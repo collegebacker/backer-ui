@@ -52,6 +52,7 @@ $animation-timing: 2.2s ease infinite;
 
 .textLine {
   width: 100%;
+  margin-bottom: 14px;
 
   &:last-child:not(:first-child) {
     width: 80%;
@@ -61,27 +62,22 @@ $animation-timing: 2.2s ease infinite;
 
 .title-xlarge {
   height: $typo-app-title-xlarge-desktop-fontsize;
-  margin-bottom: calc($typo-app-title-xlarge-desktop-fontsize / 2.8);
 
   @media only screen and (max-width: $grid-mobile-breakpoint) {
     height: $typo-app-title-xlarge-mobile-fontsize;
-    margin-bottom: calc($typo-app-title-xlarge-mobile-fontsize / 2.4);
   }
 }
 
 .title-large {
   height: $typo-app-title-large-fontsize;
-  margin-bottom: calc($typo-app-title-large-fontsize / 2.6);
 }
 
 .title-medium {
   height: $typo-app-title-medium-fontsize;
-  margin-bottom: calc($typo-app-title-medium-fontsize / 2.5);
 }
 
 .title-medium-adaptive {
   height: $typo-app-title-medium-fontsize;
-  margin-bottom: calc($typo-app-title-medium-fontsize / 2);
 
   @media only screen and (max-width: $grid-mobile-breakpoint) {
     height: $typo-app-title-small-fontsize;
@@ -90,12 +86,10 @@ $animation-timing: 2.2s ease infinite;
 
 .title-small {
   height: $typo-app-title-small-fontsize;
-  margin-bottom: calc($typo-app-title-small-fontsize / 1.8);
 }
 
 .body-large {
   height: $typo-app-body-large-fontsize;
-  margin-bottom: calc($typo-app-body-large-fontsize / 1.5);
 }
 
 .body-large-adaptive {
@@ -108,12 +102,10 @@ $animation-timing: 2.2s ease infinite;
 
 .body-main {
   height: $typo-app-body-main-fontsize;
-  margin-bottom: calc($typo-app-body-main-fontsize / 1.3);
 }
 
 .body-caption {
   height: $typo-app-body-caption-fontsize;
-  margin-bottom: calc($typo-app-body-caption-fontsize / 1.3);
 }
 
 // BUTTON
