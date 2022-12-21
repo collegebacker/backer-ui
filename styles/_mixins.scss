@@ -11,15 +11,22 @@
   }
 }
 
+$focus-line-margin: -4px;
+
 @mixin focus-state($border-radius: 150px) {
+  &:focus-visible {
+    outline: none;
+  }
+
   &:focus-visible::before {
     content: "";
     position: absolute;
-    top: -4px;
-    right: -4px;
-    bottom: -4px;
-    left: -4px;
+    top: $focus-line-margin;
+    right: $focus-line-margin;
+    bottom: $focus-line-margin;
+    left: $focus-line-margin;
     border: 1px solid var(--color-main-500);
     border-radius: $border-radius;
+    pointer-events: none;
   }
 }
