@@ -424,14 +424,14 @@ interface Props$1 {
     style?: React.CSSProperties;
     name: string;
     uploadMode?: boolean;
-    imageSrc?: string;
+    imageSrc?: string | undefined;
     onChange?: (imageFile: File) => void;
 }
 declare const PolaroidPhoto: React.FC<Props$1>;
 
 interface Props {
     className?: string;
-    imageFile: string | File;
+    imageFile: string | File | undefined;
     isOpen?: boolean;
     onSubmit?: (imageData: string) => void;
     onClose?: () => void;

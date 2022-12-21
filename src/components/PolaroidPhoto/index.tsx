@@ -11,7 +11,7 @@ export interface Props {
   style?: React.CSSProperties;
   name: string;
   uploadMode?: boolean;
-  imageSrc?: string;
+  imageSrc?: string | undefined;
   onChange?: (imageFile: File) => void;
 }
 

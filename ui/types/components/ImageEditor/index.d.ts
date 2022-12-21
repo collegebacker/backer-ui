@@ -1,7 +1,7 @@
 import React from "react";
 export interface Props {
     className?: string;
-    imageFile: string | File;
+    imageFile: string | File | undefined;
     isOpen?: boolean;
     onSubmit?: (imageData: string) => void;
     onClose?: () => void;

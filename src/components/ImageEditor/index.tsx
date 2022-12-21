@@ -8,7 +8,7 @@ import AvatarEditor from "react-avatar-editor";
 
 export interface Props {
   className?: string;
-  imageFile: string | File;
+  imageFile: string | File | undefined;
   isOpen?: boolean;
   onSubmit?: (imageData: string) => void;
   onClose?: () => void;
