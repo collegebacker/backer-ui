@@ -59,6 +59,7 @@
 }
 
 .uploadPhotoPlaceholderImage {
+  pointer-events: none;
   position: absolute;
   top: calc(45%);
   left: 50%;

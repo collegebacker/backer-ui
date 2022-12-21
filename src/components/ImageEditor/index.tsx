@@ -10,8 +10,8 @@ export interface Props {
   className?: string;
   imageFile: string | File;
   isOpen?: boolean;
-  onSubmit?: (imageFile: string) => void;
-  isLoaded?: boolean;
+  onSubmit?: (imageData: string) => void;
+  onClose?: () => void;
 }
 
 const ImageIcon = (props: { size: number }) => {
@@ -54,10 +54,10 @@ const ImageEditor: React.FC<Props> = (props) => {
   const editorRef = React.useRef<any>(null);
 
   const [isOpen, setIsOpen] = React.useState(props.isOpen);
+  const [isBusy, setIsBusy] = React.useState(false);
   const [imageFile, setImageFile] = React.useState(props.imageFile);
   const [scale, setScale] = React.useState(2);
   const [modalWidth, setModalWidth] = React.useState(450);
-  const [isLoading, setIsLoading] = React.useState(props.isLoaded);
 
   const editorWindowSize = 200;
   const maxValue = 5;
@@ -65,10 +65,6 @@ const ImageEditor: React.FC<Props> = (props) => {
   React.useEffect(() => {
     setImageFile(props.imageFile);
   }, [props.imageFile]);
-
-  React.useEffect(() => {
-    setIsLoading(props.isLoaded);
-  }, [props.isLoaded]);
 
   React.useEffect(() => {
     const handleResize = () => {
@@ -91,6 +87,10 @@ const ImageEditor: React.FC<Props> = (props) => {
 
   React.useEffect(() => {
     setIsOpen(props.isOpen);
+
+    if (!props.isOpen) {
+      setIsBusy(false);
+    }
   }, [props.isOpen]);
 
   const handleReuploadImage = () => {
@@ -121,6 +121,7 @@ const ImageEditor: React.FC<Props> = (props) => {
 
   const handleSubmit = async () => {
     if (props.onSubmit) {
+      setIsBusy(true);
       props.onSubmit(await getImageUrl());
     }
   };
@@ -131,6 +132,8 @@ const ImageEditor: React.FC<Props> = (props) => {
       customWidth={450}
       customPaddings={"40px"}
       isBottomSheet
+      closeOutside={false}
+      onCloseClick={props.onClose}
     >
       <div ref={editorWrapRef} className={styles.editorViewWrapper}>
         <AvatarEditor
@@ -170,7 +173,7 @@ const ImageEditor: React.FC<Props> = (props) => {
           <Button
             className={styles.button}
             label="Save image"
-            busy={isLoading}
+            busy={isBusy}
             disabled={!imageFile}
             onClick={handleSubmit}
           />

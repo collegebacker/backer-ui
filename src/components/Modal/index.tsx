@@ -60,6 +60,9 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
     document.body.style.removeProperty("touch-action");
 
     // console.log("close");
+    if (props.onCloseClick) {
+      props.onCloseClick();
+    }
 
     if (props.isBottomSheet && window.innerWidth < mobilebreakpoint) {
       bottomSheetRef.current?.close();
@@ -86,12 +89,10 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
       }
     },
     close: (callback: () => void) => {
+      handleClose();
+
       if (callback) {
         callback();
-      }
-
-      if (props.onCloseClick) {
-        props.onCloseClick();
       }
     },
     getPopupRef: () => {

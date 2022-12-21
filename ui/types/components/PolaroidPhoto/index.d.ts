@@ -5,9 +5,7 @@ export interface Props {
     name: string;
     uploadMode?: boolean;
     imageSrc?: string;
-    onImageSubmit?: (imageData: string) => void;
-    isImageLoading?: boolean;
-    isEditorOpen?: boolean;
+    onChange?: (imageFile: File) => void;
 }
 declare const PolaroidPhoto: React.FC<Props>;
 export default PolaroidPhoto;

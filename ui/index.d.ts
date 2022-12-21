@@ -425,9 +425,7 @@ interface Props$1 {
     name: string;
     uploadMode?: boolean;
     imageSrc?: string;
-    onImageSubmit?: (imageData: string) => void;
-    isImageLoading?: boolean;
-    isEditorOpen?: boolean;
+    onChange?: (imageFile: File) => void;
 }
 declare const PolaroidPhoto: React.FC<Props$1>;
 
@@ -435,8 +433,8 @@ interface Props {
     className?: string;
     imageFile: string | File;
     isOpen?: boolean;
-    onSubmit?: (imageFile: string) => void;
-    isLoaded?: boolean;
+    onSubmit?: (imageData: string) => void;
+    onClose?: () => void;
 }
 declare const ImageEditor: React.FC<Props>;
 
