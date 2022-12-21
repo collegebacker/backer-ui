@@ -62,4 +62,12 @@
     #fde4be 0%,
     rgba(253, 228, 190, 0) 100%
   );
+
+  --color-skeleton-body: rgba(0, 0, 0, 0.1);
+  --color-skeleton-gradient: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.05) 16.78%,
+    rgba(0, 0, 0, 0.02) 26.34%,
+    rgba(0, 0, 0, 0.05) 100%
+  );
 }
