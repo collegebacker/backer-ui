@@ -55,7 +55,8 @@ type PaymentLogoTypes =
   | "g-pay"
   | "g-pay-framed"
   | "mastercard"
-  | "mastercard-nocaption";
+  | "mastercard-nocaption"
+  | "discover";
 
 type AppTypographyTypes =
   | "title-xlarge"
