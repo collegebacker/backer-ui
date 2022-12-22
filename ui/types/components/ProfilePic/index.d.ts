@@ -3,7 +3,7 @@ export interface Props {
     className?: string;
     style?: React.CSSProperties;
     name: string;
-    image?: string;
+    imageSrc?: string;
     onClick?: () => void;
 }
 declare const ProfilePic: React.FC<Props>;

@@ -27,7 +27,7 @@ export const WithImage = Template.bind({});
 WithImage.args = {
   className: "fundProfilePicClass",
   name: "Lily Sharpe’sEducation Fund 🐰🌿",
-  image:
+  imageSrc:
     "https://as2.ftcdn.net/jpg/01/25/81/33/220_F_125813372_Svy7YoB39fhaCM7kSlgQwunqBwB5yFEH.jpg",
   style: {
     "--size": "80px",

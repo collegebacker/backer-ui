@@ -11,7 +11,7 @@ export interface Props {
   className?: string;
   style?: React.CSSProperties;
   name: string;
-  image?: string;
+  imageSrc?: string;
   onClick?: () => void;
 }
 
@@ -25,12 +25,14 @@ const ProfilePic: React.FC<Props> = (props) => {
     <div
       className={`${styles.pic} ${props.className ? props.className : ""}`}
       style={{
-        backgroundImage: `url(${props.image}), ${stringToGradient(props.name)}`,
+        backgroundImage: `url(${props.imageSrc}), ${stringToGradient(
+          props.name
+        )}`,
         ...props.style,
       }}
       onClick={props.onClick}
     >
-      {!props.image && (
+      {!props.imageSrc && (
         <svg className={styles.letterPlaceholder} viewBox="0 0 60 60">
           <text x="50%" y="52%" textAnchor="middle" alignmentBaseline="middle">
             {Array.from(props.name)[0].toUpperCase()}
@@ -43,7 +45,7 @@ const ProfilePic: React.FC<Props> = (props) => {
 
 ProfilePic.defaultProps = {
   className: "",
-  image: "",
+  imageSrc: "",
 } as Partial<Props>;
 
 export default ProfilePic;
