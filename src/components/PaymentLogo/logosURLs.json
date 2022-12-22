@@ -30,5 +30,9 @@
   "mastercard-nocaption": {
     "dark": "https://res.cloudinary.com/dgfjsma5p/image/upload/backer-ui/payment-logos/mastercard-nocaption.svg",
     "light": "https://res.cloudinary.com/dgfjsma5p/image/upload/backer-ui/payment-logos/mastercard-nocaption.svg"
+  },
+  "discover": {
+    "dark": "https://res.cloudinary.com/dgfjsma5p/image/upload/v1671668401/backer-ui/payment-logos/dark/discover.svg",
+    "light": "https://res.cloudinary.com/dgfjsma5p/image/upload/v1671668465/backer-ui/payment-logos/light/discover.svg"
   }
 }
