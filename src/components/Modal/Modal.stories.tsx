@@ -401,16 +401,14 @@ FocusTrap.args = {
 
 const PlaygroundTemplate: ComponentStory<typeof Modal> = (args) => {
   const modalRef = React.useRef<any>(null);
-  const modalRef2 = React.useRef<any>(null);
 
   React.useEffect(() => {
     if (modalRef.current) {
-      console.log("modalRef.current open");
       modalRef.current.open();
     }
   }, [modalRef.current]);
 
-  console.log("rerender");
+  // console.log("rerender");
 
   return (
     <div
@@ -434,7 +432,7 @@ const PlaygroundTemplate: ComponentStory<typeof Modal> = (args) => {
         </div>
       </Modal>
 
-      <Modal ref={modalRef2} {...args}>
+      {/* <Modal ref={modalRef2} {...args}>
         <div>
           <h1>Hello!</h1>
           <p
@@ -447,7 +445,7 @@ const PlaygroundTemplate: ComponentStory<typeof Modal> = (args) => {
             anymore.
           </p>
         </div>
-      </Modal>
+      </Modal> */}
 
       <Button
         label="Trigger Modal"
@@ -459,7 +457,7 @@ const PlaygroundTemplate: ComponentStory<typeof Modal> = (args) => {
         }}
       />
 
-      <Button
+      {/* <Button
         label="Trigger Modal"
         style={{
           maxWidth: "300px",
@@ -467,7 +465,7 @@ const PlaygroundTemplate: ComponentStory<typeof Modal> = (args) => {
         onClick={() => {
           modalRef2.current.open();
         }}
-      />
+      /> */}
     </div>
   );
 };

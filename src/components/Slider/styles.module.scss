@@ -1,0 +1,37 @@
+.slider {
+  position: relative;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 2px;
+  border: 100px;
+  outline: none;
+
+  --low: 0;
+  --high: 0;
+  --active-range-color: var(--color-accent-500);
+  --range-color: rgba(20, 20, 20, 0.15);
+  --track-background: linear-gradient(
+      to right,
+      var(--range-color) var(--low),
+      var(--active-range-color) 0,
+      var(--active-range-color) var(--high),
+      var(--range-color) 0
+    )
+    no-repeat 0 100% / 100% 100%;
+  background: var(--track-background);
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--color-accent-500);
+    cursor: pointer;
+    transition: background 0.1s ease-in-out;
+
+    &:hover {
+      background: var(--color-accent-800);
+    }
+  }
+}

@@ -1,9 +1,10 @@
 import React from "react";
 export interface Props {
     className?: string;
+    style?: React.CSSProperties;
     name: string;
-    image?: string;
+    imageSrc?: string;
     onClick?: () => void;
 }
-declare const FundProfilePic: React.FC<Props>;
-export default FundProfilePic;
+declare const ProfilePic: React.FC<Props>;
+export default ProfilePic;

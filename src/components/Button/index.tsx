@@ -101,7 +101,7 @@ const Button = React.forwardRef<any, Props>((props, ref) => {
       className={classes}
       style={style}
       onClick={props.onClick}
-      onKeyPress={props.onKeyPress}
+      onKeyDown={props.onKeyPress}
       disabled={props.disabled}
       {...conditionalProps}
     >

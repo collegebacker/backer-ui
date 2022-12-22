@@ -27,7 +27,6 @@ export const ProfilePic = ProfilePicTemplate.bind({});
 ProfilePic.args = {
   className: "",
   style: {
-    width: "100px",
-    height: "100px",
+    "--size": "110px",
   },
 };

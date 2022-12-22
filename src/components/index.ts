@@ -29,6 +29,11 @@ export { default as Checkbox } from "./Checkbox";
 export { default as Radio } from "./Radio";
 export { default as Text } from "./Text";
 export { default as Calendar } from "./Calendar";
+export { default as Slider } from "./Slider";
+export { default as PolaroidPhoto } from "./PolaroidPhoto";
+export { default as ImageEditor } from "./ImageEditor";
+
+// SKELETON
 export {
   SkeletonBody,
   SkeletonBone,
@@ -36,7 +41,3 @@ export {
   SkeletonButton,
   SkeletonProfilePic,
 } from "./Skeleton";
-
-// SHARAED
-export { default as ContributionSuccessModal } from "./ContributionSuccessModal";
-export { default as FundContributionSection } from "./FundContributionSection";

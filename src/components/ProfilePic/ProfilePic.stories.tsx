@@ -18,14 +18,20 @@ export const NoImage = Template.bind({});
 NoImage.args = {
   className: "fundProfilePicClass",
   name: "Lily Sharpe’sEducation Fund 🐰🌿",
+  style: {
+    "--size": "80px",
+  },
 };
 
 export const WithImage = Template.bind({});
 WithImage.args = {
   className: "fundProfilePicClass",
   name: "Lily Sharpe’sEducation Fund 🐰🌿",
-  image:
+  imageSrc:
     "https://as2.ftcdn.net/jpg/01/25/81/33/220_F_125813372_Svy7YoB39fhaCM7kSlgQwunqBwB5yFEH.jpg",
+  style: {
+    "--size": "80px",
+  },
 };
 
 const fundsArray = [
@@ -47,13 +53,7 @@ const ManyNoImageTemplate: ComponentStory<typeof ProfilePic> = (args) => {
   return (
     <div style={{ display: "flex", flexWrap: "wrap" }}>
       {fundsArray.map((fund: any, index: number) => {
-        return (
-          <ProfilePic
-            key={index}
-            name={fund}
-            className="fundProfilePicClass fundProfilePicClassShift"
-          />
-        );
+        return <ProfilePic {...args} key={index} name={fund} />;
       })}
     </div>
   );
@@ -61,4 +61,9 @@ const ManyNoImageTemplate: ComponentStory<typeof ProfilePic> = (args) => {
 
 export const ManyNoImage = ManyNoImageTemplate.bind({});
 
-ManyNoImage.args = {};
+ManyNoImage.args = {
+  style: {
+    "--size": "80px",
+    "margin-right": "-10px",
+  },
+};

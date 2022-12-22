@@ -64,9 +64,7 @@ const SkeletonBone: React.FC<SkeletonBoneProps> = (props) => {
 const TextLine: React.FC<SkeletonTextProps> = (props) => {
   return (
     <div
-      className={`${styles.bone} ${styles.textLine} ${styles[props.fontSize]} ${
-        props.className
-      }`}
+      className={`${styles.bone} ${styles[props.fontSize]} ${props.className}`}
       style={{ ...props.style }}
     />
   );
@@ -79,7 +77,15 @@ const SkeletonText: React.FC<SkeletonTextProps> = (props) => {
       style={{ ...props.style }}
     >
       {[...Array(props.lines)].map((_, i) => (
-        <TextLine key={i} fontSize={props.fontSize} lines={props.lines} />
+        <TextLine
+          key={i}
+          fontSize={props.fontSize}
+          lines={props.lines}
+          style={{
+            width: i === props.lines - 1 ? "80%" : "100%",
+            marginBottom: i === props.lines - 1 ? "initial" : "14px",
+          }}
+        />
       ))}
     </div>
   ) : (
@@ -87,6 +93,7 @@ const SkeletonText: React.FC<SkeletonTextProps> = (props) => {
       className={props.className}
       fontSize={props.fontSize}
       lines={props.lines}
+      style={{ ...props.style }}
     />
   );
 };
