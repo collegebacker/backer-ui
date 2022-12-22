@@ -40,6 +40,7 @@ Body.args = {
     <>
       <SkeletonProfilePic
         style={{
+          "--size": "80px",
           marginBottom: "20px",
         }}
       />
