@@ -79,7 +79,14 @@ const SkeletonText: React.FC<SkeletonTextProps> = (props) => {
       style={{ ...props.style }}
     >
       {[...Array(props.lines)].map((_, i) => (
-        <TextLine key={i} fontSize={props.fontSize} lines={props.lines} />
+        <TextLine
+          key={i}
+          fontSize={props.fontSize}
+          lines={props.lines}
+          style={{
+            width: i === props.lines - 1 ? "80%" : "100%",
+          }}
+        />
       ))}
     </div>
   ) : (
