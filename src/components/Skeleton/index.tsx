@@ -64,9 +64,7 @@ const SkeletonBone: React.FC<SkeletonBoneProps> = (props) => {
 const TextLine: React.FC<SkeletonTextProps> = (props) => {
   return (
     <div
-      className={`${styles.bone} ${styles.textLine} ${styles[props.fontSize]} ${
-        props.className
-      }`}
+      className={`${styles.bone} ${styles[props.fontSize]} ${props.className}`}
       style={{ ...props.style }}
     />
   );
@@ -85,6 +83,7 @@ const SkeletonText: React.FC<SkeletonTextProps> = (props) => {
           lines={props.lines}
           style={{
             width: i === props.lines - 1 ? "80%" : "100%",
+            marginBottom: i === props.lines - 1 ? "initial" : "14px",
           }}
         />
       ))}

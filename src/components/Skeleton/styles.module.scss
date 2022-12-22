@@ -45,15 +45,6 @@ $animation-timing: 2.2s ease infinite;
   flex-direction: column;
 }
 
-.textLine {
-  width: 100%;
-  margin-bottom: 14px;
-
-  &:last-child:not(:first-child) {
-    margin-bottom: 0;
-  }
-}
-
 .title-xlarge {
   height: $typo-app-title-xlarge-desktop-fontsize;
 
