@@ -90,6 +90,7 @@ const ImageEditor: React.FC<Props> = (props) => {
 
     if (!props.isOpen) {
       setIsBusy(false);
+      setScale(2);
     }
   }, [props.isOpen]);
 

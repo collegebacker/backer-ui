@@ -69,6 +69,11 @@ const PolaroidPhoto: React.FC<Props> = (props) => {
               id="upload-polaroid-input"
               multiple={false}
               title={imageSrc ? "Change photo" : "Upload photo"}
+              onClick={(e) => {
+                if (imageSrc) {
+                  e.currentTarget.value = "";
+                }
+              }}
               onChange={(e) => {
                 const file = e.target.files?.[0];
                 if (file) {
