@@ -89,7 +89,7 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
     },
     close: (callback: () => void) => {
       console.log("close");
-      // handleClose();
+      handleClose();
 
       if (callback) {
         callback();
