@@ -47,7 +47,7 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
       return bottomSheetRef.current;
     },
     open: () => {
-      console.log("close iiner foo");
+      // console.log("close iiner foo");
       if (isAnimationFinished) {
         setIsOpen(true);
       }

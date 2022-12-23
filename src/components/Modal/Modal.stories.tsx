@@ -124,6 +124,9 @@ const Template: ComponentStory<typeof Modal> = (args) => {
         dataAttrs={{
           "data-attr": "test",
         }}
+        onCloseClick={() => {
+          console.log("onCloseClick");
+        }}
       />
       <Button
         label="Trigger Modal"

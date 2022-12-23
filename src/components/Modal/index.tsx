@@ -77,19 +77,19 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
 
   React.useImperativeHandle(ref, () => ({
     open: (callback: () => void) => {
+      console.log("open");
       // set timer to make sure that all refs are set
       setTimeout(() => {
         handleOpen();
       }, 10);
-
-      // handleOpen();
 
       if (callback) {
         callback();
       }
     },
     close: (callback: () => void) => {
-      handleClose();
+      console.log("close");
+      // handleClose();
 
       if (callback) {
         callback();
@@ -121,9 +121,6 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
     if (props.isOpen) {
       // console.log("open foo");
       handleOpen();
-    } else {
-      // console.log("close foo");
-      handleClose();
     }
   }, [props.isOpen, isMobileBreakpoint]);
 
