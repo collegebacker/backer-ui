@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { useDidMountEffect } from "../../hooks";
 
 import BottomSheet from "./BottomSheet";
 import Popup from "./Popup";
@@ -123,6 +124,13 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
       handleOpen();
     }
   }, [props.isOpen, isMobileBreakpoint]);
+
+  useDidMountEffect(() => {
+    if (!props.isOpen) {
+      // console.log("close foo");
+      handleClose();
+    }
+  }, [props.isOpen]);
 
   const handleOnCloseClick = () => {
     handleClose();
