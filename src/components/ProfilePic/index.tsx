@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./styles.module.scss";
 
-import { stringToGradient } from "../../utils";
+import { stringToGradient } from "@collegebacker/shared/utils";
 
 /////////////////////////////////
 //////// TYPES AND PROPS ////////

@@ -1,8 +1,6 @@
 import React from "react";
 import styles from "./styles.module.scss";
 
-import { isMobile } from "../../utils";
-
 export interface Props {
   tabIndex?: number;
 
@@ -64,8 +62,8 @@ const CodeInput = React.forwardRef<any, Props>((props, ref) => {
 
   //
   React.useEffect(() => {
-    if (!isMobile()) {
-      inputsRefs.current[0]?.focus();
+    if (inputsRefs.current[0]) {
+      inputsRefs.current[0].focus();
     }
   }, []);
 

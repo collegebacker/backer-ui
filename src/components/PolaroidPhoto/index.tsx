@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./styles.module.scss";
 
 import gsap from "gsap";
-import { stringToGradient, isMobile } from "../../utils";
+import { stringToGradient, isMobile } from "@collegebacker/shared/utils";
 
 export interface Props {
   className?: string;

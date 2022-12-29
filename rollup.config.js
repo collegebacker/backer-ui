@@ -7,8 +7,7 @@ import dts from "rollup-plugin-dts";
 import postcss from "rollup-plugin-postcss";
 import autoprefixer from "autoprefixer";
 import { terser } from "rollup-plugin-terser";
-import size from "rollup-plugin-size";
-import analyze from "rollup-plugin-analyzer";
+import filesize from "rollup-plugin-filesize";
 
 export default [
   {
@@ -36,8 +35,7 @@ export default [
 
       typescript({
         compilerOptions: {
-          declaration: true,
-          declarationDir: "ui/types",
+          declaration: false,
         },
         exclude: [
           "node_modules/**",
@@ -47,35 +45,12 @@ export default [
         ],
       }),
       terser({ compress: { drop_console: true } }),
-      analyze({ summaryOnly: true }),
-      size(),
+      filesize(),
     ],
   },
   {
-    input: "ui/types/components/index.d.ts",
+    input: "src/components/index.ts",
     output: [{ file: "ui/index.d.ts", format: "esm" }],
     plugins: [dts()],
-  },
-  {
-    input: "src/utils/index.ts",
-    output: {
-      dir: "utils",
-      format: "cjs",
-      sourcemap: true,
-    },
-    plugins: [
-      typescript({
-        declaration: true,
-        declarationDir: "utils/types",
-        exclude: [
-          "node_modules/**",
-          "ui/**",
-          "src/hooks/**",
-          "src/components/**",
-          "src/**/*.stories.tsx",
-          "src/**/*.test.tsx",
-        ],
-      }),
-    ],
   },
 ];
