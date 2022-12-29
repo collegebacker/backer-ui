@@ -188,7 +188,7 @@ interface Props$l {
     }>;
     spaceBetween?: number;
     showGuidelines?: boolean;
-    paginationAlignment?: "left" | "right" | "center";
+    paginationAlignment?: 'left' | 'right' | 'center';
     children: React.ReactNode;
     onChange?: (index: number) => void;
 }
