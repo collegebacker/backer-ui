@@ -1,44 +1,44 @@
-import React from "react";
-import styles from "./styles.module.scss";
+import React from 'react'
+import styles from './styles.module.scss'
 
-import { gsap } from "gsap";
-import { Draggable } from "gsap/dist/Draggable";
-import { InertiaPlugin } from "gsap-bonus/InertiaPlugin";
-import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
+import { gsap } from 'gsap'
+import { Draggable } from 'gsap/dist/Draggable'
+import { InertiaPlugin } from 'gsap-bonus/InertiaPlugin'
+import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin'
 
-import ArrowButton from "../ArrowButton";
-import DotPagination from "../DotPagination";
+import ArrowButton from '../ArrowButton'
+import DotPagination from '../DotPagination'
 
-import { useDidMountEffect } from "../../hooks";
+import { useDidMountEffect } from '@collegebacker/shared/hooks'
 
 /////////////////////////////////
 //////// TYPES AND PROPS ////////
 /////////////////////////////////
 
 export interface Props {
-  containterClassName?: string;
-  paginationClassName?: string;
-  arrowsClassName?: string;
+  containterClassName?: string
+  paginationClassName?: string
+  arrowsClassName?: string
   breakpoints?: Array<{
-    breakpoint: number;
-    cardsToShow: number;
-    sidePaddingOffset?: number;
-    hideArrows?: boolean;
-    hidePagination?: boolean;
-    showHiddenCard?: number | boolean;
-    disableSideFading?: boolean;
-  }>;
-  spaceBetween?: number;
-  showGuidelines?: boolean;
-  paginationAlignment?: "left" | "right" | "center";
-  children: React.ReactNode;
-  onChange?: (index: number) => void;
+    breakpoint: number
+    cardsToShow: number
+    sidePaddingOffset?: number
+    hideArrows?: boolean
+    hidePagination?: boolean
+    showHiddenCard?: number | boolean
+    disableSideFading?: boolean
+  }>
+  spaceBetween?: number
+  showGuidelines?: boolean
+  paginationAlignment?: 'left' | 'right' | 'center'
+  children: React.ReactNode
+  onChange?: (index: number) => void
 }
 
 const defaultProps = {
-  containterClassName: "",
-  paginationClassName: "",
-  arrowsClassName: "",
+  containterClassName: '',
+  paginationClassName: '',
+  arrowsClassName: '',
   breakpoints: [
     {
       breakpoint: 1024,
@@ -47,7 +47,7 @@ const defaultProps = {
       showHiddenCard: false,
       hideArrows: false,
       hidePagination: false,
-      disableSideFading: false,
+      disableSideFading: false
     },
     {
       breakpoint: 768,
@@ -56,7 +56,7 @@ const defaultProps = {
       showHiddenCard: false,
       hideArrows: true,
       hidePagination: false,
-      disableSideFading: false,
+      disableSideFading: false
     },
     {
       breakpoint: 480,
@@ -65,46 +65,43 @@ const defaultProps = {
       showHiddenCard: false,
       hideArrows: true,
       hidePagination: false,
-      disableSideFading: false,
-    },
+      disableSideFading: false
+    }
   ],
   spaceBetween: 20,
   showGuidelines: false,
   showHiddenCard: false,
-  paginationAlignment: "center",
-};
+  paginationAlignment: 'center'
+}
 
 /////////////////////////////////
 ///////// CARDS SLIDER //////////
 /////////////////////////////////
 
 const SliderWrapper: React.FC<Props> = (props) => {
-  const sliderContainerRef = React.useRef<HTMLDivElement>(null);
-  const sliderRef = React.useRef<HTMLDivElement>(null);
-  const sliderRefChildren = React.useRef<Array<HTMLDivElement>>([]);
+  const sliderContainerRef = React.useRef<HTMLDivElement>(null)
+  const sliderRef = React.useRef<HTMLDivElement>(null)
+  const sliderRefChildren = React.useRef<Array<HTMLDivElement>>([])
 
-  const arrowLeftRef = React.useRef<HTMLDivElement>(null);
-  const arrowRightRef = React.useRef<HTMLDivElement>(null);
+  const arrowLeftRef = React.useRef<HTMLDivElement>(null)
+  const arrowRightRef = React.useRef<HTMLDivElement>(null)
 
-  const [activeIndex, setActiveIndex] = React.useState(0);
-  const [viewWidth, setViewWidth] = React.useState(0);
+  const [activeIndex, setActiveIndex] = React.useState(0)
+  const [viewWidth, setViewWidth] = React.useState(0)
   const [triggerPointsState, setTriggerPointsState] = React.useState<{
-    left: number;
-    right: number;
-  }>({ left: 0, right: 0 });
-  const [gridWidth, setGridWidth] = React.useState(0);
+    left: number
+    right: number
+  }>({ left: 0, right: 0 })
+  const [gridWidth, setGridWidth] = React.useState(0)
 
-  const [cardsToShow, setCardsToShow] = React.useState(
-    props.breakpoints[0].cardsToShow
-  );
-  const [paginationAmount, setPaginationAmount] = React.useState(0);
-  const [isArrowButtonDisabled, setIsArrowButtonDisabled] =
-    React.useState(false);
+  const [cardsToShow, setCardsToShow] = React.useState(props.breakpoints[0].cardsToShow)
+  const [paginationAmount, setPaginationAmount] = React.useState(0)
+  const [isArrowButtonDisabled, setIsArrowButtonDisabled] = React.useState(false)
 
-  const [isSliderFocused, setIsSliderFocused] = React.useState(false);
-  const [isSliderWrapFocused, setIsSliderWrapFocused] = React.useState(false);
+  const [isSliderFocused, setIsSliderFocused] = React.useState(false)
+  const [isSliderWrapFocused, setIsSliderWrapFocused] = React.useState(false)
 
-  const [currentBreakpoint, setCurrentBreakpoint] = React.useState(0);
+  const [currentBreakpoint, setCurrentBreakpoint] = React.useState(0)
 
   const breakpoints = defaultProps.breakpoints.map((item, index) => {
     return {
@@ -135,43 +132,41 @@ const SliderWrapper: React.FC<Props> = (props) => {
       disableSideFading:
         props.breakpoints[index].disableSideFading !== undefined
           ? props.breakpoints[index].disableSideFading
-          : item.disableSideFading,
-    };
-  });
+          : item.disableSideFading
+    }
+  })
 
   const isShowHiddenCard = () => {
     // console.log(breakpoints[currentBreakpoint].showHiddenCard);
-    if (typeof breakpoints[currentBreakpoint].showHiddenCard === "number") {
-      return breakpoints[currentBreakpoint].showHiddenCard as number;
-    } else if (
-      typeof breakpoints[currentBreakpoint].showHiddenCard === "boolean"
-    ) {
-      return breakpoints[currentBreakpoint].showHiddenCard ? 40 : 0;
+    if (typeof breakpoints[currentBreakpoint].showHiddenCard === 'number') {
+      return breakpoints[currentBreakpoint].showHiddenCard as number
+    } else if (typeof breakpoints[currentBreakpoint].showHiddenCard === 'boolean') {
+      return breakpoints[currentBreakpoint].showHiddenCard ? 40 : 0
     }
-  };
+  }
 
   const handleCardsBreakpoint = () => {
-    const viewWidth = sliderContainerRef.current.offsetWidth;
-    setViewWidth(viewWidth);
+    const viewWidth = sliderContainerRef.current.offsetWidth
+    setViewWidth(viewWidth)
 
     breakpoints.forEach((breakpoint) => {
       if (window.innerWidth <= breakpoint.breakpoint) {
-        setCardsToShow(breakpoint.cardsToShow);
+        setCardsToShow(breakpoint.cardsToShow)
       }
-    });
-  };
+    })
+  }
 
   const handleCurrentBreakpoint = () => {
     // console.log(props.breakpoints[currentBreakpoint].hideArrows);
     breakpoints.forEach((item, index) => {
       if (window.innerWidth < item.breakpoint) {
-        setCurrentBreakpoint(index);
+        setCurrentBreakpoint(index)
       }
-    });
-  };
+    })
+  }
 
   const updateOnDrag = () => {
-    const activeItemBoundsRatio = gridWidth / 2;
+    const activeItemBoundsRatio = gridWidth / 2
 
     // console.log(sliderRef.current.scrollLeft);
 
@@ -179,30 +174,27 @@ const SliderWrapper: React.FC<Props> = (props) => {
       const itemXLeftEdge =
         item.getBoundingClientRect().left -
         sliderContainerRef.current.getBoundingClientRect().left +
-        activeItemBoundsRatio;
+        activeItemBoundsRatio
 
       const itemXRightEdge =
         item.getBoundingClientRect().left -
         sliderContainerRef.current.getBoundingClientRect().left +
         gridWidth -
-        activeItemBoundsRatio;
+        activeItemBoundsRatio
 
-      if (
-        itemXLeftEdge >= triggerPointsState.left &&
-        itemXRightEdge <= triggerPointsState.right
-      ) {
-        setActiveIndex(index);
+      if (itemXLeftEdge >= triggerPointsState.left && itemXRightEdge <= triggerPointsState.right) {
+        setActiveIndex(index)
       }
-    });
-  };
+    })
+  }
 
   //
   const getSliderPostionByIndex = (index: number) => {
-    const currentItem = sliderRefChildren.current[index];
-    const clickedItemPosition = currentItem.offsetLeft;
+    const currentItem = sliderRefChildren.current[index]
+    const clickedItemPosition = currentItem.offsetLeft
 
-    return clickedItemPosition;
-  };
+    return clickedItemPosition
+  }
 
   //
   const scrollToSelectedIndex = (index: number, duration: number) => {
@@ -211,168 +203,160 @@ const SliderWrapper: React.FC<Props> = (props) => {
     gsap.to(sliderRef.current, {
       duration: duration,
       scrollTo: {
-        x: getSliderPostionByIndex(index),
+        x: getSliderPostionByIndex(index)
       },
       onComplete: () => {
-        setIsArrowButtonDisabled(false);
-      },
-    });
-  };
+        setIsArrowButtonDisabled(false)
+      }
+    })
+  }
 
   //
   const goToNextCard = () => {
     if (activeIndex < sliderRefChildren.current.length - cardsToShow) {
       // console.log(activeIndex);
-      setIsArrowButtonDisabled(true);
-      const newIndex = activeIndex + 1;
+      setIsArrowButtonDisabled(true)
+      const newIndex = activeIndex + 1
 
-      setActiveIndex(newIndex);
-      scrollToSelectedIndex(newIndex, 0.3);
+      setActiveIndex(newIndex)
+      scrollToSelectedIndex(newIndex, 0.3)
     }
-  };
+  }
 
   const goPreviousCard = () => {
     if (activeIndex > 0) {
-      setIsArrowButtonDisabled(true);
-      const newIndex = activeIndex - 1;
+      setIsArrowButtonDisabled(true)
+      const newIndex = activeIndex - 1
 
-      setActiveIndex(newIndex);
-      scrollToSelectedIndex(newIndex, 0.3);
+      setActiveIndex(newIndex)
+      scrollToSelectedIndex(newIndex, 0.3)
       // console.log("prev", newIndex);
     }
-  };
+  }
 
   const handlePaginationAlignment = () => {
     switch (props.paginationAlignment) {
-      case "left":
-        return "flex-start";
-      case "center":
-        return "center";
-      case "right":
-        return "flex-end";
+      case 'left':
+        return 'flex-start'
+      case 'center':
+        return 'center'
+      case 'right':
+        return 'flex-end'
       default:
-        return "center";
+        return 'center'
     }
-  };
+  }
 
   useDidMountEffect(() => {
-    if (typeof props.onChange === "function") {
-      props.onChange(activeIndex);
+    if (typeof props.onChange === 'function') {
+      props.onChange(activeIndex)
     }
-  }, [activeIndex]);
+  }, [activeIndex])
 
   // Resize updates
   React.useEffect(() => {
-    gsap.registerPlugin(Draggable, ScrollToPlugin, InertiaPlugin);
+    gsap.registerPlugin(Draggable, ScrollToPlugin, InertiaPlugin)
 
-    handleCardsBreakpoint();
-    handleCurrentBreakpoint();
+    handleCardsBreakpoint()
+    handleCurrentBreakpoint()
 
     const onWindowResize = () => {
-      handleCardsBreakpoint();
-      handleCurrentBreakpoint();
-    };
+      handleCardsBreakpoint()
+      handleCurrentBreakpoint()
+    }
 
-    window.addEventListener("resize", onWindowResize);
+    window.addEventListener('resize', onWindowResize)
 
     return () => {
-      window.removeEventListener("resize", onWindowResize);
-    };
-  }, []);
+      window.removeEventListener('resize', onWindowResize)
+    }
+  }, [])
 
   // Prevent scroll
   React.useEffect(() => {
     const preventKeyboardScroll = (e: KeyboardEvent) => {
-      if (["ArrowLeft", "ArrowRight"].indexOf(e.code) > -1) {
+      if (['ArrowLeft', 'ArrowRight'].indexOf(e.code) > -1) {
         if (isSliderFocused) {
-          e.preventDefault();
+          e.preventDefault()
         }
 
         if (isSliderWrapFocused) {
-          e.stopPropagation();
-          if (e.code === "ArrowLeft") {
+          e.stopPropagation()
+          if (e.code === 'ArrowLeft') {
             // console.log("left");
-            goPreviousCard();
+            goPreviousCard()
           }
-          if (e.code === "ArrowRight") {
+          if (e.code === 'ArrowRight') {
             // console.log("right");
-            goToNextCard();
+            goToNextCard()
           }
         }
       }
-    };
+    }
 
-    window.addEventListener("keydown", preventKeyboardScroll);
+    window.addEventListener('keydown', preventKeyboardScroll)
 
     return () => {
-      window.removeEventListener("keydown", preventKeyboardScroll);
-    };
-  }, [isSliderFocused, isSliderWrapFocused, activeIndex]);
+      window.removeEventListener('keydown', preventKeyboardScroll)
+    }
+  }, [isSliderFocused, isSliderWrapFocused, activeIndex])
 
   //
   React.useEffect(() => {
     // console.log(sliderRefChildren);
     if (sliderContainerRef.current && sliderRef.current) {
       // console.log(snapPoints);
-      const paginationAmount =
-        sliderRefChildren.current.length - cardsToShow + 1;
-      setPaginationAmount(paginationAmount);
+      const paginationAmount = sliderRefChildren.current.length - cardsToShow + 1
+      setPaginationAmount(paginationAmount)
 
       const gridWidth =
-        (sliderContainerRef.current.offsetWidth -
-          props.spaceBetween * cardsToShow) /
-          cardsToShow +
-        props.spaceBetween;
+        (sliderContainerRef.current.offsetWidth - props.spaceBetween * cardsToShow) / cardsToShow +
+        props.spaceBetween
 
-      setGridWidth(gridWidth);
+      setGridWidth(gridWidth)
       setTriggerPointsState({
         left: 0,
-        right: gridWidth,
-      });
+        right: gridWidth
+      })
 
       const allSnapPoints = sliderRefChildren.current.map((item, index) => {
         // console.log(
         //   item.getBoundingClientRect().width + props.spaceBetween - 1
         // );
-        return (
-          Math.floor(item.getBoundingClientRect().width + props.spaceBetween) *
-            index -
-          1
-        );
-      });
+        return Math.floor(item.getBoundingClientRect().width + props.spaceBetween) * index - 1
+      })
 
-      const pagesToCut = paginationAmount - allSnapPoints.length;
+      const pagesToCut = paginationAmount - allSnapPoints.length
 
       // pagesToCut !== 0 ? pagesToCut : allSnapPoints.length
 
       const cuttedSnapPoints = allSnapPoints.slice(
         0,
         pagesToCut !== 0 ? pagesToCut : allSnapPoints.length
-      );
+      )
 
       const snapPointsPlusOffset = [
         ...cuttedSnapPoints,
-        cuttedSnapPoints[cuttedSnapPoints.length - 1] +
-          (cuttedSnapPoints[0] - isShowHiddenCard()),
-      ];
+        cuttedSnapPoints[cuttedSnapPoints.length - 1] + (cuttedSnapPoints[0] - isShowHiddenCard())
+      ]
 
       // console.log(cuttedSnapPoints, allSnapPoints.length, paginationAmount);
 
       Draggable.create(sliderRef.current, {
-        type: "scrollLeft",
+        type: 'scrollLeft',
         edgeResistance: 0.9,
         inertia: true,
         maxDuration: 0.3,
         snap: snapPointsPlusOffset,
 
         onDragStart: () => {
-          sliderRef.current.style.scrollSnapType = "none";
+          sliderRef.current.style.scrollSnapType = 'none'
         },
         onDrag: updateOnDrag,
-        onThrowUpdate: updateOnDrag,
-      });
+        onThrowUpdate: updateOnDrag
+      })
     }
-  }, [viewWidth]);
+  }, [viewWidth])
 
   //
   return (
@@ -386,12 +370,8 @@ const SliderWrapper: React.FC<Props> = (props) => {
       }
      
         .${styles.slider} {
-          scroll-padding-left: ${
-            breakpoints[currentBreakpoint].sidePaddingOffset
-          }px;
-          scroll-padding-right: ${
-            breakpoints[currentBreakpoint].sidePaddingOffset
-          }px;
+          scroll-padding-left: ${breakpoints[currentBreakpoint].sidePaddingOffset}px;
+          scroll-padding-right: ${breakpoints[currentBreakpoint].sidePaddingOffset}px;
           margin-left: -${breakpoints[currentBreakpoint].sidePaddingOffset}px;
           margin-right: -${breakpoints[currentBreakpoint].sidePaddingOffset}px;
         }
@@ -414,7 +394,7 @@ const SliderWrapper: React.FC<Props> = (props) => {
           right: -${breakpoints[currentBreakpoint].sidePaddingOffset * 2}px;
         }
       
-  `,
+  `
         }}
       ></style>
       <div
@@ -422,36 +402,36 @@ const SliderWrapper: React.FC<Props> = (props) => {
         ref={sliderContainerRef}
         tabIndex={1}
         onFocus={() => {
-          setIsSliderWrapFocused(true);
+          setIsSliderWrapFocused(true)
         }}
         onBlur={() => {
-          setIsSliderWrapFocused(false);
+          setIsSliderWrapFocused(false)
         }}
         onWheel={() => {
-          sliderRef.current.style.scrollSnapType = "x mandatory";
-          updateOnDrag();
+          sliderRef.current.style.scrollSnapType = 'x mandatory'
+          updateOnDrag()
         }}
       >
         {props.showGuidelines ? (
           <>
             <div
               style={{
-                position: "absolute",
-                width: "1px",
-                height: "100%",
+                position: 'absolute',
+                width: '1px',
+                height: '100%',
                 top: 0,
                 left: `${triggerPointsState.left}px`,
-                background: "red",
+                background: 'red'
               }}
             />
             <div
               style={{
-                position: "absolute",
-                width: "1px",
-                height: "100%",
+                position: 'absolute',
+                width: '1px',
+                height: '100%',
                 top: 0,
                 left: `${triggerPointsState.right}px`,
-                background: "blue",
+                background: 'blue'
               }}
             />
           </>
@@ -472,17 +452,17 @@ const SliderWrapper: React.FC<Props> = (props) => {
               disabled={activeIndex === 0}
               onMouseUp={goPreviousCard}
               style={{
-                pointerEvents: isArrowButtonDisabled ? "none" : "auto",
+                pointerEvents: isArrowButtonDisabled ? 'none' : 'auto'
               }}
             />
             <ArrowButton
               ref={arrowRightRef}
-              direction="right"
+              direction='right'
               className={`${props.arrowsClassName} ${styles.arrowButtonRight}`}
               disabled={activeIndex === paginationAmount - 1}
               onMouseUp={goToNextCard}
               style={{
-                pointerEvents: isArrowButtonDisabled ? "none" : "auto",
+                pointerEvents: isArrowButtonDisabled ? 'none' : 'auto'
               }}
             />
           </>
@@ -492,10 +472,10 @@ const SliderWrapper: React.FC<Props> = (props) => {
           className={styles.slider}
           ref={sliderRef}
           onFocus={() => {
-            setIsSliderFocused(true);
+            setIsSliderFocused(true)
           }}
           onBlur={() => {
-            setIsSliderFocused(false);
+            setIsSliderFocused(false)
           }}
           tabIndex={1}
         >
@@ -513,12 +493,12 @@ const SliderWrapper: React.FC<Props> = (props) => {
                         2) /
                       cardsToShow
                     }px`,
-                    marginRight: `${props.spaceBetween}px`,
+                    marginRight: `${props.spaceBetween}px`
                   }}
                 >
                   {child}
                 </div>
-              );
+              )
             })}
           </div>
         </div>
@@ -527,7 +507,7 @@ const SliderWrapper: React.FC<Props> = (props) => {
           <div
             className={`${styles.paginationWrap} ${props.paginationClassName}`}
             style={{
-              justifyContent: handlePaginationAlignment(),
+              justifyContent: handlePaginationAlignment()
             }}
           >
             <DotPagination
@@ -539,9 +519,9 @@ const SliderWrapper: React.FC<Props> = (props) => {
         )}
       </div>
     </>
-  );
-};
+  )
+}
 
-SliderWrapper.defaultProps = defaultProps as Partial<Props>;
+SliderWrapper.defaultProps = defaultProps as Partial<Props>
 
-export default SliderWrapper;
+export default SliderWrapper

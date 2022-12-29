@@ -136,7 +136,7 @@ interface Props$o {
 }
 declare const Logo: React.ForwardRefExoticComponent<Props$o & React.RefAttributes<any>>;
 
-declare type ItemType$1 = {
+type ItemType$1 = {
     label: string;
     value: any;
     caption?: string;
@@ -161,7 +161,7 @@ interface Props$n {
 }
 declare const ChipsSlider: React.FC<Props$n>;
 
-declare type ItemType = {
+type ItemType = {
     label: string;
     value: any;
 };
@@ -406,7 +406,7 @@ declare const Text: React.ForwardRefExoticComponent<Pick<Props$4, keyof Props$4>
 interface NewProps {
     hideYearArrows?: boolean;
 }
-declare type Props$3 = NewProps & Partial<CalendarProps>;
+type Props$3 = NewProps & Partial<CalendarProps>;
 declare const Calendar: React.FC<Props$3>;
 
 interface Props$2 {

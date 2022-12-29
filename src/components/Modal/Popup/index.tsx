@@ -1,29 +1,29 @@
-import React from "react";
-import gsap from "gsap";
+import React from 'react'
+import gsap from 'gsap'
 
-import { useOutsideClick, useDidMountEffect } from "../../../hooks";
+import { useClickOutside, useDidMountEffect } from '@collegebacker/shared/hooks'
 
-import styles from "./styles.module.scss";
-import Header from "../Header";
+import styles from './styles.module.scss'
+import Header from '../Header'
 
 interface Props {
-  popupClassName?: string;
-  popupContentClassName?: string;
-  customPaddings?: string;
-  customPaddingsMobile?: string;
-  children: React.ReactNode;
-  isMobileBreakpoint: boolean;
-  title?: string;
-  minHeight?: string;
-  hideHeader?: boolean;
-  smallTitle?: boolean;
-  customWidth?: number;
-  closeOutside?: boolean;
-  dataAttrs?: Record<string, string>;
-  onCloseClick?: () => void;
-  showBackButton?: boolean;
-  onBackClick?: () => void;
-  disableHeaderBottomMargin?: boolean;
+  popupClassName?: string
+  popupContentClassName?: string
+  customPaddings?: string
+  customPaddingsMobile?: string
+  children: React.ReactNode
+  isMobileBreakpoint: boolean
+  title?: string
+  minHeight?: string
+  hideHeader?: boolean
+  smallTitle?: boolean
+  customWidth?: number
+  closeOutside?: boolean
+  dataAttrs?: Record<string, string>
+  onCloseClick?: () => void
+  showBackButton?: boolean
+  onBackClick?: () => void
+  disableHeaderBottomMargin?: boolean
 }
 
 ///////////////
@@ -31,14 +31,14 @@ interface Props {
 ///////////////
 
 const Popup = React.forwardRef<any, Props>((props, ref) => {
-  const modalWrapRef = React.useRef<HTMLDivElement>(null);
-  const popupRef = React.useRef<HTMLDivElement>(null);
-  const gradientsRef = React.useRef<HTMLDivElement>(null);
+  const modalWrapRef = React.useRef<HTMLDivElement>(null)
+  const popupRef = React.useRef<HTMLDivElement>(null)
+  const gradientsRef = React.useRef<HTMLDivElement>(null)
 
-  const [isMount, setIsMount] = React.useState(false);
-  const [isOpen, setIsOpen] = React.useState(false);
-  const [isShown, setIsShown] = React.useState(false);
-  const [isAnimationFinished, setIsAnimationFinished] = React.useState(true);
+  const [isMount, setIsMount] = React.useState(false)
+  const [isOpen, setIsOpen] = React.useState(false)
+  const [isShown, setIsShown] = React.useState(false)
+  const [isAnimationFinished, setIsAnimationFinished] = React.useState(true)
 
   //////////////
   // IMPERIAL //
@@ -46,21 +46,21 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
 
   React.useImperativeHandle(ref, () => ({
     getRef: () => {
-      return popupRef.current;
+      return popupRef.current
     },
     open: () => {
       if (isAnimationFinished) {
         // console.log("isAnimationFinished", isAnimationFinished);
-        setIsOpen(true);
+        setIsOpen(true)
       }
     },
     close: () => {
       // console.log("isAnimationFinished", isAnimationFinished);
       if (isAnimationFinished) {
-        setIsOpen(false);
+        setIsOpen(false)
       }
-    },
-  }));
+    }
+  }))
 
   //////////////
   // HANDLERS //
@@ -69,23 +69,23 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
   const handleCloseClick = () => {
     // console.log("close click");
     if (isShown && isAnimationFinished) {
-      props.onCloseClick();
+      props.onCloseClick()
     }
-  };
+  }
 
   ///////////////
   //// HOOKS ////
   ///////////////
 
-  useOutsideClick(
+  useClickOutside(
     popupRef,
     () => {
       // console.log(isAppeared, props.closeOutside, props.isMobileBreakpoint);
       // console.log("clicked outside");
-      props.closeOutside && handleCloseClick();
+      props.closeOutside && handleCloseClick()
     },
     isShown
-  );
+  )
 
   /////////////////
   // USE EFFECTS //
@@ -93,7 +93,7 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
 
   useDidMountEffect(() => {
     // kill all animations
-    gsap.killTweensOf(modalWrapRef.current);
+    gsap.killTweensOf(modalWrapRef.current)
 
     if (isMount) {
       if (isOpen) {
@@ -101,61 +101,61 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
 
         gsap.to(modalWrapRef.current, {
           opacity: 1,
-          pointerEvents: "all",
+          pointerEvents: 'all',
           backgroundImage:
-            "radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%)",
+            'radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%)',
           duration: 0.1,
           onStart: () => {
-            setIsAnimationFinished(false);
+            setIsAnimationFinished(false)
           },
           onComplete: () => {
-            popupRef.current?.classList.add(styles.popup_show);
-          },
-        });
+            popupRef.current?.classList.add(styles.popup_show)
+          }
+        })
         gsap.to(gradientsRef.current, {
           opacity: 1,
           scale: 1,
           delay: 0.1,
           duration: 0.5,
-          ease: "circ.out",
+          ease: 'circ.out',
           onComplete: () => {
-            setIsShown(true);
-            setIsAnimationFinished(true);
-          },
-        });
+            setIsShown(true)
+            setIsAnimationFinished(true)
+          }
+        })
       } else {
         gsap.to(modalWrapRef.current, {
-          pointerEvents: "none",
+          pointerEvents: 'none',
           opacity: 0,
           backgroundImage:
-            "radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 10%)",
+            'radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 10%)',
           duration: 0.4,
           onStart: () => {
-            popupRef.current?.classList.remove(styles.popup_show);
-            setIsShown(false);
-            setIsAnimationFinished(false);
-          },
-        });
+            popupRef.current?.classList.remove(styles.popup_show)
+            setIsShown(false)
+            setIsAnimationFinished(false)
+          }
+        })
         gsap.to(gradientsRef.current, {
           opacity: 0,
           scale: 0.1,
           duration: 0.7,
-          ease: "circ.out",
+          ease: 'circ.out',
           onComplete: () => {
-            modalWrapRef.current.blur();
-            setIsMount(false);
-            setIsAnimationFinished(true);
-          },
-        });
+            modalWrapRef.current.blur()
+            setIsMount(false)
+            setIsAnimationFinished(true)
+          }
+        })
       }
     }
-  }, [isOpen, isMount]);
+  }, [isOpen, isMount])
 
   React.useEffect(() => {
     if (isOpen) {
-      setIsMount(true);
+      setIsMount(true)
     }
-  }, [isOpen]);
+  }, [isOpen])
 
   /////////////////
   /// FUNCTIONS ///
@@ -164,22 +164,22 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
   const handleCustomPaddings = () => {
     if (!props.isMobileBreakpoint) {
       if (props.customPaddings) {
-        return props.customPaddings;
+        return props.customPaddings
       }
 
       if (props.customWidth) {
-        return "30px";
+        return '30px'
       }
 
-      return "90px 30px 90px";
+      return '90px 30px 90px'
     } else {
       if (props.customPaddingsMobile) {
-        return props.customPaddingsMobile;
+        return props.customPaddingsMobile
       } else {
-        return "30px 20px 40px";
+        return '30px 20px 40px'
       }
     }
-  };
+  }
 
   ///////////////
   // RENDERING //
@@ -188,7 +188,7 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
   return (
     isMount && (
       <aside
-        role="dialog"
+        role='dialog'
         aria-modal
         aria-hidden={false}
         ref={modalWrapRef}
@@ -198,22 +198,18 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
         <section
           ref={popupRef}
           className={`${styles.popup} ${
-            !props.customWidth && props.customWidth === 0
-              ? styles.popup_maxLayout
-              : ""
+            !props.customWidth && props.customWidth === 0 ? styles.popup_maxLayout : ''
           } ${props.popupClassName}`}
           style={{
             ...(props.customWidth && props.customWidth > 0
               ? {
-                  maxWidth: !props.isMobileBreakpoint
-                    ? props.customWidth
-                    : "100%",
+                  maxWidth: !props.isMobileBreakpoint ? props.customWidth : '100%'
                 }
               : {}),
             ...{
               padding: handleCustomPaddings(),
-              minHeight: props.minHeight ?? "200px",
-            },
+              minHeight: props.minHeight ?? '200px'
+            }
           }}
         >
           {!props.hideHeader ? (
@@ -221,18 +217,13 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
               onCloseClick={handleCloseClick}
               title={props.title}
               smallTitle={props.smallTitle}
-              noMaxWidth={
-                props.customWidth && props.customWidth > 0 ? true : false
-              }
+              noMaxWidth={props.customWidth && props.customWidth > 0 ? true : false}
               showBackButton={props.showBackButton}
               onBackClick={props.onBackClick}
               disableMarginDesktop={props.disableHeaderBottomMargin}
             />
           ) : null}
-          <div
-            tabIndex={0}
-            className={`${styles.contentWrapper} ${props.popupContentClassName}`}
-          >
+          <div tabIndex={0} className={`${styles.contentWrapper} ${props.popupContentClassName}`}>
             {props.children}
           </div>
         </section>
@@ -243,14 +234,14 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
         </div>
       </aside>
     )
-  );
-});
+  )
+})
 
 Popup.defaultProps = {
   customWidth: 0,
   customPaddings: null,
-  popupClassName: "",
-  popupContentClassName: "",
-} as Partial<Props>;
+  popupClassName: '',
+  popupContentClassName: ''
+} as Partial<Props>
 
-export default Popup;
+export default Popup

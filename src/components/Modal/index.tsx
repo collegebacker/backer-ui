@@ -1,76 +1,76 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { useDidMountEffect } from "../../hooks";
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { useDidMountEffect } from '@collegebacker/shared/hooks'
 
-import BottomSheet from "./BottomSheet";
-import Popup from "./Popup";
+import BottomSheet from './BottomSheet'
+import Popup from './Popup'
 
 export interface Props {
-  isOpen?: boolean;
-  popupClassName?: string;
-  popupContentClassName?: string;
-  title?: string;
-  smallTitle?: boolean;
-  hideHeader?: boolean;
-  children: React.ReactNode;
-  customWidth?: number;
-  customPaddings?: string;
-  customPaddingsMobile?: string;
-  isBottomSheet?: boolean;
-  closeOutside?: boolean;
-  dataAttrs?: Record<string, string>;
-  maxSheetHeight?: string;
-  showBackButton?: boolean;
-  disableHeaderMarginMobile?: boolean;
-  disableHeaderMarginDesktop?: boolean;
-  onBackClick?: () => void;
-  onCloseClick?: () => void;
-  animateSize?: (props: ModalAnimationSizeProps) => void;
+  isOpen?: boolean
+  popupClassName?: string
+  popupContentClassName?: string
+  title?: string
+  smallTitle?: boolean
+  hideHeader?: boolean
+  children: React.ReactNode
+  customWidth?: number
+  customPaddings?: string
+  customPaddingsMobile?: string
+  isBottomSheet?: boolean
+  closeOutside?: boolean
+  dataAttrs?: Record<string, string>
+  maxSheetHeight?: string
+  showBackButton?: boolean
+  disableHeaderMarginMobile?: boolean
+  disableHeaderMarginDesktop?: boolean
+  onBackClick?: () => void
+  onCloseClick?: () => void
+  animateSize?: (props: ModalAnimationSizeProps) => void
 }
 
 const Modal = React.forwardRef<any, Props>((props, ref) => {
-  const popupRef = React.useRef<any>(null);
-  const bottomSheetRef = React.useRef<any>(null);
+  const popupRef = React.useRef<any>(null)
+  const bottomSheetRef = React.useRef<any>(null)
 
-  const [isMobileBreakpoint, setIsMobileBreakpoint] = React.useState(false);
-  const mobilebreakpoint = 621;
+  const [isMobileBreakpoint, setIsMobileBreakpoint] = React.useState(false)
+  const mobilebreakpoint = 621
 
   const checkMobileBreakpoint = () => {
     // console.log("window.innerWidth", window.innerWidth < mobilebreakpoint);
-    setIsMobileBreakpoint(window.innerWidth < mobilebreakpoint);
-  };
+    setIsMobileBreakpoint(window.innerWidth < mobilebreakpoint)
+  }
 
   const handleOpen = () => {
-    document.body.style.overflow = "hidden";
-    document.body.style.touchAction = "none";
+    document.body.style.overflow = 'hidden'
+    document.body.style.touchAction = 'none'
 
     // console.log(bottomSheetRef);
 
     if (props.isBottomSheet && window.innerWidth < mobilebreakpoint) {
       // console.log("mobile");
-      bottomSheetRef.current?.open();
+      bottomSheetRef.current?.open()
     } else {
       // console.log(bottomSheetRef.current);
       // console.log("desktop");
-      popupRef.current?.open();
+      popupRef.current?.open()
     }
-  };
+  }
 
   const handleClose = () => {
-    document.body.style.removeProperty("overflow");
-    document.body.style.removeProperty("touch-action");
+    document.body.style.removeProperty('overflow')
+    document.body.style.removeProperty('touch-action')
 
     // console.log("close");
     if (props.onCloseClick) {
-      props.onCloseClick();
+      props.onCloseClick()
     }
 
     if (props.isBottomSheet && window.innerWidth < mobilebreakpoint) {
-      bottomSheetRef.current?.close();
+      bottomSheetRef.current?.close()
     } else {
-      popupRef.current?.close();
+      popupRef.current?.close()
     }
-  };
+  }
 
   //////////////
   // IMPERIAL //
@@ -78,63 +78,63 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
 
   React.useImperativeHandle(ref, () => ({
     open: (callback: () => void) => {
-      console.log("open");
+      console.log('open')
       // set timer to make sure that all refs are set
       setTimeout(() => {
-        handleOpen();
-      }, 10);
+        handleOpen()
+      }, 10)
 
       if (callback) {
-        callback();
+        callback()
       }
     },
     close: (callback: () => void) => {
-      console.log("close");
-      handleClose();
+      console.log('close')
+      handleClose()
 
       if (callback) {
-        callback();
+        callback()
       }
     },
     getPopupRef: () => {
-      return popupRef.current.getRef();
+      return popupRef.current.getRef()
     },
     getBottomSheetRef: () => {
-      return bottomSheetRef.current.getRef();
-    },
-  }));
+      return bottomSheetRef.current.getRef()
+    }
+  }))
 
   /////////////////
   // USE EFFECTS //
   /////////////////
 
   React.useEffect(() => {
-    checkMobileBreakpoint();
+    checkMobileBreakpoint()
 
-    window.addEventListener("resize", checkMobileBreakpoint);
+    window.addEventListener('resize', checkMobileBreakpoint)
 
     return () => {
-      window.removeEventListener("resize", checkMobileBreakpoint);
-    };
-  }, []);
+      window.removeEventListener('resize', checkMobileBreakpoint)
+    }
+  }, [])
 
   React.useEffect(() => {
     if (props.isOpen) {
       // console.log("open foo");
-      handleOpen();
+      handleOpen()
     }
-  }, [props.isOpen, isMobileBreakpoint]);
+  }, [props.isOpen, isMobileBreakpoint])
 
   useDidMountEffect(() => {
     if (!props.isOpen) {
       // console.log("close foo");
-      handleClose();
+      handleClose()
     }
-  }, [props.isOpen]);
+  }, [props.isOpen])
 
   const handleOnCloseClick = () => {
-    handleClose();
-  };
+    handleClose()
+  }
 
   //////////////
   /// RENDER ///
@@ -161,21 +161,21 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
       )}
     </>,
     document.body
-  );
-});
+  )
+})
 
-Modal.displayName = "Modal";
+Modal.displayName = 'Modal'
 
 Modal.defaultProps = {
   isOpen: false,
-  title: "",
-  popupClassName: "",
-  popupContentClassName: "",
+  title: '',
+  popupClassName: '',
+  popupContentClassName: '',
   hideHeader: false,
   smallTitle: false,
   isBottomSheet: false,
   closeOutside: true,
-  maxSheetHeight: null,
-} as Partial<Props>;
+  maxSheetHeight: null
+} as Partial<Props>
 
-export default Modal;
+export default Modal
