@@ -1,6 +1,6 @@
 {
   "name": "@collegebacker/backer-ui",
-  "version": "0.23.2",
+  "version": "0.23.3",
   "description": "A Backer component library",
   "scripts": {
     "build": "rimraf ui && rimraf utils && rollup -c",
@@ -59,6 +59,7 @@
   "dependencies": {
     "react-avatar-editor": "^13.0.0",
     "react-calendar": "^4.0.0",
-    "@collegebacker/shared": "git+https://github.com/collegebacker/shared.git#0f85a7f35090513b2191be1d38064ca00669062a"
-  }
+    "@collegebacker/shared": "git+https://github.com/collegebacker/shared.git#3fe1f3f3b127472c9af00d24d82119e835ae61d0"
+  },
+  "prettier": "@collegebacker/shared/.prettierrc.json"
 }
