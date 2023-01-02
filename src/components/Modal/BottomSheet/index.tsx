@@ -13,15 +13,12 @@ interface Props {
   isMobileBreakpoint: boolean
   customPaddingsMobile?: string
   closeOutside?: boolean
-  title?: string
   hideHeader?: boolean
-  smallTitle?: boolean
   dataAttrs?: Record<string, string>
   maxSheetHeight?: string
-  onCloseClick?: () => void
   showBackButton?: boolean
   onBackClick?: () => void
-  disableHeaderBottomMargin?: boolean
+  onCloseClick?: () => void
 }
 
 ///////////////
@@ -212,12 +209,9 @@ const BottomSheet = React.forwardRef<any, Props>((props, ref) => {
           {!props.hideHeader ? (
             <Header
               onCloseClick={handleCloseClick}
-              title={props.title}
-              smallTitle={props.smallTitle}
               noMaxWidth={true}
               showBackButton={props.showBackButton}
               onBackClick={props.onBackClick}
-              disableMarginMobile={props.disableHeaderBottomMargin}
             />
           ) : null}
           <div className={`${props.popupContentClassName}`}>{props.children}</div>

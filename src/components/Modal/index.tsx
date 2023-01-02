@@ -145,7 +145,6 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
       {props.isBottomSheet && isMobileBreakpoint ? (
         <BottomSheet
           {...props}
-          disableHeaderBottomMargin={props.disableHeaderMarginMobile}
           isMobileBreakpoint={isMobileBreakpoint}
           onCloseClick={handleOnCloseClick}
           ref={bottomSheetRef}
@@ -153,7 +152,6 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
       ) : (
         <Popup
           {...props}
-          disableHeaderBottomMargin={props.disableHeaderMarginDesktop}
           isMobileBreakpoint={isMobileBreakpoint}
           onCloseClick={handleOnCloseClick}
           ref={popupRef}

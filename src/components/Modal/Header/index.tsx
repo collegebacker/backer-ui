@@ -1,29 +1,25 @@
-import React from "react";
+import React from 'react'
 
-import Icon from "../../Icon";
-import styles from "./styles.module.scss";
+import Icon from '../../Icon'
+import styles from './styles.module.scss'
 
 interface HeaderProps {
-  title?: string;
-  smallTitle?: boolean;
-  noMaxWidth?: boolean;
-  showBackButton?: boolean;
-  disableMarginDesktop?: boolean;
-  disableMarginMobile?: boolean;
-  onBackClick?: () => void;
-  onCloseClick: () => void;
+  noMaxWidth?: boolean
+  showBackButton?: boolean
+  disableMarginDesktop?: boolean
+  disableMarginMobile?: boolean
+  onBackClick?: () => void
+  onCloseClick: () => void
 }
 
 const Header: React.FC<HeaderProps> = (props) => {
   return (
     <div
       className={`${styles.header} ${
-        (props.title || !props.showBackButton) && !props.disableMarginDesktop
-          ? styles.bottomMarginDesktop
-          : ""
+        !props.showBackButton && !props.disableMarginDesktop ? styles.bottomMarginDesktop : ''
       }
-      ${!props.disableMarginMobile ? styles.bottomMarginMobile : ""}
-      ${props.noMaxWidth ? styles.minHeight : ""}
+      ${!props.disableMarginMobile ? styles.bottomMarginMobile : ''}
+      ${props.noMaxWidth ? styles.minHeight : ''}
       `}
     >
       {props.showBackButton && (
@@ -35,29 +31,15 @@ const Header: React.FC<HeaderProps> = (props) => {
       <button className={styles.closeButton} onClick={props.onCloseClick}>
         <div className={styles.closeButton__background} />
       </button>
-
-      {(props.title || props.title !== "") && !props.showBackButton ? (
-        <div className={`${styles.titleWrap}`}>
-          <h2
-            className={`${styles.adaptiveTitle} ${
-              !props.noMaxWidth ? styles.header_maxWidth : ""
-            } ${styles[props.smallTitle ? "smallTitle" : "title"]}`}
-          >
-            {props.title}
-          </h2>
-        </div>
-      ) : null}
     </div>
-  );
-};
+  )
+}
 
 Header.defaultProps = {
-  title: "",
-  smallTitle: false,
   noMaxWidth: false,
   showBackButton: false,
   disableMarginDesktop: false,
-  disableMarginMobile: false,
-};
+  disableMarginMobile: false
+}
 
-export default Header;
+export default Header

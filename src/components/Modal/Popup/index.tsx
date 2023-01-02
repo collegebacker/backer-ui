@@ -13,17 +13,14 @@ interface Props {
   customPaddingsMobile?: string
   children: React.ReactNode
   isMobileBreakpoint: boolean
-  title?: string
   minHeight?: string
-  hideHeader?: boolean
-  smallTitle?: boolean
   customWidth?: number
   closeOutside?: boolean
   dataAttrs?: Record<string, string>
-  onCloseClick?: () => void
   showBackButton?: boolean
+  hideHeader?: boolean
   onBackClick?: () => void
-  disableHeaderBottomMargin?: boolean
+  onCloseClick?: () => void
 }
 
 ///////////////
@@ -215,12 +212,9 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
           {!props.hideHeader ? (
             <Header
               onCloseClick={handleCloseClick}
-              title={props.title}
-              smallTitle={props.smallTitle}
               noMaxWidth={props.customWidth && props.customWidth > 0 ? true : false}
               showBackButton={props.showBackButton}
               onBackClick={props.onBackClick}
-              disableMarginDesktop={props.disableHeaderBottomMargin}
             />
           ) : null}
           <div tabIndex={0} className={`${styles.contentWrapper} ${props.popupContentClassName}`}>
