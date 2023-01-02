@@ -59,7 +59,7 @@
   "dependencies": {
     "react-avatar-editor": "^13.0.0",
     "react-calendar": "^4.0.0",
-    "@collegebacker/shared": "git+https://github.com/collegebacker/shared.git#3fe1f3f3b127472c9af00d24d82119e835ae61d0"
+    "@collegebacker/shared": "git+https://github.com/collegebacker/shared.git#eb8ba261db320c58e781f1fe25018271a52276cd"
   },
   "prettier": "@collegebacker/shared/.prettierrc.json"
 }

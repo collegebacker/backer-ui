@@ -12,11 +12,13 @@ interface HeaderProps {
   onCloseClick: () => void
 }
 
-const Header: React.FC<HeaderProps> = (props) => {
+const Header: React.FC<HeaderProps> = props => {
   return (
     <div
       className={`${styles.header} ${
-        !props.showBackButton && !props.disableMarginDesktop ? styles.bottomMarginDesktop : ''
+        !props.showBackButton && !props.disableMarginDesktop
+          ? styles.bottomMarginDesktop
+          : ''
       }
       ${!props.disableMarginMobile ? styles.bottomMarginMobile : ''}
       ${props.noMaxWidth ? styles.minHeight : ''}
