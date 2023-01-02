@@ -9,8 +9,6 @@ export interface Props {
   isOpen?: boolean
   popupClassName?: string
   popupContentClassName?: string
-  title?: string
-  smallTitle?: boolean
   hideHeader?: boolean
   children: React.ReactNode
   customWidth?: number
@@ -21,8 +19,6 @@ export interface Props {
   dataAttrs?: Record<string, string>
   maxSheetHeight?: string
   showBackButton?: boolean
-  disableHeaderMarginMobile?: boolean
-  disableHeaderMarginDesktop?: boolean
   onBackClick?: () => void
   onCloseClick?: () => void
   animateSize?: (props: ModalAnimationSizeProps) => void
