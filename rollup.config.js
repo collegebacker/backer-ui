@@ -12,15 +12,7 @@ import filesize from 'rollup-plugin-filesize'
 export default [
   {
     input: 'src/components/index.ts',
-    external: [
-      'react',
-      'react-dom',
-      '@apollo/react-hooks',
-      'graphql-tag',
-      'class-validator',
-      'moment',
-      '@collegebacker/shared'
-    ],
+    external: ['react', 'react-dom', '@collegebacker/shared'],
     output: [
       {
         dir: 'ui',
