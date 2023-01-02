@@ -18,7 +18,8 @@ export default [
       '@apollo/react-hooks',
       'graphql-tag',
       'class-validator',
-      'moment'
+      'moment',
+      '@collegebacker/shared'
     ],
     output: [
       {

@@ -54,11 +54,16 @@
     "sass": "^1.52.3",
     "sass-loader": "^13.0.0",
     "style-loader": "^3.3.1",
-    "typescript": "^4.7.3"
+    "typescript": "^4.7.3",
+    "@collegebacker/shared": "git+https://github.com/collegebacker/shared.git#eb8ba261db320c58e781f1fe25018271a52276cd"
   },
   "dependencies": {
     "react-avatar-editor": "^13.0.0",
-    "react-calendar": "^4.0.0",
+    "react-calendar": "^4.0.0"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "@collegebacker/shared": "git+https://github.com/collegebacker/shared.git#eb8ba261db320c58e781f1fe25018271a52276cd"
   },
   "prettier": "@collegebacker/shared/.prettierrc.json"
