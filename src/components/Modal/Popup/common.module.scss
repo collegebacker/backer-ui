@@ -1,5 +1,4 @@
-@import "../../../../tokens/all.scss";
-@import "../variables.scss";
+@import '../../../../tokens/all.scss';
 
 .modalWrap {
   position: fixed;
@@ -16,56 +15,68 @@
   );
   pointer-events: none;
   opacity: 0;
+
+  --max-width: initial;
+  --side-paddings: initial;
+  --bottom-padding: initial;
 }
 
 .contentWrapper {
   width: 100%;
   margin: 0 auto;
 
-  // clear focus
   &:focus {
     outline: none;
   }
 }
 
 .popup {
+  --dafault-padding: 90px;
+
   position: absolute;
   z-index: 2;
   backface-visibility: hidden;
+  overflow-y: auto;
+
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
+
   top: 50%;
   left: 50%;
-  max-height: calc(100% - 40px);
-  padding: 30px;
+  transform: translate(-50%, -50%) scale(0.95);
+
   width: calc(100% - 40px);
+  max-width: var(--max-width, 660px);
+  padding-left: var(--side-paddings, var(--dafault-padding));
+  padding-right: var(--side-paddings, var(--dafault-padding));
+  padding-bottom: var(--bottom-padding, var(--dafault-padding));
+  padding-top: 90px;
+
+  max-height: calc(100% - 40px);
   border-radius: var(--radius-l);
   opacity: 0;
-  transform: translate(-50%, -50%) scale(0.95);
   background-color: var(--color-main-0);
+
   transition: opacity 0.3s ease, transform 0.3s ease;
 
   &::-webkit-scrollbar {
     width: 0;
   }
 
-  &_maxLayout {
-    width: calc(100% - 40px);
-    // padding: 90px 30px 90px;
-    max-width: $max-popup-window-width;
+  @media screen and (max-width: $grid-mobile-breakpoint) {
+    --dafault-padding: 20px;
 
-    .contentWrapper {
-      max-width: $max-popup-content-width;
-    }
-  }
-
-  @media screen and (max-width: $mobile-breakpoint) {
     top: 0;
     left: 0;
     transform: none;
     max-width: none;
     width: 100%;
+
+    padding-left: var(--side-paddings, var(--dafault-padding));
+    padding-right: var(--side-paddings, var(--dafault-padding));
+    padding-bottom: var(--bottom-padding, var(--dafault-padding));
+    padding-top: 80px;
+
     height: 100%;
     max-height: none;
     border-radius: 0;
@@ -76,7 +87,7 @@
     transform: translate(-50%, -50%) scale(1);
     opacity: 1;
 
-    @media screen and (max-width: $mobile-breakpoint) {
+    @media screen and (max-width: $grid-mobile-breakpoint) {
       transform: translate(0, 0) scale(1);
     }
   }

@@ -1,0 +1,144 @@
+@import '../../../../tokens/all.scss';
+
+// MIXINS
+
+$btns-offset: 30px;
+$btns-offset-mobile: 20px;
+
+@mixin button {
+  cursor: pointer;
+  z-index: 3;
+  position: absolute;
+
+  width: 40px;
+  height: 40px;
+
+  border: none;
+  outline: none;
+  background: none;
+  background-color: white;
+  border-radius: 100px;
+
+  &__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0.7);
+    background-color: var(--color-main-transparent-50);
+    transition: opacity 0.1s ease, transform 0.1s ease;
+  }
+}
+
+// BACK BUTTON
+
+.backButton {
+  @include button;
+  top: $btns-offset;
+  left: $btns-offset;
+
+  &::after,
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transition: transform 0.15s ease, width 0.15s ease;
+  }
+
+  &::after {
+    width: 13px;
+    height: 13px;
+    transform: translate(11px, -50%) rotate(45deg);
+    border: 1px solid var(--color-main-500);
+    border-top: none;
+    border-right: none;
+  }
+
+  &::before {
+    width: 22px;
+    height: 1px;
+    transform: translate(9px, -50%);
+    background-color: var(--color-main-500);
+  }
+
+  &:hover {
+    &::after {
+      transform: translate(8px, -50%) rotate(45deg);
+    }
+
+    &::before {
+      width: 26px;
+      transform: translate(7px, -50%);
+    }
+
+    .backButton__background {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @media screen and (max-width: $grid-mobile-breakpoint) {
+    top: $btns-offset-mobile;
+    left: $btns-offset-mobile;
+  }
+}
+
+// CLOSE BUTTON
+
+.closeButton {
+  @include button;
+  top: $btns-offset;
+  right: $btns-offset;
+
+  &__wrap {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1px;
+    height: 24px;
+    border-radius: 40px;
+    background-color: var(--color-main-500);
+    transition: height 0.1s ease;
+  }
+
+  &:before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  &:after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  &:hover {
+    &:before,
+    &:after {
+      height: 20px;
+    }
+
+    .closeButton__background {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  &:focus-visible {
+    border: 1px solid var(--color-main-500);
+  }
+
+  @media screen and (max-width: $grid-mobile-breakpoint) {
+    top: $btns-offset-mobile;
+    right: $btns-offset-mobile;
+  }
+}

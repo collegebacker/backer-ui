@@ -2,70 +2,41 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { useDidMountEffect } from '@collegebacker/shared/hooks'
 
-import BottomSheet from './BottomSheet'
 import Popup from './Popup'
 
 export interface Props {
   isOpen?: boolean
-  popupClassName?: string
-  popupContentClassName?: string
-  hideHeader?: boolean
+  className?: string
+  contentClassName?: string
   children: React.ReactNode
-  customWidth?: number
-  customPaddings?: string
-  customPaddingsMobile?: string
   isBottomSheet?: boolean
-  closeOutside?: boolean
-  dataAttrs?: Record<string, string>
-  maxSheetHeight?: string
+  closeOnClickOutside?: boolean
+  showCloseButton?: boolean
   showBackButton?: boolean
+  dataAttrs?: Record<string, string>
   onBackClick?: () => void
   onCloseClick?: () => void
-  animateSize?: (props: ModalAnimationSizeProps) => void
 }
 
 const Modal = React.forwardRef<any, Props>((props, ref) => {
   const popupRef = React.useRef<any>(null)
   const bottomSheetRef = React.useRef<any>(null)
 
-  const [isMobileBreakpoint, setIsMobileBreakpoint] = React.useState(false)
-  const mobilebreakpoint = 621
-
-  const checkMobileBreakpoint = () => {
-    // console.log("window.innerWidth", window.innerWidth < mobilebreakpoint);
-    setIsMobileBreakpoint(window.innerWidth < mobilebreakpoint)
-  }
-
   const handleOpen = () => {
     document.body.style.overflow = 'hidden'
     document.body.style.touchAction = 'none'
 
-    // console.log(bottomSheetRef);
-
-    if (props.isBottomSheet && window.innerWidth < mobilebreakpoint) {
-      // console.log("mobile");
-      bottomSheetRef.current?.open()
-    } else {
-      // console.log(bottomSheetRef.current);
-      // console.log("desktop");
-      popupRef.current?.open()
-    }
+    popupRef.current?.open()
   }
 
   const handleClose = () => {
     document.body.style.removeProperty('overflow')
     document.body.style.removeProperty('touch-action')
 
-    // console.log("close");
     if (props.onCloseClick) {
       props.onCloseClick()
     }
-
-    if (props.isBottomSheet && window.innerWidth < mobilebreakpoint) {
-      bottomSheetRef.current?.close()
-    } else {
-      popupRef.current?.close()
-    }
+    popupRef.current?.close()
   }
 
   //////////////
@@ -105,21 +76,11 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
   /////////////////
 
   React.useEffect(() => {
-    checkMobileBreakpoint()
-
-    window.addEventListener('resize', checkMobileBreakpoint)
-
-    return () => {
-      window.removeEventListener('resize', checkMobileBreakpoint)
-    }
-  }, [])
-
-  React.useEffect(() => {
     if (props.isOpen) {
       // console.log("open foo");
       handleOpen()
     }
-  }, [props.isOpen, isMobileBreakpoint])
+  }, [props.isOpen])
 
   useDidMountEffect(() => {
     if (!props.isOpen) {
@@ -137,23 +98,7 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
   //////////////
 
   return ReactDOM.createPortal(
-    <>
-      {props.isBottomSheet && isMobileBreakpoint ? (
-        <BottomSheet
-          {...props}
-          isMobileBreakpoint={isMobileBreakpoint}
-          onCloseClick={handleOnCloseClick}
-          ref={bottomSheetRef}
-        />
-      ) : (
-        <Popup
-          {...props}
-          isMobileBreakpoint={isMobileBreakpoint}
-          onCloseClick={handleOnCloseClick}
-          ref={popupRef}
-        />
-      )}
-    </>,
+    <Popup {...props} onCloseClick={handleOnCloseClick} ref={popupRef} />,
     document.body
   )
 })
@@ -161,15 +106,11 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
 Modal.displayName = 'Modal'
 
 Modal.defaultProps = {
-  isOpen: false,
-  title: '',
-  popupClassName: '',
-  popupContentClassName: '',
-  hideHeader: false,
-  smallTitle: false,
-  isBottomSheet: false,
-  closeOutside: true,
-  maxSheetHeight: null
+  className: '',
+  contentClassName: '',
+  showCloseButton: true,
+  showBackButton: false,
+  isBottomSheet: false
 } as Partial<Props>
 
 export default Modal

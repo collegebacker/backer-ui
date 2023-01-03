@@ -3,22 +3,19 @@ import gsap from 'gsap'
 
 import { useClickOutside, useDidMountEffect } from '@collegebacker/shared/hooks'
 
-import styles from './styles.module.scss'
+import commonStyles from './common.module.scss'
+import buttonsStyles from './buttons.module.scss'
 import Header from '../Header'
 
 interface Props {
-  popupClassName?: string
-  popupContentClassName?: string
-  customPaddings?: string
-  customPaddingsMobile?: string
   children: React.ReactNode
-  isMobileBreakpoint: boolean
-  minHeight?: string
-  customWidth?: number
-  closeOutside?: boolean
-  dataAttrs?: Record<string, string>
+  className?: string
+  contentClassName?: string
+  closeOnClickOutside?: boolean
   showBackButton?: boolean
-  hideHeader?: boolean
+  showCloseButton?: boolean
+  dataAttrs?: Record<string, string>
+  isBottomSheet?: boolean
   onBackClick?: () => void
   onCloseClick?: () => void
 }
@@ -79,7 +76,7 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
     () => {
       // console.log(isAppeared, props.closeOutside, props.isMobileBreakpoint);
       // console.log("clicked outside");
-      props.closeOutside && handleCloseClick()
+      props.closeOnClickOutside && handleCloseClick()
     },
     isShown
   )
@@ -94,8 +91,6 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
 
     if (isMount) {
       if (isOpen) {
-        // console.log("open");
-
         gsap.to(modalWrapRef.current, {
           opacity: 1,
           pointerEvents: 'all',
@@ -106,7 +101,7 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
             setIsAnimationFinished(false)
           },
           onComplete: () => {
-            popupRef.current?.classList.add(styles.popup_show)
+            popupRef.current?.classList.add(commonStyles.popup_show)
           }
         })
         gsap.to(gradientsRef.current, {
@@ -128,7 +123,7 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
             'radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 10%)',
           duration: 0.4,
           onStart: () => {
-            popupRef.current?.classList.remove(styles.popup_show)
+            popupRef.current?.classList.remove(commonStyles.popup_show)
             setIsShown(false)
             setIsAnimationFinished(false)
           }
@@ -158,26 +153,6 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
   /// FUNCTIONS ///
   /////////////////
 
-  const handleCustomPaddings = () => {
-    if (!props.isMobileBreakpoint) {
-      if (props.customPaddings) {
-        return props.customPaddings
-      }
-
-      if (props.customWidth) {
-        return '30px'
-      }
-
-      return '90px 30px 90px'
-    } else {
-      if (props.customPaddingsMobile) {
-        return props.customPaddingsMobile
-      } else {
-        return '30px 20px 40px'
-      }
-    }
-  }
-
   ///////////////
   // RENDERING //
   ///////////////
@@ -189,42 +164,39 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
         aria-modal
         aria-hidden={false}
         ref={modalWrapRef}
-        className={`${styles.modalWrap}`}
+        className={`${commonStyles.modalWrap}`}
         {...props.dataAttrs}
       >
         <section
           ref={popupRef}
-          className={`${styles.popup} ${
-            !props.customWidth && props.customWidth === 0 ? styles.popup_maxLayout : ''
-          } ${props.popupClassName}`}
-          style={{
-            ...(props.customWidth && props.customWidth > 0
-              ? {
-                  maxWidth: !props.isMobileBreakpoint ? props.customWidth : '100%'
-                }
-              : {}),
-            ...{
-              padding: handleCustomPaddings(),
-              minHeight: props.minHeight ?? '200px'
-            }
-          }}
+          className={`${commonStyles.popup} ${props.className}`}
         >
-          {!props.hideHeader ? (
-            <Header
-              onCloseClick={handleCloseClick}
-              noMaxWidth={props.customWidth && props.customWidth > 0 ? true : false}
-              showBackButton={props.showBackButton}
-              onBackClick={props.onBackClick}
-            />
-          ) : null}
-          <div tabIndex={0} className={`${styles.contentWrapper} ${props.popupContentClassName}`}>
+          {props.showBackButton && (
+            <button
+              className={buttonsStyles.backButton}
+              onClick={props.onBackClick}
+            >
+              <div className={buttonsStyles.backButton__background} />
+            </button>
+          )}
+          <button
+            className={buttonsStyles.closeButton}
+            onClick={props.onCloseClick}
+          >
+            <div className={buttonsStyles.closeButton__background} />
+          </button>
+
+          <div
+            tabIndex={0}
+            className={`${commonStyles.contentWrapper} ${props.contentClassName}`}
+          >
             {props.children}
           </div>
         </section>
 
-        <div className={styles.gradients} ref={gradientsRef}>
-          <div className={styles.gradient1} />
-          <div className={styles.gradient2} />
+        <div className={commonStyles.gradients} ref={gradientsRef}>
+          <div className={commonStyles.gradient1} />
+          <div className={commonStyles.gradient2} />
         </div>
       </aside>
     )
@@ -232,10 +204,11 @@ const Popup = React.forwardRef<any, Props>((props, ref) => {
 })
 
 Popup.defaultProps = {
-  customWidth: 0,
-  customPaddings: null,
-  popupClassName: '',
-  popupContentClassName: ''
+  className: '',
+  contentClassName: '',
+  showCloseButton: true,
+  showBackButton: false,
+  isBottomSheet: false
 } as Partial<Props>
 
 export default Popup
