@@ -3,7 +3,7 @@
   margin-bottom: 10px;
 
   .labelText {
-    font-family: "ABCMArfa", sans-serif;
+    font-family: 'ABCMArfa', sans-serif;
     font-size: 14px;
     font-weight: 300;
     margin-top: 4px;
@@ -19,7 +19,7 @@ $focus-line-margin: -4px;
   }
 
   &:focus-visible::before {
-    content: "";
+    content: '';
     position: absolute;
     top: $focus-line-margin;
     right: $focus-line-margin;
@@ -28,5 +28,32 @@ $focus-line-margin: -4px;
     border: 1px solid var(--color-main-500);
     border-radius: $border-radius;
     pointer-events: none;
+  }
+}
+
+@mixin navigationButton {
+  position: relative;
+  cursor: pointer;
+
+  width: 40px;
+  height: 40px;
+
+  border: none;
+  outline: none;
+  background: none;
+  background-color: white;
+  border-radius: 100px;
+
+  &__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0.7);
+    background-color: var(--color-main-transparent-50);
+    transition: opacity 0.1s ease, transform 0.1s ease;
   }
 }

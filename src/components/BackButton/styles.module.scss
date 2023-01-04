@@ -1,0 +1,47 @@
+@import '../../../styles/mixins.scss';
+@import '../../../tokens/all.scss';
+
+.backButton {
+  @include navigationButton;
+
+  &::after,
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transition: transform 0.15s ease, width 0.15s ease;
+  }
+
+  &::after {
+    width: 13px;
+    height: 13px;
+    transform: translate(11px, -50%) rotate(45deg);
+    border: 1px solid var(--color-main-500);
+    border-top: none;
+    border-right: none;
+  }
+
+  &::before {
+    width: 22px;
+    height: 1px;
+    transform: translate(9px, -50%);
+    background-color: var(--color-main-500);
+  }
+
+  &:hover {
+    &::after {
+      transform: translate(8px, -50%) rotate(45deg);
+    }
+
+    &::before {
+      width: 26px;
+      transform: translate(7px, -50%);
+    }
+
+    .backButton__background {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}

@@ -1,0 +1,49 @@
+@import '../../../styles/mixins.scss';
+@import '../../../tokens/all.scss';
+
+.closeButton {
+  @include navigationButton;
+
+  &__wrap {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1px;
+    height: 24px;
+    border-radius: 40px;
+    background-color: var(--color-main-500);
+    transition: height 0.1s ease;
+  }
+
+  &:before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  &:after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  &:hover {
+    &:before,
+    &:after {
+      height: 20px;
+    }
+
+    .closeButton__background {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  &:focus-visible {
+    border: 1px solid var(--color-main-500);
+  }
+}

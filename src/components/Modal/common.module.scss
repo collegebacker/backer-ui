@@ -1,0 +1,279 @@
+@import '../../../tokens/all.scss';
+
+// WRAPPER-BACKGROUND
+
+.modalWrap {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.3) 100%
+  );
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+  opacity: 0;
+
+  --max-width: initial;
+  --side-paddings: initial;
+  --bottom-padding: initial;
+
+  &_show {
+    animation: modalWrapShowAnimation 0.2s ease forwards;
+  }
+
+  &_hide {
+    animation: modalWrapHideAnimation 0.3s ease forwards;
+    // animation-delay: 0.2s;
+  }
+
+  @media screen and (max-width: $grid-mobile-breakpoint) {
+    position: fixed;
+  }
+}
+
+@keyframes modalWrapShowAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    pointer-events: all;
+    opacity: 1;
+  }
+}
+
+@keyframes modalWrapHideAnimation {
+  0%,
+  40% {
+    pointer-events: none;
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+// MODAL //
+
+.modal {
+  --dafault-padding: 90px;
+
+  position: absolute;
+  z-index: 2;
+  backface-visibility: hidden;
+  overflow-y: auto;
+
+  display: flex;
+  flex-direction: column;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.95);
+
+  width: calc(100% - 40px);
+  padding-top: 90px;
+
+  max-width: var(--max-width, 660px);
+  padding-left: var(--side-paddings, var(--dafault-padding));
+  padding-right: var(--side-paddings, var(--dafault-padding));
+  padding-bottom: var(--bottom-padding, var(--dafault-padding));
+
+  max-height: calc(100% - 40px);
+  border-radius: var(--radius-l);
+  opacity: 0;
+  background-color: var(--color-main-0);
+
+  transition: opacity 0.3s ease, transform 0.3s ease;
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+
+  @media screen and (max-width: $grid-mobile-breakpoint) {
+    --dafault-padding: 20px;
+  }
+}
+
+// MODIFICATIONS
+
+.popup {
+  @media screen and (max-width: $grid-mobile-breakpoint) {
+    top: 0;
+    left: 0;
+    transform: none;
+    max-width: none;
+    width: 100%;
+
+    padding-left: var(--side-paddings, var(--dafault-padding));
+    padding-right: var(--side-paddings, var(--dafault-padding));
+    padding-bottom: var(--bottom-padding, var(--dafault-padding));
+    padding-top: 80px;
+
+    height: 100%;
+    max-height: none;
+    border-radius: 0;
+    background-color: var(--color-main-0);
+  }
+
+  &_show {
+    animation: modalAnimationDesktop 0.3s ease forwards;
+    animation-delay: 0.2s;
+
+    @media screen and (max-width: $grid-mobile-breakpoint) {
+      animation: modalAnimationMobile 0.3s ease forwards;
+    }
+  }
+
+  &_hide {
+    animation: modalAnimationDesktopHide 0.2s ease forwards;
+    animation-delay: 0;
+
+    @media screen and (max-width: $grid-mobile-breakpoint) {
+      animation: modalAnimationMobileHide 0.2s ease forwards;
+    }
+  }
+}
+
+.bottomsheet {
+  @media screen and (max-width: $grid-mobile-breakpoint) {
+    bottom: 0%;
+    top: auto;
+    left: 0;
+    width: 100%;
+    max-width: none;
+    transform: none;
+    border-radius: var(--radius-l) var(--radius-l) 0 0;
+    max-height: 100%;
+    padding-top: 70px;
+  }
+
+  &_stick {
+    border-radius: 0;
+  }
+}
+
+// ANIMATIONS
+
+@keyframes modalAnimationDesktop {
+  0% {
+    transform: translate(-50%, -50%) scale(0.95);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes modalAnimationMobile {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes modalAnimationDesktopHide {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.95);
+    opacity: 0;
+  }
+}
+
+@keyframes modalAnimationMobileHide {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0;
+  }
+}
+
+// CONTENT
+
+.contentWrapper {
+  width: 100%;
+  margin: 0 auto;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+// GRADIENTS
+
+.gradients {
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.1);
+  width: 300px;
+  height: 300px;
+  opacity: 0;
+
+  &_show {
+    animation: gradientsAnimation 0.5s ease forwards;
+  }
+
+  &_hide {
+    animation: gradientsAnimationHide 0.4s ease forwards;
+  }
+}
+
+.gradient1 {
+  position: absolute;
+  width: 1200px;
+  height: 1400px;
+  top: 50%;
+  left: 50%;
+  opacity: 0.8;
+  transform: translate(-50%, -50%) scale(1.2) rotate(45deg);
+  background-image: var(--gradient-peach);
+}
+
+.gradient2 {
+  position: absolute;
+  width: 700px;
+  height: 1000px;
+  top: 10%;
+  left: 90%;
+  opacity: 0.8;
+  transform: translate(-50%, -50%) scale(1.2) rotate(33deg);
+  background-image: var(--gradient-velvet);
+}
+
+@keyframes gradientsAnimation {
+  0% {
+    transform: translate(-50%, -50%) scale(0.1);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes gradientsAnimationHide {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.4);
+  }
+}

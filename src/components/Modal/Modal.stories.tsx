@@ -63,16 +63,7 @@ const Template: ComponentStory<typeof Modal> = args => {
 
   return (
     <div className='iconsWrap'>
-      <Modal
-        ref={modalRef}
-        {...args}
-        dataAttrs={{
-          'data-attr': 'test'
-        }}
-        onCloseClick={() => {
-          console.log('onCloseClick')
-        }}
-      />
+      <Modal ref={modalRef} {...args} />
       <Button
         label='Trigger Modal'
         onClick={() => {
@@ -88,6 +79,9 @@ Popup.args = {
   isOpen: false,
   closeOnClickOutside: true,
   showCloseButton: true,
+  showBackButton: false,
+  isBottomSheet: false,
+  dataAttrs: {},
   className: '',
   contentClassName: '',
   children: (
