@@ -62,7 +62,8 @@ import autoprefixer from 'autoprefixer'
 import dts from 'rollup-plugin-dts'
 import esbuild from 'rollup-plugin-esbuild'
 
-import resolve from '@rollup/plugin-node-resolve'
+import nodeResolve from '@rollup/plugin-node-resolve'
+import commonjs from '@rollup/plugin-commonjs'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 import { terser } from 'rollup-plugin-terser'
 import filesize from 'rollup-plugin-filesize'
@@ -70,11 +71,24 @@ import filesize from 'rollup-plugin-filesize'
 const bundle = (config, folder) => ({
   ...config,
   input: `src/${folder}/index.ts`,
-  external: id => !/^[./]/.test(id)
+  external: [
+    'react',
+    'react-dom',
+    '@collegebacker/shared/utils',
+    '@collegebacker/shared/hooks',
+    'gsap/dist/Draggable',
+    'gsap',
+    'react-calendar',
+    'react-avatar-editor'
+  ]
 })
 
 const commonPlugins = [
-  peerDepsExternal(),
+  nodeResolve(),
+  peerDepsExternal({
+    includeDependencies: false
+  }),
+  commonjs(),
   postcss({
     plugins: [autoprefixer()],
     extract: 'ui.css',
@@ -83,7 +97,6 @@ const commonPlugins = [
     use: ['sass']
   }),
   json(),
-  resolve(),
   esbuild(),
   terser({ compress: { drop_console: true } }),
   filesize()
