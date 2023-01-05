@@ -61,7 +61,7 @@
     "react-avatar-editor": "^13.0.0",
     "react-calendar": "^4.0.0",
     "gsap": "^3.10.3",
-    "@collegebacker/shared": "git+https://github.com/collegebacker/shared.git"
+    "@collegebacker/shared": "git+https://github.com/collegebacker/shared.git#3142a3f1f81fdc0f1d0ba8b5bee03e2eb91c4ece"
   },
   "peerDependencies": {
     "react": "^18.2.0",
