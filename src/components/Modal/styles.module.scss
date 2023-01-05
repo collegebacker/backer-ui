@@ -21,6 +21,7 @@
 
   --max-width: initial;
   --side-padding: initial;
+  --top-padding: initial;
   --bottom-padding: initial;
 
   &_show {
@@ -76,9 +77,9 @@
   transform: translate(-50%, -50%) scale(0.95);
 
   width: calc(100% - 40px);
-  padding-top: 90px;
 
   max-width: var(--max-width, 660px);
+  padding-top: var(--top-padding, var(--dafault-padding));
   padding-left: var(--side-padding, var(--dafault-padding));
   padding-right: var(--side-padding, var(--dafault-padding));
   padding-bottom: var(--bottom-padding, var(--dafault-padding));
@@ -94,6 +95,7 @@
 
   @media screen and (max-width: $grid-mobile-breakpoint) {
     --dafault-padding: 20px;
+    --top-padding: 80px;
   }
 }
 
@@ -110,7 +112,7 @@
     padding-left: var(--side-padding, var(--dafault-padding));
     padding-right: var(--side-padding, var(--dafault-padding));
     padding-bottom: var(--bottom-padding, var(--dafault-padding));
-    padding-top: 80px;
+    padding-top: var(--top-padding, var(--dafault-padding));
 
     height: 100%;
     max-height: none;
