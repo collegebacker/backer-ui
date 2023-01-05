@@ -62,6 +62,7 @@
 
 .modal {
   --dafault-padding: 90px;
+  --dafault-top-padding: 90px
 
   position: absolute;
   z-index: 2;
@@ -79,10 +80,10 @@
   width: calc(100% - 40px);
 
   max-width: var(--max-width, 660px);
-  padding-top: var(--top-padding, var(--dafault-padding));
   padding-left: var(--side-padding, var(--dafault-padding));
   padding-right: var(--side-padding, var(--dafault-padding));
   padding-bottom: var(--bottom-padding, var(--dafault-padding));
+  padding-top: var(--top-padding, var(--dafault-top-padding));
 
   max-height: calc(100% - 40px);
   border-radius: var(--radius-l);
@@ -95,7 +96,7 @@
 
   @media screen and (max-width: $grid-mobile-breakpoint) {
     --dafault-padding: 20px;
-    --top-padding: 80px;
+    --dafault-top-padding: 80px;
   }
 }
 
@@ -112,7 +113,7 @@
     padding-left: var(--side-padding, var(--dafault-padding));
     padding-right: var(--side-padding, var(--dafault-padding));
     padding-bottom: var(--bottom-padding, var(--dafault-padding));
-    padding-top: var(--top-padding, var(--dafault-padding));
+    padding-top: var(--top-padding, var(--dafault-top-padding));
 
     height: 100%;
     max-height: none;
