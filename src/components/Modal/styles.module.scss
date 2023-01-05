@@ -112,11 +112,6 @@
     max-width: none;
     width: 100%;
 
-    padding-left: var(--padding-side, var(--dafault-padding-side));
-    padding-right: var(--padding-side, var(--dafault-padding-side));
-    padding-bottom: var(--padding-bottom, var(--dafault-padding-bottom));
-    padding-top: var(--padding-top, var(--dafault-padding-top));
-
     height: 100%;
     max-height: none;
     border-radius: 0;
@@ -152,7 +147,6 @@
     transform: none;
     border-radius: var(--radius-l) var(--radius-l) 0 0;
     max-height: 100%;
-    padding-top: 70px;
     bottom: 0;
     transform: translateY(100%);
   }
