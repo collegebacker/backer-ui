@@ -33,6 +33,7 @@ $focus-line-margin: -4px;
 
 @mixin navigationButton {
   position: relative;
+  z-index: 1;
   cursor: pointer;
 
   width: 40px;

@@ -12,7 +12,7 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.18.5",
-    "@collegebacker/shared": "git+https://github.com/collegebacker/shared.git#8f5945ef26dad25c76516b432e85737420517b9d",
+    "@collegebacker/shared": "git+https://github.com/collegebacker/shared.git#a52353e4e9efacd51fdbadc19af36e3a4858fcd9",
     "@rollup/plugin-commonjs": "^22.0.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.3.0",
