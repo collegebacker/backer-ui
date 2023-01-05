@@ -84,6 +84,7 @@ Popup.args = {
   dataAttrs: {},
   className: '',
   contentClassName: '',
+  style: {},
   children: (
     <>
       <p>
@@ -114,12 +115,15 @@ Popup.args = {
 
 export const BottomSheet = Template.bind({})
 BottomSheet.args = {
-  title: 'Modal Title',
-  smallTitle: true,
-  isBottomSheet: true,
   isOpen: false,
-  closeOutside: true,
-  hideHeader: false,
+  closeOnClickOutside: true,
+  showCloseButton: true,
+  showBackButton: true,
+  isBottomSheet: true,
+  dataAttrs: {},
+  className: '',
+  contentClassName: '',
+  style: {},
   children: (
     <>
       <p>
@@ -150,13 +154,19 @@ BottomSheet.args = {
 
 export const Buttons = Template.bind({})
 Buttons.args = {
-  title: 'Funds',
-  smallTitle: true,
-  isBottomSheet: true,
   isOpen: false,
-  closeOutside: true,
-  customWidth: 420,
-  hideHeader: false,
+  closeOnClickOutside: true,
+  showCloseButton: true,
+  showBackButton: true,
+  isBottomSheet: true,
+  dataAttrs: {},
+  className: '',
+  contentClassName: '',
+  style: {
+    '--max-width': '500px',
+    '--side-paddings': '30px',
+    '--bottom-padding': '30px'
+  } as React.CSSProperties,
   children: (
     <>
       <p className='typo-app-body-main'>
@@ -301,13 +311,19 @@ const FocusTrapTemplate: ComponentStory<typeof Modal> = args => {
 
 export const FocusTrap = FocusTrapTemplate.bind({})
 FocusTrap.args = {
-  title: 'Funds',
-  smallTitle: true,
-  isBottomSheet: true,
   isOpen: false,
-  closeOutside: true,
-  customWidth: 420,
-  hideHeader: false,
+  closeOnClickOutside: true,
+  showCloseButton: true,
+  showBackButton: true,
+  isBottomSheet: true,
+  dataAttrs: {},
+  className: '',
+  contentClassName: '',
+  style: {
+    '--max-width': '500px',
+    '--side-paddings': '30px',
+    '--bottom-padding': '30px'
+  } as React.CSSProperties,
   children: (
     <>
       <p className='typo-app-body-main'>
@@ -411,14 +427,13 @@ const PlaygroundTemplate: ComponentStory<typeof Modal> = args => {
 
 export const Playground = PlaygroundTemplate.bind({})
 Playground.args = {
-  title: 'Funds',
-  disableHeaderMarginDesktop: false,
-  disableHeaderMarginMobile: false,
-  smallTitle: true,
-  isBottomSheet: true,
-  showBackButton: true,
   isOpen: false,
-  closeOutside: false,
-  minHeight: '300px',
-  hideHeader: false
+  closeOnClickOutside: true,
+  showCloseButton: true,
+  showBackButton: true,
+  isBottomSheet: true,
+  dataAttrs: {},
+  className: '',
+  contentClassName: '',
+  style: {} as React.CSSProperties
 }

@@ -29,7 +29,6 @@
 
   &_hide {
     animation: modalWrapHideAnimation 0.3s ease forwards;
-    // animation-delay: 0.2s;
   }
 
   @media screen and (max-width: $grid-mobile-breakpoint) {
@@ -66,6 +65,7 @@
   position: absolute;
   z-index: 2;
   backface-visibility: hidden;
+  overflow-x: hidden;
   overflow-y: auto;
 
   display: flex;
@@ -87,8 +87,6 @@
   border-radius: var(--radius-l);
   opacity: 0;
   background-color: var(--color-main-0);
-
-  transition: opacity 0.3s ease, transform 0.3s ease;
 
   &::-webkit-scrollbar {
     width: 0;
@@ -121,27 +119,27 @@
   }
 
   &_show {
-    animation: modalAnimationDesktop 0.3s ease forwards;
-    animation-delay: 0.2s;
+    animation: modalAnimationDesktopPopup 0.3s ease forwards;
+    animation-delay: 0.1s;
 
     @media screen and (max-width: $grid-mobile-breakpoint) {
-      animation: modalAnimationMobile 0.3s ease forwards;
+      animation: modalAnimationMobilePopup 0.3s ease forwards;
     }
   }
 
   &_hide {
-    animation: modalAnimationDesktopHide 0.2s ease forwards;
+    animation: modalAnimationDesktopPopupHide 0.2s ease forwards;
     animation-delay: 0;
 
     @media screen and (max-width: $grid-mobile-breakpoint) {
-      animation: modalAnimationMobileHide 0.2s ease forwards;
+      animation: modalAnimationMobilePopupHide 0.2s ease forwards;
     }
   }
 }
 
 .bottomsheet {
   @media screen and (max-width: $grid-mobile-breakpoint) {
-    bottom: 0%;
+    opacity: 1;
     top: auto;
     left: 0;
     width: 100%;
@@ -150,16 +148,36 @@
     border-radius: var(--radius-l) var(--radius-l) 0 0;
     max-height: 100%;
     padding-top: 70px;
+    bottom: 0;
+    transform: translateY(100%);
   }
 
   &_stick {
     border-radius: 0;
   }
+
+  &_show {
+    animation: modalAnimationDesktopPopup 0.3s ease forwards;
+    animation-delay: 0.2s;
+
+    @media screen and (max-width: $grid-mobile-breakpoint) {
+      animation: modalAnimationBottomsheet 0.3s ease forwards;
+    }
+  }
+
+  &_hide {
+    animation: modalAnimationDesktopPopupHide 0.3s ease forwards;
+    animation-delay: 0;
+
+    @media screen and (max-width: $grid-mobile-breakpoint) {
+      animation: modalAnimationBottomsheetHide 0.3s ease forwards;
+    }
+  }
 }
 
-// ANIMATIONS
+// ANIMATIONS POPUP
 
-@keyframes modalAnimationDesktop {
+@keyframes modalAnimationDesktopPopup {
   0% {
     transform: translate(-50%, -50%) scale(0.95);
     opacity: 0;
@@ -170,18 +188,7 @@
   }
 }
 
-@keyframes modalAnimationMobile {
-  0% {
-    transform: translate(0, 0) scale(1);
-    opacity: 0;
-  }
-  100% {
-    transform: translate(0, 0) scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes modalAnimationDesktopHide {
+@keyframes modalAnimationDesktopPopupHide {
   0% {
     transform: translate(-50%, -50%) scale(1);
     opacity: 1;
@@ -192,7 +199,18 @@
   }
 }
 
-@keyframes modalAnimationMobileHide {
+@keyframes modalAnimationMobilePopup {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes modalAnimationMobilePopupHide {
   0% {
     transform: translate(0, 0) scale(1);
     opacity: 1;
@@ -200,6 +218,26 @@
   100% {
     transform: translate(0, 0) scale(1);
     opacity: 0;
+  }
+}
+
+// ANIMATIONS BOTTOMSHEET
+
+@keyframes modalAnimationBottomsheet {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes modalAnimationBottomsheetHide {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(100%);
   }
 }
 
@@ -275,5 +313,32 @@
   }
   100% {
     transform: translate(-50%, -50%) scale(0.4);
+  }
+}
+
+// BUTTONS
+
+$btns-offset: 30px;
+$btns-offset-mobile: 20px;
+
+.backButton {
+  position: absolute !important;
+  top: $btns-offset;
+  left: $btns-offset;
+
+  @media screen and (max-width: $grid-mobile-breakpoint) {
+    top: $btns-offset-mobile;
+    left: $btns-offset-mobile;
+  }
+}
+
+.closeButton {
+  position: absolute !important;
+  top: $btns-offset;
+  right: $btns-offset;
+
+  @media screen and (max-width: $grid-mobile-breakpoint) {
+    top: $btns-offset-mobile;
+    right: $btns-offset-mobile;
   }
 }

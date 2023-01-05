@@ -9,7 +9,11 @@ export interface Props {
 
 const BackButton: React.FC<Props> = props => {
   return (
-    <button className={styles.closeButton} onClick={props.onClick}>
+    <button
+      className={`${styles.closeButton} ${props.className}`}
+      onClick={props.onClick}
+      style={props.style}
+    >
       <div className={styles.closeButton__background} />
     </button>
   )

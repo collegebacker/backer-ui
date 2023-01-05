@@ -2,13 +2,16 @@ import React from 'react'
 
 import { useClickOutside, useDidMountEffect } from '@collegebacker/shared/hooks'
 
-import commonStyles from './common.module.scss'
-import buttonsStyles from './buttons.module.scss'
+import { BackButton } from '..'
+import { CloseButton } from '..'
 
-interface Props {
+import styles from './styles.module.scss'
+
+export interface Props {
   isOpen?: boolean
   children: React.ReactNode
   className?: string
+  style?: React.CSSProperties
   contentClassName?: string
   closeOnClickOutside?: boolean
   showBackButton?: boolean
@@ -95,15 +98,21 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
     if (isOpen) {
       console.log('isOpen', isOpen)
       // add class to modalWrapRef
-      modalWrapRef.current?.classList.add(commonStyles.modalWrap_show)
-      modalRef.current?.classList.add(commonStyles.popup_show)
-      gradientsRef.current?.classList.add(commonStyles.gradients_show)
+      modalWrapRef.current?.classList.add(styles.modalWrap_show)
+      gradientsRef.current?.classList.add(styles.gradients_show)
+
+      !props.isBottomSheet
+        ? modalRef.current?.classList.add(styles.popup_show)
+        : modalRef.current?.classList.add(styles.bottomsheet_show)
     } else {
       console.log('isOpen', isOpen)
       // remove class from modalWrapRef
-      modalWrapRef.current?.classList.add(commonStyles.modalWrap_hide)
-      modalRef.current?.classList.add(commonStyles.popup_hide)
-      gradientsRef.current?.classList.add(commonStyles.gradients_hide)
+      modalWrapRef.current?.classList.add(styles.modalWrap_hide)
+      gradientsRef.current?.classList.add(styles.gradients_hide)
+
+      !props.isBottomSheet
+        ? modalRef.current?.classList.add(styles.popup_hide)
+        : modalRef.current?.classList.add(styles.bottomsheet_hide)
 
       const timer = setTimeout(() => {
         setIsMount(false)
@@ -122,9 +131,9 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
           if (
             window.innerHeight > (entry.target as HTMLDivElement).offsetHeight
           ) {
-            modalRef.current?.classList.remove(commonStyles.bottomsheet_stick)
+            modalRef.current?.classList.remove(styles.bottomsheet_stick)
           } else {
-            modalRef.current?.classList.add(commonStyles.bottomsheet_stick)
+            modalRef.current?.classList.add(styles.bottomsheet_stick)
           }
         })
       })
@@ -151,7 +160,7 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
         aria-modal
         aria-hidden={false}
         ref={modalWrapRef}
-        className={`${commonStyles.modalWrap}`}
+        className={`${styles.modalWrap}`}
         {...props.dataAttrs}
         // onAnimationStart={() => {
         //   console.log('animation start')
@@ -159,42 +168,39 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
       >
         <section
           ref={modalRef}
-          className={`${commonStyles.modal} ${
-            !props.isBottomSheet ? commonStyles.popup : commonStyles.bottomsheet
+          className={`${styles.modal} ${
+            !props.isBottomSheet ? styles.popup : styles.bottomsheet
           } ${props.className}`}
+          style={props.style}
         >
           {props.showBackButton && (
-            <button
-              className={buttonsStyles.backButton}
+            <BackButton
+              className={styles.backButton}
               onClick={props.onBackClick}
-            >
-              <div className={buttonsStyles.backButton__background} />
-            </button>
+            />
           )}
-          <button
-            className={buttonsStyles.closeButton}
+          <CloseButton
+            className={styles.closeButton}
             onClick={handleCloseClick}
-          >
-            <div className={buttonsStyles.closeButton__background} />
-          </button>
+          />
 
           <div
             tabIndex={0}
-            className={`${commonStyles.contentWrapper} ${props.contentClassName}`}
+            className={`${styles.contentWrapper} ${props.contentClassName}`}
           >
             {props.children}
           </div>
         </section>
 
         <div
-          className={commonStyles.gradients}
+          className={styles.gradients}
           ref={gradientsRef}
           // onAnimationEnd={() => {
           //   console.log('animation end')
           // }}
         >
-          <div className={commonStyles.gradient1} />
-          <div className={commonStyles.gradient2} />
+          <div className={styles.gradient1} />
+          <div className={styles.gradient2} />
         </div>
       </aside>
     )
@@ -203,6 +209,7 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
 
 Modal.defaultProps = {
   className: '',
+  style: {},
   contentClassName: '',
   showCloseButton: true,
   showBackButton: false,

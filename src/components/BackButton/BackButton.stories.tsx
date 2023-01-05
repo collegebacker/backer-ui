@@ -15,4 +15,7 @@ const Template: ComponentStory<typeof BackButton> = args => (
 )
 
 export const Default = Template.bind({})
-Default.args = {}
+Default.args = {
+  className: '',
+  style: {}
+}
