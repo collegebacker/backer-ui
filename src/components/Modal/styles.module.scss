@@ -20,7 +20,7 @@
   opacity: 0;
 
   --max-width: initial;
-  --side-paddings: initial;
+  --side-padding: initial;
   --bottom-padding: initial;
 
   &_show {
@@ -79,8 +79,8 @@
   padding-top: 90px;
 
   max-width: var(--max-width, 660px);
-  padding-left: var(--side-paddings, var(--dafault-padding));
-  padding-right: var(--side-paddings, var(--dafault-padding));
+  padding-left: var(--side-padding, var(--dafault-padding));
+  padding-right: var(--side-padding, var(--dafault-padding));
   padding-bottom: var(--bottom-padding, var(--dafault-padding));
 
   max-height: calc(100% - 40px);
@@ -107,8 +107,8 @@
     max-width: none;
     width: 100%;
 
-    padding-left: var(--side-paddings, var(--dafault-padding));
-    padding-right: var(--side-paddings, var(--dafault-padding));
+    padding-left: var(--side-padding, var(--dafault-padding));
+    padding-right: var(--side-padding, var(--dafault-padding));
     padding-bottom: var(--bottom-padding, var(--dafault-padding));
     padding-top: 80px;
 

@@ -164,7 +164,7 @@ Buttons.args = {
   contentClassName: '',
   style: {
     '--max-width': '500px',
-    '--side-paddings': '30px',
+    '--side-padding': '30px',
     '--bottom-padding': '30px'
   } as React.CSSProperties,
   children: (
@@ -321,7 +321,7 @@ FocusTrap.args = {
   contentClassName: '',
   style: {
     '--max-width': '500px',
-    '--side-paddings': '30px',
+    '--side-padding': '30px',
     '--bottom-padding': '30px'
   } as React.CSSProperties,
   children: (

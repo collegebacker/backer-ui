@@ -15,12 +15,12 @@ $padding-desktop: 40px;
 }
 
 .modal {
-  --side-paddings: 40px;
+  --side-padding: 40px;
   --bottom-padding: 40px;
   --max-width: 450px;
 
   @media screen and (max-width: $grid-mobile-breakpoint) {
-    --side-paddings: unset;
+    --side-padding: unset;
     --bottom-padding: unset;
   }
 }
