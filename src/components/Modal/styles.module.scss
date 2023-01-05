@@ -61,8 +61,9 @@
 // MODAL //
 
 .modal {
-  --dafault-padding: 90px;
-  --dafault-top-padding: 90px
+  --dafault-side-padding: 90px;
+  --dafault-top-padding: 90px;
+  --dafault-bottom-padding: 90px;
 
   position: absolute;
   z-index: 2;
@@ -80,9 +81,9 @@
   width: calc(100% - 40px);
 
   max-width: var(--max-width, 660px);
-  padding-left: var(--side-padding, var(--dafault-padding));
-  padding-right: var(--side-padding, var(--dafault-padding));
-  padding-bottom: var(--bottom-padding, var(--dafault-padding));
+  padding-left: var(--side-padding, var(--dafault-side-padding));
+  padding-right: var(--side-padding, var(--dafault-side-padding));
+  padding-bottom: var(--bottom-padding, var(--dafault-bottom-padding));
   padding-top: var(--top-padding, var(--dafault-top-padding));
 
   max-height: calc(100% - 40px);
@@ -95,7 +96,8 @@
   }
 
   @media screen and (max-width: $grid-mobile-breakpoint) {
-    --dafault-padding: 20px;
+    --dafault-side-padding: 20px;
+    --dafault-bottom-padding: 40px;
     --dafault-top-padding: 80px;
   }
 }
@@ -110,9 +112,9 @@
     max-width: none;
     width: 100%;
 
-    padding-left: var(--side-padding, var(--dafault-padding));
-    padding-right: var(--side-padding, var(--dafault-padding));
-    padding-bottom: var(--bottom-padding, var(--dafault-padding));
+    padding-left: var(--side-padding, var(--dafault-side-padding));
+    padding-right: var(--side-padding, var(--dafault-side-padding));
+    padding-bottom: var(--bottom-padding, var(--dafault-bottom-padding));
     padding-top: var(--top-padding, var(--dafault-top-padding));
 
     height: 100%;
