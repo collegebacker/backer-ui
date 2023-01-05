@@ -12,6 +12,7 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.18.5",
+    "@collegebacker/shared": "git+https://github.com/collegebacker/shared.git#a52353e4e9efacd51fdbadc19af36e3a4858fcd9",
     "@rollup/plugin-commonjs": "^22.0.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.3.0",
@@ -60,12 +61,12 @@
     "focus-trap-react": "^9.0.2",
     "react-avatar-editor": "^13.0.0",
     "react-calendar": "^4.0.0",
-    "gsap": "^3.10.3",
-    "@collegebacker/shared": "git+https://github.com/collegebacker/shared.git#a52353e4e9efacd51fdbadc19af36e3a4858fcd9"
+    "gsap": "^3.10.3"
   },
   "peerDependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "@collegebacker/shared": "git+https://github.com/collegebacker/shared.git#a52353e4e9efacd51fdbadc19af36e3a4858fcd9"
   },
   "prettier": "@collegebacker/shared/.prettierrc.json"
 }
