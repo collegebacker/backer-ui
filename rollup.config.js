@@ -2,10 +2,10 @@
 // import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 // import commonjs from '@rollup/plugin-commonjs'
 // import typescript from '@rollup/plugin-typescript'
-import json from '@rollup/plugin-json'
+// import json from '@rollup/plugin-json'
 // import dts from 'rollup-plugin-dts'
-import postcss from 'rollup-plugin-postcss'
-import autoprefixer from 'autoprefixer'
+// import postcss from 'rollup-plugin-postcss'
+// import autoprefixer from 'autoprefixer'
 // import { terser } from 'rollup-plugin-terser'
 // import filesize from 'rollup-plugin-filesize'
 
@@ -56,6 +56,9 @@ import autoprefixer from 'autoprefixer'
 //   }
 // ]
 
+import json from '@rollup/plugin-json'
+import postcss from 'rollup-plugin-postcss'
+import autoprefixer from 'autoprefixer'
 import dts from 'rollup-plugin-dts'
 import esbuild from 'rollup-plugin-esbuild'
 
@@ -72,7 +75,6 @@ const bundle = (config, folder) => ({
 
 const commonPlugins = [
   peerDepsExternal(),
-  resolve(),
   postcss({
     plugins: [autoprefixer()],
     extract: 'ui.css',
@@ -81,8 +83,8 @@ const commonPlugins = [
     use: ['sass']
   }),
   json(),
+  resolve(),
   esbuild(),
-
   terser({ compress: { drop_console: true } }),
   filesize()
 ]

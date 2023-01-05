@@ -2,8 +2,8 @@ import React from 'react'
 
 import { useClickOutside, useDidMountEffect } from '@collegebacker/shared/hooks'
 
-import { BackButton } from '..'
-import { CloseButton } from '..'
+import BackButton from '../BackButton'
+import CloseButton from '../CloseButton'
 
 import styles from './styles.module.scss'
 

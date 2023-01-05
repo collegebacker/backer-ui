@@ -35,9 +35,6 @@
     "chromatic": "^6.5.6",
     "css-loader": "^6.7.1",
     "esbuild": "^0.16.14",
-    "focus-trap-react": "^9.0.2",
-    "gsap": "^3.10.3",
-    "gsap-bonus": "file:packages/gsap-bonus.tgz",
     "postcss": "^8.4.19",
     "postcss-discard-duplicates": "^5.1.0",
     "prettier": "2.7.1",
@@ -60,8 +57,11 @@
     "typescript": "^4.7.3"
   },
   "dependencies": {
+    "focus-trap-react": "^9.0.2",
     "react-avatar-editor": "^13.0.0",
-    "react-calendar": "^4.0.0"
+    "react-calendar": "^4.0.0",
+    "gsap": "^3.10.3",
+    "gsap-bonus": "file:packages/gsap-bonus.tgz"
   },
   "peerDependencies": {
     "react": "^18.2.0",
