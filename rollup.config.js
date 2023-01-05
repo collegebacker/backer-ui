@@ -74,6 +74,7 @@ const bundle = (config, folder) => ({
   external: [
     'react',
     'react-dom',
+    '@collegebacker/shared',
     '@collegebacker/shared/utils',
     '@collegebacker/shared/hooks',
     'gsap/dist/Draggable',
