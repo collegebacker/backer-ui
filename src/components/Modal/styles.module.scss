@@ -20,9 +20,9 @@
   opacity: 0;
 
   --max-width: initial;
-  --side-padding: initial;
-  --top-padding: initial;
-  --bottom-padding: initial;
+  --padding-side: initial;
+  --padding-top: initial;
+  --padding-bottom: initial;
 
   &_show {
     animation: modalWrapShowAnimation 0.2s ease forwards;
@@ -61,9 +61,9 @@
 // MODAL //
 
 .modal {
-  --dafault-side-padding: 90px;
-  --dafault-top-padding: 90px;
-  --dafault-bottom-padding: 90px;
+  --dafault-padding-side: 90px;
+  --dafault-padding-top: 90px;
+  --dafault-padding-bottom: 90px;
 
   position: absolute;
   z-index: 2;
@@ -81,10 +81,10 @@
   width: calc(100% - 40px);
 
   max-width: var(--max-width, 660px);
-  padding-left: var(--side-padding, var(--dafault-side-padding));
-  padding-right: var(--side-padding, var(--dafault-side-padding));
-  padding-bottom: var(--bottom-padding, var(--dafault-bottom-padding));
-  padding-top: var(--top-padding, var(--dafault-top-padding));
+  padding-left: var(--padding-side, var(--dafault-padding-side));
+  padding-right: var(--padding-side, var(--dafault-padding-side));
+  padding-bottom: var(--padding-bottom, var(--dafault-padding-bottom));
+  padding-top: var(--padding-top, var(--dafault-padding-top));
 
   max-height: calc(100% - 40px);
   border-radius: var(--radius-l);
@@ -96,9 +96,9 @@
   }
 
   @media screen and (max-width: $grid-mobile-breakpoint) {
-    --dafault-side-padding: 20px;
-    --dafault-bottom-padding: 40px;
-    --dafault-top-padding: 80px;
+    --dafault-padding-side: 20px;
+    --dafault-padding-bottom: 40px;
+    --dafault-padding-top: 80px;
   }
 }
 
@@ -112,10 +112,10 @@
     max-width: none;
     width: 100%;
 
-    padding-left: var(--side-padding, var(--dafault-side-padding));
-    padding-right: var(--side-padding, var(--dafault-side-padding));
-    padding-bottom: var(--bottom-padding, var(--dafault-bottom-padding));
-    padding-top: var(--top-padding, var(--dafault-top-padding));
+    padding-left: var(--padding-side, var(--dafault-padding-side));
+    padding-right: var(--padding-side, var(--dafault-padding-side));
+    padding-bottom: var(--padding-bottom, var(--dafault-padding-bottom));
+    padding-top: var(--padding-top, var(--dafault-padding-top));
 
     height: 100%;
     max-height: none;

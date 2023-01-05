@@ -82,7 +82,7 @@ Popup.args = {
   showBackButton: false,
   isBottomSheet: false,
   dataAttrs: {},
-  className: '',
+  className: 'testModalProps',
   contentClassName: '',
   style: {},
   children: (
@@ -164,8 +164,8 @@ Buttons.args = {
   contentClassName: '',
   style: {
     '--max-width': '500px',
-    '--side-padding': '30px',
-    '--bottom-padding': '30px'
+    '--padding-side': '30px',
+    '--padding-bottom': '30px'
   } as React.CSSProperties,
   children: (
     <>
@@ -321,8 +321,8 @@ FocusTrap.args = {
   contentClassName: '',
   style: {
     '--max-width': '500px',
-    '--side-padding': '30px',
-    '--bottom-padding': '30px'
+    '--padding-side': '30px',
+    '--padding-bottom': '30px'
   } as React.CSSProperties,
   children: (
     <>
