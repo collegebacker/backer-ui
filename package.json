@@ -54,14 +54,14 @@
     "sass": "^1.52.3",
     "sass-loader": "^13.0.0",
     "style-loader": "^3.3.1",
-    "typescript": "^4.7.3"
+    "typescript": "^4.7.3",
+    "gsap-bonus": "file:packages/gsap-bonus.tgz"
   },
   "dependencies": {
     "focus-trap-react": "^9.0.2",
     "react-avatar-editor": "^13.0.0",
     "react-calendar": "^4.0.0",
-    "gsap": "^3.10.3",
-    "gsap-bonus": "file:packages/gsap-bonus.tgz"
+    "gsap": "^3.10.3"
   },
   "peerDependencies": {
     "react": "^18.2.0",
