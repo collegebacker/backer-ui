@@ -19,11 +19,6 @@
   pointer-events: none;
   opacity: 0;
 
-  --max-width: initial;
-  --padding-side: initial;
-  --padding-top: initial;
-  --padding-bottom: initial;
-
   &_show {
     animation: modalWrapShowAnimation 0.2s ease forwards;
   }
@@ -99,6 +94,11 @@
     --dafault-padding-side: 20px;
     --dafault-padding-bottom: 40px;
     --dafault-padding-top: 80px;
+
+    padding-left: var(--padding-side-mobile, var(--dafault-padding-side));
+    padding-right: var(--padding-side-mobile, var(--dafault-padding-side));
+    padding-bottom: var(--padding-bottom-mobile, var(--dafault-padding-bottom));
+    padding-top: var(--padding-top-mobile, var(--dafault-padding-top));
   }
 }
 
