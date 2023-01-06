@@ -52,7 +52,7 @@ export default {
     docs: {
       description: {
         component:
-          'To trigger the component, you need to creare a `ref` to the component `const modalRef = React.useRef<any>(null)`. Then you can use the `open` method to open the modal like `() => modalRef.current.open(callback)`. To close the modal, you can use the `close` method `() => modalRef.current.close(callback)`'
+          '## How to trigger. \n - `Ref.current.open() or ref.current.close()`. To trigger the component, you need to creare a `ref` to the component `const modalRef = React.useRef<any>(null)`. Then you can use the `open` method to open the modal like `() => modalRef.current.open(callback)`. To close the modal, you can use the `close` method `() => modalRef.current.close(callback)`. \n - `isOPen` you can also control a modal window with a state.'
       }
     }
   }
@@ -357,11 +357,11 @@ FocusTrap.args = {
 const PlaygroundTemplate: ComponentStory<typeof Modal> = args => {
   const modalRef = React.useRef<any>(null)
 
-  React.useEffect(() => {
-    if (modalRef.current) {
-      modalRef.current.open()
-    }
-  }, [modalRef.current])
+  // React.useEffect(() => {
+  //   if (modalRef.current) {
+  //     modalRef.current.open()
+  //   }
+  // }, [modalRef.current])
 
   // console.log("rerender");
 
