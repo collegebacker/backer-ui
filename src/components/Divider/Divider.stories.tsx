@@ -1,18 +1,18 @@
-import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import React from 'react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { Divider } from "..";
+import { Divider } from '..'
 
-localStorage.clear();
+localStorage.clear()
 
 export default {
-  title: "Misc/Divider",
-  component: Divider,
-} as ComponentMeta<typeof Divider>;
+  title: 'Misc/Divider',
+  component: Divider
+} as ComponentMeta<typeof Divider>
 
-const Template: ComponentStory<typeof Divider> = (args) => (
-  <Divider {...args} />
-);
+const Template: ComponentStory<typeof Divider> = args => {
+  return <Divider {...args} />
+}
 
-export const Default = Template.bind({});
-Default.args = {};
+export const Default = Template.bind({})
+Default.args = {}
