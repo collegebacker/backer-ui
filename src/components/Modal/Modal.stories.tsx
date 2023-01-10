@@ -52,13 +52,13 @@ export default {
     docs: {
       description: {
         component:
-          '## How to trigger. \n - `Ref.current.open() or ref.current.close()`. To trigger the component, you need to creare a `ref` to the component `const modalRef = React.useRef<any>(null)`. Then you can use the `open` method to open the modal like `() => modalRef.current.open(callback)`. To close the modal, you can use the `close` method `() => modalRef.current.close(callback)`. \n - `isOPen` you can also control a modal window with a state.'
+          '## How to trigger. \n - `Ref.current.open() or ref.current.close()`. To trigger the component, you need to creare a `ref` to the component `const modalRef = React.useRef<any>(null)`. Then you can use the `open` method to open the modal like `() => modalRef.current.open(callback)`. To close the modal, you can use the `close` method `() => modalRef.current.close(callback)`. \n - `isOPen` you can also control a modal window with a state. \n\n\n ## Custom CSS props \n - `--max-width` — default `660px` \n - `--padding-side` — default `90px` \n - `--padding-bottom` — default `90px` \n - `--padding-top` — default `90px` \n - `--padding-side-mobile` — default `20px` \n - `--padding-bottom-mobile` — default `40px` \n - `--padding-top-mobile` — default `80px`'
       }
     }
   }
 } as ComponentMeta<typeof Modal>
 
-const Template: ComponentStory<typeof Modal> = args => {
+const Template: ComponentStory<typeof Modal> = (args) => {
   const modalRef = React.useRef<any>(null)
 
   return (
@@ -194,7 +194,7 @@ Buttons.args = {
           },
           {
             label: 'Send a gift',
-            onClick: event => {
+            onClick: (event) => {
               console.log(event)
             },
             icon: 'gift'
@@ -205,7 +205,7 @@ Buttons.args = {
   )
 }
 
-const FocusTrapTemplate: ComponentStory<typeof Modal> = args => {
+const FocusTrapTemplate: ComponentStory<typeof Modal> = (args) => {
   const modalRef = React.useRef<any>(null)
 
   return (
@@ -343,7 +343,7 @@ FocusTrap.args = {
           },
           {
             label: 'Send a gift',
-            onClick: event => {
+            onClick: (event) => {
               console.log(event)
             },
             icon: 'gift'
@@ -354,7 +354,7 @@ FocusTrap.args = {
   )
 }
 
-const PlaygroundTemplate: ComponentStory<typeof Modal> = args => {
+const PlaygroundTemplate: ComponentStory<typeof Modal> = (args) => {
   const modalRef = React.useRef<any>(null)
 
   // React.useEffect(() => {
