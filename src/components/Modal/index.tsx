@@ -1,4 +1,5 @@
 import React from 'react'
+import { createPortal } from 'react-dom'
 
 import { useClickOutside, useDidMountEffect } from '@collegebacker/shared/hooks'
 
@@ -156,7 +157,7 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
   // RENDERING //
   ///////////////
 
-  return (
+  return createPortal(
     isMount && (
       <aside
         role='dialog'
@@ -208,7 +209,8 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
           <div className={styles.gradient2} />
         </div>
       </aside>
-    )
+    ),
+    document.body
   )
 })
 
