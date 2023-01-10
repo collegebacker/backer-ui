@@ -126,8 +126,8 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
 
   useDidMountEffect(() => {
     if (props.isBottomSheet) {
-      const myObserver = new ResizeObserver(entries => {
-        entries.forEach(entry => {
+      const myObserver = new ResizeObserver((entries) => {
+        entries.forEach((entry) => {
           if (
             window.innerHeight > (entry.target as HTMLDivElement).offsetHeight
           ) {
@@ -179,10 +179,12 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
               onClick={props.onBackClick}
             />
           )}
-          <CloseButton
-            className={styles.closeButton}
-            onClick={handleCloseClick}
-          />
+          {props.showCloseButton && (
+            <CloseButton
+              className={styles.closeButton}
+              onClick={handleCloseClick}
+            />
+          )}
 
           <div
             tabIndex={0}
