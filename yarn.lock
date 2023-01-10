@@ -1183,9 +1183,9 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@collegebacker/shared@git+https://github.com/collegebacker/shared.git#1.21.0":
-  version "1.21.0"
-  resolved "git+https://github.com/collegebacker/shared.git#fdee1044b037adb3472423b3caef463f311ae3b0"
+"@collegebacker/shared@git+https://github.com/collegebacker/shared.git#386ac3a875a77a0e77291178f8fd925144acf147":
+  version "1.22.1"
+  resolved "git+https://github.com/collegebacker/shared.git#386ac3a875a77a0e77291178f8fd925144acf147"
   dependencies:
     "@apollo/react-hooks" "^4.0.0"
     class-validator "^0.13.2"
@@ -1195,6 +1195,7 @@
     jwt-decode "^3.1.2"
     lodash "^4.17.21"
     moment "^2.29.4"
+    smooth-scroll "^16.1.3"
 
 "@colors/colors@1.5.0":
   version "1.5.0"
@@ -11286,6 +11287,11 @@ smart-buffer@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/smart-buffer/-/smart-buffer-4.2.0.tgz#6e1d71fa4f18c05f7d0ff216dd16a481d0e8d9ae"
   integrity sha512-94hK0Hh8rPqQl2xXc3HsaBoOXKV20MToPkcXvwbISWLEs+64sBq5kFgn2kJDHb1Pry9yrP0dxrCI9RRci7RXKg==
+
+smooth-scroll@^16.1.3:
+  version "16.1.3"
+  resolved "https://registry.yarnpkg.com/smooth-scroll/-/smooth-scroll-16.1.3.tgz#c5b68194b4186173f9f61065103ae4e26ce36885"
+  integrity sha512-ca9U+neJS/cbdScTBuUTCZvUWNF2EuMCk7oAx3ImdeRK5FPm+xRo9XsVHIkeEVkn7MBRx+ufVEhyveM4ZhaTGA==
 
 snapdragon-node@^2.0.1:
   version "2.1.1"
