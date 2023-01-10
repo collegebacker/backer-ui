@@ -1,21 +1,22 @@
-import React from "react";
-import styles from "./styles.module.scss";
+import React from 'react'
+import styles from './styles.module.scss'
 
-import Icon from "../Icon";
+import Icon from '../Icon'
 
 export interface Props {
-  className?: string;
-  textClassName?: string;
+  className?: string
+  textClassName?: string
+  style?: React.CSSProperties
   items: Array<{
-    label: string;
-    icon?: IconTypes;
-    onClick: (event: any) => void;
-  }>;
+    label: string
+    icon?: IconTypes
+    onClick: (event: any) => void
+  }>
 }
 
 const ModalButtons: React.FC<Props> = (props) => {
   return (
-    <div className={`${styles.wrap} ${props.className}`}>
+    <div className={`${styles.wrap} ${props.className}`} style={props.style}>
       {props.items.map((item, index) => {
         return (
           <button className={styles.button} key={index} onClick={item.onClick}>
@@ -28,15 +29,16 @@ const ModalButtons: React.FC<Props> = (props) => {
               </span>
             </div>
           </button>
-        );
+        )
       })}
     </div>
-  );
-};
+  )
+}
 
 ModalButtons.defaultProps = {
-  className: "",
-  textClassName: "",
-} as Partial<Props>;
+  className: '',
+  textClassName: '',
+  style: {}
+} as Partial<Props>
 
-export default ModalButtons;
+export default ModalButtons

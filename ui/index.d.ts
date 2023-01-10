@@ -249,6 +249,7 @@ declare const Modal: React.ForwardRefExoticComponent<Props$h & React.RefAttribut
 interface Props$g {
     className?: string;
     textClassName?: string;
+    style?: React.CSSProperties;
     items: Array<{
         label: string;
         icon?: IconTypes;
