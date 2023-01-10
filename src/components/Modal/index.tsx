@@ -59,7 +59,10 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
     if (isOpen) {
       console.log('close click')
       setIsOpen(false)
-      props.onCloseClick()
+
+      if (props.onCloseClick) {
+        props.onCloseClick()
+      }
     }
   }
 
