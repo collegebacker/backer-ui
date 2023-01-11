@@ -1,7 +1,7 @@
 import React from 'react'
 import { createPortal } from 'react-dom'
 
-import { useClickOutside, useDidMountEffect } from '@collegebacker/shared/hooks'
+import { useClickOutside, useDidMountEffect } from '../../hooks'
 
 import BackButton from '../BackButton'
 import CloseButton from '../CloseButton'

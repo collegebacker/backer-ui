@@ -4,8 +4,8 @@ import { Draggable } from 'gsap/dist/Draggable'
 import { InertiaPlugin } from 'gsap-bonus/InertiaPlugin'
 import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin'
 import { gsap } from 'gsap'
-import { waitForScrollEnd } from '@collegebacker/shared/utils'
-import { useDidMountEffect, usePrevious } from '@collegebacker/shared/hooks'
+import { waitForScrollEnd } from '../../utils'
+import { useDidMountEffect, usePrevious } from '../../hooks'
 
 import styles from './styles.module.scss'
 
@@ -72,7 +72,8 @@ const ChipsSlider: React.FC<Props> = (props) => {
   const [snapPoints, setSnapPoints] = React.useState([])
 
   const [isScrollSnap, setIsScrollSnap] = React.useState(false)
-  const [isArrowButtonDisabled, setIsArrowButtonDisabled] = React.useState(false)
+  const [isArrowButtonDisabled, setIsArrowButtonDisabled] =
+    React.useState(false)
 
   const [isSliderFocused, setIsSliderFocused] = React.useState(false)
   const [isSliderWrapFocused, setIsSliderWrapFocused] = React.useState(false)
@@ -81,9 +82,9 @@ const ChipsSlider: React.FC<Props> = (props) => {
   const animateItemActiveState = (item: HTMLElement) => {
     gsap.to(item, {
       scale: props.activeCardScale,
-      backgroundColor: getComputedStyle(document.documentElement).getPropertyValue(
-        '--color-accent-500'
-      ),
+      backgroundColor: getComputedStyle(
+        document.documentElement
+      ).getPropertyValue('--color-accent-500'),
       color: 'white',
       borderColor: getComputedStyle(document.documentElement).getPropertyValue(
         '--color-accent-500'
@@ -97,8 +98,12 @@ const ChipsSlider: React.FC<Props> = (props) => {
     gsap.to(item, {
       scale: 1,
       backgroundColor: 'transparent',
-      color: getComputedStyle(document.documentElement).getPropertyValue('--color-main-200'),
-      borderColor: getComputedStyle(document.documentElement).getPropertyValue('--color-main-200'),
+      color: getComputedStyle(document.documentElement).getPropertyValue(
+        '--color-main-200'
+      ),
+      borderColor: getComputedStyle(document.documentElement).getPropertyValue(
+        '--color-main-200'
+      ),
       duration: 0.4,
       ease: 'power3.Out'
     })
@@ -112,7 +117,8 @@ const ChipsSlider: React.FC<Props> = (props) => {
     const sliderViewWidth = sliderViewRef.current.offsetWidth
     const gridWidth = props.cardWidth + props.spaceBetween
 
-    const newSliderPosition = clickedItemPosition - sliderViewWidth / 2 + gridWidth / 2
+    const newSliderPosition =
+      clickedItemPosition - sliderViewWidth / 2 + gridWidth / 2
 
     // console.log("clickedItemPosition", newSliderPosition);
 
@@ -149,7 +155,8 @@ const ChipsSlider: React.FC<Props> = (props) => {
 
     // console.log("gradientLeft", gradientLeftBox);
     if (!props.alwaysShowOverlayGradients && !props.hideOverlayGradients) {
-      const gradientLeftBox = overlayGradientLeftRef.current.getBoundingClientRect()
+      const gradientLeftBox =
+        overlayGradientLeftRef.current.getBoundingClientRect()
 
       if (gradientLeftBox.x <= 0) {
         overlayGradientLeftRef.current.style.visibility =
@@ -199,7 +206,10 @@ const ChipsSlider: React.FC<Props> = (props) => {
     })
 
     const snapPoints = sliderItemWrapRefs.current.map((item) => {
-      return item.getBoundingClientRect().left - sliderViewRef.current.getBoundingClientRect().left
+      return (
+        item.getBoundingClientRect().left -
+        sliderViewRef.current.getBoundingClientRect().left
+      )
     })
 
     setSnapPoints(snapPoints)
@@ -231,7 +241,10 @@ const ChipsSlider: React.FC<Props> = (props) => {
           sliderViewRef.current.getBoundingClientRect().left +
           props.spaceBetween
 
-        if (itemXLeftEdge < triggerPointsState.right && itemXRightEdge > triggerPointsState.left) {
+        if (
+          itemXLeftEdge < triggerPointsState.right &&
+          itemXRightEdge > triggerPointsState.left
+        ) {
           // console.log("item", item);
           setActiveIndex(index)
         }
@@ -288,7 +301,10 @@ const ChipsSlider: React.FC<Props> = (props) => {
     sliderItemRefs.current.forEach((item, index) => {
       if (index !== activeIndex) {
         gsap.set(item, {
-          x: index > activeIndex ? props.spaceBetween / 2 : -props.spaceBetween / 2
+          x:
+            index > activeIndex
+              ? props.spaceBetween / 2
+              : -props.spaceBetween / 2
         })
       } else {
         gsap.set(item, {
@@ -503,7 +519,10 @@ const ChipsSlider: React.FC<Props> = (props) => {
                   }px`
                 : 0,
               paddingRight: sliderContainerRef.current
-                ? `${sliderContainerRef.current.offsetWidth / 2 - props.cardWidth / 2}px`
+                ? `${
+                    sliderContainerRef.current.offsetWidth / 2 -
+                    props.cardWidth / 2
+                  }px`
                 : 0
             }}
           >

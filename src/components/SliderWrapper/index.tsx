@@ -9,7 +9,7 @@ import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin'
 import ArrowButton from '../ArrowButton'
 import DotPagination from '../DotPagination'
 
-import { useDidMountEffect } from '@collegebacker/shared/hooks'
+import { useDidMountEffect } from '../../hooks'
 
 /////////////////////////////////
 //////// TYPES AND PROPS ////////
@@ -94,9 +94,12 @@ const SliderWrapper: React.FC<Props> = (props) => {
   }>({ left: 0, right: 0 })
   const [gridWidth, setGridWidth] = React.useState(0)
 
-  const [cardsToShow, setCardsToShow] = React.useState(props.breakpoints[0].cardsToShow)
+  const [cardsToShow, setCardsToShow] = React.useState(
+    props.breakpoints[0].cardsToShow
+  )
   const [paginationAmount, setPaginationAmount] = React.useState(0)
-  const [isArrowButtonDisabled, setIsArrowButtonDisabled] = React.useState(false)
+  const [isArrowButtonDisabled, setIsArrowButtonDisabled] =
+    React.useState(false)
 
   const [isSliderFocused, setIsSliderFocused] = React.useState(false)
   const [isSliderWrapFocused, setIsSliderWrapFocused] = React.useState(false)
@@ -140,7 +143,9 @@ const SliderWrapper: React.FC<Props> = (props) => {
     // console.log(breakpoints[currentBreakpoint].showHiddenCard);
     if (typeof breakpoints[currentBreakpoint].showHiddenCard === 'number') {
       return breakpoints[currentBreakpoint].showHiddenCard as number
-    } else if (typeof breakpoints[currentBreakpoint].showHiddenCard === 'boolean') {
+    } else if (
+      typeof breakpoints[currentBreakpoint].showHiddenCard === 'boolean'
+    ) {
       return breakpoints[currentBreakpoint].showHiddenCard ? 40 : 0
     }
   }
@@ -182,7 +187,10 @@ const SliderWrapper: React.FC<Props> = (props) => {
         gridWidth -
         activeItemBoundsRatio
 
-      if (itemXLeftEdge >= triggerPointsState.left && itemXRightEdge <= triggerPointsState.right) {
+      if (
+        itemXLeftEdge >= triggerPointsState.left &&
+        itemXRightEdge <= triggerPointsState.right
+      ) {
         setActiveIndex(index)
       }
     })
@@ -306,11 +314,14 @@ const SliderWrapper: React.FC<Props> = (props) => {
     // console.log(sliderRefChildren);
     if (sliderContainerRef.current && sliderRef.current) {
       // console.log(snapPoints);
-      const paginationAmount = sliderRefChildren.current.length - cardsToShow + 1
+      const paginationAmount =
+        sliderRefChildren.current.length - cardsToShow + 1
       setPaginationAmount(paginationAmount)
 
       const gridWidth =
-        (sliderContainerRef.current.offsetWidth - props.spaceBetween * cardsToShow) / cardsToShow +
+        (sliderContainerRef.current.offsetWidth -
+          props.spaceBetween * cardsToShow) /
+          cardsToShow +
         props.spaceBetween
 
       setGridWidth(gridWidth)
@@ -323,7 +334,11 @@ const SliderWrapper: React.FC<Props> = (props) => {
         // console.log(
         //   item.getBoundingClientRect().width + props.spaceBetween - 1
         // );
-        return Math.floor(item.getBoundingClientRect().width + props.spaceBetween) * index - 1
+        return (
+          Math.floor(item.getBoundingClientRect().width + props.spaceBetween) *
+            index -
+          1
+        )
       })
 
       const pagesToCut = paginationAmount - allSnapPoints.length
@@ -337,7 +352,8 @@ const SliderWrapper: React.FC<Props> = (props) => {
 
       const snapPointsPlusOffset = [
         ...cuttedSnapPoints,
-        cuttedSnapPoints[cuttedSnapPoints.length - 1] + (cuttedSnapPoints[0] - isShowHiddenCard())
+        cuttedSnapPoints[cuttedSnapPoints.length - 1] +
+          (cuttedSnapPoints[0] - isShowHiddenCard())
       ]
 
       // console.log(cuttedSnapPoints, allSnapPoints.length, paginationAmount);
@@ -370,8 +386,12 @@ const SliderWrapper: React.FC<Props> = (props) => {
       }
      
         .${styles.slider} {
-          scroll-padding-left: ${breakpoints[currentBreakpoint].sidePaddingOffset}px;
-          scroll-padding-right: ${breakpoints[currentBreakpoint].sidePaddingOffset}px;
+          scroll-padding-left: ${
+            breakpoints[currentBreakpoint].sidePaddingOffset
+          }px;
+          scroll-padding-right: ${
+            breakpoints[currentBreakpoint].sidePaddingOffset
+          }px;
           margin-left: -${breakpoints[currentBreakpoint].sidePaddingOffset}px;
           margin-right: -${breakpoints[currentBreakpoint].sidePaddingOffset}px;
         }

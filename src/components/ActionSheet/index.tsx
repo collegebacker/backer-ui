@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import { useDidMountEffect } from '@collegebacker/shared/hooks'
+import { useDidMountEffect } from '../../hooks'
 import gsap from 'gsap'
 import styles from './styles.module.scss'
 
@@ -96,7 +96,9 @@ const ActionSheet = React.forwardRef<any, Props>((props, ref) => {
         }}
       >
         <section ref={actionSheetRef} className={styles.actionSheet}>
-          {props.text !== '' ? <span className={styles.text}>{props.text}</span> : null}
+          {props.text !== '' ? (
+            <span className={styles.text}>{props.text}</span>
+          ) : null}
 
           <div className={styles.actions}>
             {props.actions.map((action, index) => (
