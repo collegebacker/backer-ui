@@ -387,7 +387,6 @@ declare const Radio: React.FC<Props$6>;
 
 interface NewProps {
     hideYearArrows?: boolean;
-    selectTwoDates?: boolean;
 }
 type Props$5 = NewProps & Partial<CalendarProps>;
 declare const Calendar: React.FC<Props$5>;
