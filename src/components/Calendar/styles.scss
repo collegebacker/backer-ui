@@ -1,4 +1,4 @@
-@import "../tokens/all.scss";
+@import "../../../tokens/all.scss";
 
 $button-hover: rgba(20, 20, 20, 0.05);
 
@@ -213,7 +213,7 @@ $button-hover: rgba(20, 20, 20, 0.05);
   }
 }
 
-.react-calendar__tile--active {
+.react-calendar__tile--active:not([class*="react-calendar__tile--range"]), .react-calendar__tile--rangeStart, .react-calendar__tile--rangeEnd {
   abbr {
     color: var(--color-main-0);
   }

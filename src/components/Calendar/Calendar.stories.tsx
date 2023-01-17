@@ -5,6 +5,7 @@ import { Calendar } from "..";
 
 localStorage.clear();
 
+
 export default {
   title: "Forms/Calendar",
   component: Calendar,
@@ -33,7 +34,28 @@ export const Default = Template.bind({});
 Default.args = {
   minDetail: "month",
   hideYearArrows: true,
+  selectTwoDates: false,
   defaultValue: new Date(),
+  className: "",
+  onChange: (date: Date) => console.log(date),
+  onClickDay: (value: Date) => {
+    console.log(value);
+  },
+};
+
+
+const TemplateTwoDates: ComponentStory<typeof Calendar> = (args) => (
+  <Calendar {...args} />
+);
+
+export const TwoDates = TemplateTwoDates.bind({});
+TwoDates.args = {
+  minDetail: "month",
+  hideYearArrows: true,
+  selectTwoDates: false,
+  selectRange: true,
+  // allowPartialRange: true,
+  defaultValue: [new Date(), new Date(new Date().setDate(new Date().getDate() + 3))],
   className: "",
   onChange: (date: Date) => console.log(date),
   onClickDay: (value: Date) => {

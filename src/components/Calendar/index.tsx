@@ -1,6 +1,8 @@
 import React from "react";
 import ReactCalendar from "react-calendar";
 
+import "./styles.scss"
+
 // import calendar types
 import { CalendarProps } from "react-calendar";
 
@@ -8,6 +10,7 @@ import Icon from "../Icon";
 
 export interface NewProps {
   hideYearArrows?: boolean; // show or hide the month arrows
+  selectTwoDates?: boolean; // select two dates
 }
 
 type Props = NewProps & Partial<CalendarProps>;
@@ -62,6 +65,7 @@ Calendar.defaultProps = {
   defaultValue: new Date(),
   minDetail: "month",
   hideYearArrows: true,
+  selectTwoDates: false,
 } as Partial<CalendarProps>;
 
 export default Calendar;
