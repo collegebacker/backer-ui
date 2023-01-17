@@ -1,8 +1,6 @@
 import React from "react";
 import ReactCalendar from "react-calendar";
 
-import "./styles.scss"
-
 // import calendar types
 import { CalendarProps } from "react-calendar";
 
