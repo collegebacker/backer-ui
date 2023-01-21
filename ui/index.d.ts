@@ -393,9 +393,9 @@ declare const Calendar: React.FC<Props$6>;
 
 interface Props$5 {
     days?: number;
-    dafaultValue?: [number, number];
+    dafaultValue?: number[];
     semimonthly?: boolean;
-    onChange?: (date: number) => void;
+    onChange?: (date: number[]) => void;
 }
 declare const RecurringDatePicker: React.FC<Props$5>;
 
