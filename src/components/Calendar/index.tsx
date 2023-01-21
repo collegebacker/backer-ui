@@ -46,7 +46,7 @@ const Calendar: React.FC<Props> = (props) => {
     }
   }, [props.hideYearArrows]);
 
-  return (
+  return  (
     <ReactCalendar
       inputRef={calendarRef}
       prevLabel={<Icon name="chevron-left" />}
@@ -59,7 +59,6 @@ const Calendar: React.FC<Props> = (props) => {
 };
 
 Calendar.defaultProps = {
-  defaultValue: new Date(),
   minDetail: "month",
   hideYearArrows: true,
 } as Partial<CalendarProps>;
