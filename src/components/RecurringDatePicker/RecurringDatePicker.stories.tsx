@@ -20,4 +20,5 @@ Default.args = {
   days: 31,
   dafaultValue: [1, 16],
   semimonthly: false,
+  onChange: (date: number[]) => console.log(date),
 };

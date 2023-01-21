@@ -7,9 +7,9 @@ import styles from "./styles.module.scss";
 
 export interface Props {
   days?: number;
-  dafaultValue?: [number, number];
+  dafaultValue?: number[];
   semimonthly?: boolean;
-  onChange?: (date: number) => void;
+  onChange?: (date: number[]) => void;
 }
 
 const RecurringDatePicker: React.FC<Props> = (props) => {
@@ -19,17 +19,18 @@ const RecurringDatePicker: React.FC<Props> = (props) => {
 
   const setDateHook = (day: number) => {
     if (props.semimonthly && day >= 15) {
-      setValue([value[0], day]);
+      const newVal = [value[0], day + 1]
+      setValue(newVal);
+      props.onChange && props.onChange(newVal);
     } else {
-      setValue([day, value[1]]);
+      const newVal = [day + 1, value[1]]
+      setValue(newVal);
+      props.onChange && props.onChange(newVal);
     }
   };
 
   const handleClickDay = (day: number) => {
     setDateHook(day);
-    if (props.onChange) {
-      props.onChange(day);
-    }
   };
 
   return (
@@ -52,7 +53,7 @@ const RecurringDatePicker: React.FC<Props> = (props) => {
     }}>
       {Array.from(Array(props.days).keys()).map((day) => (
         <button className={`react-calendar__tile react-calendar__month-view__days__day ${
-          value[0] === day  ? "react-calendar__tile--active" : value[1] === day && semimonthly ? "react-calendar__tile--active" : ""
+          value[0] === day + 1  ? "react-calendar__tile--active" : value[1] === day + 1 && semimonthly ? "react-calendar__tile--active" : ""
         }`} style={{
           flex: "0 0 14.2857%", overflow: "hidden"
         }} onClick={() => handleClickDay(day)}>
