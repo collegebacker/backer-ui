@@ -7,11 +7,11 @@ import styles from './styles.module.scss'
 
 export interface Props {
   days?: number
+  className?: string
   dafaultValue?: number[]
   semimonthly?: boolean
   showSwitcher?: boolean
   onChange?: (date: number[]) => void
-  onSave?: () => void
 }
 
 const RecurringDatePicker: React.FC<Props> = (props) => {
@@ -37,7 +37,7 @@ const RecurringDatePicker: React.FC<Props> = (props) => {
   }
 
   return (
-    <section className={styles.wrap}>
+    <section className={`${styles.wrap} ${props.className}`}>
       {props.showSwitcher && (
         <section className={styles.switcher}>
           <PillButton
@@ -91,7 +91,6 @@ const RecurringDatePicker: React.FC<Props> = (props) => {
           </button>
         ))}
       </div>
-      <Button label='Save' onClick={props.onSave} className={styles.saveBtn} />
     </section>
   )
 }
@@ -99,6 +98,7 @@ const RecurringDatePicker: React.FC<Props> = (props) => {
 RecurringDatePicker.defaultProps = {
   days: 32,
   firstDay: 1,
+  className: '',
   semimonthly: false,
   showSwitcher: true
 } as Partial<Props>
