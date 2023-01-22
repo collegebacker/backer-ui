@@ -34,6 +34,8 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
 
   const [isMount, setIsMount] = React.useState(false)
   const [isOpen, setIsOpen] = React.useState(false)
+
+  const [modalAnimationClass, setModalAnimationClass] = React.useState('')
   // const [isAnimationEnded, setIsAnmationEnded] = React.useState(false)
 
   //////////////////////
@@ -103,18 +105,18 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
       modalWrapRef.current?.classList.add(styles.modalWrap_show)
       gradientsRef.current?.classList.add(styles.gradients_show)
 
-      !props.isBottomSheet
-        ? modalRef.current?.classList.add(styles.popup_show)
-        : modalRef.current?.classList.add(styles.bottomsheet_show)
+      setModalAnimationClass(
+        !props.isBottomSheet ? styles.popup_show : styles.bottomsheet_show
+      )
     } else {
       console.log('isOpen', isOpen)
       // remove class from modalWrapRef
       modalWrapRef.current?.classList.add(styles.modalWrap_hide)
       gradientsRef.current?.classList.add(styles.gradients_hide)
 
-      !props.isBottomSheet
-        ? modalRef.current?.classList.add(styles.popup_hide)
-        : modalRef.current?.classList.add(styles.bottomsheet_hide)
+      setModalAnimationClass(
+        !props.isBottomSheet ? styles.popup_hide : styles.bottomsheet_hide
+      )
 
       const timer = setTimeout(() => {
         setIsMount(false)
@@ -164,15 +166,12 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
         ref={modalWrapRef}
         className={`${styles.modalWrap}`}
         {...props.dataAttrs}
-        // onAnimationStart={() => {
-        //   console.log('animation start')
-        // }}
       >
         <section
           ref={modalRef}
           className={`${styles.modal} ${
             !props.isBottomSheet ? styles.popup : styles.bottomsheet
-          } ${props.className}`}
+          } ${modalAnimationClass} ${props.className}`}
           style={props.style}
         >
           {props.showBackButton && (
@@ -196,13 +195,7 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
           </div>
         </section>
 
-        <div
-          className={styles.gradients}
-          ref={gradientsRef}
-          // onAnimationEnd={() => {
-          //   console.log('animation end')
-          // }}
-        >
+        <div className={styles.gradients} ref={gradientsRef}>
           <div className={styles.gradient1} />
           <div className={styles.gradient2} />
         </div>
