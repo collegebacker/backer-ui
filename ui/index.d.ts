@@ -396,6 +396,7 @@ interface Props$5 {
     dafaultValue?: number[];
     semimonthly?: boolean;
     onChange?: (date: number[]) => void;
+    onSave?: () => void;
 }
 declare const RecurringDatePicker: React.FC<Props$5>;
 
