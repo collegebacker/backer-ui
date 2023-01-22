@@ -38,7 +38,7 @@ const RecurringDatePicker: React.FC<Props> = (props) => {
   return (
     <section className={styles.wrap}>
 
-    {props.showSwitcher && <section className={styles.switcher}>
+    {props.showSwitcher || props.semimonthly && <section className={styles.switcher}>
       <PillButton className={styles.switcherButton} label="One a month" isActive={!semimonthly} onClick={() => {
         setSemimonthly(false);
       }}/>
@@ -47,7 +47,7 @@ const RecurringDatePicker: React.FC<Props> = (props) => {
       }} />
     </section>}
 
-    <p className={`typo-app-body-caption ${styles.switcherCaption}`}>Payment will be split in two payments. <br/> Set 2 payment dates</p>
+    {props.semimonthly && <p className={`typo-app-body-caption ${styles.switcherCaption}`}>Payment will be split in two payments. <br/> Set 2 payment dates</p>}
 
     <div className="react-calendar__month-view__days" style={{
       display: "flex",
