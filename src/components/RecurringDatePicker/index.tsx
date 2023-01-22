@@ -10,6 +10,7 @@ export interface Props {
   dafaultValue?: number[];
   semimonthly?: boolean;
   onChange?: (date: number[]) => void;
+  onSave?: () => void;
 }
 
 const RecurringDatePicker: React.FC<Props> = (props) => {
@@ -63,7 +64,7 @@ const RecurringDatePicker: React.FC<Props> = (props) => {
         </button>
       ))}
     </div>
-    <Button label="Save" />
+    <Button label="Save" onClick={props.onSave} />
     </section>
   );
 };
