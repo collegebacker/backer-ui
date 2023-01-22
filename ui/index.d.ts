@@ -395,6 +395,7 @@ interface Props$5 {
     days?: number;
     dafaultValue?: number[];
     semimonthly?: boolean;
+    showSwitcher?: boolean;
     onChange?: (date: number[]) => void;
     onSave?: () => void;
 }
