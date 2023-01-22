@@ -9,6 +9,7 @@ export interface Props {
   days?: number;
   dafaultValue?: number[];
   semimonthly?: boolean;
+  showSwitcher?: boolean;
   onChange?: (date: number[]) => void;
   onSave?: () => void;
 }
@@ -37,14 +38,14 @@ const RecurringDatePicker: React.FC<Props> = (props) => {
   return (
     <section className={styles.wrap}>
 
-    <section className={styles.switcher}>
+    {props.showSwitcher && <section className={styles.switcher}>
       <PillButton className={styles.switcherButton} label="One a month" isActive={!semimonthly} onClick={() => {
         setSemimonthly(false);
       }}/>
       <PillButton className={styles.switcherButton} label="Split in two dates" isActive={semimonthly} onClick={() => {
         setSemimonthly(true);
       }} />
-    </section>
+    </section>}
 
     <p className={`typo-app-body-caption ${styles.switcherCaption}`}>Payment will be split in two payments. <br/> Set 2 payment dates</p>
 
@@ -64,7 +65,7 @@ const RecurringDatePicker: React.FC<Props> = (props) => {
         </button>
       ))}
     </div>
-    <Button label="Save" onClick={props.onSave} />
+    <Button label="Save" onClick={props.onSave} className={styles.saveBtn} />
     </section>
   );
 };
@@ -73,6 +74,7 @@ RecurringDatePicker.defaultProps = {
  days: 32,
  firstDay: 1,
  semimonthly: false,
+ showSwitcher: true,
 } as Partial<Props>;
 
 export default RecurringDatePicker;

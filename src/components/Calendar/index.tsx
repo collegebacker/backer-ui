@@ -15,8 +15,7 @@ type Props = NewProps & Partial<CalendarProps>;
 const Calendar: React.FC<Props> = (props) => {
   const calendarRef = React.useRef<HTMLInputElement>(null);
 
-  React.useEffect(() => {
-    // get all the calendar week days
+  const trancateCalendarWeekDays = () => {
     const calendarWeekDays = calendarRef.current?.querySelectorAll(
       ".react-calendar__month-view__weekdays__weekday abbr"
     );
@@ -25,6 +24,10 @@ const Calendar: React.FC<Props> = (props) => {
     calendarWeekDays?.forEach((day) => {
       day.textContent = day.textContent?.charAt(0);
     });
+  };
+
+  React.useEffect(() => {
+    trancateCalendarWeekDays()
   }, []);
 
   React.useEffect(() => {
@@ -46,6 +49,8 @@ const Calendar: React.FC<Props> = (props) => {
     }
   }, [props.hideYearArrows]);
 
+  
+
   return  (
     <ReactCalendar
       inputRef={calendarRef}
@@ -53,6 +58,10 @@ const Calendar: React.FC<Props> = (props) => {
       nextLabel={<Icon name="chevron-right" />}
       prev2Label={<Icon name="arrow-left" />}
       next2Label={<Icon name="arrow-right" />}
+      onViewChange={() => {
+        trancateCalendarWeekDays();
+      }}
+
       {...props}
     />
   );
