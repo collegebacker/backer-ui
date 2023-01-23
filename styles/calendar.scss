@@ -53,11 +53,11 @@ $button-hover: rgba(20, 20, 20, 0.05);
   outline: none;
   border-radius: var(--radius-s);
   transition: background-color 0.1s ease-in-out;
-}
 
-.react-calendar__tile:disabled {
-  pointer-events: none;
-  opacity: 0.3;
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.3;
+  }
 }
 
 .react-calendar__century-view__decades__decade {
@@ -92,15 +92,15 @@ $button-hover: rgba(20, 20, 20, 0.05);
   outline: none;
   border-radius: 100px;
   padding: 0 20px;
+
+  &:disabled {
+    color: var(--color-main-500);
+    flex-grow: 0 !important;
+  }
 }
 
 .react-calendar__navigation__label:not(:disabled):hover {
   background-color: $button-hover;
-}
-
-.react-calendar__navigation__label:disabled {
-  color: var(--color-main-500);
-  flex-grow: 0 !important;
 }
 
 .react-calendar__navigation {
@@ -126,6 +126,11 @@ $button-hover: rgba(20, 20, 20, 0.05);
 
   &:hover {
     background-color: $button-hover;
+  }
+
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.3;
   }
 
   i {
