@@ -86,6 +86,7 @@ const RecurringDatePicker: React.FC<Props> = (props) => {
               overflow: 'hidden'
             }}
             onClick={() => handleClickDay(day)}
+            key={day}
           >
             <abbr aria-label={`${day + 1}`}>{day + 1}</abbr>
           </button>
