@@ -27,13 +27,13 @@ declare const Button: React.ForwardRefExoticComponent<Props$x & React.RefAttribu
 interface Props$w {
     className?: string;
     style?: React.CSSProperties;
-    type?: "button" | "submit" | "reset";
+    type?: 'button' | 'submit' | 'reset';
     icon?: IconTypes;
     paymentIcon?: PaymentLogoTypes;
     href?: string;
     target?: TargetTypes;
     label?: string;
-    tag?: "button" | "a";
+    tag?: 'button' | 'a';
     isActive?: boolean;
     onClick?: (event: any) => void;
     onSubmit?: (event: any) => void;

@@ -1,34 +1,33 @@
-import React from "react";
-import Icon from "../Icon";
-import PaymentLogo from "../PaymentLogo";
+import React from 'react'
+import Icon from '../Icon'
+import PaymentLogo from '../PaymentLogo'
 
-import styles from "./styles.module.scss";
+import styles from './styles.module.scss'
 
 export interface Props {
-  className?: string;
-  style?: React.CSSProperties;
-  type?: "button" | "submit" | "reset";
-  icon?: IconTypes;
-  paymentIcon?: PaymentLogoTypes;
-  href?: string;
-  target?: TargetTypes;
-  label?: string;
-  tag?: "button" | "a";
-  isActive?: boolean;
-  onClick?: (event: any) => void;
-  onSubmit?: (event: any) => void;
-  onKeyPress?: (event: any) => void;
-  areaLabel?: string;
-  areaLabelledBy?: string;
+  className?: string
+  style?: React.CSSProperties
+  type?: 'button' | 'submit' | 'reset'
+  icon?: IconTypes
+  paymentIcon?: PaymentLogoTypes
+  href?: string
+  target?: TargetTypes
+  label?: string
+  tag?: 'button' | 'a'
+  isActive?: boolean
+  onClick?: (event: any) => void
+  onSubmit?: (event: any) => void
+  onKeyPress?: (event: any) => void
+  areaLabel?: string
+  areaLabelledBy?: string
 }
 
 const ButtonContent = ({ ...props }: Props) => {
   const iconStyles = props.label
     ? {
-        marginLeft: "10px",
-        marginRight: "-5px",
+        marginLeft: '10px'
       }
-    : {};
+    : {}
 
   return (
     <>
@@ -48,29 +47,29 @@ const ButtonContent = ({ ...props }: Props) => {
         />
       )}
     </>
-  );
-};
+  )
+}
 
 const PillButton = React.forwardRef<any, Props>((props, ref) => {
   const classes = `${props.className} ${styles.button} ${
-    props.isActive ? styles.active : ""
-  }`;
+    props.isActive ? styles.active : ''
+  }`
 
   const style = {
-    ...(props.style || {}),
-  } as React.CSSProperties;
+    ...(props.style || {})
+  } as React.CSSProperties
 
   const conditionalProps =
-    props.tag === "a"
+    props.tag === 'a'
       ? {
-          rel: "noreferrer",
+          rel: 'noreferrer',
           href: props.href,
           target: props.target,
-          onSubmit: props.onSubmit,
+          onSubmit: props.onSubmit
         }
       : {
-          type: props.type,
-        };
+          type: props.type
+        }
 
   return (
     <props.tag
@@ -85,16 +84,16 @@ const PillButton = React.forwardRef<any, Props>((props, ref) => {
     >
       <ButtonContent {...props} />
     </props.tag>
-  );
-});
+  )
+})
 
 PillButton.defaultProps = {
-  className: "",
-  tag: "button",
-  type: "button",
-  href: "#",
-  target: "_self",
-  label: "Pill Button",
-} as Partial<Props>;
+  className: '',
+  tag: 'button',
+  type: 'button',
+  href: '#',
+  target: '_self',
+  label: 'Pill Button'
+} as Partial<Props>
 
-export default PillButton;
+export default PillButton
