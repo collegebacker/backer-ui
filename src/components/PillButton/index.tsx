@@ -25,7 +25,8 @@ export interface Props {
 const ButtonContent = ({ ...props }: Props) => {
   const iconStyles = props.label
     ? {
-        marginLeft: '10px'
+        marginLeft: '10px',
+        marginRight: '-3px'
       }
     : {}
 
