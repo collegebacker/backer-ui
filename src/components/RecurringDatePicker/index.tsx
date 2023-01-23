@@ -11,7 +11,7 @@ export interface Props {
   dafaultValue?: number[]
   semimonthly?: boolean
   showSwitcher?: boolean
-  onChange?: (date: number[]) => void
+  onChange?: (date: { value: number[]; isSemimonthly: boolean }) => void
 }
 
 const RecurringDatePicker: React.FC<Props> = (props) => {
@@ -24,12 +24,30 @@ const RecurringDatePicker: React.FC<Props> = (props) => {
     if (semimonthly && day >= 15) {
       const newVal = [value[0], day + 1]
       setValue(newVal)
-      props.onChange && props.onChange(newVal)
+
+      props.onChange &&
+        props.onChange({
+          value: newVal,
+          isSemimonthly: semimonthly
+        })
     } else {
       const newVal = [day + 1, value[1]]
       setValue(newVal)
-      props.onChange && props.onChange(newVal)
+      props.onChange &&
+        props.onChange({
+          value: newVal,
+          isSemimonthly: semimonthly
+        })
     }
+  }
+
+  const handleSemimonthly = (isSemimonthly: boolean) => {
+    setSemimonthly(isSemimonthly)
+    props.onChange &&
+      props.onChange({
+        value: value,
+        isSemimonthly: isSemimonthly
+      })
   }
 
   const handleClickDay = (day: number) => {
@@ -45,7 +63,7 @@ const RecurringDatePicker: React.FC<Props> = (props) => {
             label='One a month'
             isActive={!semimonthly}
             onClick={() => {
-              setSemimonthly(false)
+              handleSemimonthly(false)
             }}
           />
           <PillButton
@@ -53,7 +71,7 @@ const RecurringDatePicker: React.FC<Props> = (props) => {
             label='Split in two dates'
             isActive={semimonthly}
             onClick={() => {
-              setSemimonthly(true)
+              handleSemimonthly(true)
             }}
           />
         </section>
