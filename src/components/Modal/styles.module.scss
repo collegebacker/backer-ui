@@ -337,7 +337,7 @@ $btns-offset-mobile: 14px;
   right: $btns-offset;
 
   @media screen and (max-width: $grid-mobile-breakpoint) {
-    top: $btns-offset-mobile;
+    top: 20px;
     right: $btns-offset-mobile;
   }
 }
