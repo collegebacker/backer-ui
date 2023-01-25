@@ -34,6 +34,7 @@ export { default as PolaroidPhoto } from './PolaroidPhoto'
 export { default as ImageEditor } from './ImageEditor'
 export { default as BackButton } from './BackButton'
 export { default as CloseButton } from './CloseButton'
+export { default as DateInput } from './DateInput'
 
 // SKELETON
 export {

@@ -1,3 +1,5 @@
-export { default as waitForScrollEnd } from "./waitForScrollEnd";
-export { default as stringToGradient } from "./stringToGradient";
-export { default as isMobile } from "./isMobile";
+export { default as waitForScrollEnd } from './waitForScrollEnd'
+export { default as stringToGradient } from './stringToGradient'
+export { default as isMobile } from './isMobile'
+export { default as convertStringToDataFormat } from './convertStringToDataFormat'
+export { default as validateIfStringIsCorrectDate } from './validateIfStringIsCorrectDate'

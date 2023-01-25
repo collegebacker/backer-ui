@@ -1,71 +1,60 @@
-import Icon from "../Icon";
-import React from "react";
-import styles from "./styles.module.scss";
+import Icon from '../Icon'
+import React from 'react'
+import styles from './styles.module.scss'
 
-export interface Props {
-  className?: string;
-  type?: "text" | "password" | "number" | "email";
-  required?: boolean;
-  disabled?: boolean;
-  name: string;
-  label?: string;
-  value?: string;
-  autoFocus?: boolean;
-  isInvalid?: boolean;
-  errorMessage?: string;
-  helperText?: string;
-  hideSpinButton?: boolean;
+export interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
+  isInvalid?: boolean
+  label?: string
+  name: string
+  errorMessage?: string
+  helperText?: string
+  errorAnimation?: boolean
+  hideSpinButton?: boolean
   icon?: {
-    name: IconTypes;
-    onClick?: () => void;
-  };
-  id?: string;
-  tabIndex?: number;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  onSubmit?: (event: React.FormEvent<HTMLInputElement>) => void;
-  onEnterKeyPress?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
-  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
-  onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
-  onInvalid?: (event: React.FormEvent<HTMLInputElement>) => void;
+    name: IconTypes
+    onClick?: () => void
+  }
+  isUncontrolled?: boolean
 }
 
 const Input = React.forwardRef<any, Props>((props, ref) => {
-  const inputRef = React.useRef<HTMLInputElement>(null);
+  const inputRef = React.useRef<HTMLInputElement>(null)
 
-  const [val, setVal] = React.useState(props.value);
+  const [val, setVal] = React.useState(props.value)
 
   React.useImperativeHandle(ref, () => ({
     getValue: () => val,
-    setValue: (value: string) => setVal(value),
-  }));
+    setValue: (value: string) => setVal(value)
+  }))
 
   React.useEffect(() => {
     if (props.isInvalid && inputRef.current) {
-      inputRef.current.focus();
+      inputRef.current.focus()
     }
-  }, [props.isInvalid]);
+  }, [props.isInvalid])
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setVal(e.target.value);
+    props.isUncontrolled ? null : setVal(e.target.value)
 
     if (props.onChange) {
-      props.onChange(e);
+      props.onChange(e)
     }
-  };
+  }
 
   return (
     <div
       ref={ref}
       className={`${styles.componentWrap} ${props.className} ${
-        props.isInvalid ? styles.error : ""
-      } ${props.isInvalid ? styles.shake : ""}
-        ${props.disabled ? styles.disabled : ""}
+        props.isInvalid ? styles.error : ''
+      } ${props.isInvalid && props.errorAnimation ? styles.shake : ''}
+        ${props.disabled ? styles.disabled : ''}
       `}
+      style={props.style}
     >
       <div
         className={`${styles.inputWrap}`}
         style={{
-          height: props.label !== "" ? "68px" : "40px",
+          height: props.label !== '' ? '68px' : '40px'
         }}
       >
         {props.icon ? (
@@ -73,7 +62,7 @@ const Input = React.forwardRef<any, Props>((props, ref) => {
             onClick={props.icon.onClick}
             className={styles.icon}
             style={{
-              pointerEvents: props.icon.onClick !== undefined ? "auto" : "none",
+              pointerEvents: props.icon.onClick !== undefined ? 'auto' : 'none'
             }}
           >
             <Icon name={props.icon.name} />
@@ -81,32 +70,34 @@ const Input = React.forwardRef<any, Props>((props, ref) => {
         ) : null}
         <input
           ref={inputRef}
+          name={props.name}
+          id={props.id ? props.id : props.name}
+          className={`${styles.input} ${
+            props.hideSpinButton ? styles.hideSpinButton : ''
+          }`}
+          placeholder='&nbsp;'
+          value={props.isUncontrolled ? props.value : val}
+          onChange={handleOnChange}
           tabIndex={props.tabIndex}
           autoFocus={props.autoFocus}
           type={props.type}
-          id={props.id ? props.id : props.name}
-          name={props.name}
-          className={`${styles.input} ${
-            props.hideSpinButton ? styles.hideSpinButton : ""
-          }`}
-          placeholder="&nbsp;"
-          value={val}
           required={props.required}
-          onChange={handleOnChange}
           onSubmit={props.onSubmit}
+          onKeyDown={props.onKeyDown}
           onBlur={props.onBlur}
           onFocus={props.onFocus}
           onInvalid={props.onInvalid}
           disabled={props.disabled}
+          pattern={props.pattern}
         />
 
-        {props.label !== "" ? (
+        {props.label !== '' ? (
           <label className={styles.label} htmlFor={props.name}>
             {props.label}
           </label>
         ) : null}
       </div>
-      {props.helperText && !props.isInvalid ? (
+      {(props.helperText && !props.isInvalid) || props.errorMessage === '' ? (
         <span className={`typo-app-body-caption ${styles.helperText}`}>
           {props.helperText}
         </span>
@@ -117,21 +108,22 @@ const Input = React.forwardRef<any, Props>((props, ref) => {
         </span>
       ) : null}
     </div>
-  );
-});
+  )
+})
 
-Input.displayName = "Input";
+Input.displayName = 'Input'
 
 Input.defaultProps = {
-  className: "",
-  label: "Label",
-  type: "text",
-  required: false,
-  autoFocus: false,
-  disabled: false,
+  className: '',
+  label: 'Label',
+  type: 'text',
   isInvalid: false,
-  errorMessage: "",
+  errorMessage: '',
   hideSpinButton: true,
-} as Partial<Props>;
+  style: {},
+  value: '',
+  isUncontrolled: false,
+  errorAnimation: true
+} as Partial<Props>
 
-export default Input;
+export default Input
