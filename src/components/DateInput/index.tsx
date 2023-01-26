@@ -1,9 +1,6 @@
 import React from 'react'
 import Input from '../Input'
-import {
-  convertStringToDataFormat,
-  validateIfStringIsCorrectDate
-} from '../../utils'
+import { replaceWithNumbers } from '../../utils'
 import inputStyles from '../Input/styles.module.scss'
 import dateinputStyles from './styles.module.scss'
 import Icon from '../Icon'
@@ -62,7 +59,7 @@ const DateInput = React.forwardRef<any, Props>((props, ref) => {
   }
 
   const handleOnChangeDay = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value
+    const value = replaceWithNumbers(e.target.value)
 
     if (value.length === 2) {
       monthInputRef.current?.focus()
@@ -75,7 +72,7 @@ const DateInput = React.forwardRef<any, Props>((props, ref) => {
   }
 
   const handleOnChangeMonth = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value
+    const value = replaceWithNumbers(e.target.value)
 
     if (value.length === 2) {
       yearInputRef.current?.focus()
@@ -88,7 +85,7 @@ const DateInput = React.forwardRef<any, Props>((props, ref) => {
   }
 
   const handleOnChangeYear = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value
+    const value = replaceWithNumbers(e.target.value)
 
     setDateValue({
       ...dateValue,
