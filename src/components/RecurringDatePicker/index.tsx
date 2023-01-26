@@ -115,7 +115,7 @@ const RecurringDatePicker: React.FC<Props> = (props) => {
 }
 
 RecurringDatePicker.defaultProps = {
-  days: 32,
+  days: 31,
   firstDay: 1,
   className: '',
   semimonthly: false,

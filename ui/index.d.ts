@@ -436,11 +436,25 @@ interface Props$1 {
 }
 declare const BackButton: React.FC<Props$1>;
 
-interface Props extends InputProps {
+type DateInputValue = {
+    day: string;
+    month: string;
+    year: string;
+};
+interface Props {
     className?: string;
     style?: React.CSSProperties;
     name: string;
     label?: string;
+    defaultValue?: DateInputValue;
+    helperText?: string;
+    isInvalid?: boolean;
+    errorMessage?: string;
+    errorAnimation?: boolean;
+    disabled?: boolean;
+    onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
+    onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 declare const DateInput: React.ForwardRefExoticComponent<Props & React.RefAttributes<any>>;
 
