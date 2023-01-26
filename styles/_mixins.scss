@@ -58,3 +58,64 @@ $focus-line-margin: -4px;
     transition: opacity 0.1s ease, transform 0.1s ease;
   }
 }
+
+// input
+
+@mixin resetInputMixin {
+  height: 44px;
+  padding: 0;
+  padding-bottom: 5px;
+  background: none;
+  border: none;
+  outline: none;
+  border-radius: 0;
+}
+
+@mixin textInputMixin {
+  font-family: 'ABCMarfa', sans-serif;
+  font-weight: 200;
+  font-size: 24px;
+  line-height: 24px;
+}
+
+@mixin labelIfInputFocused {
+  opacity: 1;
+  -webkit-transform: translateY(-34px) scale(0.6);
+  transform: translateY(-34px) scale(0.6);
+}
+
+@mixin inputStates($label-class) {
+  height: 44px;
+
+  &:hover {
+    box-shadow: 0 2px 0 0 var(--color-main-500);
+  }
+
+  &:focus {
+    box-shadow: 0 2px 0 0 var(--color-main-500);
+
+    + .#{$label-class} {
+      @include labelIfInputFocused();
+    }
+  }
+
+  &:not(:placeholder-shown) + .#{$label-class} {
+    @include labelIfInputFocused();
+  }
+}
+
+@mixin inputLabel {
+  pointer-events: none;
+  position: absolute;
+  bottom: 13px;
+  font-family: 'ABCMarfa', sans-serif;
+  font-weight: 200;
+  font-size: 24px;
+  line-height: 18px;
+
+  opacity: 0.3;
+  transform-origin: left;
+
+  transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+}

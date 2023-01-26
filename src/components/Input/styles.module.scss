@@ -1,3 +1,5 @@
+@import '../../../styles/mixins.scss';
+
 .componentWrap {
   position: relative;
   justify-content: flex-end;
@@ -14,59 +16,19 @@
 }
 
 .label {
-  pointer-events: none;
-  position: absolute;
-  bottom: 13px;
-  font-family: 'ABCMarfa', sans-serif;
-  font-weight: 200;
-  font-size: 24px;
-  line-height: 18px;
-
-  opacity: 0.3;
-  transform-origin: left;
-
-  transition: all 0.2s ease;
-  -webkit-transition: all 0.2s ease;
+  @include inputLabel();
 }
 
 .input {
-  height: 44px;
-  padding: 0;
-  padding-bottom: 5px;
-  font-family: 'ABCMarfa', sans-serif;
-  font-weight: 200;
-  font-size: 24px;
-  line-height: 24px;
-  background: none;
-  border: none;
-  outline: none;
-  border-radius: 0;
+  @include resetInputMixin();
+  @include textInputMixin();
   -webkit-transition: all 0.15s ease;
   transition: all 0.15s ease;
   -webkit-box-shadow: 0 1px 0 0 var(--color-main-500);
   box-shadow: 0 1px 0 0 var(--color-main-500);
   -webkit-appearance: none;
 
-  &:hover,
-  &:focus {
-    box-shadow: 0 2px 0 0 var(--color-main-500);
-  }
-
-  &:focus {
-    box-shadow: 0 2px 0 0 var(--color-main-500);
-
-    + .label {
-      opacity: 1;
-      -webkit-transform: translateY(-34px) scale(0.6);
-      transform: translateY(-34px) scale(0.6);
-    }
-  }
-
-  &:not(:placeholder-shown) + .label {
-    opacity: 1;
-    -webkit-transform: translateY(-34px) scale(0.6);
-    transform: translateY(-34px) scale(0.6);
-  }
+  @include inputStates(label);
 }
 
 .helperText {

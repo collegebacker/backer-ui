@@ -17,5 +17,6 @@ const Template: ComponentStory<typeof DateInput> = (args) => (
 export const Default = Template.bind({})
 Default.args = {
   className: '',
+  helperText: 'Enter date as DD/MM/YYYY',
   style: {}
 }

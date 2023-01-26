@@ -2,7 +2,8 @@ import Icon from '../Icon'
 import React from 'react'
 import styles from './styles.module.scss'
 
-export interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
   isInvalid?: boolean
   label?: string
   name: string
@@ -17,7 +18,7 @@ export interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   isUncontrolled?: boolean
 }
 
-const Input = React.forwardRef<any, Props>((props, ref) => {
+const Input = React.forwardRef<any, InputProps>((props, ref) => {
   const inputRef = React.useRef<HTMLInputElement>(null)
 
   const [val, setVal] = React.useState(props.value)
@@ -124,6 +125,6 @@ Input.defaultProps = {
   value: '',
   isUncontrolled: false,
   errorAnimation: true
-} as Partial<Props>
+} as Partial<InputProps>
 
 export default Input
