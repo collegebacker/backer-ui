@@ -52,6 +52,7 @@ $button-hover: rgba(20, 20, 20, 0.05);
   border: none;
   outline: none;
   border-radius: var(--radius-s);
+  color: var(--color-main-500);
   transition: background-color 0.1s ease-in-out;
 
   &:disabled {
@@ -61,7 +62,7 @@ $button-hover: rgba(20, 20, 20, 0.05);
 }
 
 .react-calendar__century-view__decades__decade {
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .react-calendar__year-view__months__month:hover,

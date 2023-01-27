@@ -7,8 +7,8 @@ import dateinputStyles from './styles.module.scss'
 import Icon from '../Icon'
 
 type DateInputValue = {
-  day: string
   month: string
+  day: string
   year: string
 }
 
@@ -17,29 +17,99 @@ export interface Props {
   style?: React.CSSProperties
   name: string
   label?: string
-  defaultValue?: DateInputValue
+  defaultValue?: Date
   helperText?: string
   errorMessage?: string
   errorAnimation?: boolean
   disabled?: boolean
+  onInvalid?: (e: Date) => void
   onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onChange?: (e: Date) => void
+}
+
+const convertDateToObj = (date: Date) => {
+  if (!date) {
+    return {
+      month: '',
+      day: '',
+      year: ''
+    }
+  }
+
+  const month = (date.getMonth() + 1).toString()
+  const day = date.getDate().toString()
+  const year = date.getFullYear().toString()
+
+  return {
+    month: month.length === 1 ? `0${month}` : month,
+    day: day.length === 1 ? `0${day}` : day,
+    year
+  }
+}
+
+const convertObjToDate = (obj: DateInputValue) => {
+  return new Date(`${obj.year}-${obj.month}-${obj.day}`)
 }
 
 const DateInput = React.forwardRef<any, Props>((props, ref) => {
+  // REFS
   const dayInputRef = React.useRef<HTMLInputElement>(null)
   const monthInputRef = React.useRef<HTMLInputElement>(null)
   const yearInputRef = React.useRef<HTMLInputElement>(null)
 
+  // STATES
   const [dateValue, setDateValue] = React.useState(
-    props.defaultValue as DateInputValue
+    convertDateToObj(props.defaultValue)
   )
-  const [isInvalid, setIsInvalid] = React.useState(false)
+  const [isInvalidState, setIsInvalidState] = React.useState(false)
   const [isFocused, setIsFocused] = React.useState(false)
   const [isModalOpen, setIsModalOpen] = React.useState(false)
 
+  // IMPERATIVE HANDLERS
+  React.useImperativeHandle(ref, () => ({
+    getValue: () => {
+      if (isInvalidState) {
+        return null
+      }
+      return convertObjToDate(dateValue)
+    }
+  }))
+
+  // FUNCTIONS
+  const isInvalidDate = (date: DateInputValue) => {
+    const { day, month, year } = date
+
+    let isInvalidDate = false
+
+    // console.log('length', `${day}${month}${year}`.length)
+
+    if (`${day}${month}${year}`.length >= 8) {
+      const date = new Date(`${year}-${month}-${day}`)
+
+      if (date.toString() === 'Invalid Date') {
+        isInvalidDate = true
+      }
+    } else {
+      isInvalidDate = true
+    }
+
+    return isInvalidDate
+  }
+
+  const onChangeProps = (data: DateInputValue) => {
+    if (props.onChange) {
+      if (!isInvalidDate(data)) {
+        props.onChange(convertObjToDate(data))
+      } else {
+        props.onChange(null)
+      }
+    }
+  }
+
+  // HANDLERS
   const handleOnFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+    setIsInvalidState(false)
     setIsFocused(true)
     if (props.onFocus) {
       props.onFocus(e)
@@ -48,25 +118,43 @@ const DateInput = React.forwardRef<any, Props>((props, ref) => {
 
   const handleOnBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     setIsFocused(false)
+
+    const value = {
+      month:
+        dateValue.month.length === 0
+          ? ''
+          : `${dateValue.month}`.padStart(2, '0'),
+      day:
+        dateValue.day.length === 0 ? '' : `${dateValue.day}`.padStart(2, '0'),
+      year:
+        dateValue.year.length === 0 ? '' : `${dateValue.year}`.padStart(4, '0')
+    }
+
+    setDateValue(value)
+    setIsInvalidState(isInvalidDate(value))
+    onChangeProps(value)
+
     if (props.onBlur) {
       props.onBlur(e)
     }
   }
 
-  const handleOnChangeDay = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleOnChangeMonth = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = replaceWithNumbers(e.target.value).slice(0, 2)
 
     if (value.length === 2) {
-      monthInputRef.current?.focus()
+      dayInputRef.current?.focus()
     }
 
     setDateValue({
       ...dateValue,
-      day: value
+      month: value
     })
+
+    onChangeProps(dateValue)
   }
 
-  const handleOnChangeMonth = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleOnChangeDay = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = replaceWithNumbers(e.target.value).slice(0, 2)
 
     if (value.length === 2) {
@@ -75,30 +163,34 @@ const DateInput = React.forwardRef<any, Props>((props, ref) => {
 
     setDateValue({
       ...dateValue,
-      month: value
+      day: value
     })
+
+    onChangeProps(dateValue)
   }
 
   const handleOnChangeYear = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = replaceWithNumbers(e.target.value).slice(0, 4)
+
+    if (value.length === 4) {
+      yearInputRef.current?.blur()
+    }
 
     setDateValue({
       ...dateValue,
       year: value
     })
 
-    if (value.length === 4) {
-      yearInputRef.current?.blur()
-    }
+    onChangeProps(dateValue)
   }
 
   const handleOnKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Backspace') {
       if (e.currentTarget.value === '') {
-        if (e.currentTarget.name === 'day') {
-          dayInputRef.current?.blur()
-        } else if (e.currentTarget.name === 'month') {
+        if (e.currentTarget.name === 'month') {
           dayInputRef.current?.focus()
+        } else if (e.currentTarget.name === 'day') {
+          dayInputRef.current?.blur()
         } else if (e.currentTarget.name === 'year') {
           monthInputRef.current?.focus()
         }
@@ -106,29 +198,28 @@ const DateInput = React.forwardRef<any, Props>((props, ref) => {
     }
   }
 
-  // validate date
+  const handleOnCalendarClick = () => {
+    setIsModalOpen(true)
+  }
+
+  const handleOnDayClick = (date: Date) => {
+    setIsModalOpen(false)
+    setIsInvalidState(isInvalidDate(convertDateToObj(date)))
+    setDateValue(convertDateToObj(date))
+  }
+
+  // EFFECTS
+  // handle invalid
   React.useEffect(() => {
-    const { day, month, year } = dateValue
-
-    if (`${day}${month}${year}`.length >= 8) {
-      const date = new Date(`${year}-${month}-${day}`)
-      const isValidDate =
-        date instanceof Date &&
-        !isNaN(date.getTime()) &&
-        day.length === 2 &&
-        month.length === 2 &&
-        year.length === 4
-
-      console.log(isValidDate)
-      setIsInvalid(!isValidDate)
-    } else {
-      setIsInvalid(false)
+    if (isInvalidState && props.onInvalid) {
+      props.onInvalid(convertObjToDate(dateValue))
     }
-  }, [dateValue])
+  }, [isInvalidState])
 
   const showPlaceholderCondition =
     isFocused || `${dateValue.day}${dateValue.month}${dateValue.year}` !== ''
 
+  // RENDER
   return (
     <>
       <Modal
@@ -138,7 +229,9 @@ const DateInput = React.forwardRef<any, Props>((props, ref) => {
       >
         <Calendar
           defaultValue={new Date()}
-          onClickDay={() => setIsModalOpen(false)}
+          onClickDay={handleOnDayClick}
+          minDetail={'century'}
+          hideYearArrows={false}
         />
       </Modal>
       <div
@@ -159,19 +252,21 @@ const DateInput = React.forwardRef<any, Props>((props, ref) => {
             className={`${dateinputStyles.inputs} ${
               isFocused ? dateinputStyles.inputsFocused : ''
             } ${
-              isInvalid ? `${inputStyles.shake} ${dateinputStyles.error}` : ''
+              isInvalidState
+                ? `${inputStyles.shake} ${dateinputStyles.error}`
+                : ''
             }`}
           >
             <input
-              ref={dayInputRef}
+              ref={monthInputRef}
               type='number'
-              name='day'
-              className={`${dateinputStyles.input} ${dateinputStyles.dayInput}`}
-              placeholder={showPlaceholderCondition ? 'DD' : ''}
-              value={dateValue.day}
+              name='month'
+              className={`${dateinputStyles.input} ${dateinputStyles.monthInput}`}
+              placeholder={showPlaceholderCondition ? 'MM' : ''}
+              value={dateValue.month}
               onFocus={handleOnFocus}
               onBlur={handleOnBlur}
-              onChange={handleOnChangeDay}
+              onChange={handleOnChangeMonth}
               onKeyDown={handleOnKeyDown}
               pattern='[0-9]*'
             />
@@ -183,15 +278,15 @@ const DateInput = React.forwardRef<any, Props>((props, ref) => {
               /
             </span>
             <input
-              ref={monthInputRef}
+              ref={dayInputRef}
               type='number'
-              name='month'
-              className={`${dateinputStyles.input} ${dateinputStyles.monthInput}`}
-              placeholder={showPlaceholderCondition ? 'MM' : ''}
-              value={dateValue.month}
+              name='day'
+              className={`${dateinputStyles.input} ${dateinputStyles.dayInput}`}
+              placeholder={showPlaceholderCondition ? 'DD' : ''}
+              value={dateValue.day}
               onFocus={handleOnFocus}
               onBlur={handleOnBlur}
-              onChange={handleOnChangeMonth}
+              onChange={handleOnChangeDay}
               onKeyDown={handleOnKeyDown}
               pattern='[0-9]*'
             />
@@ -217,7 +312,7 @@ const DateInput = React.forwardRef<any, Props>((props, ref) => {
             />
             <div
               className={dateinputStyles.icon}
-              onClick={() => setIsModalOpen(true)}
+              onClick={handleOnCalendarClick}
             >
               <Icon name={'calendar'} />
             </div>
@@ -239,10 +334,10 @@ const DateInput = React.forwardRef<any, Props>((props, ref) => {
         {props.helperText ? (
           <span
             className={`typo-app-body-caption ${inputStyles.helperText} ${
-              isInvalid ? dateinputStyles.errorHelperText : ''
+              isInvalidState ? dateinputStyles.errorHelperText : ''
             }`}
           >
-            {isInvalid ? props.errorMessage : props.helperText}
+            {isInvalidState ? props.errorMessage : props.helperText}
           </span>
         ) : null}
       </div>
@@ -256,13 +351,9 @@ DateInput.defaultProps = {
   label: 'Label',
   type: 'text',
   name: 'date-input',
-  helperText: 'Enter date as DD/MM/YYYY',
-  errorMessage: 'Enter date as DD/MM/YYYY',
-  defaultValue: {
-    day: '',
-    month: '',
-    year: ''
-  }
+  helperText: 'Enter date as MM/DD/YYYY',
+  errorMessage: 'Enter date as MM/DD/YYYY',
+  defaultValue: null
 } as Partial<Props>
 
 export default DateInput
