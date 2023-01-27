@@ -52,6 +52,26 @@ const convertObjToDate = (obj: DateInputValue) => {
   return new Date(`${obj.year}-${obj.month}-${obj.day}`)
 }
 
+const setInputWidth = (
+  input: HTMLInputElement,
+  length: number,
+  name: 'month' | 'day' | null
+) => {
+  if (input) {
+    const value = input.value
+
+    if (length === 0) {
+      if (name === 'month') {
+        input.style.width = '45px'
+      } else if (name === 'day') {
+        input.style.width = '38px'
+      }
+    } else {
+      input.style.width = `${length * 16}px`
+    }
+  }
+}
+
 const DateInput = React.forwardRef<any, Props>((props, ref) => {
   // REFS
   const dayInputRef = React.useRef<HTMLInputElement>(null)
@@ -133,6 +153,8 @@ const DateInput = React.forwardRef<any, Props>((props, ref) => {
     setDateValue(value)
     setIsInvalidState(isInvalidDate(value))
     onChangeProps(value)
+    setInputWidth(monthInputRef.current, value.month.length, 'month')
+    setInputWidth(dayInputRef.current, value.day.length, 'day')
 
     if (props.onBlur) {
       props.onBlur(e)
@@ -141,6 +163,8 @@ const DateInput = React.forwardRef<any, Props>((props, ref) => {
 
   const handleOnChangeMonth = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = replaceWithNumbers(e.target.value).slice(0, 2)
+
+    setInputWidth(e.target, value.length, 'month')
 
     if (value.length === 2) {
       dayInputRef.current?.focus()
@@ -156,6 +180,8 @@ const DateInput = React.forwardRef<any, Props>((props, ref) => {
 
   const handleOnChangeDay = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = replaceWithNumbers(e.target.value).slice(0, 2)
+
+    setInputWidth(e.target, value.length, 'day')
 
     if (value.length === 2) {
       yearInputRef.current?.focus()
