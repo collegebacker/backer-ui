@@ -29,10 +29,26 @@
     opacity: 0.3;
   }
 
+  /* Chrome, Safari, Edge, Opera */
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  &[type='number'] {
+    -moz-appearance: textfield;
+  }
+
   // border: 1px solid rgba(255, 0, 0, 0.151);
 }
 
-.dayMonthInput {
+.dayInput {
+  width: 38px;
+}
+
+.monthInput {
   width: 45px;
 }
 
@@ -54,6 +70,7 @@
 .slash {
   @include textInputMixin();
   opacity: 0.3;
+  margin: 0 2px;
 }
 
 .icon {
@@ -70,4 +87,16 @@
 
 .noEvents {
   pointer-events: none;
+}
+
+.error {
+  box-shadow: 0 2px 0 0 var(--color-service-error-main);
+
+  &:hover {
+    box-shadow: 0 2px 0 0 var(--color-service-error-main);
+  }
+}
+
+.errorHelperText {
+  color: var(--color-service-error-main);
 }

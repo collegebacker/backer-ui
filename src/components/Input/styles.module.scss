@@ -60,8 +60,6 @@
   right: 0;
 }
 
-// HANDLE STATES
-
 .error {
   .input {
     box-shadow: 0 2px 0 0 var(--color-service-error-main);
@@ -76,8 +74,6 @@
   opacity: 0.3;
   pointer-events: none;
 }
-
-// SHAKE ANIMATION
 
 .shake {
   // border: 1px solid var(--color-service-error-main);
