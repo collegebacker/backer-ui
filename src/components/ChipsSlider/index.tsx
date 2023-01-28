@@ -287,15 +287,16 @@ const ChipsSlider: React.FC<Props> = (props) => {
     setIsDragLoaded(true)
   }, [sliderViewState, snapPoints])
 
-  // Change an active item on aactive index change
+  // Change an active item on active index change
   useDidMountEffect(() => {
     animateItemActiveState(sliderItemRefs.current[activeIndex])
 
-    if (typeof props.onChange === 'function') {
-      props.onChange(activeIndex)
-    }
     if (prevIndex !== activeIndex) {
       animateItemNormalState(sliderItemRefs.current[prevIndex])
+
+      if (typeof props.onChange === 'function') {
+        props.onChange(activeIndex)
+      }
     }
 
     sliderItemRefs.current.forEach((item, index) => {
