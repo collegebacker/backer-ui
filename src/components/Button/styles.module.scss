@@ -1,4 +1,4 @@
-@import "../../../styles/mixins.scss";
+@import '../../../styles/mixins.scss';
 
 .button {
   cursor: pointer;
@@ -24,12 +24,12 @@
 }
 
 .text {
-  font-family: "ABCMarfa", sans-serif;
+  font-family: 'ABCMarfa', sans-serif;
   font-weight: 500;
   text-decoration: none;
 }
 
-// MOODES
+// MODES
 
 .primary {
   background: var(--color-main-500);
@@ -52,30 +52,6 @@
 
   &:hover {
     background: var(--color-main-400);
-  }
-}
-
-.accent {
-  background: var(--color-accent-500);
-
-  .text {
-    color: var(--color-main-0);
-  }
-
-  .icon {
-    svg {
-      fill: var(--color-main-0);
-    }
-  }
-
-  .spinner {
-    svg {
-      stroke: var(--color-main-0);
-    }
-  }
-
-  &:hover {
-    background: var(--color-accent-800);
   }
 }
 
@@ -172,6 +148,8 @@
     font-size: 17px;
   }
 }
+
+// DECORATORS
 
 .fixedSize-small {
   width: 40px;
