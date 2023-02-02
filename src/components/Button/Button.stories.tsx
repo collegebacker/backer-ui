@@ -38,6 +38,7 @@ Default.args = {
   size: 'default',
   tag: 'a',
   disabled: false,
+  hasMinWidth: true,
   busy: false,
   busyLabel: ''
 }
