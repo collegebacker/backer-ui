@@ -14,7 +14,7 @@ interface Props$x {
     label?: string;
     maxWidth?: number;
     minWidth?: number;
-    isMinWidth?: boolean;
+    hasMinWidth?: boolean;
     form?: string;
     busy?: boolean;
     busyLabel?: string;
