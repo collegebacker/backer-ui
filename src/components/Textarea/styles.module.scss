@@ -74,7 +74,7 @@
 
     &:hover,
     &:focus {
-      border: 1px solid var(--color-service-error-dark);
+      border: 1px solid var(--color-service-error-main);
     }
 
     @media screen and (max-width: $grid-mobile-breakpoint) {
@@ -84,7 +84,7 @@
       &:hover,
       &:focus {
         border: none;
-        border-top: 1px solid var(--color-service-error-dark);
+        border-top: 1px solid var(--color-service-error-main);
       }
     }
   }

@@ -21,6 +21,7 @@ Default.args = {
     'Hi! 👋  I hope this gift helps [their kid’s name] go after their dreams! I know they’re going to do big things someday. ❤️',
   rows: 1,
   helperText: 'This is a helper text',
+  errorMessage: 'This is an error message',
   isInvalid: false,
   autoFocus: false,
   autoHeight: true,

@@ -8,6 +8,7 @@ export interface Props {
   defaultValue?: string
   rows?: number
   helperText?: string
+  errorMessage?: string
   isInvalid?: boolean
   autoFocus?: boolean
   autoHeight?: boolean
@@ -95,9 +96,14 @@ const Textarea: React.FC<Props> = (props) => {
         value={value}
         rows={props.rows}
       />
-      {props.helperText && (
+      {props.helperText && !props.isInvalid && (
         <span className={`typo-app-body-caption ${styles.helperText}`}>
           {props.helperText}
+        </span>
+      )}
+      {props.errorMessage && props.isInvalid && (
+        <span className={`typo-app-body-caption ${styles.helperText}`}>
+          {props.errorMessage}
         </span>
       )}
     </div>
@@ -111,6 +117,7 @@ Textarea.defaultProps = {
   defaultValue: '',
   rows: 3,
   helperText: '',
+  errorMessage: '',
   isInvalid: false,
   autoFocus: false,
   autoHeight: false
