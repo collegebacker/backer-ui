@@ -35,6 +35,7 @@ export { default as ImageEditor } from './ImageEditor'
 export { default as BackButton } from './BackButton'
 export { default as CloseButton } from './CloseButton'
 export { default as DateInput } from './DateInput'
+export { default as Textarea } from './Textarea'
 
 // SKELETON
 export {
