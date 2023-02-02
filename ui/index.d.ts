@@ -1,7 +1,7 @@
 import React from 'react';
 import { CalendarProps } from 'react-calendar';
 
-interface Props$x {
+interface Props$y {
     className?: string;
     style?: React.CSSProperties;
     mode?: 'primary' | 'outline' | 'ghost' | 'outline-inverse';
@@ -23,9 +23,9 @@ interface Props$x {
     onSubmit?: (event: any) => void;
     onKeyPress?: (event: any) => void;
 }
-declare const Button: React.ForwardRefExoticComponent<Props$x & React.RefAttributes<any>>;
+declare const Button: React.ForwardRefExoticComponent<Props$y & React.RefAttributes<any>>;
 
-interface Props$w {
+interface Props$x {
     className?: string;
     style?: React.CSSProperties;
     type?: 'button' | 'submit' | 'reset';
@@ -42,24 +42,24 @@ interface Props$w {
     areaLabel?: string;
     areaLabelledBy?: string;
 }
-declare const PillButton: React.ForwardRefExoticComponent<Props$w & React.RefAttributes<any>>;
+declare const PillButton: React.ForwardRefExoticComponent<Props$x & React.RefAttributes<any>>;
 
-interface Props$v {
+interface Props$w {
     className?: string;
     style?: React.CSSProperties;
     name: IconTypes;
     color?: string;
     onClick?: () => void;
 }
-declare const Icon: React.FC<Props$v>;
+declare const Icon: React.FC<Props$w>;
 
-interface Props$u {
+interface Props$v {
     className?: string;
     style?: React.CSSProperties;
     mode?: "light" | "dark";
     name: PaymentLogoTypes;
 }
-declare const PaymentLogo: React.FC<Props$u>;
+declare const PaymentLogo: React.FC<Props$v>;
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     isInvalid?: boolean;
@@ -77,7 +77,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 declare const Input: React.ForwardRefExoticComponent<InputProps & React.RefAttributes<any>>;
 
-interface Props$t {
+interface Props$u {
     className?: string;
     type?: "text" | "password" | "number" | "email" | "money";
     allowCents?: boolean;
@@ -101,9 +101,9 @@ interface Props$t {
     onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
     onInvalid?: (event: React.FormEvent<HTMLInputElement>) => void;
 }
-declare const GhostInput: React.ForwardRefExoticComponent<Props$t & React.RefAttributes<any>>;
+declare const GhostInput: React.ForwardRefExoticComponent<Props$u & React.RefAttributes<any>>;
 
-interface Props$s {
+interface Props$t {
     tabIndex?: number;
     className?: string;
     style?: React.CSSProperties;
@@ -116,21 +116,21 @@ interface Props$s {
     onFocus?: (nums: string) => void;
     onResend?: (event: any) => void;
 }
-declare const CodeInput: React.ForwardRefExoticComponent<Props$s & React.RefAttributes<any>>;
+declare const CodeInput: React.ForwardRefExoticComponent<Props$t & React.RefAttributes<any>>;
 
-interface Props$r {
+interface Props$s {
     className?: string;
     type?: "default" | "foundation" | "sign";
     hoverAnimation?: boolean;
 }
-declare const Logo: React.ForwardRefExoticComponent<Props$r & React.RefAttributes<any>>;
+declare const Logo: React.ForwardRefExoticComponent<Props$s & React.RefAttributes<any>>;
 
 type ItemType$1 = {
     label: string;
     value: any;
     caption?: string;
 };
-interface Props$q {
+interface Props$r {
     containerClassName?: string;
     arrowsClassName?: string;
     items: Array<ItemType$1>;
@@ -148,21 +148,21 @@ interface Props$q {
     alwaysShowOverlayGradients?: boolean;
     onChange?: (index: number) => void;
 }
-declare const ChipsSlider: React.FC<Props$q>;
+declare const ChipsSlider: React.FC<Props$r>;
 
 type ItemType = {
     label: string;
     value: any;
 };
-interface Props$p {
+interface Props$q {
     className?: string;
     defaultIndex?: number;
     items: Array<ItemType>;
     onChange?: (index: number) => void;
 }
-declare const ChipsSelector: React.FC<Props$p>;
+declare const ChipsSelector: React.FC<Props$q>;
 
-interface Props$o {
+interface Props$p {
     containterClassName?: string;
     paginationClassName?: string;
     arrowsClassName?: string;
@@ -181,9 +181,9 @@ interface Props$o {
     children: React.ReactNode;
     onChange?: (index: number) => void;
 }
-declare const SliderWrapper: React.FC<Props$o>;
+declare const SliderWrapper: React.FC<Props$p>;
 
-interface Props$n {
+interface Props$o {
     tabIndex?: number;
     className?: string;
     disabled?: boolean;
@@ -195,31 +195,31 @@ interface Props$n {
     onKeyDown?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
     onKeyUp?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
 }
-declare const ArrowButton: React.ForwardRefExoticComponent<Props$n & React.RefAttributes<any>>;
+declare const ArrowButton: React.ForwardRefExoticComponent<Props$o & React.RefAttributes<any>>;
 
-interface Props$m {
+interface Props$n {
     className?: string;
     style?: React.CSSProperties;
     totalAmount: number;
     activeIndex: number;
     visibleAmount?: number;
 }
-declare const DotPagination: React.FC<Props$m>;
+declare const DotPagination: React.FC<Props$n>;
 
-interface Props$l {
+interface Props$m {
     className?: string;
 }
-declare const Divider: React.FC<Props$l>;
+declare const Divider: React.FC<Props$m>;
 
-interface Props$k {
+interface Props$l {
     className?: string;
     style?: React.CSSProperties;
     size?: "small" | "medium-small" | "medium" | "large";
     color?: string;
 }
-declare const Spinner: React.FC<Props$k>;
+declare const Spinner: React.FC<Props$l>;
 
-interface Props$j {
+interface Props$k {
     isOpen?: boolean;
     children: React.ReactNode;
     className?: string;
@@ -233,9 +233,9 @@ interface Props$j {
     onBackClick?: () => void;
     onCloseClick?: () => void;
 }
-declare const Modal: React.ForwardRefExoticComponent<Props$j & React.RefAttributes<any>>;
+declare const Modal: React.ForwardRefExoticComponent<Props$k & React.RefAttributes<any>>;
 
-interface Props$i {
+interface Props$j {
     className?: string;
     textClassName?: string;
     style?: React.CSSProperties;
@@ -245,18 +245,18 @@ interface Props$i {
         onClick: (event: any) => void;
     }>;
 }
-declare const ModalButtons: React.FC<Props$i>;
+declare const ModalButtons: React.FC<Props$j>;
 
-interface Props$h {
+interface Props$i {
     className?: string;
     items: Array<{
         title: string;
         content: React.ReactElement;
     }>;
 }
-declare const Accordion: React.FC<Props$h>;
+declare const Accordion: React.FC<Props$i>;
 
-interface Props$g {
+interface Props$h {
     className?: string;
     type?: "success" | "error" | "warning";
     outline?: boolean;
@@ -264,9 +264,9 @@ interface Props$g {
     tabIndex?: number;
     onClick?: () => void;
 }
-declare const WarnMesssage$1: React.FC<Props$g>;
+declare const WarnMesssage$1: React.FC<Props$h>;
 
-interface Props$f {
+interface Props$g {
     className?: string;
     orientation?: "left" | "right";
     mode?: "outline" | "grey" | "velvet" | "peach";
@@ -277,9 +277,9 @@ interface Props$f {
     tabIndex?: number;
     onClick?: () => void;
 }
-declare const WarnMesssage: React.FC<Props$f>;
+declare const WarnMesssage: React.FC<Props$g>;
 
-interface Props$e {
+interface Props$f {
     className?: string;
     mode?: "outline" | "grey" | "velvet" | "peach";
     title?: string;
@@ -287,11 +287,11 @@ interface Props$e {
     tabIndex?: number;
     onClick?: () => void;
 }
-declare const ActionMesssage: React.FC<Props$e>;
+declare const ActionMesssage: React.FC<Props$f>;
 
 declare const Toast: React.ForwardRefExoticComponent<React.RefAttributes<unknown>>;
 
-interface Props$d {
+interface Props$e {
     isOpen?: boolean;
     zIndex?: number;
     delay?: number;
@@ -301,7 +301,7 @@ interface Props$d {
         onClick: () => void;
     }>;
 }
-declare const ActionSheet: React.ForwardRefExoticComponent<Props$d & React.RefAttributes<any>>;
+declare const ActionSheet: React.ForwardRefExoticComponent<Props$e & React.RefAttributes<any>>;
 
 interface BreakpointProps {
     breakpoint?: number;
@@ -311,7 +311,7 @@ interface BreakpointProps {
     disableSideFading?: boolean;
     hideArrows?: boolean;
 }
-interface Props$c {
+interface Props$d {
     containterClassName?: string;
     spaceBetween?: number;
     arrowsOffset?: number;
@@ -322,23 +322,40 @@ interface Props$c {
     tabletBreakpoint?: BreakpointProps;
     mobileBreakpoint?: BreakpointProps;
 }
-declare const CSSSlider: React.FC<Props$c>;
+declare const CSSSlider: React.FC<Props$d>;
 
-interface Props$b {
+interface Props$c {
     className?: string;
     count?: number;
     limit?: number;
 }
-declare const CountBadge: React.FC<Props$b>;
+declare const CountBadge: React.FC<Props$c>;
 
-interface Props$a {
+interface Props$b {
     className?: string;
     style?: React.CSSProperties;
     name: string;
     imageSrc?: string;
     onClick?: () => void;
 }
-declare const ProfilePic: React.FC<Props$a>;
+declare const ProfilePic: React.FC<Props$b>;
+
+interface Props$a {
+    id: string;
+    name: string;
+    value?: string;
+    label?: string;
+    disabled?: boolean;
+    className?: string;
+    labelClassName?: string;
+    symbolClassName?: string;
+    checked?: boolean;
+    onChange?: (checked: boolean) => void;
+    onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
+    onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
+    onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+}
+declare const Checkbox: React.FC<Props$a>;
 
 interface Props$9 {
     id: string;
@@ -355,32 +372,15 @@ interface Props$9 {
     onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
     onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
-declare const Checkbox: React.FC<Props$9>;
-
-interface Props$8 {
-    id: string;
-    name: string;
-    value?: string;
-    label?: string;
-    disabled?: boolean;
-    className?: string;
-    labelClassName?: string;
-    symbolClassName?: string;
-    checked?: boolean;
-    onChange?: (checked: boolean) => void;
-    onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
-    onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
-    onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
-}
-declare const Radio: React.FC<Props$8>;
+declare const Radio: React.FC<Props$9>;
 
 interface NewProps {
     hideYearArrows?: boolean;
 }
-type Props$7 = NewProps & Partial<CalendarProps>;
-declare const Calendar: React.FC<Props$7>;
+type Props$8 = NewProps & Partial<CalendarProps>;
+declare const Calendar: React.FC<Props$8>;
 
-interface Props$6 {
+interface Props$7 {
     days?: number;
     className?: string;
     dafaultValue?: number[];
@@ -391,9 +391,9 @@ interface Props$6 {
         isSemimonthly: boolean;
     }) => void;
 }
-declare const RecurringDatePicker: React.FC<Props$6>;
+declare const RecurringDatePicker: React.FC<Props$7>;
 
-interface Props$5 {
+interface Props$6 {
     className?: string;
     style?: React.CSSProperties;
     min?: number;
@@ -402,9 +402,9 @@ interface Props$5 {
     value?: number;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
-declare const Slider: React.FC<Props$5>;
+declare const Slider: React.FC<Props$6>;
 
-interface Props$4 {
+interface Props$5 {
     className?: string;
     style?: React.CSSProperties;
     name: string;
@@ -412,32 +412,32 @@ interface Props$4 {
     imageSrc?: string | undefined;
     onChange?: (imageFile: File) => void;
 }
-declare const PolaroidPhoto: React.FC<Props$4>;
+declare const PolaroidPhoto: React.FC<Props$5>;
 
-interface Props$3 {
+interface Props$4 {
     className?: string;
     imageFile: string | File | undefined;
     isOpen?: boolean;
     onSubmit?: (imageData: string) => void;
     onClose?: () => void;
 }
-declare const ImageEditor: React.FC<Props$3>;
+declare const ImageEditor: React.FC<Props$4>;
+
+interface Props$3 {
+    className?: string;
+    style?: React.CSSProperties;
+    onClick: () => void;
+}
+declare const BackButton$1: React.FC<Props$3>;
 
 interface Props$2 {
     className?: string;
     style?: React.CSSProperties;
     onClick: () => void;
 }
-declare const BackButton$1: React.FC<Props$2>;
+declare const BackButton: React.FC<Props$2>;
 
 interface Props$1 {
-    className?: string;
-    style?: React.CSSProperties;
-    onClick: () => void;
-}
-declare const BackButton: React.FC<Props$1>;
-
-interface Props {
     className?: string;
     style?: React.CSSProperties;
     name: string;
@@ -452,7 +452,22 @@ interface Props {
     onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
     onChange?: (e: Date) => void;
 }
-declare const DateInput: React.ForwardRefExoticComponent<Props & React.RefAttributes<any>>;
+declare const DateInput: React.ForwardRefExoticComponent<Props$1 & React.RefAttributes<any>>;
+
+interface Props {
+    className?: string;
+    style?: React.CSSProperties;
+    label?: string;
+    defaultValue?: string;
+    rows?: number;
+    helperText?: string;
+    errorMessage?: string;
+    isInvalid?: boolean;
+    autoFocus?: boolean;
+    autoHeight?: boolean;
+    onChange?: (value: string) => void;
+}
+declare const Textarea: React.FC<Props>;
 
 interface SkeletonBodyProps {
     className?: string;
@@ -477,4 +492,4 @@ declare const SkeletonText: React.FC<SkeletonTextProps>;
 declare const SkeletonButton: React.FC<SkeletonButtonProps>;
 declare const SkeletonProfilePic: React.FC<SkeletonBoneProps>;
 
-export { Accordion, ActionMesssage, ActionSheet, ArrowButton, BackButton$1 as BackButton, Button, CSSSlider, Calendar, Checkbox, ChipsSelector, ChipsSlider, BackButton as CloseButton, CodeInput, CountBadge, DateInput, Divider, DotPagination, GhostInput, Icon, ImageEditor, WarnMesssage as InfoMesssage, Input, Logo, Modal, ModalButtons, PaymentLogo, PillButton, PolaroidPhoto, ProfilePic, Radio, RecurringDatePicker, SkeletonBody, SkeletonBone, SkeletonButton, SkeletonProfilePic, SkeletonText, Slider, SliderWrapper, Spinner, Toast, WarnMesssage$1 as WarnMesssage };
+export { Accordion, ActionMesssage, ActionSheet, ArrowButton, BackButton$1 as BackButton, Button, CSSSlider, Calendar, Checkbox, ChipsSelector, ChipsSlider, BackButton as CloseButton, CodeInput, CountBadge, DateInput, Divider, DotPagination, GhostInput, Icon, ImageEditor, WarnMesssage as InfoMesssage, Input, Logo, Modal, ModalButtons, PaymentLogo, PillButton, PolaroidPhoto, ProfilePic, Radio, RecurringDatePicker, SkeletonBody, SkeletonBone, SkeletonButton, SkeletonProfilePic, SkeletonText, Slider, SliderWrapper, Spinner, Textarea, Toast, WarnMesssage$1 as WarnMesssage };
