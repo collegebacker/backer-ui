@@ -41,9 +41,16 @@ type IconTypes =
   | 'emoji'
   | 'share'
   | 'resize-photo'
+  | 'refresh'
   | 'chevron-in-circle-down'
   | 'chevron-in-circle-up'
+  | 'send'
   | 'share-arrow'
+  | 'edit'
+  | 'arrow-up'
+  | 'star'
+  | 'file'
+  | 'protection'
 
 type TargetTypes = '_blank' | '_self' | '_parent' | '_top'
 
