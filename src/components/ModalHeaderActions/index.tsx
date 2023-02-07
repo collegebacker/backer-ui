@@ -17,14 +17,26 @@ const ModalHeaderActions: React.FC<Props> = (props) => {
   return (
     <section
       className={`${styles.wrap} ${props.className}`}
-      style={props.style}
+      style={{
+        justifyContent:
+          props.showSave && props.showCancel
+            ? 'space-between'
+            : props.showCancel
+            ? 'flex-start'
+            : 'flex-end',
+        ...props.style
+      }}
     >
-      <span className='typo-app-body-main' onClick={props.onCancelClick}>
-        {props.cancelLabel}
-      </span>
-      <span className='typo-app-body-main' onClick={props.onSaveClick}>
-        {props.saveLabel}
-      </span>
+      {props.showCancel && (
+        <span className='typo-app-body-main' onClick={props.onCancelClick}>
+          {props.cancelLabel}
+        </span>
+      )}
+      {props.showSave && (
+        <span className='typo-app-body-main' onClick={props.onSaveClick}>
+          {props.saveLabel}
+        </span>
+      )}
     </section>
   )
 }
