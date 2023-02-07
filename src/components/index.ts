@@ -36,6 +36,10 @@ export { default as BackButton } from './BackButton'
 export { default as CloseButton } from './CloseButton'
 export { default as DateInput } from './DateInput'
 export { default as Textarea } from './Textarea'
+export { default as Checkmark } from './Checkmark'
+export { default as LabelTag } from './LabelTag'
+export { default as ModalHeaderActions } from './ModalHeaderActions'
+export { default as ListItem } from './ListItem'
 
 // SKELETON
 export {

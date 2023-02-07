@@ -6,7 +6,7 @@ type IconTypes =
   | 'chevron-in-circle-left'
   | 'close-circle'
   | 'tickmark-in-circle'
-  | 'chekbox'
+  | 'tickmark'
   | 'plus'
   | 'question'
   | 'alert'

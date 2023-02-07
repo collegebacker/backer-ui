@@ -1,0 +1,115 @@
+.wrap {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  width: max-content;
+  border-radius: 20px;
+}
+
+// SIZES
+
+.defaultSize {
+  height: 32px;
+  min-width: 32px;
+  padding: 0 12px;
+
+  .icon {
+    margin-right: -6px;
+  }
+}
+
+.smallSize {
+  height: 24px;
+  min-width: 24px;
+  padding: 0 8px;
+
+  .icon {
+    margin-right: -4px;
+  }
+}
+
+// COLORS
+
+.primary {
+  background-color: var(--color-main-500);
+
+  .label {
+    color: var(--color-main-0);
+  }
+
+  .icon {
+    svg {
+      fill: var(--color-main-0);
+    }
+  }
+}
+
+.danger {
+  background-color: var(--color-service-error-main);
+
+  .label {
+    color: var(--color-main-0);
+  }
+
+  .icon {
+    svg {
+      fill: var(--color-main-0);
+    }
+  }
+}
+
+.warning {
+  background-color: var(--color-service-warning-main);
+
+  .label {
+    color: var(--color-main-500);
+  }
+
+  .icon {
+    svg {
+      fill: var(--color-main-500);
+    }
+  }
+}
+
+.success {
+  background-color: var(--color-service-success-main);
+
+  .label {
+    color: var(--color-main-500);
+  }
+
+  .icon {
+    svg {
+      fill: var(--color-main-500);
+    }
+  }
+}
+
+.peach {
+  background-color: var(--color-peach-200);
+
+  .label {
+    color: var(--color-main-500);
+  }
+
+  .icon {
+    svg {
+      fill: var(--color-main-500);
+    }
+  }
+}
+
+.velvet {
+  background-color: var(--color-accent-500);
+
+  .label {
+    color: var(--color-main-0);
+  }
+
+  .icon {
+    svg {
+      fill: var(--color-main-0);
+    }
+  }
+}

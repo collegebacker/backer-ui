@@ -1,0 +1,29 @@
+.wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 30px;
+  height: 30px;
+
+  border-radius: 30px;
+  border: 1px solid var(--color-main-500);
+
+  transition: background-color 0.1s ease-in-out, border 0.1s ease-in-out;
+}
+
+.tickIcon {
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.15s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.checked {
+  background-color: var(--color-service-success-main);
+  border: 1px solid var(--color-service-success-main);
+
+  .tickIcon {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
