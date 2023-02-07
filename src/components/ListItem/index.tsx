@@ -5,34 +5,72 @@ import Icon from '../Icon'
 export interface Props {
   className?: string
   style?: React.CSSProperties
-  icon?: IconTypes
-  small?: boolean
-  label?: string
-  color?: 'primary' | 'danger' | 'warning' | 'success' | 'peach' | 'velvet'
+  topLabel?: string
+  title?: string
+  description?: string
+  chevron?: boolean
+  divider?: boolean
+  rightContent?: React.ReactNode
+  middleContent?: React.ReactNode
+  leftContent?: React.ReactNode
+  onClick?: () => void
 }
 
-const LabelTag: React.FC<Props> = (props) => {
+const ListItem: React.FC<Props> = (props) => {
   return (
-    <div
-      className={`${styles.wrap} ${
-        props.small ? styles.smallSize : styles.defaultSize
-      } ${styles[props.color]} ${props.className}`}
-      style={props.style}
+    <li
+      className={`${styles.wrap} ${props.className} ${
+        props.divider ? styles.divider : ''
+      }`}
+      style={{
+        // userSelect: props.onClick ? 'none' : 'auto',
+        cursor: props.onClick ? 'pointer' : 'auto',
+        ...props.style
+      }}
+      onClick={props.onClick}
     >
-      <span className={`typo-app-body-caption ${styles.label}`}>
-        {props.label}
-      </span>
-      {props.icon && <Icon className={styles.icon} name={props.icon} />}
-    </div>
+      {props.leftContent && (
+        <div className={`${styles.leftContent}`}>{props.leftContent}</div>
+      )}
+
+      <div className={`${styles.middleContent}`}>
+        {props.topLabel && (
+          <span className={`typo-app-body-caption ${styles.caption}`}>
+            {props.topLabel}
+          </span>
+        )}
+
+        {props.title && (
+          <h4 className={`typo-app-body-main ${styles.title}`}>
+            {props.title}
+          </h4>
+        )}
+
+        {props.description && (
+          <p className={`typo-app-body-caption ${styles.caption}`}>
+            {props.description}
+          </p>
+        )}
+        {props.middleContent}
+      </div>
+
+      {(props.rightContent || props.chevron) && (
+        <div className={`${styles.rightContent}`}>
+          {props.rightContent} {props.chevron && <Icon name='chevron-right' />}
+        </div>
+      )}
+    </li>
   )
 }
 
-LabelTag.defaultProps = {
+ListItem.defaultProps = {
   className: '',
   style: {},
-  small: false,
-  label: 'label',
-  color: 'primary'
+  topLabel: '',
+  title: 'Title',
+  description: '',
+  chevron: true,
+  divider: true
 } as Partial<Props>
 
-export default LabelTag
+export default ListItem
