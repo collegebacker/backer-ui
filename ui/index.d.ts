@@ -315,7 +315,7 @@ interface Props$h {
     containterClassName?: string;
     spaceBetween?: number;
     arrowsOffset?: number;
-    paginationAlignment?: "center" | "left" | "right";
+    paginationAlignment?: 'center' | 'left' | 'right';
     children: React.ReactNode;
     onChange?: (index: number) => void;
     desktopBreakpoint?: BreakpointProps;

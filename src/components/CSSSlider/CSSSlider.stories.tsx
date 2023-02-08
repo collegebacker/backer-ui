@@ -1,12 +1,12 @@
-import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import React from 'react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { CSSSlider } from "..";
+import { CSSSlider } from '..'
 
-localStorage.clear();
+localStorage.clear()
 
 export default {
-  title: "Sliders/CSSSlider",
+  title: 'Sliders/CSSSlider',
   component: CSSSlider,
   parameters: {
     docs: {
@@ -32,47 +32,47 @@ export default {
 - \`disableSideFading?: boolean\`. Disable side fading. By default it's \`true\`.
 - \`hideArrows?: boolean\`. Hide arrows. By default it's \`false\` and \`true\` for mobile.
 
-`,
-      },
-    },
-  },
-} as ComponentMeta<typeof CSSSlider>;
+`
+      }
+    }
+  }
+} as ComponentMeta<typeof CSSSlider>
 
 const itemsArray = [
   {
-    emoji: "🤖",
-    title: "Withdrawal 1",
+    emoji: '🤖',
+    title: 'Withdrawal 1',
     description:
-      "You’ll always be able to withdraw your contributions with no tax or penalties.",
+      'You’ll always be able to withdraw your contributions with no tax or penalties.'
   },
   {
-    emoji: "🤖",
-    title: "Save together 2",
+    emoji: '🤖',
+    title: 'Save together 2',
     description:
-      "Backer is a social fund: save 4x more with gifts from family & friends.",
+      'Backer is a social fund: save 4x more with gifts from family & friends.'
   },
   {
-    emoji: "🤖",
-    title: "You win, we win 3",
-    description: "We won’t charge our $5 monthly fee if you lose money.",
+    emoji: '🤖',
+    title: 'You win, we win 3',
+    description: 'We won’t charge our $5 monthly fee if you lose money.'
   },
   {
-    emoji: "🤖",
-    title: "Flexible 4",
+    emoji: '🤖',
+    title: 'Flexible 4',
     description:
-      "You’ll always be able to withdraw your contributions with no tax or penalties.",
-  },
-  {
-    emoji: "🤖",
-    title: "Save together 5",
-    description:
-      "Backer is a social fund: save 4x more with gifts from family & friends.",
-  },
-  {
-    emoji: "🤖",
-    title: "You win 6",
-    description: "We won’t charge our $5 monthly fee if you lose money.",
-  },
+      'You’ll always be able to withdraw your contributions with no tax or penalties.'
+  }
+  // {
+  //   emoji: '🤖',
+  //   title: 'Save together 5',
+  //   description:
+  //     'Backer is a social fund: save 4x more with gifts from family & friends.'
+  // },
+  // {
+  //   emoji: '🤖',
+  //   title: 'You win 6',
+  //   description: 'We won’t charge our $5 monthly fee if you lose money.'
+  // }
   // {
   //   emoji: "🤖",
   //   title: "Flexible 7",
@@ -85,36 +85,36 @@ const itemsArray = [
   //   description:
   //     "Backer is a social fund: save 4x more with gifts from family & friends.",
   // },
-];
+]
 
 interface CardExampleProps {
-  title: string;
-  description: string;
-  emoji: string;
+  title: string
+  description: string
+  emoji: string
 }
 
 const CardExample: React.FC<CardExampleProps> = (props) => {
   return (
-    <div className="sliderWrapper_card">
+    <div className='sliderWrapper_card'>
       <h1>{props.emoji}</h1>
       <h2>{props.title}</h2>
       <button>button</button>
     </div>
-  );
-};
+  )
+}
 
 const Template: ComponentStory<typeof CSSSlider> = (args) => (
   <div
     style={{
-      backgroundColor: "rgba(0, 0, 0, 0.1)",
-      padding: "40px 0",
-      maxWidth: "1000px",
-      margin: "0 auto",
+      backgroundColor: 'rgba(0, 0, 0, 0.1)',
+      padding: '40px 0',
+      maxWidth: '1000px',
+      margin: '0 auto'
     }}
   >
     <div
       style={{
-        backgroundColor: "rgba(0, 0, 0, 0.05)",
+        backgroundColor: 'rgba(0, 0, 0, 0.05)'
       }}
     >
       {/* <div
@@ -130,12 +130,12 @@ const Template: ComponentStory<typeof CSSSlider> = (args) => (
       /> */}
     </div>
   </div>
-);
+)
 
-export const Default = Template.bind({});
+export const Default = Template.bind({})
 Default.args = {
   children: itemsArray.map((item, index) => {
-    return <CardExample key={index} {...item} />;
+    return <CardExample key={index} {...item} />
   }),
   // desktopBreakpoint: {
   //   cardsToShow: 2,
@@ -145,12 +145,12 @@ Default.args = {
   //   sidePaddingOffset: 0,
   // },
   mobileBreakpoint: {
-    sidePaddingOffset: 0,
-  },
+    sidePaddingOffset: 0
+  }
   // spaceBetween: 0,
 
   // disableSideFading: true,
   // paginationAlignment: "left",
   // spaceBetween: 20,
   // showGuidelines: true,
-};
+}
