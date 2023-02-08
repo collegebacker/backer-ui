@@ -313,6 +313,7 @@ interface BreakpointProps {
 }
 interface Props$h {
     containterClassName?: string;
+    paginationClassName?: string;
     spaceBetween?: number;
     arrowsOffset?: number;
     paginationAlignment?: 'center' | 'left' | 'right';

@@ -18,6 +18,7 @@ export interface BreakpointProps {
 
 export interface Props {
   containterClassName?: string
+  paginationClassName?: string
   spaceBetween?: number
   arrowsOffset?: number
   paginationAlignment?: 'center' | 'left' | 'right'
@@ -255,7 +256,7 @@ const CSSSlider: React.FC<Props> = (props) => {
 
       {paginationAmount > 1 ? (
         <div
-          className={styles.pagination}
+          className={`${styles.pagination} ${props.paginationClassName}`}
           style={{
             justifyContent: setPaginationAlignment(),
             marginLeft: `${currentBreakpoint.sidePaddingOffset}px`,
