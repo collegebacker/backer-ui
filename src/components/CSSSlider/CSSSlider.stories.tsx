@@ -145,7 +145,8 @@ Default.args = {
   //   sidePaddingOffset: 0,
   // },
   mobileBreakpoint: {
-    sidePaddingOffset: 0
+    sidePaddingOffset: 0,
+    disableSideFading: false
   }
   // spaceBetween: 0,
 

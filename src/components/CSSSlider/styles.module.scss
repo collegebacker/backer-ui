@@ -47,8 +47,9 @@
 
   &::after,
   &::before {
-    content: "";
+    content: '';
     position: absolute;
+    z-index: 1;
     top: 0;
 
     width: 40px;
@@ -135,6 +136,8 @@
 }
 
 .pagination {
+  position: relative;
+  z-index: 2;
   display: flex;
   margin-top: 30px;
 }
