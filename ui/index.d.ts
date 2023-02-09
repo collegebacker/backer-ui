@@ -281,8 +281,10 @@ declare const WarnMesssage: React.FC<Props$k>;
 
 interface Props$j {
     className?: string;
-    mode?: "outline" | "grey" | "velvet" | "peach";
+    undertitleContentClassName?: string;
+    mode?: 'outline' | 'grey' | 'velvet' | 'peach';
     title?: string;
+    undertitleContent?: React.ReactNode;
     caption?: string;
     tabIndex?: number;
     onClick?: () => void;
@@ -502,11 +504,14 @@ declare const ModalHeaderActions: React.FC<Props$1>;
 
 interface Props {
     className?: string;
+    rightContentClassName?: string;
+    middleContentClassName?: string;
+    leftContentClassName?: string;
     style?: React.CSSProperties;
     topLabel?: string;
+    titleLarge?: string;
     title?: string;
     description?: string;
-    chevron?: boolean;
     divider?: boolean;
     rightContent?: React.ReactNode;
     middleContent?: React.ReactNode;
