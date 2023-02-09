@@ -146,7 +146,8 @@ Default.args = {
   // },
   mobileBreakpoint: {
     sidePaddingOffset: 0,
-    disableSideFading: false
+    disableSideFading: true,
+    shiftHiddenCard: 30
   }
   // spaceBetween: 0,
 

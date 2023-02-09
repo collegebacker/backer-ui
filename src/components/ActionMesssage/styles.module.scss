@@ -4,15 +4,7 @@
   align-items: center;
   padding: 20px;
   border-radius: var(--radius-m);
-  cursor: pointer;
   transition: transform 0.2s ease;
-
-  &:hover {
-    transform: translateX(2px);
-    .arrow {
-      transform: translateX(5px);
-    }
-  }
 
   &:focus-visible {
     outline: 1px solid var(--color-main-500);
@@ -20,9 +12,27 @@
   }
 }
 
+.clickable {
+  cursor: pointer;
+
+  &:hover {
+    transform: translateX(2px);
+    .arrow {
+      transform: translateX(5px);
+    }
+  }
+}
+
+.undertitleContent {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
 .content {
   display: flex;
   flex-direction: column;
+  gap: 10px;
   width: 100%;
 }
 
@@ -33,7 +43,6 @@
 }
 
 .caption {
-  margin-top: 10px;
   color: var(--color-main-200);
 }
 

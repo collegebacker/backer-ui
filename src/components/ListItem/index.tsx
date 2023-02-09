@@ -4,11 +4,14 @@ import Icon from '../Icon'
 
 export interface Props {
   className?: string
+  rightContentClassName?: string
+  middleContentClassName?: string
+  leftContentClassName?: string
   style?: React.CSSProperties
   topLabel?: string
+  titleLarge?: string
   title?: string
   description?: string
-  chevron?: boolean
   divider?: boolean
   rightContent?: React.ReactNode
   middleContent?: React.ReactNode
@@ -21,16 +24,17 @@ const ListItem: React.FC<Props> = (props) => {
     <li
       className={`${styles.wrap} ${props.className} ${
         props.divider ? styles.divider : ''
-      }`}
-      style={{
-        // userSelect: props.onClick ? 'none' : 'auto',
-        cursor: props.onClick ? 'pointer' : 'auto',
-        ...props.style
-      }}
+      }
+      ${props.onClick ? styles.clickable : ''}
+      `}
+      style={props.style}
       onClick={props.onClick}
+      tabIndex={props.onClick ? 0 : -1}
     >
       {props.leftContent && (
-        <div className={`${styles.leftContent}`}>{props.leftContent}</div>
+        <div className={`${styles.leftContent} ${props.leftContentClassName}`}>
+          {props.leftContent}
+        </div>
       )}
 
       <div className={`${styles.middleContent}`}>
@@ -38,6 +42,12 @@ const ListItem: React.FC<Props> = (props) => {
           <span className={`typo-app-body-caption ${styles.caption}`}>
             {props.topLabel}
           </span>
+        )}
+
+        {props.titleLarge && (
+          <h4 className={`typo-app-title-small ${styles.title}`}>
+            {props.titleLarge}
+          </h4>
         )}
 
         {props.title && (
@@ -51,22 +61,41 @@ const ListItem: React.FC<Props> = (props) => {
             {props.description}
           </p>
         )}
-        {props.middleContent}
+
+        {props.middleContent && (
+          <div
+            className={`${styles.middleContent} ${props.middleContentClassName}`}
+          >
+            {props.middleContent}
+          </div>
+        )}
       </div>
 
-      {(props.rightContent || props.chevron) && (
-        <div className={`${styles.rightContent}`}>
-          {props.rightContent} {props.chevron && <Icon name='chevron-right' />}
-        </div>
-      )}
+      <div className={`${styles.rightContent}`}>
+        {props.rightContent && (
+          <div
+            className={`${styles.rightContent} ${props.rightContentClassName}`}
+          >
+            {props.rightContent}
+          </div>
+        )}
+
+        {props.onClick && (
+          <Icon name='chevron-right' className={styles.chevron} />
+        )}
+      </div>
     </li>
   )
 }
 
 ListItem.defaultProps = {
   className: '',
+  rightContentClassName: '',
+  middleContentClassName: '',
+  leftContentClassName: '',
   style: {},
   topLabel: '',
+  titleLarge: '',
   title: 'Title',
   description: '',
   chevron: true,

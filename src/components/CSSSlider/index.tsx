@@ -27,6 +27,7 @@ export interface Props {
   desktopBreakpoint?: BreakpointProps
   tabletBreakpoint?: BreakpointProps
   mobileBreakpoint?: BreakpointProps
+  // TODO: add a default index prop
 }
 
 const arrowSVG = (

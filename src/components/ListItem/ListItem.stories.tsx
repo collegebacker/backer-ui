@@ -53,11 +53,18 @@ const DefaaultTemplate: ComponentStory<typeof ListItem> = (args) => {
 
 export const Default = DefaaultTemplate.bind({})
 Default.args = {
+  titleLarge: "I'm a large title",
   title: 'Title',
   topLabel: 'Top Label',
   description: 'Description',
   leftContent: <Checkmark checked />,
-  rightContent: <LabelTag small />,
+  rightContent: (
+    <>
+      <LabelTag small />
+      <LabelTag small />
+    </>
+  ),
+  middleContent: <p>Hello I'm a custom content</p>,
   chevron: true,
   divider: true,
   onClick: () => {
@@ -102,10 +109,20 @@ const SimpleTemplate: ComponentStory<typeof ListItem> = (args) => {
   )
 }
 
-export const SimpleList = SimpleTemplate.bind({})
-SimpleList.args = {
+export const SimpleListNotClickable = SimpleTemplate.bind({})
+SimpleListNotClickable.args = {
   title: 'Title',
   chevron: true,
   divider: true,
   onClick: undefined
+}
+
+export const SimpleListClickable = SimpleTemplate.bind({})
+SimpleListClickable.args = {
+  title: 'Title',
+  chevron: true,
+  divider: true,
+  onClick: () => {
+    console.log('clicked')
+  }
 }
