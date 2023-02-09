@@ -27,7 +27,7 @@ export interface Props {
   desktopBreakpoint?: BreakpointProps
   tabletBreakpoint?: BreakpointProps
   mobileBreakpoint?: BreakpointProps
-  // TODO: add a default index prop
+  defaultActiveCardIndex?: number
 }
 
 const arrowSVG = (
@@ -154,9 +154,10 @@ const CSSSlider: React.FC<Props> = (props) => {
         setCurrentBreakpoint(desktopBreakpoint)
       }
 
-      setPaginationAmount(
+      const paginationAmount =
         childrenArray.length - currentBreakpoint.cardsToShow + 1
-      )
+
+      setPaginationAmount(paginationAmount)
     }
 
     handleResize()
@@ -171,8 +172,18 @@ const CSSSlider: React.FC<Props> = (props) => {
       props.onChange(activeIndex)
     }
 
-    console.log(currentBreakpoint.cardsToShow, paginationAmount)
+    // console.log(currentBreakpoint.cardsToShow, paginationAmount)
   }, [activeIndex])
+
+  React.useEffect(() => {
+    // console.log(activeIndexPage)
+
+    childrenRefs.current[props.defaultActiveCardIndex].scrollIntoView({
+      // behavior: 'smooth',
+      block: 'nearest',
+      inline: 'start'
+    })
+  }, [paginationAmount])
 
   return (
     <section className={`${styles.container} ${props.containterClassName}`}>
@@ -278,7 +289,8 @@ CSSSlider.defaultProps = {
   containterClassName: '',
   spaceBetween: 20,
   arrowsOffset: 20,
-  paginationAlignment: 'left'
+  paginationAlignment: 'left',
+  defaultActiveCardIndex: 0
 } as Partial<Props>
 
 export default CSSSlider

@@ -106,16 +106,18 @@ const CardExample: React.FC<CardExampleProps> = (props) => {
 const Template: ComponentStory<typeof CSSSlider> = (args) => (
   <div
     style={{
-      backgroundColor: 'rgba(0, 0, 0, 0.1)',
+      // backgroundColor: 'rgba(0, 0, 0, 0.1)',
       padding: '40px 0',
       maxWidth: '1000px',
       margin: '0 auto'
     }}
   >
     <div
-      style={{
-        backgroundColor: 'rgba(0, 0, 0, 0.05)'
-      }}
+      style={
+        {
+          // backgroundColor: 'rgba(0, 0, 0, 0.05)'
+        }
+      }
     >
       {/* <div
         style={{
@@ -137,6 +139,8 @@ Default.args = {
   children: itemsArray.map((item, index) => {
     return <CardExample key={index} {...item} />
   }),
+  defaultActiveCardIndex: 0,
+  // activeChildIndex: 1,
   // desktopBreakpoint: {
   //   cardsToShow: 2,
   //   sidePaddingOffset: 0,
