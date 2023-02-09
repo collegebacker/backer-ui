@@ -65,7 +65,6 @@ Default.args = {
     </>
   ),
   middleContent: <p>Hello I'm a custom content</p>,
-  chevron: true,
   divider: true,
   onClick: () => {
     console.log('clicked')
@@ -92,7 +91,6 @@ export const ComplexList = ComplexTemplate.bind({})
 ComplexList.args = {
   leftContent: <Checkmark checked />,
   rightContent: <LabelTag small />,
-  chevron: true,
   divider: true,
   onClick: () => {
     console.log('clicked')
@@ -112,7 +110,6 @@ const SimpleTemplate: ComponentStory<typeof ListItem> = (args) => {
 export const SimpleListNotClickable = SimpleTemplate.bind({})
 SimpleListNotClickable.args = {
   title: 'Title',
-  chevron: true,
   divider: true,
   onClick: undefined
 }
@@ -120,7 +117,6 @@ SimpleListNotClickable.args = {
 export const SimpleListClickable = SimpleTemplate.bind({})
 SimpleListClickable.args = {
   title: 'Title',
-  chevron: true,
   divider: true,
   onClick: () => {
     console.log('clicked')
