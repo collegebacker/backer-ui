@@ -324,6 +324,7 @@ interface Props$h {
     desktopBreakpoint?: BreakpointProps;
     tabletBreakpoint?: BreakpointProps;
     mobileBreakpoint?: BreakpointProps;
+    defaultActiveCardIndex?: number;
 }
 declare const CSSSlider: React.FC<Props$h>;
 
