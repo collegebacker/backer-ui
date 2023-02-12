@@ -462,11 +462,10 @@ interface Props$4 {
     className?: string;
     style?: React.CSSProperties;
     label?: string;
-    defaultValue?: string;
+    value?: string;
     rows?: number;
     helperText?: string;
     errorMessage?: string;
-    isInvalid?: boolean;
     autoFocus?: boolean;
     autoHeight?: boolean;
     onChange?: (value: string) => void;
