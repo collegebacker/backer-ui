@@ -11,21 +11,23 @@ export default {
 } as ComponentMeta<typeof Textarea>
 
 const Template: ComponentStory<typeof Textarea> = (args) => {
-  return <Textarea {...args} />
+  const [value, setValue] = React.useState(args.value)
+
+  const handleChange = (value: string) => {
+    setValue(value)
+  }
+
+  return <Textarea {...args} onChange={handleChange} value={value} />
 }
 
 export const Default = Template.bind({})
 Default.args = {
   label: 'Message',
-  defaultValue:
-    'Hi! 👋  I hope this gift helps [their kid’s name] go after their dreams! I know they’re going to do big things someday. ❤️',
   rows: 1,
   helperText: 'This is a helper text',
-  errorMessage: 'This is an error message',
-  isInvalid: false,
+  errorMessage: '',
   autoFocus: false,
   autoHeight: true,
-  onChange: (value) => console.log(value),
   className: '',
   style: {}
 }
