@@ -448,7 +448,6 @@ interface Props$5 {
     label?: string;
     defaultValue?: Date;
     helperText?: string;
-    errorMessage?: string;
     errorAnimation?: boolean;
     disabled?: boolean;
     onInvalid?: (e: Date) => void;
