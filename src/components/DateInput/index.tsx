@@ -218,9 +218,7 @@ const DateInput = React.forwardRef<any, Props>((props, ref) => {
   const handleOnKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Backspace') {
       if (e.currentTarget.value === '') {
-        if (e.currentTarget.name === 'month') {
-          dayInputRef.current?.focus()
-        } else if (e.currentTarget.name === 'day') {
+        if (e.currentTarget.name === 'day') {
           monthInputRef.current?.focus()
         } else if (e.currentTarget.name === 'year') {
           dayInputRef.current?.focus()
