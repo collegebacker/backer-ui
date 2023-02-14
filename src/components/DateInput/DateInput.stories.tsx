@@ -53,7 +53,6 @@ const TemplatePreset: ComponentStory<typeof DateInput> = (args) => {
 export const DefaultValue = TemplatePreset.bind({})
 DefaultValue.args = {
   className: '',
-  helperText: 'Enter date as MM/DD/YYYY',
   style: {},
   onChange: (value) => console.log('date', value),
   defaultValue: new Date('1986-11-17')

@@ -100,3 +100,13 @@
 .errorHelperText {
   color: var(--color-service-error-main);
 }
+
+.focusHelper {
+  z-index: 1;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 44px;
+  width: 100%;
+  // background-color: rgba(0, 0, 0, 0.1);
+}
