@@ -20,6 +20,7 @@ export interface Props {
   defaultValue?: Date
   helperText?: string
   errorAnimation?: boolean
+  errorMessage?: string
   disabled?: boolean
   onInvalid?: (e: Date) => void
   onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void
@@ -84,7 +85,6 @@ const DateInput = React.forwardRef<any, Props>((props, ref) => {
   const [isInvalidState, setIsInvalidState] = React.useState(false)
   const [isFocused, setIsFocused] = React.useState(false)
   const [isModalOpen, setIsModalOpen] = React.useState(false)
-  const [errorMessage, setErrorMessage] = React.useState('')
 
   // IMPERATIVE HANDLERS
   React.useImperativeHandle(ref, () => ({
@@ -111,7 +111,6 @@ const DateInput = React.forwardRef<any, Props>((props, ref) => {
         isInvalidDate = true
       }
     } else {
-      setErrorMessage('Please enter a valid date')
       isInvalidDate = true
     }
 
@@ -413,7 +412,7 @@ const DateInput = React.forwardRef<any, Props>((props, ref) => {
               isInvalidState ? dateinputStyles.errorHelperText : ''
             }`}
           >
-            {isInvalidState ? errorMessage : props.helperText}
+            {isInvalidState ? props.errorMessage : props.helperText}
           </span>
         ) : null}
       </div>
@@ -428,6 +427,7 @@ DateInput.defaultProps = {
   type: 'text',
   name: 'date-input',
   helperText: "Use 'MM/DD/YYYY' format",
+  errorMessage: 'Please enter a valid date',
   defaultValue: null
 } as Partial<Props>
 

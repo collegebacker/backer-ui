@@ -449,6 +449,7 @@ interface Props$5 {
     defaultValue?: Date;
     helperText?: string;
     errorAnimation?: boolean;
+    errorMessage?: string;
     disabled?: boolean;
     onInvalid?: (e: Date) => void;
     onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
