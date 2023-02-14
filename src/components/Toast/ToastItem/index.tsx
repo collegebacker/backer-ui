@@ -1,59 +1,61 @@
-import React from "react";
-import styles from "./styles.module.scss";
+import React from 'react'
+import styles from './styles.module.scss'
 
-import Button from "../../Button";
+import Button from '../../Button'
 
 interface ItemProps {
-  message: string | React.ReactNode;
-  params?: ToastItemProps;
+  message: string | React.ReactNode
+  params?: ToastItemProps
 }
 
 const ToastItem: React.FC<ItemProps> = (props) => {
-  const [isCloseTrigger, setIsCloseTrigger] = React.useState(false);
-  const [isMount, setIsMount] = React.useState(true);
+  const [isCloseTrigger, setIsCloseTrigger] = React.useState(false)
+  const [isMount, setIsMount] = React.useState(true)
 
   const addEmoji = () => {
     if (props.params?.emoji) {
-      return props.params?.emoji;
+      return props.params?.emoji
     }
 
     switch (props.params?.type) {
-      case "success":
-        return "🎉";
-      case "error":
-        return "📛";
-      case "warning":
-        return "⚠️";
-      case "info":
-        return props.params?.emoji;
+      case 'success':
+        return '🎉'
+      case 'error':
+        return '📛'
+      case 'warning':
+        return '⚠️'
+      case 'info':
+        return props.params?.emoji
       default:
-        return props.params?.emoji;
+        return props.params?.emoji
     }
-  };
+  }
+
+  const handleClose = () => {
+    setIsCloseTrigger(true)
+
+    if (props.params?.onClose) {
+      props.params?.onClose()
+    }
+  }
 
   React.useEffect(() => {
     if (props.params?.timeout) {
       const timer = setTimeout(() => {
-        setIsCloseTrigger(true);
-      }, props.params?.timeout);
+        handleClose()
+      }, props.params?.timeout)
 
       return () => {
-        clearTimeout(timer);
-      };
+        clearTimeout(timer)
+      }
     }
-  }, []);
+  }, [])
 
   const handleCloseOnParentClick = () => {
     if (props.params?.closeOnClick && !props.params?.dismissButton) {
-      // console.log("closeOnClick");
-      setIsCloseTrigger(true);
+      handleClose()
     }
-  };
-
-  const handleClose = () => {
-    // console.log("crossClick");
-    setIsCloseTrigger(true);
-  };
+  }
 
   return isMount ? (
     <section
@@ -63,13 +65,12 @@ const ToastItem: React.FC<ItemProps> = (props) => {
       onClick={handleCloseOnParentClick}
       onAnimationEnd={() => {
         if (isCloseTrigger) {
-          // console.log(isCloseTrigger);
-          setIsMount(false);
+          setIsMount(false)
         }
       }}
     >
       <div className={`${styles.toastItem} ${styles[props.params?.type]}`}>
-        {props.params?.emoji !== "" || props.params?.type !== "info" ? (
+        {props.params?.emoji !== '' || props.params?.type !== 'info' ? (
           <div className={styles.emoji}>{addEmoji()}</div>
         ) : null}
 
@@ -77,8 +78,8 @@ const ToastItem: React.FC<ItemProps> = (props) => {
           className={styles.toastItem__content}
           style={{
             width: `calc(100% - ${
-              props.params?.showCloseIcon ? "84px" : "40px"
-            })`,
+              props.params?.showCloseIcon ? '84px' : '40px'
+            })`
           }}
         >
           <p className={`typo-app-body-main ${styles.toastItem__text}`}>
@@ -92,10 +93,10 @@ const ToastItem: React.FC<ItemProps> = (props) => {
                   className={styles.toastItem__button}
                   onClick={props.params?.button.onClick}
                   label={props.params?.button.label}
-                  size="small"
-                  mode="outline"
+                  size='small'
+                  mode='outline'
                   style={{
-                    minWidth: "auto",
+                    minWidth: 'auto'
                   }}
                 />
               ) : null}
@@ -103,11 +104,11 @@ const ToastItem: React.FC<ItemProps> = (props) => {
               {props.params?.dismissButton ? (
                 <Button
                   className={styles.toastItem__button}
-                  label="Dismiss"
-                  size="small"
-                  mode="outline"
+                  label='Dismiss'
+                  size='small'
+                  mode='outline'
                   style={{
-                    minWidth: "auto",
+                    minWidth: 'auto'
                   }}
                   onClick={handleClose}
                 />
@@ -121,7 +122,7 @@ const ToastItem: React.FC<ItemProps> = (props) => {
         ) : null}
       </div>
     </section>
-  ) : null;
-};
+  ) : null
+}
 
-export default ToastItem;
+export default ToastItem

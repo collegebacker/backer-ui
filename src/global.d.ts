@@ -104,6 +104,7 @@ type ToastItemProps = {
   emoji?: string
   type?: 'success' | 'error' | 'warning' | 'info'
   timeout?: number
+  onClose?: () => void
 }
 
 type ModalAnimationSizeProps = {

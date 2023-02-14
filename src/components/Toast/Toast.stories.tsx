@@ -1,12 +1,12 @@
-import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import React from 'react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { Toast, Button } from "..";
+import { Toast, Button } from '..'
 
-localStorage.clear();
+localStorage.clear()
 
 export default {
-  title: "Misc/Toast",
+  title: 'Misc/Toast',
   component: Toast,
   parameters: {
     docs: {
@@ -26,251 +26,310 @@ export default {
 - \`emoji?: string\`
 - \`type?: "success" | "error" | "warning" | "info"\`. Yu can change emoji on any type.
 - \`timeout?: number\`. If set to a number, the toast will be automatically closed after the number of milliseconds. If set to false, the toast will not be automatically closed.
-`,
-      },
-    },
-  },
-} as ComponentMeta<typeof Toast>;
+`
+      }
+    }
+  }
+} as ComponentMeta<typeof Toast>
 
 const Template: ComponentStory<typeof Toast> = (args) => {
-  const toastRef = React.useRef<any>();
+  const toastRef = React.useRef<any>()
 
   return (
     <>
       <Toast ref={toastRef} {...args} />
 
-      <h2 className="typo-app-title-small" style={{ marginBottom: "20px" }}>
+      <h2 className='typo-app-title-small' style={{ marginBottom: '20px' }}>
         Basic toasts
       </h2>
       <Button
-        size="small"
+        size='small'
         style={{
-          margin: "0 15px 15px 0",
+          margin: '0 15px 15px 0'
         }}
-        label="Close on click"
-        onClick={() => toastRef.current.showToast("hello", { emoji: "🤩" })}
+        label='Close on click'
+        onClick={() => toastRef.current.showToast('hello', { emoji: '🤩' })}
       />
       <Button
-        size="small"
+        size='small'
         style={{
-          margin: "0 15px 15px 0",
+          margin: '0 15px 15px 0'
         }}
-        label="Say Toast!"
+        label='Say Toast!'
         onClick={() =>
           toastRef.current.showToast(
-            "I authorize Backer to debit the bank account indicated in this web form, for the noted amount on the schedule indicated.",
+            'I authorize Backer to debit the bank account indicated in this web form, for the noted amount on the schedule indicated.',
             {
               closeOnClick: false,
-              showCloseIcon: true,
+              showCloseIcon: true
             }
           )
         }
       />
 
       <Button
-        size="small"
+        size='small'
         style={{
-          margin: "0 15px 15px 0",
+          margin: '0 15px 15px 0'
         }}
-        label="With dismiss button"
+        label='With dismiss button'
         onClick={() =>
           toastRef.current.showToast("I'm a toast with a dismiss button", {
             // closeOnClick: false,
             showCloseIcon: true,
-            dismissButton: true,
+            dismissButton: true
           })
         }
       />
       <Button
-        size="small"
+        size='small'
         style={{
-          margin: "0 15px 15px 0",
+          margin: '0 15px 15px 0'
         }}
-        label="With the second button"
+        label='With the second button'
         onClick={() =>
           toastRef.current.showToast("I'm a toast with a dismiss button", {
             showCloseIcon: true,
             dismissButton: true,
             button: {
-              label: "Button",
+              label: 'Button',
               onClick: () => {
-                console.log("Second button clicked");
-              },
-            },
+                console.log('Second button clicked')
+              }
+            }
           })
         }
       />
       <Button
-        size="small"
+        size='small'
         style={{
-          margin: "0 15px 15px 0",
+          margin: '0 15px 15px 0'
         }}
-        label="With emoji"
+        label='With emoji'
         onClick={() =>
           toastRef.current.showToast("I'm a toast with a dismiss button", {
             closeOnClick: false,
             showCloseIcon: true,
-            emoji: "🤩",
+            emoji: '🤩'
           })
         }
       />
 
-      <h2 className="typo-app-title-small" style={{ marginBottom: "20px" }}>
+      <h2 className='typo-app-title-small' style={{ marginBottom: '20px' }}>
         Service toasts
       </h2>
 
       <Button
-        size="small"
+        size='small'
         style={{
-          margin: "0 15px 15px 0",
+          margin: '0 15px 15px 0'
         }}
-        label="Success"
+        label='Success'
         onClick={() =>
           toastRef.current.showToast("I'm a service toast message", {
-            type: "success",
+            type: 'success',
             closeOnClick: false,
-            showCloseIcon: true,
+            showCloseIcon: true
           })
         }
       />
       <Button
-        size="small"
+        size='small'
         style={{
-          margin: "0 15px 15px 0",
+          margin: '0 15px 15px 0'
         }}
-        label="Error"
+        label='Error'
         onClick={() =>
           toastRef.current.showToast("I'm a service toast message", {
-            type: "error",
+            type: 'error',
             closeOnClick: false,
-            showCloseIcon: true,
+            showCloseIcon: true
           })
         }
       />
       <Button
-        size="small"
+        size='small'
         style={{
-          margin: "0 15px 15px 0",
+          margin: '0 15px 15px 0'
         }}
-        label="Warning"
+        label='Warning'
         onClick={() =>
           toastRef.current.showToast("I'm a service toast message", {
-            type: "warning",
+            type: 'warning',
             closeOnClick: false,
-            showCloseIcon: true,
+            showCloseIcon: true
           })
         }
       />
 
-      <h2 className="typo-app-title-small" style={{ marginBottom: "20px" }}>
+      <h2 className='typo-app-title-small' style={{ marginBottom: '20px' }}>
         Timer toasts
       </h2>
 
       <Button
-        size="small"
+        size='small'
         style={{
-          margin: "0 15px 15px 0",
+          margin: '0 15px 15px 0'
         }}
-        label="Info"
+        label='Info'
         onClick={() =>
           toastRef.current.showToast(
-            "This is a toast with a timer of 5 seconds",
+            'This is a toast with a timer of 5 seconds',
             {
               closeOnClick: true,
-              timeout: 5000,
+              timeout: 5000
             }
           )
         }
       />
       <Button
-        size="small"
+        size='small'
         style={{
-          margin: "0 15px 15px 0",
+          margin: '0 15px 15px 0'
         }}
-        label="Success"
+        label='Success'
         onClick={() =>
-          toastRef.current.showToast("Fund updated!", {
-            type: "success",
+          toastRef.current.showToast('Fund updated!', {
+            type: 'success',
             closeOnClick: true,
-            timeout: 6000,
+            timeout: 6000
           })
         }
       />
       <Button
-        size="small"
+        size='small'
         style={{
-          margin: "0 15px 15px 0",
+          margin: '0 15px 15px 0'
         }}
-        label="Warning"
+        label='Warning'
         onClick={() =>
           toastRef.current.showToast(
-            "This is a toast with a timer of 10 seconds",
+            'This is a toast with a timer of 10 seconds',
             {
-              type: "warning",
+              type: 'warning',
               closeOnClick: true,
-              timeout: 10000,
+              timeout: 10000
             }
           )
         }
       />
       <Button
-        size="small"
+        size='small'
         style={{
-          margin: "0 15px 15px 0",
+          margin: '0 15px 15px 0'
         }}
-        label="Error"
+        label='Error'
         onClick={() =>
           toastRef.current.showToast(
-            "This is a toast with a timer of 5 seconds",
+            'This is a toast with a timer of 5 seconds',
             {
-              type: "error",
+              type: 'error',
               closeOnClick: true,
-              timeout: 10000,
+              timeout: 10000
             }
           )
         }
       />
 
-      <h2 className="typo-app-title-small" style={{ marginBottom: "20px" }}>
-        Corner caases
+      <h2 className='typo-app-title-small' style={{ marginBottom: '20px' }}>
+        Run `onClose` callback
       </h2>
 
       <Button
-        size="small"
+        size='small'
         style={{
-          margin: "0 15px 15px 0",
+          margin: '0 15px 15px 0'
         }}
-        label="Long message with cross"
+        label='5 sec timer'
+        onClick={() =>
+          toastRef.current.showToast('Check console for `onClose` callback', {
+            type: 'error',
+            closeOnClick: true,
+            timeout: 5000,
+            onClose: () => {
+              console.log('onClose callback')
+            }
+          })
+        }
+      />
+
+      <Button
+        size='small'
+        style={{
+          margin: '0 15px 15px 0'
+        }}
+        label='with cross icon'
+        onClick={() =>
+          toastRef.current.showToast('Check console for `onClose` callback', {
+            type: 'error',
+            closeOnClick: false,
+            showCloseIcon: true,
+            onClose: () => {
+              console.log('onClose callback')
+            }
+          })
+        }
+      />
+
+      <Button
+        size='small'
+        style={{
+          margin: '0 15px 15px 0'
+        }}
+        label='with dismiss button'
+        onClick={() =>
+          toastRef.current.showToast('Check console for `onClose` callback', {
+            type: 'error',
+            closeOnClick: false,
+            showCloseIcon: false,
+            dismissButton: true,
+            onClose: () => {
+              console.log('onClose callback')
+            }
+          })
+        }
+      />
+
+      <h2 className='typo-app-title-small' style={{ marginBottom: '20px' }}>
+        Corner cases
+      </h2>
+
+      <Button
+        size='small'
+        style={{
+          margin: '0 15px 15px 0'
+        }}
+        label='Long message with cross'
         onClick={() =>
           toastRef.current.showToast(
-            "`Aurbus_places_50csdk_longfilename_dicos_DMKKS-12122_canonDIGITAL_Canon_EOS_M.jpg` is a very long message",
+            '`Aurbus_places_50csdk_longfilename_dicos_DMKKS-12122_canonDIGITAL_Canon_EOS_M.jpg` is a very long message',
             {
-              type: "error",
+              type: 'error',
               showCloseIcon: true,
-              dismissButton: true,
+              dismissButton: true
             }
           )
         }
       />
       <Button
-        size="small"
+        size='small'
         style={{
-          margin: "0 15px 15px 0",
+          margin: '0 15px 15px 0'
         }}
-        label="Long message. no cross"
+        label='Long message. no cross'
         onClick={() =>
           toastRef.current.showToast(
-            "`Aurbus_places_50csdk_longfilename_dicos_DMKKS-12122_canonDIGITAL_Canon_EOS_M.jpg` is a very long message",
+            '`Aurbus_places_50csdk_longfilename_dicos_DMKKS-12122_canonDIGITAL_Canon_EOS_M.jpg` is a very long message',
             {
-              type: "error",
-              dismissButton: true,
+              type: 'error',
+              dismissButton: true
             }
           )
         }
       />
     </>
-  );
-};
+  )
+}
 
-export const Default = Template.bind({});
-Default.args = {};
+export const Default = Template.bind({})
+Default.args = {}
