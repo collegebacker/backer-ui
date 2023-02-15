@@ -448,13 +448,11 @@ interface Props$5 {
     label?: string;
     defaultValue?: Date;
     helperText?: string;
-    errorAnimation?: boolean;
     errorMessage?: string;
     disabled?: boolean;
-    onInvalid?: (e: Date) => void;
-    onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
-    onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
-    onChange?: (e: Date) => void;
+    onFocus?: (val: string) => void;
+    onBlur?: (val: string) => void;
+    onChange?: (val: string) => void;
 }
 declare const DateInput: React.ForwardRefExoticComponent<Props$5 & React.RefAttributes<any>>;
 
