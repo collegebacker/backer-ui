@@ -34,6 +34,16 @@ const Template: ComponentStory<typeof DateInput> = (args) => {
             }
           }
         }}
+        onChange={(val: { month: string; day: string; year: string }) => {
+          const date = new Date(`${val.year}-${val.month}-${val.day}`)
+
+          console.log('calendar', val)
+          if (date.toString() === 'Invalid Date') {
+            setErrorMessage('Invalid date')
+          } else {
+            setErrorMessage('')
+          }
+        }}
         errorMessage={errorMessage}
       />
     </div>

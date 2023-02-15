@@ -82,7 +82,7 @@ const DateInput = React.forwardRef<any, Props>((props, ref) => {
 
   const handleOnChange = (value: DateInputValue) => {
     setDateValue(value)
-    console.log('on change', value)
+    // console.log('on change', value)
 
     if (props.onChange) {
       props.onChange(value)
@@ -201,7 +201,6 @@ const DateInput = React.forwardRef<any, Props>((props, ref) => {
       year: value
     }
 
-    // console.log(newDateState)
     handleOnChange(newDateState)
   }
 
@@ -251,7 +250,8 @@ const DateInput = React.forwardRef<any, Props>((props, ref) => {
 
   const handleOnDayClick = (date: Date) => {
     setIsModalOpen(false)
-    setDateValue(convertDateToObj(date))
+
+    handleOnChange(convertDateToObj(date))
   }
 
   // handle width
@@ -259,13 +259,6 @@ const DateInput = React.forwardRef<any, Props>((props, ref) => {
     setInputWidth(monthInputRef.current, dateValue.month.length, 'month')
     setInputWidth(dayInputRef.current, dateValue.day.length, 'day')
   }, [])
-
-  // handle on change
-  // useDidMountEffect(() => {
-  //   if (props.onChange) {
-  //     props.onChange(dateValue)
-  //   }
-  // }, [dateValue])
 
   const showPlaceholderCondition =
     isFocused || `${dateValue.day}${dateValue.month}${dateValue.year}` !== ''
