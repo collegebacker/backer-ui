@@ -18,24 +18,20 @@ const Template: ComponentStory<typeof DateInput> = (args) => {
       <DateInput
         {...args}
         onFocus={() => {
+          console.log('focus')
           setErrorMessage('')
         }}
-        onChange={(val) => {
-          console.log('date', val)
-          const date = new Date(val)
-
-          if (isNaN(date.getTime())) {
-            setErrorMessage('Invalid date')
+        onBlur={(val: { month: string; day: string; year: string }) => {
+          if (`${val.month}/${val.day}/${val.year}`.length < 10) {
+            setErrorMessage('The date is incomplete')
           } else {
-            setErrorMessage('')
-          }
+            const date = new Date(`${val.year}-${val.month}-${val.day}`)
 
-          // setErrorMessage('')
-        }}
-        onBlur={(val) => {
-          // if val length is less than 10, it means that the user has not entered a valid date
-          if (val.length < 10) {
-            setErrorMessage('date cannot be empty')
+            if (date.toString() === 'Invalid Date') {
+              setErrorMessage('Invalid date')
+            } else {
+              setErrorMessage('')
+            }
           }
         }}
         errorMessage={errorMessage}
@@ -49,7 +45,6 @@ Default.args = {
   className: '',
   helperText: 'Enter date as MM/DD/YYYY',
   style: {},
-  onChange: (value) => console.log('date', value),
   defaultValue: null
 }
 

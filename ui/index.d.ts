@@ -441,6 +441,11 @@ interface Props$6 {
 }
 declare const BackButton: React.FC<Props$6>;
 
+type DateInputValue = {
+    month: string;
+    day: string;
+    year: string;
+};
 interface Props$5 {
     className?: string;
     style?: React.CSSProperties;
@@ -450,9 +455,9 @@ interface Props$5 {
     helperText?: string;
     errorMessage?: string;
     disabled?: boolean;
-    onFocus?: (val: string) => void;
-    onBlur?: (val: string) => void;
-    onChange?: (val: string) => void;
+    onFocus?: (val: DateInputValue) => void;
+    onBlur?: (val: DateInputValue) => void;
+    onChange?: (val: DateInputValue) => void;
 }
 declare const DateInput: React.ForwardRefExoticComponent<Props$5 & React.RefAttributes<any>>;
 
