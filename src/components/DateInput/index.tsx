@@ -7,12 +7,6 @@ import inputStyles from '../Input/styles.module.scss'
 import dateinputStyles from './styles.module.scss'
 import Icon from '../Icon'
 
-type DateInputValue = {
-  month: string
-  day: string
-  year: string
-}
-
 export interface Props {
   className?: string
   style?: React.CSSProperties

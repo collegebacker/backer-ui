@@ -7,20 +7,7 @@ localStorage.clear()
 
 export default {
   title: 'Forms/DateInput',
-  component: DateInput,
-  parameters: {
-    docs: {
-      description: {
-        component: `
-There are two ways to use this component:
-
-1. Use \`defaultValue\` prop to set the default value of the input. The value will be a \`Date\` object.
-2. Use \`onChange\` prop to get the value of the input. The value will be a \`Date\` object. Avoid to use it until the user has entered a valid date, because the value will be \`Invalid Date\` until then.
-3. Using \`ref\` to get the value of the input, like this: \`ref.current.getValue()\`. The value will be a \`Date\` object. Avoid to use it until the user has entered a valid date, because the value will be \`null\` until then.
-`
-      }
-    }
-  }
+  component: DateInput
 } as ComponentMeta<typeof DateInput>
 
 const Template: ComponentStory<typeof DateInput> = (args) => {
