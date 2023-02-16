@@ -442,8 +442,8 @@ interface Props$6 {
 declare const BackButton: React.FC<Props$6>;
 
 type DateInputValue = {
-    month: string;
     day: string;
+    month: string;
     year: string;
 };
 interface Props$5 {
@@ -451,7 +451,7 @@ interface Props$5 {
     style?: React.CSSProperties;
     name: string;
     label?: string;
-    defaultValue?: Date;
+    defaultValue?: DateInputValue;
     helperText?: string;
     errorMessage?: string;
     disabled?: boolean;
