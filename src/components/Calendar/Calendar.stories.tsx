@@ -35,6 +35,7 @@ Default.args = {
   hideYearArrows: true,
   defaultValue: new Date(),
   className: '',
+  selectRange: false,
   onChange: (date: Date) => console.log(date),
   onClickDay: (value: Date) => {
     console.log(value)

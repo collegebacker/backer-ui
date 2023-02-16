@@ -2,14 +2,13 @@ import React from 'react'
 import Calendar from '../Calendar'
 import Modal from '../Modal'
 import { replaceWithNumbers } from '../../utils'
-import { useDidMountEffect } from '../../hooks'
 import inputStyles from '../Input/styles.module.scss'
 import dateinputStyles from './styles.module.scss'
 import Icon from '../Icon'
 
 type DateInputValue = {
-  month: string
   day: string
+  month: string
   year: string
 }
 
@@ -18,7 +17,7 @@ export interface Props {
   style?: React.CSSProperties
   name: string
   label?: string
-  defaultValue?: Date
+  defaultValue?: DateInputValue
   helperText?: string
   errorMessage?: string
   disabled?: boolean
@@ -27,34 +26,12 @@ export interface Props {
   onChange?: (val: DateInputValue) => void
 }
 
-const convertDateToObj = (date: Date) => {
-  if (!date) {
-    return {
-      month: '',
-      day: '',
-      year: ''
-    }
-  }
-
-  const month = (date.getMonth() + 1).toString()
-  const day = date.getDate().toString()
-  const year = date.getFullYear().toString()
-
-  return {
-    month: month.length === 1 ? `0${month}` : month,
-    day: day.length === 1 ? `0${day}` : day,
-    year
-  }
-}
-
 const setInputWidth = (
   input: HTMLInputElement,
   length: number,
   name: 'month' | 'day' | null
 ) => {
   if (input) {
-    const value = input.value
-
     if (length === 0) {
       if (name === 'month') {
         input.style.width = '45px'
@@ -74,20 +51,9 @@ const DateInput = React.forwardRef<any, Props>((props, ref) => {
   const yearInputRef = React.useRef<HTMLInputElement>(null)
 
   // STATES
-  const [dateValue, setDateValue] = React.useState(
-    convertDateToObj(props.defaultValue)
-  )
+  const [dateValue, setDateValue] = React.useState(props.defaultValue)
   const [isFocused, setIsFocused] = React.useState(false)
   const [isModalOpen, setIsModalOpen] = React.useState(false)
-
-  const handleOnChange = (value: DateInputValue) => {
-    setDateValue(value)
-    // console.log('on change', value)
-
-    if (props.onChange) {
-      props.onChange(value)
-    }
-  }
 
   // HANDLERS
   const handleOnFocus = (e: React.FocusEvent<HTMLInputElement>) => {
@@ -98,18 +64,34 @@ const DateInput = React.forwardRef<any, Props>((props, ref) => {
     }
   }
 
-  const handleOnBlurMonth = (e: React.FocusEvent<HTMLInputElement>) => {
-    const value = replaceWithNumbers(e.target.value).slice(0, 2)
-    const fixedValue = value.length === 0 ? '' : `${value}`.padStart(2, '0')
+  // BLUR HANDLE
+  const handleOnBlur = (
+    e: React.FocusEvent<HTMLInputElement>,
+    type: 'month' | 'day' | 'year'
+  ) => {
+    setIsFocused(false)
+
+    const maxLength = type === 'year' ? 4 : 2
+    const value = replaceWithNumbers(e.target.value).slice(0, maxLength)
+    const fixedValue =
+      value.length === 0 ? '' : `${value}`.padStart(maxLength, '0')
 
     // console.log(fixedValue)
 
     const newDateState = {
       ...dateValue,
-      month: fixedValue
+      [type]: fixedValue
     }
 
-    setInputWidth(monthInputRef.current, fixedValue.length, 'month')
+    const inputRef =
+      type === 'year'
+        ? null
+        : type === 'month'
+        ? monthInputRef.current
+        : dayInputRef.current
+    if (type !== 'year') {
+      setInputWidth(inputRef, fixedValue.length, type)
+    }
     setDateValue(newDateState)
 
     if (props.onBlur) {
@@ -117,91 +99,45 @@ const DateInput = React.forwardRef<any, Props>((props, ref) => {
     }
   }
 
-  const handleOnBlurDay = (e: React.FocusEvent<HTMLInputElement>) => {
-    const value = replaceWithNumbers(e.target.value).slice(0, 2)
-    const fixedValue = value.length === 0 ? '' : `${value}`.padStart(2, '0')
-
-    // console.log(fixedValue)
-
-    const newDateState = {
-      ...dateValue,
-      day: fixedValue
-    }
-
-    setInputWidth(dayInputRef.current, fixedValue.length, 'day')
-    setDateValue(newDateState)
-
-    if (props.onBlur) {
-      props.onBlur(newDateState)
-    }
-  }
-
-  const handleOnBlurYear = (e: React.FocusEvent<HTMLInputElement>) => {
-    const value = replaceWithNumbers(e.target.value).slice(0, 4)
-    const fixedValue = value.length === 0 ? '' : `${value}`.padStart(4, '0')
-
-    // console.log(fixedValue)
+  // CHANGE HANDLE
+  const handleOnChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    type: 'month' | 'day' | 'year'
+  ) => {
+    const value =
+      type !== 'year'
+        ? replaceWithNumbers(e.target.value).slice(0, 2)
+        : replaceWithNumbers(e.target.value).slice(0, 4)
 
     const newDateState = {
       ...dateValue,
-      year: fixedValue
+      [type]: value
+    }
+
+    const inputRef =
+      type === 'year'
+        ? null
+        : type === 'month'
+        ? monthInputRef.current
+        : dayInputRef.current
+    if (type !== 'year') {
+      setInputWidth(inputRef, value.length, type)
     }
 
     setDateValue(newDateState)
 
-    if (props.onBlur) {
-      props.onBlur(newDateState)
-    }
-  }
-
-  const handleOnChangeMonth = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = replaceWithNumbers(e.target.value).slice(0, 2)
-
-    setInputWidth(e.target, value.length, 'month')
-
-    if (value.length === 2) {
+    // change focus to next input
+    if (type === 'month' && value.length === 2) {
       dayInputRef.current?.focus()
-    }
-
-    const newDateState = {
-      ...dateValue,
-      month: value
-    }
-
-    handleOnChange(newDateState)
-  }
-
-  const handleOnChangeDay = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = replaceWithNumbers(e.target.value).slice(0, 2)
-
-    setInputWidth(e.target, value.length, 'day')
-
-    if (value.length === 2) {
+    } else if (type === 'day' && value.length === 2) {
       yearInputRef.current?.focus()
+    } else if (type === 'year' && value.length === 4) {
+      yearInputRef.current?.blur()
     }
 
-    const newDateState = {
-      ...dateValue,
-      day: value
+    if (props.onChange) {
+      props.onChange(newDateState)
     }
-
-    handleOnChange(newDateState)
-  }
-
-  const handleOnChangeYear = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = replaceWithNumbers(e.target.value).slice(0, 4)
-
-    // blur if value is 4 digits
-    if (value.length === 4) {
-      e.target.blur()
-    }
-
-    const newDateState = {
-      ...dateValue,
-      year: value
-    }
-
-    handleOnChange(newDateState)
   }
 
   const handleOnKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -251,7 +187,11 @@ const DateInput = React.forwardRef<any, Props>((props, ref) => {
   const handleOnDayClick = (date: Date) => {
     setIsModalOpen(false)
 
-    handleOnChange(convertDateToObj(date))
+    setDateValue({
+      month: (date.getMonth() + 1).toString(),
+      day: date.getDate().toString(),
+      year: date.getFullYear().toString()
+    })
   }
 
   // handle width
@@ -322,8 +262,8 @@ const DateInput = React.forwardRef<any, Props>((props, ref) => {
               placeholder={showPlaceholderCondition ? 'MM' : ''}
               value={dateValue.month}
               onFocus={handleOnFocus}
-              onBlur={handleOnBlurMonth}
-              onChange={handleOnChangeMonth}
+              onBlur={(e) => handleOnBlur(e, 'month')}
+              onChange={(e) => handleOnChange(e, 'month')}
               onKeyDown={handleOnKeyDown}
               pattern='[0-9]*'
             />
@@ -342,8 +282,8 @@ const DateInput = React.forwardRef<any, Props>((props, ref) => {
               placeholder={showPlaceholderCondition ? 'DD' : ''}
               value={dateValue.day}
               onFocus={handleOnFocus}
-              onBlur={handleOnBlurDay}
-              onChange={handleOnChangeDay}
+              onBlur={(e) => handleOnBlur(e, 'day')}
+              onChange={(e) => handleOnChange(e, 'day')}
               onKeyDown={handleOnKeyDown}
               pattern='[0-9]*'
             />
@@ -362,8 +302,8 @@ const DateInput = React.forwardRef<any, Props>((props, ref) => {
               placeholder={showPlaceholderCondition ? 'YYYY' : ''}
               value={dateValue.year}
               onFocus={handleOnFocus}
-              onBlur={handleOnBlurYear}
-              onChange={handleOnChangeYear}
+              onBlur={(e) => handleOnBlur(e, 'year')}
+              onChange={(e) => handleOnChange(e, 'year')}
               onKeyDown={handleOnKeyDown}
               pattern='[0-9]*'
             />
@@ -410,7 +350,11 @@ DateInput.defaultProps = {
   name: 'date-input',
   helperText: "Use 'MM/DD/YYYY' format",
   errorMessage: '',
-  defaultValue: null
+  defaultValue: {
+    day: '',
+    month: '',
+    year: ''
+  }
 } as Partial<Props>
 
 export default DateInput

@@ -60,7 +60,7 @@ const RecurringDatePicker: React.FC<Props> = (props) => {
         <section className={styles.switcher}>
           <PillButton
             className={styles.switcherButton}
-            label='One a month'
+            label='Once a month'
             isActive={!semimonthly}
             onClick={() => {
               handleSemimonthly(false)
@@ -68,7 +68,7 @@ const RecurringDatePicker: React.FC<Props> = (props) => {
           />
           <PillButton
             className={styles.switcherButton}
-            label='Split in two dates'
+            label='Split in two'
             isActive={semimonthly}
             onClick={() => {
               handleSemimonthly(true)
@@ -79,7 +79,9 @@ const RecurringDatePicker: React.FC<Props> = (props) => {
 
       {semimonthly && (
         <p className={`typo-app-body-caption ${styles.switcherCaption}`}>
-          Payment will be split in two payments. <br /> Set 2 payment dates
+          Your contribution will be split into two payments.
+          <br />
+          Select 2 payment dates.
         </p>
       )}
 

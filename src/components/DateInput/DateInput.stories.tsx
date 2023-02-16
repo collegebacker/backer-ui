@@ -54,8 +54,7 @@ export const Default = Template.bind({})
 Default.args = {
   className: '',
   helperText: 'Enter date as MM/DD/YYYY',
-  style: {},
-  defaultValue: null
+  style: {}
 }
 
 //
@@ -73,5 +72,9 @@ DefaultValue.args = {
   className: '',
   style: {},
   onChange: (value) => console.log('date', value),
-  defaultValue: new Date('1986-11-17')
+  defaultValue: {
+    month: '01',
+    day: '01',
+    year: '2021'
+  }
 }
