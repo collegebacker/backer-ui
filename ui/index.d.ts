@@ -405,6 +405,7 @@ interface Props$a {
     max?: number;
     step?: number;
     value?: number;
+    autofocus?: boolean;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 declare const Slider: React.FC<Props$a>;
