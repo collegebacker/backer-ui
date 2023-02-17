@@ -34,4 +34,12 @@
       background: var(--color-accent-800);
     }
   }
+
+  &:focus-visible {
+    &::-webkit-slider-thumb {
+      background: var(--color-accent-800);
+      outline: 1px solid var(--color-accent-500);
+      outline-offset: 2px;
+    }
+  }
 }

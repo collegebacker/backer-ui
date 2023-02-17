@@ -49,7 +49,7 @@ const ImageIcon = (props: { size: number }) => {
   )
 }
 
-const ImageEditor: React.FC<Props> = props => {
+const ImageEditor: React.FC<Props> = (props) => {
   const editorWrapRef = React.useRef<any>(null)
   const editorRef = React.useRef<any>(null)
 
@@ -98,7 +98,7 @@ const ImageEditor: React.FC<Props> = props => {
     const input = document.createElement('input')
     input.type = 'file'
     input.accept = 'image/*'
-    input.onchange = event => {
+    input.onchange = (event) => {
       const file = (event.target as any).files[0]
       setImageFile(file)
     }
@@ -162,7 +162,8 @@ const ImageEditor: React.FC<Props> = props => {
             max={maxValue}
             step={1 / (maxValue * 4)}
             value={scale}
-            onChange={event => {
+            autofocus
+            onChange={(event) => {
               setScale(event.target.valueAsNumber)
             }}
           />

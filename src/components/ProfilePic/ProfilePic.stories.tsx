@@ -57,7 +57,7 @@ UploadMode.args = {
   className: 'fundProfilePicClass',
   name: 'Lily Sharpe’sEducation Fund 🐰🌿',
   style: {
-    '--size': '80px'
+    '--size': '140px'
   } as any
 }
 
