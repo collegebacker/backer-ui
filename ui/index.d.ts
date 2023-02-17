@@ -340,7 +340,8 @@ interface Props$f {
     style?: React.CSSProperties;
     name: string;
     imageSrc?: string;
-    onClick?: () => void;
+    uploadMode?: boolean;
+    onChange?: (imageFile: File) => void;
 }
 declare const ProfilePic: React.FC<Props$f>;
 
@@ -415,6 +416,7 @@ interface Props$9 {
     uploadMode?: boolean;
     imageSrc?: string | undefined;
     onChange?: (imageFile: File) => void;
+    onClick?: () => void;
 }
 declare const PolaroidPhoto: React.FC<Props$9>;
 
