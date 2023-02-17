@@ -11,6 +11,7 @@ export interface Props {
   uploadMode?: boolean
   imageSrc?: string | undefined
   onChange?: (imageFile: File) => void
+  onClick?: () => void
 }
 
 const PolaroidPhoto: React.FC<Props> = (props) => {
@@ -25,6 +26,7 @@ const PolaroidPhoto: React.FC<Props> = (props) => {
     <div
       className={`${styles.polaroidWrapper} ${props.className}`}
       style={props.style}
+      onClick={props.onClick}
     >
       <div
         ref={photoRef}
@@ -88,13 +90,25 @@ const PolaroidPhoto: React.FC<Props> = (props) => {
                   height='27'
                   viewBox='0 0 33 27'
                   fill='none'
-                  stroke='black'
+                  stroke='var(--color-main-500)'
                   xmlns='http://www.w3.org/2000/svg'
                 >
-                  <path d='M16.3331 20.0692C19.2297 20.0692 21.5778 17.721 21.5778 14.8244C21.5778 11.9279 19.2297 9.57971 16.3331 9.57971C13.4365 9.57971 11.0884 11.9279 11.0884 14.8244C11.0884 17.721 13.4365 20.0692 16.3331 20.0692Z' />
-                  <path d='M4.84375 5.24988L4.84375 12.9095' />
-                  <path d='M8.67327 9.07959L1.01367 9.07959' />
-                  <path d='M1.65186 14.1861L1.65186 25.0372L31.0139 25.0372L31.0139 5.88815L22.0777 5.88815L22.0777 2.05835L10.5882 2.05835L10.5882 6.52645' />
+                  <path
+                    vectorEffect='non-scaling-stroke'
+                    d='M16.3331 20.0692C19.2297 20.0692 21.5778 17.721 21.5778 14.8244C21.5778 11.9279 19.2297 9.57971 16.3331 9.57971C13.4365 9.57971 11.0884 11.9279 11.0884 14.8244C11.0884 17.721 13.4365 20.0692 16.3331 20.0692Z'
+                  />
+                  <path
+                    vectorEffect='non-scaling-stroke'
+                    d='M4.84375 5.24988L4.84375 12.9095'
+                  />
+                  <path
+                    vectorEffect='non-scaling-stroke'
+                    d='M8.67327 9.07959L1.01367 9.07959'
+                  />
+                  <path
+                    vectorEffect='non-scaling-stroke'
+                    d='M1.65186 14.1861L1.65186 25.0372L31.0139 25.0372L31.0139 5.88815L22.0777 5.88815L22.0777 2.05835L10.5882 2.05835L10.5882 6.52645'
+                  />
                 </svg>
               </div>
             )}
@@ -107,7 +121,7 @@ const PolaroidPhoto: React.FC<Props> = (props) => {
             backgroundImage: `url(${imageSrc}), ${stringToGradient(props.name)}`
           }}
         >
-          {!imageSrc && !props.uploadMode ? (
+          {!imageSrc && !props.uploadMode && (
             <svg className={styles.letterPlaceholder} viewBox='0 0 60 60'>
               <text
                 x='50%'
@@ -118,7 +132,7 @@ const PolaroidPhoto: React.FC<Props> = (props) => {
                 {Array.from(props.name)[0].toUpperCase()}
               </text>
             </svg>
-          ) : null}
+          )}
         </div>
       </div>
     </div>
