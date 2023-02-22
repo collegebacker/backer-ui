@@ -269,13 +269,15 @@ declare const WarnMesssage$1: React.FC<Props$l>;
 
 interface Props$k {
     className?: string;
-    orientation?: "left" | "right";
-    mode?: "outline" | "grey" | "velvet" | "peach";
+    orientation?: 'left' | 'right';
+    mode?: 'outline' | 'grey' | 'velvet' | 'peach';
     icon?: IconTypes;
     emoji?: string;
     title?: string;
     caption?: string | React.ReactNode;
     tabIndex?: number;
+    undertitleContent?: React.ReactNode;
+    undertitleContentClassName?: string;
     onClick?: () => void;
 }
 declare const WarnMesssage: React.FC<Props$k>;
