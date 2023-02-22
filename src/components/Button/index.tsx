@@ -11,6 +11,7 @@ export interface Props {
   size?: 'default' | 'small'
   type?: 'button' | 'submit' | 'reset'
   target?: TargetTypes
+  rel?: string
   icon?: IconTypes
   href?: string
   disabled?: boolean
@@ -87,7 +88,7 @@ const Button = React.forwardRef<any, Props>((props, ref) => {
   const conditionalProps =
     props.tag === 'a'
       ? {
-          rel: props.target === '_blank' ? 'noopener noreferrer' : '',
+          rel: props.rel,
           href: props.href,
           target: props.target,
           onSubmit: props.onSubmit
@@ -121,6 +122,7 @@ Button.defaultProps = {
   type: 'button',
   href: '#',
   target: '_self',
+  rel: '',
   busyLabel: '',
   disabled: false,
   label: 'Button',

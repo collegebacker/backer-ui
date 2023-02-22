@@ -8,6 +8,7 @@ interface Props$C {
     size?: 'default' | 'small';
     type?: 'button' | 'submit' | 'reset';
     target?: TargetTypes;
+    rel?: string;
     icon?: IconTypes;
     href?: string;
     disabled?: boolean;
