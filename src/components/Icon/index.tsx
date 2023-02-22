@@ -1,14 +1,14 @@
-import React from "react";
-import styles from "./styles.module.scss";
+import React from 'react'
+import styles from './styles.module.scss'
 
-import icons from "./icons.json";
+import icons from './icons.json'
 
 export interface Props {
-  className?: string;
-  style?: React.CSSProperties;
-  name: IconTypes;
-  color?: string;
-  onClick?: () => void;
+  className?: string
+  style?: React.CSSProperties
+  name: IconTypes
+  color?: string
+  onClick?: () => void
 }
 
 const Icon: React.FC<Props> = (props) => {
@@ -19,23 +19,25 @@ const Icon: React.FC<Props> = (props) => {
       onClick={props.onClick}
     >
       <svg
-        width="100%"
-        height="100%"
-        viewBox="0 0 24 24"
-        fillRule="evenodd"
+        width='100%'
+        height='100%'
+        viewBox='0 0 24 24'
+        fillRule='evenodd'
         style={props.color ? { fill: props.color } : {}}
       >
         <path d={(icons as any)[props.name]} />
       </svg>
     </i>
-  );
-};
+  )
+}
 
 Icon.defaultProps = {
-  className: "",
-  name: "cross",
+  className: '',
+  name: 'cross',
   style: {},
-  color: "",
-} as Partial<Props>;
+  color: ''
+} as Partial<Props>
 
-export default Icon;
+export default Icon
+
+// TODO: Remove "protection" icon. It's a duplicate of "shield"

@@ -68,5 +68,6 @@ WithCustomHTML.args = {
     </>
   ),
   emoji: '🎨',
+  undertitleContent: <div>Hello</div>,
   onClick: undefined
 }

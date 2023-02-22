@@ -8,11 +8,11 @@
 .content {
   display: flex;
   flex-direction: column;
+  gap: 15px;
   width: 100%;
 }
 
 .caption {
-  margin-top: 10px;
   color: var(--color-main-200);
 }
 
