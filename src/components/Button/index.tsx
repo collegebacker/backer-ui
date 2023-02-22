@@ -87,7 +87,7 @@ const Button = React.forwardRef<any, Props>((props, ref) => {
   const conditionalProps =
     props.tag === 'a'
       ? {
-          rel: 'noreferrer',
+          rel: props.target === '_blank' ? 'noopener noreferrer' : '',
           href: props.href,
           target: props.target,
           onSubmit: props.onSubmit

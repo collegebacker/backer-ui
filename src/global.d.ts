@@ -51,6 +51,7 @@ type IconTypes =
   | 'star'
   | 'file'
   | 'protection'
+  | 'font'
 
 type TargetTypes = '_blank' | '_self' | '_parent' | '_top'
 
