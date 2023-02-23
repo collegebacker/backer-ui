@@ -1,114 +1,113 @@
-import Icon from "../Icon";
-import React from "react";
-import styles from "./styles.module.scss";
+import Icon from '../Icon'
+import React from 'react'
+import styles from './styles.module.scss'
 
 export interface Props {
-  className?: string;
-  type?: "text" | "password" | "number" | "email" | "money";
-  allowCents?: boolean;
-  maximumMoney?: number;
-  required?: boolean;
-  name: string;
-  label?: string;
-  value?: string;
-  autoFocus?: boolean;
-  placeholder?: string;
-  isInvalid?: boolean;
-  errorMessage?: string;
-  helperText?: string;
-  id?: string;
-  tabIndex?: number;
-  currency?: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  onSubmit?: (event: React.FormEvent<HTMLInputElement>) => void;
-  onEnterKeyPress?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
-  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
-  onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
-  onInvalid?: (event: React.FormEvent<HTMLInputElement>) => void;
+  className?: string
+  type?: 'text' | 'password' | 'number' | 'email' | 'money'
+  allowCents?: boolean
+  maximumMoney?: number
+  required?: boolean
+  name: string
+  label?: string
+  value?: string
+  autoFocus?: boolean
+  placeholder?: string
+  errorMessage?: string
+  helperText?: string
+  id?: string
+  tabIndex?: number
+  currency?: string
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+  onSubmit?: (event: React.FormEvent<HTMLInputElement>) => void
+  onEnterKeyPress?: (event: React.KeyboardEvent<HTMLInputElement>) => void
+  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void
+  onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void
+  onInvalid?: (event: React.FormEvent<HTMLInputElement>) => void
 }
 
 const GhostInput = React.forwardRef<any, Props>((props, ref) => {
-  const inputRef = React.useRef<HTMLInputElement>(null);
+  const inputRef = React.useRef<HTMLInputElement>(null)
 
-  const [val, setVal] = React.useState(props.value);
+  const [val, setVal] = React.useState(props.value)
 
   const convertTypes = (type: string) => {
     switch (type) {
-      case "text":
-        return "text";
-      case "password":
-        return "password";
-      case "number":
-        return "number";
-      case "email":
-        return "email";
-      case "money":
-        return "text";
+      case 'text':
+        return 'text'
+      case 'password':
+        return 'password'
+      case 'number':
+        return 'number'
+      case 'email':
+        return 'email'
+      case 'money':
+        return 'text'
       default:
-        return "text";
+        return 'text'
     }
-  };
+  }
 
   React.useEffect(() => {
-    if (props.isInvalid && inputRef.current) {
-      inputRef.current.focus();
+    if (props.errorMessage && inputRef.current) {
+      inputRef.current.focus()
     }
-  }, [props.isInvalid]);
+  }, [props.errorMessage])
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (props.type === "money") {
-      const cleanedVal = e.target.value.replace(/,/g, ".");
-      const ex = props.allowCents ? /^[0-9]+\.?[0-9]*$/ : /^[0-9]+$/;
+    if (props.type === 'money') {
+      const cleanedVal = e.target.value.replace(/,/g, '.')
+      const ex = props.allowCents ? /^[0-9]+\.?[0-9]*$/ : /^[0-9]+$/
 
-      if (cleanedVal.match(ex) || cleanedVal === "") {
-        let val = cleanedVal.replace(/[^0-9.]/g, "");
-        let roundedVal = parseInt(val, 10);
+      if (cleanedVal.match(ex) || cleanedVal === '') {
+        let val = cleanedVal.replace(/[^0-9.]/g, '')
+        let roundedVal = parseInt(val, 10)
 
         if (
           roundedVal <= props.maximumMoney ||
-          cleanedVal === "" ||
+          cleanedVal === '' ||
           !props.maximumMoney
         ) {
-          if (val.split(".")[1] && val.split(".")[1].length > 2) {
+          if (val.split('.')[1] && val.split('.')[1].length > 2) {
             let trimmmedVal =
-              val.split(".")[0] + "." + val.split(".")[1].slice(0, 2);
-            setVal(trimmmedVal);
+              val.split('.')[0] + '.' + val.split('.')[1].slice(0, 2)
+            setVal(trimmmedVal)
           } else {
-            setVal(val);
+            setVal(val)
           }
         }
       }
     }
 
-    if (props.type === "number") {
-      const value = e.target.value.replace(/[^0-9]/g, "");
-      setVal(value);
+    if (props.type === 'number') {
+      const value = e.target.value.replace(/[^0-9]/g, '')
+      setVal(value)
     }
 
-    if (props.type === "text" || props.type === "password") {
-      setVal(e.target.value);
+    if (props.type === 'text' || props.type === 'password') {
+      setVal(e.target.value)
     }
 
     if (props.onChange) {
-      props.onChange(e);
+      props.onChange(e)
     }
-  };
+  }
 
   return (
     <div
       ref={ref}
       className={`${styles.componentWrap} ${props.className} ${
-        props.isInvalid ? styles.error : ""
-      } ${props.type === "money" ? styles.money : ""} ${
-        props.isInvalid ? styles.shake : ""
+        props.errorMessage ? styles.error : ''
+      } ${props.type === 'money' ? styles.money : ''} ${
+        props.errorMessage ? styles.shake : ''
       }`}
     >
       <div className={`${styles.inputWrap}`}>
-        {props.type === "money" ? (
+        {props.type === 'money' ? (
           <span className={styles.moneySign}>{props.currency}</span>
         ) : null}
 
-        {props.label !== "" ? (
+        {props.label !== '' ? (
           <label
             className={`typo-app-body-caption ${styles.label}`}
             htmlFor={props.name}
@@ -135,36 +134,31 @@ const GhostInput = React.forwardRef<any, Props>((props, ref) => {
           onInvalid={props.onInvalid}
         />
       </div>
-      {props.helperText && !props.isInvalid ? (
-        <span className={`typo-app-body-caption ${styles.helperText}`}>
-          {props.helperText}
-        </span>
-      ) : null}
-      {props.isInvalid ? (
-        <span className={`typo-app-body-caption ${styles.helperText}`}>
-          {props.errorMessage}
-        </span>
-      ) : null}
-    </div>
-  );
-});
 
-GhostInput.displayName = "GhostInput";
+      {(props.helperText || props.errorMessage) && (
+        <span className={`typo-app-body-caption ${styles.helperText}`}>
+          {props.errorMessage ? props.errorMessage : props.helperText}
+        </span>
+      )}
+    </div>
+  )
+})
+
+GhostInput.displayName = 'GhostInput'
 
 GhostInput.defaultProps = {
-  className: "",
-  label: "Label",
-  type: "text",
-  value: "",
-  currency: "$",
+  className: '',
+  label: 'Label',
+  type: 'text',
+  value: '',
+  currency: '$',
   required: false,
   autoFocus: false,
-  isInvalid: false,
-  errorMessage: "",
-  placeholder: "",
+  errorMessage: '',
+  placeholder: '',
   hideSpinButton: true,
   allowCents: false,
-  maximumMoney: null,
-} as Partial<Props>;
+  maximumMoney: null
+} as Partial<Props>
 
-export default GhostInput;
+export default GhostInput
