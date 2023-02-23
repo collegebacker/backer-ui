@@ -79,7 +79,7 @@ declare const Input: React.ForwardRefExoticComponent<InputProps & React.RefAttri
 
 interface Props$y {
     className?: string;
-    type?: "text" | "password" | "number" | "email" | "money";
+    type?: 'text' | 'password' | 'number' | 'email' | 'money';
     allowCents?: boolean;
     maximumMoney?: number;
     required?: boolean;
@@ -88,7 +88,6 @@ interface Props$y {
     value?: string;
     autoFocus?: boolean;
     placeholder?: string;
-    isInvalid?: boolean;
     errorMessage?: string;
     helperText?: string;
     id?: string;
