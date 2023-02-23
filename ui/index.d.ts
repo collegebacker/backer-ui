@@ -63,7 +63,6 @@ interface Props$z {
 declare const PaymentLogo: React.FC<Props$z>;
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-    isInvalid?: boolean;
     label?: string;
     name: string;
     errorMessage?: string;
