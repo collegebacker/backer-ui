@@ -4,7 +4,6 @@ import styles from './styles.module.scss'
 
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
-  isInvalid?: boolean
   label?: string
   name: string
   errorMessage?: string
@@ -29,10 +28,10 @@ const Input = React.forwardRef<any, InputProps>((props, ref) => {
   }))
 
   React.useEffect(() => {
-    if (props.isInvalid && inputRef.current) {
+    if (props.errorMessage && inputRef.current) {
       inputRef.current.focus()
     }
-  }, [props.isInvalid])
+  }, [props.errorMessage])
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     props.isUncontrolled ? null : setVal(e.target.value)
@@ -46,8 +45,8 @@ const Input = React.forwardRef<any, InputProps>((props, ref) => {
     <div
       ref={ref}
       className={`${styles.componentWrap} ${props.className} ${
-        props.isInvalid ? styles.error : ''
-      } ${props.isInvalid && props.errorAnimation ? styles.shake : ''}
+        props.errorMessage ? styles.error : ''
+      } ${props.errorMessage && props.errorAnimation ? styles.shake : ''}
         ${props.disabled ? styles.disabled : ''}
       `}
       style={props.style}
@@ -98,16 +97,12 @@ const Input = React.forwardRef<any, InputProps>((props, ref) => {
           </label>
         ) : null}
       </div>
-      {(props.helperText && !props.isInvalid) || props.errorMessage === '' ? (
+
+      {(props.helperText || props.errorMessage) && (
         <span className={`typo-app-body-caption ${styles.helperText}`}>
-          {props.helperText}
+          {props.errorMessage ? props.errorMessage : props.helperText}
         </span>
-      ) : null}
-      {props.isInvalid ? (
-        <span className={`typo-app-body-caption ${styles.helperText}`}>
-          {props.errorMessage}
-        </span>
-      ) : null}
+      )}
     </div>
   )
 })
@@ -118,7 +113,6 @@ Input.defaultProps = {
   className: '',
   label: 'Label',
   type: 'text',
-  isInvalid: false,
   errorMessage: '',
   hideSpinButton: true,
   style: {},
