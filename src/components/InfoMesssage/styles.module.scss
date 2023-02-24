@@ -1,6 +1,7 @@
 .wrap {
   position: relative;
   display: flex;
+  gap: 20px;
   padding: 20px;
   border-radius: var(--radius-m);
 }
@@ -8,7 +9,7 @@
 .content {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
   width: 100%;
 }
 

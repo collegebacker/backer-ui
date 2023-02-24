@@ -49,6 +49,26 @@ WithEmoji.args = {
   onClick: undefined
 }
 
+export const WithLabelTag = Template.bind({})
+WithLabelTag.args = {
+  className: '',
+  orientation: 'left',
+  mode: 'outline',
+  title: "Hi! I'm the info message. I show you things you need to know",
+  caption:
+    'This is a caption. You can use it to explain more about the message',
+  labelTag: {
+    label: '3',
+    size: 'large',
+    style: {
+      maxWidth: '32px',
+      width: '100%'
+    },
+    outline: false
+  },
+  onClick: undefined
+}
+
 export const WithCustomHTML = Template.bind({})
 WithCustomHTML.args = {
   className: '',
