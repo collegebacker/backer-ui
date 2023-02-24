@@ -2,6 +2,9 @@ import Icon from '../Icon'
 import React from 'react'
 import styles from './styles.module.scss'
 
+import { CleaveOptions } from 'cleave.js/options'
+import Cleave from 'cleave.js/react'
+
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string
@@ -14,18 +17,17 @@ export interface InputProps
     name: IconTypes
     onClick?: () => void
   }
-  isUncontrolled?: boolean
+  cleaveOptions?: CleaveOptions
 }
 
-const Input = React.forwardRef<any, InputProps>((props, ref) => {
-  const inputRef = React.useRef<HTMLInputElement>(null)
+const Input: React.FC<InputProps> = (props) => {
+  const inputRef = React.useRef<any>(null)
 
   const [val, setVal] = React.useState(props.value)
 
-  React.useImperativeHandle(ref, () => ({
-    getValue: () => val,
-    setValue: (value: string) => setVal(value)
-  }))
+  React.useEffect(() => {
+    setVal(props.value)
+  }, [props.value])
 
   React.useEffect(() => {
     if (props.errorMessage && inputRef.current) {
@@ -34,7 +36,8 @@ const Input = React.forwardRef<any, InputProps>((props, ref) => {
   }, [props.errorMessage])
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    props.isUncontrolled ? null : setVal(e.target.value)
+    const value = e.target.value
+    setVal(value)
 
     if (props.onChange) {
       props.onChange(e)
@@ -43,7 +46,6 @@ const Input = React.forwardRef<any, InputProps>((props, ref) => {
 
   return (
     <div
-      ref={ref}
       className={`${styles.componentWrap} ${props.className} ${
         props.errorMessage ? styles.error : ''
       } ${props.errorMessage && props.errorAnimation ? styles.shake : ''}
@@ -57,7 +59,7 @@ const Input = React.forwardRef<any, InputProps>((props, ref) => {
           height: props.label !== '' ? '68px' : '40px'
         }}
       >
-        {props.icon ? (
+        {props.icon && (
           <div
             onClick={props.icon.onClick}
             className={styles.icon}
@@ -67,35 +69,38 @@ const Input = React.forwardRef<any, InputProps>((props, ref) => {
           >
             <Icon name={props.icon.name} />
           </div>
-        ) : null}
-        <input
-          ref={inputRef}
-          name={props.name}
-          id={props.id ? props.id : props.name}
-          className={`${styles.input} ${
-            props.hideSpinButton ? styles.hideSpinButton : ''
-          }`}
-          placeholder='&nbsp;'
-          value={props.isUncontrolled ? props.value : val}
-          onChange={handleOnChange}
-          tabIndex={props.tabIndex}
-          autoFocus={props.autoFocus}
-          type={props.type}
-          required={props.required}
-          onSubmit={props.onSubmit}
-          onKeyDown={props.onKeyDown}
-          onBlur={props.onBlur}
-          onFocus={props.onFocus}
-          onInvalid={props.onInvalid}
-          disabled={props.disabled}
-          pattern={props.pattern}
-        />
+        )}
 
-        {props.label !== '' ? (
+        {props.cleaveOptions ? (
+          <Cleave
+            className={`${styles.input} ${
+              props.hideSpinButton ? styles.hideSpinButton : ''
+            }`}
+            options={props.cleaveOptions}
+            value={val}
+            onChange={handleOnChange}
+            name={props.name}
+            disabled={props.disabled}
+            ref={inputRef}
+          />
+        ) : (
+          <input
+            className={`${styles.input} ${
+              props.hideSpinButton ? styles.hideSpinButton : ''
+            }`}
+            value={val}
+            onChange={handleOnChange}
+            name={props.name}
+            disabled={props.disabled}
+            ref={inputRef}
+          />
+        )}
+
+        {props.label !== '' && (
           <label className={styles.label} htmlFor={props.name}>
             {props.label}
           </label>
-        ) : null}
+        )}
       </div>
 
       {(props.helperText || props.errorMessage) && (
@@ -105,19 +110,17 @@ const Input = React.forwardRef<any, InputProps>((props, ref) => {
       )}
     </div>
   )
-})
+}
 
 Input.displayName = 'Input'
 
 Input.defaultProps = {
   className: '',
   label: 'Label',
-  type: 'text',
   errorMessage: '',
   hideSpinButton: true,
   style: {},
   value: '',
-  isUncontrolled: false,
   errorAnimation: true
 } as Partial<InputProps>
 
