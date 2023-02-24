@@ -139,6 +139,9 @@ Default.args = {
   children: itemsArray.map((item, index) => {
     return <CardExample key={index} {...item} />
   }),
+  onChange: (index) => {
+    console.log('index', index)
+  },
   defaultActiveCardIndex: 0,
   // activeChildIndex: 1,
   // desktopBreakpoint: {
