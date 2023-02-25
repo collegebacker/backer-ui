@@ -272,6 +272,7 @@ interface LabelTagProps {
     size?: 'small' | 'medium' | 'large';
     label?: string;
     color?: 'primary' | 'danger' | 'warning' | 'success' | 'peach' | 'velvet' | 'gray';
+    widthLock?: boolean;
     outline?: boolean;
 }
 declare const LabelTag: React.FC<LabelTagProps>;

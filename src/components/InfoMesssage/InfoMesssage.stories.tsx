@@ -60,10 +60,7 @@ WithLabelTag.args = {
   labelTag: {
     label: '3',
     size: 'large',
-    style: {
-      maxWidth: '32px',
-      width: '100%'
-    },
+    widthLock: true,
     outline: false
   },
   onClick: undefined

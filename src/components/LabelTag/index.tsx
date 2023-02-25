@@ -16,6 +16,7 @@ export interface LabelTagProps {
     | 'peach'
     | 'velvet'
     | 'gray'
+  widthLock?: boolean
   outline?: boolean
 }
 
@@ -25,7 +26,7 @@ const LabelTag: React.FC<LabelTagProps> = (props) => {
       className={`${styles.wrap} ${styles[`${props.size}Size`]}
       ${styles[`${props.color}${props.outline ? `-outline` : ''}`]} ${
         props.className
-      }`}
+      } ${props.widthLock ? styles[`${props.size}SizeLockWidth`] : ''}`}
       style={props.style}
     >
       <span
