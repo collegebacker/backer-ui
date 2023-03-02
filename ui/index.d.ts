@@ -363,11 +363,10 @@ interface Props$d {
     id: string;
     name: string;
     value?: string;
-    label?: string;
+    label?: React.ReactNode;
     disabled?: boolean;
     className?: string;
     labelClassName?: string;
-    symbolClassName?: string;
     checked?: boolean;
     onChange?: (checked: boolean) => void;
     onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
@@ -380,11 +379,10 @@ interface Props$c {
     id: string;
     name: string;
     value?: string;
-    label?: string;
+    label?: React.ReactNode;
     disabled?: boolean;
     className?: string;
     labelClassName?: string;
-    symbolClassName?: string;
     checked?: boolean;
     onChange?: (checked: boolean) => void;
     onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
