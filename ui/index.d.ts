@@ -363,11 +363,10 @@ interface Props$d {
     id: string;
     name: string;
     value?: string;
-    label?: React.ReactNode;
     disabled?: boolean;
     className?: string;
-    labelClassName?: string;
     checked?: boolean;
+    children?: React.ReactNode;
     onChange?: (checked: boolean) => void;
     onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
     onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
@@ -379,15 +378,14 @@ interface Props$c {
     id: string;
     name: string;
     value?: string;
-    label?: React.ReactNode;
     disabled?: boolean;
     className?: string;
-    labelClassName?: string;
     checked?: boolean;
     onChange?: (checked: boolean) => void;
     onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
     onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
     onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+    children?: React.ReactNode;
 }
 declare const Radio: React.FC<Props$c>;
 

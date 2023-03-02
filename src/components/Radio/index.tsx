@@ -5,15 +5,14 @@ export interface Props {
   id: string
   name: string
   value?: string
-  label?: React.ReactNode
   disabled?: boolean
   className?: string
-  labelClassName?: string
   checked?: boolean
   onChange?: (checked: boolean) => void
   onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void
+  children?: React.ReactNode
 }
 
 const Radio: React.FC<Props> = (props) => {
@@ -46,10 +45,8 @@ const Radio: React.FC<Props> = (props) => {
         />
         <span className={styles.radioMock} />
       </span>
-      {props.label && (
-        <span className={`${styles.labelText} ${props.labelClassName}`}>
-          {props.label}
-        </span>
+      {props.children && (
+        <div className={styles.labelText}>{props.children}</div>
       )}
     </label>
   )

@@ -27,26 +27,8 @@ const checkboxesArr = [
   {
     name: 'checkbox1',
     checked: false,
-    label: 'Hit the gym',
+    children: <span className='typo-app-body-caption'>Hit the gym</span>,
     disabled: false
-  },
-  {
-    name: 'checkbox2',
-    checked: false,
-    label: 'Pay bills',
-    disabled: false
-  },
-  {
-    name: 'checkbox3',
-    checked: false,
-    label: 'Meet George',
-    disabled: false
-  },
-  {
-    name: 'checkbox4',
-    checked: true,
-    label: 'Buy eggs',
-    disabled: true
   }
 ]
 
@@ -59,11 +41,10 @@ const LabelTemplate: ComponentStory<typeof Checkbox> = () => {
           name={checkbox.name}
           id={checkbox.name}
           checked={checkbox.checked}
-          value={checkbox.label}
           disabled={checkbox.disabled}
-          label={checkbox.label}
-          labelClassName='typo-app-body-main'
-        />
+        >
+          {checkbox.children}
+        </Checkbox>
       ))}
     </div>
   )

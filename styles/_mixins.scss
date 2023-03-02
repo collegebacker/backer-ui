@@ -1,15 +1,3 @@
-@mixin input-label {
-  display: flex;
-
-  .labelText {
-    font-family: 'ABCMArfa', sans-serif;
-    font-size: 14px;
-    font-weight: 300;
-    margin-top: 3px;
-    line-height: 130%;
-  }
-}
-
 $focus-line-margin: -4px;
 
 @mixin focus-state($border-radius: 150px) {

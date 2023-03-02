@@ -5,11 +5,10 @@ export interface Props {
   id: string
   name: string
   value?: string
-  label?: React.ReactNode
   disabled?: boolean
   className?: string
-  labelClassName?: string
   checked?: boolean
+  children?: React.ReactNode
   onChange?: (checked: boolean) => void
   onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void
@@ -62,10 +61,8 @@ const Checkbox: React.FC<Props> = (props) => {
           </svg>
         </span>
       </span>
-      {props.label && (
-        <span className={`${styles.labelText} ${props.labelClassName}`}>
-          {props.label}
-        </span>
+      {props.children && (
+        <div className={styles.labelText}>{props.children}</div>
       )}
     </label>
   )
@@ -73,7 +70,6 @@ const Checkbox: React.FC<Props> = (props) => {
 
 Checkbox.defaultProps = {
   className: '',
-  labelClassName: '',
   disabled: false,
   checked: false
 } as Partial<Props>
