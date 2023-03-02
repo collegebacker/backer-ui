@@ -1,0 +1,467 @@
+@import './reset.css';
+@import './fonts.css';
+@import './global.css';
+@import '../tokens/colors.css';
+@import '../tokens/radii.css';
+.react-calendar {
+  display: flex;
+  flex-direction: column;
+  min-height: 340px;
+}
+.react-calendar abbr {
+  user-select: none;
+  font-family: "ABCMarfa", sans-serif;
+  font-weight: 300;
+  font-size: 17px;
+}
+
+.react-calendar__viewContainer {
+  display: flex;
+  flex: 1;
+  width: 100%;
+}
+
+.react-calendar__year-view,
+.react-calendar__decade-view,
+.react-calendar__century-view {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.react-calendar__year-view__months,
+.react-calendar__decade-view__years,
+.react-calendar__century-view__decades {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+.react-calendar__month-view,
+.react-calendar__year-view,
+.react-calendar__decade-view,
+.react-calendar__century-view {
+  width: 100%;
+}
+
+.react-calendar__tile {
+  font-family: "ABCMarfa", sans-serif;
+  font-weight: 300;
+  font-size: 17px;
+  background: none;
+  border: none;
+  outline: none;
+  border-radius: var(--radius-s);
+  color: var(--color-main-500);
+  transition: background-color 0.1s ease-in-out;
+}
+.react-calendar__tile:disabled {
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.react-calendar__century-view__decades__decade {
+  font-size: 14px;
+}
+
+.react-calendar__year-view__months__month:hover,
+.react-calendar__decade-view__years__year:hover,
+.react-calendar__century-view__decades__decade:hover {
+  background-color: rgba(20, 20, 20, 0.05);
+}
+
+.react-calendar__navigation__label__labelText {
+  font-family: "ABCMarfa", sans-serif;
+  font-weight: 300;
+  font-size: 17px;
+  background-color: transparent;
+  user-select: none;
+  border: none;
+  outline: none;
+}
+
+.react-calendar__navigation__label {
+  color: var(--color-main-500);
+  flex-grow: 0 !important;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  border-radius: 100px;
+  padding: 0 20px;
+}
+.react-calendar__navigation__label:disabled {
+  color: var(--color-main-500);
+  flex-grow: 0 !important;
+}
+
+.react-calendar__navigation__label:not(:disabled):hover {
+  background-color: rgba(20, 20, 20, 0.05);
+}
+
+.react-calendar__navigation {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.react-calendar__navigation__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  transition: background-color 0.15s ease-in-out;
+}
+.react-calendar__navigation__arrow:hover {
+  background-color: rgba(20, 20, 20, 0.05);
+}
+.react-calendar__navigation__arrow:disabled {
+  pointer-events: none;
+  opacity: 0.3;
+}
+.react-calendar__navigation__arrow i {
+  transition: transform 0.15s ease-in-out;
+}
+
+.react-calendar__navigation__prev-button:hover i,
+.react-calendar__navigation__prev2-button:hover i {
+  transform: translate(-2px, 0);
+}
+
+.react-calendar__navigation__next-button:hover i,
+.react-calendar__navigation__next2-button:hover i {
+  transform: translate(2px, 0);
+}
+
+.react-calendar__month-view__weekdays {
+  margin-bottom: 10px;
+}
+
+.react-calendar__month-view__weekdays__weekday {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+.react-calendar__month-view__weekdays__weekday abbr {
+  font-family: "ABCMarfa", sans-serif;
+  font-weight: 300;
+  font-size: 17px;
+  color: var(--color-main-100);
+  text-decoration: none;
+}
+
+.react-calendar__month-view__days {
+  row-gap: 10px;
+}
+
+.react-calendar__month-view__days__day {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  transition: background-color 0.1s ease;
+}
+.react-calendar__month-view__days__day:hover::after {
+  transform: scale(1);
+  background-color: rgba(20, 20, 20, 0.05);
+}
+.react-calendar__month-view__days__day abbr {
+  position: relative;
+  z-index: 1;
+  font-family: "ABCMarfa", sans-serif;
+  font-weight: 300;
+  font-size: 17px;
+  color: var(--color-main-500);
+  text-decoration: none;
+}
+.react-calendar__month-view__days__day::after {
+  z-index: 0;
+  position: absolute;
+  content: "";
+  display: block;
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  transform: scale(0.8);
+  transition: background-color 0.1s ease, transform 0.2s ease-out;
+}
+
+.react-calendar__month-view__days__day--neighboringMonth abbr {
+  color: var(--color-main-100);
+}
+
+.react-calendar__tile--active:not([class*=react-calendar__tile--range]) abbr,
+.react-calendar__tile--rangeStart abbr,
+.react-calendar__tile--rangeEnd abbr,
+.react-calendar__tile--now abbr {
+  color: var(--color-main-0);
+}
+.react-calendar__tile--active:not([class*=react-calendar__tile--range])::after,
+.react-calendar__tile--rangeStart::after,
+.react-calendar__tile--rangeEnd::after,
+.react-calendar__tile--now::after {
+  background-color: var(--color-accent-500);
+  transform: scale(1);
+}
+.react-calendar__tile--active:not([class*=react-calendar__tile--range]):hover::after,
+.react-calendar__tile--rangeStart:hover::after,
+.react-calendar__tile--rangeEnd:hover::after,
+.react-calendar__tile--now:hover::after {
+  background-color: var(--color-accent-500);
+}
+
+.react-calendar__year-view__months__month + .react-calendar__tile--hasActive {
+  background-color: var(--color-accent-500);
+}
+.react-calendar__year-view__months__month + .react-calendar__tile--hasActive abbr {
+  color: var(--color-main-0);
+}
+
+.typo-app-title-xlarge {
+  font-family: "Gza", serif;
+  font-weight: 700;
+  font-size: 66px;
+  line-height: 115%;
+}
+@media only screen and (max-width: 620px) {
+  .typo-app-title-xlarge {
+    font-size: 40px;
+    line-height: 120%;
+  }
+}
+
+.typo-app-title-large {
+  font-family: "Gza", serif;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 120%;
+}
+
+.typo-app-title-medium {
+  font-family: "Gza", serif;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 120%;
+}
+
+.typo-app-title-medium-adaptive {
+  font-family: "ABCMarfa", sans-serif;
+  font-weight: 500;
+  font-size: 34px;
+  line-height: 120%;
+}
+@media only screen and (max-width: 620px) {
+  .typo-app-title-medium-adaptive {
+    font-size: 24px;
+    line-height: 130%;
+  }
+}
+
+.typo-app-title-small {
+  font-family: "ABCMarfa", sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 130%;
+}
+
+.typo-app-body-large, .typo-app-body-large-adaptive {
+  font-family: "ABCMarfa", sans-serif;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 130%;
+}
+
+@media only screen and (max-width: 620px) {
+  .typo-app-body-large-adaptive {
+    font-size: 17px;
+    line-height: 130%;
+  }
+}
+
+.typo-app-body-large-paragraph, .typo-app-body-large-paragraph-adaptive {
+  font-family: "ABCMarfa", sans-serif;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 150%;
+}
+
+@media only screen and (max-width: 620px) {
+  .typo-app-body-large-paragraph-adaptive {
+    font-size: 17px;
+    line-height: 160%;
+  }
+}
+
+.typo-app-body-main {
+  font-family: "ABCMarfa", sans-serif;
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 130%;
+}
+
+.typo-app-body-paragraph {
+  font-family: "ABCMarfa", sans-serif;
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 160%;
+}
+
+.typo-app-body-caption {
+  font-family: "ABCMarfa", sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 150%;
+}
+
+.typo-marketing-xlarge {
+  font-family: "Gza", serif;
+  font-size: 66px;
+  font-weight: 700;
+  line-height: 115%;
+  margin-bottom: 24px;
+}
+@media only screen and (max-width: 1024px) {
+  .typo-marketing-xlarge {
+    font-size: 60px;
+  }
+}
+@media only screen and (max-width: 620px) {
+  .typo-marketing-xlarge {
+    font-size: 44px;
+  }
+}
+
+.typo-marketing-large {
+  font-family: "Gza", serif;
+  font-size: 46px;
+  font-weight: 700;
+  line-height: 120%;
+  margin-bottom: 24px;
+}
+@media only screen and (max-width: 1024px) {
+  .typo-marketing-large {
+    font-size: 42px;
+  }
+}
+@media only screen and (max-width: 620px) {
+  .typo-marketing-large {
+    font-size: 38px;
+  }
+}
+
+.typo-marketing-lead {
+  font-family: "ABCMarfa", sans-serif;
+  font-size: 32px;
+  margin-bottom: 28px;
+  font-weight: 300;
+  line-height: 150%;
+}
+@media only screen and (max-width: 620px) {
+  .typo-marketing-lead {
+    font-size: 24px;
+  }
+}
+
+.typo-marketing-lead-bold {
+  font-family: "ABCMarfa", sans-serif;
+  font-size: 32px;
+  margin-bottom: 28px;
+  font-weight: 500;
+  line-height: 130%;
+}
+@media only screen and (max-width: 620px) {
+  .typo-marketing-lead-bold {
+    font-size: 24px;
+  }
+}
+
+.typo-marketing-lead-small {
+  font-family: "ABCMarfa", sans-serif;
+  font-size: 24px;
+  line-height: 130%;
+  margin-bottom: 28px;
+  font-weight: 300;
+}
+
+.typo-marketing-lead-small-bold {
+  font-family: "ABCMarfa", sans-serif;
+  font-size: 24px;
+  line-height: 130%;
+  margin-bottom: 28px;
+  font-weight: 500;
+}
+
+.typo-marketing-accent-paragraph {
+  font-family: "ABCMarfa", sans-serif;
+  font-size: 24px;
+  line-height: 160%;
+  font-weight: 300;
+}
+@media only screen and (max-width: 1024px) {
+  .typo-marketing-accent-paragraph {
+    font-size: 22px;
+  }
+}
+@media only screen and (max-width: 620px) {
+  .typo-marketing-accent-paragraph {
+    font-size: 17px;
+  }
+}
+
+.typo-marketing-accent-paragraph-bold {
+  font-family: "ABCMarfa", sans-serif;
+  font-size: 24px;
+  line-height: 160%;
+  font-weight: 500;
+}
+@media only screen and (max-width: 1024px) {
+  .typo-marketing-accent-paragraph-bold {
+    font-size: 22px;
+  }
+}
+@media only screen and (max-width: 620px) {
+  .typo-marketing-accent-paragraph-bold {
+    font-size: 17px;
+  }
+}
+
+.typo-marketing-paragraph {
+  font-family: "ABCMarfa", sans-serif;
+  font-size: 17px;
+  line-height: 160%;
+  font-weight: 300;
+}
+
+.typo-marketing-paragraph-bold {
+  font-family: "ABCMarfa", sans-serif;
+  font-size: 17px;
+  line-height: 160%;
+  font-weight: 500;
+}
+
+.typo-marketing-caption {
+  font-family: "ABCMarfa", sans-serif;
+  font-size: 14px;
+  line-height: 150%;
+  font-weight: 300;
+}
+
+.typo-marketing-caption-bold {
+  font-family: "ABCMarfa", sans-serif;
+  font-size: 14px;
+  line-height: 150%;
+  font-weight: 500;
+}

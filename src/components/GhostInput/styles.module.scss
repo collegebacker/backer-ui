@@ -1,4 +1,4 @@
-@import "../../../tokens/all.scss";
+// @import '../../../tokens/all.scss';
 
 .componentWrap {
   position: relative;
@@ -22,7 +22,7 @@
 }
 
 @mixin valueText {
-  font-family: "ABCMarfa", sans-serif;
+  font-family: 'ABCMarfa', sans-serif;
   font-weight: 200;
   font-size: 40px;
   line-height: 40px;
