@@ -1,8 +1,210 @@
-@import './reset.css';
-@import './fonts.css';
-@import './global.css';
-@import '../tokens/colors.css';
-@import '../tokens/radii.css';
+/* RESET */
+html,
+body,
+p,
+ol,
+ul,
+li,
+dl,
+dt,
+dd,
+blockquote,
+figure,
+fieldset,
+legend,
+textarea,
+pre,
+iframe,
+hr,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+
+ul {
+  list-style: none;
+}
+
+button,
+input,
+select {
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+img,
+video {
+  height: auto;
+  max-width: 100%;
+}
+
+iframe {
+  border: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td,
+th {
+  padding: 0;
+}
+
+/* FONTS */
+@font-face {
+  font-family: "ABCMarfa";
+  src: url("../fonts/ABCMarfa-Light.woff2") format("woff2");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "ABCMarfa";
+  src: url("../fonts/ABCMarfa-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gza";
+  src: url("../fonts/GzaBold-Desktop.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+/* GLOBAL */
+:root {
+  --color-selection: #e1b2ff8d;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+strong {
+  font-weight: 500;
+}
+
+body {
+  font-family: "ABCMarfa", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-selection);
+}
+
+:root {
+  /* // SCSS VARIABLES // */
+  --color-main-500: #141414;
+  --color-main-400: #373737;
+  --color-main-200: #8a8a8a;
+  --color-main-100: #b9b9b9;
+  --color-main-50: #f4f4f4;
+  --color-main-0: #ffffff;
+  --color-main-transparent-400: #141414d9;
+  --color-main-transparent-200: #14141480;
+  --color-main-transparent-100: #1414144d;
+  --color-main-transparent-80: #14141414;
+  --color-main-transparent-50: #1414140a;
+  --color-accent-800: #9a63c3;
+  --color-accent-500: #b380d4;
+  --color-accent-200: #e1c6f3;
+  --color-accent-50: #f6f0f9;
+  --color-accent-transparent-200: #b380d470;
+  --color-accent-transparent-50: #b380d41f;
+  --color-peach-900: #fcb099;
+  --color-peach-500: #fdcebe;
+  --color-peach-200: #feeadf;
+  --color-peach-50: #fcf5ef;
+  --color-peach-transparent-200: #fdd5be70;
+  --color-peach-transparent-50: #fdd8be42;
+  --color-service-error-main: #f54e5d;
+  --color-service-error-dark: #a8333b;
+  --color-service-error-light: #ffeef1;
+  --color-service-warning-main: #ffca64;
+  --color-service-warning-dark: #d07408;
+  --color-service-warning-light: #fff6e4;
+  --color-service-success-main: #d3fb60;
+  --color-service-success-dark: #588909;
+  --color-service-success-light: #f5fced;
+  --gradient-peach: radial-gradient(
+    50% 50% at 50% 50%,
+    #fdcebe 0%,
+    rgba(253, 206, 190, 0) 100%
+  );
+  --gradient-velvet: radial-gradient(
+    50% 50% at 50% 50%,
+    #c4c7f2 0%,
+    rgba(196, 199, 242, 0) 100%
+  );
+  --gradient-ice: radial-gradient(
+    50% 50% at 50% 50%,
+    #a4eff4 0%,
+    rgba(164, 239, 244, 0) 100%
+  );
+  --gradient-pink: radial-gradient(
+    50% 50% at 50% 50%,
+    #ffc2ff 0%,
+    rgba(255, 194, 255, 0) 100%
+  );
+  --gradient-banana: radial-gradient(
+    50% 50% at 50% 50%,
+    #fde4be 0%,
+    rgba(253, 228, 190, 0) 100%
+  );
+  --color-skeleton-body: rgba(0, 0, 0, 0.1);
+  --color-skeleton-gradient: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.05) 16.78%,
+    rgba(0, 0, 0, 0.02) 26.34%,
+    rgba(0, 0, 0, 0.05) 100%
+  );
+}
+
+:root {
+  --radius-l: 15px;
+  --radius-m: 10px;
+  --radius-s: 5px;
+}
+
 .react-calendar {
   display: flex;
   flex-direction: column;
