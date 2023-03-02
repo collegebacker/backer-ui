@@ -20,7 +20,6 @@ const SetValueUseImperativeHandleTemplate: ComponentStory<typeof Input> = (
   return (
     <>
       <Input ref={ref} {...args} />
-
       <Button
         label='Set Value'
         style={{
@@ -37,7 +36,6 @@ const SetValueUseImperativeHandleTemplate: ComponentStory<typeof Input> = (
 export const useImperativeHandle = SetValueUseImperativeHandleTemplate.bind({})
 
 useImperativeHandle.args = {
-  isInvalid: false,
   autoFocus: false,
   disabled: false,
   required: false,
@@ -68,7 +66,6 @@ export const uncontrolledInput = uncontrolledInputTemplate.bind({})
 uncontrolledInput.args = {
   value: '',
   isUncontrolled: true,
-  isInvalid: false,
   autoFocus: false,
   disabled: false,
   required: false,
