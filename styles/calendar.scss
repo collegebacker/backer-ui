@@ -230,7 +230,8 @@ $button-hover: rgba(20, 20, 20, 0.05);
 
 .react-calendar__tile--active:not([class*='react-calendar__tile--range']),
 .react-calendar__tile--rangeStart,
-.react-calendar__tile--rangeEnd {
+.react-calendar__tile--rangeEnd,
+.react-calendar__tile--now {
   abbr {
     color: var(--color-main-0);
   }
@@ -244,5 +245,19 @@ $button-hover: rgba(20, 20, 20, 0.05);
     &::after {
       background-color: var(--color-accent-500);
     }
+  }
+}
+
+// .react-calendar__tile--now {
+//   abbr {
+//     color: var(--color-main-0);
+//   }
+// }
+
+.react-calendar__year-view__months__month + .react-calendar__tile--hasActive {
+  background-color: var(--color-accent-500);
+
+  abbr {
+    color: var(--color-main-0);
   }
 }
