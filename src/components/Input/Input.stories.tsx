@@ -37,7 +37,6 @@ const SetValueUseImperativeHandleTemplate: ComponentStory<typeof Input> = (
 export const useImperativeHandle = SetValueUseImperativeHandleTemplate.bind({})
 
 useImperativeHandle.args = {
-  isInvalid: false,
   autoFocus: false,
   disabled: false,
   required: false,
@@ -58,17 +57,13 @@ const uncontrolledInputTemplate: ComponentStory<typeof Input> = (args) => {
     console.log(e.target.value)
   }
 
-  return (
-    <Input {...args} isUncontrolled value={val} onChange={handleOnChange} />
-  )
+  return <Input {...args} value={val} onChange={handleOnChange} />
 }
 
 export const uncontrolledInput = uncontrolledInputTemplate.bind({})
 
 uncontrolledInput.args = {
   value: '',
-  isUncontrolled: true,
-  isInvalid: false,
   autoFocus: false,
   disabled: false,
   required: false,

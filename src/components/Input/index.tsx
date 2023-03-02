@@ -7,8 +7,8 @@ import Cleave from 'cleave.js/react'
 
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
-  label?: string
   name: string
+  label?: string
   errorMessage?: string
   helperText?: string
   errorAnimation?: boolean
@@ -20,7 +20,7 @@ export interface InputProps
   cleaveOptions?: CleaveOptions
 }
 
-const Input: React.FC<InputProps> = (props) => {
+const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const inputRef = React.useRef<any>(null)
 
   const [val, setVal] = React.useState(props.value)
@@ -71,7 +71,7 @@ const Input: React.FC<InputProps> = (props) => {
           </div>
         )}
 
-        {props.cleaveOptions ? (
+        {/* {props.cleaveOptions ? (
           <Cleave
             className={`${styles.input} ${
               props.hideSpinButton ? styles.hideSpinButton : ''
@@ -94,7 +94,19 @@ const Input: React.FC<InputProps> = (props) => {
             disabled={props.disabled}
             ref={inputRef}
           />
-        )}
+        )} */}
+
+        <Cleave
+          className={`${styles.input} ${
+            props.hideSpinButton ? styles.hideSpinButton : ''
+          }`}
+          name={props.name}
+          ref={inputRef}
+          options={props.cleaveOptions}
+          value={val}
+          onChange={handleOnChange}
+          placeholder='&nbsp;'
+        />
 
         {props.label !== '' && (
           <label className={styles.label} htmlFor={props.name}>
@@ -110,7 +122,7 @@ const Input: React.FC<InputProps> = (props) => {
       )}
     </div>
   )
-}
+})
 
 Input.displayName = 'Input'
 

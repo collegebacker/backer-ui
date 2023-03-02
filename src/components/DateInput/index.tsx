@@ -18,8 +18,10 @@ export interface Props {
 }
 
 const convertDateToString = (date: Date) => {
-  const day = date.getDate()
-  const month = date.getMonth() + 1
+  // add 0 to month and day if they are single digit
+  const month =
+    date.getMonth() + 1 < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1
+  const day = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate()
   const year = date.getFullYear()
 
   return `${month}/${day}/${year}`
@@ -70,6 +72,7 @@ const DateInput: React.FC<Props> = (props) => {
           date: true,
           datePattern: ['m', 'd', 'Y']
         }}
+        pattern='[0-9]*'
       />
     </>
   )
