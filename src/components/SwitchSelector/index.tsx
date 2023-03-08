@@ -5,8 +5,9 @@ import PillButton from '../PillButton'
 
 type ItemType = {
   label: string
+  value?: string
   icon?: IconTypes
-  onClick: (object: { index: number; label: string }) => void
+  onClick: (object: { index: number; label: string; value?: string }) => void
 }
 
 export interface Props {
@@ -20,7 +21,7 @@ const SwitchSelector: React.FC<Props> = (props) => {
 
   const handleOnClick = (index: number, item: ItemType) => {
     setSelected(index)
-    item.onClick({ index, label: item.label })
+    item.onClick({ index, label: item.label, value: item.value })
   }
 
   return (
@@ -41,7 +42,6 @@ const SwitchSelector: React.FC<Props> = (props) => {
 
 SwitchSelector.defaultProps = {
   className: '',
-
   activeIndex: 0
 } as Partial<Props>
 
