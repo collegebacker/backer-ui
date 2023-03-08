@@ -29,7 +29,7 @@ const ActionSheet = React.forwardRef<any, Props>((props, ref) => {
       setIsOpen(true)
     },
     close: () => {
-      setIsOpen(false)
+      // setIsOpen(false)
       setShow(false)
     }
   }))
@@ -50,7 +50,7 @@ const ActionSheet = React.forwardRef<any, Props>((props, ref) => {
       if (props.isOpen) {
         setIsOpen(true)
       } else {
-        setIsOpen(false)
+        // setIsOpen(false)
         setShow(false)
       }
     }
@@ -88,6 +88,7 @@ const ActionSheet = React.forwardRef<any, Props>((props, ref) => {
         duration: 0.15,
         y: 20,
         onComplete: () => {
+          setIsOpen(false)
           setUnmount(true)
         }
       })
