@@ -2,53 +2,78 @@ import Icon from '../Icon'
 import React from 'react'
 import styles from './styles.module.scss'
 
-export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
-  label?: string
+import { CleaveOptions } from 'cleave.js/options'
+import Cleave from 'cleave.js/react'
+
+export interface InputProps {
+  // input props
+  cursor?: string
   name: string
+  label?: string
+  value?: string
+  className?: string
+  style?: React.CSSProperties
+  disabled?: boolean
+  pattern?: string
+  type?: string
+  autoComplete?: string
+  autoFocus?: boolean
+  required?: boolean
+  tabIndex?: number
+  readOnly?: boolean
+  // input events
+  onClick?: (e: React.MouseEvent<HTMLInputElement>) => void
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onFocus?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onBlur?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onKeyPress?: (e: React.KeyboardEvent<HTMLInputElement>) => void
+  // custom props
   errorMessage?: string
   helperText?: string
-  errorAnimation?: boolean
   hideSpinButton?: boolean
   icon?: {
     name: IconTypes
     onClick?: () => void
   }
-  isUncontrolled?: boolean
+  cleaveOptions?: CleaveOptions
 }
 
-const Input = React.forwardRef<any, InputProps>((props, ref) => {
-  const inputRef = React.useRef<HTMLInputElement>(null)
+const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
+  // const [value, setValue] = React.useState(props.value || '')
 
-  const [val, setVal] = React.useState(props.value)
-
-  React.useImperativeHandle(ref, () => ({
-    getValue: () => val,
-    setValue: (value: string) => setVal(value)
-  }))
-
-  React.useEffect(() => {
-    if (props.errorMessage && inputRef.current) {
-      inputRef.current.focus()
+  const inputArgs = {
+    className: `${styles.input} ${
+      props.hideSpinButton ? styles.hideSpinButton : ''
     }
-  }, [props.errorMessage])
-
-  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    props.isUncontrolled ? null : setVal(e.target.value)
-
-    if (props.onChange) {
-      props.onChange(e)
-    }
+    ${props.readOnly ? '' : styles.focusState}
+    `,
+    style: {
+      cursor: props.cursor
+    },
+    name: props.name,
+    value: props.value,
+    placeholder: '&nbsp;',
+    type: props.type,
+    autoComplete: props.autoComplete,
+    autoFocus: props.autoFocus,
+    required: props.required,
+    tabIndex: props.tabIndex,
+    readOnly: props.readOnly,
+    disabled: props.disabled,
+    onClick: props.onClick,
+    onChange: props.onChange,
+    onFocus: props.onFocus,
+    onBlur: props.onBlur,
+    onKeyPress: props.onKeyPress
   }
 
   return (
     <div
-      ref={ref}
       className={`${styles.componentWrap} ${props.className} ${
         props.errorMessage ? styles.error : ''
-      } ${props.errorMessage && props.errorAnimation ? styles.shake : ''}
-        ${props.disabled ? styles.disabled : ''}
-      `}
+      } ${props.errorMessage ? styles.shake : ''} ${
+        props.disabled ? styles.disabled : ''
+      }`}
       style={props.style}
     >
       <div
@@ -57,7 +82,7 @@ const Input = React.forwardRef<any, InputProps>((props, ref) => {
           height: props.label !== '' ? '68px' : '40px'
         }}
       >
-        {props.icon ? (
+        {props.icon && (
           <div
             onClick={props.icon.onClick}
             className={styles.icon}
@@ -67,35 +92,19 @@ const Input = React.forwardRef<any, InputProps>((props, ref) => {
           >
             <Icon name={props.icon.name} />
           </div>
-        ) : null}
-        <input
-          ref={inputRef}
-          name={props.name}
-          id={props.id ? props.id : props.name}
-          className={`${styles.input} ${
-            props.hideSpinButton ? styles.hideSpinButton : ''
-          }`}
-          placeholder='&nbsp;'
-          value={props.isUncontrolled ? props.value : val}
-          onChange={handleOnChange}
-          tabIndex={props.tabIndex}
-          autoFocus={props.autoFocus}
-          type={props.type}
-          required={props.required}
-          onSubmit={props.onSubmit}
-          onKeyDown={props.onKeyDown}
-          onBlur={props.onBlur}
-          onFocus={props.onFocus}
-          onInvalid={props.onInvalid}
-          disabled={props.disabled}
-          pattern={props.pattern}
-        />
+        )}
 
-        {props.label !== '' ? (
+        {props.cleaveOptions ? (
+          <Cleave {...inputArgs} options={props.cleaveOptions} />
+        ) : (
+          <input {...inputArgs} ref={ref} />
+        )}
+
+        {props.label !== '' && (
           <label className={styles.label} htmlFor={props.name}>
             {props.label}
           </label>
-        ) : null}
+        )}
       </div>
 
       {(props.helperText || props.errorMessage) && (
@@ -112,12 +121,11 @@ Input.displayName = 'Input'
 Input.defaultProps = {
   className: '',
   label: 'Label',
-  type: 'text',
   errorMessage: '',
   hideSpinButton: true,
   style: {},
   value: '',
-  isUncontrolled: false,
+  cursor: 'caret',
   errorAnimation: true
 } as Partial<InputProps>
 

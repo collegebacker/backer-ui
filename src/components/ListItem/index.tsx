@@ -16,6 +16,7 @@ export interface Props {
   rightContent?: React.ReactNode
   middleContent?: React.ReactNode
   leftContent?: React.ReactNode
+  chevron?: boolean
   onClick?: () => void
 }
 
@@ -80,9 +81,9 @@ const ListItem: React.FC<Props> = (props) => {
           </div>
         )}
 
-        {props.onClick && (
+        {props.onClick && props.chevron ? (
           <Icon name='chevron-right' className={styles.chevron} />
-        )}
+        ) : null}
       </div>
     </li>
   )
