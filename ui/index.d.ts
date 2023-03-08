@@ -485,7 +485,13 @@ declare const PhoneInput: React.FC<InputProps>;
 declare const ZipInput: React.FC<InputProps>;
 
 interface DropdownProps extends InputProps {
-    options: string[];
+    label: string;
+    modalTitle?: string;
+    modalDescription?: string;
+    options: Array<{
+        label: string;
+        value: string;
+    }>;
     onSelect: (value: string) => void;
 }
 declare const Dropdown: React.FC<DropdownProps>;
