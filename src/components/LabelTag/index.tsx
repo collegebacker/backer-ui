@@ -2,24 +2,40 @@ import React from 'react'
 import styles from './styles.module.scss'
 import Icon from '../Icon'
 
-export interface Props {
+export interface LabelTagProps {
   className?: string
   style?: React.CSSProperties
   icon?: IconTypes
-  small?: boolean
+  size?: 'small' | 'medium' | 'large'
   label?: string
-  color?: 'primary' | 'danger' | 'warning' | 'success' | 'peach' | 'velvet'
+  color?:
+    | 'primary'
+    | 'danger'
+    | 'warning'
+    | 'success'
+    | 'peach'
+    | 'velvet'
+    | 'gray'
+  widthLock?: boolean
+  outline?: boolean
 }
 
-const LabelTag: React.FC<Props> = (props) => {
+const LabelTag: React.FC<LabelTagProps> = (props) => {
   return (
     <div
-      className={`${styles.wrap} ${
-        props.small ? styles.smallSize : styles.defaultSize
-      } ${styles[props.color]} ${props.className}`}
+      className={`${styles.wrap} ${styles[`${props.size}Size`]}
+      ${styles[`${props.color}${props.outline ? `-outline` : ''}`]} ${
+        props.className
+      } ${props.widthLock ? styles[`${props.size}SizeLockWidth`] : ''}`}
       style={props.style}
     >
-      <span className={`typo-app-body-caption ${styles.label}`}>
+      <span
+        className={`${
+          props.size === 'large'
+            ? 'typo-app-body-main'
+            : 'typo-app-body-caption'
+        } ${styles.label}`}
+      >
         {props.label}
       </span>
       {props.icon && <Icon className={styles.icon} name={props.icon} />}
@@ -30,9 +46,9 @@ const LabelTag: React.FC<Props> = (props) => {
 LabelTag.defaultProps = {
   className: '',
   style: {},
-  small: false,
+  size: 'medium',
   label: 'label',
   color: 'primary'
-} as Partial<Props>
+} as Partial<LabelTagProps>
 
 export default LabelTag

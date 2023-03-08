@@ -29,7 +29,7 @@ const Template: ComponentStory<typeof LabelTag> = (args) => {
 export const Default = Template.bind({})
 Default.args = {
   label: 'Label',
-  small: false,
+  size: 'medium',
   color: 'primary'
   // icon: 'tickmark'
 }

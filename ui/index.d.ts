@@ -289,6 +289,7 @@ interface Props$j {
     icon?: IconTypes;
     emoji?: string;
     title?: string;
+    labelTag?: LabelTagProps;
     caption?: string | React.ReactNode;
     tabIndex?: number;
     undertitleContent?: React.ReactNode;
@@ -367,12 +368,10 @@ interface Props$d {
     id: string;
     name: string;
     value?: string;
-    label?: string;
     disabled?: boolean;
     className?: string;
-    labelClassName?: string;
-    symbolClassName?: string;
     checked?: boolean;
+    children?: React.ReactNode;
     onChange?: (checked: boolean) => void;
     onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
     onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
@@ -479,7 +478,7 @@ interface DropdownProps extends InputProps {
 }
 declare const Dropdown: React.FC<DropdownProps>;
 
-interface Props$4 {
+interface Props$3 {
     className?: string;
     style?: React.CSSProperties;
     label?: string;
@@ -491,26 +490,16 @@ interface Props$4 {
     autoHeight?: boolean;
     onChange?: (value: string) => void;
 }
-declare const Textarea: React.FC<Props$4>;
+declare const Textarea: React.FC<Props$3>;
 
-interface Props$3 {
+interface Props$2 {
     className?: string;
     style?: React.CSSProperties;
     checked?: boolean;
     visibleOutline?: boolean;
     onChange?: (checked: boolean) => void;
 }
-declare const Checkmark: React.FC<Props$3>;
-
-interface Props$2 {
-    className?: string;
-    style?: React.CSSProperties;
-    icon?: IconTypes;
-    small?: boolean;
-    label?: string;
-    color?: 'primary' | 'danger' | 'warning' | 'success' | 'peach' | 'velvet';
-}
-declare const LabelTag: React.FC<Props$2>;
+declare const Checkmark: React.FC<Props$2>;
 
 interface Props$1 {
     className?: string;

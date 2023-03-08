@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './styles.module.scss'
 
+import { useDidMountEffect } from '../../hooks'
 import DotPagination from '../DotPagination'
 
 /////////////////////////////////
@@ -167,19 +168,14 @@ const CSSSlider: React.FC<Props> = (props) => {
     return () => window.removeEventListener('resize', handleResize)
   }, [currentBreakpoint.cardsToShow])
 
-  React.useEffect(() => {
+  useDidMountEffect(() => {
     if (props.onChange) {
       props.onChange(activeIndex)
     }
-
-    // console.log(currentBreakpoint.cardsToShow, paginationAmount)
   }, [activeIndex])
 
   React.useEffect(() => {
-    // console.log(activeIndexPage)
-
     childrenRefs.current[props.defaultActiveCardIndex].scrollIntoView({
-      // behavior: 'smooth',
       block: 'nearest',
       inline: 'start'
     })

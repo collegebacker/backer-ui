@@ -1,4 +1,4 @@
-@import "../../../../tokens/all.scss";
+@import '../../../../tokens/grids.scss';
 
 .accordion {
   display: flex;
@@ -29,7 +29,7 @@
 }
 
 .title {
-  font-family: "ABCMArfa", sans-serif;
+  font-family: 'ABCMArfa', sans-serif;
   font-weight: 300;
   font-size: 24px;
   line-height: 130%;

@@ -1,4 +1,4 @@
-@import "../../../styles/mixins.scss";
+@import '../../../styles/mixins.scss';
 
 .wrap {
   position: relative;
@@ -6,9 +6,8 @@
   width: 24px;
   height: 24px;
   flex: 0 0 auto;
-  margin-right: 8px;
 
-  input[type="checkbox"] {
+  input[type='checkbox'] {
     z-index: 1;
     position: absolute;
     opacity: 0;
@@ -101,7 +100,13 @@
 }
 
 .label {
-  @include input-label;
+  display: flex;
+  gap: 8px;
+}
+
+.labelText {
+  margin-top: 2px;
+  color: var(--color-main-500);
 }
 
 .disabled {

@@ -1,9 +1,8 @@
-@import "./reset.css";
-@import "./fonts.css";
-@import "./global.css";
-@import "../tokens/colors.css";
-@import "../tokens/radii.css";
+@import './global.scss';
+@import '../tokens/colors.scss';
+@import '../tokens/radii.scss';
 
-@import "./typography-app.scss";
-@import "./typography-marketing.scss";
-@import "./calendar.scss";
+@import './calendar.scss';
+
+@import './typography-app.scss';
+@import './typography-marketing.scss';

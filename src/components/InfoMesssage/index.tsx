@@ -1,6 +1,8 @@
 import React from 'react'
 import styles from './styles.module.scss'
 
+import { LabelTagProps } from '../LabelTag'
+import LabelTag from '../LabelTag'
 import Icon from '../Icon'
 
 export interface Props {
@@ -10,6 +12,7 @@ export interface Props {
   icon?: IconTypes
   emoji?: string
   title?: string
+  labelTag?: LabelTagProps
   caption?: string | React.ReactNode
   tabIndex?: number
   undertitleContent?: React.ReactNode
@@ -28,19 +31,13 @@ const WarnMesssage: React.FC<Props> = (props) => {
       onClick={props.onClick}
       tabIndex={props.tabIndex}
     >
-      {props.emoji === '' ? (
-        <Icon name={props.icon} />
-      ) : (
-        <span className={styles.emoji}>{props.emoji}</span>
-      )}
+      {props.emoji && <span className={styles.emoji}>{props.emoji}</span>}
 
-      <div
-        className={styles.content}
-        style={{
-          marginLeft: props.orientation === 'right' ? '0' : '20px',
-          marginRight: props.orientation === 'left' ? '0' : '20px'
-        }}
-      >
+      {props.icon && <Icon name={props.icon} />}
+
+      {props.labelTag && <LabelTag {...props.labelTag} />}
+
+      <div className={styles.content}>
         {props.title && (
           <span className={`typo-app-body-main ${styles.title}`}>
             {props.title}
@@ -72,8 +69,6 @@ WarnMesssage.defaultProps = {
   title: "Hi! I'm the info message. I show you things you need to know.",
   caption:
     'This is a caption. You can use it to explain more about the message.',
-  emoji: '',
-  icon: 'mail',
   undertitleContentClassName: ''
 } as Partial<Props>
 
