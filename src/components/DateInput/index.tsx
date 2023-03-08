@@ -78,7 +78,7 @@ DateInput.defaultProps = {
   style: {},
   label: 'Label',
   type: 'text',
-  helperText: "Use 'MM/DD/YYYY' format",
+  helperText: 'MM/DD/YYYY',
   errorMessage: '',
   value: ''
 } as Partial<DateInputProps>
