@@ -31,6 +31,11 @@ const DateInput: React.FC<DateInputProps> = (props) => {
     props.onChange && props.onChange(dateStr)
   }
 
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value)
+    props.onChange && props.onChange(e.target.value)
+  }
+
   // RENDER
   return (
     <>
@@ -65,7 +70,7 @@ const DateInput: React.FC<DateInputProps> = (props) => {
         }}
         pattern='[0-9]*'
         helperText={props.helperText}
-        onChange={(e) => setValue(e.target.value)}
+        onChange={handleOnChange}
         onBlur={props.onBlur}
         onFocus={props.onFocus}
       />
