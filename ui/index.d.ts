@@ -482,6 +482,8 @@ declare const SSNInput: React.FC<InputProps>;
 
 declare const PhoneInput: React.FC<InputProps>;
 
+declare const ZipInput: React.FC<InputProps>;
+
 interface DropdownProps extends InputProps {
     options: string[];
     onSelect: (value: string) => void;
@@ -565,4 +567,4 @@ declare const SkeletonText: React.FC<SkeletonTextProps>;
 declare const SkeletonButton: React.FC<SkeletonButtonProps>;
 declare const SkeletonProfilePic: React.FC<SkeletonBoneProps>;
 
-export { Accordion, ActionMesssage, ActionSheet, ArrowButton, BackButton$1 as BackButton, Button, CSSSlider, Calendar, Checkbox, Checkmark, ChipsSelector, ChipsSlider, BackButton as CloseButton, CodeInput, CountBadge, DateInput, Divider, DotPagination, Dropdown, GhostInput, Icon, ImageEditor, WarnMesssage as InfoMesssage, Input, LabelTag, ListItem, Logo, Modal, ModalButtons, ModalHeaderActions, PasswordInput, PaymentLogo, PhoneInput, PillButton, PolaroidPhoto, ProfilePic, Radio, RecurringDatePicker, SSNInput, SkeletonBody, SkeletonBone, SkeletonButton, SkeletonProfilePic, SkeletonText, Slider, SliderWrapper, Spinner, Textarea, Toast, WarnMesssage$1 as WarnMesssage };
+export { Accordion, ActionMesssage, ActionSheet, ArrowButton, BackButton$1 as BackButton, Button, CSSSlider, Calendar, Checkbox, Checkmark, ChipsSelector, ChipsSlider, BackButton as CloseButton, CodeInput, CountBadge, DateInput, Divider, DotPagination, Dropdown, GhostInput, Icon, ImageEditor, WarnMesssage as InfoMesssage, Input, LabelTag, ListItem, Logo, Modal, ModalButtons, ModalHeaderActions, PasswordInput, PaymentLogo, PhoneInput, PillButton, PolaroidPhoto, ProfilePic, Radio, RecurringDatePicker, SSNInput, SkeletonBody, SkeletonBone, SkeletonButton, SkeletonProfilePic, SkeletonText, Slider, SliderWrapper, Spinner, Textarea, Toast, WarnMesssage$1 as WarnMesssage, ZipInput };
