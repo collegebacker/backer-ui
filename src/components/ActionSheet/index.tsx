@@ -29,6 +29,7 @@ const ActionSheet = React.forwardRef<any, Props>((props, ref) => {
       setIsOpen(true)
     },
     close: () => {
+      setIsOpen(false)
       setShow(false)
     }
   }))
@@ -42,6 +43,18 @@ const ActionSheet = React.forwardRef<any, Props>((props, ref) => {
       return () => clearTimeout(timer)
     }
   }, [isOpen])
+
+  // if prop isOpen was changed, update state
+  React.useEffect(() => {
+    if (props.isOpen !== isOpen) {
+      if (props.isOpen) {
+        setIsOpen(true)
+      } else {
+        setIsOpen(false)
+        setShow(false)
+      }
+    }
+  }, [props.isOpen])
 
   useDidMountEffect(() => {
     if (show) {
@@ -82,9 +95,7 @@ const ActionSheet = React.forwardRef<any, Props>((props, ref) => {
   }, [show, unmount])
 
   return ReactDOM.createPortal(
-    unmount ? (
-      <></>
-    ) : (
+    !unmount && (
       <aside
         role='dialog'
         aria-modal
