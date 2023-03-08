@@ -5,13 +5,31 @@ import styles from './styles.module.scss'
 import { CleaveOptions } from 'cleave.js/options'
 import Cleave from 'cleave.js/react'
 
-export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps {
+  // input props
+  cursor?: string
   name: string
   label?: string
+  value?: string
+  className?: string
+  style?: React.CSSProperties
+  disabled?: boolean
+  pattern?: string
+  type?: string
+  autoComplete?: string
+  autoFocus?: boolean
+  required?: boolean
+  tabIndex?: number
+  readOnly?: boolean
+  // input events
+  onClick?: (e: React.MouseEvent<HTMLInputElement>) => void
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onFocus?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onBlur?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onKeyPress?: (e: React.KeyboardEvent<HTMLInputElement>) => void
+  // custom props
   errorMessage?: string
   helperText?: string
-  errorAnimation?: boolean
   hideSpinButton?: boolean
   icon?: {
     name: IconTypes
@@ -21,36 +39,41 @@ export interface InputProps
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-  const inputRef = React.useRef<any>(null)
+  // const [value, setValue] = React.useState(props.value || '')
 
-  const [val, setVal] = React.useState(props.value)
-
-  React.useEffect(() => {
-    setVal(props.value)
-  }, [props.value])
-
-  React.useEffect(() => {
-    if (props.errorMessage && inputRef.current) {
-      inputRef.current.focus()
+  const inputArgs = {
+    className: `${styles.input} ${
+      props.hideSpinButton ? styles.hideSpinButton : ''
     }
-  }, [props.errorMessage])
-
-  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value
-    setVal(value)
-
-    if (props.onChange) {
-      props.onChange(e)
-    }
+    ${props.readOnly ? '' : styles.focusState}
+    `,
+    style: {
+      cursor: props.cursor
+    },
+    name: props.name,
+    value: props.value,
+    placeholder: '&nbsp;',
+    type: props.type,
+    autoComplete: props.autoComplete,
+    autoFocus: props.autoFocus,
+    required: props.required,
+    tabIndex: props.tabIndex,
+    readOnly: props.readOnly,
+    disabled: props.disabled,
+    onClick: props.onClick,
+    onChange: props.onChange,
+    onFocus: props.onFocus,
+    onBlur: props.onBlur,
+    onKeyPress: props.onKeyPress
   }
 
   return (
     <div
       className={`${styles.componentWrap} ${props.className} ${
         props.errorMessage ? styles.error : ''
-      } ${props.errorMessage && props.errorAnimation ? styles.shake : ''}
-        ${props.disabled ? styles.disabled : ''}
-      `}
+      } ${props.errorMessage ? styles.shake : ''} ${
+        props.disabled ? styles.disabled : ''
+      }`}
       style={props.style}
     >
       <div
@@ -71,42 +94,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
           </div>
         )}
 
-        {/* {props.cleaveOptions ? (
-          <Cleave
-            className={`${styles.input} ${
-              props.hideSpinButton ? styles.hideSpinButton : ''
-            }`}
-            options={props.cleaveOptions}
-            value={val}
-            onChange={handleOnChange}
-            name={props.name}
-            disabled={props.disabled}
-            ref={inputRef}
-          />
+        {props.cleaveOptions ? (
+          <Cleave {...inputArgs} options={props.cleaveOptions} />
         ) : (
-          <input
-            className={`${styles.input} ${
-              props.hideSpinButton ? styles.hideSpinButton : ''
-            }`}
-            value={val}
-            onChange={handleOnChange}
-            name={props.name}
-            disabled={props.disabled}
-            ref={inputRef}
-          />
-        )} */}
-
-        <Cleave
-          className={`${styles.input} ${
-            props.hideSpinButton ? styles.hideSpinButton : ''
-          }`}
-          name={props.name}
-          ref={inputRef}
-          options={props.cleaveOptions}
-          value={val}
-          onChange={handleOnChange}
-          placeholder='&nbsp;'
-        />
+          <input {...inputArgs} ref={ref} />
+        )}
 
         {props.label !== '' && (
           <label className={styles.label} htmlFor={props.name}>
@@ -133,6 +125,7 @@ Input.defaultProps = {
   hideSpinButton: true,
   style: {},
   value: '',
+  cursor: 'caret',
   errorAnimation: true
 } as Partial<InputProps>
 

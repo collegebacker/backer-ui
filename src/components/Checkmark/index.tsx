@@ -6,6 +6,7 @@ export interface Props {
   className?: string
   style?: React.CSSProperties
   checked?: boolean
+  visibleOutline?: boolean
   onChange?: (checked: boolean) => void
 }
 
@@ -24,7 +25,9 @@ const Checkmark: React.FC<Props> = (props) => {
     <div
       className={`${styles.wrap} ${checked ? styles.checked : ''} ${
         props.className
-      }`}
+      }
+      ${props.visibleOutline ? styles.visibleOutline : ''}
+      `}
       style={props.style}
     >
       <Icon className={styles.tickIcon} name='tickmark' />
@@ -35,7 +38,8 @@ const Checkmark: React.FC<Props> = (props) => {
 Checkmark.defaultProps = {
   className: '',
   style: {},
-  checked: false
+  checked: false,
+  visibleOutline: true
 } as Partial<Props>
 
 export default Checkmark

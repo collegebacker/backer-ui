@@ -61,15 +61,19 @@ $focus-line-margin: -4px;
 
 // input
 
-@mixin resetInputMixin {
-  height: 44px;
-  padding: 0;
-  padding-bottom: 5px;
-  background: none;
-  border: none;
-  outline: none;
-  border-radius: 0;
-}
+// @mixin resetInputMixin {
+//   height: 44px;
+//   padding: 0;
+//   padding-bottom: 5px;
+//   background: none;
+//   border: none;
+//   outline: none;
+//   border-radius: 0;
+
+//   &::placeholder {
+//     color: transparent;
+//   }
+// }
 
 @mixin textInputMixin {
   font-family: 'ABCMarfa', sans-serif;
@@ -84,25 +88,25 @@ $focus-line-margin: -4px;
   transform: translateY(-34px) scale(0.6);
 }
 
-@mixin inputStates($label-class) {
-  height: 44px;
+// @mixin inputStates($label-class) {
+//   height: 44px;
 
-  &:hover {
-    box-shadow: 0 2px 0 0 var(--color-main-500);
-  }
+//   &:hover {
+//     box-shadow: 0 2px 0 0 var(--color-main-500);
+//   }
 
-  &:focus {
-    box-shadow: 0 2px 0 0 var(--color-main-500);
+//   &:focus {
+//     box-shadow: 0 2px 0 0 var(--color-main-500);
 
-    + .#{$label-class} {
-      @include labelIfInputFocused();
-    }
-  }
+//     + .#{$label-class} {
+//       @include labelIfInputFocused();
+//     }
+//   }
 
-  &:not(:placeholder-shown) + .#{$label-class} {
-    @include labelIfInputFocused();
-  }
-}
+//   &:not(:placeholder-shown) + .#{$label-class} {
+//     @include labelIfInputFocused();
+//   }
+// }
 
 @mixin inputLabel {
   pointer-events: none;

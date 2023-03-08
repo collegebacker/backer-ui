@@ -19,16 +19,47 @@
   @include inputLabel();
 }
 
+.focusState {
+  &:focus {
+    box-shadow: 0 2px 0 0 var(--color-main-500);
+
+    + .label {
+      @include labelIfInputFocused();
+    }
+  }
+}
+
 .input {
-  @include resetInputMixin();
-  @include textInputMixin();
+  height: 44px;
+  padding: 0;
+  padding-bottom: 5px;
+  background: none;
+  border: none;
+  outline: none;
+  border-radius: 0;
+
+  font-family: 'ABCMarfa', sans-serif;
+  font-weight: 200;
+  font-size: 24px;
+  line-height: 24px;
+
   -webkit-transition: all 0.15s ease;
   transition: all 0.15s ease;
   -webkit-box-shadow: 0 1px 0 0 var(--color-main-500);
   box-shadow: 0 1px 0 0 var(--color-main-500);
   -webkit-appearance: none;
 
-  @include inputStates(label);
+  &::placeholder {
+    color: transparent;
+  }
+
+  &:hover {
+    box-shadow: 0 2px 0 0 var(--color-main-500);
+  }
+
+  &:not(:placeholder-shown) + .label {
+    @include labelIfInputFocused();
+  }
 }
 
 .helperText {
