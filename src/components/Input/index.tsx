@@ -9,6 +9,7 @@ export interface InputProps {
   // input props
   cursor?: string
   name: string
+  id?: string
   label?: string
   value?: string
   className?: string
@@ -60,6 +61,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     tabIndex: props.tabIndex,
     readOnly: props.readOnly,
     disabled: props.disabled,
+    pattern: props.pattern,
+    id: props.id,
     onClick: props.onClick,
     onChange: props.onChange,
     onFocus: props.onFocus,

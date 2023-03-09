@@ -66,6 +66,7 @@ declare const PaymentLogo: React.FC<Props$x>;
 interface InputProps {
     cursor?: string;
     name: string;
+    id?: string;
     label?: string;
     value?: string;
     className?: string;
