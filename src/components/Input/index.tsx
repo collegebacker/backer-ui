@@ -32,6 +32,7 @@ export interface InputProps {
   errorMessage?: string
   helperText?: string
   hideSpinButton?: boolean
+  noAutoComplete?: boolean
   icon?: {
     name: IconTypes
     onClick?: () => void
@@ -55,7 +56,12 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     value: props.value,
     placeholder: '&nbsp;',
     type: props.type,
-    autoComplete: props.autoComplete,
+    autoComplete:
+      props.autoComplete && !props.noAutoComplete
+        ? props.autoComplete
+        : props.noAutoComplete
+        ? 'new-password'
+        : undefined,
     autoFocus: props.autoFocus,
     required: props.required,
     tabIndex: props.tabIndex,
