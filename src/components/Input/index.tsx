@@ -32,7 +32,7 @@ export interface InputProps {
   errorMessage?: string
   helperText?: string
   hideSpinButton?: boolean
-  noAutoComplete?: boolean
+  noAutocomplete?: boolean
   icon?: {
     name: IconTypes
     onClick?: () => void
@@ -57,9 +57,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     placeholder: '&nbsp;',
     type: props.type,
     autoComplete:
-      props.autoComplete && !props.noAutoComplete
+      props.autoComplete && !props.noAutocomplete
         ? props.autoComplete
-        : props.noAutoComplete
+        : props.noAutocomplete
         ? 'new-password'
         : undefined,
     autoFocus: props.autoFocus,
@@ -135,7 +135,8 @@ Input.defaultProps = {
   style: {},
   value: '',
   cursor: 'caret',
-  errorAnimation: true
+  errorAnimation: true,
+  noAutocomplete: false
 } as Partial<InputProps>
 
 export default Input

@@ -87,7 +87,7 @@ interface InputProps {
     errorMessage?: string;
     helperText?: string;
     hideSpinButton?: boolean;
-    noAutoComplete?: boolean;
+    noAutocomplete?: boolean;
     icon?: {
         name: IconTypes;
         onClick?: () => void;
