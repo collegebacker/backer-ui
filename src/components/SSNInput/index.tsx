@@ -2,7 +2,7 @@ import React from 'react'
 import Input, { InputProps } from '../Input'
 
 const SSNInput: React.FC<InputProps> = (props) => {
-  const [eyeIconOpen, setEyeIcon] = React.useState(false)
+  const [eyeIconOpen, setEyeIcon] = React.useState(true)
 
   // RENDER
   return (
