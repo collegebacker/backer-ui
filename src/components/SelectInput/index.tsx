@@ -16,7 +16,7 @@ export interface DropdownProps extends InputProps {
   onSelect: (value: string) => void
 }
 
-const Dropdown: React.FC<DropdownProps> = (props) => {
+const SelectInput: React.FC<DropdownProps> = (props) => {
   const [value, setValue] = React.useState(props.value || '')
   const [isModalOpen, setIsModalOpen] = React.useState(false)
 
@@ -72,9 +72,9 @@ const Dropdown: React.FC<DropdownProps> = (props) => {
   )
 }
 
-Dropdown.defaultProps = {
+SelectInput.defaultProps = {
   className: '',
   label: 'Select…'
 }
 
-export default Dropdown
+export default SelectInput
