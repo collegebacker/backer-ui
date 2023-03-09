@@ -39,10 +39,14 @@ const SelectInput: React.FC<DropdownProps> = (props) => {
         contentClassName={styles.modalContent}
       >
         {props.modalTitle && (
-          <h2 className={`typo-app-title-small`}>{props.modalTitle}</h2>
+          <h2 className={`typo-app-title-small ${styles.title}`}>
+            {props.modalTitle}
+          </h2>
         )}
         {props.modalDescription && (
-          <p className={`typo-app-body-main`}>{props.modalDescription}</p>
+          <p className={`typo-app-body-main ${styles.description}`}>
+            {props.modalDescription}
+          </p>
         )}
         <ul className={styles.listWrap}>
           {props.options.map((option, index) => (
