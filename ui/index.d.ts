@@ -333,6 +333,7 @@ interface Props$g {
     text?: string;
     actions: Array<{
         label: string;
+        disabled?: boolean;
         onClick: () => void;
     }>;
 }

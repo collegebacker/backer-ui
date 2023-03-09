@@ -29,7 +29,7 @@
 }
 
 .text {
-  font-family: "ABCMArfa", sans-serif;
+  font-family: 'ABCMArfa', sans-serif;
   font-size: 17px;
   font-weight: 300;
   line-height: 130%;
@@ -65,7 +65,7 @@
   }
 
   span {
-    font-family: "ABCMArfa", sans-serif;
+    font-family: 'ABCMArfa', sans-serif;
     font-size: 17px;
     font-weight: 500;
     line-height: 120%;
@@ -75,5 +75,10 @@
   &:hover,
   &:focus-visible {
     background-color: var(--color-main-transparent-50);
+  }
+
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.3;
   }
 }

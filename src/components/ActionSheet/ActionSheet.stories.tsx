@@ -1,12 +1,12 @@
-import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import React from 'react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { ActionSheet, Button } from "..";
+import { ActionSheet, Button } from '..'
 
-localStorage.clear();
+localStorage.clear()
 
 export default {
-  title: "Modal/ActionSheet",
+  title: 'Modal/ActionSheet',
   component: ActionSheet,
   parameters: {
     docs: {
@@ -41,14 +41,15 @@ export default {
   ]}
 />
 \`\`\`
-`,
-      },
-    },
-  },
-} as ComponentMeta<typeof ActionSheet>;
+`
+      }
+    }
+  }
+} as ComponentMeta<typeof ActionSheet>
 
 const Template: ComponentStory<typeof ActionSheet> = (args) => {
-  const ActionSheetRef = React.useRef<any>();
+  const ActionSheetRef = React.useRef<any>()
+  const [actionDisabled, setActionDisabled] = React.useState(false)
 
   return (
     <>
@@ -57,34 +58,42 @@ const Template: ComponentStory<typeof ActionSheet> = (args) => {
         {...args}
         actions={[
           {
-            label: "Show alert",
+            label: 'Show alert',
             onClick: () => {
-              alert("I'm the onClick proprty");
+              alert("I'm the onClick proprty")
+              setActionDisabled(true)
             },
+            disabled: actionDisabled
           },
           {
-            label: "Close",
+            label: 'Undisable action',
             onClick: () => {
-              ActionSheetRef.current.close();
-            },
+              setActionDisabled(false)
+            }
           },
+          {
+            label: 'Close',
+            onClick: () => {
+              ActionSheetRef.current.close()
+            }
+          }
         ]}
       />
 
       <Button
-        size="small"
+        size='small'
         style={{
-          margin: "0 15px 15px 0",
+          margin: '0 15px 15px 0'
         }}
-        label="Show ActionSheet"
+        label='Show ActionSheet'
         onClick={() => ActionSheetRef.current.open()}
       />
     </>
-  );
-};
+  )
+}
 
-export const Default = Template.bind({});
+export const Default = Template.bind({})
 Default.args = {
   isOpen: false,
-  text: "I'm the text proprty",
-};
+  text: "I'm the text proprty"
+}
