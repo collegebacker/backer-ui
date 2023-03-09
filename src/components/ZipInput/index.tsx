@@ -10,7 +10,8 @@ const ZipInput: React.FC<InputProps> = (props) => {
       cleaveOptions={{
         blocks: [5, 4],
         delimiters: ['-'],
-        numericOnly: true
+        numericOnly: true,
+        delimiterLazyShow: true
       }}
       pattern='[0-9]*'
     />
