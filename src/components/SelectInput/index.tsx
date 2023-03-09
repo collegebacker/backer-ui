@@ -5,23 +5,25 @@ import Checkmark from '../Checkmark'
 
 import styles from './styles.module.scss'
 
+type ItemProps = {
+  label: string
+  value: string
+}
+
 export interface DropdownProps extends InputProps {
   label: string
   modalTitle?: string
   modalDescription?: string
-  options: Array<{
-    label: string
-    value: string
-  }>
-  onSelect: (value: string) => void
+  options: Array<ItemProps>
+  onSelect: (value: ItemProps) => void
 }
 
 const SelectInput: React.FC<DropdownProps> = (props) => {
   const [value, setValue] = React.useState(props.value || '')
   const [isModalOpen, setIsModalOpen] = React.useState(false)
 
-  const handleOnSelect = (value: string) => {
-    setValue(value)
+  const handleOnSelect = (value: ItemProps) => {
+    setValue(value.value)
     setIsModalOpen(false)
     props.onSelect && props.onSelect(value)
   }
@@ -46,7 +48,7 @@ const SelectInput: React.FC<DropdownProps> = (props) => {
           {props.options.map((option, index) => (
             <div
               key={index}
-              onClick={() => handleOnSelect(option.value)}
+              onClick={() => handleOnSelect(option)}
               className={styles.listItem}
             >
               <span className='typo-app-body-main'>{option.label}</span>
