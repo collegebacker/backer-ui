@@ -52,7 +52,7 @@ const SelectInput: React.FC<DropdownProps> = (props) => {
               className={styles.listItem}
             >
               <span className='typo-app-body-main'>{option.label}</span>
-              {value === option.value && <Checkmark checked />}
+              {value === option.label && <Checkmark checked />}
             </div>
           ))}
         </ul>
