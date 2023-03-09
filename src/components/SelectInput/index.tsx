@@ -1,7 +1,6 @@
 import React from 'react'
 import Input, { InputProps } from '../Input'
-import Modal from '../Modal'
-import Checkmark from '../Checkmark'
+import SelectModal from '../SelectModal'
 
 import styles from './styles.module.scss'
 
@@ -24,43 +23,20 @@ const SelectInput: React.FC<DropdownProps> = (props) => {
 
   const handleOnSelect = (value: ItemProps) => {
     setValue(value.label)
-    setIsModalOpen(false)
     props.onSelect && props.onSelect(value)
   }
 
   // RENDER
   return (
     <>
-      <Modal
+      <SelectModal
         isOpen={isModalOpen}
         onCloseClick={() => setIsModalOpen(false)}
-        isBottomSheet
-        className={styles.modal}
-        contentClassName={styles.modalContent}
-      >
-        {props.modalTitle && (
-          <h2 className={`typo-app-title-small ${styles.title}`}>
-            {props.modalTitle}
-          </h2>
-        )}
-        {props.modalDescription && (
-          <p className={`typo-app-body-main ${styles.description}`}>
-            {props.modalDescription}
-          </p>
-        )}
-        <ul className={styles.listWrap}>
-          {props.options.map((option, index) => (
-            <div
-              key={index}
-              onClick={() => handleOnSelect(option)}
-              className={styles.listItem}
-            >
-              <span className='typo-app-body-main'>{option.label}</span>
-              {value === option.label && <Checkmark checked />}
-            </div>
-          ))}
-        </ul>
-      </Modal>
+        modalTitle={props.modalTitle}
+        modalDescription={props.modalDescription}
+        options={props.options}
+        onSelect={handleOnSelect}
+      />
 
       <Input
         {...props}
