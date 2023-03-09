@@ -1,19 +1,19 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 
-import { Dropdown } from '..'
+import { SelectInput } from '..'
 import React from 'react'
 
 localStorage.clear()
 
 export default {
-  title: 'Forms/Dropdown',
-  component: Dropdown
-} as ComponentMeta<typeof Dropdown>
+  title: 'Forms/SelectInput',
+  component: SelectInput
+} as ComponentMeta<typeof SelectInput>
 
-const Template: ComponentStory<typeof Dropdown> = (args) => {
+const Template: ComponentStory<typeof SelectInput> = (args) => {
   return (
     <div style={{ width: '300px' }}>
-      <Dropdown {...args} />
+      <SelectInput {...args} />
     </div>
   )
 }

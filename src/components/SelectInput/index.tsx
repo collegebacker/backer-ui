@@ -5,23 +5,25 @@ import Checkmark from '../Checkmark'
 
 import styles from './styles.module.scss'
 
+type ItemProps = {
+  label: string
+  value: string
+}
+
 export interface DropdownProps extends InputProps {
   label: string
   modalTitle?: string
   modalDescription?: string
-  options: Array<{
-    label: string
-    value: string
-  }>
-  onSelect: (value: string) => void
+  options: Array<ItemProps>
+  onSelect: (value: ItemProps) => void
 }
 
-const Dropdown: React.FC<DropdownProps> = (props) => {
+const SelectInput: React.FC<DropdownProps> = (props) => {
   const [value, setValue] = React.useState(props.value || '')
   const [isModalOpen, setIsModalOpen] = React.useState(false)
 
-  const handleOnSelect = (value: string) => {
-    setValue(value)
+  const handleOnSelect = (value: ItemProps) => {
+    setValue(value.label)
     setIsModalOpen(false)
     props.onSelect && props.onSelect(value)
   }
@@ -37,20 +39,24 @@ const Dropdown: React.FC<DropdownProps> = (props) => {
         contentClassName={styles.modalContent}
       >
         {props.modalTitle && (
-          <h2 className={`typo-app-title-small`}>{props.modalTitle}</h2>
+          <h2 className={`typo-app-title-small ${styles.title}`}>
+            {props.modalTitle}
+          </h2>
         )}
         {props.modalDescription && (
-          <p className={`typo-app-body-main`}>{props.modalDescription}</p>
+          <p className={`typo-app-body-main ${styles.description}`}>
+            {props.modalDescription}
+          </p>
         )}
         <ul className={styles.listWrap}>
           {props.options.map((option, index) => (
             <div
               key={index}
-              onClick={() => handleOnSelect(option.value)}
+              onClick={() => handleOnSelect(option)}
               className={styles.listItem}
             >
               <span className='typo-app-body-main'>{option.label}</span>
-              {value === option.value && <Checkmark checked />}
+              {value === option.label && <Checkmark checked />}
             </div>
           ))}
         </ul>
@@ -72,9 +78,9 @@ const Dropdown: React.FC<DropdownProps> = (props) => {
   )
 }
 
-Dropdown.defaultProps = {
+SelectInput.defaultProps = {
   className: '',
   label: 'Select…'
 }
 
-export default Dropdown
+export default SelectInput
