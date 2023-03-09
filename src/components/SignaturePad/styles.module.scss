@@ -1,24 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Arizonia&family=Cookie&family=Style+Script&display=swap');
+
 .wrap {
   display: flex;
   flex-direction: column;
   gap: 30px;
 }
 
-.switcher {
-  display: flex;
-  gap: 15px;
-}
-
 .signaturePadWrap {
+  position: relative;
   display: flex;
+  flex-direction: column;
+  // gap: 15px;
   padding: 20px;
   background-color: var(--color-peach-50);
   border-radius: var(--radius-l);
 }
 
 .padFrame {
-  width: 260px;
+  pointer-events: none;
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 400px;
   height: 120px;
   border-radius: var(--radius-m);
-  background-color: rgba(255, 255, 255, 0.2);
+
+  &:after {
+    pointer-events: none;
+    content: '';
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  span {
+    pointer-events: none;
+  }
+}
+
+.button {
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  padding: 5px 0;
+  margin: 0;
+  border: none;
+  outline: none;
+  background: none;
+
+  span {
+    color: var(--color-main-500);
+  }
+}
+
+.signatureCanvas {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.signatureInput {
+  position: absolute;
+  bottom: 30px;
+  left: 20px;
+  width: calc(100% - 40px);
+  max-width: 400px;
+  height: 80px;
+  padding: 0;
+  margin: 0;
+
+  border: none;
+  outline: none;
+  background: none;
+  background-color: rgba(0, 0, 0, 0.1);
+  font-size: 30px;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.styleScript {
+  font-family: 'Style Script', cursive;
+  color: var(--color-main-500);
+}
+
+.arizonia {
+  font-family: 'Arizonia', cursive;
+  color: var(--color-main-500);
+}
+
+.cookie {
+  font-family: 'Cookie', cursive;
+  color: var(--color-main-500);
 }
