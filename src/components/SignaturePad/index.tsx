@@ -209,12 +209,17 @@ const SignaturePad = React.forwardRef<any, Props>((props, ref) => {
           {
             label: 'Draw',
             value: 'draw',
-            onClick: () => setCurrentTab(0)
+            onClick: () => {
+              setCurrentTab(0)
+              setText('')
+            }
           },
           {
             label: 'Type',
             value: 'type',
-            onClick: () => setCurrentTab(1)
+            onClick: () => {
+              setCurrentTab(1)
+            }
           }
         ]}
       />
