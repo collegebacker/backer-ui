@@ -18,7 +18,7 @@ const Button: React.FC<{
   onClick: () => void
 }> = (props) => {
   return (
-    <button className={styles.button} onClick={props.onClick}>
+    <button className={styles.button} onClick={props.onClick} type='button'>
       <Icon name={props.icon} />
       <span className='typo-app-body-caption'>{props.label}</span>
     </button>
