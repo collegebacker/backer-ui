@@ -4,19 +4,10 @@ import styles from './styles.module.scss'
 import SignatureCanvas from 'react-signature-canvas'
 import Icon from '../Icon'
 import SwitchSelector from '../SwitchSelector'
-import Modal from '../Modal'
+import SelectModal from '../SelectModal'
 
 export interface Props {
   className?: string
-}
-
-const PadFrame: React.FC<{ caption: string }> = ({ caption }) => {
-  return (
-    <>
-      <div className={styles.padFrame}></div>
-      <span className='typo-app-body-caption'>{caption}</span>
-    </>
-  )
 }
 
 const Button: React.FC<{
@@ -32,58 +23,192 @@ const Button: React.FC<{
   )
 }
 
-const SignaturePad: React.FC<Props> = (props) => {
+const calculateTextWidth = (text: string, font: string, fontSize: number) => {
+  const canvas = document.createElement('canvas')
+  const context = canvas.getContext('2d')
+  context.font = `${fontSize}px ${font}`
+  return context.measureText(text).width
+}
+
+const convertTextToImage = (text: string, font: string, fontSize: number) => {
+  const retinaFont = fontSize * 2
+  const canvas = document.createElement('canvas')
+  const context = canvas.getContext('2d')
+  const textWidth = calculateTextWidth(text, font, retinaFont)
+  const textHeight = retinaFont
+  canvas.width = textWidth + 20
+  canvas.height = textHeight + 20
+  context.font = `${retinaFont}px ${font}`
+  context.fillStyle = 'black'
+  context.fillText(text, 10, textHeight - 10)
+  return canvas.toDataURL()
+}
+
+function upscaleCanvas(canvas: HTMLCanvasElement) {
+  const ratio = window.devicePixelRatio
+  const width = canvas.width
+  const height = canvas.height
+  canvas.width = width * ratio
+  canvas.height = height * ratio
+  canvas.getContext('2d').scale(ratio, ratio)
+
+  return canvas
+}
+
+const SignaturePad = React.forwardRef<any, Props>((props, ref) => {
   const padWrapRef = React.useRef<HTMLDivElement>(null)
+  const inputRef = React.useRef<HTMLInputElement>(null)
   const signatureCanvasRef = React.useRef<SignatureCanvas>(null)
-  const [selected, setSelected] = React.useState(0)
-  const [signatureSize, setSignatureSize] = React.useState({
+
+  const [currentTab, setCurrentTab] = React.useState(0)
+
+  const [selectedFont, setSelectedFont] = React.useState('bilbo')
+  const [textWidth, setTextWidth] = React.useState(0)
+  const [isModalOpen, setIsModalOpen] = React.useState(false)
+  const [text, setText] = React.useState('')
+
+  const [padWrapFrameSize, setPadWrapFrameSize] = React.useState({
+    width: 0,
+    height: 0
+  })
+  const [inputFrameSize, setInputFrameSize] = React.useState({
     width: 0,
     height: 0
   })
 
+  const fonts = [
+    {
+      label: 'Bilbo',
+      value: 'bilbo',
+      className: styles.bilbo
+    },
+    {
+      label: 'Qwigley',
+      value: 'qwigley',
+      className: styles.qwigley
+    },
+    {
+      label: 'Kristi',
+      value: 'kristi',
+      className: styles.kristi
+    }
+  ]
+
+  const baseFontSize = 70
+
   const handleResize = () => {
     if (padWrapRef.current) {
-      setSignatureSize({
+      setPadWrapFrameSize({
         width: padWrapRef.current.offsetWidth,
         height: padWrapRef.current.offsetHeight
       })
     }
+    if (inputRef.current) {
+      setInputFrameSize({
+        width: inputRef.current.offsetWidth,
+        height: inputRef.current.offsetHeight
+      })
+    }
   }
+
+  React.useImperativeHandle(
+    ref,
+    () => {
+      return {
+        clear: () => {
+          if (currentTab === 0) {
+            signatureCanvasRef.current.clear()
+          } else {
+            setText('')
+          }
+        },
+        isEmpty: () => {
+          if (currentTab === 0) {
+            return signatureCanvasRef.current.isEmpty()
+          } else {
+            return text === ''
+          }
+        },
+        getImageData: () => {
+          if (currentTab === 0) {
+            return signatureCanvasRef.current.getTrimmedCanvas().toDataURL()
+          } else {
+            return convertTextToImage(text, selectedFont, baseFontSize)
+          }
+        }
+      }
+    },
+    [currentTab, text]
+  )
 
   React.useEffect(() => {
     handleResize()
+
     window.addEventListener('resize', handleResize)
     return () => {
       window.removeEventListener('resize', handleResize)
     }
-  }, [])
+  }, [padWrapRef.current, inputRef.current])
+
+  React.useEffect(() => {
+    if (inputRef.current) {
+      setTextWidth(calculateTextWidth(text, selectedFont, baseFontSize))
+    }
+  }, [text, selectedFont])
+
+  React.useEffect(() => {
+    if (inputRef.current) {
+      // console.log(textWidth)
+      if (textWidth > inputFrameSize.width) {
+        const fontSize = Math.floor(
+          (inputFrameSize.width / textWidth) * baseFontSize * 0.95
+        )
+        inputRef.current.style.fontSize = `${fontSize}px`
+      } else {
+        inputRef.current.style.fontSize = `${baseFontSize}px`
+      }
+    }
+  }, [textWidth])
 
   return (
     <section className={`${styles.wrap} ${props.className}`}>
+      <SelectModal
+        modalTitle='Change the font'
+        isOpen={isModalOpen}
+        options={fonts}
+        value={selectedFont}
+        onSelect={(item) => {
+          setSelectedFont(item.value)
+          setIsModalOpen(false)
+        }}
+        onCloseClick={() => setIsModalOpen(false)}
+      />
+
       <SwitchSelector
         items={[
           {
             label: 'Draw',
             value: 'draw',
-            onClick: () => setSelected(0)
+            onClick: () => setCurrentTab(0)
           },
           {
             label: 'Type',
             value: 'type',
-            onClick: () => setSelected(1)
+            onClick: () => setCurrentTab(1)
           }
         ]}
       />
 
       <div className={styles.signaturePadWrap} ref={padWrapRef}>
-        {selected === 0 ? (
+        {currentTab === 0 ? (
           <>
             <SignatureCanvas
               ref={signatureCanvasRef}
               penColor='black'
               canvasProps={{
-                width: signatureSize.width > 450 ? 450 : signatureSize.width,
-                height: signatureSize.height,
+                width:
+                  padWrapFrameSize.width > 450 ? 450 : padWrapFrameSize.width,
+                height: padWrapFrameSize.height,
                 className: styles.signatureCanvas
               }}
             />
@@ -97,19 +222,36 @@ const SignaturePad: React.FC<Props> = (props) => {
                 }
               }}
             />
-            <PadFrame caption='Please draw your signature' />
           </>
         ) : (
           <>
-            <input className={styles.signatureInput} type='text' />
-            <Button icon='font' label='Change the font' onClick={() => {}} />
-            <PadFrame caption='Please draw your signature' />
+            <input
+              className={`${styles.signatureInput} ${styles[selectedFont]}`}
+              ref={inputRef}
+              type='text'
+              style={{
+                fontSize: `${baseFontSize}px`
+              }}
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+            />
+            <Button
+              icon='font'
+              label='Change the font'
+              onClick={() => setIsModalOpen(true)}
+            />
           </>
         )}
+        <div className={styles.padFrame} />
+        <span className='typo-app-body-caption'>
+          {currentTab === 0
+            ? 'Please draw your signature'
+            : 'Type your name to generate a signature'}
+        </span>
       </div>
     </section>
   )
-}
+})
 
 SignaturePad.defaultProps = {
   className: ''

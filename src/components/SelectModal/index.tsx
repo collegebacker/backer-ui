@@ -5,22 +5,25 @@ import Modal from '../Modal'
 import styles from './styles.module.scss'
 
 export interface Props {
-  className?: string
   isOpen?: boolean
   modalTitle?: string
   modalDescription?: string
-  options: Array<{ label: string; value: string }>
+  value: string
+  options: Array<{ label: string; value: string; className?: string }>
   closeOnSelect?: boolean
   onSelect: (value: { label: string; value: string }) => void
   onCloseClick?: () => void
 }
 
 const SelectModal: React.FC<Props> = (props) => {
-  const [value, setValue] = React.useState('')
+  const [value, setValue] = React.useState({
+    label: props.value,
+    value: props.value
+  })
   const [isModalOpen, setIsModalOpen] = React.useState(false)
 
   const handleOnSelect = (value: { label: string; value: string }) => {
-    setValue(value.label)
+    setValue(value)
     props.closeOnSelect && setIsModalOpen(false)
     props.onSelect && props.onSelect(value)
   }
@@ -50,15 +53,15 @@ const SelectModal: React.FC<Props> = (props) => {
           {props.modalDescription}
         </p>
       )}
-      <ul className={`${styles.listWrap} ${props.className}`}>
+      <ul className={`${styles.listWrap}`}>
         {props.options.map((option, index) => (
           <div
             key={index}
             onClick={() => handleOnSelect(option)}
-            className={styles.listItem}
+            className={`${styles.listItem} ${option.className || ''}`}
           >
             <span className='typo-app-body-main'>{option.label}</span>
-            {value === option.label && <Checkmark checked />}
+            {value.value === option.value && <Checkmark checked />}
           </div>
         ))}
       </ul>
@@ -67,7 +70,6 @@ const SelectModal: React.FC<Props> = (props) => {
 }
 
 SelectModal.defaultProps = {
-  className: '',
   isOpen: false,
   closeOnSelect: true
 }
