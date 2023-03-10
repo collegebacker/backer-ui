@@ -32,10 +32,15 @@ const calculateTextWidth = (text: string, font: string, fontSize: number) => {
   return context.measureText(text).width
 }
 
-const convertTextToImage = (text: string, font: string, fontSize: number) => {
+const convertTextToImage = (
+  text: string,
+  font: string,
+  fontSize: number,
+  scaleRatio: number
+) => {
   const padding = 40
 
-  const retinaFont = fontSize * 2
+  const retinaFont = fontSize * scaleRatio
   const canvas = document.createElement('canvas')
   const context = canvas.getContext('2d')
   const textWidth = calculateTextWidth(text, font, retinaFont)
@@ -94,6 +99,7 @@ const SignaturePad = React.forwardRef<any, Props>((props, ref) => {
   ]
 
   const baseFontSize = 70
+  const scaleRatio = 1.5
 
   const handleResize = () => {
     if (padWrapRef.current) {
@@ -139,7 +145,12 @@ const SignaturePad = React.forwardRef<any, Props>((props, ref) => {
 
             return trimmedCanvas.toDataURL()
           } else {
-            return convertTextToImage(text, selectedFont, baseFontSize)
+            return convertTextToImage(
+              text,
+              selectedFont,
+              baseFontSize,
+              scaleRatio
+            )
           }
         }
       }
