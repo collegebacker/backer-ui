@@ -23,6 +23,7 @@ const SelectInput: React.FC<DropdownProps> = (props) => {
 
   const handleOnSelect = (value: ItemProps) => {
     setValue(value.label)
+    setIsModalOpen(false)
     props.onSelect && props.onSelect(value)
   }
 

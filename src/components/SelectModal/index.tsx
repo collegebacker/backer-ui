@@ -8,7 +8,7 @@ export interface Props {
   isOpen?: boolean
   modalTitle?: string
   modalDescription?: string
-  value: string
+  value?: string
   options: Array<{ label: string; value: string; className?: string }>
   closeOnSelect?: boolean
   onSelect: (value: { label: string; value: string }) => void

@@ -27,14 +27,19 @@ const Template: ComponentStory<typeof SelectModal> = (args) => {
           setIsOpen(false)
         }}
       />
-      <Button label='Open Modal' onClick={() => setIsOpen(true)} />
+      <Button
+        label='Open Modal'
+        onClick={() => {
+          console.log('open')
+          setIsOpen(true)
+        }}
+      />
     </>
   )
 }
 
 export const Default = Template.bind({})
 Default.args = {
-  className: '',
   options: [
     { label: 'Option 1', value: 'option1' },
     { label: 'Option 2', value: 'option2' },
