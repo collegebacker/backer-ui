@@ -11970,6 +11970,11 @@ treeify@^1.1.0:
   resolved "https://registry.yarnpkg.com/treeify/-/treeify-1.1.0.tgz#4e31c6a463accd0943879f30667c4fdaff411bb8"
   integrity sha512-1m4RA7xVAJrSGrrXGs0L3YTwyvBs2S8PbRHaLZAkFw7JR8oIFwYtysxlBZhYIa7xSyiYJKZ3iGrrk55cGA3i9A==
 
+trim-canvas-blank@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/trim-canvas-blank/-/trim-canvas-blank-1.0.0.tgz#9294c39935c454a6cb705d60396b04989c71ac87"
+  integrity sha512-4KwjNp2mLZFlInzUGFAeRA22DaTS7Pw5XdO46CtToSimSGl7AbCvdJSqe/l6TN1zjbqx5BoQGJ9iJh+QD9bb8Q==
+
 trim-canvas@^0.1.0:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/trim-canvas/-/trim-canvas-0.1.2.tgz#620457f5fecf564b521d35c5fcd4da58304d6e45"

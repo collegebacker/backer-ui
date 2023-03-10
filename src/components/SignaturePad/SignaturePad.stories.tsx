@@ -7,7 +7,15 @@ localStorage.clear()
 
 export default {
   title: 'Forms/SignaturePad',
-  component: SignaturePad
+  component: SignaturePad,
+  // add docs
+  parameters: {
+    docs: {
+      description: {
+        component: `In order to manipulate the signature pad, you need to use the ref. For example, you can get the signature data by calling \`padRef.current?.getImageData()\`, it will return PNG as a base64 string. You can also clear the pad by calling \`padRef.current?.clear()\`. if you want to check if the pad is empty, you can call \`padRef.current?.isEmpty()\`.`
+      }
+    }
+  }
 } as ComponentMeta<typeof SignaturePad>
 
 const Template: ComponentStory<typeof SignaturePad> = (args) => {

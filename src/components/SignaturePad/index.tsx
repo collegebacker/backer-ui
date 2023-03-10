@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './styles.module.scss'
 
+import trimCanvas from 'trim-canvas-blank'
 import SignatureCanvas from 'react-signature-canvas'
 import Icon from '../Icon'
 import SwitchSelector from '../SwitchSelector'
@@ -8,6 +9,7 @@ import SelectModal from '../SelectModal'
 
 export interface Props {
   className?: string
+  style?: React.CSSProperties
 }
 
 const Button: React.FC<{
@@ -31,28 +33,25 @@ const calculateTextWidth = (text: string, font: string, fontSize: number) => {
 }
 
 const convertTextToImage = (text: string, font: string, fontSize: number) => {
+  const padding = 40
+
   const retinaFont = fontSize * 2
   const canvas = document.createElement('canvas')
   const context = canvas.getContext('2d')
   const textWidth = calculateTextWidth(text, font, retinaFont)
   const textHeight = retinaFont
-  canvas.width = textWidth + 20
-  canvas.height = textHeight + 20
+  canvas.width = textWidth + padding
+  canvas.height = textHeight + padding
   context.font = `${retinaFont}px ${font}`
   context.fillStyle = 'black'
-  context.fillText(text, 10, textHeight - 10)
-  return canvas.toDataURL()
-}
+  context.fillText(text, padding / 4, textHeight - padding / 2)
 
-function upscaleCanvas(canvas: HTMLCanvasElement) {
-  const ratio = window.devicePixelRatio
-  const width = canvas.width
-  const height = canvas.height
-  canvas.width = width * ratio
-  canvas.height = height * ratio
-  canvas.getContext('2d').scale(ratio, ratio)
+  // trim canvas
+  const trimmedCanvas = trimCanvas(canvas, {
+    padding: 2
+  })
 
-  return canvas
+  return trimmedCanvas.toDataURL()
 }
 
 const SignaturePad = React.forwardRef<any, Props>((props, ref) => {
@@ -131,14 +130,21 @@ const SignaturePad = React.forwardRef<any, Props>((props, ref) => {
         },
         getImageData: () => {
           if (currentTab === 0) {
-            return signatureCanvasRef.current.getTrimmedCanvas().toDataURL()
+            const trimmedCanvas = trimCanvas(
+              signatureCanvasRef.current.getCanvas(),
+              {
+                padding: 2
+              }
+            )
+
+            return trimmedCanvas.toDataURL()
           } else {
             return convertTextToImage(text, selectedFont, baseFontSize)
           }
         }
       }
     },
-    [currentTab, text]
+    [currentTab, text, selectedFont]
   )
 
   React.useEffect(() => {
@@ -171,7 +177,10 @@ const SignaturePad = React.forwardRef<any, Props>((props, ref) => {
   }, [textWidth])
 
   return (
-    <section className={`${styles.wrap} ${props.className}`}>
+    <section
+      className={`${styles.wrap} ${props.className}`}
+      style={props.style}
+    >
       <SelectModal
         modalTitle='Change the font'
         isOpen={isModalOpen}
@@ -217,7 +226,6 @@ const SignaturePad = React.forwardRef<any, Props>((props, ref) => {
               label='Clear'
               onClick={() => {
                 if (signatureCanvasRef.current) {
-                  console.log(signatureCanvasRef)
                   signatureCanvasRef.current.clear()
                 }
               }}
