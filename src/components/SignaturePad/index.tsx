@@ -11,7 +11,7 @@ export interface Props {
   className?: string
   style?: React.CSSProperties
   errorMessage?: string
-  startInteract?: () => void
+  onStartInteract?: () => void
 }
 
 const Button: React.FC<{
@@ -233,7 +233,7 @@ const SignaturePad = React.forwardRef<any, Props>((props, ref) => {
             onClick: () => {
               setCurrentTab(0)
               setText('')
-              props.startInteract && props.startInteract()
+              props.onStartInteract && props.onStartInteract()
             }
           },
           {
@@ -241,7 +241,7 @@ const SignaturePad = React.forwardRef<any, Props>((props, ref) => {
             value: 'type',
             onClick: () => {
               setCurrentTab(1)
-              props.startInteract && props.startInteract()
+              props.onStartInteract && props.onStartInteract()
             }
           }
         ]}
@@ -263,7 +263,7 @@ const SignaturePad = React.forwardRef<any, Props>((props, ref) => {
                 className: styles.signatureCanvas
               }}
               onBegin={() => {
-                props.startInteract && props.startInteract()
+                props.onStartInteract && props.onStartInteract()
               }}
             />
             <Button
@@ -288,7 +288,7 @@ const SignaturePad = React.forwardRef<any, Props>((props, ref) => {
               value={text}
               onChange={(e) => {
                 setText(e.target.value)
-                props.startInteract && props.startInteract()
+                props.onStartInteract && props.onStartInteract()
               }}
             />
             <Button
