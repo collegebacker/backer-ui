@@ -556,6 +556,8 @@ declare const ListItem: React.FC<Props$3>;
 interface Props$2 {
     className?: string;
     style?: React.CSSProperties;
+    errorMessage?: string;
+    onBegin?: () => void;
 }
 declare const SignaturePad: React.ForwardRefExoticComponent<Props$2 & React.RefAttributes<any>>;
 

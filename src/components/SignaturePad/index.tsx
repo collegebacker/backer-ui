@@ -10,6 +10,8 @@ import SelectModal from '../SelectModal'
 export interface Props {
   className?: string
   style?: React.CSSProperties
+  errorMessage?: string
+  onBegin?: () => void
 }
 
 const Button: React.FC<{
@@ -66,6 +68,7 @@ const SignaturePad = React.forwardRef<any, Props>((props, ref) => {
 
   const [currentTab, setCurrentTab] = React.useState(0)
 
+  const [isError, setIsError] = React.useState(false)
   const [selectedFont, setSelectedFont] = React.useState('bilbo')
   const [textWidth, setTextWidth] = React.useState(0)
   const [isModalOpen, setIsModalOpen] = React.useState(false)
@@ -187,6 +190,24 @@ const SignaturePad = React.forwardRef<any, Props>((props, ref) => {
     }
   }, [textWidth])
 
+  React.useEffect(() => {
+    if (props.errorMessage) {
+      setIsError(true)
+    } else {
+      setIsError(false)
+    }
+  }, [props.errorMessage])
+
+  const helperText = () => {
+    if (!isError) {
+      if (currentTab === 0) {
+        return 'Draw your signature'
+      }
+      return 'Type your name to generate a signature'
+    }
+    return props.errorMessage
+  }
+
   return (
     <section
       className={`${styles.wrap} ${props.className}`}
@@ -212,6 +233,7 @@ const SignaturePad = React.forwardRef<any, Props>((props, ref) => {
             onClick: () => {
               setCurrentTab(0)
               setText('')
+              props.onBegin && props.onBegin()
             }
           },
           {
@@ -219,12 +241,16 @@ const SignaturePad = React.forwardRef<any, Props>((props, ref) => {
             value: 'type',
             onClick: () => {
               setCurrentTab(1)
+              props.onBegin && props.onBegin()
             }
           }
         ]}
       />
 
-      <div className={styles.signaturePadWrap} ref={padWrapRef}>
+      <div
+        className={`${styles.signaturePadWrap} ${isError ? styles.error : ''}`}
+        ref={padWrapRef}
+      >
         {currentTab === 0 ? (
           <>
             <SignatureCanvas
@@ -235,6 +261,9 @@ const SignaturePad = React.forwardRef<any, Props>((props, ref) => {
                   padWrapFrameSize.width > 450 ? 450 : padWrapFrameSize.width,
                 height: padWrapFrameSize.height,
                 className: styles.signatureCanvas
+              }}
+              onBegin={() => {
+                props.onBegin && props.onBegin()
               }}
             />
             <Button
@@ -257,7 +286,10 @@ const SignaturePad = React.forwardRef<any, Props>((props, ref) => {
                 fontSize: `${baseFontSize}px`
               }}
               value={text}
-              onChange={(e) => setText(e.target.value)}
+              onChange={(e) => {
+                setText(e.target.value)
+                props.onBegin && props.onBegin()
+              }}
             />
             <Button
               icon='font'
@@ -267,10 +299,8 @@ const SignaturePad = React.forwardRef<any, Props>((props, ref) => {
           </>
         )}
         <div className={styles.padFrame} />
-        <span className='typo-app-body-caption'>
-          {currentTab === 0
-            ? 'Please draw your signature'
-            : 'Type your name to generate a signature'}
+        <span className={`typo-app-body-caption ${styles.helperText}`}>
+          {helperText()}
         </span>
       </div>
     </section>

@@ -12,7 +12,9 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: `In order to manipulate the signature pad, you need to use the ref. For example, you can get the signature data by calling \`padRef.current?.getImageData()\`, it will return PNG as a base64 string. You can also clear the pad by calling \`padRef.current?.clear()\`. if you want to check if the pad is empty, you can call \`padRef.current?.isEmpty()\`.`
+        component: `In order to manipulate the signature pad, you need to use the ref. For example, you can get the signature data by calling \`padRef.current?.getImageData()\`, it will return PNG as a base64 string. You can also clear the pad by calling \`padRef.current?.clear()\`. if you want to check if the pad is empty, you can call \`padRef.current?.isEmpty()\`.
+        The \`errorMessage\` prop is used to display an error message when the user tries to get the signature data and the pad is empty.
+        Another callback is \`onBegin\`, it will be called when the user starts drawing or typing on the pad.`
       }
     }
   }
@@ -20,6 +22,7 @@ export default {
 
 const Template: ComponentStory<typeof SignaturePad> = (args) => {
   const padRef = React.useRef<any>(null)
+  const [error, setError] = React.useState<string | null>(null)
 
   return (
     <div
@@ -30,7 +33,14 @@ const Template: ComponentStory<typeof SignaturePad> = (args) => {
         maxWidth: '800px'
       }}
     >
-      <SignaturePad {...args} ref={padRef} />
+      <SignaturePad
+        {...args}
+        ref={padRef}
+        errorMessage={error}
+        onBegin={() => {
+          setError(null)
+        }}
+      />
       <Button
         style={{
           maxWidth: '400px'
@@ -38,7 +48,7 @@ const Template: ComponentStory<typeof SignaturePad> = (args) => {
         label='Get the signatue'
         onClick={() => {
           if (padRef.current?.isEmpty()) {
-            console.log('pad is empty')
+            setError('Please sign the pad')
             return
           }
 
