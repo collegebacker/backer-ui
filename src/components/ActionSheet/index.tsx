@@ -12,6 +12,7 @@ export interface Props {
   text?: string
   actions: Array<{
     label: string
+    disabled?: boolean
     onClick: () => void
   }>
 }
@@ -121,6 +122,7 @@ const ActionSheet = React.forwardRef<any, Props>((props, ref) => {
                   action.onClick()
                   setIsOpen(false)
                 }}
+                disabled={action.disabled}
               >
                 <span>{action.label}</span>
               </button>
