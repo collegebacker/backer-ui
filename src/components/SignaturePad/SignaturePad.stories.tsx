@@ -14,7 +14,7 @@ export default {
       description: {
         component: `In order to manipulate the signature pad, you need to use the ref. For example, you can get the signature data by calling \`padRef.current?.getImageData()\`, it will return PNG as a base64 string. You can also clear the pad by calling \`padRef.current?.clear()\`. if you want to check if the pad is empty, you can call \`padRef.current?.isEmpty()\`.
         The \`errorMessage\` prop is used to display an error message when the user tries to get the signature data and the pad is empty.
-        Another callback is \`onBegin\`, it will be called when the user starts drawing or typing on the pad.`
+        Another callback is \`startInteract\`, it will be called when the user starts drawing or typing on the pad.`
       }
     }
   }
@@ -37,7 +37,7 @@ const Template: ComponentStory<typeof SignaturePad> = (args) => {
         {...args}
         ref={padRef}
         errorMessage={error}
-        onBegin={() => {
+        startInteract={() => {
           setError(null)
         }}
       />

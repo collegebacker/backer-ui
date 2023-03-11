@@ -557,7 +557,7 @@ interface Props$2 {
     className?: string;
     style?: React.CSSProperties;
     errorMessage?: string;
-    onBegin?: () => void;
+    startInteract?: () => void;
 }
 declare const SignaturePad: React.ForwardRefExoticComponent<Props$2 & React.RefAttributes<any>>;
 
