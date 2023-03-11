@@ -45,6 +45,9 @@ export { default as Checkmark } from './Checkmark'
 export { default as LabelTag } from './LabelTag'
 export { default as ModalHeaderActions } from './ModalHeaderActions'
 export { default as ListItem } from './ListItem'
+export { default as SignaturePad } from './SignaturePad'
+export { default as SwitchSelector } from './SwitchSelector'
+export { default as SelectModal } from './SelectModal'
 
 // SKELETON
 export {
