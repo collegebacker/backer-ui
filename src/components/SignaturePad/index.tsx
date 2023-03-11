@@ -181,7 +181,7 @@ const SignaturePad = React.forwardRef<any, Props>((props, ref) => {
       // console.log(textWidth)
       if (textWidth > inputFrameSize.width) {
         const fontSize = Math.floor(
-          (inputFrameSize.width / textWidth) * baseFontSize * 0.95
+          (inputFrameSize.width / textWidth) * baseFontSize
         )
         inputRef.current.style.fontSize = `${fontSize}px`
       } else {
