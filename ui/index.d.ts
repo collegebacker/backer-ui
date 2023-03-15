@@ -526,12 +526,18 @@ declare const Checkmark: React.FC<Props$5>;
 interface Props$4 {
     className?: string;
     style?: React.CSSProperties;
-    saveLabel?: string;
-    cancelLabel?: string;
-    onSaveClick?: () => void;
-    onCancelClick?: () => void;
-    showSave?: boolean;
-    showCancel?: boolean;
+    cancelButton?: {
+        label?: string;
+        onClick?: () => void;
+        disabled?: boolean;
+        show?: boolean;
+    };
+    saveButton?: {
+        label?: string;
+        onClick?: () => void;
+        disabled?: boolean;
+        show?: boolean;
+    };
 }
 declare const ModalHeaderActions: React.FC<Props$4>;
 

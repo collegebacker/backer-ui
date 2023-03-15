@@ -1,16 +1,21 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import Icon from '../Icon'
 
 export interface Props {
   className?: string
   style?: React.CSSProperties
-  saveLabel?: string
-  cancelLabel?: string
-  onSaveClick?: () => void
-  onCancelClick?: () => void
-  showSave?: boolean
-  showCancel?: boolean
+  cancelButton?: {
+    label?: string
+    onClick?: () => void
+    disabled?: boolean
+    show?: boolean
+  }
+  saveButton?: {
+    label?: string
+    onClick?: () => void
+    disabled?: boolean
+    show?: boolean
+  }
 }
 
 const ModalHeaderActions: React.FC<Props> = (props) => {
@@ -19,22 +24,32 @@ const ModalHeaderActions: React.FC<Props> = (props) => {
       className={`${styles.wrap} ${props.className}`}
       style={{
         justifyContent:
-          props.showSave && props.showCancel
+          props.saveButton.show && props.cancelButton.show
             ? 'space-between'
-            : props.showCancel
+            : props.cancelButton.show
             ? 'flex-start'
             : 'flex-end',
         ...props.style
       }}
     >
-      {props.showCancel && (
-        <span className='typo-app-body-main' onClick={props.onCancelClick}>
-          {props.cancelLabel}
+      {props.cancelButton.show && (
+        <span
+          className={`typo-app-body-main ${
+            props.cancelButton.disabled ? styles.disabled : ''
+          }`}
+          onClick={props.cancelButton.onClick}
+        >
+          {props.cancelButton.label}
         </span>
       )}
-      {props.showSave && (
-        <span className='typo-app-body-main' onClick={props.onSaveClick}>
-          {props.saveLabel}
+      {props.saveButton.show && (
+        <span
+          className={`typo-app-body-main ${
+            props.saveButton.disabled ? styles.disabled : ''
+          }`}
+          onClick={props.saveButton.onClick}
+        >
+          {props.saveButton.label}
         </span>
       )}
     </section>
@@ -44,10 +59,18 @@ const ModalHeaderActions: React.FC<Props> = (props) => {
 ModalHeaderActions.defaultProps = {
   className: '',
   style: {},
-  saveLabel: 'Save',
-  cancelLabel: 'Cancel',
-  showSave: true,
-  showCancel: true
+  cancelButton: {
+    label: 'Cancel',
+    onClick: () => {},
+    disabled: false,
+    show: true
+  },
+  saveButton: {
+    label: 'Save',
+    onClick: () => {},
+    disabled: false,
+    show: true
+  }
 } as Partial<Props>
 
 export default ModalHeaderActions

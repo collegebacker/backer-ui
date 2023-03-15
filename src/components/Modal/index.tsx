@@ -36,7 +36,6 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
   const [isOpen, setIsOpen] = React.useState(false)
 
   const [modalAnimationClass, setModalAnimationClass] = React.useState('')
-  // const [isAnimationEnded, setIsAnmationEnded] = React.useState(false)
 
   //////////////////////
   // IMPERATIVE HOOKS //
@@ -100,7 +99,9 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
 
   useDidMountEffect(() => {
     if (isOpen) {
-      console.log('isOpen', isOpen)
+      console.log('ref', modalWrapRef.current)
+      // console.log('isOpen', isOpen)
+      // console.log('modal ref', modalRef.current)
       // add class to modalWrapRef
       modalWrapRef.current?.classList.add(styles.modalWrap_show)
       gradientsRef.current?.classList.add(styles.gradients_show)
@@ -109,7 +110,9 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
         !props.isBottomSheet ? styles.popup_show : styles.bottomsheet_show
       )
     } else {
-      console.log('isOpen', isOpen)
+      console.log('ref', modalWrapRef.current)
+      // console.log('isOpen', isOpen)
+      // console.log('modal ref', modalRef.current)
       // remove class from modalWrapRef
       modalWrapRef.current?.classList.add(styles.modalWrap_hide)
       gradientsRef.current?.classList.add(styles.gradients_hide)

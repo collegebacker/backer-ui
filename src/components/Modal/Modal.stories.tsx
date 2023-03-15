@@ -1,7 +1,7 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { Modal, Button, ModalButtons, Accordion } from '..'
+import { Modal, Button, ModalButtons, Accordion, DateInput } from '..'
 
 localStorage.clear()
 
@@ -357,8 +357,7 @@ FocusTrap.args = {
 const PlaygroundTemplate: ComponentStory<typeof Modal> = (args) => {
   const modalRef = React.useRef<any>(null)
 
-  const [addClass, setAddClass] = React.useState(false)
-
+  const [value, setValue] = React.useState('')
 
   return (
     <div
@@ -367,7 +366,7 @@ const PlaygroundTemplate: ComponentStory<typeof Modal> = (args) => {
         flexDirection: 'column'
       }}
     >
-      <Modal ref={modalRef} {...args} >
+      <Modal ref={modalRef} closeOnClickOutside={false}>
         <div>
           <p
             className='typo-app-body-paragraph'
@@ -379,9 +378,20 @@ const PlaygroundTemplate: ComponentStory<typeof Modal> = (args) => {
             grows up. And if you want to contribute to their college fund, you
             can do that too. 🎓
           </p>
-          <button onClick={() => {
-            setAddClass(!addClass)
-          }}>change classname</button>
+          <DateInput
+            name='date'
+            value={value}
+            onChange={(string) => {
+              setValue(string)
+            }}
+          />
+          <button
+            onClick={() => {
+              console.log('click')
+            }}
+          >
+            change classname
+          </button>
         </div>
       </Modal>
 
@@ -394,8 +404,6 @@ const PlaygroundTemplate: ComponentStory<typeof Modal> = (args) => {
           modalRef.current.open()
         }}
       />
-
-    
     </div>
   )
 }
