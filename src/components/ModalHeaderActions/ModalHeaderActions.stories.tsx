@@ -17,11 +17,9 @@ const Template: ComponentStory<typeof ModalHeaderActions> = (args) => {
 export const Default = Template.bind({})
 Default.args = {
   cancelButton: {
-    label: 'Cancel',
     onClick: () => {
       console.log('cancel')
-    },
-    show: true
+    }
     // disabled: true
   },
   saveButton: {

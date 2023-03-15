@@ -19,37 +19,52 @@ export interface Props {
 }
 
 const ModalHeaderActions: React.FC<Props> = (props) => {
+  const buttonProps = {
+    cancelButton: {
+      label: props.cancelButton?.label || 'Cancel',
+      onClick: props.cancelButton?.onClick || (() => {}),
+      disabled: props.cancelButton?.disabled || false,
+      show: props.cancelButton?.show || true
+    },
+    saveButton: {
+      label: props.saveButton?.label || 'Save',
+      onClick: props.saveButton?.onClick || (() => {}),
+      disabled: props.saveButton?.disabled || false,
+      show: props.saveButton?.show || true
+    }
+  }
+
   return (
     <section
       className={`${styles.wrap} ${props.className}`}
       style={{
         justifyContent:
-          props.saveButton.show && props.cancelButton.show
+          buttonProps.saveButton.show && buttonProps.cancelButton.show
             ? 'space-between'
-            : props.cancelButton.show
+            : buttonProps.cancelButton.show
             ? 'flex-start'
             : 'flex-end',
         ...props.style
       }}
     >
-      {props.cancelButton.show && (
+      {buttonProps.cancelButton.show && (
         <span
           className={`typo-app-body-main ${
-            props.cancelButton.disabled ? styles.disabled : ''
+            buttonProps.cancelButton.disabled ? styles.disabled : ''
           }`}
-          onClick={props.cancelButton.onClick}
+          onClick={buttonProps.cancelButton.onClick}
         >
-          {props.cancelButton.label}
+          {buttonProps.cancelButton.label}
         </span>
       )}
-      {props.saveButton.show && (
+      {buttonProps.saveButton.show && (
         <span
           className={`typo-app-body-main ${
-            props.saveButton.disabled ? styles.disabled : ''
+            buttonProps.saveButton.disabled ? styles.disabled : ''
           }`}
-          onClick={props.saveButton.onClick}
+          onClick={buttonProps.saveButton.onClick}
         >
-          {props.saveButton.label}
+          {buttonProps.saveButton.label}
         </span>
       )}
     </section>
@@ -58,19 +73,7 @@ const ModalHeaderActions: React.FC<Props> = (props) => {
 
 ModalHeaderActions.defaultProps = {
   className: '',
-  style: {},
-  cancelButton: {
-    label: 'Cancel',
-    onClick: () => {},
-    disabled: false,
-    show: true
-  },
-  saveButton: {
-    label: 'Save',
-    onClick: () => {},
-    disabled: false,
-    show: true
-  }
+  style: {}
 } as Partial<Props>
 
 export default ModalHeaderActions
