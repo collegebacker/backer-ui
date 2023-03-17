@@ -14,32 +14,38 @@ const listArray = [
   {
     topLabel: 'Bret',
     title: 'Leanne Graham',
-    description: 'a mother of 3, a wife, and a business owner'
+    description: 'a mother of 3, a wife, and a business owner',
+    disabled: false
   },
   {
     topLabel: 'John',
     title: 'Sophia Smith',
-    description: 'a software engineer and an avid traveler'
+    description: 'a software engineer and an avid traveler',
+    disabled: true
   },
   {
     topLabel: 'Alex',
     title: 'Michael Johnson',
-    description: 'a seasoned chef and a food blogger'
+    description: 'a seasoned chef and a food blogger',
+    disabled: false
   },
   {
     topLabel: 'Katie',
     title: 'David Anderson',
-    description: 'a fitness enthusiast and a personal trainer'
+    description: 'a fitness enthusiast and a personal trainer',
+    disabled: false
   },
   {
     topLabel: 'Emily',
     title: 'Emily Davis',
-    description: 'a freelance graphic designer and an art lover'
+    description: 'a freelance graphic designer and an art lover',
+    disabled: false
   },
   {
     topLabel: 'Jacob',
     title: 'William Wilson',
-    description: 'a musician and a music teacher'
+    description: 'a musician and a music teacher',
+    disabled: false
   }
 ]
 
@@ -60,8 +66,8 @@ Default.args = {
   leftContent: <Checkmark checked />,
   rightContent: (
     <>
-      <LabelTag small />
-      <LabelTag small />
+      <LabelTag size='small' />
+      <LabelTag size='small' />
     </>
   ),
   middleContent: <p>Hello I'm a custom content</p>,
@@ -72,6 +78,10 @@ Default.args = {
 }
 
 const ComplexTemplate: ComponentStory<typeof ListItem> = (args) => {
+  const [disabledStates, setDisabledStates] = React.useState(
+    listArray.map((item) => item.disabled)
+  )
+
   return (
     <ul>
       {listArray.map((item, index) => (
@@ -81,6 +91,12 @@ const ComplexTemplate: ComponentStory<typeof ListItem> = (args) => {
           topLabel={item.topLabel}
           title={item.title}
           description={item.description}
+          disabled={disabledStates[index]}
+          onClick={() => {
+            const newDisabledStates = [...disabledStates]
+            newDisabledStates[index] = true
+            setDisabledStates(newDisabledStates)
+          }}
         />
       ))}
     </ul>
@@ -90,7 +106,7 @@ const ComplexTemplate: ComponentStory<typeof ListItem> = (args) => {
 export const ComplexList = ComplexTemplate.bind({})
 ComplexList.args = {
   leftContent: <Checkmark checked />,
-  rightContent: <LabelTag small />,
+  rightContent: <LabelTag size='small' />,
   divider: true,
   onClick: () => {
     console.log('clicked')

@@ -17,17 +17,15 @@ export interface Props {
   middleContent?: React.ReactNode
   leftContent?: React.ReactNode
   chevron?: boolean
+  disabled?: boolean
   onClick?: () => void
 }
 
 const ListItem: React.FC<Props> = (props) => {
   return (
     <li
-      className={`${styles.wrap} ${props.className} ${
-        props.divider ? styles.divider : ''
-      }
-      ${props.onClick ? styles.clickable : ''}
-      `}
+      // prettier-ignore
+      className={`${styles.wrap} ${props.className} ${props.divider ? styles.divider : ''} ${props.disabled ? styles.disabled : ''} ${props.onClick ? styles.clickable : ''}`}
       style={props.style}
       onClick={props.onClick}
       tabIndex={props.onClick ? 0 : -1}
@@ -100,7 +98,8 @@ ListItem.defaultProps = {
   title: 'Title',
   description: '',
   chevron: true,
-  divider: true
+  divider: true,
+  disabled: false
 } as Partial<Props>
 
 export default ListItem

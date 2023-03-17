@@ -556,6 +556,7 @@ interface Props$3 {
     middleContent?: React.ReactNode;
     leftContent?: React.ReactNode;
     chevron?: boolean;
+    disabled?: boolean;
     onClick?: () => void;
 }
 declare const ListItem: React.FC<Props$3>;
