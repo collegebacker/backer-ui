@@ -1,6 +1,6 @@
 {
   "name": "@collegebacker/backer-ui",
-  "version": "2.1.12",
+  "version": "2.2.0",
   "description": "A Backer component library",
   "scripts": {
     "build": "rimraf ui && rimraf utils && rollup -c && sass --no-source-map styles/base.scss:ui/base.css",
@@ -65,6 +65,7 @@
     "react-avatar-editor": "^13.0.0",
     "react-calendar": "^4.0.0",
     "react-signature-canvas": "^1.0.6",
-    "trim-canvas-blank": "^1.0.0"
+    "trim-canvas-blank": "^1.0.0",
+    "us-states-normalize": "^1.0.0"
   }
 }
