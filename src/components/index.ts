@@ -49,6 +49,7 @@ export { default as ListItem } from './ListItem'
 export { default as SignaturePad } from './SignaturePad'
 export { default as SwitchSelector } from './SwitchSelector'
 export { default as SelectModal } from './SelectModal'
+export { default as Layout } from './Layout'
 
 // SKELETON
 export {
