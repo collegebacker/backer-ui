@@ -79,6 +79,7 @@ interface InputProps {
     required?: boolean;
     tabIndex?: number;
     readOnly?: boolean;
+    maxLength?: number;
     onClick?: (e: React.MouseEvent<HTMLInputElement>) => void;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     onFocus?: (e: React.ChangeEvent<HTMLInputElement>) => void;

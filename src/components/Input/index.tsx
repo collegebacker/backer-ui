@@ -22,6 +22,7 @@ export interface InputProps {
   required?: boolean
   tabIndex?: number
   readOnly?: boolean
+  maxLength?: number
   // input events
   onClick?: (e: React.MouseEvent<HTMLInputElement>) => void
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
@@ -66,6 +67,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     readOnly: props.readOnly,
     disabled: props.disabled,
     pattern: props.pattern,
+    maxLength: props.maxLength,
     id: props.id,
     onClick: props.onClick,
     onChange: props.onChange,
