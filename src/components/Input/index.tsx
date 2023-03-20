@@ -41,13 +41,11 @@ export interface InputProps {
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-  // const [value, setValue] = React.useState(props.value || '')
-
   const inputArgs = {
     className: `${styles.input} ${
       props.hideSpinButton ? styles.hideSpinButton : ''
     }
-    ${props.readOnly ? '' : styles.focusState}
+    ${props.readOnly ? '' : styles.mouseStates}
     `,
     style: {
       cursor: props.cursor

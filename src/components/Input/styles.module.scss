@@ -19,13 +19,17 @@
   @include inputLabel();
 }
 
-.focusState {
+.mouseStates {
   &:focus {
     box-shadow: 0 2px 0 0 var(--color-main-500);
 
     + .label {
       @include labelIfInputFocused();
     }
+  }
+
+  &:hover {
+    box-shadow: 0 2px 0 0 var(--color-main-500);
   }
 }
 
@@ -52,10 +56,6 @@
 
   &::placeholder {
     color: transparent;
-  }
-
-  &:hover {
-    box-shadow: 0 2px 0 0 var(--color-main-500);
   }
 
   &:not(:placeholder-shown) + .label {
