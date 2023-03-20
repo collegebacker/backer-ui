@@ -487,7 +487,11 @@ declare const PhoneInput: React.FC<InputProps>;
 
 declare const ZipInput: React.FC<InputProps>;
 
-declare const StateInput: React.FC<InputProps>;
+declare const StateInput: {
+    (props: InputProps): JSX.Element;
+    isValid: (value: string) => boolean;
+    defaultProps: Partial<InputProps>;
+};
 
 type ItemProps = {
     label: string;
