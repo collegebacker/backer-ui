@@ -2,11 +2,9 @@ import React from 'react'
 import Input, { InputProps } from '../Input'
 import SelectModal from '../SelectModal'
 
-import styles from './styles.module.scss'
-
 type ItemProps = {
-  label: string
-  value: string
+  label: string | null
+  value: string | null
 }
 
 export interface DropdownProps extends InputProps {

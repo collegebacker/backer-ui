@@ -494,8 +494,8 @@ declare const StateInput: {
 };
 
 type ItemProps = {
-    label: string;
-    value: string;
+    label: string | null;
+    value: string | null;
 };
 interface DropdownProps extends InputProps {
     label: string;
