@@ -51,7 +51,8 @@ const isValid = (value: string) => {
 StateInput.isValid = isValid
 
 StateInput.defaultProps = {
-  label: 'State'
+  label: 'State',
+  name: 'state'
 } as Partial<InputProps>
 
 export default StateInput

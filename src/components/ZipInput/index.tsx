@@ -19,7 +19,8 @@ const ZipInput: React.FC<InputProps> = (props) => {
 }
 
 ZipInput.defaultProps = {
-  label: 'Zip code'
+  label: 'Zip code',
+  name: 'zip'
 } as Partial<InputProps>
 
 export default ZipInput

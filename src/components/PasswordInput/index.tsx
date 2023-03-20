@@ -20,7 +20,8 @@ const PasswordInput: React.FC<InputProps> = (props) => {
 }
 
 PasswordInput.defaultProps = {
-  label: 'Password'
+  label: 'Password',
+  name: 'password'
 } as Partial<InputProps>
 
 export default PasswordInput

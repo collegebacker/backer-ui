@@ -25,4 +25,8 @@ const SSNInput: React.FC<InputProps> = (props) => {
   )
 }
 
+SSNInput.defaultProps = {
+  name: 'ssn'
+} as Partial<InputProps>
+
 export default SSNInput

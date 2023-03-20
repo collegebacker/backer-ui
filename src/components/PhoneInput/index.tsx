@@ -21,7 +21,8 @@ const PhoneInput: React.FC<InputProps> = (props) => {
 }
 
 PhoneInput.defaultProps = {
-  label: 'Password'
+  label: 'Phone number',
+  name: 'phone'
 } as Partial<InputProps>
 
 export default PhoneInput
