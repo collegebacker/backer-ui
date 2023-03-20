@@ -3,8 +3,8 @@ import Input, { InputProps } from '../Input'
 import SelectModal from '../SelectModal'
 
 type ItemProps = {
-  label: string | null
-  value: string | null
+  label: string
+  value: string
 }
 
 export interface DropdownProps extends InputProps {
