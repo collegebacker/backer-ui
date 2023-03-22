@@ -31,7 +31,7 @@ export interface MoneyInputProps {
   label?: string
   value?: string | number
   errorMessage?: string
-  onChange?: (amount: number) => void
+  onChange?: (target: { value: number; name: string }) => void
 }
 
 const MoneyInput: React.FC<MoneyInputProps> = (props) => {
