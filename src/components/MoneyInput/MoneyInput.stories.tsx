@@ -13,9 +13,9 @@ export default {
 const Template: ComponentStory<typeof MoneyInput> = (args) => {
   const [value, setValue] = React.useState(args.value || '')
 
-  const handleOnChange = (value: number) => {
-    setValue(value)
-    console.log('value', value)
+  const handleOnChange = (e: any) => {
+    setValue(e.target.value)
+    console.log('value', e.target.value)
   }
 
   return (

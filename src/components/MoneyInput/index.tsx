@@ -1,5 +1,5 @@
 import React from 'react'
-import Input, { InputProps } from '../Input'
+import Input from '../Input'
 
 const parseNumString = (value: string, decimals: boolean | undefined) => {
   if (decimals) {
@@ -14,13 +14,8 @@ const parseNumString = (value: string, decimals: boolean | undefined) => {
 }
 
 const formatCurrency = (value: any) => {
-  // Add "$" and ","
   value = value.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
   return `$${value}`
-}
-
-const currencyOptionalDecimals = (number: number) => {
-  return number.toFixed(2)
 }
 
 const isNumber = (value: any) => {
@@ -44,10 +39,6 @@ const MoneyInput: React.FC<MoneyInputProps> = (props) => {
     isNumber(props.value) ? formatCurrency(Number(props.value).toFixed(2)) : ''
   )
 
-  const handleOnFocus = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.target.select()
-  }
-
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
     let parsedValue = parseNumString(value, props.decimals)
@@ -66,10 +57,17 @@ const MoneyInput: React.FC<MoneyInputProps> = (props) => {
     }
   }
 
+  const handleOnFocus = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.target.select()
+  }
+
   const handleOnBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
 
-    const num = Number(value.replace(/[^\d.]/g, ''))
+    const num = Number(value.replace(/[^\d.]/g, '')).toFixed(2)
+    const formattedNum = formatCurrency(num)
+
+    setValue(formattedNum)
 
     if (props.onChange) {
       const newEvent = {
