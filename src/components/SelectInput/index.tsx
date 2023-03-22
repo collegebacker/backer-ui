@@ -2,7 +2,7 @@ import React from 'react'
 import Input, { InputProps } from '../Input'
 import SelectModal from '../SelectModal'
 
-type ItemProps = {
+type OptionProps = {
   label: string
   value: string
 }
@@ -11,15 +11,15 @@ export interface DropdownProps extends InputProps {
   label: string
   modalTitle?: string
   modalDescription?: string
-  options: Array<ItemProps>
-  onSelect: (value: ItemProps) => void
+  options: Array<OptionProps>
+  onSelect: (value: OptionProps) => void
 }
 
 const SelectInput: React.FC<DropdownProps> = (props) => {
   const [value, setValue] = React.useState(props.value || '')
   const [isModalOpen, setIsModalOpen] = React.useState(false)
 
-  const handleOnSelect = (value: ItemProps) => {
+  const handleOnSelect = (value: OptionProps) => {
     setValue(value.label)
     setIsModalOpen(false)
     props.onSelect && props.onSelect(value)

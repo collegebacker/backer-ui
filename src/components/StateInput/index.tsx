@@ -6,6 +6,17 @@ const StateInput = (props: InputProps) => {
   const [errorMessage, setErrorMessage] = React.useState('')
   const [value, setValue] = React.useState(props.value || '')
 
+  const normalizeValue = (value: string) => {
+    const normalizedValue = abbreviateState(value)
+
+    if (!isValid(normalizedValue)) {
+      setErrorMessage('Invalid state')
+    } else {
+      setErrorMessage('')
+      return normalizedValue
+    }
+  }
+
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setErrorMessage('')
     setValue(e.target.value)
@@ -16,17 +27,16 @@ const StateInput = (props: InputProps) => {
   }
 
   const handleOnBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const normalizedValue = abbreviateState(e.target.value)
-    setValue(normalizedValue)
+    normalizeValue(e.target.value)
 
     props.onChange && props.onChange(e)
-
-    if (!isValid(normalizedValue)) {
-      setErrorMessage('Invalid state')
-    } else {
-      setErrorMessage('')
-    }
   }
+
+  React.useEffect(() => {
+    if (props.value) {
+      setValue(props.value)
+    }
+  }, [props.value])
 
   // RENDER
   return (

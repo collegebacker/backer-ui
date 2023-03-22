@@ -21,6 +21,14 @@ const Template: ComponentStory<typeof StateInput> = (args) => {
   return (
     <div style={{ width: '300px' }}>
       <StateInput {...args} onChange={handleOnChange} value={value} />
+      <button
+        onClick={() => {
+          console.log('updating input')
+          setValue('new value')
+        }}
+      >
+        update input
+      </button>
     </div>
   )
 }

@@ -24,6 +24,7 @@ Default.args = {
   errorMessage: '',
   modalTitle: 'Select an option',
   modalDescription: 'How are you related to the child?',
+  value: 'option1',
   options: [
     { label: 'Option 1', value: 'option1' },
     { label: 'Option 2', value: 'option2' },
