@@ -67,22 +67,18 @@ const MoneyInput: React.FC<MoneyInputProps> = (props) => {
   }
 
   const handleOnBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target
+    const { name, value } = e.target
 
     const num = Number(value.replace(/[^\d.]/g, ''))
-    const formattedValue = currencyOptionalDecimals(num)
-    const formatCurrencyValue = formatCurrency(formattedValue)
-
-    setValue(formatCurrencyValue)
 
     if (props.onChange) {
       const newEvent = {
-        ...e,
         target: {
-          ...e.target,
-          value: num
+          value: num,
+          name
         }
       }
+      props.onChange(newEvent as any)
     }
   }
 
