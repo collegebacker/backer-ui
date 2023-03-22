@@ -49,7 +49,7 @@ const MoneyInput: React.FC<MoneyInputProps> = (props) => {
     if (props.onChange) {
       const newEvent = {
         target: {
-          value: Number(parsedValue) as number,
+          value: (Number(parsedValue) * 100) as number,
           name
         }
       }
@@ -72,7 +72,7 @@ const MoneyInput: React.FC<MoneyInputProps> = (props) => {
     if (props.onChange) {
       const newEvent = {
         target: {
-          value: Number(num) as number,
+          value: (Number(num) * 100) as number,
           name
         }
       }
