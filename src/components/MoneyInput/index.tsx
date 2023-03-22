@@ -27,15 +27,21 @@ const isNumber = (value: any) => {
   return !isNaN(value)
 }
 
-export interface MoneyInputProps extends InputProps {
+export interface MoneyInputProps {
+  className?: string
+  style?: React.CSSProperties
   decimals?: boolean
+  maxAmount?: number
+  name?: string
+  label?: string
+  value?: string | number
+  errorMessage?: string
+  onChange?: (amount: number) => void
 }
 
 const MoneyInput: React.FC<MoneyInputProps> = (props) => {
   const [value, setValue] = React.useState(
-    isNumber(props.value)
-      ? formatCurrency((Number(props.value) / 100).toFixed(2))
-      : ''
+    isNumber(props.value) ? formatCurrency(Number(props.value).toFixed(2)) : ''
   )
 
   const handleOnFocus = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -43,15 +49,20 @@ const MoneyInput: React.FC<MoneyInputProps> = (props) => {
   }
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target
+    const { name, value } = e.target
+    let parsedValue = parseNumString(value, props.decimals)
+    if (props.maxAmount && Number(parsedValue) > props.maxAmount)
+      parsedValue = props.maxAmount.toString()
 
-    const parsedValue = parseNumString(value, props.decimals)
-    const formattedValue = formatCurrency(parsedValue)
-
-    setValue(formattedValue)
-
+    setValue(formatCurrency(parsedValue))
     if (props.onChange) {
-      props.onChange(e)
+      const newEvent = {
+        target: {
+          value: parsedValue,
+          name
+        }
+      }
+      props.onChange(newEvent as any)
     }
   }
 
@@ -65,15 +76,25 @@ const MoneyInput: React.FC<MoneyInputProps> = (props) => {
     setValue(formatCurrencyValue)
 
     if (props.onChange) {
-      props.onChange(e)
+      const newEvent = {
+        ...e,
+        target: {
+          ...e.target,
+          value: num
+        }
+      }
     }
   }
 
   // RENDER
   return (
     <Input
-      {...props}
+      className={props.className}
+      style={props.style}
+      name={props.name}
+      label={props.label}
       value={value}
+      errorMessage={props.errorMessage}
       onChange={handleOnChange}
       onBlur={handleOnBlur}
       onFocus={handleOnFocus}
@@ -82,9 +103,9 @@ const MoneyInput: React.FC<MoneyInputProps> = (props) => {
 }
 
 MoneyInput.defaultProps = {
-  label: 'Password',
-  name: 'password',
+  label: 'Amount',
+  name: 'amount',
   decimals: true
-} as Partial<InputProps>
+} as Partial<MoneyInputProps>
 
 export default MoneyInput

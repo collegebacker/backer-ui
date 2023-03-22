@@ -503,8 +503,16 @@ interface DropdownProps extends InputProps {
 }
 declare const SelectInput: React.FC<DropdownProps>;
 
-interface MoneyInputProps extends InputProps {
+interface MoneyInputProps {
+    className?: string;
+    style?: React.CSSProperties;
     decimals?: boolean;
+    maxAmount?: number;
+    name?: string;
+    label?: string;
+    value?: string | number;
+    errorMessage?: string;
+    onChange?: (amount: number) => void;
 }
 declare const MoneyInput: React.FC<MoneyInputProps>;
 
