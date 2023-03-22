@@ -53,6 +53,7 @@ declare global {
     | 'file'
     | 'protection'
     | 'font'
+    | 'balance'
 
   type TargetTypes = '_blank' | '_self' | '_parent' | '_top'
 
