@@ -512,9 +512,11 @@ interface MoneyInputProps {
     label?: string;
     value?: string | number;
     errorMessage?: string;
-    onChange?: (target: {
-        value: number;
-        name: string;
+    onChange?: (e: {
+        target: {
+            value: number;
+            name: string;
+        };
     }) => void;
 }
 declare const MoneyInput: React.FC<MoneyInputProps>;
