@@ -117,3 +117,8 @@ type ModalAnimationSizeProps = {
   onAnimationStart: () => void
   onAnimationEnd: () => void
 }
+
+type SelectOptionType = {
+  label: string
+  value: string
+}

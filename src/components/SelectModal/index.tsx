@@ -11,18 +11,15 @@ export interface Props {
   value?: string
   options: Array<{ label: string; value: string; className?: string }>
   closeOnSelect?: boolean
-  onSelect: (value: { label: string; value: string }) => void
+  onSelect: (value: SelectOptionType) => void
   onCloseClick?: () => void
 }
 
 const SelectModal: React.FC<Props> = (props) => {
-  const [value, setValue] = React.useState({
-    label: props.value,
-    value: props.value
-  })
+  const [value, setValue] = React.useState({} as SelectOptionType)
   const [isModalOpen, setIsModalOpen] = React.useState(false)
 
-  const handleOnSelect = (value: { label: string; value: string }) => {
+  const handleOnSelect = (value: SelectOptionType) => {
     setValue(value)
     props.closeOnSelect && setIsModalOpen(false)
     props.onSelect && props.onSelect(value)
@@ -31,6 +28,15 @@ const SelectModal: React.FC<Props> = (props) => {
   React.useEffect(() => {
     setIsModalOpen(props.isOpen)
   }, [props.isOpen])
+
+  React.useEffect(() => {
+    if (props.value) {
+      const newValue = props.options.find(
+        (option) => option.value === props.value
+      )
+      setValue(newValue)
+    }
+  }, [props.value])
 
   return (
     <Modal

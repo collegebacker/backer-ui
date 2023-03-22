@@ -2,28 +2,32 @@ import React from 'react'
 import Input, { InputProps } from '../Input'
 import SelectModal from '../SelectModal'
 
-type OptionProps = {
-  label: string
-  value: string
-}
-
 export interface DropdownProps extends InputProps {
   label: string
   modalTitle?: string
   modalDescription?: string
-  options: Array<OptionProps>
-  onSelect: (value: OptionProps) => void
+  options: Array<SelectOptionType>
+  onSelect: (value: SelectOptionType) => void
 }
 
 const SelectInput: React.FC<DropdownProps> = (props) => {
-  const [value, setValue] = React.useState(props.value || '')
+  const [value, setValue] = React.useState({} as SelectOptionType)
   const [isModalOpen, setIsModalOpen] = React.useState(false)
 
-  const handleOnSelect = (value: OptionProps) => {
-    setValue(value.label)
+  const handleOnSelect = (value: SelectOptionType) => {
+    setValue(value)
     setIsModalOpen(false)
     props.onSelect && props.onSelect(value)
   }
+
+  React.useEffect(() => {
+    if (props.value) {
+      const newValue = props.options.find(
+        (option) => option.value === props.value
+      )
+      setValue(newValue)
+    }
+  }, [props.value])
 
   // RENDER
   return (
@@ -34,9 +38,9 @@ const SelectInput: React.FC<DropdownProps> = (props) => {
         modalTitle={props.modalTitle}
         modalDescription={props.modalDescription}
         options={props.options}
+        value={value.value}
         onSelect={handleOnSelect}
       />
-
       <Input
         {...props}
         readOnly
@@ -44,7 +48,7 @@ const SelectInput: React.FC<DropdownProps> = (props) => {
         onClick={() => {
           setIsModalOpen(true)
         }}
-        value={value}
+        value={value.label}
         icon={{
           name: 'chevron-down'
         }}

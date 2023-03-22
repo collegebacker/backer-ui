@@ -494,16 +494,12 @@ declare const StateInput: {
     defaultProps: Partial<InputProps>;
 };
 
-type OptionProps = {
-    label: string;
-    value: string;
-};
 interface DropdownProps extends InputProps {
     label: string;
     modalTitle?: string;
     modalDescription?: string;
-    options: Array<OptionProps>;
-    onSelect: (value: OptionProps) => void;
+    options: Array<SelectOptionType>;
+    onSelect: (value: SelectOptionType) => void;
 }
 declare const SelectInput: React.FC<DropdownProps>;
 
@@ -604,10 +600,7 @@ interface Props$1 {
         className?: string;
     }>;
     closeOnSelect?: boolean;
-    onSelect: (value: {
-        label: string;
-        value: string;
-    }) => void;
+    onSelect: (value: SelectOptionType) => void;
     onCloseClick?: () => void;
 }
 declare const SelectModal: React.FC<Props$1>;
