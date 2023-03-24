@@ -216,6 +216,10 @@ body {
   font-weight: 300;
   font-size: 17px;
 }
+.react-calendar button:focus-visible {
+  outline: none;
+  border: 1px solid var(--color-main-500);
+}
 
 .react-calendar__viewContainer {
   display: flex;
@@ -260,6 +264,15 @@ body {
 .react-calendar__tile:disabled {
   pointer-events: none;
   opacity: 0.3;
+}
+.react-calendar__tile:focus-visible {
+  outline: none !important;
+  border: none !important;
+}
+.react-calendar__tile:hover::after, .react-calendar__tile:focus-visible::after {
+  transform: scale(1);
+  background-color: rgba(20, 20, 20, 0.05);
+  border: 1px solid var(--color-main-500);
 }
 
 .react-calendar__century-view__decades__decade {
