@@ -277,10 +277,11 @@ declare const Accordion: React.FC<Props$o>;
 
 interface Props$n {
     className?: string;
-    type?: "success" | "error" | "warning";
+    type?: 'success' | 'error' | 'warning';
     outline?: boolean;
     text?: string | React.ReactNode;
     tabIndex?: number;
+    isShown?: boolean;
     onClick?: () => void;
 }
 declare const WarnMesssage$1: React.FC<Props$n>;
