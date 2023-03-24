@@ -12,7 +12,9 @@ export default {
 
 const Template: ComponentStory<typeof SelectInput> = (args) => {
   return (
-    <div style={{ width: '300px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', width: '300px' }}>
+      <SelectInput {...args} />
+      <SelectInput {...args} />
       <SelectInput {...args} />
     </div>
   )

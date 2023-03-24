@@ -104,8 +104,13 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
         )}
 
         {props.icon && (
-          <button
+          <div
             onClick={props.icon.onClick}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                props.icon.onClick && props.icon.onClick()
+              }
+            }}
             className={styles.icon}
             style={{
               pointerEvents: props.icon.onClick !== undefined ? 'auto' : 'none'
@@ -113,7 +118,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
             tabIndex={0}
           >
             <Icon name={props.icon.name} />
-          </button>
+          </div>
         )}
       </div>
 
