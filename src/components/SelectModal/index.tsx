@@ -61,14 +61,20 @@ const SelectModal: React.FC<Props> = (props) => {
       )}
       <ul className={`${styles.listWrap}`}>
         {props.options.map((option, index) => (
-          <div
+          <li
             key={index}
             onClick={() => handleOnSelect(option)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                handleOnSelect(option)
+              }
+            }}
             className={`${styles.listItem} ${option.className || ''}`}
+            tabIndex={0}
           >
             <span className='typo-app-body-main'>{option.label}</span>
             {value.value === option.value && <Checkmark checked />}
-          </div>
+          </li>
         ))}
       </ul>
     </Modal>

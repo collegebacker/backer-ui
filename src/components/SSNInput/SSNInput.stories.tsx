@@ -19,7 +19,9 @@ const Template: ComponentStory<typeof SSNInput> = (args) => {
   }
 
   return (
-    <div style={{ width: '300px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', width: '300px' }}>
+      <SSNInput {...args} onChange={handleOnChange} value={value} />
+      <SSNInput {...args} onChange={handleOnChange} value={value} />
       <SSNInput {...args} onChange={handleOnChange} value={value} />
     </div>
   )

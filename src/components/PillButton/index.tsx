@@ -17,7 +17,7 @@ export interface Props {
   isActive?: boolean
   onClick?: (event: any) => void
   onSubmit?: (event: any) => void
-  onKeyPress?: (event: any) => void
+  onKeyDown?: (event: any) => void
   areaLabel?: string
   areaLabelledBy?: string
 }
@@ -78,7 +78,7 @@ const PillButton = React.forwardRef<any, Props>((props, ref) => {
       className={classes}
       style={style}
       onClick={props.onClick}
-      onKeyPress={props.onKeyPress}
+      onKeyDown={props.onKeyDown}
       aria-label={props.areaLabel}
       aria-labelledby={props.areaLabelledBy}
       {...conditionalProps}

@@ -28,7 +28,7 @@ export interface InputProps {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
   onFocus?: (e: React.ChangeEvent<HTMLInputElement>) => void
   onBlur?: (e: React.ChangeEvent<HTMLInputElement>) => void
-  onKeyPress?: (e: React.KeyboardEvent<HTMLInputElement>) => void
+  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void
   // custom props
   errorMessage?: string
   helperText?: string
@@ -73,7 +73,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     onChange: props.onChange,
     onFocus: props.onFocus,
     onBlur: props.onBlur,
-    onKeyPress: props.onKeyPress
+    onKeyDown: props.onKeyDown
   }
 
   return (
@@ -91,18 +91,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
           height: props.label !== '' ? '68px' : '40px'
         }}
       >
-        {props.icon && (
-          <div
-            onClick={props.icon.onClick}
-            className={styles.icon}
-            style={{
-              pointerEvents: props.icon.onClick !== undefined ? 'auto' : 'none'
-            }}
-          >
-            <Icon name={props.icon.name} />
-          </div>
-        )}
-
         {props.cleaveOptions ? (
           <Cleave {...inputArgs} options={props.cleaveOptions} />
         ) : (
@@ -113,6 +101,19 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
           <label className={styles.label} htmlFor={props.name}>
             {props.label}
           </label>
+        )}
+
+        {props.icon && (
+          <button
+            onClick={props.icon.onClick}
+            className={styles.icon}
+            style={{
+              pointerEvents: props.icon.onClick !== undefined ? 'auto' : 'none'
+            }}
+            tabIndex={0}
+          >
+            <Icon name={props.icon.name} />
+          </button>
         )}
       </div>
 

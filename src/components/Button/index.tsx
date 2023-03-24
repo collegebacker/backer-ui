@@ -25,7 +25,7 @@ export interface Props {
   tag?: 'button' | 'a'
   onClick?: (event: any) => void
   onSubmit?: (event: any) => void
-  onKeyPress?: (event: any) => void
+  onKeyDown?: (event: any) => void
 }
 
 const ButtonContent = ({ ...props }: Props) => {
@@ -104,7 +104,7 @@ const Button = React.forwardRef<any, Props>((props, ref) => {
       className={classes}
       style={style}
       onClick={props.onClick}
-      onKeyDown={props.onKeyPress}
+      onKeyDown={props.onKeyDown}
       disabled={props.disabled}
       {...conditionalProps}
     >

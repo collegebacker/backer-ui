@@ -23,7 +23,7 @@ interface Props$E {
     tag?: 'button' | 'a';
     onClick?: (event: any) => void;
     onSubmit?: (event: any) => void;
-    onKeyPress?: (event: any) => void;
+    onKeyDown?: (event: any) => void;
 }
 declare const Button: React.ForwardRefExoticComponent<Props$E & React.RefAttributes<any>>;
 
@@ -40,7 +40,7 @@ interface Props$D {
     isActive?: boolean;
     onClick?: (event: any) => void;
     onSubmit?: (event: any) => void;
-    onKeyPress?: (event: any) => void;
+    onKeyDown?: (event: any) => void;
     areaLabel?: string;
     areaLabelledBy?: string;
 }
@@ -84,7 +84,7 @@ interface InputProps {
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     onFocus?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     onBlur?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    onKeyPress?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+    onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
     errorMessage?: string;
     helperText?: string;
     hideSpinButton?: boolean;

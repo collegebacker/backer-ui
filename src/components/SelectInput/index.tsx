@@ -20,6 +20,10 @@ const SelectInput: React.FC<DropdownProps> = (props) => {
     props.onSelect && props.onSelect(value)
   }
 
+  const handleOpenModal = () => {
+    setIsModalOpen(true)
+  }
+
   React.useEffect(() => {
     if (props.value) {
       const newValue = props.options.find(
@@ -45,12 +49,18 @@ const SelectInput: React.FC<DropdownProps> = (props) => {
         {...props}
         readOnly
         cursor='pointer'
-        onClick={() => {
-          setIsModalOpen(true)
+        onClick={handleOpenModal}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            handleOpenModal()
+          }
         }}
         value={value.label}
         icon={{
-          name: 'chevron-down'
+          name: 'chevron-down',
+          onClick: () => {
+            setIsModalOpen(true)
+          }
         }}
       />
     </>

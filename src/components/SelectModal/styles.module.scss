@@ -1,3 +1,5 @@
+@import '../../../styles/mixins.scss';
+
 .modal {
   --padding-top-mobile: 30px;
 }
@@ -19,6 +21,7 @@
 }
 
 .listItem {
+  position: relative;
   cursor: pointer;
   user-select: none;
   min-height: 60px;
@@ -31,5 +34,26 @@
 
   &:last-child {
     border-bottom: none;
+  }
+
+  &:hover::before,
+  &:focus-visible::before {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    top: -1px;
+    right: -13px;
+    width: calc(100% + 26px);
+    height: calc(100% + 2px);
+    border-radius: var(--radius-s);
+    background-color: rgba(0, 0, 0, 0.02);
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:focus-visible::before {
+    border: 1px solid var(--color-main-500);
   }
 }
