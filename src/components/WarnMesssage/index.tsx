@@ -7,7 +7,6 @@ export interface Props {
   outline?: boolean
   text?: string | React.ReactNode
   tabIndex?: number
-  isShown?: boolean
   onClick?: () => void
 }
 
@@ -57,7 +56,7 @@ const setIcon = (type: 'success' | 'error' | 'warning') => {
 
 const WarnMesssage: React.FC<Props> = (props) => {
   return (
-    props.isShown && (
+    !!props.text && (
       <section
         className={`${styles.wrap} ${
           styles[`${props.outline ? `${props.type}-outline` : props.type}`]
@@ -90,8 +89,7 @@ WarnMesssage.defaultProps = {
   className: '',
   type: 'success',
   mode: 'outline',
-  text: "Hi! I'm the tip-off message. I'll notify you about important stuff.",
-  isShown: true
+  text: "Hi! I'm the tip-off message. I'll notify you about important stuff."
 } as Partial<Props>
 
 export default WarnMesssage

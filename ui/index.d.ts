@@ -281,7 +281,6 @@ interface Props$n {
     outline?: boolean;
     text?: string | React.ReactNode;
     tabIndex?: number;
-    isShown?: boolean;
     onClick?: () => void;
 }
 declare const WarnMesssage$1: React.FC<Props$n>;
