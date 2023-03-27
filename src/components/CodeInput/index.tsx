@@ -65,7 +65,7 @@ const CodeInput = React.forwardRef<any, Props>((props, ref) => {
     if (inputsRefs.current[0]) {
       inputsRefs.current[0].focus()
     }
-  }, [inputsRefs.current, inputsRefs.current[0]])
+  }, [inputsRefs.current[0]])
 
   const findNewCharacter = (currentVal: string, newVal: string) => {
     const newNums = currentVal
