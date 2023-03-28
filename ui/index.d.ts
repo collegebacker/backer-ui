@@ -373,7 +373,7 @@ declare const CountBadge: React.FC<Props$i>;
 interface Props$h {
     className?: string;
     style?: React.CSSProperties;
-    name: string;
+    name?: string;
     imageSrc?: string;
     uploadMode?: boolean;
     onChange?: (imageFile: File) => void;

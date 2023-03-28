@@ -10,7 +10,7 @@ import { stringToGradient } from '../../utils'
 export interface Props {
   className?: string
   style?: React.CSSProperties
-  name: string
+  name?: string
   imageSrc?: string
   uploadMode?: boolean
   onChange?: (imageFile: File) => void
@@ -19,6 +19,23 @@ export interface Props {
 /////////////////////////////////
 ///////// CARDS SLIDER //////////
 /////////////////////////////////
+
+const placeholderEmojies = [
+  '🐶',
+  '🐱',
+  '🐭',
+  '🐹',
+  '🐰',
+  '🐻',
+  '🦊',
+  '🐸',
+  '🦁',
+  '🐯',
+  '🐨',
+  '🐵',
+  '🐔',
+  '🐧'
+]
 
 const ProfilePic: React.FC<Props> = (props) => {
   const [imageSrc, setImageSrc] = React.useState<string | undefined>(undefined)
@@ -91,7 +108,11 @@ const ProfilePic: React.FC<Props> = (props) => {
       {!props.imageSrc && !props.uploadMode && (
         <svg className={styles.letterPlaceholder} viewBox='0 0 60 60'>
           <text x='50%' y='52%' textAnchor='middle' alignmentBaseline='middle'>
-            {Array.from(props.name)[0].toUpperCase()}
+            {props.name
+              ? Array.from(props.name)[0].toUpperCase()
+              : placeholderEmojies[
+                  Math.floor(Math.random() * placeholderEmojies.length)
+                ]}
           </text>
         </svg>
       )}
@@ -102,7 +123,8 @@ const ProfilePic: React.FC<Props> = (props) => {
 ProfilePic.defaultProps = {
   className: '',
   imageSrc: '',
-  uploadMode: false
+  uploadMode: false,
+  name: ''
 } as Partial<Props>
 
 export default ProfilePic
