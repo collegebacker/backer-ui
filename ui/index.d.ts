@@ -444,7 +444,7 @@ declare const Slider: React.FC<Props$c>;
 interface Props$b {
     className?: string;
     style?: React.CSSProperties;
-    name: string;
+    name?: string;
     uploadMode?: boolean;
     imageSrc?: string | undefined;
     onChange?: (imageFile: File) => void;

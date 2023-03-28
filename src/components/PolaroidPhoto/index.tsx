@@ -2,12 +2,12 @@ import React from 'react'
 import styles from './styles.module.scss'
 
 import gsap from 'gsap'
-import { stringToGradient, isMobile } from '../../utils'
+import { stringToGradient, isMobile, getRandomEmoji } from '../../utils'
 
 export interface Props {
   className?: string
   style?: React.CSSProperties
-  name: string
+  name?: string
   uploadMode?: boolean
   imageSrc?: string | undefined
   onChange?: (imageFile: File) => void
@@ -132,7 +132,9 @@ const PolaroidPhoto: React.FC<Props> = (props) => {
                 textAnchor='middle'
                 alignmentBaseline='middle'
               >
-                {Array.from(props.name)[0].toUpperCase()}
+                {props.name
+                  ? Array.from(props.name)[0].toUpperCase()
+                  : getRandomEmoji()}
               </text>
             </svg>
           )}

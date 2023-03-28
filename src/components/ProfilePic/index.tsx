@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './styles.module.scss'
 
-import { stringToGradient } from '../../utils'
+import { stringToGradient, getRandomEmoji } from '../../utils'
 
 /////////////////////////////////
 //////// TYPES AND PROPS ////////
@@ -19,23 +19,6 @@ export interface Props {
 /////////////////////////////////
 ///////// CARDS SLIDER //////////
 /////////////////////////////////
-
-const placeholderEmojies = [
-  '🐶',
-  '🐱',
-  '🐭',
-  '🐹',
-  '🐰',
-  '🐻',
-  '🦊',
-  '🐸',
-  '🦁',
-  '🐯',
-  '🐨',
-  '🐵',
-  '🐔',
-  '🐧'
-]
 
 const ProfilePic: React.FC<Props> = (props) => {
   const [imageSrc, setImageSrc] = React.useState<string | undefined>(undefined)
@@ -110,9 +93,7 @@ const ProfilePic: React.FC<Props> = (props) => {
           <text x='50%' y='52%' textAnchor='middle' alignmentBaseline='middle'>
             {props.name
               ? Array.from(props.name)[0].toUpperCase()
-              : placeholderEmojies[
-                  Math.floor(Math.random() * placeholderEmojies.length)
-                ]}
+              : getRandomEmoji()}
           </text>
         </svg>
       )}
@@ -123,8 +104,7 @@ const ProfilePic: React.FC<Props> = (props) => {
 ProfilePic.defaultProps = {
   className: '',
   imageSrc: '',
-  uploadMode: false,
-  name: ''
+  uploadMode: false
 } as Partial<Props>
 
 export default ProfilePic
