@@ -18,9 +18,14 @@ const Button: React.FC<{
   icon: IconTypes
   label: string
   onClick: () => void
+  className?: string
 }> = (props) => {
   return (
-    <button className={styles.button} onClick={props.onClick} type='button'>
+    <button
+      className={`${styles.button} ${props.className}`}
+      onClick={props.onClick}
+      type='button'
+    >
       <Icon name={props.icon} />
       <span className='typo-app-body-caption'>{props.label}</span>
     </button>
@@ -73,7 +78,6 @@ const SignaturePad = React.forwardRef<any, Props>((props, ref) => {
   const [textWidth, setTextWidth] = React.useState(0)
   const [isModalOpen, setIsModalOpen] = React.useState(false)
 
-  const [imagePointsData, setImagePointsData] = React.useState<any>([])
   const [text, setText] = React.useState('')
 
   const [padWrapFrameSize, setPadWrapFrameSize] = React.useState({
@@ -170,7 +174,7 @@ const SignaturePad = React.forwardRef<any, Props>((props, ref) => {
     return () => {
       window.removeEventListener('resize', handleResize)
     }
-  }, [padWrapRef.current, inputRef.current])
+  }, [padWrapRef.current, inputRef.current, currentTab])
 
   React.useEffect(() => {
     if (inputRef.current) {
@@ -180,7 +184,6 @@ const SignaturePad = React.forwardRef<any, Props>((props, ref) => {
 
   React.useEffect(() => {
     if (inputRef.current) {
-      // console.log(textWidth)
       if (textWidth > inputFrameSize.width) {
         const fontSize = Math.floor(
           (inputFrameSize.width / textWidth) * baseFontSize
@@ -199,12 +202,6 @@ const SignaturePad = React.forwardRef<any, Props>((props, ref) => {
       setIsError(false)
     }
   }, [props.errorMessage])
-
-  React.useEffect(() => {
-    if (setImagePointsData && currentTab === 0) {
-      signatureCanvasRef.current.fromData(imagePointsData)
-    }
-  }, [currentTab])
 
   const helperText = () => {
     if (!isError) {
@@ -254,56 +251,53 @@ const SignaturePad = React.forwardRef<any, Props>((props, ref) => {
         className={`${styles.signaturePadWrap} ${isError ? styles.error : ''}`}
         ref={padWrapRef}
       >
-        {currentTab === 0 ? (
-          <>
-            <SignatureCanvas
-              ref={signatureCanvasRef}
-              penColor='black'
-              canvasProps={{
-                width:
-                  padWrapFrameSize.width > 450 ? 450 : padWrapFrameSize.width,
-                height: padWrapFrameSize.height,
-                className: styles.signatureCanvas
-              }}
-              onBegin={() => {
-                props.onStartInteract && props.onStartInteract()
-              }}
-              onEnd={() => {
-                setImagePointsData(signatureCanvasRef.current.toData())
-              }}
-            />
-            <Button
-              icon='refresh'
-              label='Clear'
-              onClick={() => {
-                if (signatureCanvasRef.current) {
-                  signatureCanvasRef.current.clear()
-                }
-              }}
-            />
-          </>
-        ) : (
-          <>
-            <input
-              className={`${styles.signatureInput} ${styles[selectedFont]}`}
-              ref={inputRef}
-              type='text'
-              style={{
-                fontSize: `${baseFontSize}px`
-              }}
-              value={text}
-              onChange={(e) => {
-                setText(e.target.value)
-                props.onStartInteract && props.onStartInteract()
-              }}
-            />
-            <Button
-              icon='font'
-              label='Change the font'
-              onClick={() => setIsModalOpen(true)}
-            />
-          </>
-        )}
+        <SignatureCanvas
+          ref={signatureCanvasRef}
+          penColor='black'
+          canvasProps={{
+            width: padWrapFrameSize.width > 450 ? 450 : padWrapFrameSize.width,
+            height: padWrapFrameSize.height,
+            className: `${styles.signatureCanvas} ${
+              currentTab === 0 ? '' : styles.hide
+            }`
+          }}
+          onBegin={() => {
+            props.onStartInteract && props.onStartInteract()
+          }}
+        />
+        <Button
+          icon='refresh'
+          label='Clear'
+          className={currentTab === 0 ? '' : styles.hide}
+          onClick={() => {
+            if (signatureCanvasRef.current) {
+              signatureCanvasRef.current.clear()
+            }
+          }}
+        />
+
+        <input
+          className={`${styles.signatureInput} ${styles[selectedFont]} ${
+            currentTab === 1 ? '' : styles.hide
+          }`}
+          ref={inputRef}
+          type='text'
+          style={{
+            fontSize: `${baseFontSize}px`
+          }}
+          value={text}
+          onChange={(e) => {
+            setText(e.target.value)
+            props.onStartInteract && props.onStartInteract()
+          }}
+        />
+        <Button
+          icon='font'
+          label='Change the font'
+          className={currentTab === 1 ? '' : styles.hide}
+          onClick={() => setIsModalOpen(true)}
+        />
+
         <div className={styles.padFrame} />
         <span className={`typo-app-body-caption ${styles.helperText}`}>
           {helperText()}
