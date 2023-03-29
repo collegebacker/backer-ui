@@ -226,7 +226,7 @@ const SignaturePad = React.forwardRef<any, Props>((props, ref) => {
       />
 
       <SwitchSelector
-        onClick={(obj: SwitchSelectorItem) => {
+        onClick={(obj: SwitchSelectorOptionType) => {
           setCurrentTab(obj.index)
 
           if (obj.index === 1) {
@@ -235,7 +235,7 @@ const SignaturePad = React.forwardRef<any, Props>((props, ref) => {
 
           props.onStartInteract && props.onStartInteract()
         }}
-        items={[
+        options={[
           {
             label: 'Draw',
             value: 'draw'

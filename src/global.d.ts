@@ -125,7 +125,7 @@ declare global {
     value: string
   }
 
-  type SwitchSelectorItem = {
+  type SwitchSelectorOptionType = {
     index: number
     label: string
     value?: string
