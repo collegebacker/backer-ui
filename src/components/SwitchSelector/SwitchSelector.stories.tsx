@@ -18,7 +18,7 @@ export const Default = Template.bind({})
 Default.args = {
   className: '',
   activeIndex: 1,
-  items: [
+  options: [
     {
       label: 'Yes',
       value: 'yes'
