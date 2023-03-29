@@ -27,6 +27,11 @@ Default.args = {
       label: 'No',
       icon: 'calendar',
       value: 'no'
+    },
+    {
+      label: 'Apple',
+      value: 'apple',
+      paymentIcon: 'apple-pay'
     }
   ],
   onChange: (value) => console.log(value)

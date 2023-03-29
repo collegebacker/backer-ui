@@ -118,11 +118,11 @@
   }
 
   &_show {
-    animation: modalAnimationDesktopPopup 0.3s ease forwards;
+    animation: modalAnimationDesktopPopup 0.2s ease forwards;
     animation-delay: 0.1s;
 
     @media screen and (max-width: $grid-mobile-breakpoint) {
-      animation: modalAnimationMobilePopup 0.3s ease forwards;
+      animation: modalAnimationMobilePopup 0.2s ease forwards;
     }
   }
 
