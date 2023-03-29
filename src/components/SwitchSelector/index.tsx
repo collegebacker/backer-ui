@@ -7,13 +7,13 @@ type ItemType = {
   label: string
   value?: string
   icon?: IconTypes
-  onClick: (object: { index: number; label: string; value?: string }) => void
 }
 
 export interface Props {
   className?: string
   activeIndex?: number
   items: Array<ItemType>
+  onClick: (object: { index: number; label: string; value?: string }) => void
 }
 
 const SwitchSelector: React.FC<Props> = (props) => {
@@ -21,7 +21,7 @@ const SwitchSelector: React.FC<Props> = (props) => {
 
   const handleOnClick = (index: number, item: ItemType) => {
     setSelected(index)
-    item.onClick({ index, label: item.label, value: item.value })
+    props.onClick({ index, label: item.label, value: item.value })
   }
 
   return (

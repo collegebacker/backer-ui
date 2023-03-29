@@ -21,12 +21,13 @@ Default.args = {
   items: [
     {
       label: 'Yes',
-      onClick: (value) => console.log(value)
+      value: 'yes'
     },
     {
       label: 'No',
-      onClick: (value) => console.log(value),
-      icon: 'calendar'
+      icon: 'calendar',
+      value: 'no'
     }
-  ]
+  ],
+  onClick: (value) => console.log(value)
 }
