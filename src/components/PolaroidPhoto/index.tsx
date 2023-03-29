@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './styles.module.scss'
 
 import gsap from 'gsap'
-import { stringToGradient, isMobile, getRandomEmoji } from '../../utils'
+import { stringToGradient, isMobile, getFirstLetter } from '../../utils'
 
 export interface Props {
   className?: string
@@ -132,9 +132,7 @@ const PolaroidPhoto: React.FC<Props> = (props) => {
                 textAnchor='middle'
                 alignmentBaseline='middle'
               >
-                {props.name
-                  ? Array.from(props.name)[0].toUpperCase()
-                  : getRandomEmoji()}
+                {getFirstLetter(props.name)}
               </text>
             </svg>
           )}

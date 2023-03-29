@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './styles.module.scss'
 
-import { stringToGradient, getRandomEmoji } from '../../utils'
+import { stringToGradient, getFirstLetter } from '../../utils'
 
 /////////////////////////////////
 //////// TYPES AND PROPS ////////
@@ -91,9 +91,7 @@ const ProfilePic: React.FC<Props> = (props) => {
       {!props.imageSrc && !props.uploadMode && (
         <svg className={styles.letterPlaceholder} viewBox='0 0 60 60'>
           <text x='50%' y='52%' textAnchor='middle' alignmentBaseline='middle'>
-            {props.name
-              ? Array.from(props.name)[0].toUpperCase()
-              : getRandomEmoji()}
+            {getFirstLetter(props.name)}
           </text>
         </svg>
       )}

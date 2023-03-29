@@ -1,6 +1,5 @@
 const placeholderEmojies = [
   '🐶',
-  '🐱',
   '🐭',
   '🐹',
   '🐰',

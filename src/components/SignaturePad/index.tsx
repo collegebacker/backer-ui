@@ -72,6 +72,8 @@ const SignaturePad = React.forwardRef<any, Props>((props, ref) => {
   const [selectedFont, setSelectedFont] = React.useState('bilbo')
   const [textWidth, setTextWidth] = React.useState(0)
   const [isModalOpen, setIsModalOpen] = React.useState(false)
+
+  const [imagePointsData, setImagePointsData] = React.useState<any>([])
   const [text, setText] = React.useState('')
 
   const [padWrapFrameSize, setPadWrapFrameSize] = React.useState({
@@ -198,6 +200,12 @@ const SignaturePad = React.forwardRef<any, Props>((props, ref) => {
     }
   }, [props.errorMessage])
 
+  React.useEffect(() => {
+    if (setImagePointsData && currentTab === 0) {
+      signatureCanvasRef.current.fromData(imagePointsData)
+    }
+  }, [currentTab])
+
   const helperText = () => {
     if (!isError) {
       if (currentTab === 0) {
@@ -228,11 +236,6 @@ const SignaturePad = React.forwardRef<any, Props>((props, ref) => {
       <SwitchSelector
         onChange={(obj: SwitchSelectorOptionType) => {
           setCurrentTab(obj.index)
-
-          if (obj.index === 1) {
-            setText('')
-          }
-
           props.onStartInteract && props.onStartInteract()
         }}
         options={[
@@ -264,6 +267,9 @@ const SignaturePad = React.forwardRef<any, Props>((props, ref) => {
               }}
               onBegin={() => {
                 props.onStartInteract && props.onStartInteract()
+              }}
+              onEnd={() => {
+                setImagePointsData(signatureCanvasRef.current.toData())
               }}
             />
             <Button
