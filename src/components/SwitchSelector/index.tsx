@@ -13,7 +13,7 @@ type ItemType = {
 export interface Props {
   className?: string
   activeIndex?: number
-  options: Array<ItemType>
+  options: Array<ItemType> | undefined
   onChange: (option: SwitchSelectorOptionType) => void
 }
 
@@ -27,7 +27,7 @@ const SwitchSelector: React.FC<Props> = (props) => {
 
   return (
     <section className={`${styles.wrap} ${props.className}`}>
-      {props.options.map((option, index) => (
+      {(props.options || []).map((option, index) => (
         <PillButton
           key={index}
           label={option.label}

@@ -599,7 +599,7 @@ type ItemType = {
 interface Props$2 {
     className?: string;
     activeIndex?: number;
-    options: Array<ItemType>;
+    options: Array<ItemType> | undefined;
     onChange: (option: SwitchSelectorOptionType) => void;
 }
 declare const SwitchSelector: React.FC<Props$2>;
