@@ -7,6 +7,7 @@ type ItemType = {
   label: string
   value?: string
   icon?: IconTypes
+  paymentIcon?: PaymentLogoTypes
 }
 
 export interface Props {
@@ -31,7 +32,8 @@ const SwitchSelector: React.FC<Props> = (props) => {
           key={index}
           label={option.label}
           onClick={() => handleOnClick(index, option)}
-          icon={option.icon ? option.icon : undefined}
+          icon={option.icon}
+          paymentIcon={option.paymentIcon}
           className={styles.button}
           isActive={selected === index}
         />

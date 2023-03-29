@@ -594,6 +594,7 @@ type ItemType = {
     label: string;
     value?: string;
     icon?: IconTypes;
+    paymentIcon?: PaymentLogoTypes;
 };
 interface Props$2 {
     className?: string;
