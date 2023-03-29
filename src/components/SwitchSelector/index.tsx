@@ -13,7 +13,7 @@ export interface Props {
   className?: string
   activeIndex?: number
   items: Array<ItemType>
-  onClick: (object: { index: number; label: string; value?: string }) => void
+  onClick: (object: SwitchSelectorItem) => void
 }
 
 const SwitchSelector: React.FC<Props> = (props) => {

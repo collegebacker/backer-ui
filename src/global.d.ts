@@ -124,6 +124,12 @@ declare global {
     label: string
     value: string
   }
+
+  type SwitchSelectorItem = {
+    index: number
+    label: string
+    value?: string
+  }
 }
 
 export {}

@@ -226,23 +226,23 @@ const SignaturePad = React.forwardRef<any, Props>((props, ref) => {
       />
 
       <SwitchSelector
+        onClick={(obj: SwitchSelectorItem) => {
+          setCurrentTab(obj.index)
+
+          if (obj.index === 1) {
+            setText('')
+          }
+
+          props.onStartInteract && props.onStartInteract()
+        }}
         items={[
           {
             label: 'Draw',
-            value: 'draw',
-            onClick: () => {
-              setCurrentTab(0)
-              setText('')
-              props.onStartInteract && props.onStartInteract()
-            }
+            value: 'draw'
           },
           {
             label: 'Type',
-            value: 'type',
-            onClick: () => {
-              setCurrentTab(1)
-              props.onStartInteract && props.onStartInteract()
-            }
+            value: 'type'
           }
         ]}
       />
