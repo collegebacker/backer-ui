@@ -226,7 +226,7 @@ const SignaturePad = React.forwardRef<any, Props>((props, ref) => {
       />
 
       <SwitchSelector
-        onClick={(obj: SwitchSelectorOptionType) => {
+        onChange={(obj: SwitchSelectorOptionType) => {
           setCurrentTab(obj.index)
 
           if (obj.index === 1) {

@@ -13,7 +13,7 @@ export interface Props {
   className?: string
   activeIndex?: number
   options: Array<ItemType>
-  onClick: (object: SwitchSelectorOptionType) => void
+  onChange: (option: SwitchSelectorOptionType) => void
 }
 
 const SwitchSelector: React.FC<Props> = (props) => {
@@ -21,7 +21,7 @@ const SwitchSelector: React.FC<Props> = (props) => {
 
   const handleOnClick = (index: number, option: ItemType) => {
     setSelected(index)
-    props.onClick({ index, label: option.label, value: option.value })
+    props.onChange({ index, label: option.label, value: option.value })
   }
 
   return (

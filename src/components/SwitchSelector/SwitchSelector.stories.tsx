@@ -29,5 +29,5 @@ Default.args = {
       value: 'no'
     }
   ],
-  onClick: (value) => console.log(value)
+  onChange: (value) => console.log(value)
 }
