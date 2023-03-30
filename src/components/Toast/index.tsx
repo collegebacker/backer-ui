@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef, Ref, useImperativeHandle } from 'react'
 import ReactDOM from 'react-dom'
 import styles from './styles.module.scss'
 
@@ -9,10 +9,10 @@ export type ToastProps = {
   params?: ToastParamsProps
 }
 
-const Toast = React.forwardRef<ToastRef, {}>((_, ref: React.Ref<ToastRef>) => {
+const Toast = forwardRef<ToastRef, {}>((_, ref: Ref<ToastRef>) => {
   const [toasts, setToasts] = React.useState<ToastProps[]>([])
 
-  React.useImperativeHandle(ref, () => ({
+  useImperativeHandle(ref as React.RefObject<ToastRef>, () => ({
     showToast: (message: string, params: ToastParamsProps) => {
       const toastProps = {
         message,
