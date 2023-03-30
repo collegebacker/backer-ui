@@ -5,7 +5,7 @@ import Button from '../../Button'
 
 interface ItemProps {
   message: string | React.ReactNode
-  params?: ToastItemProps
+  params?: ToastParamsProps
 }
 
 const ToastItem: React.FC<ItemProps> = (props) => {

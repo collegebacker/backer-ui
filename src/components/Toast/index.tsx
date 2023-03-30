@@ -4,16 +4,15 @@ import styles from './styles.module.scss'
 
 import ToastItem from './ToastItem'
 
-export interface ItemProps {
-  message: string
-  params?: ToastItemProps
+export interface ToastRef {
+  showToast: (message: string, params: ToastParamsProps) => void
 }
 
-const Toast = React.forwardRef((_, ref) => {
-  const [toasts, setToasts] = React.useState<Array<ItemProps>>([])
+const Toast = React.forwardRef<ToastRef, {}>((_, ref: React.Ref<ToastRef>) => {
+  const [toasts, setToasts] = React.useState<ToastProps[]>([])
 
   React.useImperativeHandle(ref, () => ({
-    showToast: (message: string, params: ToastItemProps) => {
+    showToast: (message: string, params: ToastParamsProps) => {
       const toastProps = {
         message,
         params: {
@@ -31,7 +30,7 @@ const Toast = React.forwardRef((_, ref) => {
         }
       }
 
-      setToasts([...toasts, toastProps])
+      setToasts((prevToasts) => [...prevToasts, toastProps])
     }
   }))
 

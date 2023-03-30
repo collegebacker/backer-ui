@@ -96,7 +96,12 @@ declare global {
     | 'caption'
     | 'caption-bold'
 
-  type ToastItemProps = {
+  type ToastProps = {
+    message: string
+    params?: ToastParamsProps
+  }
+
+  type ToastParamsProps = {
     closeOnClick?: boolean
     showCloseIcon?: boolean
     dismissButton?: boolean

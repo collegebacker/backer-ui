@@ -325,7 +325,10 @@ interface Props$l {
 }
 declare const ActionMesssage: React.FC<Props$l>;
 
-declare const Toast: React.ForwardRefExoticComponent<React.RefAttributes<unknown>>;
+interface ToastRef {
+    showToast: (message: string, params: ToastParamsProps) => void;
+}
+declare const Toast: React.ForwardRefExoticComponent<React.RefAttributes<ToastRef>>;
 
 interface Props$k {
     isOpen?: boolean;
