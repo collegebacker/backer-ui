@@ -96,25 +96,6 @@ declare global {
     | 'caption'
     | 'caption-bold'
 
-  type ToastProps = {
-    message: string
-    params?: ToastParamsProps
-  }
-
-  type ToastParamsProps = {
-    closeOnClick?: boolean
-    showCloseIcon?: boolean
-    dismissButton?: boolean
-    button?: {
-      label: string | null
-      onClick: () => void | null
-    }
-    emoji?: string
-    type?: 'success' | 'error' | 'warning' | 'info'
-    timeout?: number
-    onClose?: () => void
-  }
-
   type ModalAnimationSizeProps = {
     size: {
       width: number
@@ -134,6 +115,24 @@ declare global {
     index: number
     label: string
     value?: string
+  }
+
+  interface ToastRef {
+    showToast: (message: string, params: ToastParamsProps) => void
+  }
+
+  type ToastParamsProps = {
+    closeOnClick?: boolean
+    showCloseIcon?: boolean
+    dismissButton?: boolean
+    button?: {
+      label: string | null
+      onClick: () => void | null
+    }
+    emoji?: string
+    type?: 'success' | 'error' | 'warning' | 'info'
+    timeout?: number
+    onClose?: () => void
   }
 }
 

@@ -4,8 +4,9 @@ import styles from './styles.module.scss'
 
 import ToastItem from './ToastItem'
 
-export interface ToastRef {
-  showToast: (message: string, params: ToastParamsProps) => void
+export type ToastProps = {
+  message: string
+  params?: ToastParamsProps
 }
 
 const Toast = React.forwardRef<ToastRef, {}>((_, ref: React.Ref<ToastRef>) => {

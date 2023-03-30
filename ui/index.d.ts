@@ -325,9 +325,6 @@ interface Props$l {
 }
 declare const ActionMesssage: React.FC<Props$l>;
 
-interface ToastRef {
-    showToast: (message: string, params: ToastParamsProps) => void;
-}
 declare const Toast: React.ForwardRefExoticComponent<React.RefAttributes<ToastRef>>;
 
 interface Props$k {
