@@ -99,7 +99,7 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
 
   useDidMountEffect(() => {
     if (isOpen) {
-      console.log('ref', modalWrapRef.current)
+      // console.log('ref', modalWrapRef.current)
       // console.log('isOpen', isOpen)
       // console.log('modal ref', modalRef.current)
       // add class to modalWrapRef
@@ -110,7 +110,7 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
         !props.isBottomSheet ? styles.popup_show : styles.bottomsheet_show
       )
     } else {
-      console.log('ref', modalWrapRef.current)
+      // console.log('ref', modalWrapRef.current)
       // console.log('isOpen', isOpen)
       // console.log('modal ref', modalRef.current)
       // remove class from modalWrapRef

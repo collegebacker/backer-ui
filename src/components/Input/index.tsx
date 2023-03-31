@@ -1,5 +1,5 @@
-import Icon from '../Icon'
 import React from 'react'
+import Icon from '../Icon'
 import styles from './styles.module.scss'
 
 import { CleaveOptions } from 'cleave.js/options'
@@ -41,7 +41,7 @@ export interface InputProps {
   cleaveOptions?: CleaveOptions
 }
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
+const Input: React.FC<InputProps> = (props) => {
   const inputArgs = {
     className: `${styles.input} ${
       props.hideSpinButton ? styles.hideSpinButton : ''
@@ -76,6 +76,15 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     onKeyDown: props.onKeyDown
   }
 
+  const inputRef = React.useRef<HTMLInputElement>(null)
+
+  React.useEffect(() => {
+    if (props.autoFocus && inputRef.current) {
+      // console.log(inputRef.current)
+      inputRef.current.focus()
+    }
+  }, [props.autoFocus])
+
   return (
     <div
       className={`${styles.componentWrap} ${props.className} ${
@@ -92,9 +101,13 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
         }}
       >
         {props.cleaveOptions ? (
-          <Cleave {...inputArgs} options={props.cleaveOptions} />
+          <Cleave
+            {...inputArgs}
+            options={props.cleaveOptions}
+            htmlRef={(i) => (inputRef.current = i)}
+          />
         ) : (
-          <input {...inputArgs} ref={ref} />
+          <input {...inputArgs} ref={inputRef} />
         )}
 
         {props.label !== '' && (
@@ -129,9 +142,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
       )}
     </div>
   )
-})
-
-Input.displayName = 'Input'
+}
 
 Input.defaultProps = {
   className: '',

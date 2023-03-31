@@ -95,7 +95,7 @@ interface InputProps {
     };
     cleaveOptions?: CleaveOptions;
 }
-declare const Input: React.ForwardRefExoticComponent<InputProps & React.RefAttributes<HTMLInputElement>>;
+declare const Input: React.FC<InputProps>;
 
 interface Props$A {
     className?: string;
