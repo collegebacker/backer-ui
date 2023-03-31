@@ -18,5 +18,6 @@ export const Default = Template.bind({})
 Default.args = {
   type: 'success',
   outline: false,
-  onClick: undefined
+  onClick: undefined,
+  text: 'Success message'
 }
