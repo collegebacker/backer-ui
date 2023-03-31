@@ -75,7 +75,8 @@
 }
 
 .labelText {
-  margin-top: 1px;
+  display: flex;
+  align-items: center;
   color: var(--color-main-500);
 }
 
