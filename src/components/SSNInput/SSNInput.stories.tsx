@@ -20,7 +20,7 @@ const Template: ComponentStory<typeof SSNInput> = (args) => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', width: '300px' }}>
-      <SSNInput {...args} onChange={handleOnChange} value={value} />
+      <SSNInput {...args} onChange={handleOnChange} value={value} autoFocus />
       <SSNInput {...args} onChange={handleOnChange} value={value} />
       <SSNInput {...args} onChange={handleOnChange} value={value} />
     </div>

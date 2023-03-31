@@ -17,15 +17,23 @@ const Template: ComponentStory<typeof Input> = (args) => {
     console.log('value', e.target.value)
   }
 
-  React.useEffect(() => {
-    console.log(inputRef.current)
-    if (inputRef.current) {
-      console.log(inputRef.current)
-    }
-  }, [inputRef.current])
+  // React.useEffect(() => {
+  //   console.log(inputRef.current)
+  //   if (inputRef.current) {
+  //     console.log(inputRef.current)
+  //   }
+  // }, [inputRef.current])
 
   return (
-    <Input {...args} onChange={handleOnChange} value={value} ref={inputRef} />
+    <>
+      <Input
+        {...args}
+        onChange={handleOnChange}
+        value={value}
+        ref={inputRef}
+        autoFocus
+      />
+    </>
   )
 }
 
