@@ -77,14 +77,11 @@ const Input = React.forwardRef(
       onKeyDown: props.onKeyDown
     }
 
-    // const inputRef = React.useRef<HTMLInputElement>(null)
+    const inputRef = ref || React.useRef<HTMLInputElement>()
 
-    // React.useEffect(() => {
-    //   if (props.autoFocus && inputRef.current) {
-    //     console.log(inputRef.current)
-    //     inputRef.current.focus()
-    //   }
-    // }, [props.autoFocus])
+    React.useEffect(() => {
+      console.log(inputRef)
+    }, [inputRef])
 
     return (
       <div
@@ -106,17 +103,13 @@ const Input = React.forwardRef(
               {...inputArgs}
               options={props.cleaveOptions}
               htmlRef={(i) => {
-                if (ref) {
-                  if (typeof ref === 'function') {
-                    ref(i)
-                  } else {
-                    ref.current = i
-                  }
+                if (inputRef && typeof inputRef !== 'function') {
+                  inputRef.current = i
                 }
               }}
             />
           ) : (
-            <input {...inputArgs} ref={ref} />
+            <input {...inputArgs} ref={inputRef} />
           )}
 
           {props.label !== '' && (
