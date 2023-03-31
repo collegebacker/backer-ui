@@ -5,7 +5,7 @@ export interface Props {
   className?: string
   type?: 'success' | 'error' | 'warning'
   outline?: boolean
-  text?: string | React.ReactNode
+  text?: string | React.ReactNode | undefined | null
   tabIndex?: number
   onClick?: () => void
 }
@@ -88,8 +88,7 @@ const WarnMesssage: React.FC<Props> = (props) => {
 WarnMesssage.defaultProps = {
   className: '',
   type: 'success',
-  mode: 'outline',
-  text: "Hi! I'm the tip-off message. I'll notify you about important stuff."
+  mode: 'outline'
 } as Partial<Props>
 
 export default WarnMesssage
