@@ -11,6 +11,7 @@ export default {
 } as ComponentMeta<typeof ZipInput>
 
 const Template: ComponentStory<typeof ZipInput> = (args) => {
+  const inputRef = React.useRef<HTMLInputElement>(null)
   const [value, setValue] = React.useState(args.value || '')
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -18,9 +19,21 @@ const Template: ComponentStory<typeof ZipInput> = (args) => {
     console.log('value', e.target.value)
   }
 
+  React.useEffect(() => {
+    console.log(inputRef)
+    if (inputRef.current) {
+      console.log(inputRef.current)
+    }
+  }, [inputRef.current])
+
   return (
     <div style={{ width: '300px' }}>
-      <ZipInput {...args} onChange={handleOnChange} value={value} />
+      <ZipInput
+        {...args}
+        onChange={handleOnChange}
+        value={value}
+        ref={inputRef}
+      />
     </div>
   )
 }

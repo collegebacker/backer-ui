@@ -9,6 +9,7 @@ export default {
 } as ComponentMeta<typeof Input>
 
 const Template: ComponentStory<typeof Input> = (args) => {
+  const inputRef = React.useRef<HTMLInputElement>(null)
   const [value, setValue] = React.useState(args.value || '')
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -16,7 +17,16 @@ const Template: ComponentStory<typeof Input> = (args) => {
     console.log('value', e.target.value)
   }
 
-  return <Input {...args} onChange={handleOnChange} value={value} />
+  React.useEffect(() => {
+    console.log(inputRef.current)
+    if (inputRef.current) {
+      console.log(inputRef.current)
+    }
+  }, [inputRef.current])
+
+  return (
+    <Input {...args} onChange={handleOnChange} value={value} ref={inputRef} />
+  )
 }
 
 export const Default = Template.bind({})

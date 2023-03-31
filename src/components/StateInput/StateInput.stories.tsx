@@ -29,6 +29,14 @@ const Template: ComponentStory<typeof StateInput> = (args) => {
       >
         update input
       </button>
+      <button
+        onClick={() => {
+          const isValid = StateInput.isValid(value)
+          console.log('isValid', isValid)
+        }}
+      >
+        is valid
+      </button>
     </div>
   )
 }

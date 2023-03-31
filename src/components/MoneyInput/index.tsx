@@ -39,67 +39,72 @@ export interface MoneyInputProps {
   }) => void
 }
 
-const MoneyInput: React.FC<MoneyInputProps> = (props) => {
-  const [value, setValue] = React.useState(
-    isNumber(props.value) ? formatCurrency(Number(props.value).toFixed(2)) : ''
-  )
+const MoneyInput = React.forwardRef(
+  (props: MoneyInputProps, ref: React.ForwardedRef<HTMLInputElement>) => {
+    const [value, setValue] = React.useState(
+      isNumber(props.value)
+        ? formatCurrency(Number(props.value).toFixed(2))
+        : ''
+    )
 
-  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
-    let parsedValue = parseNumString(value, props.decimals)
-    if (props.maxAmount && Number(parsedValue) > props.maxAmount)
-      parsedValue = props.maxAmount.toString()
+    const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = e.target
+      let parsedValue = parseNumString(value, props.decimals)
+      if (props.maxAmount && Number(parsedValue) > props.maxAmount)
+        parsedValue = props.maxAmount.toString()
 
-    setValue(formatCurrency(parsedValue))
-    if (props.onChange) {
-      const newEvent = {
-        target: {
-          value: (Number(parsedValue) * 100) as number,
-          name
+      setValue(formatCurrency(parsedValue))
+      if (props.onChange) {
+        const newEvent = {
+          target: {
+            value: (Number(parsedValue) * 100) as number,
+            name
+          }
         }
+        props.onChange(newEvent as any)
       }
-      props.onChange(newEvent as any)
     }
-  }
 
-  const handleOnFocus = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.target.select()
-  }
+    const handleOnFocus = (e: React.ChangeEvent<HTMLInputElement>) => {
+      e.target.select()
+    }
 
-  const handleOnBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
+    const handleOnBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = e.target
 
-    const num = Number(value.replace(/[^\d.]/g, '')).toFixed(2)
-    const formattedNum = formatCurrency(num)
+      const num = Number(value.replace(/[^\d.]/g, '')).toFixed(2)
+      const formattedNum = formatCurrency(num)
 
-    setValue(formattedNum)
+      setValue(formattedNum)
 
-    if (props.onChange) {
-      const newEvent = {
-        target: {
-          value: (Number(num) * 100) as number,
-          name
+      if (props.onChange) {
+        const newEvent = {
+          target: {
+            value: (Number(num) * 100) as number,
+            name
+          }
         }
+        props.onChange(newEvent as any)
       }
-      props.onChange(newEvent as any)
     }
-  }
 
-  // RENDER
-  return (
-    <Input
-      className={props.className}
-      style={props.style}
-      name={props.name}
-      label={props.label}
-      value={value}
-      errorMessage={props.errorMessage}
-      onChange={handleOnChange}
-      onBlur={handleOnBlur}
-      onFocus={handleOnFocus}
-    />
-  )
-}
+    // RENDER
+    return (
+      <Input
+        className={props.className}
+        style={props.style}
+        name={props.name}
+        label={props.label}
+        value={value}
+        errorMessage={props.errorMessage}
+        onChange={handleOnChange}
+        onBlur={handleOnBlur}
+        onFocus={handleOnFocus}
+        ref={ref}
+      />
+    )
+  }
+)
 
 MoneyInput.defaultProps = {
   label: 'Amount',

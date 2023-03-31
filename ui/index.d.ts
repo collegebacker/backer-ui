@@ -95,7 +95,7 @@ interface InputProps {
     };
     cleaveOptions?: CleaveOptions;
 }
-declare const Input: React.FC<InputProps>;
+declare const Input: React.ForwardRefExoticComponent<InputProps & React.RefAttributes<HTMLInputElement>>;
 
 interface Props$A {
     className?: string;
@@ -480,19 +480,21 @@ type DateInputProps = Omit<InputProps, 'onChange'> & {
 };
 declare const DateInput: React.FC<DateInputProps>;
 
-declare const PasswordInput: React.FC<InputProps>;
+declare const PasswordInput: React.ForwardRefExoticComponent<InputProps & React.RefAttributes<HTMLInputElement>>;
 
-declare const SSNInput: React.FC<InputProps>;
+declare const SSNInput: React.ForwardRefExoticComponent<InputProps & React.RefAttributes<HTMLInputElement>>;
 
-declare const PhoneInput: React.FC<InputProps>;
+declare const PhoneInput: React.ForwardRefExoticComponent<InputProps & React.RefAttributes<HTMLInputElement>>;
 
-declare const ZipInput: React.FC<InputProps>;
+declare const ZipInput: React.ForwardRefExoticComponent<InputProps & React.RefAttributes<HTMLInputElement>>;
 
-declare const StateInput: {
-    (props: InputProps): JSX.Element;
+interface StateInputProps extends InputProps {
     isValid: (value: string) => boolean;
-    defaultProps: Partial<InputProps>;
-};
+}
+interface StateInputComponent extends React.ForwardRefExoticComponent<StateInputProps> {
+    isValid: (value: string) => boolean;
+}
+declare const StateInput: StateInputComponent;
 
 interface DropdownProps extends InputProps {
     label: string;
@@ -519,7 +521,7 @@ interface MoneyInputProps {
         };
     }) => void;
 }
-declare const MoneyInput: React.FC<MoneyInputProps>;
+declare const MoneyInput: React.ForwardRefExoticComponent<MoneyInputProps & React.RefAttributes<HTMLInputElement>>;
 
 interface Props$7 {
     className?: string;

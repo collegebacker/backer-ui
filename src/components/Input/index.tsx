@@ -41,108 +41,119 @@ export interface InputProps {
   cleaveOptions?: CleaveOptions
 }
 
-const Input: React.FC<InputProps> = (props) => {
-  const inputArgs = {
-    className: `${styles.input} ${
-      props.hideSpinButton ? styles.hideSpinButton : ''
-    }
+const Input = React.forwardRef(
+  (props: InputProps, ref: React.ForwardedRef<HTMLInputElement>) => {
+    const inputArgs = {
+      className: `${styles.input} ${
+        props.hideSpinButton ? styles.hideSpinButton : ''
+      }
     ${props.readOnly ? '' : styles.mouseStates}
     `,
-    style: {
-      cursor: props.cursor
-    },
-    name: props.name,
-    value: props.value,
-    placeholder: '&nbsp;',
-    type: props.type,
-    autoComplete:
-      props.autoComplete && !props.noAutocomplete
-        ? props.autoComplete
-        : props.noAutocomplete
-        ? 'new-password'
-        : undefined,
-    autoFocus: props.autoFocus,
-    required: props.required,
-    tabIndex: props.tabIndex,
-    readOnly: props.readOnly,
-    disabled: props.disabled,
-    pattern: props.pattern,
-    maxLength: props.maxLength,
-    id: props.id,
-    onClick: props.onClick,
-    onChange: props.onChange,
-    onFocus: props.onFocus,
-    onBlur: props.onBlur,
-    onKeyDown: props.onKeyDown
-  }
-
-  const inputRef = React.useRef<HTMLInputElement>(null)
-
-  React.useEffect(() => {
-    if (props.autoFocus && inputRef.current) {
-      // console.log(inputRef.current)
-      inputRef.current.focus()
+      style: {
+        cursor: props.cursor
+      },
+      name: props.name,
+      value: props.value,
+      placeholder: '&nbsp;',
+      type: props.type,
+      autoComplete:
+        props.autoComplete && !props.noAutocomplete
+          ? props.autoComplete
+          : props.noAutocomplete
+          ? 'new-password'
+          : undefined,
+      autoFocus: props.autoFocus,
+      required: props.required,
+      tabIndex: props.tabIndex,
+      readOnly: props.readOnly,
+      disabled: props.disabled,
+      pattern: props.pattern,
+      maxLength: props.maxLength,
+      id: props.id,
+      onClick: props.onClick,
+      onChange: props.onChange,
+      onFocus: props.onFocus,
+      onBlur: props.onBlur,
+      onKeyDown: props.onKeyDown
     }
-  }, [props.autoFocus])
 
-  return (
-    <div
-      className={`${styles.componentWrap} ${props.className} ${
-        props.errorMessage ? styles.error : ''
-      } ${props.errorMessage ? styles.shake : ''} ${
-        props.disabled ? styles.disabled : ''
-      }`}
-      style={props.style}
-    >
+    // const inputRef = React.useRef<HTMLInputElement>(null)
+
+    // React.useEffect(() => {
+    //   if (props.autoFocus && inputRef.current) {
+    //     console.log(inputRef.current)
+    //     inputRef.current.focus()
+    //   }
+    // }, [props.autoFocus])
+
+    return (
       <div
-        className={`${styles.inputWrap}`}
-        style={{
-          height: props.label !== '' ? '68px' : '40px'
-        }}
+        className={`${styles.componentWrap} ${props.className} ${
+          props.errorMessage ? styles.error : ''
+        } ${props.errorMessage ? styles.shake : ''} ${
+          props.disabled ? styles.disabled : ''
+        }`}
+        style={props.style}
       >
-        {props.cleaveOptions ? (
-          <Cleave
-            {...inputArgs}
-            options={props.cleaveOptions}
-            htmlRef={(i) => (inputRef.current = i)}
-          />
-        ) : (
-          <input {...inputArgs} ref={inputRef} />
-        )}
+        <div
+          className={`${styles.inputWrap}`}
+          style={{
+            height: props.label !== '' ? '68px' : '40px'
+          }}
+        >
+          {props.cleaveOptions ? (
+            <Cleave
+              {...inputArgs}
+              options={props.cleaveOptions}
+              htmlRef={(i) => {
+                if (ref) {
+                  if (typeof ref === 'function') {
+                    ref(i)
+                  } else {
+                    ref.current = i
+                  }
+                }
+              }}
+            />
+          ) : (
+            <input {...inputArgs} ref={ref} />
+          )}
 
-        {props.label !== '' && (
-          <label className={styles.label} htmlFor={props.name}>
-            {props.label}
-          </label>
-        )}
+          {props.label !== '' && (
+            <label className={styles.label} htmlFor={props.name}>
+              {props.label}
+            </label>
+          )}
 
-        {props.icon && (
-          <div
-            onClick={props.icon.onClick}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter') {
-                props.icon.onClick && props.icon.onClick()
-              }
-            }}
-            className={styles.icon}
-            style={{
-              pointerEvents: props.icon.onClick !== undefined ? 'auto' : 'none'
-            }}
-            tabIndex={0}
-          >
-            <Icon name={props.icon.name} />
-          </div>
+          {props.icon && (
+            <div
+              onClick={props.icon.onClick}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  props.icon.onClick && props.icon.onClick()
+                }
+              }}
+              className={styles.icon}
+              style={{
+                pointerEvents:
+                  props.icon.onClick !== undefined ? 'auto' : 'none'
+              }}
+              tabIndex={0}
+            >
+              <Icon name={props.icon.name} />
+            </div>
+          )}
+        </div>
+
+        {(props.helperText || props.errorMessage) && (
+          <span className={`typo-app-body-caption ${styles.helperText}`}>
+            {props.errorMessage ? props.errorMessage : props.helperText}
+          </span>
         )}
       </div>
-
-      {(props.helperText || props.errorMessage) && (
-        <span className={`typo-app-body-caption ${styles.helperText}`}>
-          {props.errorMessage ? props.errorMessage : props.helperText}
-        </span>
-      )}
-    </div>
-  )
-}
+    )
+  }
+)
 
 Input.defaultProps = {
   className: '',

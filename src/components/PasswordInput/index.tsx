@@ -1,23 +1,26 @@
 import React from 'react'
 import Input, { InputProps } from '../Input'
 
-const PasswordInput: React.FC<InputProps> = (props) => {
-  const [eyeIconOpen, setEyeIcon] = React.useState(false)
+const PasswordInput = React.forwardRef(
+  (props: InputProps, ref: React.ForwardedRef<HTMLInputElement>) => {
+    const [eyeIconOpen, setEyeIcon] = React.useState(false)
 
-  // RENDER
-  return (
-    <Input
-      {...props}
-      type={eyeIconOpen ? 'text' : 'password'}
-      icon={{
-        name: eyeIconOpen ? 'opened-eye' : 'closed-eye',
-        onClick: () => {
-          setEyeIcon(!eyeIconOpen)
-        }
-      }}
-    />
-  )
-}
+    // RENDER
+    return (
+      <Input
+        {...props}
+        type={eyeIconOpen ? 'text' : 'password'}
+        icon={{
+          name: eyeIconOpen ? 'opened-eye' : 'closed-eye',
+          onClick: () => {
+            setEyeIcon(!eyeIconOpen)
+          }
+        }}
+        ref={ref}
+      />
+    )
+  }
+)
 
 PasswordInput.defaultProps = {
   label: 'Password',
