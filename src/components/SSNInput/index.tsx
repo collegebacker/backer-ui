@@ -28,6 +28,8 @@ const SSNInput = React.forwardRef(
   }
 )
 
+SSNInput.displayName = 'SSNInput'
+
 SSNInput.defaultProps = {
   name: 'ssn'
 } as Partial<InputProps>

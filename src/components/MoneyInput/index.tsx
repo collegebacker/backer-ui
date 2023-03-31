@@ -106,6 +106,8 @@ const MoneyInput = React.forwardRef(
   }
 )
 
+MoneyInput.displayName = 'MoneyInput'
+
 MoneyInput.defaultProps = {
   label: 'Amount',
   name: 'amount',

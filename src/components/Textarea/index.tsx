@@ -30,10 +30,6 @@ const Textarea: React.FC<Props> = (props) => {
     handleAutoHeight()
   }
 
-  // React.useEffect(() => {
-  //   handleAutoHeight()
-  // }, [value, textareaRef.current])
-
   // auto height on resize
   React.useEffect(() => {
     if (props.autoHeight && textareaRef.current) {

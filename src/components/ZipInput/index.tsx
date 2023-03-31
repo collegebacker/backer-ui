@@ -19,6 +19,8 @@ const ZipInput = React.forwardRef(
   }
 )
 
+ZipInput.displayName = 'ZipInput'
+
 ZipInput.defaultProps = {
   label: 'Zip code',
   name: 'zip'

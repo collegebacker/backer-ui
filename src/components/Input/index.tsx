@@ -148,6 +148,8 @@ const Input = React.forwardRef(
   }
 )
 
+Input.displayName = 'Input'
+
 Input.defaultProps = {
   className: '',
   label: 'Label',

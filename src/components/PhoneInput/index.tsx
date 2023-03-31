@@ -23,6 +23,8 @@ const PhoneInput = React.forwardRef(
   }
 )
 
+PhoneInput.displayName = 'PhoneInput'
+
 PhoneInput.defaultProps = {
   label: 'Phone number',
   name: 'phone'

@@ -20,7 +20,14 @@ const Template: ComponentStory<typeof StateInput> = (args) => {
 
   return (
     <div style={{ width: '300px' }}>
-      <StateInput {...args} onChange={handleOnChange} value={value} />
+      <StateInput
+        {...args}
+        onChange={handleOnChange}
+        value={value}
+        onValid={(valid) => {
+          console.log('valid', valid)
+        }}
+      />
       <button
         onClick={() => {
           console.log('updating input')
@@ -28,14 +35,6 @@ const Template: ComponentStory<typeof StateInput> = (args) => {
         }}
       >
         update input
-      </button>
-      <button
-        onClick={() => {
-          const isValid = StateInput.isValid(value)
-          console.log('isValid', isValid)
-        }}
-      >
-        is valid
       </button>
     </div>
   )

@@ -22,6 +22,8 @@ const PasswordInput = React.forwardRef(
   }
 )
 
+PasswordInput.displayName = 'PasswordInput'
+
 PasswordInput.defaultProps = {
   label: 'Password',
   name: 'password'
