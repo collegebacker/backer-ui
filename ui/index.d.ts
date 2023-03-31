@@ -488,11 +488,8 @@ declare const PhoneInput: React.ForwardRefExoticComponent<InputProps & React.Ref
 
 declare const ZipInput: React.ForwardRefExoticComponent<InputProps & React.RefAttributes<HTMLInputElement>>;
 
-interface StateInputProps extends InputProps {
-    isValid: (value: string) => boolean;
-}
-interface StateInputComponent extends React.ForwardRefExoticComponent<StateInputProps> {
-    isValid: (value: string) => boolean;
+interface StateInputComponent extends React.ForwardRefExoticComponent<InputProps> {
+    isValid?: (value: string) => boolean;
 }
 declare const StateInput: StateInputComponent;
 

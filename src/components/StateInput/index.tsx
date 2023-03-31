@@ -2,17 +2,13 @@ import React from 'react'
 import Input, { InputProps } from '../Input'
 import normalize from 'us-states-normalize'
 
-export interface StateInputProps extends InputProps {
-  isValid: (value: string) => boolean
-}
-
 export interface StateInputComponent
-  extends React.ForwardRefExoticComponent<StateInputProps> {
-  isValid: (value: string) => boolean
+  extends React.ForwardRefExoticComponent<InputProps> {
+  isValid?: (value: string) => boolean
 }
 
 const StateInput = React.forwardRef(
-  (props: StateInputProps, ref: React.ForwardedRef<HTMLInputElement>) => {
+  (props: InputProps, ref: React.ForwardedRef<HTMLInputElement>) => {
     const [errorMessage, setErrorMessage] = React.useState('')
     const [value, setValue] = React.useState(props.value || '')
 
@@ -76,6 +72,6 @@ StateInput.defaultProps = {
   label: 'State',
   name: 'state',
   isValid
-} as Partial<StateInputProps>
+} as Partial<InputProps>
 
 export default StateInput
