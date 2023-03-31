@@ -279,7 +279,7 @@ interface Props$n {
     className?: string;
     type?: 'success' | 'error' | 'warning';
     outline?: boolean;
-    text?: string | React.ReactNode;
+    text?: string | React.ReactNode | undefined | null;
     tabIndex?: number;
     onClick?: () => void;
 }
