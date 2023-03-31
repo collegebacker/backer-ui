@@ -70,8 +70,7 @@ StateInput.isValid = isValid
 
 StateInput.defaultProps = {
   label: 'State',
-  name: 'state',
-  isValid
+  name: 'state'
 } as Partial<InputProps>
 
 export default StateInput
