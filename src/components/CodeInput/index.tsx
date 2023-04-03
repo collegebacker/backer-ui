@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './styles.module.scss'
+import { isMobile } from '../../utils'
 
 export interface Props {
   tabIndex?: number
@@ -63,6 +64,10 @@ const CodeInput = React.forwardRef<any, Props>((props, ref) => {
   //
   React.useEffect(() => {
     // focus first input after 100ms
+    if (isMobile()) {
+      return
+    }
+
     const timeout = setTimeout(() => {
       inputsRefs.current[0]?.focus()
     }, 100)
