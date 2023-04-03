@@ -62,10 +62,15 @@ const CodeInput = React.forwardRef<any, Props>((props, ref) => {
 
   //
   React.useEffect(() => {
-    if (inputsRefs.current[0]) {
-      inputsRefs.current[0].focus()
+    // focus first input after 100ms
+    const timeout = setTimeout(() => {
+      inputsRefs.current[0]?.focus()
+    }, 100)
+
+    return () => {
+      clearTimeout(timeout)
     }
-  }, [inputsRefs.current[0]])
+  }, [])
 
   const findNewCharacter = (currentVal: string, newVal: string) => {
     const newNums = currentVal
