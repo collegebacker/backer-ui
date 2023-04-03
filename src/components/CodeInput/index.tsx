@@ -61,22 +61,6 @@ const CodeInput = React.forwardRef<any, Props>((props, ref) => {
     }
   }, [resendTimer])
 
-  //
-  React.useEffect(() => {
-    // focus first input after 100ms
-    if (isMobile()) {
-      return
-    }
-
-    const timeout = setTimeout(() => {
-      inputsRefs.current[0]?.focus()
-    }, 100)
-
-    return () => {
-      clearTimeout(timeout)
-    }
-  }, [])
-
   const findNewCharacter = (currentVal: string, newVal: string) => {
     const newNums = currentVal
       .split('')
@@ -192,9 +176,9 @@ const CodeInput = React.forwardRef<any, Props>((props, ref) => {
     }
   }, [nums])
 
-  React.useEffect(() => {
-    console.log('CodeInput', props.isInvalid)
-  }, [props.isInvalid])
+  // React.useEffect(() => {
+  //   console.log('CodeInput', props.isInvalid)
+  // }, [props.isInvalid])
 
   return (
     <div
