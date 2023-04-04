@@ -176,10 +176,6 @@ const CodeInput = React.forwardRef<any, Props>((props, ref) => {
     }
   }, [nums])
 
-  // React.useEffect(() => {
-  //   console.log('CodeInput', props.isInvalid)
-  // }, [props.isInvalid])
-
   return (
     <div
       className={`${styles.componentWrap} ${props.className} ${
