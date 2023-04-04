@@ -57,6 +57,7 @@ const DateInput: React.FC<DateInputProps> = (props) => {
         name={props.name}
         disabled={props.disabled}
         errorMessage={props.errorMessage}
+        autoFocus={props.autoFocus}
         value={value}
         icon={{
           name: 'calendar',
