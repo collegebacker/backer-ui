@@ -14,6 +14,7 @@ export interface Props {
 
   resendText?: string
   resendTimer?: number
+  autoFocus?: boolean
 
   onChange?: (nums: string) => void
   onFocus?: (nums: string) => void
@@ -204,6 +205,7 @@ const CodeInput = React.forwardRef<any, Props>((props, ref) => {
               onChange={(event) => handleOnChange(event, index)}
               onKeyDown={(event) => handleKeyPress(event, index)}
               maxLength={1}
+              autoFocus={index === 0 && props.autoFocus}
             />
           )
         })}
