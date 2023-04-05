@@ -123,9 +123,13 @@
 }
 
 .disabled {
-  opacity: 0.3;
+  opacity: 0.8;
   user-select: none;
   pointer-events: none;
+
+  .inputWrap {
+    opacity: 0.4;
+  }
 }
 
 .shake {
