@@ -74,7 +74,13 @@ $button-hover: rgba(20, 20, 20, 0.05);
     border: none !important;
   }
 
-  &:hover,
+  &:hover {
+    &::after {
+      transform: scale(1);
+      background-color: $button-hover;
+    }
+  }
+
   &:focus-visible {
     &::after {
       transform: scale(1);
