@@ -131,6 +131,7 @@ interface Props$z {
     length?: number;
     resendText?: string;
     resendTimer?: number;
+    autoFocus?: boolean;
     onChange?: (nums: string) => void;
     onFocus?: (nums: string) => void;
     onResend?: (event: any) => void;
