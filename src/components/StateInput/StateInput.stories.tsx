@@ -12,7 +12,6 @@ export default {
 
 const Template: ComponentStory<typeof StateInput> = (args) => {
   const [value, setValue] = React.useState(args.value || '')
-  const [isValid, setIsValid] = React.useState(false)
   const [errorMessage, setErrorMessage] = React.useState('')
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,12 +21,6 @@ const Template: ComponentStory<typeof StateInput> = (args) => {
 
   const handleSubmit = () => {
     console.log('submit')
-
-    if (isValid) {
-      setErrorMessage('')
-    } else {
-      setErrorMessage('invalid input')
-    }
   }
 
   return (
@@ -37,10 +30,6 @@ const Template: ComponentStory<typeof StateInput> = (args) => {
         onChange={handleOnChange}
         value={value}
         errorMessage={errorMessage}
-        onValid={(valid) => {
-          console.log('valid', valid)
-          setIsValid(valid)
-        }}
       />
       <button
         onClick={() => {

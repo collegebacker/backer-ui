@@ -10,14 +10,9 @@ const isValid = (value: string) => {
   return normalize(value, { region: 'all' }) === value
 }
 
-// extend the InputProps interface
-export interface StateInputProps extends InputProps {
-  // add a prop that will returen a boolean for valid or invalid
-  onValid?: (valid: boolean) => void
-}
 
 const StateInput = React.forwardRef(
-  (props: StateInputProps, ref: React.ForwardedRef<HTMLInputElement>) => {
+  (props: InputProps, ref: React.ForwardedRef<HTMLInputElement>) => {
     const [errorMessage, setErrorMessage] = React.useState(
       props.errorMessage || ''
     )
@@ -39,14 +34,12 @@ const StateInput = React.forwardRef(
       setValue(e.target.value)
 
       props.onChange && props.onChange(e)
-      props.onValid && props.onValid(isValid(e.target.value))
     }
 
     const handleOnBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
       e.target.value = normalizeValue(e.target.value) || ''
 
       props.onChange && props.onChange(e)
-      props.onValid && props.onValid(isValid(e.target.value))
     }
 
     React.useEffect(() => {
@@ -55,11 +48,6 @@ const StateInput = React.forwardRef(
       }
     }, [props.value])
 
-    React.useEffect(() => {
-      if (props.onValid) {
-        props.onValid(isValid(value))
-      }
-    }, [])
 
     React.useEffect(() => {
       if (props.errorMessage) {
@@ -86,6 +74,6 @@ StateInput.displayName = 'StateInput'
 StateInput.defaultProps = {
   label: 'State',
   name: 'state'
-} as Partial<StateInputProps>
+} as Partial<InputProps>
 
 export default StateInput
