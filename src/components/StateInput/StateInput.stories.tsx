@@ -36,6 +36,7 @@ const Template: ComponentStory<typeof StateInput> = (args) => {
       >
         update input
       </button>
+      <button onClick={() => {}}>hadle validate</button>
     </div>
   )
 }
