@@ -10,7 +10,6 @@ const isValid = (value: string) => {
   return normalize(value, { region: 'all' }) === value
 }
 
-
 const StateInput = React.forwardRef(
   (props: InputProps, ref: React.ForwardedRef<HTMLInputElement>) => {
     const [errorMessage, setErrorMessage] = React.useState(
@@ -22,7 +21,7 @@ const StateInput = React.forwardRef(
       const normalizedValue = abbreviateState(value)
 
       if (!isValid(normalizedValue)) {
-        setErrorMessage('Invalid state')
+        setErrorMessage('State is invalid')
       } else {
         setErrorMessage('')
         return normalizedValue
@@ -47,7 +46,6 @@ const StateInput = React.forwardRef(
         setValue(props.value)
       }
     }, [props.value])
-
 
     React.useEffect(() => {
       if (props.errorMessage) {
