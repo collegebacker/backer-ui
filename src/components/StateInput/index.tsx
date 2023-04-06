@@ -18,7 +18,9 @@ export interface StateInputProps extends InputProps {
 
 const StateInput = React.forwardRef(
   (props: StateInputProps, ref: React.ForwardedRef<HTMLInputElement>) => {
-    const [errorMessage, setErrorMessage] = React.useState('')
+    const [errorMessage, setErrorMessage] = React.useState(
+      props.errorMessage || ''
+    )
     const [value, setValue] = React.useState(props.value || '')
 
     const normalizeValue = (value: string) => {
@@ -58,6 +60,12 @@ const StateInput = React.forwardRef(
         props.onValid(isValid(value))
       }
     }, [])
+
+    React.useEffect(() => {
+      if (props.errorMessage) {
+        setErrorMessage(props.errorMessage)
+      }
+    }, [props.errorMessage])
 
     // RENDER
     return (
