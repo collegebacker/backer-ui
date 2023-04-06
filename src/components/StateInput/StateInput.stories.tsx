@@ -12,10 +12,22 @@ export default {
 
 const Template: ComponentStory<typeof StateInput> = (args) => {
   const [value, setValue] = React.useState(args.value || '')
+  const [isValid, setIsValid] = React.useState(false)
+  const [errorMessage, setErrorMessage] = React.useState('')
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value)
     console.log('value', e.target.value)
+  }
+
+  const handleSubmit = () => {
+    console.log('submit')
+
+    if (isValid) {
+      setErrorMessage('')
+    } else {
+      setErrorMessage('invalid input')
+    }
   }
 
   return (
@@ -24,8 +36,10 @@ const Template: ComponentStory<typeof StateInput> = (args) => {
         {...args}
         onChange={handleOnChange}
         value={value}
+        errorMessage={errorMessage}
         onValid={(valid) => {
           console.log('valid', valid)
+          setIsValid(valid)
         }}
       />
       <button
@@ -36,7 +50,7 @@ const Template: ComponentStory<typeof StateInput> = (args) => {
       >
         update input
       </button>
-      <button onClick={() => {}}>hadle validate</button>
+      <button onClick={handleSubmit}>hadle validate</button>
     </div>
   )
 }
