@@ -7,7 +7,7 @@ const abbreviateState = (val: string) => {
 }
 
 const isValid = (value: string) => {
-  return value && value === '' && normalize(value, { region: 'all' }) === value
+  return normalize(value, { region: 'all' }) === value
 }
 
 // extend the InputProps interface
