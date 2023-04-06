@@ -51,9 +51,13 @@ const StateInput = React.forwardRef(
       if (props.value) {
         setValue(props.value)
       }
-
-      props.onValid && props.onValid(isValid(props.value || ''))
     }, [props.value])
+
+    React.useEffect(() => {
+      if (props.onValid) {
+        props.onValid(isValid(value))
+      }
+    }, [])
 
     // RENDER
     return (
