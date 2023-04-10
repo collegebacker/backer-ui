@@ -95,7 +95,7 @@ ListItem.defaultProps = {
   style: {},
   topLabel: '',
   titleLarge: '',
-  title: 'Title',
+  title: '',
   description: '',
   chevron: true,
   divider: true,
