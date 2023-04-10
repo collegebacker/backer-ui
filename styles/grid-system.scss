@@ -1,0 +1,93 @@
+@import './../tokens/grids.scss';
+
+// Define the column width and gutter for the grid
+$grid-column-width: 1fr;
+$grid-gutter: 20px;
+
+// Generate the CSS for the grid classes
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, $grid-column-width);
+  grid-gap: $grid-gutter;
+  padding: 0 50px;
+  margin: 0 auto;
+  max-width: $grid-desktop-breakpoint;
+  width: 100%;
+
+  @media only screen and (max-width: $grid-tablet-breakpoint) {
+    padding: 0 40px;
+  }
+
+  @media only screen and (max-width: $grid-mobile-breakpoint) {
+    grid-template-columns: repeat($grid-mobile-columns, $grid-column-width);
+    padding: 0 20px;
+    max-width: $grid-mobile-breakpoint;
+  }
+}
+
+// MAIN GRID
+@for $i from 1 through $grid-desktop-columns {
+  @for $j from $i through $grid-desktop-columns {
+    .grid-desktop-#{$i}-#{$j} {
+      grid-column: #{$i} / span #{$j - $i + 1};
+    }
+  }
+}
+
+@for $i from 1 through $grid-tablet-columns {
+  @for $j from $i through $grid-tablet-columns {
+    .grid-tablet-#{$i}-#{$j} {
+      @media only screen and (max-width: $grid-tablet-breakpoint) {
+        grid-column: #{$i} / span #{$j - $i + 1};
+      }
+    }
+  }
+}
+
+@for $i from 1 through $grid-mobile-columns {
+  @for $j from $i through $grid-mobile-columns {
+    .grid-mobile-#{$i}-#{$j} {
+      @media only screen and (max-width: $grid-mobile-breakpoint) {
+        grid-column: #{$i} / span #{$j - $i + 1};
+      }
+    }
+  }
+}
+
+// SUBGRID
+@for $i from 1 through $grid-desktop-columns {
+  @for $j from $i through $grid-desktop-columns {
+    .subgrid-desktop-#{$i}-#{$j} {
+      display: grid;
+      grid-template-columns: repeat($j - $i + 1, $grid-column-width);
+      grid-gap: $grid-gutter;
+      grid-column: #{$i} / span #{$j - $i + 1};
+    }
+  }
+}
+
+@for $i from 1 through $grid-tablet-columns {
+  @for $j from $i through $grid-tablet-columns {
+    .subgrid-tablet-#{$i}-#{$j} {
+      @media only screen and (max-width: $grid-tablet-breakpoint) {
+        display: grid;
+        grid-template-columns: repeat($j - $i + 1, $grid-column-width);
+        grid-gap: $grid-gutter;
+        grid-column: #{$i} / span #{$j - $i + 1};
+      }
+    }
+  }
+}
+
+@for $i from 1 through $grid-mobile-columns {
+  @for $j from $i through $grid-mobile-columns {
+    .subgrid-mobile-#{$i}-#{$j} {
+      @media only screen and (max-width: $grid-mobile-breakpoint) {
+        display: grid;
+        grid-template-columns: repeat($j - $i + 1, $grid-column-width);
+        grid-gap: $grid-gutter;
+        grid-column: #{$i} / span #{$j - $i + 1};
+      }
+    }
+  }
+}

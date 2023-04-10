@@ -1,4 +1,5 @@
 import React from 'react'
+import FocusTrap from 'focus-trap-react'
 import { createPortal } from 'react-dom'
 
 import { useClickOutside, useDidMountEffect } from '../../hooks'
@@ -99,10 +100,6 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
 
   useDidMountEffect(() => {
     if (isOpen) {
-      // console.log('ref', modalWrapRef.current)
-      // console.log('isOpen', isOpen)
-      // console.log('modal ref', modalRef.current)
-      // add class to modalWrapRef
       modalWrapRef.current?.classList.add(styles.modalWrap_show)
       gradientsRef.current?.classList.add(styles.gradients_show)
 
@@ -110,10 +107,6 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
         !props.isBottomSheet ? styles.popup_show : styles.bottomsheet_show
       )
     } else {
-      // console.log('ref', modalWrapRef.current)
-      // console.log('isOpen', isOpen)
-      // console.log('modal ref', modalRef.current)
-      // remove class from modalWrapRef
       modalWrapRef.current?.classList.add(styles.modalWrap_hide)
       gradientsRef.current?.classList.add(styles.gradients_hide)
 
@@ -162,47 +155,49 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
 
   return createPortal(
     isMount && (
-      <aside
-        role='dialog'
-        aria-modal
-        aria-hidden={false}
-        ref={modalWrapRef}
-        className={`${styles.modalWrap}`}
-        {...props.dataAttrs}
-      >
-        <section
-          ref={modalRef}
-          className={`${styles.modal} ${
-            !props.isBottomSheet ? styles.popup : styles.bottomsheet
-          } ${modalAnimationClass} ${props.className}`}
-          style={props.style}
+      <FocusTrap>
+        <aside
+          role='dialog'
+          aria-modal
+          aria-hidden={false}
+          ref={modalWrapRef}
+          className={`${styles.modalWrap}`}
+          {...props.dataAttrs}
         >
-          {props.showBackButton && (
-            <BackButton
-              className={styles.backButton}
-              onClick={props.onBackClick}
-            />
-          )}
-          {props.showCloseButton && (
-            <CloseButton
-              className={styles.closeButton}
-              onClick={handleCloseClick}
-            />
-          )}
-
-          <div
-            tabIndex={0}
-            className={`${styles.contentWrapper} ${props.contentClassName}`}
+          <section
+            ref={modalRef}
+            className={`${styles.modal} ${
+              !props.isBottomSheet ? styles.popup : styles.bottomsheet
+            } ${modalAnimationClass} ${props.className}`}
+            style={props.style}
           >
-            {props.children}
-          </div>
-        </section>
+            {props.showBackButton && (
+              <BackButton
+                className={styles.backButton}
+                onClick={props.onBackClick}
+              />
+            )}
+            {props.showCloseButton && (
+              <CloseButton
+                className={styles.closeButton}
+                onClick={handleCloseClick}
+              />
+            )}
 
-        <div className={styles.gradients} ref={gradientsRef}>
-          <div className={styles.gradient1} />
-          <div className={styles.gradient2} />
-        </div>
-      </aside>
+            <div
+              tabIndex={0}
+              className={`${styles.contentWrapper} ${props.contentClassName}`}
+            >
+              {props.children}
+            </div>
+          </section>
+
+          <div className={styles.gradients} ref={gradientsRef}>
+            <div className={styles.gradient1} />
+            <div className={styles.gradient2} />
+          </div>
+        </aside>
+      </FocusTrap>
     ),
     document.body
   )

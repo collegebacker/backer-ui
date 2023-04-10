@@ -1,14 +1,14 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { Layout } from '..'
+import { Stack } from '..'
 
 localStorage.clear()
 
 export default {
-  title: 'Misc/Layout',
-  component: Layout
-} as ComponentMeta<typeof Layout>
+  title: 'Misc/Stack',
+  component: Stack
+} as ComponentMeta<typeof Stack>
 
 const Child = () => {
   return (
@@ -21,13 +21,13 @@ const Child = () => {
   )
 }
 
-const Template: ComponentStory<typeof Layout> = (args) => {
+const Template: ComponentStory<typeof Stack> = (args) => {
   return (
-    <Layout {...args}>
+    <Stack {...args}>
       {Array.from({ length: 5 }).map((_, i) => (
         <Child key={i} />
       ))}
-    </Layout>
+    </Stack>
   )
 }
 
