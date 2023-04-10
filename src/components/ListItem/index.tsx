@@ -70,19 +70,21 @@ const ListItem: React.FC<Props> = (props) => {
         )}
       </div>
 
-      <div className={`${styles.rightContent}`}>
-        {props.rightContent && (
-          <div
-            className={`${styles.rightContent} ${props.rightContentClassName}`}
-          >
-            {props.rightContent}
-          </div>
-        )}
+      {props.rightContent || (props.onClick && props.chevron) ? (
+        <div className={`${styles.rightContent}`}>
+          {props.rightContent && (
+            <div
+              className={`${styles.rightContent} ${props.rightContentClassName}`}
+            >
+              {props.rightContent}
+            </div>
+          )}
 
-        {props.onClick && props.chevron ? (
-          <Icon name='chevron-right' className={styles.chevron} />
-        ) : null}
-      </div>
+          {props.onClick && props.chevron ? (
+            <Icon name='chevron-right' className={styles.chevron} />
+          ) : null}
+        </div>
+      ) : null}
     </li>
   )
 }
