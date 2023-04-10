@@ -13,8 +13,8 @@ const parseNumString = (value: string, decimals: boolean | undefined) => {
   }
 }
 
-const formatCurrency = (value: any) => {
-  value = value.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
+const formatCurrency = (value: string | number) => {
+  value = value.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
   return `$${value}`
 }
 
@@ -43,7 +43,7 @@ const MoneyInput = React.forwardRef(
   (props: MoneyInputProps, ref: React.ForwardedRef<HTMLInputElement>) => {
     const [value, setValue] = React.useState(
       isNumber(props.value)
-        ? formatCurrency(Number(props.value).toFixed(2))
+        ? formatCurrency((Number(props.value) / 100).toFixed(2))
         : ''
     )
 

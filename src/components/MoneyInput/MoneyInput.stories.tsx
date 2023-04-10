@@ -29,6 +29,7 @@ export const Default = Template.bind({})
 Default.args = {
   label: 'Amount',
   className: '',
+  value: 100,
   errorMessage: '',
   style: {}
 }
