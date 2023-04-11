@@ -35,7 +35,6 @@ const StateInput = React.forwardRef((props: InputProps, ref: any) => {
   }
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setErrorMessage('')
     setValue(e.target.value)
 
     props.onChange && props.onChange(e)
