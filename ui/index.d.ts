@@ -489,7 +489,7 @@ declare const PhoneInput: React.ForwardRefExoticComponent<InputProps & React.Ref
 
 declare const ZipInput: React.ForwardRefExoticComponent<InputProps & React.RefAttributes<HTMLInputElement>>;
 
-declare const StateInput: React.ForwardRefExoticComponent<InputProps & React.RefAttributes<HTMLInputElement>>;
+declare const StateInput: React.ForwardRefExoticComponent<InputProps & React.RefAttributes<unknown>>;
 
 interface DropdownProps extends InputProps {
     label: string;

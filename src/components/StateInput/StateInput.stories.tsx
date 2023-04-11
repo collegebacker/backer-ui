@@ -11,7 +11,9 @@ export default {
 } as ComponentMeta<typeof StateInput>
 
 const Template: ComponentStory<typeof StateInput> = (args) => {
+  const inputRef = React.useRef<any>(null)
   const [value, setValue] = React.useState(args.value || '')
+  const [isNextScreen, setIsNextScreen] = React.useState(false)
   const [errorMessage, setErrorMessage] = React.useState('')
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,27 +21,37 @@ const Template: ComponentStory<typeof StateInput> = (args) => {
     console.log('value', e.target.value)
   }
 
-  const handleSubmit = () => {
-    console.log('submit')
+  const handleSubmit = (e: any) => {
+    e.preventDefault()
+
+    const isValid = inputRef.current?.isValid()
+
+    console.log(isValid)
+
+    if (!isValid) {
+      console.log('error')
+      setErrorMessage('State is invalid')
+      return
+    }
+
+    console.log('next screen')
+    setIsNextScreen(true)
   }
 
-  return (
-    <div style={{ width: '300px' }}>
+  return !isNextScreen ? (
+    <form style={{ width: '300px' }}>
       <StateInput
         {...args}
+        ref={inputRef}
         onChange={handleOnChange}
         value={value}
         errorMessage={errorMessage}
       />
-      <button
-        onClick={() => {
-          console.log('updating input')
-          setValue('new value')
-        }}
-      >
-        update input
-      </button>
-      <button onClick={handleSubmit}>hadle validate</button>
+      <button onClick={handleSubmit}>Submit</button>
+    </form>
+  ) : (
+    <div>
+      <h1>This is the next screen. Which means the input is valid.</h1>
     </div>
   )
 }

@@ -10,66 +10,71 @@ const isValid = (value: string) => {
   return normalize(value, { region: 'all' }) === value
 }
 
-const StateInput = React.forwardRef(
-  (props: InputProps, ref: React.ForwardedRef<HTMLInputElement>) => {
-    const [errorMessage, setErrorMessage] = React.useState(
-      props.errorMessage || ''
-    )
-    const [value, setValue] = React.useState(props.value || '')
+const StateInput = React.forwardRef((props: InputProps, ref: any) => {
+  const [errorMessage, setErrorMessage] = React.useState(
+    props.errorMessage || ''
+  )
+  const [value, setValue] = React.useState(props.value || '')
 
-    const normalizeValue = (value: string) => {
-      const normalizedValue = abbreviateState(value)
-
-      if (!isValid(normalizedValue)) {
-        setErrorMessage('State is invalid')
-      } else {
-        setErrorMessage('')
-        return normalizedValue
-      }
+  // imperative methods
+  React.useImperativeHandle(ref, () => ({
+    isValid: () => {
+      return isValid(value)
     }
+  }))
 
-    const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const normalizeValue = (value: string) => {
+    const normalizedValue = abbreviateState(value)
+
+    if (!isValid(normalizedValue)) {
+      setErrorMessage('State is invalid')
+    } else {
       setErrorMessage('')
-      setValue(e.target.value)
-
-      props.onChange && props.onChange(e)
+      return normalizedValue
     }
-
-    const handleOnBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
-      e.target.value = normalizeValue(e.target.value) || ''
-
-      props.onChange && props.onChange(e)
-    }
-
-    React.useEffect(() => {
-      if (
-        props.value !== undefined &&
-        props.value !== value &&
-        props.value !== null
-      ) {
-        setValue(props.value)
-      }
-    }, [props.value])
-
-    React.useEffect(() => {
-      if (props.errorMessage) {
-        setErrorMessage(props.errorMessage)
-      }
-    }, [props.errorMessage])
-
-    // RENDER
-    return (
-      <Input
-        {...props}
-        value={value}
-        onChange={handleOnChange}
-        onBlur={handleOnBlur}
-        errorMessage={errorMessage}
-        ref={ref}
-      />
-    )
   }
-)
+
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setErrorMessage('')
+    setValue(e.target.value)
+
+    props.onChange && props.onChange(e)
+  }
+
+  const handleOnBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.target.value = normalizeValue(e.target.value) || ''
+
+    props.onChange && props.onChange(e)
+  }
+
+  React.useEffect(() => {
+    if (
+      props.value !== undefined &&
+      props.value !== value &&
+      props.value !== null
+    ) {
+      setValue(props.value)
+    }
+  }, [props.value])
+
+  React.useEffect(() => {
+    if (props.errorMessage) {
+      setErrorMessage(props.errorMessage)
+    }
+  }, [props.errorMessage])
+
+  // RENDER
+  return (
+    <Input
+      {...props}
+      value={value}
+      onChange={handleOnChange}
+      onBlur={handleOnBlur}
+      errorMessage={errorMessage}
+      ref={ref}
+    />
+  )
+})
 
 StateInput.displayName = 'StateInput'
 
