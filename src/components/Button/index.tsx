@@ -16,6 +16,7 @@ export interface Props {
   icon?: IconTypes
   to?: string
   href?: string
+  form?: string
   disabled?: boolean
   label?: string
   maxWidth?: number
@@ -123,6 +124,7 @@ const Button = React.forwardRef<any, Props>((props, ref) => {
           onClick={props.onClick}
           onKeyDown={props.onKeyDown}
           to={props.to}
+          disabled={props.disabled}
         >
           {buttonContent}
         </Link>
@@ -136,6 +138,8 @@ const Button = React.forwardRef<any, Props>((props, ref) => {
           onClick={props.onClick}
           onKeyDown={props.onKeyDown}
           type={props.type}
+          disabled={props.disabled}
+          form={props.form}
         >
           {buttonContent}
         </button>
@@ -143,24 +147,7 @@ const Button = React.forwardRef<any, Props>((props, ref) => {
     }
   }
 
-  return (
-    <props.tag
-      ref={ref}
-      className={classes}
-      style={style}
-      onClick={props.onClick}
-      onKeyDown={props.onKeyDown}
-      disabled={props.disabled}
-      {...conditionalProps}
-    >
-      <ButtonContent
-        label={props.label}
-        icon={props.icon}
-        busy={props.busy}
-        busyLabel={props.busyLabel}
-      />
-    </props.tag>
-  )
+  return returnShell(<ButtonContent {...props} />)
 })
 
 Button.defaultProps = {

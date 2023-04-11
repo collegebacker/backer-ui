@@ -13,6 +13,7 @@ interface Props$E {
     icon?: IconTypes;
     to?: string;
     href?: string;
+    form?: string;
     disabled?: boolean;
     label?: string;
     maxWidth?: number;
