@@ -34,7 +34,7 @@ const StateInput = React.forwardRef((props: InputProps, ref: any) => {
   }
 
   const handleOnBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.target.value = normalizeValue(e.target.value) || ''
+    e.target.value = normalizeValue(e.target.value) || e.target.value
 
     props.onChange && props.onChange(e)
   }
