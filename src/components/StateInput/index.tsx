@@ -16,13 +16,6 @@ const StateInput = React.forwardRef((props: InputProps, ref: any) => {
   )
   const [value, setValue] = React.useState(props.value || '')
 
-  // imperative methods
-  React.useImperativeHandle(ref, () => ({
-    isValid: () => {
-      return isValid(value)
-    }
-  }))
-
   const normalizeValue = (value: string) => {
     const normalizedValue = abbreviateState(value)
 
