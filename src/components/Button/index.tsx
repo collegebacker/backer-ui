@@ -14,7 +14,6 @@ export interface Props {
   target?: TargetTypes
   rel?: string
   icon?: IconTypes
-  to?: string
   href?: string
   form?: string
   disabled?: boolean
@@ -24,7 +23,7 @@ export interface Props {
   hasMinWidth?: boolean
   busy?: boolean
   busyLabel?: string
-  tag?: 'button' | 'a' | 'link'
+  tag?: 'button' | 'a'
   onClick?: (event: any) => void
   onSubmit?: (event: any) => void
   onKeyDown?: (event: any) => void
@@ -87,18 +86,6 @@ const Button = React.forwardRef<any, Props>((props, ref) => {
     ...(props.style || {})
   } as React.CSSProperties
 
-  const conditionalProps =
-    props.tag === 'a'
-      ? {
-          rel: props.rel,
-          href: props.href,
-          target: props.target,
-          onSubmit: props.onSubmit
-        }
-      : {
-          type: props.type
-        }
-
   const returnShell = (buttonContent: React.ReactNode) => {
     if (props.tag === 'a') {
       return (
@@ -115,21 +102,7 @@ const Button = React.forwardRef<any, Props>((props, ref) => {
           {buttonContent}
         </a>
       )
-    } else if (props.tag === 'link') {
-      return (
-        <Link
-          ref={ref}
-          className={classes}
-          style={style}
-          onClick={props.onClick}
-          onKeyDown={props.onKeyDown}
-          to={props.to}
-          disabled={props.disabled}
-        >
-          {buttonContent}
-        </Link>
-      )
-    } else {
+    } else if (props.tag === 'button') {
       return (
         <button
           ref={ref}
@@ -147,7 +120,14 @@ const Button = React.forwardRef<any, Props>((props, ref) => {
     }
   }
 
-  return returnShell(<ButtonContent {...props} />)
+  return returnShell(
+    <ButtonContent
+      busy={props.busy}
+      busyLabel={props.busyLabel}
+      icon={props.icon}
+      label={props.label}
+    />
+  )
 })
 
 Button.defaultProps = {

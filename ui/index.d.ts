@@ -11,7 +11,6 @@ interface Props$E {
     target?: TargetTypes;
     rel?: string;
     icon?: IconTypes;
-    to?: string;
     href?: string;
     form?: string;
     disabled?: boolean;
@@ -21,7 +20,7 @@ interface Props$E {
     hasMinWidth?: boolean;
     busy?: boolean;
     busyLabel?: string;
-    tag?: 'button' | 'a' | 'link';
+    tag?: 'button' | 'a';
     onClick?: (event: any) => void;
     onSubmit?: (event: any) => void;
     onKeyDown?: (event: any) => void;

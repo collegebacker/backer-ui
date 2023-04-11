@@ -42,7 +42,11 @@ const StateInput = React.forwardRef(
     }
 
     React.useEffect(() => {
-      if (props.value) {
+      if (
+        props.value !== undefined &&
+        props.value !== value &&
+        props.value !== null
+      ) {
         setValue(props.value)
       }
     }, [props.value])
