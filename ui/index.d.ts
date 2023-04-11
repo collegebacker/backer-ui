@@ -11,16 +11,16 @@ interface Props$E {
     target?: TargetTypes;
     rel?: string;
     icon?: IconTypes;
+    to?: string;
     href?: string;
     disabled?: boolean;
     label?: string;
     maxWidth?: number;
     minWidth?: number;
     hasMinWidth?: boolean;
-    form?: string;
     busy?: boolean;
     busyLabel?: string;
-    tag?: 'button' | 'a';
+    tag?: 'button' | 'a' | 'link';
     onClick?: (event: any) => void;
     onSubmit?: (event: any) => void;
     onKeyDown?: (event: any) => void;

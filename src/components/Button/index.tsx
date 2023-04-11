@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Icon from '../Icon'
 
 import styles from './styles.module.scss'
@@ -13,16 +14,16 @@ export interface Props {
   target?: TargetTypes
   rel?: string
   icon?: IconTypes
+  to?: string
   href?: string
   disabled?: boolean
   label?: string
   maxWidth?: number
   minWidth?: number
   hasMinWidth?: boolean
-  form?: string
   busy?: boolean
   busyLabel?: string
-  tag?: 'button' | 'a'
+  tag?: 'button' | 'a' | 'link'
   onClick?: (event: any) => void
   onSubmit?: (event: any) => void
   onKeyDown?: (event: any) => void
@@ -94,9 +95,53 @@ const Button = React.forwardRef<any, Props>((props, ref) => {
           onSubmit: props.onSubmit
         }
       : {
-          type: props.type,
-          form: props.form
+          type: props.type
         }
+
+  const returnShell = (buttonContent: React.ReactNode) => {
+    if (props.tag === 'a') {
+      return (
+        <a
+          ref={ref}
+          className={classes}
+          style={style}
+          onClick={props.onClick}
+          onKeyDown={props.onKeyDown}
+          rel={props.rel}
+          href={props.href}
+          target={props.target}
+        >
+          {buttonContent}
+        </a>
+      )
+    } else if (props.tag === 'link') {
+      return (
+        <Link
+          ref={ref}
+          className={classes}
+          style={style}
+          onClick={props.onClick}
+          onKeyDown={props.onKeyDown}
+          to={props.to}
+        >
+          {buttonContent}
+        </Link>
+      )
+    } else {
+      return (
+        <button
+          ref={ref}
+          className={classes}
+          style={style}
+          onClick={props.onClick}
+          onKeyDown={props.onKeyDown}
+          type={props.type}
+        >
+          {buttonContent}
+        </button>
+      )
+    }
+  }
 
   return (
     <props.tag
@@ -108,7 +153,12 @@ const Button = React.forwardRef<any, Props>((props, ref) => {
       disabled={props.disabled}
       {...conditionalProps}
     >
-      <ButtonContent {...props} />
+      <ButtonContent
+        label={props.label}
+        icon={props.icon}
+        busy={props.busy}
+        busyLabel={props.busyLabel}
+      />
     </props.tag>
   )
 })
