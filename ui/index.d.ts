@@ -450,6 +450,7 @@ interface Props$b {
     imageSrc?: string | undefined;
     onChange?: (imageFile: File) => void;
     onClick?: () => void;
+    noHoverEffect?: boolean;
 }
 declare const PolaroidPhoto: React.FC<Props$b>;
 

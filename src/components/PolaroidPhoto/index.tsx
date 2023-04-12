@@ -12,6 +12,7 @@ export interface Props {
   imageSrc?: string | undefined
   onChange?: (imageFile: File) => void
   onClick?: () => void
+  noHoverEffect?: boolean
 }
 
 const PolaroidPhoto: React.FC<Props> = (props) => {
@@ -32,7 +33,7 @@ const PolaroidPhoto: React.FC<Props> = (props) => {
         ref={photoRef}
         className={styles.polaroid}
         onMouseMove={(e) => {
-          if (isMobile()) return
+          if (isMobile() || props.noHoverEffect) return
 
           const elBounds = e.currentTarget.getBoundingClientRect()
           const elWidth = elBounds.width
@@ -145,7 +146,8 @@ const PolaroidPhoto: React.FC<Props> = (props) => {
 PolaroidPhoto.defaultProps = {
   className: '',
   style: {},
-  uploadMode: true
+  uploadMode: true,
+  noHoverEffect: false
 } as Partial<Props>
 
 export default PolaroidPhoto
