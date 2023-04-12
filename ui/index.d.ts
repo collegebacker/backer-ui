@@ -20,7 +20,7 @@ interface Props$E {
     hasMinWidth?: boolean;
     busy?: boolean;
     busyLabel?: string;
-    tag?: 'button' | 'a';
+    tag?: any;
     onClick?: (event: any) => void;
     onSubmit?: (event: any) => void;
     onKeyDown?: (event: any) => void;

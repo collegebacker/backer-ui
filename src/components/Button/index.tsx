@@ -23,7 +23,7 @@ export interface Props {
   hasMinWidth?: boolean
   busy?: boolean
   busyLabel?: string
-  tag?: 'button' | 'a'
+  tag?: any
   onClick?: (event: any) => void
   onSubmit?: (event: any) => void
   onKeyDown?: (event: any) => void
@@ -86,47 +86,61 @@ const Button = React.forwardRef<any, Props>((props, ref) => {
     ...(props.style || {})
   } as React.CSSProperties
 
-  const returnShell = (buttonContent: React.ReactNode) => {
-    if (props.tag === 'a') {
-      return (
-        <a
-          ref={ref}
-          className={classes}
-          style={style}
-          onClick={props.onClick}
-          onKeyDown={props.onKeyDown}
-          rel={props.rel}
-          href={props.href}
-          target={props.target}
-        >
-          {buttonContent}
-        </a>
-      )
-    } else if (props.tag === 'button') {
-      return (
-        <button
-          ref={ref}
-          className={classes}
-          style={style}
-          onClick={props.onClick}
-          onKeyDown={props.onKeyDown}
-          type={props.type}
-          disabled={props.disabled}
-          form={props.form}
-        >
-          {buttonContent}
-        </button>
-      )
-    }
-  }
+  // const returnShell = (buttonContent: React.ReactNode) => {
+  //   if (props.tag === 'a') {
+  //     return (
+  //       <a
+  //         ref={ref}
+  //         className={classes}
+  //         style={style}
+  //         onClick={props.onClick}
+  //         onKeyDown={props.onKeyDown}
+  //         rel={props.rel}
+  //         href={props.href}
+  //         target={props.target}
+  //       >
+  //         {buttonContent}
+  //       </a>
+  //     )
+  //   } else if (props.tag === 'button') {
+  //     return (
+  //       <button
+  //         ref={ref}
+  //         className={classes}
+  //         style={style}
+  //         onClick={props.onClick}
+  //         onKeyDown={props.onKeyDown}
+  //         type={props.type}
+  //         disabled={props.disabled}
+  //         form={props.form}
+  //       >
+  //         {buttonContent}
+  //       </button>
+  //     )
+  //   }
+  // }
 
-  return returnShell(
-    <ButtonContent
-      busy={props.busy}
-      busyLabel={props.busyLabel}
-      icon={props.icon}
-      label={props.label}
-    />
+  return (
+    <props.tag
+      ref={ref}
+      className={classes}
+      style={style}
+      onClick={props.onClick}
+      onKeyDown={props.onKeyDown}
+      rel={props.rel}
+      href={props.href}
+      target={props.target}
+      type={props.type}
+      disabled={props.disabled}
+      form={props.form}
+    >
+      <ButtonContent
+        label={props.label}
+        icon={props.icon}
+        busy={props.busy}
+        busyLabel={props.busyLabel}
+      />
+    </props.tag>
   )
 })
 
@@ -135,13 +149,6 @@ Button.defaultProps = {
   mode: 'primary',
   size: 'default',
   tag: 'button',
-  busy: false,
-  type: 'button',
-  href: '#',
-  target: '_self',
-  rel: '',
-  busyLabel: '',
-  disabled: false,
   label: 'Button',
   hasMinWidth: true
 } as Partial<Props>
