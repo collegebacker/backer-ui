@@ -33,7 +33,7 @@ const WarnMesssage: React.FC<Props> = (props) => {
     >
       {props.emoji && <span className={styles.emoji}>{props.emoji}</span>}
 
-      {props.icon && <Icon name={props.icon} />}
+      {props.icon && <Icon className={styles.icon} name={props.icon} />}
 
       {props.labelTag && <LabelTag {...props.labelTag} />}
 

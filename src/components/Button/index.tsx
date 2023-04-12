@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import Icon from '../Icon'
 
 import styles from './styles.module.scss'
@@ -23,7 +22,7 @@ export interface Props {
   hasMinWidth?: boolean
   busy?: boolean
   busyLabel?: string
-  tag?: any
+  tag?: 'button' | 'a'
   onClick?: (event: any) => void
   onSubmit?: (event: any) => void
   onKeyDown?: (event: any) => void
@@ -85,40 +84,6 @@ const Button = React.forwardRef<any, Props>((props, ref) => {
     ...(props.busy ? { pointerEvents: 'none' } : {}),
     ...(props.style || {})
   } as React.CSSProperties
-
-  // const returnShell = (buttonContent: React.ReactNode) => {
-  //   if (props.tag === 'a') {
-  //     return (
-  //       <a
-  //         ref={ref}
-  //         className={classes}
-  //         style={style}
-  //         onClick={props.onClick}
-  //         onKeyDown={props.onKeyDown}
-  //         rel={props.rel}
-  //         href={props.href}
-  //         target={props.target}
-  //       >
-  //         {buttonContent}
-  //       </a>
-  //     )
-  //   } else if (props.tag === 'button') {
-  //     return (
-  //       <button
-  //         ref={ref}
-  //         className={classes}
-  //         style={style}
-  //         onClick={props.onClick}
-  //         onKeyDown={props.onKeyDown}
-  //         type={props.type}
-  //         disabled={props.disabled}
-  //         form={props.form}
-  //       >
-  //         {buttonContent}
-  //       </button>
-  //     )
-  //   }
-  // }
 
   return (
     <props.tag

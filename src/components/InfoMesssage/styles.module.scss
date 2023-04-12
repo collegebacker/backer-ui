@@ -19,8 +19,17 @@
   width: 100%;
 }
 
+.title {
+  word-break: break-word;
+}
+
 .caption {
   color: var(--color-main-200);
+  word-break: break-word;
+}
+
+.icon {
+  flex-shrink: 0;
 }
 
 .emoji {
