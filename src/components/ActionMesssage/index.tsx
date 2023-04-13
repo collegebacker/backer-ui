@@ -53,9 +53,6 @@ const ActionMesssage: React.FC<Props> = (props) => {
 ActionMesssage.defaultProps = {
   className: '',
   mode: 'outline',
-  title: "Hi! I'm the info message. I show you things you need to know.",
-  caption:
-    'This is a caption. You can use it to explain more about the message.',
   tabIndex: 0,
   undertitleContentClassName: ''
 } as Partial<Props>

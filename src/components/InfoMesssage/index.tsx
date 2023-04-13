@@ -66,9 +66,6 @@ WarnMesssage.defaultProps = {
   className: '',
   orientation: 'left',
   mode: 'outline',
-  title: "Hi! I'm the info message. I show you things you need to know.",
-  caption:
-    'This is a caption. You can use it to explain more about the message.',
   undertitleContentClassName: ''
 } as Partial<Props>
 
