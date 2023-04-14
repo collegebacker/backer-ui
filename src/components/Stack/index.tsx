@@ -1,49 +1,27 @@
 import React from 'react'
 import styles from './styles.module.scss'
 
-export interface Props {
-  className?: string
-  style?: React.CSSProperties
+export interface Props extends React.HTMLAttributes<HTMLElement> {
   direction?: 'row' | 'column'
   spacing?: 5 | 10 | 15 | 20 | 25 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100
   children: React.ReactNode
-  as?:
-    | 'div'
-    | 'section'
-    | 'article'
-    | 'main'
-    | 'aside'
-    | 'header'
-    | 'footer'
-    | 'nav'
-    | 'p'
-    | 'ul'
-    | 'ol'
-    | 'li'
-    | 'button'
-    | 'thead'
-    | 'tbody'
-    | 'tfoot'
-    | 'col'
-    | 'colgroup'
-    | 'form'
-    | 'label'
-    | 'input'
-    | 'textarea'
 }
 
 const Stack: React.FC<Props> = (props) => {
+  const { direction, spacing, children, className, ...rest } = props
+
   return (
-    <props.as
-      className={`${styles.wrap} ${props.className}`}
+    <div
+      {...rest}
+      className={`${styles.wrap} ${className}`}
       style={{
         ...props.style,
-        flexDirection: props.direction,
-        gap: `${props.spacing}px`
+        flexDirection: direction,
+        gap: `${spacing}px`
       }}
     >
-      {props.children}
-    </props.as>
+      {children}
+    </div>
   )
 }
 
