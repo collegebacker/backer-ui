@@ -2,35 +2,46 @@ import React from 'react'
 import styles from './styles.module.scss'
 
 export interface Props extends React.HTMLAttributes<HTMLElement> {
+  as?:
+    | 'section'
+    | 'div'
+    | 'article'
+    | 'main'
+    | 'aside'
+    | 'header'
+    | 'footer'
+    | 'nav'
+    | 'ul'
+    | 'ol'
+    | 'form'
+    | 'label'
+    | 'fieldset'
   direction?: 'row' | 'column'
   spacing?: 5 | 10 | 15 | 20 | 25 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100
   children: React.ReactNode
 }
 
-const Stack: React.FC<Props> = (props) => {
-  const { direction, spacing, children, className, ...rest } = props
-
+const Stack: React.FC<Props> = ({
+  as: Element = 'section',
+  direction = 'column',
+  spacing = 15,
+  children,
+  className,
+  ...rest
+}) => {
   return (
-    <div
+    <Element
       {...rest}
       className={`${styles.wrap} ${className}`}
       style={{
-        ...props.style,
+        ...rest.style,
         flexDirection: direction,
         gap: `${spacing}px`
       }}
     >
       {children}
-    </div>
+    </Element>
   )
 }
-
-Stack.defaultProps = {
-  className: '',
-  styles: {},
-  direction: 'column',
-  spacing: 15,
-  as: 'section'
-} as Partial<Props>
 
 export default Stack
