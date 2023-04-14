@@ -113,6 +113,7 @@ Button.defaultProps = {
   className: '',
   mode: 'primary',
   size: 'default',
+  type: 'button',
   tag: 'button',
   label: 'Button',
   hasMinWidth: true
