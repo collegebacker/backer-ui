@@ -54,6 +54,9 @@ declare global {
     | 'protection'
     | 'font'
     | 'balance'
+    | 'magnifier'
+    | 'sandwatch'
+    | 'internet'
 
   type TargetTypes = '_blank' | '_self' | '_parent' | '_top'
 

@@ -51,6 +51,7 @@ export { default as SignaturePad } from './SignaturePad'
 export { default as SwitchSelector } from './SwitchSelector'
 export { default as SelectModal } from './SelectModal'
 export { default as Stack } from './Stack'
+export { default as Searchbar } from './Searchbar'
 
 // SKELETON
 export {

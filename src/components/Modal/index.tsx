@@ -63,7 +63,7 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
       console.log('close click')
       setIsOpen(false)
 
-      props.onCloseClick()
+      props.onCloseClick && props.onCloseClick()
     }
   }
 
@@ -212,9 +212,7 @@ Modal.defaultProps = {
   isBottomSheet: false,
   closeOnClickOutside: true,
   dataAttrs: {},
-  isOpen: false,
-  onCloseClick: () => {},
-  onBackClick: () => {}
+  isOpen: false
 } as Partial<Props>
 
 export default Modal
