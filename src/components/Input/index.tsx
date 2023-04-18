@@ -84,6 +84,7 @@ const Input = React.forwardRef(
         } ${props.errorMessage ? styles.shake : ''} ${
           props.disabled ? styles.disabled : ''
         }`}
+        data-error={props.errorMessage ? 'true' : 'false'}
         style={props.style}
       >
         <div
