@@ -6,6 +6,7 @@ import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin'
 import { gsap } from 'gsap'
 import { waitForScrollEnd } from '../../utils'
 import { useDidMountEffect, usePrevious } from '../../hooks'
+import { joinClasses } from '../../utils'
 
 import styles from './styles.module.scss'
 
@@ -391,7 +392,10 @@ const ChipsSlider: React.FC<Props> = (props) => {
   //
   return (
     <div
-      className={`${styles.sliderContainer} ${props.containerClassName}`}
+      className={joinClasses([
+        styles.sliderContainer,
+        props.containerClassName
+      ])}
       ref={sliderContainerRef}
       tabIndex={0}
       onFocus={() => {
@@ -434,7 +438,11 @@ const ChipsSlider: React.FC<Props> = (props) => {
         <>
           <ArrowButton
             ref={arrowLeftRef}
-            className={`${styles.arrowLeft} ${styles.arrowButton} ${props.arrowsClassName}`}
+            className={joinClasses([
+              styles.arrowLeft,
+              styles.arrowButton,
+              props.arrowsClassName
+            ])}
             direction='left'
             onMouseUp={goPreviousCard}
             disabled={activeIndex === 0}
@@ -444,7 +452,11 @@ const ChipsSlider: React.FC<Props> = (props) => {
           />
           <ArrowButton
             ref={arrowRightRef}
-            className={`${styles.rightArrow} ${styles.arrowButton} ${props.arrowsClassName}`}
+            className={joinClasses([
+              styles.rightArrow,
+              styles.arrowButton,
+              props.arrowsClassName
+            ])}
             direction='right'
             onMouseUp={goToNextCard}
             disabled={activeIndex === props.items.length - 1}
@@ -454,15 +466,21 @@ const ChipsSlider: React.FC<Props> = (props) => {
           />
         </>
       )}
-      <div className={`${styles.sliderWrap}`} ref={sliderViewRef}>
+      <div className={styles.sliderWrap} ref={sliderViewRef}>
         {!props.hideOverlayGradients ? (
           <>
             <div
-              className={`${styles.leftGradient} ${props.overlayGradientsClassName}`}
+              className={joinClasses([
+                styles.leftGradient,
+                props.overlayGradientsClassName
+              ])}
               ref={overlayGradientLeftRef}
             />
             <div
-              className={`${styles.rightGradient} ${props.overlayGradientsClassName}`}
+              className={joinClasses([
+                styles.rightGradient,
+                props.overlayGradientsClassName
+              ])}
               ref={overlayGradientRightRef}
             />
           </>
@@ -531,7 +549,7 @@ const ChipsSlider: React.FC<Props> = (props) => {
               return (
                 <div
                   key={index}
-                  className={`${styles.itemWrap}`}
+                  className={styles.itemWrap}
                   ref={(el) => (sliderItemWrapRefs.current[index] = el)}
                   style={{
                     height: `${props.cardHeight + props.spaceBetween}px`,
@@ -540,7 +558,7 @@ const ChipsSlider: React.FC<Props> = (props) => {
                 >
                   <div
                     data-index={index}
-                    className={`${styles.item}`}
+                    className={styles.item}
                     ref={(el) => (sliderItemRefs.current[index] = el)}
                     onClick={() => handleCardClick(index)}
                     style={{

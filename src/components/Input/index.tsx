@@ -1,5 +1,6 @@
 import React from 'react'
 import Icon from '../Icon'
+import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
 import { CleaveOptions } from 'cleave.js/options'
@@ -44,11 +45,11 @@ export interface InputProps {
 const Input = React.forwardRef(
   (props: InputProps, ref: React.ForwardedRef<HTMLInputElement>) => {
     const inputArgs = {
-      className: `${styles.input} ${
-        props.hideSpinButton ? styles.hideSpinButton : ''
-      }
-    ${props.readOnly ? '' : styles.mouseStates}
-    `,
+      className: joinClasses([
+        styles.input,
+        props.hideSpinButton ? styles.hideSpinButton : '',
+        props.readOnly ? '' : styles.mouseStates
+      ]),
       style: {
         cursor: props.cursor
       },
@@ -79,15 +80,17 @@ const Input = React.forwardRef(
 
     return (
       <div
-        className={`${styles.componentWrap} ${props.className} ${
-          props.errorMessage ? styles.error : ''
-        } ${props.errorMessage ? styles.shake : ''} ${
+        className={joinClasses([
+          styles.componentWrap,
+          props.className,
+          props.errorMessage ? styles.error : '',
+          props.errorMessage ? styles.shake : '',
           props.disabled ? styles.disabled : ''
-        }`}
+        ])}
         style={props.style}
       >
         <div
-          className={`${styles.inputWrap}`}
+          className={styles.inputWrap}
           style={{
             height: props.label !== '' ? '68px' : '40px'
           }}
@@ -133,7 +136,12 @@ const Input = React.forwardRef(
         </div>
 
         {(props.helperText || props.errorMessage) && (
-          <span className={`typo-app-body-caption ${styles.helperText}`}>
+          <span
+            className={joinClasses([
+              'typo-app-body-caption',
+              styles.helperText
+            ])}
+          >
             {props.errorMessage ? props.errorMessage : props.helperText}
           </span>
         )}

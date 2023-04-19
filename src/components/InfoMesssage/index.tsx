@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './styles.module.scss'
-
+import { joinClasses } from '../../utils'
 import { LabelTagProps } from '../LabelTag'
 import LabelTag from '../LabelTag'
 import Icon from '../Icon'
@@ -23,7 +23,11 @@ export interface Props {
 const WarnMesssage: React.FC<Props> = (props) => {
   return (
     <section
-      className={`${styles.wrap} ${props.className} ${styles[props.mode]}`}
+      className={joinClasses([
+        styles.wrap,
+        props.className,
+        styles[props.mode]
+      ])}
       style={{
         flexDirection: props.orientation === 'left' ? 'row' : 'row-reverse',
         cursor: props.onClick ? 'pointer' : 'default'
@@ -46,7 +50,10 @@ const WarnMesssage: React.FC<Props> = (props) => {
 
         {props.undertitleContent && (
           <div
-            className={`${styles.undertitleContent} ${props.undertitleContentClassName}`}
+            className={joinClasses([
+              styles.undertitleContent,
+              props.undertitleContentClassName
+            ])}
           >
             {props.undertitleContent}
           </div>

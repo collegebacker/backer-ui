@@ -1,4 +1,5 @@
 import React from 'react'
+import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
 export interface Props extends React.HTMLAttributes<HTMLElement> {
@@ -32,7 +33,7 @@ const Stack: React.FC<Props> = ({
   return (
     <Element
       {...rest}
-      className={`${styles.wrap} ${className}`}
+      className={joinClasses([styles.wrap, className])}
       style={{
         ...rest.style,
         flexDirection: direction,

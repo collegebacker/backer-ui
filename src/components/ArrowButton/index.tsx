@@ -1,21 +1,22 @@
-import React from "react";
-import styles from "./styles.module.scss";
+import React from 'react'
+import { joinClasses } from '../../utils'
+import styles from './styles.module.scss'
 
 /////////////////////////////////
 //////// TYPES AND PROPS ////////
 /////////////////////////////////
 
 export interface Props {
-  tabIndex?: number;
-  className?: string;
-  disabled?: boolean;
-  direction?: "left" | "right";
-  style?: React.CSSProperties;
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  onMouseDown?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  onMouseUp?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  onKeyDown?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
-  onKeyUp?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
+  tabIndex?: number
+  className?: string
+  disabled?: boolean
+  direction?: 'left' | 'right'
+  style?: React.CSSProperties
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  onMouseDown?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  onMouseUp?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  onKeyDown?: (event: React.KeyboardEvent<HTMLButtonElement>) => void
+  onKeyUp?: (event: React.KeyboardEvent<HTMLButtonElement>) => void
 }
 
 const ArrowButton = React.forwardRef<any, Props>((props, ref) => {
@@ -23,11 +24,11 @@ const ArrowButton = React.forwardRef<any, Props>((props, ref) => {
     <button
       tabIndex={props.tabIndex}
       ref={ref}
-      className={`${styles.arrowButton} ${props.className}`}
+      className={joinClasses([styles.arrowButton, props.className])}
       style={{
         transform:
-          props.direction === "left" ? "rotate(0deg)" : "rotate(180deg)",
-        ...props.style,
+          props.direction === 'left' ? 'rotate(0deg)' : 'rotate(180deg)',
+        ...props.style
       }}
       disabled={props.disabled}
       onClick={props.onClick}
@@ -35,28 +36,28 @@ const ArrowButton = React.forwardRef<any, Props>((props, ref) => {
       onMouseDown={props.onMouseDown}
       onKeyDown={props.onKeyDown}
       onKeyUp={props.onKeyUp}
-      type="button"
+      type='button'
     >
       <svg
-        width="8"
-        height="12"
-        viewBox="0 0 8 12"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
+        width='8'
+        height='12'
+        viewBox='0 0 8 12'
+        fill='none'
+        xmlns='http://www.w3.org/2000/svg'
       >
-        <path d="M7.12901 11.5292L1.59982 6L7.12901 0.47081" />
+        <path d='M7.12901 11.5292L1.59982 6L7.12901 0.47081' />
       </svg>
     </button>
-  );
-});
+  )
+})
 
-ArrowButton.displayName = "ArrowButton";
+ArrowButton.displayName = 'ArrowButton'
 
 ArrowButton.defaultProps = {
-  className: "",
+  className: '',
   disabled: false,
-  direction: "left",
-  style: {},
-} as Partial<Props>;
+  direction: 'left',
+  style: {}
+} as Partial<Props>
 
-export default ArrowButton;
+export default ArrowButton

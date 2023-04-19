@@ -1,4 +1,5 @@
 import React from 'react'
+import { joinClasses } from '../../../utils'
 import styles from './styles.module.scss'
 
 import Button from '../../Button'
@@ -59,9 +60,10 @@ const ToastItem: React.FC<ItemProps> = (props) => {
 
   return isMount ? (
     <section
-      className={`${styles.toastItemWrap} ${
+      className={joinClasses([
+        styles.toastItemWrap,
         isCloseTrigger ? styles.toastOut : styles.toastIn
-      }`}
+      ])}
       onClick={handleCloseOnParentClick}
       onAnimationEnd={() => {
         if (isCloseTrigger) {
@@ -69,7 +71,9 @@ const ToastItem: React.FC<ItemProps> = (props) => {
         }
       }}
     >
-      <div className={`${styles.toastItem} ${styles[props.params?.type]}`}>
+      <div
+        className={joinClasses([styles.toastItem, styles[props.params?.type]])}
+      >
         {props.params?.emoji !== '' || props.params?.type !== 'info' ? (
           <div className={styles.emoji}>{addEmoji()}</div>
         ) : null}

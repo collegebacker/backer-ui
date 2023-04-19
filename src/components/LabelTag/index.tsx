@@ -1,4 +1,5 @@
 import React from 'react'
+import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 import Icon from '../Icon'
 
@@ -23,18 +24,22 @@ export interface LabelTagProps {
 const LabelTag: React.FC<LabelTagProps> = (props) => {
   return (
     <div
-      className={`${styles.wrap} ${styles[`${props.size}Size`]}
-      ${styles[`${props.color}${props.outline ? `-outline` : ''}`]} ${
-        props.className
-      } ${props.widthLock ? styles[`${props.size}SizeLockWidth`] : ''}`}
+      className={joinClasses([
+        styles.wrap,
+        styles[`${props.size}Size`],
+        styles[`${props.color}${props.outline ? `-outline` : ''}`],
+        props.className,
+        props.widthLock ? styles[`${props.size}SizeLockWidth`] : ''
+      ])}
       style={props.style}
     >
       <span
-        className={`${
+        className={joinClasses([
           props.size === 'large'
             ? 'typo-app-body-main'
-            : 'typo-app-body-caption'
-        } ${styles.label}`}
+            : 'typo-app-body-caption',
+          styles.label
+        ])}
       >
         {props.label}
       </span>

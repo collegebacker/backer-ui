@@ -1,4 +1,5 @@
 import React from 'react'
+import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
 import PillButton from '../PillButton'
@@ -26,7 +27,7 @@ const SwitchSelector: React.FC<Props> = (props) => {
   }
 
   return (
-    <section className={`${styles.wrap} ${props.className}`}>
+    <section className={joinClasses([styles.wrap, props.className])}>
       {(props.options || []).map((option, index) => (
         <PillButton
           key={index}

@@ -1,6 +1,7 @@
 import React from 'react'
 import FocusTrap from 'focus-trap-react'
 import { createPortal } from 'react-dom'
+import { joinClasses } from '../../utils'
 
 import { useClickOutside, useDidMountEffect } from '../../hooks'
 
@@ -161,14 +162,17 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
           aria-modal
           aria-hidden={false}
           ref={modalWrapRef}
-          className={`${styles.modalWrap}`}
+          className={styles.modalWrap}
           {...props.dataAttrs}
         >
           <section
             ref={modalRef}
-            className={`${styles.modal} ${
-              !props.isBottomSheet ? styles.popup : styles.bottomsheet
-            } ${modalAnimationClass} ${props.className}`}
+            className={joinClasses([
+              styles.modal,
+              !props.isBottomSheet ? styles.popup : styles.bottomsheet,
+              modalAnimationClass,
+              props.className
+            ])}
             style={props.style}
           >
             {props.showBackButton && (
@@ -186,7 +190,10 @@ const Modal = React.forwardRef<any, Props>((props, ref) => {
 
             <div
               tabIndex={0}
-              className={`${styles.contentWrapper} ${props.contentClassName}`}
+              className={joinClasses([
+                styles.contentWrapper,
+                props.contentClassName
+              ])}
             >
               {props.children}
             </div>

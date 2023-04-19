@@ -1,4 +1,5 @@
 import React from 'react'
+import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
 export interface Props {
@@ -36,7 +37,7 @@ const ModalHeaderActions: React.FC<Props> = (props) => {
 
   return (
     <section
-      className={`${styles.wrap} ${props.className}`}
+      className={joinClasses([styles.wrap, props.className])}
       style={{
         justifyContent:
           buttonProps.saveButton.show && buttonProps.cancelButton.show

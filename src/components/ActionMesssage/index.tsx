@@ -1,4 +1,5 @@
 import React from 'react'
+import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
 import Icon from '../Icon'
@@ -17,9 +18,12 @@ export interface Props {
 const ActionMesssage: React.FC<Props> = (props) => {
   return (
     <section
-      className={`${styles.wrap} ${props.className} ${styles[props.mode]} ${
+      className={joinClasses([
+        styles.wrap,
+        props.className,
+        styles[props.mode],
         props.onClick ? styles.clickable : ''
-      }`}
+      ])}
       onClick={props.onClick}
       tabIndex={props.tabIndex}
     >
@@ -32,7 +36,10 @@ const ActionMesssage: React.FC<Props> = (props) => {
 
         {props.undertitleContent && (
           <div
-            className={`${styles.undertitleContent} ${props.undertitleContentClassName}`}
+            className={joinClasses([
+              styles.undertitleContent,
+              props.undertitleContentClassName
+            ])}
           >
             {props.undertitleContent}
           </div>

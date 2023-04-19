@@ -1,4 +1,5 @@
 import React from 'react'
+import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
 export interface Props {
@@ -26,11 +27,13 @@ const Checkbox: React.FC<Props> = (props) => {
   return (
     <label
       htmlFor={props.id}
-      className={`${styles.label} ${props.disabled ? styles.disabled : ''} ${
+      className={joinClasses([
+        styles.label,
+        props.disabled ? styles.disabled : '',
         props.className
-      }`}
+      ])}
     >
-      <span className={`${styles.wrap}`}>
+      <span className={styles.wrap}>
         <input
           id={props.id}
           name={props.name}

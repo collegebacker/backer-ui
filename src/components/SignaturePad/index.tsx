@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './styles.module.scss'
-
+import { joinClasses } from '../../utils'
 import trimCanvas from 'trim-canvas-blank'
 import SignatureCanvas from 'react-signature-canvas'
 import Icon from '../Icon'
@@ -22,7 +22,7 @@ const Button: React.FC<{
 }> = (props) => {
   return (
     <button
-      className={`${styles.button} ${props.className}`}
+      className={joinClasses([styles.button, props.className])}
       onClick={props.onClick}
       type='button'
     >
@@ -215,7 +215,7 @@ const SignaturePad = React.forwardRef<any, Props>((props, ref) => {
 
   return (
     <section
-      className={`${styles.wrap} ${props.className}`}
+      className={joinClasses([styles.wrap, props.className])}
       style={props.style}
     >
       <SelectModal
@@ -248,7 +248,10 @@ const SignaturePad = React.forwardRef<any, Props>((props, ref) => {
       />
 
       <div
-        className={`${styles.signaturePadWrap} ${isError ? styles.error : ''}`}
+        className={joinClasses([
+          styles.signaturePadWrap,
+          isError ? styles.error : ''
+        ])}
         ref={padWrapRef}
       >
         <SignatureCanvas
@@ -257,9 +260,10 @@ const SignaturePad = React.forwardRef<any, Props>((props, ref) => {
           canvasProps={{
             width: padWrapFrameSize.width > 450 ? 450 : padWrapFrameSize.width,
             height: padWrapFrameSize.height,
-            className: `${styles.signatureCanvas} ${
+            className: joinClasses([
+              styles.signatureCanvas,
               currentTab === 0 ? '' : styles.hide
-            }`
+            ])
           }}
           onBegin={() => {
             props.onStartInteract && props.onStartInteract()
@@ -277,9 +281,11 @@ const SignaturePad = React.forwardRef<any, Props>((props, ref) => {
         />
 
         <input
-          className={`${styles.signatureInput} ${styles[selectedFont]} ${
+          className={joinClasses([
+            styles.signatureInput,
+            styles[selectedFont],
             currentTab === 1 ? '' : styles.hide
-          }`}
+          ])}
           ref={inputRef}
           type='text'
           style={{

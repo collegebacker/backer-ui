@@ -1,4 +1,5 @@
 import React from 'react'
+import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 import Icon from '../Icon'
 
@@ -23,11 +24,12 @@ const Checkmark: React.FC<Props> = (props) => {
 
   return (
     <div
-      className={`${styles.wrap} ${checked ? styles.checked : ''} ${
-        props.className
-      }
-      ${props.visibleOutline ? styles.visibleOutline : ''}
-      `}
+      className={joinClasses([
+        styles.wrap,
+        checked ? styles.checked : '',
+        props.className,
+        props.visibleOutline ? styles.visibleOutline : ''
+      ])}
       style={props.style}
     >
       <Icon className={styles.tickIcon} name='tickmark' />

@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './styles.module.scss'
+import { joinClasses } from '../../utils'
 import Icon from '../Icon'
 
 export interface Props {
@@ -24,46 +25,61 @@ export interface Props {
 const ListItem: React.FC<Props> = (props) => {
   return (
     <li
-      // prettier-ignore
-      className={`${styles.wrap} ${props.className} ${props.divider ? styles.divider : ''} ${props.disabled ? styles.disabled : ''} ${props.onClick ? styles.clickable : ''}`}
+      className={joinClasses([
+        styles.wrap,
+        props.className,
+        props.divider && styles.divider,
+        props.disabled && styles.disabled,
+        props.onClick && styles.clickable
+      ])}
       style={props.style}
       onClick={props.onClick}
       tabIndex={props.onClick ? 0 : -1}
     >
       {props.leftContent && (
-        <div className={`${styles.leftContent} ${props.leftContentClassName}`}>
+        <div
+          className={joinClasses([
+            styles.leftContent,
+            props.leftContentClassName
+          ])}
+        >
           {props.leftContent}
         </div>
       )}
 
-      <div className={`${styles.middleContent}`}>
+      <div className={styles.middleContent}>
         {props.topLabel && (
-          <span className={`typo-app-body-caption ${styles.caption}`}>
+          <span
+            className={joinClasses(['typo-app-body-caption', styles.caption])}
+          >
             {props.topLabel}
           </span>
         )}
 
         {props.titleLarge && (
-          <h4 className={`typo-app-title-small ${styles.title}`}>
+          <h4 className={joinClasses(['typo-app-title-small', styles.title])}>
             {props.titleLarge}
           </h4>
         )}
 
         {props.title && (
-          <h4 className={`typo-app-body-main ${styles.title}`}>
+          <h4 className={joinClasses(['typo-app-body-main', styles.title])}>
             {props.title}
           </h4>
         )}
 
         {props.description && (
-          <p className={`typo-app-body-caption ${styles.caption}`}>
+          <p className={joinClasses(['typo-app-body-caption', styles.caption])}>
             {props.description}
           </p>
         )}
 
         {props.middleContent && (
           <div
-            className={`${styles.middleContent} ${props.middleContentClassName}`}
+            className={joinClasses([
+              styles.middleContent,
+              props.middleContentClassName
+            ])}
           >
             {props.middleContent}
           </div>
@@ -71,10 +87,13 @@ const ListItem: React.FC<Props> = (props) => {
       </div>
 
       {props.rightContent || (props.onClick && props.chevron) ? (
-        <div className={`${styles.rightContent}`}>
+        <div className={styles.rightContent}>
           {props.rightContent && (
             <div
-              className={`${styles.rightContent} ${props.rightContentClassName}`}
+              className={joinClasses([
+                styles.rightContent,
+                props.rightContentClassName
+              ])}
             >
               {props.rightContent}
             </div>

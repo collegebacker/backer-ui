@@ -1,4 +1,5 @@
 import React from 'react'
+import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
 export interface Props {
@@ -7,10 +8,10 @@ export interface Props {
   onClick: () => void
 }
 
-const BackButton: React.FC<Props> = props => {
+const BackButton: React.FC<Props> = (props) => {
   return (
     <button
-      className={`${styles.closeButton} ${props.className}`}
+      className={joinClasses([styles.backButton, props.className])}
       onClick={props.onClick}
       style={props.style}
     >

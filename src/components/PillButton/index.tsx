@@ -1,7 +1,7 @@
 import React from 'react'
 import Icon from '../Icon'
 import PaymentLogo from '../PaymentLogo'
-
+import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
 export interface Props {
@@ -32,9 +32,7 @@ const ButtonContent = ({ ...props }: Props) => {
 
   return (
     <>
-      {props.label ? (
-        <span className={`${styles.text}`}>{props.label}</span>
-      ) : null}
+      {props.label ? <span className={styles.text}>{props.label}</span> : null}
 
       {props.icon && (
         <Icon name={props.icon} className={styles.icon} style={iconStyles} />
@@ -52,9 +50,11 @@ const ButtonContent = ({ ...props }: Props) => {
 }
 
 const PillButton = React.forwardRef<any, Props>((props, ref) => {
-  const classes = `${props.className} ${styles.button} ${
+  const classes = joinClasses([
+    props.className,
+    styles.button,
     props.isActive ? styles.active : ''
-  }`
+  ])
 
   const style = {
     ...(props.style || {})

@@ -1,4 +1,5 @@
 import React from 'react'
+import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
 import icons from './icons.json'
@@ -14,7 +15,7 @@ export interface Props {
 const Icon: React.FC<Props> = (props) => {
   return (
     <i
-      className={`${styles.icon} ${props.className}`}
+      className={joinClasses([styles.icon, props.className])}
       style={{ ...props.style }}
       onClick={props.onClick}
     >

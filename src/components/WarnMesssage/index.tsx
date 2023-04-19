@@ -1,4 +1,5 @@
 import React from 'react'
+import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
 export interface Props {
@@ -58,9 +59,11 @@ const WarnMesssage: React.FC<Props> = (props) => {
   return (
     !!props.text && (
       <section
-        className={`${styles.wrap} ${
-          styles[`${props.outline ? `${props.type}-outline` : props.type}`]
-        } ${props.className}`}
+        className={joinClasses([
+          styles.wrap,
+          styles[`${props.outline ? `${props.type}-outline` : props.type}`],
+          props.className
+        ])}
         style={{
           cursor: props.onClick ? 'pointer' : 'default'
         }}
