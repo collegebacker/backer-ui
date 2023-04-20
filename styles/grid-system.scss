@@ -9,18 +9,18 @@ $grid-gutter: 20px;
   display: grid;
   grid-template-columns: repeat(12, $grid-column-width);
   grid-gap: $grid-gutter;
-  padding: 0 50px;
+  padding: 0 $grid-desktop-padding;
   margin: 0 auto;
   max-width: $grid-desktop-breakpoint;
   width: 100%;
 
   @media only screen and (max-width: $grid-tablet-breakpoint) {
-    padding: 0 40px;
+    padding: 0 $grid-tablet-padding;
   }
 
   @media only screen and (max-width: $grid-mobile-breakpoint) {
     grid-template-columns: repeat($grid-mobile-columns, $grid-column-width);
-    padding: 0 20px;
+    padding: 0 $grid-mobile-padding;
     max-width: $grid-mobile-breakpoint;
   }
 }

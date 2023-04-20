@@ -320,7 +320,7 @@ $btns-offset: 30px;
 $btns-offset-mobile: 14px;
 
 .backButton {
-  position: absolute !important;
+  position: absolute;
   top: $btns-offset;
   left: $btns-offset;
 
@@ -331,7 +331,7 @@ $btns-offset-mobile: 14px;
 }
 
 .closeButton {
-  position: absolute !important;
+  position: absolute;
   top: $btns-offset;
   right: $btns-offset;
 

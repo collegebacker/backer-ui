@@ -15,5 +15,26 @@ const Template: ComponentStory<typeof Navbar> = (args) => <Navbar {...args} />
 export const Default = Template.bind({})
 Default.args = {
   className: '',
-  style: {}
+  style: {},
+  backButton: {
+    label: 'Back',
+    onClick: () => {
+      console.log('Back')
+    }
+  },
+  buttons: [
+    {
+      label: 'Button',
+      icon: 'alert',
+      onClick: () => {
+        console.log('Button')
+      }
+    },
+    {
+      icon: 'analytics',
+      onClick: () => {
+        console.log('Button')
+      }
+    }
+  ]
 }

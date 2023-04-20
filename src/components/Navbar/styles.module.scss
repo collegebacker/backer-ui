@@ -1,45 +1,96 @@
-.arrowButton {
-  cursor: pointer;
+@import './../../../tokens/_grids.scss';
+@import './../../../styles/mixins.scss';
 
+.wrap {
+  position: relative;
   display: flex;
-  justify-content: center;
   align-items: center;
+  height: 110px;
+  background-color: rgba(0, 0, 0, 0.1);
 
-  width: 30px;
-  height: 30px;
-  outline: none;
-  border-radius: 100px;
-  border: 1px solid var(--color-main-500);
-  background: none;
+  @media only screen and (max-width: $grid-mobile-breakpoint) {
+    height: 60px;
+  }
+}
 
-  transition: border 0.2s ease, opacity 0.2s ease;
+.logo {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  position: absolute;
+  height: 32px;
+  left: $grid-desktop-padding;
 
-  svg {
-    stroke: var(--color-main-500);
-    transition: transform 0.2s ease;
+  @media only screen and (max-width: $grid-tablet-breakpoint) {
+    left: $grid-tablet-padding;
   }
 
-  &:hover {
-    outline: none;
-    border: 1px solid var(--color-main-200);
+  @media only screen and (max-width: $grid-mobile-breakpoint) {
+    left: $grid-mobile-padding;
+  }
+}
 
-    svg {
-      transform: translateX(-2px);
+.backButton {
+  transform: translateX(-8px);
+}
+
+.logoSign {
+  width: 32px;
+  height: 32px;
+}
+
+.logoText {
+  height: 24px;
+
+  @media only screen and (max-width: $grid-mobile-breakpoint) {
+    display: none;
+  }
+}
+
+.hideLogoOnShrink {
+  @media only screen and (max-width: $grid-tablet-breakpoint) {
+    display: none;
+  }
+
+  .logoText {
+    @media only screen and (max-width: 1600px) {
+      display: none;
     }
   }
+}
 
-  &:disabled {
-    // pointer-events: none;
-    cursor: not-allowed;
-    opacity: 0.25;
+.rightContent {
+  position: absolute;
+  right: $grid-desktop-padding;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  transform: translateX(8px);
 
-    &:hover {
-      outline: none;
-      border: 1px solid var(--color-main-500);
-
-      svg {
-        transform: translateX(0);
-      }
-    }
+  @media only screen and (max-width: $grid-tablet-breakpoint) {
+    right: $grid-tablet-padding;
   }
+
+  @media only screen and (max-width: $grid-mobile-breakpoint) {
+    right: $grid-mobile-padding;
+  }
+}
+
+///////////////
+.button {
+  @include navigationButton;
+  // padding: 0 15px;
+  // cursor: pointer;
+  // position: relative;
+  // display: flex;
+  // align-items: center;
+  // gap: 10px;
+  // border: none;
+  // outline: none;
+  // border-radius: 40px;
+  // background-color: none;
+}
+
+.buttonLabel {
+  margin: 0 5px;
 }
