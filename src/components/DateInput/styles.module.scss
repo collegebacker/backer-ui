@@ -1,3 +1,5 @@
-.wrap {
-  display: flex;
+@layer default-styles {
+  .wrap {
+    display: flex;
+  }
 }

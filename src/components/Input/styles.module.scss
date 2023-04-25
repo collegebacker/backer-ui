@@ -1,163 +1,165 @@
 @import '../../../styles/mixins.scss';
 
-.componentWrap {
-  position: relative;
-  justify-content: flex-end;
-  display: flex;
-  flex-direction: column;
-}
+@layer default-styles {
+  .componentWrap {
+    position: relative;
+    justify-content: flex-end;
+    display: flex;
+    flex-direction: column;
+  }
 
-.inputWrap {
-  position: relative;
-  justify-content: flex-end;
-  display: flex;
-  flex-direction: column;
-  height: 68px;
-}
+  .inputWrap {
+    position: relative;
+    justify-content: flex-end;
+    display: flex;
+    flex-direction: column;
+    height: 68px;
+  }
 
-.label {
-  @include inputLabel();
-}
+  .label {
+    @include inputLabel();
+  }
 
-.mouseStates {
-  &:focus {
-    box-shadow: 0 2px 0 0 var(--color-main-500);
+  .mouseStates {
+    &:focus {
+      box-shadow: 0 2px 0 0 var(--color-main-500);
 
-    + .label {
+      + .label {
+        @include labelIfInputFocused();
+      }
+    }
+
+    &:hover {
+      box-shadow: 0 2px 0 0 var(--color-main-500);
+    }
+  }
+
+  .input {
+    height: 44px;
+    width: 100%;
+    padding: 0;
+    padding-bottom: 5px;
+    background: none;
+    border: none;
+    outline: none;
+    border-radius: 0;
+
+    font-family: 'ABCMarfa', sans-serif;
+    font-weight: 200;
+    font-size: 24px;
+    line-height: 24px;
+    user-select: none;
+
+    -webkit-transition: all 0.15s ease;
+    transition: all 0.15s ease;
+    -webkit-box-shadow: 0 1px 0 0 var(--color-main-500);
+    box-shadow: 0 1px 0 0 var(--color-main-500);
+    -webkit-appearance: none;
+
+    &::placeholder {
+      color: transparent;
+    }
+
+    &:not(:placeholder-shown) + .label {
       @include labelIfInputFocused();
     }
   }
 
-  &:hover {
-    box-shadow: 0 2px 0 0 var(--color-main-500);
-  }
-}
-
-.input {
-  height: 44px;
-  width: 100%;
-  padding: 0;
-  padding-bottom: 5px;
-  background: none;
-  border: none;
-  outline: none;
-  border-radius: 0;
-
-  font-family: 'ABCMarfa', sans-serif;
-  font-weight: 200;
-  font-size: 24px;
-  line-height: 24px;
-  user-select: none;
-
-  -webkit-transition: all 0.15s ease;
-  transition: all 0.15s ease;
-  -webkit-box-shadow: 0 1px 0 0 var(--color-main-500);
-  box-shadow: 0 1px 0 0 var(--color-main-500);
-  -webkit-appearance: none;
-
-  &::placeholder {
-    color: transparent;
-  }
-
-  &:not(:placeholder-shown) + .label {
-    @include labelIfInputFocused();
-  }
-}
-
-.helperText {
-  color: var(--color-main-transparent-200);
-  margin-top: 12px;
-  line-height: 120%;
-}
-
-.hideSpinButton {
-  /* Chrome, Safari, Edge, Opera */
-  &::-webkit-outer-spin-button,
-  &::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-
-  /* Firefox */
-  &[type='number'] {
-    -moz-appearance: textfield;
-  }
-}
-
-// ICON
-.icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  cursor: pointer;
-  border-radius: 100px;
-  width: 36px;
-  height: 36px;
-  bottom: 4px;
-  right: -2px;
-  padding: 0;
-  margin: 0;
-  border: none;
-  background: none;
-  outline: none;
-  transition: background-color 0.15s ease;
-
-  &:focus-visible {
-    background-color: rgba(0, 0, 0, 0.08);
-  }
-
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-  }
-}
-
-.error {
-  .input {
-    box-shadow: 0 2px 0 0 var(--color-service-error-main);
-  }
-
   .helperText {
-    color: var(--color-service-error-main);
+    color: var(--color-main-transparent-200);
+    margin-top: 12px;
+    line-height: 120%;
   }
-}
 
-.disabled {
-  opacity: 0.8;
-  user-select: none;
-  pointer-events: none;
+  .hideSpinButton {
+    /* Chrome, Safari, Edge, Opera */
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
 
-  .inputWrap {
-    opacity: 0.4;
+    /* Firefox */
+    &[type='number'] {
+      -moz-appearance: textfield;
+    }
   }
-}
 
-.shake {
-  -webkit-animation-name: shake-animation;
-  animation-name: shake-animation;
-  -webkit-animation-duration: 0.4s;
-  animation-duration: 0.4s;
-  -webkit-animation-iteration-count: 1;
-  animation-iteration-count: 1;
-  -webkit-animation-timing-function: ease;
-  animation-timing-function: ease;
-}
+  // ICON
+  .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    cursor: pointer;
+    border-radius: 100px;
+    width: 36px;
+    height: 36px;
+    bottom: 4px;
+    right: -2px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: none;
+    outline: none;
+    transition: background-color 0.15s ease;
 
-// ANIMATION
-@keyframes shake-animation {
-  0% {
-    transform: translateX(0);
+    &:focus-visible {
+      background-color: rgba(0, 0, 0, 0.08);
+    }
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
   }
-  30% {
-    transform: translateX(-10px);
+
+  .error {
+    .input {
+      box-shadow: 0 2px 0 0 var(--color-service-error-main);
+    }
+
+    .helperText {
+      color: var(--color-service-error-main);
+    }
   }
-  40% {
-    transform: translateX(10px);
+
+  .disabled {
+    opacity: 0.8;
+    user-select: none;
+    pointer-events: none;
+
+    .inputWrap {
+      opacity: 0.4;
+    }
   }
-  60% {
-    transform: translateX(-10px);
+
+  .shake {
+    -webkit-animation-name: shake-animation;
+    animation-name: shake-animation;
+    -webkit-animation-duration: 0.4s;
+    animation-duration: 0.4s;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease;
+    animation-timing-function: ease;
   }
-  100% {
-    transform: translateX(0);
+
+  // ANIMATION
+  @keyframes shake-animation {
+    0% {
+      transform: translateX(0);
+    }
+    30% {
+      transform: translateX(-10px);
+    }
+    40% {
+      transform: translateX(10px);
+    }
+    60% {
+      transform: translateX(-10px);
+    }
+    100% {
+      transform: translateX(0);
+    }
   }
 }

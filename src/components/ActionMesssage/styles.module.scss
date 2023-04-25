@@ -1,64 +1,66 @@
-.wrap {
-  position: relative;
-  display: flex;
-  align-items: center;
-  padding: 20px;
-  border-radius: var(--radius-m);
-  transition: transform 0.2s ease;
+@layer default-styles {
+  .wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-radius: var(--radius-m);
+    transition: transform 0.2s ease;
 
-  &:focus-visible {
-    outline: 1px solid var(--color-main-500);
-    outline-offset: 5px;
-  }
-}
-
-.clickable {
-  cursor: pointer;
-
-  &:hover {
-    transform: translateX(2px);
-    .arrow {
-      transform: translateX(5px);
+    &:focus-visible {
+      outline: 1px solid var(--color-main-500);
+      outline-offset: 5px;
     }
   }
-}
 
-.undertitleContent {
-  display: flex;
-  gap: 10px;
-  width: 100%;
-}
+  .clickable {
+    cursor: pointer;
 
-.content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 10px;
-  width: 100%;
-}
+    &:hover {
+      transform: translateX(2px);
+      .arrow {
+        transform: translateX(5px);
+      }
+    }
+  }
 
-.arrow {
-  flex: 1 1 24px;
-  margin-left: 20px;
-  transition: all 0.2s ease;
-}
+  .undertitleContent {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+  }
 
-.caption {
-  color: var(--color-main-200);
-}
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+  }
 
-.outline {
-  border: 1px solid var(--color-main-100);
-}
+  .arrow {
+    flex: 1 1 24px;
+    margin-left: 20px;
+    transition: all 0.2s ease;
+  }
 
-.grey {
-  background-color: var(--color-main-50);
-}
+  .caption {
+    color: var(--color-main-200);
+  }
 
-.velvet {
-  background-color: var(--color-accent-50);
-}
+  .outline {
+    border: 1px solid var(--color-main-100);
+  }
 
-.peach {
-  background-color: var(--color-peach-50);
+  .grey {
+    background-color: var(--color-main-50);
+  }
+
+  .velvet {
+    background-color: var(--color-accent-50);
+  }
+
+  .peach {
+    background-color: var(--color-peach-50);
+  }
 }

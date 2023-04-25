@@ -1,161 +1,163 @@
 @import url('https://fonts.googleapis.com/css2?family=Bilbo&family=Qwigley&family=Kristi&display=swap');
 
-.wrap {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-
-.signaturePadWrap {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  background-color: var(--color-peach-50);
-  border-radius: var(--radius-l);
-}
-
-.helperText {
-  user-select: none;
-  pointer-events: none;
-}
-
-.padFrame {
-  pointer-events: none;
-  user-select: none;
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  max-width: 400px;
-  height: 120px;
-  border-radius: var(--radius-m);
-
-  &:after {
-    pointer-events: none;
-    content: '';
-    position: absolute;
-    bottom: 15px;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background-color: rgba(0, 0, 0, 0.2);
+@layer default-styles {
+  .wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
   }
-}
 
-.button {
-  position: relative;
-  z-index: 2;
-  cursor: pointer;
-  user-select: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  width: fit-content;
-  padding: 5px 0;
-  margin: 0;
-  border: none;
-  outline: none;
-  background: none;
-
-  span {
-    color: var(--color-main-500);
-  }
-}
-
-.signatureCanvas {
-  z-index: 1;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.signatureInput {
-  position: absolute;
-  bottom: 45px;
-  left: 20px;
-  white-space: nowrap;
-  overflow: hidden;
-  width: calc(100% - 40px);
-  max-width: 400px;
-  // height: 100px;
-  padding: 0;
-  margin: 0;
-  border: none;
-  outline: none;
-  background: none;
-  line-height: 1;
-  // background-color: rgba(0, 0, 0, 0.1);
-  -webkit-text-size-adjust: none;
-  text-size-adjust: none;
-
-  &:focus {
-    outline: none;
-  }
-}
-
-.bilbo {
-  font-family: 'Bilbo', cursive;
-  color: var(--color-main-500);
-
-  span {
-    @extend .bilbo;
-    font-size: 35px;
-  }
-}
-
-.qwigley {
-  font-family: 'Qwigley', cursive;
-  color: var(--color-main-500);
-
-  span {
-    @extend .qwigley;
-    font-size: 35px;
-  }
-}
-
-.kristi {
-  font-family: 'Kristi', cursive;
-  color: var(--color-main-500);
-
-  span {
-    @extend .kristi;
-    font-size: 35px;
-  }
-}
-
-.error {
-  animation: shake 0.4s;
-
-  .padFrame {
-    &:after {
-      background-color: var(--color-service-error-main);
-    }
+  .signaturePadWrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: var(--color-peach-50);
+    border-radius: var(--radius-l);
   }
 
   .helperText {
-    color: var(--color-service-error-main);
+    user-select: none;
+    pointer-events: none;
   }
-}
 
-.hide {
-  display: none;
-}
+  .padFrame {
+    pointer-events: none;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 400px;
+    height: 120px;
+    border-radius: var(--radius-m);
 
-@keyframes shake {
-  0% {
-    transform: translateX(0);
+    &:after {
+      pointer-events: none;
+      content: '';
+      position: absolute;
+      bottom: 15px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: rgba(0, 0, 0, 0.2);
+    }
   }
-  25% {
-    transform: translateX(-10px);
+
+  .button {
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+    padding: 5px 0;
+    margin: 0;
+    border: none;
+    outline: none;
+    background: none;
+
+    span {
+      color: var(--color-main-500);
+    }
   }
-  50% {
-    transform: translateX(10px);
+
+  .signatureCanvas {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
-  75% {
-    transform: translateX(-10px);
+
+  .signatureInput {
+    position: absolute;
+    bottom: 45px;
+    left: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    width: calc(100% - 40px);
+    max-width: 400px;
+    // height: 100px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    outline: none;
+    background: none;
+    line-height: 1;
+    // background-color: rgba(0, 0, 0, 0.1);
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+
+    &:focus {
+      outline: none;
+    }
   }
-  100% {
-    transform: translateX(0);
+
+  .bilbo {
+    font-family: 'Bilbo', cursive;
+    color: var(--color-main-500);
+
+    span {
+      @extend .bilbo;
+      font-size: 35px;
+    }
+  }
+
+  .qwigley {
+    font-family: 'Qwigley', cursive;
+    color: var(--color-main-500);
+
+    span {
+      @extend .qwigley;
+      font-size: 35px;
+    }
+  }
+
+  .kristi {
+    font-family: 'Kristi', cursive;
+    color: var(--color-main-500);
+
+    span {
+      @extend .kristi;
+      font-size: 35px;
+    }
+  }
+
+  .error {
+    animation: shake 0.4s;
+
+    .padFrame {
+      &:after {
+        background-color: var(--color-service-error-main);
+      }
+    }
+
+    .helperText {
+      color: var(--color-service-error-main);
+    }
+  }
+
+  .hide {
+    display: none;
+  }
+
+  @keyframes shake {
+    0% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-10px);
+    }
+    50% {
+      transform: translateX(10px);
+    }
+    75% {
+      transform: translateX(-10px);
+    }
+    100% {
+      transform: translateX(0);
+    }
   }
 }

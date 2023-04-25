@@ -13,7 +13,7 @@ export interface Props {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-const Slider: React.FC<Props> = (props) => {
+const RangeInput: React.FC<Props> = (props) => {
   const inputRef = React.useRef<HTMLInputElement>(null)
   const [value, setValue] = React.useState(props.value || 0)
 
@@ -62,7 +62,7 @@ const Slider: React.FC<Props> = (props) => {
   )
 }
 
-Slider.defaultProps = {
+RangeInput.defaultProps = {
   className: '',
   style: {},
   step: 1,
@@ -72,4 +72,4 @@ Slider.defaultProps = {
   autofocus: false
 } as Partial<Props>
 
-export default Slider
+export default RangeInput

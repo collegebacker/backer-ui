@@ -1,342 +1,346 @@
 @import '../../../tokens/grids.scss';
-// WRAPPER-BACKGROUND
 
-.modalWrap {
-  position: fixed;
-  z-index: 999;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
-  background-image: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.9) 0%,
-    rgba(255, 255, 255, 0.3) 100%
-  );
-  transition: opacity 0.2s ease;
-  pointer-events: none;
-  opacity: 0;
-
-  &_show {
-    animation: modalWrapShowAnimation 0.2s ease forwards;
-  }
-
-  &_hide {
-    animation: modalWrapHideAnimation 0.3s ease forwards;
-  }
-
-  @media screen and (max-width: $grid-mobile-breakpoint) {
+@layer default-styles {
+  .modalWrap {
     position: fixed;
-  }
-}
-
-@keyframes modalWrapShowAnimation {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    pointer-events: all;
-    opacity: 1;
-  }
-}
-
-@keyframes modalWrapHideAnimation {
-  0%,
-  40% {
-    pointer-events: none;
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-// MODAL //
-
-.modal {
-  --dafault-padding-side: 90px;
-  --dafault-padding-top: 90px;
-  --dafault-padding-bottom: 90px;
-
-  position: absolute;
-  z-index: 2;
-  backface-visibility: hidden;
-  overflow-x: hidden;
-  overflow-y: auto;
-
-  display: flex;
-  flex-direction: column;
-
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.95);
-
-  width: calc(100% - 40px);
-
-  max-width: var(--max-width, 660px);
-  padding-left: var(--padding-side, var(--dafault-padding-side));
-  padding-right: var(--padding-side, var(--dafault-padding-side));
-  padding-bottom: var(--padding-bottom, var(--dafault-padding-bottom));
-  padding-top: var(--padding-top, var(--dafault-padding-top));
-
-  max-height: calc(100% - 40px);
-  border-radius: var(--radius-l);
-  opacity: 0;
-  background-color: var(--color-main-0);
-
-  &::-webkit-scrollbar {
-    width: 0;
-  }
-
-  @media screen and (max-width: $grid-mobile-breakpoint) {
-    --dafault-padding-side: 20px;
-    --dafault-padding-bottom: 40px;
-    --dafault-padding-top: 80px;
-
-    padding-left: var(--padding-side-mobile, var(--dafault-padding-side));
-    padding-right: var(--padding-side-mobile, var(--dafault-padding-side));
-    padding-bottom: var(--padding-bottom-mobile, var(--dafault-padding-bottom));
-    padding-top: var(--padding-top-mobile, var(--dafault-padding-top));
-  }
-}
-
-// MODIFICATIONS
-
-.popup {
-  @media screen and (max-width: $grid-mobile-breakpoint) {
+    z-index: 999;
     top: 0;
     left: 0;
-    transform: none;
-    max-width: none;
     width: 100%;
-
     height: 100%;
-    max-height: none;
-    border-radius: 0;
+
+    background-image: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.9) 0%,
+      rgba(255, 255, 255, 0.3) 100%
+    );
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+    opacity: 0;
+
+    &_show {
+      animation: modalWrapShowAnimation 0.2s ease forwards;
+    }
+
+    &_hide {
+      animation: modalWrapHideAnimation 0.3s ease forwards;
+    }
+
+    @media screen and (max-width: $grid-mobile-breakpoint) {
+      position: fixed;
+    }
+  }
+
+  @keyframes modalWrapShowAnimation {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      pointer-events: all;
+      opacity: 1;
+    }
+  }
+
+  @keyframes modalWrapHideAnimation {
+    0%,
+    40% {
+      pointer-events: none;
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  // MODAL //
+
+  .modal {
+    --dafault-padding-side: 90px;
+    --dafault-padding-top: 90px;
+    --dafault-padding-bottom: 90px;
+
+    position: absolute;
+    z-index: 2;
+    backface-visibility: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.95);
+
+    width: calc(100% - 40px);
+
+    max-width: var(--max-width, 660px);
+    padding-left: var(--padding-side, var(--dafault-padding-side));
+    padding-right: var(--padding-side, var(--dafault-padding-side));
+    padding-bottom: var(--padding-bottom, var(--dafault-padding-bottom));
+    padding-top: var(--padding-top, var(--dafault-padding-top));
+
+    max-height: calc(100% - 40px);
+    border-radius: var(--radius-l);
+    opacity: 0;
     background-color: var(--color-main-0);
-  }
 
-  &_show {
-    animation: modalAnimationDesktopPopup 0.3s ease forwards;
-    animation-delay: 0.1s;
+    &::-webkit-scrollbar {
+      width: 0;
+    }
 
     @media screen and (max-width: $grid-mobile-breakpoint) {
-      animation: modalAnimationMobilePopup 0.3s ease forwards;
+      --dafault-padding-side: 20px;
+      --dafault-padding-bottom: 40px;
+      --dafault-padding-top: 80px;
+
+      padding-left: var(--padding-side-mobile, var(--dafault-padding-side));
+      padding-right: var(--padding-side-mobile, var(--dafault-padding-side));
+      padding-bottom: var(
+        --padding-bottom-mobile,
+        var(--dafault-padding-bottom)
+      );
+      padding-top: var(--padding-top-mobile, var(--dafault-padding-top));
     }
   }
 
-  &_hide {
-    animation: modalAnimationDesktopPopupHide 0.2s ease forwards;
-    animation-delay: 0;
+  // MODIFICATIONS
 
+  .popup {
     @media screen and (max-width: $grid-mobile-breakpoint) {
-      animation: modalAnimationMobilePopupHide 0.2s ease forwards;
+      top: 0;
+      left: 0;
+      transform: none;
+      max-width: none;
+      width: 100%;
+
+      height: 100%;
+      max-height: none;
+      border-radius: 0;
+      background-color: var(--color-main-0);
+    }
+
+    &_show {
+      animation: modalAnimationDesktopPopup 0.3s ease forwards;
+      animation-delay: 0.1s;
+
+      @media screen and (max-width: $grid-mobile-breakpoint) {
+        animation: modalAnimationMobilePopup 0.3s ease forwards;
+      }
+    }
+
+    &_hide {
+      animation: modalAnimationDesktopPopupHide 0.2s ease forwards;
+      animation-delay: 0;
+
+      @media screen and (max-width: $grid-mobile-breakpoint) {
+        animation: modalAnimationMobilePopupHide 0.2s ease forwards;
+      }
     }
   }
-}
 
-.bottomsheet {
-  @media screen and (max-width: $grid-mobile-breakpoint) {
-    opacity: 1;
-    top: auto;
-    left: 0;
+  .bottomsheet {
+    @media screen and (max-width: $grid-mobile-breakpoint) {
+      opacity: 1;
+      top: auto;
+      left: 0;
+      width: 100%;
+      max-width: none;
+      transform: none;
+      border-radius: var(--radius-l) var(--radius-l) 0 0;
+      max-height: 100%;
+      bottom: 0;
+      transform: translateY(100%);
+    }
+
+    &_stick {
+      border-radius: 0;
+    }
+
+    &_show {
+      animation: modalAnimationDesktopPopup 0.3s ease forwards;
+      animation-delay: 0.2s;
+
+      @media screen and (max-width: $grid-mobile-breakpoint) {
+        animation: modalAnimationBottomsheet 0.3s ease forwards;
+      }
+    }
+
+    &_hide {
+      animation: modalAnimationDesktopPopupHide 0.3s ease forwards;
+      animation-delay: 0;
+
+      @media screen and (max-width: $grid-mobile-breakpoint) {
+        animation: modalAnimationBottomsheetHide 0.3s ease forwards;
+      }
+    }
+  }
+
+  // ANIMATIONS POPUP
+
+  @keyframes modalAnimationDesktopPopup {
+    0% {
+      transform: translate(-50%, -50%) scale(0.95);
+      opacity: 0;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes modalAnimationDesktopPopupHide {
+    0% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(0.95);
+      opacity: 0;
+    }
+  }
+
+  @keyframes modalAnimationMobilePopup {
+    0% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0;
+    }
+    100% {
+      transform: translate(0, 0) scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes modalAnimationMobilePopupHide {
+    0% {
+      transform: translate(0, 0) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0;
+    }
+  }
+
+  // ANIMATIONS BOTTOMSHEET
+
+  @keyframes modalAnimationBottomsheet {
+    0% {
+      transform: translateY(100%);
+    }
+    100% {
+      transform: translateY(0%);
+    }
+  }
+
+  @keyframes modalAnimationBottomsheetHide {
+    0% {
+      transform: translateY(0%);
+    }
+    100% {
+      transform: translateY(100%);
+    }
+  }
+
+  // CONTENT
+
+  .contentWrapper {
     width: 100%;
-    max-width: none;
-    transform: none;
-    border-radius: var(--radius-l) var(--radius-l) 0 0;
-    max-height: 100%;
-    bottom: 0;
-    transform: translateY(100%);
-  }
+    margin: 0 auto;
 
-  &_stick {
-    border-radius: 0;
-  }
-
-  &_show {
-    animation: modalAnimationDesktopPopup 0.3s ease forwards;
-    animation-delay: 0.2s;
-
-    @media screen and (max-width: $grid-mobile-breakpoint) {
-      animation: modalAnimationBottomsheet 0.3s ease forwards;
+    &:focus {
+      outline: none;
     }
   }
 
-  &_hide {
-    animation: modalAnimationDesktopPopupHide 0.3s ease forwards;
-    animation-delay: 0;
+  // GRADIENTS
 
-    @media screen and (max-width: $grid-mobile-breakpoint) {
-      animation: modalAnimationBottomsheetHide 0.3s ease forwards;
-    }
-  }
-}
-
-// ANIMATIONS POPUP
-
-@keyframes modalAnimationDesktopPopup {
-  0% {
-    transform: translate(-50%, -50%) scale(0.95);
-    opacity: 0;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes modalAnimationDesktopPopupHide {
-  0% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(0.95);
-    opacity: 0;
-  }
-}
-
-@keyframes modalAnimationMobilePopup {
-  0% {
-    transform: translate(0, 0) scale(1);
-    opacity: 0;
-  }
-  100% {
-    transform: translate(0, 0) scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes modalAnimationMobilePopupHide {
-  0% {
-    transform: translate(0, 0) scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: translate(0, 0) scale(1);
-    opacity: 0;
-  }
-}
-
-// ANIMATIONS BOTTOMSHEET
-
-@keyframes modalAnimationBottomsheet {
-  0% {
-    transform: translateY(100%);
-  }
-  100% {
-    transform: translateY(0%);
-  }
-}
-
-@keyframes modalAnimationBottomsheetHide {
-  0% {
-    transform: translateY(0%);
-  }
-  100% {
-    transform: translateY(100%);
-  }
-}
-
-// CONTENT
-
-.contentWrapper {
-  width: 100%;
-  margin: 0 auto;
-
-  &:focus {
-    outline: none;
-  }
-}
-
-// GRADIENTS
-
-.gradients {
-  z-index: 1;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.1);
-  width: 300px;
-  height: 300px;
-  opacity: 0;
-
-  &_show {
-    animation: gradientsAnimation 0.5s ease forwards;
-  }
-
-  &_hide {
-    animation: gradientsAnimationHide 0.4s ease forwards;
-  }
-}
-
-.gradient1 {
-  position: absolute;
-  width: 1200px;
-  height: 1400px;
-  top: 50%;
-  left: 50%;
-  opacity: 0.8;
-  transform: translate(-50%, -50%) scale(1.2) rotate(45deg);
-  background-image: var(--gradient-peach);
-}
-
-.gradient2 {
-  position: absolute;
-  width: 700px;
-  height: 1000px;
-  top: 10%;
-  left: 90%;
-  opacity: 0.8;
-  transform: translate(-50%, -50%) scale(1.2) rotate(33deg);
-  background-image: var(--gradient-velvet);
-}
-
-@keyframes gradientsAnimation {
-  0% {
+  .gradients {
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%) scale(0.1);
+    width: 300px;
+    height: 300px;
     opacity: 0;
+
+    &_show {
+      animation: gradientsAnimation 0.5s ease forwards;
+    }
+
+    &_hide {
+      animation: gradientsAnimationHide 0.4s ease forwards;
+    }
   }
-  100% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
+
+  .gradient1 {
+    position: absolute;
+    width: 1200px;
+    height: 1400px;
+    top: 50%;
+    left: 50%;
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(1.2) rotate(45deg);
+    background-image: var(--gradient-peach);
   }
-}
 
-@keyframes gradientsAnimationHide {
-  0% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
+  .gradient2 {
+    position: absolute;
+    width: 700px;
+    height: 1000px;
+    top: 10%;
+    left: 90%;
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(1.2) rotate(33deg);
+    background-image: var(--gradient-velvet);
   }
-  100% {
-    transform: translate(-50%, -50%) scale(0.4);
+
+  @keyframes gradientsAnimation {
+    0% {
+      transform: translate(-50%, -50%) scale(0.1);
+      opacity: 0;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
   }
-}
 
-// BUTTONS
-
-$btns-offset: 30px;
-$btns-offset-mobile: 14px;
-
-.backButton {
-  position: absolute;
-  top: $btns-offset;
-  left: $btns-offset;
-
-  @media screen and (max-width: $grid-mobile-breakpoint) {
-    top: $btns-offset-mobile;
-    left: $btns-offset-mobile;
+  @keyframes gradientsAnimationHide {
+    0% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(0.4);
+    }
   }
-}
 
-.closeButton {
-  position: absolute;
-  top: $btns-offset;
-  right: $btns-offset;
+  // BUTTONS
 
-  @media screen and (max-width: $grid-mobile-breakpoint) {
-    top: 20px;
-    right: $btns-offset-mobile;
+  $btns-offset: 30px;
+  $btns-offset-mobile: 14px;
+
+  .backButton {
+    position: absolute;
+    top: $btns-offset;
+    left: $btns-offset;
+
+    @media screen and (max-width: $grid-mobile-breakpoint) {
+      top: $btns-offset-mobile;
+      left: $btns-offset-mobile;
+    }
+  }
+
+  .closeButton {
+    position: absolute;
+    top: $btns-offset;
+    right: $btns-offset;
+
+    @media screen and (max-width: $grid-mobile-breakpoint) {
+      top: 20px;
+      right: $btns-offset-mobile;
+    }
   }
 }

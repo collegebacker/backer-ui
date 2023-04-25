@@ -1,5 +1,7 @@
-.icon {
-  display: flex;
-  height: 24px;
-  object-fit: contain;
+@layer default-styles {
+  .icon {
+    display: flex;
+    height: 24px;
+    object-fit: contain;
+  }
 }

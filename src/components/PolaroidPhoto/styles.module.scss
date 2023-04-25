@@ -1,108 +1,110 @@
-.polaroidWrapper {
-  --default-size: 300px;
-  --aspect-ratio: 0.88;
-  --image-padding: 10%;
-  --height: calc(var(--default-size) * var(--aspect-ratio));
+@layer default-styles {
+  .polaroidWrapper {
+    --default-size: 300px;
+    --aspect-ratio: 0.88;
+    --image-padding: 10%;
+    --height: calc(var(--default-size) * var(--aspect-ratio));
 
-  position: relative;
-  perspective: 600px;
-  width: var(--size, var(--default-size));
-  height: calc(var(--size, var(--default-size)) / var(--aspect-ratio));
-  transform: rotate(3deg);
-}
-
-.polaroid {
-  position: relative;
-  border-radius: 4px;
-  background-image: linear-gradient(
-    173.98deg,
-    #f7f7f7 -12.42%,
-    #f3f3f3 81.71%,
-    #dcdfe0 112.22%
-  );
-  width: 100%;
-  height: 100%;
-
-  box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.06),
-    0px 20px 34px rgba(151, 137, 147, 0.1);
-}
-
-.letterPlaceholder {
-  pointer-events: none;
-  width: 100%;
-  height: 100%;
-
-  text {
-    font-family: Arial, sans-serif;
-    font-size: 22px;
-    font-weight: 600;
-    fill: white;
-    text-decoration: none;
-  }
-}
-
-.photo {
-  position: absolute;
-  width: calc(var(--size, var(--default-size)) - var(--image-padding));
-  height: calc(var(--size, var(--default-size)) - var(--image-padding));
-  top: calc(var(--image-padding) / 2);
-  left: calc(var(--image-padding) / 2);
-  border-radius: 4px;
-  box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.08);
-}
-
-.photo {
-  z-index: 1;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.uploadPhoto {
-  z-index: 2;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-
-  input {
-    opacity: 0;
     position: relative;
-    cursor: pointer;
+    perspective: 600px;
+    width: var(--size, var(--default-size));
+    height: calc(var(--size, var(--default-size)) / var(--aspect-ratio));
+    transform: rotate(3deg);
+  }
+
+  .polaroid {
+    position: relative;
+    border-radius: 4px;
+    background-image: linear-gradient(
+      173.98deg,
+      #f7f7f7 -12.42%,
+      #f3f3f3 81.71%,
+      #dcdfe0 112.22%
+    );
     width: 100%;
     height: 100%;
+
+    box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.06),
+      0px 20px 34px rgba(151, 137, 147, 0.1);
   }
 
-  &:hover {
-    .photoHoverFade {
-      opacity: 1;
-    }
+  .letterPlaceholder {
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
 
-    .imageExist {
-      opacity: 1;
+    text {
+      font-family: Arial, sans-serif;
+      font-size: 22px;
+      font-weight: 600;
+      fill: white;
+      text-decoration: none;
     }
   }
-}
 
-.photoHoverFade {
-  pointer-events: none;
-  opacity: 0;
-  background-color: rgba(0, 0, 0, 0.1);
-  transition: opacity 0.1s ease-in-out;
-}
+  .photo {
+    position: absolute;
+    width: calc(var(--size, var(--default-size)) - var(--image-padding));
+    height: calc(var(--size, var(--default-size)) - var(--image-padding));
+    top: calc(var(--image-padding) / 2);
+    left: calc(var(--image-padding) / 2);
+    border-radius: 4px;
+    box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.08);
+  }
 
-.uploadPhotoPlaceholderImage {
-  pointer-events: none;
-  z-index: 3;
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  padding: 10px;
-  border-radius: var(--radius-m);
-}
+  .photo {
+    z-index: 1;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 
-.imageExist {
-  opacity: 0;
-  transition: opacity 0.15s ease-in-out;
+  .uploadPhoto {
+    z-index: 2;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    input {
+      opacity: 0;
+      position: relative;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+    }
+
+    &:hover {
+      .photoHoverFade {
+        opacity: 1;
+      }
+
+      .imageExist {
+        opacity: 1;
+      }
+    }
+  }
+
+  .photoHoverFade {
+    pointer-events: none;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: opacity 0.1s ease-in-out;
+  }
+
+  .uploadPhotoPlaceholderImage {
+    pointer-events: none;
+    z-index: 3;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 10px;
+    border-radius: var(--radius-m);
+  }
+
+  .imageExist {
+    opacity: 0;
+    transition: opacity 0.15s ease-in-out;
+  }
 }

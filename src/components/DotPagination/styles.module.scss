@@ -1,35 +1,37 @@
-.container {
-  position: relative;
-  display: flex;
-  width: fit-content;
-  overflow: hidden;
-  // background-color: rgba(0, 0, 0, 0.1);
-  transition: width 0.3s ease-in-out;
-}
-
-.wrap {
-  position: relative;
-  display: flex;
-  transition: transform 0.3s ease-in-out;
-  // background-color: rgba(0, 255, 0, 0.1);
-}
-
-.paginationDot {
-  user-select: none;
-  width: 8px;
-  height: 8px;
-  border-radius: 8px;
-  margin-right: 10px;
-  background-color: var(--color-main-500);
-  opacity: 0.2;
-  transition: all 0.3s ease-out;
-
-  &:last-child {
-    margin-right: 0;
+@layer default-styles {
+  .container {
+    position: relative;
+    display: flex;
+    width: fit-content;
+    overflow: hidden;
+    // background-color: rgba(0, 0, 0, 0.1);
+    transition: width 0.3s ease-in-out;
   }
-}
 
-.activeDot {
-  width: 20px;
-  opacity: 1;
+  .wrap {
+    position: relative;
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+    // background-color: rgba(0, 255, 0, 0.1);
+  }
+
+  .paginationDot {
+    user-select: none;
+    width: 8px;
+    height: 8px;
+    border-radius: 8px;
+    margin-right: 10px;
+    background-color: var(--color-main-500);
+    opacity: 0.2;
+    transition: all 0.3s ease-out;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .activeDot {
+    width: 20px;
+    opacity: 1;
+  }
 }

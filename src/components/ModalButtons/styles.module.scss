@@ -1,42 +1,44 @@
-.wrap {
-  position: relative;
-  z-index: 10;
-  display: flex;
-  margin: 40px -30px -30px;
-  border-top: 1px solid var(--color-main-50);
-}
-
-.button {
-  cursor: pointer;
-  flex: 1;
-  color: var(--color-main-500);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 30px;
-  border: none;
-  outline: none;
-  margin: 0;
-  background: none;
-  transition: background 0.15s ease;
-  border-left: 1px solid var(--color-main-50);
-
-  &:first-of-type {
-    border-left: none;
+@layer default-styles {
+  .wrap {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    margin: 40px -30px -30px;
+    border-top: 1px solid var(--color-main-50);
   }
 
-  &:hover,
-  &:focus-visible {
-    background-color: var(--color-main-50);
+  .button {
+    cursor: pointer;
+    flex: 1;
+    color: var(--color-main-500);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    border: none;
+    outline: none;
+    margin: 0;
+    background: none;
+    transition: background 0.15s ease;
+    border-left: 1px solid var(--color-main-50);
+
+    &:first-of-type {
+      border-left: none;
+    }
+
+    &:hover,
+    &:focus-visible {
+      background-color: var(--color-main-50);
+    }
   }
-}
 
-.content {
-  display: flex;
-  align-items: center;
-}
+  .content {
+    display: flex;
+    align-items: center;
+  }
 
-.icon {
-  margin-right: 10px;
-  flex: 1 0 auto;
+  .icon {
+    margin-right: 10px;
+    flex: 1 0 auto;
+  }
 }

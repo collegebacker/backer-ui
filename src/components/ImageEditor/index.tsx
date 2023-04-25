@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './styles.module.scss'
 
 import Modal from '../Modal'
-import Slider from '../Slider'
+import Slider from '../RangeInput'
 import Button from '../Button'
 import AvatarEditor from 'react-avatar-editor'
 

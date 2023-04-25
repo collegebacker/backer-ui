@@ -1,18 +1,20 @@
-.wrap {
-  display: flex;
-  align-items: center;
-  height: 70px;
-  border-bottom: 1px solid var(--color-main-transparent-80);
+@layer default-styles {
+  .wrap {
+    display: flex;
+    align-items: center;
+    height: 70px;
+    border-bottom: 1px solid var(--color-main-transparent-80);
 
-  span {
-    cursor: pointer;
-    user-select: none;
-    padding: 20px;
-    color: var(--color-main-500);
+    span {
+      cursor: pointer;
+      user-select: none;
+      padding: 20px;
+      color: var(--color-main-500);
+    }
   }
-}
 
-.disabled {
-  pointer-events: none;
-  opacity: 0.3;
+  .disabled {
+    pointer-events: none;
+    opacity: 0.3;
+  }
 }

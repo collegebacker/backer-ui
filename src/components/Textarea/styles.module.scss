@@ -1,95 +1,97 @@
 @import '../../../tokens/grids.scss';
 
-.wrap {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-}
+@layer default-styles {
+  .wrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
 
-.label {
-  pointer-events: none;
-  position: absolute;
-  top: 20px;
-  left: 30px;
-  color: var(--color-main-200);
-
-  transition: all 0.1s ease-in-out;
-
-  @media screen and (max-width: $grid-mobile-breakpoint) {
+  .label {
+    pointer-events: none;
+    position: absolute;
     top: 20px;
-    left: 0;
-  }
-}
+    left: 30px;
+    color: var(--color-main-200);
 
-.hiddenLabel {
-  opacity: 0;
-  transform: translateY(-10px);
-}
+    transition: all 0.1s ease-in-out;
 
-.textarea {
-  resize: none;
-  border: 1px solid var(--color-main-transparent-80);
-  border-radius: var(--radius-l);
-  color: var(--color-main-500);
-
-  padding: 56px 30px 30px 30px;
-
-  transition: all 0.1s ease-in-out;
-
-  &:hover,
-  &:focus {
-    outline: none;
-    border: 1px solid var(--color-main-transparent-100);
-  }
-
-  // hide scrollbar
-  &::-webkit-scrollbar {
-    width: 0;
-  }
-
-  @media screen and (max-width: $grid-mobile-breakpoint) {
-    border-radius: 0;
-    border: none;
-    border-top: 1px solid var(--color-main-transparent-80);
-    padding: 56px 0 0 0;
-
-    &:hover,
-    &:focus {
-      border: none;
-      border-top: 1px solid var(--color-main-transparent-100);
+    @media screen and (max-width: $grid-mobile-breakpoint) {
+      top: 20px;
+      left: 0;
     }
   }
-}
 
-.helperText {
-  margin-top: 10px;
-  color: var(--color-main-200);
-}
+  .hiddenLabel {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
 
-// ERROR
-
-.error {
   .textarea {
-    border: 1px solid var(--color-service-error-main);
+    resize: none;
+    border: 1px solid var(--color-main-transparent-80);
+    border-radius: var(--radius-l);
+    color: var(--color-main-500);
+
+    padding: 56px 30px 30px 30px;
+
+    transition: all 0.1s ease-in-out;
 
     &:hover,
     &:focus {
-      border: 1px solid var(--color-service-error-main);
+      outline: none;
+      border: 1px solid var(--color-main-transparent-100);
+    }
+
+    // hide scrollbar
+    &::-webkit-scrollbar {
+      width: 0;
     }
 
     @media screen and (max-width: $grid-mobile-breakpoint) {
+      border-radius: 0;
       border: none;
-      border-top: 1px solid var(--color-service-error-main);
+      border-top: 1px solid var(--color-main-transparent-80);
+      padding: 56px 0 0 0;
 
       &:hover,
       &:focus {
         border: none;
-        border-top: 1px solid var(--color-service-error-main);
+        border-top: 1px solid var(--color-main-transparent-100);
       }
     }
   }
 
   .helperText {
-    color: var(--color-service-error-main);
+    margin-top: 10px;
+    color: var(--color-main-200);
+  }
+
+  // ERROR
+
+  .error {
+    .textarea {
+      border: 1px solid var(--color-service-error-main);
+
+      &:hover,
+      &:focus {
+        border: 1px solid var(--color-service-error-main);
+      }
+
+      @media screen and (max-width: $grid-mobile-breakpoint) {
+        border: none;
+        border-top: 1px solid var(--color-service-error-main);
+
+        &:hover,
+        &:focus {
+          border: none;
+          border-top: 1px solid var(--color-service-error-main);
+        }
+      }
+    }
+
+    .helperText {
+      color: var(--color-service-error-main);
+    }
   }
 }

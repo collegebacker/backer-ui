@@ -1,118 +1,120 @@
 @import '../../../styles/mixins.scss';
 
-.wrap {
-  position: relative;
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  flex: 0 0 auto;
+@layer default-styles {
+  .wrap {
+    position: relative;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    flex: 0 0 auto;
 
-  input[type='checkbox'] {
-    z-index: 1;
-    position: absolute;
-    opacity: 0;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    padding: 0;
-    margin: 0;
-    cursor: pointer;
+    input[type='checkbox'] {
+      z-index: 1;
+      position: absolute;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      padding: 0;
+      margin: 0;
+      cursor: pointer;
 
-    &:hover,
-    &:focus-visible {
-      + .checkboxMock {
-        background-color: rgba(0, 0, 0, 0.04);
+      &:hover,
+      &:focus-visible {
+        + .checkboxMock {
+          background-color: rgba(0, 0, 0, 0.04);
 
-        .tick {
+          .tick {
+            opacity: 0.3;
+          }
+        }
+      }
+
+      &:checked {
+        + .checkboxMock {
+          background-color: var(--color-main-400);
+
+          .tick {
+            stroke: var(--color-main-0);
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+          }
+        }
+      }
+
+      &:checked:hover {
+        + .checkboxMock {
+          background-color: var(--color-main-400);
+
+          .tick {
+            opacity: 0.8;
+            transform: translate(-50%, -50%) scale(1);
+          }
+        }
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+
+        + .checkboxMock {
           opacity: 0.3;
+          background-color: rgba(0, 0, 0, 0.15);
+
+          .tick {
+            opacity: 0;
+          }
         }
       }
-    }
 
-    &:checked {
-      + .checkboxMock {
-        background-color: var(--color-main-400);
+      &:checked:disabled {
+        + .checkboxMock {
+          background-color: var(--color-main-400);
 
-        .tick {
-          stroke: var(--color-main-0);
-          opacity: 1;
-          transform: translate(-50%, -50%) scale(1);
-        }
-      }
-    }
-
-    &:checked:hover {
-      + .checkboxMock {
-        background-color: var(--color-main-400);
-
-        .tick {
-          opacity: 0.8;
-          transform: translate(-50%, -50%) scale(1);
-        }
-      }
-    }
-
-    &:disabled {
-      cursor: not-allowed;
-
-      + .checkboxMock {
-        opacity: 0.3;
-        background-color: rgba(0, 0, 0, 0.15);
-
-        .tick {
-          opacity: 0;
-        }
-      }
-    }
-
-    &:checked:disabled {
-      + .checkboxMock {
-        background-color: var(--color-main-400);
-
-        .tick {
-          opacity: 1;
-          transform: translate(-50%, -50%) scale(1);
+          .tick {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+          }
         }
       }
     }
   }
-}
 
-.checkboxMock {
-  position: absolute;
-  height: 18px;
-  width: 18px;
-  border-radius: var(--radius-s);
-  border: 1px solid var(--color-main-500);
-  margin: 3px;
-  transition: all 0.1s ease-in-out;
-}
+  .checkboxMock {
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    border-radius: var(--radius-s);
+    border: 1px solid var(--color-main-500);
+    margin: 3px;
+    transition: all 0.1s ease-in-out;
+  }
 
-.tick {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.8);
-  opacity: 0;
-  stroke: var(--color-main-500);
-  transition: all 0.1s ease-in-out;
-}
+  .tick {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+    stroke: var(--color-main-500);
+    transition: all 0.1s ease-in-out;
+  }
 
-.label {
-  display: flex;
-  gap: 8px;
-}
+  .label {
+    display: flex;
+    gap: 8px;
+  }
 
-.labelText {
-  display: flex;
-  align-items: center;
-  color: var(--color-main-500);
-}
-
-.disabled {
   .labelText {
-    opacity: 0.6;
-    cursor: not-allowed;
+    display: flex;
+    align-items: center;
+    color: var(--color-main-500);
+  }
+
+  .disabled {
+    .labelText {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
   }
 }
