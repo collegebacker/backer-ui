@@ -9,10 +9,10 @@ export interface Props {
   middleContentClassName?: string
   leftContentClassName?: string
   style?: React.CSSProperties
-  topLabel?: string
-  titleLarge?: string
-  title?: string
-  description?: string
+  topLabel?: React.ReactNode
+  titleLarge?: React.ReactNode
+  title?: React.ReactNode
+  description?: React.ReactNode
   divider?: boolean
   rightContent?: React.ReactNode
   middleContent?: React.ReactNode
