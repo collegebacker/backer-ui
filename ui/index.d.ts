@@ -420,7 +420,7 @@ interface Props$d {
     autofocus?: boolean;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
-declare const Slider: React.FC<Props$d>;
+declare const RangeInput: React.FC<Props$d>;
 
 interface Props$c {
     className?: string;
@@ -549,10 +549,10 @@ interface Props$5 {
     middleContentClassName?: string;
     leftContentClassName?: string;
     style?: React.CSSProperties;
-    topLabel?: string;
-    titleLarge?: string;
-    title?: string;
-    description?: string;
+    topLabel?: React.ReactNode;
+    titleLarge?: React.ReactNode;
+    title?: React.ReactNode;
+    description?: React.ReactNode;
     divider?: boolean;
     rightContent?: React.ReactNode;
     middleContent?: React.ReactNode;
@@ -640,4 +640,4 @@ declare const SkeletonText: React.FC<SkeletonTextProps>;
 declare const SkeletonButton: React.FC<SkeletonButtonProps>;
 declare const SkeletonProfilePic: React.FC<SkeletonBoneProps>;
 
-export { Accordion, ActionMesssage, ActionSheet, ArrowButton, BackButton$1 as BackButton, Button, CSSSlider, Calendar, Checkbox, Checkmark, ChipsSelector, ChipsSlider, BackButton as CloseButton, CodeInput, CountBadge, DateInput, Divider, DotPagination, GhostInput, Icon, ImageEditor, WarnMesssage as InfoMesssage, Input, LabelTag, ListItem, Logo, Modal, ModalButtons, ModalHeaderActions, MoneyInput, PasswordInput, PaymentLogo, PhoneInput, PillButton, PolaroidPhoto, ProfilePic, Radio, RecurringDatePicker, SSNInput, Searchbar, SelectInput, SelectModal, SignaturePad, SkeletonBody, SkeletonBone, SkeletonButton, SkeletonProfilePic, SkeletonText, Slider, Spinner, Stack, StateInput, SwitchSelector, Textarea, Toast, WarnMesssage$1 as WarnMesssage, ZipInput };
+export { Accordion, ActionMesssage, ActionSheet, ArrowButton, BackButton$1 as BackButton, Button, CSSSlider, Calendar, Checkbox, Checkmark, ChipsSelector, ChipsSlider, BackButton as CloseButton, CodeInput, CountBadge, DateInput, Divider, DotPagination, GhostInput, Icon, ImageEditor, WarnMesssage as InfoMesssage, Input, LabelTag, ListItem, Logo, Modal, ModalButtons, ModalHeaderActions, MoneyInput, PasswordInput, PaymentLogo, PhoneInput, PillButton, PolaroidPhoto, ProfilePic, Radio, RangeInput, RecurringDatePicker, SSNInput, Searchbar, SelectInput, SelectModal, SignaturePad, SkeletonBody, SkeletonBone, SkeletonButton, SkeletonProfilePic, SkeletonText, Spinner, Stack, StateInput, SwitchSelector, Textarea, Toast, WarnMesssage$1 as WarnMesssage, ZipInput };
