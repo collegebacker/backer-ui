@@ -15,6 +15,7 @@ const Child = () => {
     <div
       style={{
         height: '100px',
+        minWidth: '100px',
         backgroundColor: 'rgba(0, 0, 0, 0.6)'
       }}
     />
