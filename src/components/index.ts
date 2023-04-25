@@ -51,7 +51,7 @@ export { default as SwitchSelector } from './SwitchSelector'
 export { default as SelectModal } from './SelectModal'
 export { default as Stack } from './Stack'
 export { default as Searchbar } from './Searchbar'
-export { default as Navbar } from './Navbar'
+// export { default as Navbar } from './Navbar'
 
 // SKELETON
 export {

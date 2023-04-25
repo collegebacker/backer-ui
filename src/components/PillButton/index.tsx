@@ -15,6 +15,7 @@ export interface Props {
   label?: string
   tag?: 'button' | 'a'
   isActive?: boolean
+  allowPointerEvents?: boolean
   onClick?: (event: any) => void
   onSubmit?: (event: any) => void
   onKeyDown?: (event: any) => void
@@ -53,7 +54,8 @@ const PillButton = React.forwardRef<any, Props>((props, ref) => {
   const classes = joinClasses([
     props.className,
     styles.button,
-    props.isActive ? styles.active : ''
+    props.isActive ? styles.active : '',
+    !props.allowPointerEvents && props.isActive ? styles.noPointerEvents : ''
   ])
 
   const style = {
