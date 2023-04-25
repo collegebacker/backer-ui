@@ -613,6 +613,7 @@ interface Props {
     className?: string;
     placeholder?: string;
     value?: string;
+    autoFocus?: boolean;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 declare const Searchbar: React.FC<Props>;

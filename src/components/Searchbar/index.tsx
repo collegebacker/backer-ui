@@ -7,6 +7,7 @@ export interface Props {
   className?: string
   placeholder?: string
   value?: string
+  autoFocus?: boolean
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
@@ -42,6 +43,7 @@ const Searchbar: React.FC<Props> = (props) => {
     <div className={joinClasses([styles.inputWrap, props.className])}>
       <Icon name='magnifier' className={styles.icon} />
       <input
+        autoFocus={props.autoFocus}
         ref={inputRef}
         className={styles.input}
         placeholder={props.placeholder}
