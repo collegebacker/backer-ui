@@ -1,47 +1,47 @@
-@layer backer-ui-styles {
-  .arrowButton {
-    cursor: pointer;
+// @layer backer-ui-styles {
+.arrowButton {
+  cursor: pointer;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    width: 30px;
-    height: 30px;
+  width: 30px;
+  height: 30px;
+  outline: none;
+  border-radius: 100px;
+  border: 1px solid var(--color-main-500);
+  background: none;
+
+  transition: border 0.2s ease, opacity 0.2s ease;
+
+  svg {
+    stroke: var(--color-main-500);
+    transition: transform 0.2s ease;
+  }
+
+  &:hover {
     outline: none;
-    border-radius: 100px;
-    border: 1px solid var(--color-main-500);
-    background: none;
-
-    transition: border 0.2s ease, opacity 0.2s ease;
+    border: 1px solid var(--color-main-200);
 
     svg {
-      stroke: var(--color-main-500);
-      transition: transform 0.2s ease;
+      transform: translateX(-2px);
     }
+  }
+
+  &:disabled {
+    // pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.25;
 
     &:hover {
       outline: none;
-      border: 1px solid var(--color-main-200);
+      border: 1px solid var(--color-main-500);
 
       svg {
-        transform: translateX(-2px);
-      }
-    }
-
-    &:disabled {
-      // pointer-events: none;
-      cursor: not-allowed;
-      opacity: 0.25;
-
-      &:hover {
-        outline: none;
-        border: 1px solid var(--color-main-500);
-
-        svg {
-          transform: translateX(0);
-        }
+        transform: translateX(0);
       }
     }
   }
 }
+// }

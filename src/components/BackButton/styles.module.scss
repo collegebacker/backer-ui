@@ -1,63 +1,59 @@
 @import '../../../styles/mixins.scss';
 
-@layer backer-ui-styles {
-  .button {
-    @include navigationButton;
+// @layer backer-ui-styles {
+.button {
+  @include navigationButton;
 
-    &:hover {
-      .arrow {
-        &::after {
-          transform: translate(2px, -50%) rotate(45deg);
-        }
-
-        &::before {
-          width: 24px;
-          transform: translate(0, -50%);
-        }
+  &:hover {
+    .arrow {
+      &::after {
+        transform: translate(2px, -50%) rotate(45deg);
       }
 
-      // .button__background {
-      //   transform: translateX(-4px);
-      // }
-    }
-
-    &:focus-visible {
-      border: 1px solid var(--color-main-500);
+      &::before {
+        width: 24px;
+        transform: translate(0, -50%);
+      }
     }
   }
 
-  .arrow {
-    position: relative;
-    width: 24px;
-    height: 24px;
-
-    &::after,
-    &::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 0;
-      transition: transform 0.15s ease, width 0.15s ease;
-    }
-
-    &::after {
-      width: 13px;
-      height: 13px;
-      transform: translate(5px, -50%) rotate(45deg);
-      border: 1px solid var(--color-main-500);
-      border-top: none;
-      border-right: none;
-    }
-
-    &::before {
-      width: 20px;
-      height: 1px;
-      transform: translate(3px, -50%);
-      background-color: var(--color-main-500);
-    }
-  }
-
-  .label {
-    margin: 0 10px 0 10px;
+  &:focus-visible {
+    border: 1px solid var(--color-main-500);
   }
 }
+
+.arrow {
+  position: relative;
+  width: 24px;
+  height: 24px;
+
+  &::after,
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transition: transform 0.15s ease, width 0.15s ease;
+  }
+
+  &::after {
+    width: 13px;
+    height: 13px;
+    transform: translate(5px, -50%) rotate(45deg);
+    border: 1px solid var(--color-main-500);
+    border-top: none;
+    border-right: none;
+  }
+
+  &::before {
+    width: 20px;
+    height: 1px;
+    transform: translate(3px, -50%);
+    background-color: var(--color-main-500);
+  }
+}
+
+.label {
+  margin: 0 10px 0 10px;
+}
+// }

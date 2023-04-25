@@ -1,24 +1,24 @@
-@layer backer-ui-styles {
-  .wrap {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .switcher {
-    display: flex;
-    gap: 10px;
-  }
-
-  .switcherButton {
-    flex: 1;
-  }
-  .switcherCaption {
-    text-align: center;
-  }
-
-  .saveBtn {
-    width: 100%;
-    margin-top: 5px;
-  }
+// @layer backer-ui-styles {
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
+
+.switcher {
+  display: flex;
+  gap: 10px;
+}
+
+.switcherButton {
+  flex: 1;
+}
+.switcherCaption {
+  text-align: center;
+}
+
+.saveBtn {
+  width: 100%;
+  margin-top: 5px;
+}
+// }

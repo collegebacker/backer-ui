@@ -1,45 +1,45 @@
 @import '../../../styles/mixins.scss';
 
-@layer backer-ui-styles {
-  .button {
-    @include navigationButton;
+// @layer backer-ui-styles {
+.button {
+  @include navigationButton;
 
-    &__wrap {
-      display: flex;
-      justify-content: flex-end;
-      width: 100%;
-    }
+  &__wrap {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
 
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1px;
+    height: 24px;
+    border-radius: 40px;
+    background-color: var(--color-main-500);
+    transition: height 0.1s ease;
+  }
+
+  &:before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  &:after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  &:hover {
     &:before,
     &:after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 1px;
-      height: 24px;
-      border-radius: 40px;
-      background-color: var(--color-main-500);
-      transition: height 0.1s ease;
-    }
-
-    &:before {
-      transform: translate(-50%, -50%) rotate(45deg);
-    }
-
-    &:after {
-      transform: translate(-50%, -50%) rotate(-45deg);
-    }
-
-    &:hover {
-      &:before,
-      &:after {
-        height: 20px;
-      }
-    }
-
-    &:focus-visible {
-      border: 1px solid var(--color-main-500);
+      height: 20px;
     }
   }
+
+  &:focus-visible {
+    border: 1px solid var(--color-main-500);
+  }
 }
+// }

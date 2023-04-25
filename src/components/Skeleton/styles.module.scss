@@ -4,119 +4,119 @@
 $radius: 4px;
 $animation-timing: 2.2s ease infinite;
 
-@layer backer-ui-styles {
-  .body {
-    border-radius: $radius;
-    background: var(--color-skeleton-body);
-    animation: pulse $animation-timing;
+// @layer backer-ui-styles {
+.body {
+  border-radius: $radius;
+  background: var(--color-skeleton-body);
+  animation: pulse $animation-timing;
+}
+
+.bone {
+  border-radius: $radius;
+  background: var(--color-skeleton-gradient);
+  background-size: 800px 100px;
+  animation: shimmer $animation-timing;
+}
+
+@keyframes pulse {
+  0% {
+    background: rgba(0, 0, 0, 0.015);
   }
-
-  .bone {
-    border-radius: $radius;
-    background: var(--color-skeleton-gradient);
-    background-size: 800px 100px;
-    animation: shimmer $animation-timing;
+  50% {
+    background: rgba(0, 0, 0, 0.035);
   }
-
-  @keyframes pulse {
-    0% {
-      background: rgba(0, 0, 0, 0.015);
-    }
-    50% {
-      background: rgba(0, 0, 0, 0.035);
-    }
-    100% {
-      background: rgba(0, 0, 0, 0.015);
-    }
-  }
-
-  @keyframes shimmer {
-    0% {
-      background-position: -400px 0;
-    }
-    100% {
-      background-position: 400px 0;
-    }
-  }
-
-  // TEXT
-
-  .textWrap {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .title-xlarge {
-    height: $typo-app-title-xlarge-desktop-fontsize;
-
-    @media only screen and (max-width: $grid-mobile-breakpoint) {
-      height: $typo-app-title-xlarge-mobile-fontsize;
-    }
-  }
-
-  .title-large {
-    height: $typo-app-title-large-fontsize;
-  }
-
-  .title-medium {
-    height: $typo-app-title-medium-fontsize;
-  }
-
-  .title-medium-adaptive {
-    height: $typo-app-title-medium-fontsize;
-
-    @media only screen and (max-width: $grid-mobile-breakpoint) {
-      height: $typo-app-title-small-fontsize;
-    }
-  }
-
-  .title-small {
-    height: $typo-app-title-small-fontsize;
-  }
-
-  .body-large {
-    height: $typo-app-body-large-fontsize;
-  }
-
-  .body-large-adaptive {
-    @extend .body-large;
-
-    @media only screen and (max-width: $grid-mobile-breakpoint) {
-      height: $typo-app-body-main-fontsize;
-    }
-  }
-
-  .body-main {
-    height: $typo-app-body-main-fontsize;
-  }
-
-  .body-caption {
-    height: $typo-app-body-caption-fontsize;
-  }
-
-  // BUTTON
-
-  .button {
-    border-radius: 60px;
-
-    &__default {
-      height: 60px;
-    }
-
-    &__small {
-      height: 40px;
-    }
-
-    &__pill {
-      height: 45px;
-    }
-  }
-
-  // PROFILE PIC
-
-  .profilePic {
-    border-radius: 50%;
-    height: var(--size, 60px);
-    width: var(--size, 60px);
+  100% {
+    background: rgba(0, 0, 0, 0.015);
   }
 }
+
+@keyframes shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+
+// TEXT
+
+.textWrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.title-xlarge {
+  height: $typo-app-title-xlarge-desktop-fontsize;
+
+  @media only screen and (max-width: $grid-mobile-breakpoint) {
+    height: $typo-app-title-xlarge-mobile-fontsize;
+  }
+}
+
+.title-large {
+  height: $typo-app-title-large-fontsize;
+}
+
+.title-medium {
+  height: $typo-app-title-medium-fontsize;
+}
+
+.title-medium-adaptive {
+  height: $typo-app-title-medium-fontsize;
+
+  @media only screen and (max-width: $grid-mobile-breakpoint) {
+    height: $typo-app-title-small-fontsize;
+  }
+}
+
+.title-small {
+  height: $typo-app-title-small-fontsize;
+}
+
+.body-large {
+  height: $typo-app-body-large-fontsize;
+}
+
+.body-large-adaptive {
+  @extend .body-large;
+
+  @media only screen and (max-width: $grid-mobile-breakpoint) {
+    height: $typo-app-body-main-fontsize;
+  }
+}
+
+.body-main {
+  height: $typo-app-body-main-fontsize;
+}
+
+.body-caption {
+  height: $typo-app-body-caption-fontsize;
+}
+
+// BUTTON
+
+.button {
+  border-radius: 60px;
+
+  &__default {
+    height: 60px;
+  }
+
+  &__small {
+    height: 40px;
+  }
+
+  &__pill {
+    height: 45px;
+  }
+}
+
+// PROFILE PIC
+
+.profilePic {
+  border-radius: 50%;
+  height: var(--size, 60px);
+  width: var(--size, 60px);
+}
+// }
