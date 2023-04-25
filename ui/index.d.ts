@@ -2,7 +2,7 @@ import React from 'react';
 import { CleaveOptions } from 'cleave.js/options';
 import { CalendarProps } from 'react-calendar';
 
-interface Props$F {
+interface Props$E {
     className?: string;
     style?: React.CSSProperties;
     mode?: 'primary' | 'outline' | 'ghost' | 'outline-inverse';
@@ -25,9 +25,9 @@ interface Props$F {
     onSubmit?: (event: any) => void;
     onKeyDown?: (event: any) => void;
 }
-declare const Button: React.ForwardRefExoticComponent<Props$F & React.RefAttributes<any>>;
+declare const Button: React.ForwardRefExoticComponent<Props$E & React.RefAttributes<any>>;
 
-interface Props$E {
+interface Props$D {
     className?: string;
     style?: React.CSSProperties;
     type?: 'button' | 'submit' | 'reset';
@@ -38,30 +38,31 @@ interface Props$E {
     label?: string;
     tag?: 'button' | 'a';
     isActive?: boolean;
+    allowPointerEvents?: boolean;
     onClick?: (event: any) => void;
     onSubmit?: (event: any) => void;
     onKeyDown?: (event: any) => void;
     areaLabel?: string;
     areaLabelledBy?: string;
 }
-declare const PillButton: React.ForwardRefExoticComponent<Props$E & React.RefAttributes<any>>;
+declare const PillButton: React.ForwardRefExoticComponent<Props$D & React.RefAttributes<any>>;
 
-interface Props$D {
+interface Props$C {
     className?: string;
     style?: React.CSSProperties;
     name: IconTypes;
     color?: string;
     onClick?: () => void;
 }
-declare const Icon: React.FC<Props$D>;
+declare const Icon: React.FC<Props$C>;
 
-interface Props$C {
+interface Props$B {
     className?: string;
     style?: React.CSSProperties;
-    mode?: "light" | "dark";
+    mode?: 'light' | 'dark';
     name: PaymentLogoTypes;
 }
-declare const PaymentLogo: React.FC<Props$C>;
+declare const PaymentLogo: React.FC<Props$B>;
 
 interface InputProps {
     cursor?: string;
@@ -97,7 +98,7 @@ interface InputProps {
 }
 declare const Input: React.ForwardRefExoticComponent<InputProps & React.RefAttributes<HTMLInputElement>>;
 
-interface Props$B {
+interface Props$A {
     className?: string;
     type?: 'text' | 'password' | 'number' | 'email' | 'money';
     allowCents?: boolean;
@@ -120,9 +121,9 @@ interface Props$B {
     onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
     onInvalid?: (event: React.FormEvent<HTMLInputElement>) => void;
 }
-declare const GhostInput: React.ForwardRefExoticComponent<Props$B & React.RefAttributes<any>>;
+declare const GhostInput: React.ForwardRefExoticComponent<Props$A & React.RefAttributes<any>>;
 
-interface Props$A {
+interface Props$z {
     tabIndex?: number;
     className?: string;
     style?: React.CSSProperties;
@@ -136,21 +137,21 @@ interface Props$A {
     onFocus?: (nums: string) => void;
     onResend?: (event: any) => void;
 }
-declare const CodeInput: React.ForwardRefExoticComponent<Props$A & React.RefAttributes<any>>;
+declare const CodeInput: React.ForwardRefExoticComponent<Props$z & React.RefAttributes<any>>;
 
-interface Props$z {
+interface Props$y {
     className?: string;
-    type?: "default" | "foundation" | "sign";
+    type?: 'default' | 'foundation' | 'sign' | 'text';
     hoverAnimation?: boolean;
 }
-declare const Logo: React.ForwardRefExoticComponent<Props$z & React.RefAttributes<any>>;
+declare const Logo: React.ForwardRefExoticComponent<Props$y & React.RefAttributes<any>>;
 
 type ItemType$2 = {
     label: string;
     value: any;
     caption?: string;
 };
-interface Props$y {
+interface Props$x {
     containerClassName?: string;
     arrowsClassName?: string;
     items: Array<ItemType$2>;
@@ -168,46 +169,25 @@ interface Props$y {
     alwaysShowOverlayGradients?: boolean;
     onChange?: (index: number) => void;
 }
-declare const ChipsSlider: React.FC<Props$y>;
+declare const ChipsSlider: React.FC<Props$x>;
 
 type ItemType$1 = {
     label: string;
     value: any;
 };
-interface Props$x {
+interface Props$w {
     className?: string;
     defaultIndex?: number;
     items: Array<ItemType$1>;
     onChange?: (index: number) => void;
 }
-declare const ChipsSelector: React.FC<Props$x>;
-
-interface Props$w {
-    containterClassName?: string;
-    paginationClassName?: string;
-    arrowsClassName?: string;
-    breakpoints?: Array<{
-        breakpoint: number;
-        cardsToShow: number;
-        sidePaddingOffset?: number;
-        hideArrows?: boolean;
-        hidePagination?: boolean;
-        showHiddenCard?: number | boolean;
-        disableSideFading?: boolean;
-    }>;
-    spaceBetween?: number;
-    showGuidelines?: boolean;
-    paginationAlignment?: 'left' | 'right' | 'center';
-    children: React.ReactNode;
-    onChange?: (index: number) => void;
-}
-declare const SliderWrapper: React.FC<Props$w>;
+declare const ChipsSelector: React.FC<Props$w>;
 
 interface Props$v {
     tabIndex?: number;
     className?: string;
     disabled?: boolean;
-    direction?: "left" | "right";
+    direction?: 'left' | 'right';
     style?: React.CSSProperties;
     onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
     onMouseDown?: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -234,7 +214,7 @@ declare const Divider: React.FC<Props$t>;
 interface Props$s {
     className?: string;
     style?: React.CSSProperties;
-    size?: "small" | "medium-small" | "medium" | "large";
+    size?: 'small' | 'medium-small' | 'medium' | 'large';
     color?: string;
 }
 declare const Spinner: React.FC<Props$s>;
@@ -466,6 +446,8 @@ declare const ImageEditor: React.FC<Props$b>;
 interface Props$a {
     className?: string;
     style?: React.CSSProperties;
+    label?: string;
+    hasBackground?: boolean;
     onClick: () => void;
 }
 declare const BackButton$1: React.FC<Props$a>;
@@ -474,6 +456,7 @@ interface Props$9 {
     className?: string;
     style?: React.CSSProperties;
     onClick: () => void;
+    hasBackground?: boolean;
 }
 declare const BackButton: React.FC<Props$9>;
 
@@ -645,11 +628,11 @@ interface SkeletonBoneProps {
     style?: React.CSSProperties;
 }
 interface SkeletonTextProps extends SkeletonBoneProps {
-    fontSize: "title-xlarge" | "title-large" | "title-medium" | "title-medium-adaptive" | "title-small" | "body-large" | "body-large-adaptive" | "body-main" | "body-caption";
+    fontSize: 'title-xlarge' | 'title-large' | 'title-medium' | 'title-medium-adaptive' | 'title-small' | 'body-large' | 'body-large-adaptive' | 'body-main' | 'body-caption';
     lines: number;
 }
 interface SkeletonButtonProps extends SkeletonBoneProps {
-    size?: "default" | "small" | "pill";
+    size?: 'default' | 'small' | 'pill';
 }
 declare const SkeletonBody: React.FC<SkeletonBodyProps>;
 declare const SkeletonBone: React.FC<SkeletonBoneProps>;
@@ -657,4 +640,4 @@ declare const SkeletonText: React.FC<SkeletonTextProps>;
 declare const SkeletonButton: React.FC<SkeletonButtonProps>;
 declare const SkeletonProfilePic: React.FC<SkeletonBoneProps>;
 
-export { Accordion, ActionMesssage, ActionSheet, ArrowButton, BackButton$1 as BackButton, Button, CSSSlider, Calendar, Checkbox, Checkmark, ChipsSelector, ChipsSlider, BackButton as CloseButton, CodeInput, CountBadge, DateInput, Divider, DotPagination, GhostInput, Icon, ImageEditor, WarnMesssage as InfoMesssage, Input, LabelTag, ListItem, Logo, Modal, ModalButtons, ModalHeaderActions, MoneyInput, PasswordInput, PaymentLogo, PhoneInput, PillButton, PolaroidPhoto, ProfilePic, Radio, RecurringDatePicker, SSNInput, Searchbar, SelectInput, SelectModal, SignaturePad, SkeletonBody, SkeletonBone, SkeletonButton, SkeletonProfilePic, SkeletonText, Slider, SliderWrapper, Spinner, Stack, StateInput, SwitchSelector, Textarea, Toast, WarnMesssage$1 as WarnMesssage, ZipInput };
+export { Accordion, ActionMesssage, ActionSheet, ArrowButton, BackButton$1 as BackButton, Button, CSSSlider, Calendar, Checkbox, Checkmark, ChipsSelector, ChipsSlider, BackButton as CloseButton, CodeInput, CountBadge, DateInput, Divider, DotPagination, GhostInput, Icon, ImageEditor, WarnMesssage as InfoMesssage, Input, LabelTag, ListItem, Logo, Modal, ModalButtons, ModalHeaderActions, MoneyInput, PasswordInput, PaymentLogo, PhoneInput, PillButton, PolaroidPhoto, ProfilePic, Radio, RecurringDatePicker, SSNInput, Searchbar, SelectInput, SelectModal, SignaturePad, SkeletonBody, SkeletonBone, SkeletonButton, SkeletonProfilePic, SkeletonText, Slider, Spinner, Stack, StateInput, SwitchSelector, Textarea, Toast, WarnMesssage$1 as WarnMesssage, ZipInput };

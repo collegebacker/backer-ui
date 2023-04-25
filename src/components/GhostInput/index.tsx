@@ -1,5 +1,5 @@
-import Icon from '../Icon'
 import React from 'react'
+import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
 export interface Props {
@@ -96,13 +96,15 @@ const GhostInput = React.forwardRef<any, Props>((props, ref) => {
   return (
     <div
       ref={ref}
-      className={`${styles.componentWrap} ${props.className} ${
-        props.errorMessage ? styles.error : ''
-      } ${props.type === 'money' ? styles.money : ''} ${
+      className={joinClasses([
+        styles.componentWrap,
+        props.className,
+        props.errorMessage ? styles.error : '',
+        props.type === 'money' ? styles.money : '',
         props.errorMessage ? styles.shake : ''
-      }`}
+      ])}
     >
-      <div className={`${styles.inputWrap}`}>
+      <div className={styles.inputWrap}>
         {props.type === 'money' ? (
           <span className={styles.moneySign}>{props.currency}</span>
         ) : null}
@@ -123,7 +125,7 @@ const GhostInput = React.forwardRef<any, Props>((props, ref) => {
           type={convertTypes(props.type)}
           id={props.id ? props.id : props.name}
           name={props.name}
-          className={`${styles.input}`}
+          className={styles.input}
           placeholder={props.placeholder}
           value={val}
           required={props.required}

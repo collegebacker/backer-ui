@@ -1,6 +1,6 @@
 import React from 'react'
 import Icon from '../Icon'
-
+import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 import Spinner from '../Spinner'
 
@@ -32,7 +32,7 @@ const ButtonContent = ({ ...props }: Props) => {
   return (
     <>
       {props.label ? (
-        <span className={`${styles.text}`}>
+        <span className={styles.text}>
           {!props.busy ? props.label : props.busyLabel}
         </span>
       ) : null}
@@ -68,15 +68,18 @@ const ButtonContent = ({ ...props }: Props) => {
 }
 
 const Button = React.forwardRef<any, Props>((props, ref) => {
-  const classes = `${props.className} ${styles.button} ${styles[props.mode]} ${
-    styles[props.size]
-  } ${props.disabled ? styles.disabled : ''} ${
+  const classes = joinClasses([
+    styles.button,
+    styles[props.mode],
+    styles[props.size],
+    props.disabled ? styles.disabled : '',
     props.label
       ? props.hasMinWidth
         ? styles[`minWidth-${props.size}`]
         : ''
-      : styles[`fixedSize-${props.size}`]
-  }`
+      : styles[`fixedSize-${props.size}`],
+    props.className
+  ])
 
   const style = {
     ...(props.maxWidth ? { maxWidth: props.maxWidth } : {}),

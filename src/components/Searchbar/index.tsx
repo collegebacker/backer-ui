@@ -1,6 +1,6 @@
 import React from 'react'
 import Icon from '../Icon'
-
+import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
 export interface Props {
@@ -39,7 +39,7 @@ const Searchbar: React.FC<Props> = (props) => {
   }
 
   return (
-    <div className={`${styles.inputWrap} ${props.className}`}>
+    <div className={joinClasses([styles.inputWrap, props.className])}>
       <Icon name='magnifier' className={styles.icon} />
       <input
         ref={inputRef}
@@ -49,7 +49,10 @@ const Searchbar: React.FC<Props> = (props) => {
         onChange={handleChange}
       />
       <button
-        className={`${styles.clearButton} ${!!value ? '' : styles.hideButton}`}
+        className={joinClasses([
+          styles.clearButton,
+          !!value ? '' : styles.hideButton
+        ])}
         title='clear'
         onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
           setValue('')

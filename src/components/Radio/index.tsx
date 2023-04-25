@@ -1,4 +1,5 @@
 import React from 'react'
+import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
 export interface Props {
@@ -26,11 +27,15 @@ const Radio: React.FC<Props> = (props) => {
   return (
     <label
       htmlFor={props.id}
-      className={`${styles.label} ${props.disabled ? styles.disabled : ''} ${
+      className={joinClasses([
+        styles.label,
+        props.disabled ? styles.disabled : '',
         props.className
-      }`}
+      ])}
     >
-      <span className={`${styles.wrap} ${checked ? styles.checked : ''}`}>
+      <span
+        className={joinClasses([styles.wrap, checked ? styles.checked : ''])}
+      >
         <input
           id={props.id}
           name={props.name}

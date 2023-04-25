@@ -449,238 +449,219 @@ body {
   color: var(--color-main-0);
 }
 
-.typo-app-title-xlarge {
-  font-family: "Gza", serif;
-  font-weight: 700;
-  font-size: 66px;
-  line-height: 115%;
-}
-@media only screen and (max-width: 620px) {
+@layer app-typography {
   .typo-app-title-xlarge {
+    font-family: "Gza", serif;
+    font-weight: 700;
+    font-size: 66px;
+    line-height: 115%;
+  }
+  @media only screen and (max-width: 620px) {
+    .typo-app-title-xlarge {
+      font-size: 40px;
+      line-height: 120%;
+    }
+  }
+  .typo-app-title-large {
+    font-family: "Gza", serif;
+    font-weight: 700;
     font-size: 40px;
     line-height: 120%;
   }
-}
-
-.typo-app-title-large {
-  font-family: "Gza", serif;
-  font-weight: 700;
-  font-size: 40px;
-  line-height: 120%;
-}
-
-.typo-app-title-medium {
-  font-family: "Gza", serif;
-  font-weight: 700;
-  font-size: 34px;
-  line-height: 120%;
-}
-
-.typo-app-title-medium-adaptive {
-  font-family: "ABCMarfa", sans-serif;
-  font-weight: 500;
-  font-size: 34px;
-  line-height: 120%;
-}
-@media only screen and (max-width: 620px) {
+  .typo-app-title-medium {
+    font-family: "Gza", serif;
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 120%;
+  }
   .typo-app-title-medium-adaptive {
+    font-family: "ABCMarfa", sans-serif;
+    font-weight: 500;
+    font-size: 34px;
+    line-height: 120%;
+  }
+  @media only screen and (max-width: 620px) {
+    .typo-app-title-medium-adaptive {
+      font-size: 24px;
+      line-height: 130%;
+    }
+  }
+  .typo-app-title-small {
+    font-family: "ABCMarfa", sans-serif;
+    font-weight: 500;
     font-size: 24px;
     line-height: 130%;
   }
-}
-
-.typo-app-title-small {
-  font-family: "ABCMarfa", sans-serif;
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 130%;
-}
-
-.typo-app-body-large, .typo-app-body-large-adaptive {
-  font-family: "ABCMarfa", sans-serif;
-  font-weight: 300;
-  font-size: 24px;
-  line-height: 130%;
-}
-
-@media only screen and (max-width: 620px) {
-  .typo-app-body-large-adaptive {
+  .typo-app-body-large, .typo-app-body-large-adaptive {
+    font-family: "ABCMarfa", sans-serif;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 130%;
+  }
+  @media only screen and (max-width: 620px) {
+    .typo-app-body-large-adaptive {
+      font-size: 17px;
+      line-height: 130%;
+    }
+  }
+  .typo-app-body-large-paragraph, .typo-app-body-large-paragraph-adaptive {
+    font-family: "ABCMarfa", sans-serif;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 150%;
+  }
+  @media only screen and (max-width: 620px) {
+    .typo-app-body-large-paragraph-adaptive {
+      font-size: 17px;
+      line-height: 160%;
+    }
+  }
+  .typo-app-body-main {
+    font-family: "ABCMarfa", sans-serif;
+    font-weight: 300;
     font-size: 17px;
     line-height: 130%;
   }
-}
-
-.typo-app-body-large-paragraph, .typo-app-body-large-paragraph-adaptive {
-  font-family: "ABCMarfa", sans-serif;
-  font-weight: 300;
-  font-size: 24px;
-  line-height: 150%;
-}
-
-@media only screen and (max-width: 620px) {
-  .typo-app-body-large-paragraph-adaptive {
+  .typo-app-body-paragraph {
+    font-family: "ABCMarfa", sans-serif;
+    font-weight: 300;
     font-size: 17px;
     line-height: 160%;
   }
+  .typo-app-body-caption {
+    font-family: "ABCMarfa", sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 150%;
+  }
 }
-
-.typo-app-body-main {
-  font-family: "ABCMarfa", sans-serif;
-  font-weight: 300;
-  font-size: 17px;
-  line-height: 130%;
-}
-
-.typo-app-body-paragraph {
-  font-family: "ABCMarfa", sans-serif;
-  font-weight: 300;
-  font-size: 17px;
-  line-height: 160%;
-}
-
-.typo-app-body-caption {
-  font-family: "ABCMarfa", sans-serif;
-  font-weight: 300;
-  font-size: 14px;
-  line-height: 150%;
-}
-
-.typo-marketing-xlarge {
-  font-family: "Gza", serif;
-  font-size: 66px;
-  font-weight: 700;
-  line-height: 115%;
-  margin-bottom: 24px;
-}
-@media only screen and (max-width: 1024px) {
+@layer marketing-typography {
   .typo-marketing-xlarge {
-    font-size: 60px;
+    font-family: "Gza", serif;
+    font-size: 66px;
+    font-weight: 700;
+    line-height: 115%;
+    margin-bottom: 24px;
   }
-}
-@media only screen and (max-width: 620px) {
-  .typo-marketing-xlarge {
-    font-size: 44px;
+  @media only screen and (max-width: 1024px) {
+    .typo-marketing-xlarge {
+      font-size: 60px;
+    }
   }
-}
-
-.typo-marketing-large {
-  font-family: "Gza", serif;
-  font-size: 46px;
-  font-weight: 700;
-  line-height: 120%;
-  margin-bottom: 24px;
-}
-@media only screen and (max-width: 1024px) {
+  @media only screen and (max-width: 620px) {
+    .typo-marketing-xlarge {
+      font-size: 44px;
+    }
+  }
   .typo-marketing-large {
-    font-size: 42px;
+    font-family: "Gza", serif;
+    font-size: 46px;
+    font-weight: 700;
+    line-height: 120%;
+    margin-bottom: 24px;
   }
-}
-@media only screen and (max-width: 620px) {
-  .typo-marketing-large {
-    font-size: 38px;
+  @media only screen and (max-width: 1024px) {
+    .typo-marketing-large {
+      font-size: 42px;
+    }
   }
-}
-
-.typo-marketing-lead {
-  font-family: "ABCMarfa", sans-serif;
-  font-size: 32px;
-  margin-bottom: 28px;
-  font-weight: 300;
-  line-height: 150%;
-}
-@media only screen and (max-width: 620px) {
+  @media only screen and (max-width: 620px) {
+    .typo-marketing-large {
+      font-size: 38px;
+    }
+  }
   .typo-marketing-lead {
-    font-size: 24px;
+    font-family: "ABCMarfa", sans-serif;
+    font-size: 32px;
+    margin-bottom: 28px;
+    font-weight: 300;
+    line-height: 150%;
   }
-}
-
-.typo-marketing-lead-bold {
-  font-family: "ABCMarfa", sans-serif;
-  font-size: 32px;
-  margin-bottom: 28px;
-  font-weight: 500;
-  line-height: 130%;
-}
-@media only screen and (max-width: 620px) {
+  @media only screen and (max-width: 620px) {
+    .typo-marketing-lead {
+      font-size: 24px;
+    }
+  }
   .typo-marketing-lead-bold {
+    font-family: "ABCMarfa", sans-serif;
+    font-size: 32px;
+    margin-bottom: 28px;
+    font-weight: 500;
+    line-height: 130%;
+  }
+  @media only screen and (max-width: 620px) {
+    .typo-marketing-lead-bold {
+      font-size: 24px;
+    }
+  }
+  .typo-marketing-lead-small {
+    font-family: "ABCMarfa", sans-serif;
     font-size: 24px;
+    line-height: 130%;
+    margin-bottom: 28px;
+    font-weight: 300;
   }
-}
-
-.typo-marketing-lead-small {
-  font-family: "ABCMarfa", sans-serif;
-  font-size: 24px;
-  line-height: 130%;
-  margin-bottom: 28px;
-  font-weight: 300;
-}
-
-.typo-marketing-lead-small-bold {
-  font-family: "ABCMarfa", sans-serif;
-  font-size: 24px;
-  line-height: 130%;
-  margin-bottom: 28px;
-  font-weight: 500;
-}
-
-.typo-marketing-accent-paragraph {
-  font-family: "ABCMarfa", sans-serif;
-  font-size: 24px;
-  line-height: 160%;
-  font-weight: 300;
-}
-@media only screen and (max-width: 1024px) {
+  .typo-marketing-lead-small-bold {
+    font-family: "ABCMarfa", sans-serif;
+    font-size: 24px;
+    line-height: 130%;
+    margin-bottom: 28px;
+    font-weight: 500;
+  }
   .typo-marketing-accent-paragraph {
-    font-size: 22px;
+    font-family: "ABCMarfa", sans-serif;
+    font-size: 24px;
+    line-height: 160%;
+    font-weight: 300;
   }
-}
-@media only screen and (max-width: 620px) {
-  .typo-marketing-accent-paragraph {
-    font-size: 17px;
+  @media only screen and (max-width: 1024px) {
+    .typo-marketing-accent-paragraph {
+      font-size: 22px;
+    }
   }
-}
-
-.typo-marketing-accent-paragraph-bold {
-  font-family: "ABCMarfa", sans-serif;
-  font-size: 24px;
-  line-height: 160%;
-  font-weight: 500;
-}
-@media only screen and (max-width: 1024px) {
+  @media only screen and (max-width: 620px) {
+    .typo-marketing-accent-paragraph {
+      font-size: 17px;
+    }
+  }
   .typo-marketing-accent-paragraph-bold {
-    font-size: 22px;
+    font-family: "ABCMarfa", sans-serif;
+    font-size: 24px;
+    line-height: 160%;
+    font-weight: 500;
   }
-}
-@media only screen and (max-width: 620px) {
-  .typo-marketing-accent-paragraph-bold {
+  @media only screen and (max-width: 1024px) {
+    .typo-marketing-accent-paragraph-bold {
+      font-size: 22px;
+    }
+  }
+  @media only screen and (max-width: 620px) {
+    .typo-marketing-accent-paragraph-bold {
+      font-size: 17px;
+    }
+  }
+  .typo-marketing-paragraph {
+    font-family: "ABCMarfa", sans-serif;
     font-size: 17px;
+    line-height: 160%;
+    font-weight: 300;
   }
-}
-
-.typo-marketing-paragraph {
-  font-family: "ABCMarfa", sans-serif;
-  font-size: 17px;
-  line-height: 160%;
-  font-weight: 300;
-}
-
-.typo-marketing-paragraph-bold {
-  font-family: "ABCMarfa", sans-serif;
-  font-size: 17px;
-  line-height: 160%;
-  font-weight: 500;
-}
-
-.typo-marketing-caption {
-  font-family: "ABCMarfa", sans-serif;
-  font-size: 14px;
-  line-height: 150%;
-  font-weight: 300;
-}
-
-.typo-marketing-caption-bold {
-  font-family: "ABCMarfa", sans-serif;
-  font-size: 14px;
-  line-height: 150%;
-  font-weight: 500;
+  .typo-marketing-paragraph-bold {
+    font-family: "ABCMarfa", sans-serif;
+    font-size: 17px;
+    line-height: 160%;
+    font-weight: 500;
+  }
+  .typo-marketing-caption {
+    font-family: "ABCMarfa", sans-serif;
+    font-size: 14px;
+    line-height: 150%;
+    font-weight: 300;
+  }
+  .typo-marketing-caption-bold {
+    font-family: "ABCMarfa", sans-serif;
+    font-size: 14px;
+    line-height: 150%;
+    font-weight: 500;
+  }
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './styles.module.scss'
-
+import { joinClasses } from '../../utils'
 import { useDidMountEffect } from '../../hooks'
 import DotPagination from '../DotPagination'
 
@@ -182,7 +182,9 @@ const CSSSlider: React.FC<Props> = (props) => {
   }, [paginationAmount])
 
   return (
-    <section className={`${styles.container} ${props.containterClassName}`}>
+    <section
+      className={joinClasses([styles.container, props.containterClassName])}
+    >
       {!currentBreakpoint.disableSideFading ? (
         <div className={styles.sideFading} />
       ) : null}
@@ -190,9 +192,10 @@ const CSSSlider: React.FC<Props> = (props) => {
       {currentBreakpoint.hideArrows ? null : (
         <div className={styles.arrows}>
           <button
-            className={`${styles.arrow} ${
+            className={joinClasses([
+              styles.arrow,
               activeIndex === 0 ? styles.arrow_disabled : styles.arrow_active
-            }`}
+            ])}
             title='previous'
             style={{
               left: `${
@@ -204,11 +207,12 @@ const CSSSlider: React.FC<Props> = (props) => {
             {arrowSVG}
           </button>
           <button
-            className={`${styles.arrow} ${
+            className={joinClasses([
+              styles.arrow,
               activeIndex === paginationAmount - 1
                 ? styles.arrow_disabled
                 : styles.arrow_active
-            }`}
+            ])}
             title='next'
             style={{
               right: `${
@@ -264,7 +268,10 @@ const CSSSlider: React.FC<Props> = (props) => {
 
       {paginationAmount > 1 ? (
         <div
-          className={`${styles.pagination} ${props.paginationClassName}`}
+          className={joinClasses([
+            styles.pagination,
+            props.paginationClassName
+          ])}
           style={{
             justifyContent: setPaginationAlignment(),
             marginLeft: `${currentBreakpoint.sidePaddingOffset}px`,

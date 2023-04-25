@@ -1,7 +1,7 @@
 import React from 'react'
 import Checkmark from '../Checkmark'
 import Modal from '../Modal'
-
+import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
 export interface Props {
@@ -59,7 +59,7 @@ const SelectModal: React.FC<Props> = (props) => {
           {props.modalDescription}
         </p>
       )}
-      <ul className={`${styles.listWrap}`}>
+      <ul className={styles.listWrap}>
         {props.options.map((option, index) => (
           <li
             key={index}
@@ -69,7 +69,7 @@ const SelectModal: React.FC<Props> = (props) => {
                 handleOnSelect(option)
               }
             }}
-            className={`${styles.listItem} ${option.className || ''}`}
+            className={joinClasses([styles.listItem, option.className || ''])}
             tabIndex={0}
           >
             <span className='typo-app-body-main'>{option.label}</span>

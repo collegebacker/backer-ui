@@ -1,129 +1,131 @@
-@import "../tokens/typography-marketing.scss";
-@import "../tokens/grids.scss";
+@import '../tokens/typography-marketing.scss';
+@import '../tokens/grids.scss';
 
-.typo-marketing-xlarge {
-  font-family: $typo-marketing-xlarge-desktop-fontfamily;
-  font-size: $typo-marketing-xlarge-desktop-fontsize;
-  font-weight: $typo-marketing-xlarge-desktop-fontweight;
-  line-height: $typo-marketing-xlarge-desktop-lineheight;
-  margin-bottom: 24px;
+@layer marketing-typography {
+  .typo-marketing-xlarge {
+    font-family: $typo-marketing-xlarge-desktop-fontfamily;
+    font-size: $typo-marketing-xlarge-desktop-fontsize;
+    font-weight: $typo-marketing-xlarge-desktop-fontweight;
+    line-height: $typo-marketing-xlarge-desktop-lineheight;
+    margin-bottom: 24px;
 
-  @media only screen and (max-width: $grid-tablet-breakpoint) {
-    font-size: $typo-marketing-xlarge-tablet-fontsize;
+    @media only screen and (max-width: $grid-tablet-breakpoint) {
+      font-size: $typo-marketing-xlarge-tablet-fontsize;
+    }
+
+    @media only screen and (max-width: $grid-mobile-breakpoint) {
+      font-size: $typo-marketing-xlarge-mobile-fontsize;
+    }
   }
 
-  @media only screen and (max-width: $grid-mobile-breakpoint) {
-    font-size: $typo-marketing-xlarge-mobile-fontsize;
-  }
-}
+  .typo-marketing-large {
+    font-family: $typo-marketing-large-desktop-fontfamily;
+    font-size: $typo-marketing-large-desktop-fontsize;
+    font-weight: $typo-marketing-large-desktop-fontweight;
+    line-height: $typo-marketing-large-desktop-lineheight;
+    margin-bottom: 24px;
 
-.typo-marketing-large {
-  font-family: $typo-marketing-large-desktop-fontfamily;
-  font-size: $typo-marketing-large-desktop-fontsize;
-  font-weight: $typo-marketing-large-desktop-fontweight;
-  line-height: $typo-marketing-large-desktop-lineheight;
-  margin-bottom: 24px;
+    @media only screen and (max-width: $grid-tablet-breakpoint) {
+      font-size: $typo-marketing-large-tablet-fontsize;
+    }
 
-  @media only screen and (max-width: $grid-tablet-breakpoint) {
-    font-size: $typo-marketing-large-tablet-fontsize;
-  }
-
-  @media only screen and (max-width: $grid-mobile-breakpoint) {
-    font-size: $typo-marketing-large-mobile-fontsize;
-  }
-}
-
-@mixin lead {
-  font-family: $typo-marketing-lead-desktop-fontfamily;
-  font-size: $typo-marketing-lead-desktop-fontsize;
-  margin-bottom: 28px;
-
-  @media only screen and (max-width: $grid-mobile-breakpoint) {
-    font-size: $typo-marketing-lead-mobile-fontsize;
-  }
-}
-
-.typo-marketing-lead {
-  @include lead;
-  font-weight: $typo-marketing-lead-desktop-fontweight;
-  line-height: $typo-marketing-lead-desktop-lineheight;
-}
-
-.typo-marketing-lead-bold {
-  @include lead;
-  font-weight: $typo-marketing-lead-bold-desktop-fontweight;
-  line-height: $typo-marketing-lead-bold-desktop-lineheight;
-}
-
-@mixin lead-small {
-  font-family: $typo-marketing-lead-small-fontfamily;
-  font-size: $typo-marketing-lead-small-fontsize;
-  line-height: $typo-marketing-lead-small-lineheight;
-  margin-bottom: 28px;
-}
-
-.typo-marketing-lead-small {
-  @include lead-small;
-  font-weight: $typo-marketing-lead-small-fontweight;
-}
-
-.typo-marketing-lead-small-bold {
-  @include lead-small;
-  font-weight: $typo-marketing-lead-small-bold-fontweight;
-}
-
-@mixin accent-paragraph {
-  font-family: $typo-marketing-accent-paragraph-desktop-fontfamily;
-  font-size: $typo-marketing-accent-paragraph-desktop-fontsize;
-  line-height: $typo-marketing-accent-paragraph-desktop-lineheight;
-
-  @media only screen and (max-width: $grid-tablet-breakpoint) {
-    font-size: $typo-marketing-accent-paragraph-tablet-fontsize;
+    @media only screen and (max-width: $grid-mobile-breakpoint) {
+      font-size: $typo-marketing-large-mobile-fontsize;
+    }
   }
 
-  @media only screen and (max-width: $grid-mobile-breakpoint) {
-    font-size: $typo-marketing-accent-paragraph-mobile-fontsize;
+  @mixin lead {
+    font-family: $typo-marketing-lead-desktop-fontfamily;
+    font-size: $typo-marketing-lead-desktop-fontsize;
+    margin-bottom: 28px;
+
+    @media only screen and (max-width: $grid-mobile-breakpoint) {
+      font-size: $typo-marketing-lead-mobile-fontsize;
+    }
   }
-}
 
-.typo-marketing-accent-paragraph {
-  @include accent-paragraph;
-  font-weight: $typo-marketing-accent-paragraph-desktop-fontweight;
-}
+  .typo-marketing-lead {
+    @include lead;
+    font-weight: $typo-marketing-lead-desktop-fontweight;
+    line-height: $typo-marketing-lead-desktop-lineheight;
+  }
 
-.typo-marketing-accent-paragraph-bold {
-  @include accent-paragraph;
-  font-weight: $typo-marketing-accent-paragraph-bold-desktop-fontweight;
-}
+  .typo-marketing-lead-bold {
+    @include lead;
+    font-weight: $typo-marketing-lead-bold-desktop-fontweight;
+    line-height: $typo-marketing-lead-bold-desktop-lineheight;
+  }
 
-@mixin paragraph {
-  font-family: $typo-marketing-paragraph-fontfamily;
-  font-size: $typo-marketing-paragraph-fontsize;
-  line-height: $typo-marketing-paragraph-lineheight;
-}
+  @mixin lead-small {
+    font-family: $typo-marketing-lead-small-fontfamily;
+    font-size: $typo-marketing-lead-small-fontsize;
+    line-height: $typo-marketing-lead-small-lineheight;
+    margin-bottom: 28px;
+  }
 
-.typo-marketing-paragraph {
-  @include paragraph;
-  font-weight: $typo-marketing-paragraph-fontweight;
-}
+  .typo-marketing-lead-small {
+    @include lead-small;
+    font-weight: $typo-marketing-lead-small-fontweight;
+  }
 
-.typo-marketing-paragraph-bold {
-  @include paragraph;
-  font-weight: $typo-marketing-paragraph-bold-fontweight;
-}
+  .typo-marketing-lead-small-bold {
+    @include lead-small;
+    font-weight: $typo-marketing-lead-small-bold-fontweight;
+  }
 
-@mixin caption {
-  font-family: $typo-marketing-caption-fontfamily;
-  font-size: $typo-marketing-caption-fontsize;
-  line-height: $typo-marketing-caption-lineheight;
-}
+  @mixin accent-paragraph {
+    font-family: $typo-marketing-accent-paragraph-desktop-fontfamily;
+    font-size: $typo-marketing-accent-paragraph-desktop-fontsize;
+    line-height: $typo-marketing-accent-paragraph-desktop-lineheight;
 
-.typo-marketing-caption {
-  @include caption;
-  font-weight: $typo-marketing-caption-fontweight;
-}
+    @media only screen and (max-width: $grid-tablet-breakpoint) {
+      font-size: $typo-marketing-accent-paragraph-tablet-fontsize;
+    }
 
-.typo-marketing-caption-bold {
-  @include caption;
-  font-weight: $typo-marketing-caption-bold-fontweight;
+    @media only screen and (max-width: $grid-mobile-breakpoint) {
+      font-size: $typo-marketing-accent-paragraph-mobile-fontsize;
+    }
+  }
+
+  .typo-marketing-accent-paragraph {
+    @include accent-paragraph;
+    font-weight: $typo-marketing-accent-paragraph-desktop-fontweight;
+  }
+
+  .typo-marketing-accent-paragraph-bold {
+    @include accent-paragraph;
+    font-weight: $typo-marketing-accent-paragraph-bold-desktop-fontweight;
+  }
+
+  @mixin paragraph {
+    font-family: $typo-marketing-paragraph-fontfamily;
+    font-size: $typo-marketing-paragraph-fontsize;
+    line-height: $typo-marketing-paragraph-lineheight;
+  }
+
+  .typo-marketing-paragraph {
+    @include paragraph;
+    font-weight: $typo-marketing-paragraph-fontweight;
+  }
+
+  .typo-marketing-paragraph-bold {
+    @include paragraph;
+    font-weight: $typo-marketing-paragraph-bold-fontweight;
+  }
+
+  @mixin caption {
+    font-family: $typo-marketing-caption-fontfamily;
+    font-size: $typo-marketing-caption-fontsize;
+    line-height: $typo-marketing-caption-lineheight;
+  }
+
+  .typo-marketing-caption {
+    @include caption;
+    font-weight: $typo-marketing-caption-fontweight;
+  }
+
+  .typo-marketing-caption-bold {
+    @include caption;
+    font-weight: $typo-marketing-caption-bold-fontweight;
+  }
 }

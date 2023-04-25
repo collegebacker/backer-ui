@@ -1,27 +1,35 @@
 import React from 'react'
+import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
 export interface Props {
   className?: string
   style?: React.CSSProperties
   onClick: () => void
+  hasBackground?: boolean
 }
 
-const BackButton: React.FC<Props> = props => {
+const BackButton: React.FC<Props> = (props) => {
   return (
     <button
-      className={`${styles.closeButton} ${props.className}`}
+      className={joinClasses([styles.button, props.className])}
       onClick={props.onClick}
-      style={props.style}
+      style={{
+        ...props.style,
+        ...(props.hasBackground
+          ? { backgroundColor: 'var(--color-main-0)' }
+          : {})
+      }}
     >
-      <div className={styles.closeButton__background} />
+      <div className={styles.button__background} />
     </button>
   )
 }
 
 BackButton.defaultProps = {
   className: '',
-  style: {}
+  style: {},
+  hasBackground: true
 } as Partial<Props>
 
 export default BackButton

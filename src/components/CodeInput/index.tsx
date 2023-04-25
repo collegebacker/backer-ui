@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import { isMobile } from '../../utils'
+import { joinClasses } from '../../utils'
 
 export interface Props {
   tabIndex?: number
@@ -179,16 +179,18 @@ const CodeInput = React.forwardRef<any, Props>((props, ref) => {
 
   return (
     <div
-      className={`${styles.componentWrap} ${props.className} ${
+      className={joinClasses([
+        styles.componentWrap,
+        props.className,
         props.isInvalid ? styles.error : ''
-      }`}
+      ])}
       style={props.style}
     >
       <section
         ref={ref}
         onPaste={handlePaste}
         onFocus={handleOnFocus}
-        className={`${props.isInvalid ? styles.shake : ''}`}
+        className={joinClasses([props.isInvalid ? styles.shake : ''])}
       >
         {Array.from({ length: props.length }).map((_, index) => {
           return (
@@ -220,9 +222,10 @@ const CodeInput = React.forwardRef<any, Props>((props, ref) => {
       <p className={`typo-app-body-main ${styles.resendSection}`}>
         {props.resendText}{' '}
         <a
-          className={`${styles.resendLink} ${
+          className={joinClasses([
+            styles.resendLink,
             resendTimer > 0 ? styles.resendLink_disabled : ''
-          }`}
+          ])}
           onClick={handleResend}
         >
           Resend code

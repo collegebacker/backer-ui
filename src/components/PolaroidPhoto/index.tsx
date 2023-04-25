@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './styles.module.scss'
-
+import { joinClasses } from '../../utils'
 import gsap from 'gsap'
 import { stringToGradient, isMobile, getFirstLetter } from '../../utils'
 
@@ -25,7 +25,7 @@ const PolaroidPhoto: React.FC<Props> = (props) => {
 
   return (
     <div
-      className={`${styles.polaroidWrapper} ${props.className}`}
+      className={joinClasses([styles.polaroidWrapper, props.className])}
       style={props.style}
       onClick={props.onClick}
     >
@@ -84,9 +84,10 @@ const PolaroidPhoto: React.FC<Props> = (props) => {
             />
 
             <div
-              className={`${styles.uploadPhotoPlaceholderImage} ${
+              className={joinClasses([
+                styles.uploadPhotoPlaceholderImage,
                 imageSrc ? styles.imageExist : ''
-              }`}
+              ])}
             >
               <svg
                 width='33'
@@ -115,7 +116,9 @@ const PolaroidPhoto: React.FC<Props> = (props) => {
               </svg>
             </div>
 
-            <div className={`${styles.photoHoverFade} ${styles.photo}`} />
+            <div
+              className={joinClasses([styles.photoHoverFade, styles.photo])}
+            />
           </div>
         )}
 

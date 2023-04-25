@@ -9,7 +9,6 @@ export { default as CodeInput } from './CodeInput'
 export { default as Logo } from './Logo'
 export { default as ChipsSlider } from './ChipsSlider'
 export { default as ChipsSelector } from './ChipsSelector'
-export { default as SliderWrapper } from './SliderWrapper'
 export { default as ArrowButton } from './ArrowButton'
 export { default as DotPagination } from './DotPagination'
 export { default as Divider } from './Divider'
@@ -52,6 +51,7 @@ export { default as SwitchSelector } from './SwitchSelector'
 export { default as SelectModal } from './SelectModal'
 export { default as Stack } from './Stack'
 export { default as Searchbar } from './Searchbar'
+// export { default as Navbar } from './Navbar'
 
 // SKELETON
 export {

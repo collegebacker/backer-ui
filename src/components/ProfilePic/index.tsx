@@ -1,4 +1,5 @@
 import React from 'react'
+import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
 import { stringToGradient, getFirstLetter } from '../../utils'
@@ -30,7 +31,10 @@ const ProfilePic: React.FC<Props> = (props) => {
   //
   return (
     <div
-      className={`${styles.pic} ${props.className ? props.className : ''}`}
+      className={joinClasses([
+        styles.pic,
+        props.className ? props.className : ''
+      ])}
       style={{
         backgroundImage: `url(${props.imageSrc}), ${stringToGradient(
           props.name
@@ -57,9 +61,10 @@ const ProfilePic: React.FC<Props> = (props) => {
             }}
           />
           <div
-            className={`${styles.uploadPhotoPlaceholderImage} ${
+            className={joinClasses([
+              styles.uploadPhotoPlaceholderImage,
               imageSrc ? styles.imageExist : ''
-            }`}
+            ])}
           >
             <svg
               viewBox='0 0 33 27'

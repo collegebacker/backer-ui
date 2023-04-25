@@ -1,100 +1,102 @@
-@import "../tokens/typography-app.scss";
-@import "../tokens/grids.scss";
+@import '../tokens/typography-app.scss';
+@import '../tokens/grids.scss';
 
-.typo-app-title-xlarge {
-  font-family: $typo-app-title-xlarge-desktop-fontfamily;
-  font-weight: $typo-app-title-xlarge-desktop-fontweight;
-  font-size: $typo-app-title-xlarge-desktop-fontsize;
-  line-height: $typo-app-title-xlarge-desktop-lineheight;
+@layer app-typography {
+  .typo-app-title-xlarge {
+    font-family: $typo-app-title-xlarge-desktop-fontfamily;
+    font-weight: $typo-app-title-xlarge-desktop-fontweight;
+    font-size: $typo-app-title-xlarge-desktop-fontsize;
+    line-height: $typo-app-title-xlarge-desktop-lineheight;
 
-  @media only screen and (max-width: $grid-mobile-breakpoint) {
-    font-size: $typo-app-title-xlarge-mobile-fontsize;
-    line-height: $typo-app-title-xlarge-mobile-lineheight;
+    @media only screen and (max-width: $grid-mobile-breakpoint) {
+      font-size: $typo-app-title-xlarge-mobile-fontsize;
+      line-height: $typo-app-title-xlarge-mobile-lineheight;
+    }
   }
-}
 
-.typo-app-title-large {
-  font-family: $typo-app-title-large-fontfamily;
-  font-weight: $typo-app-title-large-fontweight;
-  font-size: $typo-app-title-large-fontsize;
-  line-height: $typo-app-title-large-lineheight;
-}
+  .typo-app-title-large {
+    font-family: $typo-app-title-large-fontfamily;
+    font-weight: $typo-app-title-large-fontweight;
+    font-size: $typo-app-title-large-fontsize;
+    line-height: $typo-app-title-large-lineheight;
+  }
 
-.typo-app-title-medium {
-  font-family: $typo-app-title-medium-fontfamily;
-  font-weight: $typo-app-title-medium-fontweight;
-  font-size: $typo-app-title-medium-fontsize;
-  line-height: $typo-app-title-medium-lineheight;
-}
+  .typo-app-title-medium {
+    font-family: $typo-app-title-medium-fontfamily;
+    font-weight: $typo-app-title-medium-fontweight;
+    font-size: $typo-app-title-medium-fontsize;
+    line-height: $typo-app-title-medium-lineheight;
+  }
 
-.typo-app-title-medium-adaptive {
-  font-family: $typo-sansserif-fontfamily;
-  font-weight: $typo-medium-fontweight;
-  font-size: $typo-app-title-medium-fontsize;
-  line-height: $typo-app-title-medium-lineheight;
+  .typo-app-title-medium-adaptive {
+    font-family: $typo-sansserif-fontfamily;
+    font-weight: $typo-medium-fontweight;
+    font-size: $typo-app-title-medium-fontsize;
+    line-height: $typo-app-title-medium-lineheight;
 
-  @media only screen and (max-width: $grid-mobile-breakpoint) {
+    @media only screen and (max-width: $grid-mobile-breakpoint) {
+      font-size: $typo-app-title-small-fontsize;
+      line-height: $typo-app-title-small-lineheight;
+    }
+  }
+
+  .typo-app-title-small {
+    font-family: $typo-app-title-small-fontfamily;
+    font-weight: $typo-app-title-small-fontweight;
     font-size: $typo-app-title-small-fontsize;
     line-height: $typo-app-title-small-lineheight;
   }
-}
 
-.typo-app-title-small {
-  font-family: $typo-app-title-small-fontfamily;
-  font-weight: $typo-app-title-small-fontweight;
-  font-size: $typo-app-title-small-fontsize;
-  line-height: $typo-app-title-small-lineheight;
-}
+  .typo-app-body-large {
+    font-family: $typo-app-body-large-fontfamily;
+    font-weight: $typo-app-body-large-fontweight;
+    font-size: $typo-app-body-large-fontsize;
+    line-height: $typo-app-body-large-lineheight;
+  }
 
-.typo-app-body-large {
-  font-family: $typo-app-body-large-fontfamily;
-  font-weight: $typo-app-body-large-fontweight;
-  font-size: $typo-app-body-large-fontsize;
-  line-height: $typo-app-body-large-lineheight;
-}
+  .typo-app-body-large-adaptive {
+    @extend .typo-app-body-large;
 
-.typo-app-body-large-adaptive {
-  @extend .typo-app-body-large;
+    @media only screen and (max-width: $grid-mobile-breakpoint) {
+      font-size: $typo-app-body-main-fontsize;
+      line-height: $typo-app-body-main-lineheight;
+    }
+  }
 
-  @media only screen and (max-width: $grid-mobile-breakpoint) {
+  .typo-app-body-large-paragraph {
+    font-family: $typo-app-body-large-paragraph-fontfamily;
+    font-weight: $typo-app-body-large-paragraph-fontweight;
+    font-size: $typo-app-body-large-paragraph-fontsize;
+    line-height: $typo-app-body-large-paragraph-lineheight;
+  }
+
+  .typo-app-body-large-paragraph-adaptive {
+    @extend .typo-app-body-large-paragraph;
+
+    @media only screen and (max-width: $grid-mobile-breakpoint) {
+      font-size: $typo-app-body-paragraph-fontsize;
+      line-height: $typo-app-body-paragraph-lineheight;
+    }
+  }
+
+  .typo-app-body-main {
+    font-family: $typo-app-body-main-fontfamily;
+    font-weight: $typo-app-body-main-fontweight;
     font-size: $typo-app-body-main-fontsize;
     line-height: $typo-app-body-main-lineheight;
   }
-}
 
-.typo-app-body-large-paragraph {
-  font-family: $typo-app-body-large-paragraph-fontfamily;
-  font-weight: $typo-app-body-large-paragraph-fontweight;
-  font-size: $typo-app-body-large-paragraph-fontsize;
-  line-height: $typo-app-body-large-paragraph-lineheight;
-}
-
-.typo-app-body-large-paragraph-adaptive {
-  @extend .typo-app-body-large-paragraph;
-
-  @media only screen and (max-width: $grid-mobile-breakpoint) {
+  .typo-app-body-paragraph {
+    font-family: $typo-app-body-paragraph-fontfamily;
+    font-weight: $typo-app-body-paragraph-fontweight;
     font-size: $typo-app-body-paragraph-fontsize;
     line-height: $typo-app-body-paragraph-lineheight;
   }
-}
 
-.typo-app-body-main {
-  font-family: $typo-app-body-main-fontfamily;
-  font-weight: $typo-app-body-main-fontweight;
-  font-size: $typo-app-body-main-fontsize;
-  line-height: $typo-app-body-main-lineheight;
-}
-
-.typo-app-body-paragraph {
-  font-family: $typo-app-body-paragraph-fontfamily;
-  font-weight: $typo-app-body-paragraph-fontweight;
-  font-size: $typo-app-body-paragraph-fontsize;
-  line-height: $typo-app-body-paragraph-lineheight;
-}
-
-.typo-app-body-caption {
-  font-family: $typo-app-body-caption-fontfamily;
-  font-weight: $typo-app-body-caption-fontweight;
-  font-size: $typo-app-body-caption-fontsize;
-  line-height: $typo-app-body-caption-lineheight;
+  .typo-app-body-caption {
+    font-family: $typo-app-body-caption-fontfamily;
+    font-weight: $typo-app-body-caption-fontweight;
+    font-size: $typo-app-body-caption-fontsize;
+    line-height: $typo-app-body-caption-lineheight;
+  }
 }

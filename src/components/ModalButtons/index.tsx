@@ -1,4 +1,5 @@
 import React from 'react'
+import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
 import Icon from '../Icon'
@@ -16,7 +17,10 @@ export interface Props {
 
 const ModalButtons: React.FC<Props> = (props) => {
   return (
-    <div className={`${styles.wrap} ${props.className}`} style={props.style}>
+    <div
+      className={joinClasses([styles.wrap, props.className])}
+      style={props.style}
+    >
       {props.items.map((item, index) => {
         return (
           <button className={styles.button} key={index} onClick={item.onClick}>

@@ -1,4 +1,5 @@
 import React from 'react'
+import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
 export interface Props {
@@ -50,7 +51,7 @@ const Slider: React.FC<Props> = (props) => {
     <input
       ref={inputRef}
       type='range'
-      className={`${styles.slider} ${props.className}`}
+      className={joinClasses([styles.slider, props.className])}
       style={props.style}
       min={props.min}
       max={props.max}

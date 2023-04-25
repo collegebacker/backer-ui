@@ -1,4 +1,5 @@
 import React from 'react'
+import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
 export interface Props {
@@ -71,29 +72,38 @@ const Textarea: React.FC<Props> = (props) => {
 
   return (
     <div
-      className={`${styles.wrap} ${props.className} ${
-        props.errorMessage ? styles.error : ''
-      }`}
+      className={joinClasses([
+        styles.wrap,
+        props.className,
+        props.errorMessage && styles.error
+      ])}
       style={{ ...props.style }}
     >
-      <label className={`typo-app-body-caption ${styles.label}`} ref={labelRef}>
+      <label
+        className={joinClasses(['typo-app-body-caption', styles.label])}
+        ref={labelRef}
+      >
         {props.label}:
       </label>
       <textarea
         ref={textareaRef}
-        className={`typo-app-body-paragraph ${styles.textarea}`}
+        className={joinClasses(['typo-app-body-paragraph', styles.textarea])}
         style={props.style}
         onChange={handleChange}
         value={props.value}
         rows={props.rows}
       />
       {props.helperText && !props.errorMessage && (
-        <span className={`typo-app-body-caption ${styles.helperText}`}>
+        <span
+          className={joinClasses(['typo-app-body-caption', styles.helperText])}
+        >
           {props.helperText}
         </span>
       )}
       {props.errorMessage && props.errorMessage && (
-        <span className={`typo-app-body-caption ${styles.helperText}`}>
+        <span
+          className={joinClasses(['typo-app-body-caption', styles.helperText])}
+        >
           {props.errorMessage}
         </span>
       )}

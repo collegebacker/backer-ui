@@ -1,6 +1,5 @@
 import React from 'react'
-
-import Button from '../Button'
+import { joinClasses } from '../../utils'
 import PillButton from '../PillButton'
 
 import styles from './styles.module.scss'
@@ -55,7 +54,7 @@ const RecurringDatePicker: React.FC<Props> = (props) => {
   }
 
   return (
-    <section className={`${styles.wrap} ${props.className}`}>
+    <section className={joinClasses([styles.wrap, props.className])}>
       {props.showSwitcher && (
         <section className={styles.switcher}>
           <PillButton
