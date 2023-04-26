@@ -1,4 +1,4 @@
-$focus-line-margin: -4px;
+$focus-line-margin: 0;
 
 @mixin focus-state($border-radius: 150px) {
   &:focus-visible {
