@@ -29,6 +29,15 @@ const Template: ComponentStory<typeof Input> = (args) => {
       <Input
         {...args}
         onChange={handleOnChange}
+        icon={{
+          name: 'alert'
+        }}
+        disabled
+        helperText='Helper text'
+      />
+      <Input
+        {...args}
+        onChange={handleOnChange}
         value={value}
         ref={inputRef}
         autoFocus

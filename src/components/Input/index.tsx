@@ -116,9 +116,9 @@ const Input = React.forwardRef(
             </label>
           )}
 
-          {props.icon && (
+          {props.icon || props.disabled ? (
             <div
-              onClick={props.icon.onClick}
+              onClick={props.icon?.onClick}
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {
                   props.icon.onClick && props.icon.onClick()
@@ -127,13 +127,13 @@ const Input = React.forwardRef(
               className={styles.icon}
               style={{
                 pointerEvents:
-                  props.icon.onClick !== undefined ? 'auto' : 'none'
+                  props.icon?.onClick !== undefined ? 'auto' : 'none'
               }}
               tabIndex={0}
             >
-              <Icon name={props.icon.name} />
+              <Icon name={!props.disabled ? props.icon.name : 'lock-closed'} />
             </div>
-          )}
+          ) : null}
         </div>
 
         {(props.helperText || props.errorMessage) && (

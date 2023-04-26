@@ -57,6 +57,8 @@ declare global {
     | 'magnifier'
     | 'sandwatch'
     | 'internet'
+    | 'lock-open'
+    | 'lock-closed'
 
   type TargetTypes = '_blank' | '_self' | '_parent' | '_top'
 
