@@ -19,6 +19,7 @@ Default.args = {
   backButtonClick: () => {
     console.log('Back button clicked')
   },
+  onCloseClick: undefined,
   buttons: [
     {
       label: 'Button',

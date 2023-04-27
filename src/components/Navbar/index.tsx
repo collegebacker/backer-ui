@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Logo from '../Logo'
 import Icon from '../Icon'
 import BackButton from '../BackButton'
@@ -12,7 +13,9 @@ export interface Props {
   style?: React.CSSProperties
   backButtonClick?: () => void
   backButtonLabel?: string
+  backButtonStartColumn?: number
   onCloseClick?: () => void
+  hideLogo?: boolean
   buttons?: Array<{
     label?: string
     icon?: IconTypes
@@ -26,19 +29,25 @@ const Navbar: React.FC<Props> = React.memo((props) => {
       className={joinClasses([styles.wrap, props.className])}
       style={props.style}
     >
-      <div
-        className={joinClasses([
-          styles.logo,
-          props.backButtonClick && styles.hideLogoOnShrink
-        ])}
-      >
-        <Logo type='sign' className={styles.logoSign} />
-        <Logo type='text' className={styles.logoText} />
-      </div>
+      {!props.hideLogo && (
+        <div
+          className={joinClasses([
+            styles.logo,
+            props.backButtonClick && styles.hideLogoOnShrink
+          ])}
+        >
+          <Logo type='sign' className={styles.logoSign} />
+          <Logo type='text' className={styles.logoText} />
+        </div>
+      )}
 
       <div className='grid'>
         {props.backButtonClick && (
-          <div className='grid-desktop-2-4 grid-tablet-1-4'>
+          <div
+            className={`grid-desktop-${props.backButtonStartColumn}-${
+              12 - props.backButtonStartColumn
+            } grid-tablet-1-4`}
+          >
             <BackButton
               hasBackground={false}
               className={styles.backButton}
@@ -72,11 +81,13 @@ const Navbar: React.FC<Props> = React.memo((props) => {
             </button>
           )
         })}
-        <CloseButton
-          hasBackground={false}
-          className={styles.closeButton}
-          onClick={props.onCloseClick}
-        />
+        {props.onCloseClick && (
+          <CloseButton
+            hasBackground={false}
+            className={styles.closeButton}
+            onClick={props.onCloseClick}
+          />
+        )}
       </div>
     </nav>
   )
@@ -84,7 +95,9 @@ const Navbar: React.FC<Props> = React.memo((props) => {
 
 Navbar.defaultProps = {
   className: '',
-  style: {}
+  style: {},
+  backButtonStartColumn: 3,
+  hideLogo: false
 } as Partial<Props>
 
 export default Navbar

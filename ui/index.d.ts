@@ -623,7 +623,9 @@ interface Props {
     style?: React.CSSProperties;
     backButtonClick?: () => void;
     backButtonLabel?: string;
+    backButtonStartColumn?: number;
     onCloseClick?: () => void;
+    hideLogo?: boolean;
     buttons?: Array<{
         label?: string;
         icon?: IconTypes;
