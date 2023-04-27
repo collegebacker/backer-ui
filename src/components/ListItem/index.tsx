@@ -34,6 +34,12 @@ const ListItem: React.FC<Props> = (props) => {
       ])}
       style={props.style}
       onClick={props.onClick}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' && props.onClick) {
+          e.preventDefault()
+          props.onClick()
+        }
+      }}
       tabIndex={props.onClick ? 0 : -1}
     >
       {props.leftContent && (
