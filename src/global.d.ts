@@ -60,6 +60,7 @@ declare global {
     | 'lock-open'
     | 'lock-closed'
     | 'bank-account'
+    | 'empty-circle'
 
   type TargetTypes = '_blank' | '_self' | '_parent' | '_top'
 
