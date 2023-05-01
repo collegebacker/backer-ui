@@ -43,7 +43,6 @@ export default [
       }),
       json(),
       commonjs(),
-
       typescript({
         compilerOptions: {
           declaration: false

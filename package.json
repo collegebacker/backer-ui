@@ -1,9 +1,9 @@
 {
   "name": "@collegebacker/backer-ui",
-  "version": "2.8.7",
+  "version": "2.8.8",
   "description": "A Backer component library",
   "scripts": {
-    "build": "rimraf ui && rimraf utils && rollup -c && sass --no-source-map styles/base.scss:ui/base.css",
+    "build": "rimraf ui && rimraf utils && rollup -c && sass --no-source-map styles/base.scss:ui/base.css && cleancss -o ui/base.css ui/base.css",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "chromatic": "npx chromatic --auto-accept-changes --project-token"
@@ -34,6 +34,7 @@
     "autoprefixer": "^10.4.7",
     "babel-loader": "^8.2.5",
     "chromatic": "^6.5.6",
+    "clean-css-cli": "^5.6.2",
     "css-loader": "^6.7.1",
     "esbuild": "^0.16.14",
     "gsap-bonus": "file:packages/gsap-bonus.tgz",

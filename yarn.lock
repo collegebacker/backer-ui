@@ -4534,7 +4534,7 @@ character-reference-invalid@^1.0.0:
   resolved "https://registry.yarnpkg.com/character-reference-invalid/-/character-reference-invalid-1.1.4.tgz#083329cda0eae272ab3dbbf37e9a382c13af1560"
   integrity sha512-mKKUkUbhPpQlCOfIuZkvSEgktjPFIsZKRRbC6KWVEMvlzblj3i3asQv5ODsrwt0N3pHAEvjP8KTQPHkp0+6jOg==
 
-"chokidar@>=3.0.0 <4.0.0", chokidar@^3.4.1, chokidar@^3.4.2:
+"chokidar@>=3.0.0 <4.0.0", chokidar@^3.4.1, chokidar@^3.4.2, chokidar@^3.5.2:
   version "3.5.3"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.5.3.tgz#1cf37c8707b932bd1af1ae22c0432e2acd1903bd"
   integrity sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==
@@ -4615,6 +4615,16 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
+clean-css-cli@^5.6.2:
+  version "5.6.2"
+  resolved "https://registry.yarnpkg.com/clean-css-cli/-/clean-css-cli-5.6.2.tgz#7b645ebb8025e56e6c66f535f4a92d9c9bba9f19"
+  integrity sha512-GDQkr6zVqHJhO3yWTy3sA22sMCT6iUqaJuBdqZMW6oI25MtiJ2iZXDmWzErpjoRotsB+TYPTpuZSNSgaC1n4lA==
+  dependencies:
+    chokidar "^3.5.2"
+    clean-css "^5.3.2"
+    commander "7.x"
+    glob "^7.1.6"
+
 clean-css@^4.2.3:
   version "4.2.4"
   resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-4.2.4.tgz#733bf46eba4e607c6891ea57c24a989356831178"
@@ -4622,7 +4632,7 @@ clean-css@^4.2.3:
   dependencies:
     source-map "~0.6.0"
 
-clean-css@^5.2.2:
+clean-css@^5.2.2, clean-css@^5.3.2:
   version "5.3.2"
   resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-5.3.2.tgz#70ecc7d4d4114921f5d298349ff86a31a9975224"
   integrity sha512-JVJbM+f3d3Q704rF4bqQ5UUyTtuJ0JRKNbTKVEeujCCBoMdkEi+V+e8oktO9qGQNSvHrFTM6JZRXrUvGR1czww==
@@ -4767,6 +4777,11 @@ comma-separated-tokens@^1.0.0:
   resolved "https://registry.yarnpkg.com/comma-separated-tokens/-/comma-separated-tokens-1.0.8.tgz#632b80b6117867a158f1080ad498b2fbe7e3f5ea"
   integrity sha512-GHuDRO12Sypu2cV70d1dkA2EUmXHgntrzbpvOB+Qy+49ypNfGgFQIC2fhhXbnyrJRynDCAARsT7Ou0M6hirpfw==
 
+commander@7.x, commander@^7.2.0:
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-7.2.0.tgz#a36cb57d0b501ce108e4d20559a150a391d97ab7"
+  integrity sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw==
+
 commander@^2.19.0, commander@^2.20.0:
   version "2.20.3"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
@@ -4781,11 +4796,6 @@ commander@^6.2.1:
   version "6.2.1"
   resolved "https://registry.yarnpkg.com/commander/-/commander-6.2.1.tgz#0792eb682dfbc325999bb2b84fddddba110ac73c"
   integrity sha512-U7VdrJFnJgo4xjrHpTzu0yrHPGImdsmD95ZlgYSEajAn2JKzDhDTPG9kBTefmObL2w/ngeZnilk+OV9CG3d7UA==
-
-commander@^7.2.0:
-  version "7.2.0"
-  resolved "https://registry.yarnpkg.com/commander/-/commander-7.2.0.tgz#a36cb57d0b501ce108e4d20559a150a391d97ab7"
-  integrity sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw==
 
 commander@^8.3.0:
   version "8.3.0"
