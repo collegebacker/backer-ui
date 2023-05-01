@@ -1,0 +1,95 @@
+import { Meta } from '@storybook/addon-docs'
+import gridPreviw from './img/grid-preview.webp'
+import simpleGrid from './img/simple-grid.webp'
+
+<Meta title='About/Grid' />
+
+# Grid system
+
+## Defenition
+
+<img src={gridPreviw} />
+
+The grid system is based on the [CSS Grid Layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout) and uses the `grid` and `grid-template-columns` properties under the hood.
+
+---
+
+### 🕹 [CodePen example](https://codepen.io/PavelLaptev/pen/bGmNNWR)
+
+---
+
+**The grid systeem using 3 breakpoints**:
+
+- `desktop` (default) - 1440px and above
+- `tablet` - between 1024px and 1439px
+- `mobile` - below 1024px
+
+**Each breakpoint has their own column count and side padding**:
+
+- `desktop` - 12 columns, 50px padding
+- `tablet` - 12 columns, 40px padding
+- `mobile` - 6 columns, 20px padding
+
+---
+
+## How to use
+
+### Grid container
+
+In order to use the grid system, you need to wrap your content in a `grid` container.
+
+```jsx
+<div className='grid'>
+  <div className='grid-desktop-1-6 grid-tablet-1-12 grid-mobile-1-6' />
+  <div className='grid-desktop-7-12 grid-tablet-1-12 grid-mobile-1-6' />
+</div>
+```
+
+---
+
+### Grid item class syntax
+
+There are two types of grid items — `grid` and `subgrid`. But each of them has the same class name structure.
+
+```jsx
+<div className='grid-desktop-1-12 grid-tablet-1-12 grid-mobile-1-6' />
+```
+
+Each grid item class name that consists of 3 parts:
+
+- `item` - could be `grid` or `subgrid` (see below)
+- `breakpoint` - could be `desktop`, `tablet` or `mobile`
+- `column range` - could be `1-12` (desktop), `1-12` (tablet) or `1-6` (mobile). The first number represents the starting column, and the second number represents the ending column of the grid item within the grid container.
+
+---
+
+### Simple grid item
+
+There is a simple grid item component that works only inside the `grid` container or container that has `display: grid` property.
+
+<img src={simpleGrid} />
+
+```jsx
+<div className='grid'>
+  <div className='grid-desktop-1-7 grid-tablet-1-12 grid-mobile-1-6' />
+  <div className='grid-desktop-8-12 grid-tablet-1-12 grid-mobile-1-6' />
+</div>
+```
+
+---
+
+### Subgrid item
+
+The subgrid item is a grid item that has its own grid container inside. You can use it when you need to position the grid items inside the grid item.
+
+<img src={gridPreviw} />
+
+```jsx
+<div className='grid'>
+  <div className='subgrid-desktop-1-7 subgrid-tablet-1-12 subgrid-mobile-1-6'>
+    <div class='grid-desktop-1-4 grid-tablet-1-10 grid-mobile-1-6' />
+    <div class='grid-desktop-5-7 grid-tablet-11-12 grid-mobile-7-12' />
+  </div>
+  <div className='grid-desktop-8-12 grid-tablet-1-12 grid-mobile-1-6' />
+</div>
+```
