@@ -107,7 +107,8 @@ strong {
 }
 
 body {
-  font-family: 'ABCMarfa', sans-serif;
+  font-family: var(--typo-sansserif-fontfamily);
+  font-weight: var(--typo-light-fontweight);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
