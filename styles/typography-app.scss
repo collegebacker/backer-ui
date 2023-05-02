@@ -29,8 +29,8 @@
 }
 
 .typo-app-title-medium-adaptive {
-  font-family: $typo-sansserif-fontfamily;
-  font-weight: $typo-medium-fontweight;
+  font-family: var(--typo-sansserif-fontfamily);
+  font-weight: var(--typo-medium-fontweight);
   font-size: $typo-app-title-medium-fontsize;
   line-height: $typo-app-title-medium-lineheight;
 

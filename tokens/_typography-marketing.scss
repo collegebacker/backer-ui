@@ -1,8 +1,8 @@
-@import "./typography-common.scss";
+@import './typography-common.scss';
 
 // XLARGE
-$typo-marketing-xlarge-desktop-fontfamily: $typo-serif-fontfamily;
-$typo-marketing-xlarge-desktop-fontweight: $typo-bold-fontweight;
+$typo-marketing-xlarge-desktop-fontfamily: var(--typo-serif-fontfamily);
+$typo-marketing-xlarge-desktop-fontweight: var(--typo-bold-fontweight);
 $typo-marketing-xlarge-desktop-fontsize: 66px;
 $typo-marketing-xlarge-desktop-lineheight: 115%;
 
@@ -11,8 +11,8 @@ $typo-marketing-xlarge-tablet-fontsize: 60px;
 $typo-marketing-xlarge-mobile-fontsize: 44px;
 
 // LARGE
-$typo-marketing-large-desktop-fontfamily: $typo-serif-fontfamily;
-$typo-marketing-large-desktop-fontweight: $typo-bold-fontweight;
+$typo-marketing-large-desktop-fontfamily: var(--typo-serif-fontfamily);
+$typo-marketing-large-desktop-fontweight: var(--typo-bold-fontweight);
 $typo-marketing-large-desktop-fontsize: 46px;
 $typo-marketing-large-desktop-lineheight: 120%;
 
@@ -21,29 +21,33 @@ $typo-marketing-large-tablet-fontsize: 42px;
 $typo-marketing-large-mobile-fontsize: 38px;
 
 // LEAD
-$typo-marketing-lead-desktop-fontfamily: $typo-sansserif-fontfamily;
-$typo-marketing-lead-desktop-fontweight: $typo-light-fontweight;
+$typo-marketing-lead-desktop-fontfamily: var(--typo-sansserif-fontfamily);
+$typo-marketing-lead-desktop-fontweight: var(--typo-light-fontweight);
 $typo-marketing-lead-desktop-fontsize: 32px;
 $typo-marketing-lead-desktop-lineheight: 150%;
 
 $typo-marketing-lead-mobile-fontsize: 24px;
 
 // LEAD BOLD
-$typo-marketing-lead-bold-desktop-fontweight: $typo-medium-fontweight;
+$typo-marketing-lead-bold-desktop-fontweight: var(--typo-medium-fontweight);
 $typo-marketing-lead-bold-desktop-lineheight: 130%;
 
 // LEAD SMALL
-$typo-marketing-lead-small-fontfamily: $typo-sansserif-fontfamily;
-$typo-marketing-lead-small-fontweight: $typo-light-fontweight;
+$typo-marketing-lead-small-fontfamily: var(--typo-sansserif-fontfamily);
+$typo-marketing-lead-small-fontweight: var(--typo-light-fontweight);
 $typo-marketing-lead-small-fontsize: 24px;
 $typo-marketing-lead-small-lineheight: 130%;
 
 // LEAD SMALL BOLD
-$typo-marketing-lead-small-bold-fontweight: $typo-medium-fontweight;
+$typo-marketing-lead-small-bold-fontweight: var(--typo-medium-fontweight);
 
 // ACCENT PARAGRAPH
-$typo-marketing-accent-paragraph-desktop-fontfamily: $typo-sansserif-fontfamily;
-$typo-marketing-accent-paragraph-desktop-fontweight: $typo-light-fontweight;
+$typo-marketing-accent-paragraph-desktop-fontfamily: var(
+  --typo-sansserif-fontfamily
+);
+$typo-marketing-accent-paragraph-desktop-fontweight: var(
+  --typo-light-fontweight
+);
 $typo-marketing-accent-paragraph-desktop-fontsize: 24px;
 $typo-marketing-accent-paragraph-desktop-lineheight: 160%;
 
@@ -52,22 +56,24 @@ $typo-marketing-accent-paragraph-tablet-fontsize: 22px;
 $typo-marketing-accent-paragraph-mobile-fontsize: 17px;
 
 // ACCENT PARAGRAPH BOLD
-$typo-marketing-accent-paragraph-bold-desktop-fontweight: $typo-medium-fontweight;
+$typo-marketing-accent-paragraph-bold-desktop-fontweight: var(
+  --typo-medium-fontweight
+);
 
 // PARAGRAPH
-$typo-marketing-paragraph-fontfamily: $typo-sansserif-fontfamily;
-$typo-marketing-paragraph-fontweight: $typo-light-fontweight;
+$typo-marketing-paragraph-fontfamily: var(--typo-sansserif-fontfamily);
+$typo-marketing-paragraph-fontweight: var(--typo-light-fontweight);
 $typo-marketing-paragraph-fontsize: 17px;
 $typo-marketing-paragraph-lineheight: 160%;
 
 // PARAGRAPH BOLD
-$typo-marketing-paragraph-bold-fontweight: $typo-medium-fontweight;
+$typo-marketing-paragraph-bold-fontweight: var(--typo-medium-fontweight);
 
 // CAPTION
-$typo-marketing-caption-fontfamily: $typo-sansserif-fontfamily;
-$typo-marketing-caption-fontweight: $typo-light-fontweight;
+$typo-marketing-caption-fontfamily: var(--typo-sansserif-fontfamily);
+$typo-marketing-caption-fontweight: var(--typo-light-fontweight);
 $typo-marketing-caption-fontsize: 14px;
 $typo-marketing-caption-lineheight: 150%;
 
 // CAPTION BOLD
-$typo-marketing-caption-bold-fontweight: $typo-medium-fontweight;
+$typo-marketing-caption-bold-fontweight: var(--typo-medium-fontweight);
