@@ -24,7 +24,7 @@ const BackButton: React.FC<Props> = (props) => {
     >
       <div className={styles.arrow} />
       {props.label && (
-        <span className={joinClasses(['typo-app-body-main', styles.label])}>
+        <span className={joinClasses(['typo-app-body-caption', styles.label])}>
           {props.label}
         </span>
       )}

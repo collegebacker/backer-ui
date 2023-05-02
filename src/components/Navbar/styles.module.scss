@@ -59,6 +59,12 @@
   }
 }
 
+.hideLogoOnMobile {
+  @media only screen and (max-width: $grid-mobile-breakpoint) {
+    display: none;
+  }
+}
+
 .rightContent {
   position: absolute;
   right: $grid-desktop-padding;

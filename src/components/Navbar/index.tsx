@@ -16,6 +16,7 @@ export interface Props {
   backButtonStartColumn?: number
   onCloseClick?: () => void
   hideLogo?: boolean
+  hideLogoOnMobile?: boolean
   buttons?: Array<{
     label?: string
     icon?: IconTypes
@@ -33,7 +34,8 @@ const Navbar: React.FC<Props> = React.memo((props) => {
         <div
           className={joinClasses([
             styles.logo,
-            props.backButtonClick && styles.hideLogoOnShrink
+            props.backButtonClick && styles.hideLogoOnShrink,
+            props.hideLogoOnMobile && styles.hideLogoOnMobile
           ])}
         >
           <Logo type='sign' className={styles.logoSign} />
