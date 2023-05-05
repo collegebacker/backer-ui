@@ -625,6 +625,7 @@ interface Props {
     backButtonLabel?: string;
     backButtonStartColumn?: number;
     onCloseClick?: () => void;
+    logoLink?: string;
     hideLogo?: boolean;
     hideLogoOnMobile?: boolean;
     buttons?: Array<{

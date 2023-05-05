@@ -14,6 +14,7 @@ export interface Props {
   backButtonLabel?: string
   backButtonStartColumn?: number
   onCloseClick?: () => void
+  logoLink?: string
   hideLogo?: boolean
   hideLogoOnMobile?: boolean
   buttons?: Array<{
@@ -30,16 +31,18 @@ const Navbar: React.FC<Props> = React.memo((props) => {
       style={props.style}
     >
       {!props.hideLogo && (
-        <div
+        <a
           className={joinClasses([
             styles.logo,
             props.backButtonClick && styles.hideLogoOnShrink,
             props.hideLogoOnMobile && styles.hideLogoOnMobile
           ])}
+          href={props.logoLink}
+          target='_self'
         >
           <Logo type='sign' className={styles.logoSign} />
           <Logo type='text' className={styles.logoText} />
-        </div>
+        </a>
       )}
 
       <div className='grid'>
@@ -98,7 +101,9 @@ Navbar.defaultProps = {
   className: '',
   style: {},
   backButtonStartColumn: 3,
-  hideLogo: false
+  hideLogo: false,
+  hideLogoOnMobile: false,
+  logoLink: '/dashboard'
 } as Partial<Props>
 
 export default Navbar
