@@ -604,7 +604,7 @@ declare const SelectModal: React.FC<Props$3>;
 interface Props$2 extends React.HTMLAttributes<HTMLElement> {
     as?: 'section' | 'div' | 'article' | 'main' | 'aside' | 'header' | 'footer' | 'nav' | 'ul' | 'ol' | 'form' | 'label' | 'fieldset';
     direction?: 'row' | 'column';
-    spacing?: 0 | 5 | 10 | 15 | 20 | 25 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100;
+    spacing?: 0 | 5 | 10 | 15 | 20 | 25 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100 | null;
     children: React.ReactNode;
 }
 declare const Stack: React.FC<Props$2>;
