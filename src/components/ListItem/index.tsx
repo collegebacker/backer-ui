@@ -19,29 +19,40 @@ export interface Props {
   leftContent?: React.ReactNode
   chevron?: boolean
   disabled?: boolean
-  onClick?: () => void
+  onClick?: (e?: React.MouseEvent) => void
 }
 
 const ListItem: React.FC<Props> = (props) => {
-  return (
-    <li
-      className={joinClasses([
+  const isClickable = !!props.onClick // Check if onClick prop is provided
+
+  const handleClick = (e: React.MouseEvent) => {
+    if (isClickable && props.onClick) {
+      props.onClick(e)
+    }
+  }
+
+  const listItemElement = isClickable ? 'button' : 'li' // Determine the element type
+
+  return React.createElement(
+    listItemElement,
+    {
+      className: joinClasses([
         styles.wrap,
         props.className,
         props.divider && styles.divider,
         props.disabled && styles.disabled,
-        props.onClick && styles.clickable
-      ])}
-      style={props.style}
-      onClick={props.onClick}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' && props.onClick) {
+        isClickable && styles.clickable
+      ]),
+      style: props.style,
+      onClick: handleClick,
+      onKeyDown: (e: React.KeyboardEvent) => {
+        if (e.key === 'Enter' && isClickable && props.onClick) {
           e.preventDefault()
           props.onClick()
         }
-      }}
-      tabIndex={props.onClick ? 0 : -1}
-    >
+      }
+    },
+    <>
       {props.leftContent && (
         <div
           className={joinClasses([
@@ -92,7 +103,7 @@ const ListItem: React.FC<Props> = (props) => {
         )}
       </div>
 
-      {props.rightContent || (props.onClick && props.chevron) ? (
+      {props.rightContent || (isClickable && props.chevron) ? (
         <div className={styles.rightContent}>
           {props.rightContent && (
             <div
@@ -105,12 +116,12 @@ const ListItem: React.FC<Props> = (props) => {
             </div>
           )}
 
-          {props.onClick && props.chevron ? (
+          {isClickable && props.chevron ? (
             <Icon name='chevron-right' className={styles.chevron} />
           ) : null}
         </div>
       ) : null}
-    </li>
+    </>
   )
 }
 

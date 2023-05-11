@@ -559,7 +559,7 @@ interface Props$6 {
     leftContent?: React.ReactNode;
     chevron?: boolean;
     disabled?: boolean;
-    onClick?: () => void;
+    onClick?: (e?: React.MouseEvent) => void;
 }
 declare const ListItem: React.FC<Props$6>;
 
