@@ -29,6 +29,7 @@ $grid-gutter: 20px;
 @for $i from 1 through $grid-desktop-columns {
   @for $j from $i through $grid-desktop-columns {
     .grid-desktop-#{$i}-#{$j} {
+      width: 100%;
       grid-column: #{$i} / span #{$j - $i + 1};
     }
   }
@@ -38,6 +39,7 @@ $grid-gutter: 20px;
   @for $j from $i through $grid-tablet-columns {
     .grid-tablet-#{$i}-#{$j} {
       @media only screen and (max-width: $grid-tablet-breakpoint) {
+        width: 100%;
         grid-column: #{$i} / span #{$j - $i + 1};
       }
     }
@@ -48,6 +50,7 @@ $grid-gutter: 20px;
   @for $j from $i through $grid-mobile-columns {
     .grid-mobile-#{$i}-#{$j} {
       @media only screen and (max-width: $grid-mobile-breakpoint) {
+        width: 100%;
         grid-column: #{$i} / span #{$j - $i + 1};
       }
     }
@@ -62,6 +65,7 @@ $grid-gutter: 20px;
       grid-template-columns: repeat($j - $i + 1, $grid-column-width);
       grid-gap: $grid-gutter;
       grid-column: #{$i} / span #{$j - $i + 1};
+      width: 100%;
     }
   }
 }
@@ -74,6 +78,7 @@ $grid-gutter: 20px;
         grid-template-columns: repeat($j - $i + 1, $grid-column-width);
         grid-gap: $grid-gutter;
         grid-column: #{$i} / span #{$j - $i + 1};
+        width: 100%;
       }
     }
   }
@@ -87,6 +92,7 @@ $grid-gutter: 20px;
         grid-template-columns: repeat($j - $i + 1, $grid-column-width);
         grid-gap: $grid-gutter;
         grid-column: #{$i} / span #{$j - $i + 1};
+        width: 100%;
       }
     }
   }
