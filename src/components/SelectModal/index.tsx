@@ -19,6 +19,8 @@ const SelectModal: React.FC<Props> = (props) => {
   const [value, setValue] = React.useState({} as SelectOptionType)
   const [isModalOpen, setIsModalOpen] = React.useState(false)
 
+  const itemRefs = React.useRef([])
+
   const handleOnSelect = (value: SelectOptionType) => {
     setValue(value)
     props.closeOnSelect && setIsModalOpen(false)
@@ -37,6 +39,33 @@ const SelectModal: React.FC<Props> = (props) => {
       setValue(newValue)
     }
   }, [props.value])
+
+  React.useEffect(() => {
+    // Focus item if key is matched with first letter of item label
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const firstLetter = e.key.toLowerCase()
+      const matchedOption = props.options.find((option) =>
+        option.label.toLowerCase().startsWith(firstLetter)
+      )
+      if (matchedOption) {
+        // focus item
+        const index = props.options.indexOf(matchedOption)
+        itemRefs.current[index]?.focus()
+      }
+
+      // Close modal on escape key
+      if (e.key === 'Escape') {
+        setIsModalOpen(false)
+        props.onCloseClick && props.onCloseClick()
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [props.options, itemRefs])
 
   return (
     <Modal
@@ -71,6 +100,7 @@ const SelectModal: React.FC<Props> = (props) => {
             }}
             className={joinClasses([styles.listItem, option.className || ''])}
             tabIndex={0}
+            ref={(el) => (itemRefs.current[index] = el)}
           >
             <span className='typo-app-body-main'>{option.label}</span>
             {value.value === option.value && <Checkmark checked />}

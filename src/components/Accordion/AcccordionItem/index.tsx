@@ -4,6 +4,7 @@ import styles from './styles.module.scss'
 
 export interface Props {
   className?: string
+  mode?: 'default' | 'app'
   title: string
   content: React.ReactElement
 }
@@ -23,7 +24,13 @@ const AccordionItem: React.FC<Props> = (props) => {
   }
 
   return (
-    <div className={joinClasses([styles.accordion, isOpen ? styles.open : ''])}>
+    <li
+      className={joinClasses([
+        styles.accordion,
+        props.mode === 'default' ? styles.defaultStyle : styles.appStyle,
+        isOpen ? styles.open : ''
+      ])}
+    >
       <div
         className={styles.header}
         onClick={haandleOpen}
@@ -50,7 +57,7 @@ const AccordionItem: React.FC<Props> = (props) => {
       >
         <div className={styles.contentWrap}>{props.content}</div>
       </div>
-    </div>
+    </li>
   )
 }
 

@@ -5,6 +5,7 @@ import styles from './styles.module.scss'
 
 export interface Props {
   className?: string
+  mode?: 'default' | 'app'
   items: Array<{
     title: string
     content: React.ReactElement
@@ -13,22 +14,24 @@ export interface Props {
 
 const Accordion: React.FC<Props> = (props) => {
   return (
-    <div className={joinClasses([styles.wrap, props.className])}>
+    <ul className={joinClasses([styles.wrap, props.className])}>
       {props.items.map((item, index) => {
         return (
           <AccordionItem
+            mode={props.mode}
             key={index}
             title={item.title}
             content={item.content}
           />
         )
       })}
-    </div>
+    </ul>
   )
 }
 
 Accordion.defaultProps = {
-  className: ''
+  className: '',
+  mode: 'default'
 } as Partial<Props>
 
 export default Accordion

@@ -26,11 +26,15 @@ Default.args = {
   errorMessage: '',
   modalTitle: 'Select an option',
   modalDescription: 'How are you related to the child?',
-  value: 'option1',
+  value: 'mother',
   options: [
-    { label: 'Option 1', value: 'option1' },
-    { label: 'Option 2', value: 'option2' },
-    { label: 'Option 3', value: 'option3' }
+    { label: 'Mather', value: 'mother' },
+    { label: 'Father', value: 'father' },
+    {
+      label: 'Fother',
+      value: 'foter'
+    },
+    { label: 'Brother', value: 'brather' }
   ],
   style: {},
   onSelect: (e) => console.log('selected', e)

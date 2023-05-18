@@ -249,6 +249,7 @@ declare const ModalButtons: React.FC<Props$r>;
 
 interface Props$q {
     className?: string;
+    mode?: 'default' | 'app';
     items: Array<{
         title: string;
         content: React.ReactElement;
