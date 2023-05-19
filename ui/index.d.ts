@@ -601,7 +601,7 @@ interface Props$3 {
     onCloseClick?: () => void;
     customContent?: React.ReactElement;
 }
-declare const SelectModal: React.FC<Props$3>;
+declare const SelectModal: React.ForwardRefExoticComponent<Props$3 & React.RefAttributes<any>>;
 
 interface Props$2 extends React.HTMLAttributes<HTMLElement> {
     as?: 'section' | 'div' | 'article' | 'main' | 'aside' | 'header' | 'footer' | 'nav' | 'ul' | 'ol' | 'form' | 'label' | 'fieldset' | 'button' | 'input' | 'textarea' | 'select' | 'option' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'i' | 'blockquote' | 'code' | 'pre';

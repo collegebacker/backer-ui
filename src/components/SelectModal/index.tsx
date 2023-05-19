@@ -16,7 +16,7 @@ export interface Props {
   customContent?: React.ReactElement
 }
 
-const SelectModal: React.FC<Props> = (props) => {
+const SelectModal = React.forwardRef<any, Props>((props, ref) => {
   const [value, setValue] = React.useState({} as SelectOptionType)
   const [isModalOpen, setIsModalOpen] = React.useState(false)
 
@@ -78,6 +78,7 @@ const SelectModal: React.FC<Props> = (props) => {
       isBottomSheet
       className={styles.modal}
       contentClassName={styles.modalContent}
+      ref={ref}
     >
       {props.modalTitle && (
         <h2 className={`typo-app-title-small ${styles.title}`}>
@@ -111,7 +112,9 @@ const SelectModal: React.FC<Props> = (props) => {
       {props.customContent}
     </Modal>
   )
-}
+})
+
+SelectModal.displayName = 'SelectModal'
 
 SelectModal.defaultProps = {
   isOpen: false,
