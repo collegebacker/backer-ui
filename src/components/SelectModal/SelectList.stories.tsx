@@ -18,7 +18,6 @@ const Template: ComponentStory<typeof SelectModal> = (args) => {
     <>
       <SelectModal
         {...args}
-        ref={modalRef}
         isOpen={isOpen}
         onSelect={(value) => {
           console.log('selected', value)
@@ -43,7 +42,7 @@ const Template: ComponentStory<typeof SelectModal> = (args) => {
 export const Default = Template.bind({})
 Default.args = {
   options: [
-    { label: 'Mather', value: 'mother' },
+    { label: 'Marty Mc.Fly', value: 'Marty Mc.Fly' },
     { label: 'Father', value: 'father' },
     { label: 'Brother', value: 'brather' }
   ],
