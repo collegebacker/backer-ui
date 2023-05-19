@@ -599,6 +599,7 @@ interface Props$3 {
     closeOnSelect?: boolean;
     onSelect: (value: SelectOptionType) => void;
     onCloseClick?: () => void;
+    customContent?: React.ReactElement;
 }
 declare const SelectModal: React.FC<Props$3>;
 

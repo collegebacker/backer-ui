@@ -13,6 +13,7 @@ export interface Props {
   closeOnSelect?: boolean
   onSelect: (value: SelectOptionType) => void
   onCloseClick?: () => void
+  customContent?: React.ReactElement
 }
 
 const SelectModal: React.FC<Props> = (props) => {
@@ -107,6 +108,7 @@ const SelectModal: React.FC<Props> = (props) => {
           </li>
         ))}
       </ul>
+      {props.customContent}
     </Modal>
   )
 }
