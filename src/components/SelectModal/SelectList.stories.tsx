@@ -11,12 +11,14 @@ export default {
 } as ComponentMeta<typeof SelectModal>
 
 const Template: ComponentStory<typeof SelectModal> = (args) => {
+  const modalRef = React.useRef(null)
   const [isOpen, setIsOpen] = React.useState(false)
 
   return (
     <>
       <SelectModal
         {...args}
+        ref={modalRef}
         isOpen={isOpen}
         onSelect={(value) => {
           console.log('selected', value)
