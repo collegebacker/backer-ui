@@ -2,7 +2,7 @@ import React from 'react'
 import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
-export interface Props {
+export interface CheckboxIProps {
   id: string
   name: string
   value?: string
@@ -16,7 +16,7 @@ export interface Props {
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void
 }
 
-const Checkbox: React.FC<Props> = (props) => {
+const Checkbox: React.FC<CheckboxIProps> = (props) => {
   const [checked, setChecked] = React.useState(props.checked)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -75,6 +75,6 @@ Checkbox.defaultProps = {
   className: '',
   disabled: false,
   checked: false
-} as Partial<Props>
+} as Partial<CheckboxIProps>
 
 export default Checkbox

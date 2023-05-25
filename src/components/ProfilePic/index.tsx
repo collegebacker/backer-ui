@@ -8,7 +8,7 @@ import { stringToGradient, getFirstLetter } from '../../utils'
 //////// TYPES AND PROPS ////////
 /////////////////////////////////
 
-export interface Props {
+export interface ProfilePicIProps {
   className?: string
   style?: React.CSSProperties
   name?: string
@@ -21,7 +21,7 @@ export interface Props {
 ///////// CARDS SLIDER //////////
 /////////////////////////////////
 
-const ProfilePic: React.FC<Props> = (props) => {
+const ProfilePic: React.FC<ProfilePicIProps> = (props) => {
   const [imageSrc, setImageSrc] = React.useState<string | undefined>(undefined)
 
   React.useEffect(() => {
@@ -108,6 +108,6 @@ ProfilePic.defaultProps = {
   className: '',
   imageSrc: '',
   uploadMode: false
-} as Partial<Props>
+} as Partial<ProfilePicIProps>
 
 export default ProfilePic

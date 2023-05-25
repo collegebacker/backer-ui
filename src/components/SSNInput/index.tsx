@@ -1,8 +1,8 @@
 import React from 'react'
-import Input, { InputProps } from '../Input'
+import Input, { InputIProps } from '../Input'
 
 const SSNInput = React.forwardRef(
-  (props: InputProps, ref: React.ForwardedRef<HTMLInputElement>) => {
+  (props: InputIProps, ref: React.ForwardedRef<HTMLInputElement>) => {
     const [eyeIconOpen, setEyeIcon] = React.useState(true)
 
     // RENDER
@@ -32,6 +32,6 @@ SSNInput.displayName = 'SSNInput'
 
 SSNInput.defaultProps = {
   name: 'ssn'
-} as Partial<InputProps>
+} as Partial<InputIProps>
 
 export default SSNInput

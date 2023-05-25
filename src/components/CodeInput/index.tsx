@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './styles.module.scss'
 import { joinClasses } from '../../utils'
 
-export interface Props {
+export interface CodeInputIProps {
   tabIndex?: number
 
   className?: string
@@ -21,7 +21,7 @@ export interface Props {
   onResend?: (event: any) => void
 }
 
-const CodeInput = React.forwardRef<any, Props>((props, ref) => {
+const CodeInput = React.forwardRef<any, CodeInputIProps>((props, ref) => {
   const inputsRefs = React.useRef<HTMLInputElement[]>([])
 
   const [nums, setNums] = React.useState(Array(props.length).fill(''))
@@ -246,6 +246,6 @@ CodeInput.defaultProps = {
   resendText: "Haven't received?",
   onResend: () => {},
   resendTimer: 60
-} as Partial<Props>
+} as Partial<CodeInputIProps>
 
 export default CodeInput

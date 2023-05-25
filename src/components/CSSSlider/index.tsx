@@ -17,7 +17,7 @@ export interface BreakpointProps {
   hideArrows?: boolean
 }
 
-export interface Props {
+export interface CSSSliderIProps {
   containterClassName?: string
   paginationClassName?: string
   spaceBetween?: number
@@ -50,7 +50,7 @@ const arrowSVG = (
 ///////// CARDS SLIDER //////////
 /////////////////////////////////
 
-const CSSSlider: React.FC<Props> = (props) => {
+const CSSSlider: React.FC<CSSSliderIProps> = (props) => {
   const desktopBreakpoint = {
     breakpoint: props.desktopBreakpoint?.breakpoint ?? 1024,
     cardsToShow: props.desktopBreakpoint?.cardsToShow ?? 3,
@@ -294,6 +294,6 @@ CSSSlider.defaultProps = {
   arrowsOffset: 20,
   paginationAlignment: 'left',
   defaultActiveCardIndex: 0
-} as Partial<Props>
+} as Partial<CSSSliderIProps>
 
 export default CSSSlider

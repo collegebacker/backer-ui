@@ -1,8 +1,8 @@
 import React from 'react'
-import Input, { InputProps } from '../Input'
+import Input, { InputIProps } from '../Input'
 
 const PasswordInput = React.forwardRef(
-  (props: InputProps, ref: React.ForwardedRef<HTMLInputElement>) => {
+  (props: InputIProps, ref: React.ForwardedRef<HTMLInputElement>) => {
     const [eyeIconOpen, setEyeIcon] = React.useState(false)
 
     // RENDER
@@ -27,6 +27,6 @@ PasswordInput.displayName = 'PasswordInput'
 PasswordInput.defaultProps = {
   label: 'Password',
   name: 'password'
-} as Partial<InputProps>
+} as Partial<InputIProps>
 
 export default PasswordInput

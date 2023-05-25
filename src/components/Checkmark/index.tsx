@@ -3,7 +3,7 @@ import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 import Icon from '../Icon'
 
-export interface Props {
+export interface CheckmarkIProps {
   className?: string
   style?: React.CSSProperties
   checked?: boolean
@@ -11,7 +11,7 @@ export interface Props {
   onChange?: (checked: boolean) => void
 }
 
-const Checkmark: React.FC<Props> = (props) => {
+const Checkmark: React.FC<CheckmarkIProps> = (props) => {
   const [checked, setChecked] = React.useState(props.checked)
 
   React.useEffect(() => {
@@ -42,6 +42,6 @@ Checkmark.defaultProps = {
   style: {},
   checked: false,
   visibleOutline: true
-} as Partial<Props>
+} as Partial<CheckmarkIProps>
 
 export default Checkmark

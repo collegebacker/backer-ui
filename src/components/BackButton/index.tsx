@@ -2,7 +2,7 @@ import React from 'react'
 import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
-export interface Props {
+export interface BackButtonIProps {
   className?: string
   style?: React.CSSProperties
   label?: string
@@ -10,7 +10,7 @@ export interface Props {
   onClick: () => void
 }
 
-const BackButton: React.FC<Props> = (props) => {
+const BackButton: React.FC<BackButtonIProps> = (props) => {
   return (
     <button
       className={joinClasses([styles.button, props.className])}
@@ -37,6 +37,6 @@ BackButton.defaultProps = {
   className: '',
   style: {},
   hasBackground: true
-} as Partial<Props>
+} as Partial<BackButtonIProps>
 
 export default BackButton

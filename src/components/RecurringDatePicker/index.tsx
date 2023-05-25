@@ -4,7 +4,7 @@ import PillButton from '../PillButton'
 
 import styles from './styles.module.scss'
 
-export interface Props {
+export interface RecurringDatePickerIProps {
   days?: number
   className?: string
   dafaultValue?: number[]
@@ -13,7 +13,7 @@ export interface Props {
   onChange?: (date: { value: number[]; isSemimonthly: boolean }) => void
 }
 
-const RecurringDatePicker: React.FC<Props> = (props) => {
+const RecurringDatePicker: React.FC<RecurringDatePickerIProps> = (props) => {
   const [value, setValue] = React.useState(props.dafaultValue || [1, 16])
   const [semimonthly, setSemimonthly] = React.useState(
     props.semimonthly || false
@@ -121,6 +121,6 @@ RecurringDatePicker.defaultProps = {
   className: '',
   semimonthly: false,
   showSwitcher: true
-} as Partial<Props>
+} as Partial<RecurringDatePickerIProps>
 
 export default RecurringDatePicker

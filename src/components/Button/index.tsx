@@ -4,7 +4,7 @@ import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 import Spinner from '../Spinner'
 
-export interface Props {
+export interface ButtonIProps {
   className?: string
   style?: React.CSSProperties
   mode?: 'primary' | 'outline' | 'ghost' | 'outline-inverse'
@@ -28,7 +28,7 @@ export interface Props {
   onKeyDown?: (event: any) => void
 }
 
-const ButtonContent = ({ ...props }: Props) => {
+const ButtonContent = ({ ...props }: ButtonIProps) => {
   return (
     <>
       {props.label ? (
@@ -67,7 +67,7 @@ const ButtonContent = ({ ...props }: Props) => {
   )
 }
 
-const Button = React.forwardRef<any, Props>((props, ref) => {
+const Button = React.forwardRef<any, ButtonIProps>((props, ref) => {
   const classes = joinClasses([
     styles.button,
     styles[props.mode],
@@ -120,6 +120,6 @@ Button.defaultProps = {
   tag: 'button',
   label: 'Button',
   hasMinWidth: true
-} as Partial<Props>
+} as Partial<ButtonIProps>
 
 export default Button

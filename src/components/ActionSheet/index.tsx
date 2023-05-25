@@ -5,7 +5,7 @@ import { useDidMountEffect } from '../../hooks'
 import gsap from 'gsap'
 import styles from './styles.module.scss'
 
-export interface Props {
+export interface ActionSheetIProps {
   isOpen?: boolean
   zIndex?: number
   delay?: number
@@ -17,7 +17,7 @@ export interface Props {
   }>
 }
 
-const ActionSheet = React.forwardRef<any, Props>((props, ref) => {
+const ActionSheet = React.forwardRef<any, ActionSheetIProps>((props, ref) => {
   const pageWrapperRef = React.useRef<HTMLDivElement>(null)
   const actionSheetRef = React.useRef<HTMLDivElement>(null)
 
@@ -142,6 +142,6 @@ ActionSheet.defaultProps = {
   zIndex: 99999,
   delay: 0,
   text: ''
-} as Partial<Props>
+} as Partial<ActionSheetIProps>
 
 export default ActionSheet

@@ -1,8 +1,8 @@
 import React from 'react'
-import Input, { InputProps } from '../Input'
+import Input, { InputIProps } from '../Input'
 
 const PhoneInput = React.forwardRef(
-  (props: InputProps, ref: React.ForwardedRef<HTMLInputElement>) => {
+  (props: InputIProps, ref: React.ForwardedRef<HTMLInputElement>) => {
     // RENDER
     return (
       <Input
@@ -28,6 +28,6 @@ PhoneInput.displayName = 'PhoneInput'
 PhoneInput.defaultProps = {
   label: 'Phone number',
   name: 'phone'
-} as Partial<InputProps>
+} as Partial<InputIProps>
 
 export default PhoneInput

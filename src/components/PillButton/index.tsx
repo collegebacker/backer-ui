@@ -4,7 +4,7 @@ import PaymentLogo from '../PaymentLogo'
 import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
-export interface Props {
+export interface PillButtonIProps {
   className?: string
   style?: React.CSSProperties
   type?: 'button' | 'submit' | 'reset'
@@ -23,7 +23,7 @@ export interface Props {
   areaLabelledBy?: string
 }
 
-const ButtonContent = ({ ...props }: Props) => {
+const ButtonContent = ({ ...props }: PillButtonIProps) => {
   const iconStyles = props.label
     ? {
         marginLeft: '10px',
@@ -50,7 +50,7 @@ const ButtonContent = ({ ...props }: Props) => {
   )
 }
 
-const PillButton = React.forwardRef<any, Props>((props, ref) => {
+const PillButton = React.forwardRef<any, PillButtonIProps>((props, ref) => {
   const classes = joinClasses([
     props.className,
     styles.button,
@@ -97,6 +97,6 @@ PillButton.defaultProps = {
   href: '#',
   target: '_self',
   label: 'Pill Button'
-} as Partial<Props>
+} as Partial<PillButtonIProps>
 
 export default PillButton

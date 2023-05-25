@@ -2,14 +2,14 @@ import React from 'react'
 import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
-export interface Props {
+export interface SpinnerIProps {
   className?: string
   style?: React.CSSProperties
   size?: 'small' | 'medium-small' | 'medium' | 'large'
   color?: string
 }
 
-const Spinner: React.FC<Props> = (props) => {
+const Spinner: React.FC<SpinnerIProps> = (props) => {
   const getSize = (size: any) => {
     switch (size) {
       case 'small':
@@ -62,6 +62,6 @@ Spinner.defaultProps = {
   className: '',
   style: {},
   size: 'small'
-} as Partial<Props>
+} as Partial<SpinnerIProps>
 
 export default Spinner

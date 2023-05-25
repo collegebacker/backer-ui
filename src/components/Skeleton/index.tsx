@@ -6,19 +6,19 @@ import styles from './styles.module.scss'
 // TYPES AND INTERFACES //
 //////////////////////////
 
-export interface SkeletonBodyProps {
+export interface SkeletonBodyIProps {
   className?: string
   style?: React.CSSProperties
   showBackground?: boolean
   children?: React.ReactNode
 }
 
-export interface SkeletonBoneProps {
+export interface SkeletonBoneIProps {
   className?: string
   style?: React.CSSProperties
 }
 
-export interface SkeletonTextProps extends SkeletonBoneProps {
+export interface SkeletonTextProps extends SkeletonBoneIProps {
   fontSize:
     | 'title-xlarge'
     | 'title-large'
@@ -32,7 +32,7 @@ export interface SkeletonTextProps extends SkeletonBoneProps {
   lines: number
 }
 
-export interface SkeletonButtonProps extends SkeletonBoneProps {
+export interface SkeletonButtonProps extends SkeletonBoneIProps {
   size?: 'default' | 'small' | 'pill'
 }
 
@@ -40,7 +40,7 @@ export interface SkeletonButtonProps extends SkeletonBoneProps {
 // COMPONENTS //
 ////////////////
 
-const SkeletonBody: React.FC<SkeletonBodyProps> = (props) => {
+const SkeletonBody: React.FC<SkeletonBodyIProps> = (props) => {
   return (
     <div
       className={joinClasses([
@@ -54,7 +54,7 @@ const SkeletonBody: React.FC<SkeletonBodyProps> = (props) => {
   )
 }
 
-const SkeletonBone: React.FC<SkeletonBoneProps> = (props) => {
+const SkeletonBone: React.FC<SkeletonBoneIProps> = (props) => {
   return (
     <div
       className={joinClasses([styles.bone, props.className])}
@@ -118,7 +118,7 @@ const SkeletonButton: React.FC<SkeletonButtonProps> = (props) => {
   )
 }
 
-const SkeletonProfilePic: React.FC<SkeletonBoneProps> = (props) => {
+const SkeletonProfilePic: React.FC<SkeletonBoneIProps> = (props) => {
   return (
     <div
       className={joinClasses([styles.bone, styles.profilePic, props.className])}

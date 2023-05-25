@@ -4,7 +4,7 @@ import Modal from '../Modal'
 import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
-export interface Props {
+export interface SelectModalIProps {
   isOpen?: boolean
   modalTitle?: string
   modalDescription?: string
@@ -16,7 +16,7 @@ export interface Props {
   customContent?: React.ReactElement
 }
 
-const SelectModal: React.FC<Props> = (props) => {
+const SelectModal: React.FC<SelectModalIProps> = (props) => {
   const [value, setValue] = React.useState({} as SelectOptionType)
   const [isModalOpen, setIsModalOpen] = React.useState(false)
 
@@ -116,6 +116,6 @@ const SelectModal: React.FC<Props> = (props) => {
 SelectModal.defaultProps = {
   isOpen: false,
   closeOnSelect: true
-}
+} as SelectModalIProps
 
 export default SelectModal

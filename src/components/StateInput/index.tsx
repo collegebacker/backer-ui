@@ -1,5 +1,5 @@
 import React from 'react'
-import Input, { InputProps } from '../Input'
+import Input, { InputIProps } from '../Input'
 import normalize from 'us-states-normalize'
 
 const abbreviateState = (val: string) => {
@@ -10,7 +10,7 @@ const isValid = (value: string) => {
   return normalize(value, { region: 'all' }) === value
 }
 
-const StateInput = React.forwardRef((props: InputProps, ref: any) => {
+const StateInput = React.forwardRef((props: InputIProps, ref: any) => {
   const [errorMessage, setErrorMessage] = React.useState(
     props.errorMessage || ''
   )
@@ -73,6 +73,6 @@ StateInput.displayName = 'StateInput'
 StateInput.defaultProps = {
   label: 'State',
   name: 'state'
-} as Partial<InputProps>
+} as Partial<InputIProps>
 
 export default StateInput

@@ -6,7 +6,7 @@ import styles from './styles.module.scss'
 import { CleaveOptions } from 'cleave.js/options'
 import Cleave from 'cleave.js/react'
 
-export interface InputProps {
+export interface InputIProps {
   // input props
   cursor?: string
   name: string
@@ -43,7 +43,7 @@ export interface InputProps {
 }
 
 const Input = React.forwardRef(
-  (props: InputProps, ref: React.ForwardedRef<HTMLInputElement>) => {
+  (props: InputIProps, ref: React.ForwardedRef<HTMLInputElement>) => {
     const inputArgs = {
       className: joinClasses([
         styles.input,
@@ -163,6 +163,6 @@ Input.defaultProps = {
   cursor: 'caret',
   errorAnimation: true,
   noAutocomplete: false
-} as Partial<InputProps>
+} as Partial<InputIProps>
 
 export default Input

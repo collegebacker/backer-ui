@@ -2,14 +2,14 @@ import React from 'react'
 import { joinClasses } from '../../../utils'
 import styles from './styles.module.scss'
 
-export interface Props {
+export interface AccordionItemIProps {
   className?: string
   mode?: 'default' | 'app'
   title: string
   content: React.ReactElement
 }
 
-const AccordionItem: React.FC<Props> = (props) => {
+const AccordionItem: React.FC<AccordionItemIProps> = (props) => {
   const contentEl = React.useRef(null)
   const [isOpen, setIsOpen] = React.useState(false)
 
@@ -63,6 +63,6 @@ const AccordionItem: React.FC<Props> = (props) => {
 
 AccordionItem.defaultProps = {
   className: ''
-} as Partial<Props>
+} as Partial<AccordionItemIProps>
 
 export default AccordionItem

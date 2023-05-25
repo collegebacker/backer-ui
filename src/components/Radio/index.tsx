@@ -2,7 +2,7 @@ import React from 'react'
 import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
-export interface Props {
+export interface RadioIProps {
   id: string
   name: string
   value?: string
@@ -16,7 +16,7 @@ export interface Props {
   children?: React.ReactNode
 }
 
-const Radio: React.FC<Props> = (props) => {
+const Radio: React.FC<RadioIProps> = (props) => {
   const [checked, setChecked] = React.useState(props.checked)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -62,6 +62,6 @@ Radio.defaultProps = {
   labelClassName: '',
   disabled: false,
   checked: false
-} as Partial<Props>
+} as Partial<RadioIProps>
 
 export default Radio

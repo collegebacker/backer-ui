@@ -2,7 +2,7 @@ import React from 'react'
 import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
-export interface Props {
+export interface RangeInputIProps {
   className?: string
   style?: React.CSSProperties
   min?: number
@@ -13,7 +13,7 @@ export interface Props {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-const RangeInput: React.FC<Props> = (props) => {
+const RangeInput: React.FC<RangeInputIProps> = (props) => {
   const inputRef = React.useRef<HTMLInputElement>(null)
   const [value, setValue] = React.useState(props.value || 0)
 
@@ -70,6 +70,6 @@ RangeInput.defaultProps = {
   max: 100,
   value: 0,
   autofocus: false
-} as Partial<Props>
+} as Partial<RangeInputIProps>
 
 export default RangeInput

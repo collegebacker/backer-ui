@@ -7,7 +7,7 @@ import styles from './styles.module.scss'
 
 import { joinClasses } from '../../utils'
 
-export interface Props {
+export interface NavbarIProps {
   className?: string
   style?: React.CSSProperties
   backButtonClick?: () => void
@@ -24,7 +24,7 @@ export interface Props {
   }>
 }
 
-const Navbar: React.FC<Props> = React.memo((props) => {
+const Navbar: React.FC<NavbarIProps> = React.memo((props) => {
   const LogoTag = props.logoLink ? 'a' : 'div'
   const linkProps = {
     href: props.logoLink,
@@ -109,6 +109,6 @@ Navbar.defaultProps = {
   hideLogo: false,
   hideLogoOnMobile: false,
   logoLink: '/dashboard'
-} as Partial<Props>
+} as Partial<NavbarIProps>
 
 export default Navbar

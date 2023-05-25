@@ -2,7 +2,7 @@ import React from 'react'
 import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
-export interface Props {
+export interface ModalHeaderActionsIProps {
   className?: string
   style?: React.CSSProperties
   cancelButton?: {
@@ -19,7 +19,7 @@ export interface Props {
   }
 }
 
-const ModalHeaderActions: React.FC<Props> = (props) => {
+const ModalHeaderActions: React.FC<ModalHeaderActionsIProps> = (props) => {
   const buttonProps = {
     cancelButton: {
       label: props.cancelButton?.label || 'Cancel',
@@ -75,6 +75,6 @@ const ModalHeaderActions: React.FC<Props> = (props) => {
 ModalHeaderActions.defaultProps = {
   className: '',
   style: {}
-} as Partial<Props>
+} as Partial<ModalHeaderActionsIProps>
 
 export default ModalHeaderActions

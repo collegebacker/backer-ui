@@ -2,7 +2,7 @@ import React from 'react'
 import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
-export interface Props {
+export interface TextareaIProps {
   className?: string
   style?: React.CSSProperties
   label?: string
@@ -15,7 +15,7 @@ export interface Props {
   onChange?: (value: string) => void
 }
 
-const Textarea: React.FC<Props> = (props) => {
+const Textarea: React.FC<TextareaIProps> = (props) => {
   const textareaRef = React.useRef<HTMLTextAreaElement>(null)
   const labelRef = React.useRef<HTMLLabelElement>(null)
 
@@ -122,6 +122,6 @@ Textarea.defaultProps = {
   isInvalid: false,
   autoFocus: false,
   autoHeight: false
-} as Partial<Props>
+} as Partial<TextareaIProps>
 
 export default Textarea

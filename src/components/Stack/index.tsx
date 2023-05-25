@@ -2,7 +2,7 @@ import React from 'react'
 import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
-export interface Props extends React.HTMLAttributes<HTMLElement> {
+export interface StackIProps extends React.HTMLAttributes<HTMLElement> {
   as?:
     | 'section'
     | 'div'
@@ -54,7 +54,7 @@ export interface Props extends React.HTMLAttributes<HTMLElement> {
   children: React.ReactNode
 }
 
-const Stack: React.FC<Props> = ({
+const Stack: React.FC<StackIProps> = ({
   as: Element = 'section',
   direction = 'column',
   spacing = null,

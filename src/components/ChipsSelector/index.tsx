@@ -6,15 +6,15 @@ import styles from './styles.module.scss'
 //////// TYPES AND PROPS ////////
 /////////////////////////////////
 
-type ItemType = {
+type ChipsSelectorItemType = {
   label: string
   value: any
 }
 
-export interface Props {
+export interface ChipsSelectorIProps {
   className?: string
   defaultIndex?: number
-  items: Array<ItemType>
+  items: Array<ChipsSelectorItemType>
   onChange?: (index: number) => void
 }
 
@@ -22,7 +22,7 @@ export interface Props {
 ///////// CARDS SLIDER //////////
 /////////////////////////////////
 
-const ChipsSelector: React.FC<Props> = (props) => {
+const ChipsSelector: React.FC<ChipsSelectorIProps> = (props) => {
   const [currentIndex, setCurrentIndex] = React.useState(props.defaultIndex)
 
   const handleSelect = (index: number) => {
@@ -68,6 +68,6 @@ const ChipsSelector: React.FC<Props> = (props) => {
 ChipsSelector.defaultProps = {
   className: '',
   defaultIndex: 0
-} as Partial<Props>
+} as Partial<ChipsSelectorIProps>
 
 export default ChipsSelector

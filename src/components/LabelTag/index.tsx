@@ -3,7 +3,7 @@ import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 import Icon from '../Icon'
 
-export interface LabelTagProps {
+export interface LabelTagIProps {
   className?: string
   style?: React.CSSProperties
   icon?: IconTypes
@@ -21,7 +21,7 @@ export interface LabelTagProps {
   outline?: boolean
 }
 
-const LabelTag: React.FC<LabelTagProps> = (props) => {
+const LabelTag: React.FC<LabelTagIProps> = (props) => {
   return (
     <div
       className={joinClasses([
@@ -54,6 +54,6 @@ LabelTag.defaultProps = {
   size: 'medium',
   label: 'label',
   color: 'primary'
-} as Partial<LabelTagProps>
+} as Partial<LabelTagIProps>
 
 export default LabelTag

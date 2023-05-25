@@ -4,7 +4,7 @@ import styles from './styles.module.scss'
 
 import Icon from '../Icon'
 
-export interface Props {
+export interface ModalButtonsIProps {
   className?: string
   textClassName?: string
   style?: React.CSSProperties
@@ -15,7 +15,7 @@ export interface Props {
   }>
 }
 
-const ModalButtons: React.FC<Props> = (props) => {
+const ModalButtons: React.FC<ModalButtonsIProps> = (props) => {
   return (
     <div
       className={joinClasses([styles.wrap, props.className])}
@@ -43,6 +43,6 @@ ModalButtons.defaultProps = {
   className: '',
   textClassName: '',
   style: {}
-} as Partial<Props>
+} as Partial<ModalButtonsIProps>
 
 export default ModalButtons

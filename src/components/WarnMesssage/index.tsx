@@ -2,7 +2,7 @@ import React from 'react'
 import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
-export interface Props {
+export interface WarnMesssageIProps {
   className?: string
   type?: 'success' | 'error' | 'warning'
   outline?: boolean
@@ -55,7 +55,7 @@ const setIcon = (type: 'success' | 'error' | 'warning') => {
   }
 }
 
-const WarnMesssage: React.FC<Props> = (props) => {
+const WarnMesssage: React.FC<WarnMesssageIProps> = (props) => {
   return (
     !!props.text && (
       <section
@@ -92,6 +92,6 @@ WarnMesssage.defaultProps = {
   className: '',
   type: 'success',
   mode: 'outline'
-} as Partial<Props>
+} as Partial<WarnMesssageIProps>
 
 export default WarnMesssage

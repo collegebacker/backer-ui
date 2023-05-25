@@ -10,7 +10,7 @@ import CloseButton from '../CloseButton'
 
 import styles from './styles.module.scss'
 
-export interface Props {
+export interface ModalIProps {
   isOpen?: boolean
   children: React.ReactNode
   className?: string
@@ -29,7 +29,7 @@ export interface Props {
 // COMPONENT //
 ///////////////
 
-const Modal = React.forwardRef<any, Props>((props, ref) => {
+const Modal = React.forwardRef<any, ModalIProps>((props, ref) => {
   const modalWrapRef = React.useRef<HTMLDivElement>(null)
   const modalRef = React.useRef<HTMLDivElement>(null)
   const gradientsRef = React.useRef<HTMLDivElement>(null)
@@ -220,6 +220,6 @@ Modal.defaultProps = {
   closeOnClickOutside: true,
   dataAttrs: {},
   isOpen: false
-} as Partial<Props>
+} as Partial<ModalIProps>
 
 export default Modal

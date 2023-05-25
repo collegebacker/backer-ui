@@ -3,7 +3,7 @@ import Icon from '../Icon'
 import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
-export interface Props {
+export interface SearchbarIProps {
   className?: string
   placeholder?: string
   value?: string
@@ -28,7 +28,7 @@ const CrossIcon = () => (
   </svg>
 )
 
-const Searchbar: React.FC<Props> = (props) => {
+const Searchbar: React.FC<SearchbarIProps> = (props) => {
   const inputRef = React.useRef<HTMLInputElement>(null)
   const [value, setValue] = React.useState(props.value)
 
@@ -74,6 +74,6 @@ Searchbar.defaultProps = {
   className: '',
   placeholder: 'Search',
   value: ''
-} as Partial<Props>
+} as Partial<SearchbarIProps>
 
 export default Searchbar

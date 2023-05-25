@@ -2,7 +2,7 @@ import React from 'react'
 import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
-export interface Props {
+export interface GhostInputIProps {
   className?: string
   type?: 'text' | 'password' | 'number' | 'email' | 'money'
   allowCents?: boolean
@@ -26,7 +26,7 @@ export interface Props {
   onInvalid?: (event: React.FormEvent<HTMLInputElement>) => void
 }
 
-const GhostInput = React.forwardRef<any, Props>((props, ref) => {
+const GhostInput = React.forwardRef<any, GhostInputIProps>((props, ref) => {
   const inputRef = React.useRef<HTMLInputElement>(null)
 
   const [val, setVal] = React.useState(props.value)
@@ -161,6 +161,6 @@ GhostInput.defaultProps = {
   hideSpinButton: true,
   allowCents: false,
   maximumMoney: null
-} as Partial<Props>
+} as Partial<GhostInputIProps>
 
 export default GhostInput

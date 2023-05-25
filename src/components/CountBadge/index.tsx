@@ -2,13 +2,13 @@ import React from 'react'
 import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
-export interface Props {
+export interface CountBadgeIProps {
   className?: string
   count?: number
   limit?: number
 }
 
-const CountBadge: React.FC<Props> = (props) => {
+const CountBadge: React.FC<CountBadgeIProps> = (props) => {
   const handleLimit = () => {
     if (props.count > props.limit) {
       return `+${props.limit}`
@@ -28,6 +28,6 @@ CountBadge.defaultProps = {
   className: '',
   count: 0,
   limit: 99
-} as Partial<Props>
+} as Partial<CountBadgeIProps>
 
 export default CountBadge

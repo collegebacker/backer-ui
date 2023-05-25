@@ -14,16 +14,16 @@ import styles from './styles.module.scss'
 //////// TYPES AND PROPS ////////
 /////////////////////////////////
 
-type ItemType = {
+type ChipsSliderItemType = {
   label: string
   value: any
   caption?: string
 }
 
-export interface Props {
+export interface ChipsSliderIProps {
   containerClassName?: string
   arrowsClassName?: string
-  items: Array<ItemType>
+  items: Array<ChipsSliderItemType>
   defaultIndex?: number
   showGuidelines?: boolean
   cardWidth?: number
@@ -43,7 +43,7 @@ export interface Props {
 ///////// CARDS SLIDER //////////
 /////////////////////////////////
 
-const ChipsSlider: React.FC<Props> = (props) => {
+const ChipsSlider: React.FC<ChipsSliderIProps> = (props) => {
   // Refs
   const sliderContainerRef = React.useRef<HTMLDivElement>(null)
   const sliderViewRef = React.useRef<HTMLDivElement>(null)
@@ -605,6 +605,6 @@ ChipsSlider.defaultProps = {
   showGuidelines: false,
   showCaption: true,
   showArrows: true
-} as Partial<Props>
+} as Partial<ChipsSliderIProps>
 
 export default ChipsSlider

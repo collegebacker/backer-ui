@@ -4,7 +4,7 @@ import styles from './styles.module.scss'
 
 import Icon from '../Icon'
 
-export interface Props {
+export interface ActionMesssageIProps {
   className?: string
   undertitleContentClassName?: string
   mode?: 'outline' | 'grey' | 'velvet' | 'peach'
@@ -15,7 +15,7 @@ export interface Props {
   onClick?: () => void
 }
 
-const ActionMesssage: React.FC<Props> = (props) => {
+const ActionMesssage: React.FC<ActionMesssageIProps> = (props) => {
   return (
     <section
       className={joinClasses([
@@ -62,6 +62,6 @@ ActionMesssage.defaultProps = {
   mode: 'outline',
   tabIndex: 0,
   undertitleContentClassName: ''
-} as Partial<Props>
+} as Partial<ActionMesssageIProps>
 
 export default ActionMesssage

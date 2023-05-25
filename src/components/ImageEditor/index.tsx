@@ -6,7 +6,7 @@ import Slider from '../RangeInput'
 import Button from '../Button'
 import AvatarEditor from 'react-avatar-editor'
 
-export interface Props {
+export interface ImageEditorIProps {
   className?: string
   imageFile: string | File | undefined
   isOpen?: boolean
@@ -49,7 +49,7 @@ const ImageIcon = (props: { size: number }) => {
   )
 }
 
-const ImageEditor: React.FC<Props> = (props) => {
+const ImageEditor: React.FC<ImageEditorIProps> = (props) => {
   const editorWrapRef = React.useRef<any>(null)
   const editorRef = React.useRef<any>(null)
 
@@ -195,6 +195,6 @@ ImageEditor.defaultProps = {
   isOpen: false,
   imageFile: '',
   isLoaded: false
-} as Partial<Props>
+} as Partial<ImageEditorIProps>
 
 export default ImageEditor

@@ -4,24 +4,24 @@ import styles from './styles.module.scss'
 
 import PillButton from '../PillButton'
 
-type ItemType = {
+type SwitchSelectorItemType = {
   label: string
   value?: string
   icon?: IconTypes
   paymentIcon?: PaymentLogoTypes
 }
 
-export interface Props {
+export interface SwitchSelectorIProps {
   className?: string
   activeIndex?: number
-  options: Array<ItemType> | undefined
+  options: Array<SwitchSelectorItemType> | undefined
   onChange: (option: SwitchSelectorOptionType) => void
 }
 
-const SwitchSelector: React.FC<Props> = (props) => {
+const SwitchSelector: React.FC<SwitchSelectorIProps> = (props) => {
   const [selected, setSelected] = React.useState(props.activeIndex)
 
-  const handleOnClick = (index: number, option: ItemType) => {
+  const handleOnClick = (index: number, option: SwitchSelectorItemType) => {
     setSelected(index)
     props.onChange({ index, label: option.label, value: option.value })
   }
@@ -46,6 +46,6 @@ const SwitchSelector: React.FC<Props> = (props) => {
 SwitchSelector.defaultProps = {
   className: '',
   activeIndex: 0
-} as Partial<Props>
+} as Partial<SwitchSelectorIProps>
 
 export default SwitchSelector

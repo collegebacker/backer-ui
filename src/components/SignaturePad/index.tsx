@@ -7,7 +7,7 @@ import Icon from '../Icon'
 import SwitchSelector from '../SwitchSelector'
 import SelectModal from '../SelectModal'
 
-export interface Props {
+export interface SignaturePadIProps {
   className?: string
   style?: React.CSSProperties
   errorMessage?: string
@@ -66,7 +66,7 @@ const convertTextToImage = (
   return trimmedCanvas.toDataURL()
 }
 
-const SignaturePad = React.forwardRef<any, Props>((props, ref) => {
+const SignaturePad = React.forwardRef<any, SignaturePadIProps>((props, ref) => {
   const padWrapRef = React.useRef<HTMLDivElement>(null)
   const inputRef = React.useRef<HTMLInputElement>(null)
   const signatureCanvasRef = React.useRef<SignatureCanvas>(null)
@@ -315,6 +315,6 @@ const SignaturePad = React.forwardRef<any, Props>((props, ref) => {
 
 SignaturePad.defaultProps = {
   className: ''
-} as Partial<Props>
+} as Partial<SignaturePadIProps>
 
 export default SignaturePad

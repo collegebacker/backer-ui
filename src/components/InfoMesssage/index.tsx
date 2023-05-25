@@ -1,18 +1,18 @@
 import React from 'react'
 import styles from './styles.module.scss'
 import { joinClasses } from '../../utils'
-import { LabelTagProps } from '../LabelTag'
+import { LabelTagIProps } from '../LabelTag'
 import LabelTag from '../LabelTag'
 import Icon from '../Icon'
 
-export interface Props {
+export interface WarnMesssageIProps {
   className?: string
   orientation?: 'left' | 'right'
   mode?: 'outline' | 'grey' | 'velvet' | 'peach'
   icon?: IconTypes
   emoji?: string
   title?: string
-  labelTag?: LabelTagProps
+  labelTag?: LabelTagIProps
   caption?: string | React.ReactNode
   tabIndex?: number
   undertitleContent?: React.ReactNode
@@ -20,7 +20,7 @@ export interface Props {
   onClick?: () => void
 }
 
-const WarnMesssage: React.FC<Props> = (props) => {
+const WarnMesssage: React.FC<WarnMesssageIProps> = (props) => {
   return (
     <section
       className={joinClasses([
@@ -74,6 +74,6 @@ WarnMesssage.defaultProps = {
   orientation: 'left',
   mode: 'outline',
   undertitleContentClassName: ''
-} as Partial<Props>
+} as Partial<WarnMesssageIProps>
 
 export default WarnMesssage

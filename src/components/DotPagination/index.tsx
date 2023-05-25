@@ -2,7 +2,7 @@ import React from 'react'
 import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
-export interface Props {
+export interface DotPaginationIProps {
   className?: string
   style?: React.CSSProperties
   totalAmount: number
@@ -10,7 +10,7 @@ export interface Props {
   visibleAmount?: number
 }
 
-const DotPagination: React.FC<Props> = (props) => {
+const DotPagination: React.FC<DotPaginationIProps> = (props) => {
   const limitDots = (index: number) => {
     if (
       index + 1 > props.activeIndex + props.visibleAmount ||
@@ -94,6 +94,6 @@ DotPagination.defaultProps = {
   activeIndex: 0,
   visibleAmount: 6,
   style: {}
-} as Partial<Props>
+} as Partial<DotPaginationIProps>
 
 export default DotPagination

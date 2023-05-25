@@ -3,7 +3,7 @@ import styles from './styles.module.scss'
 import { joinClasses } from '../../utils'
 import Icon from '../Icon'
 
-export interface Props {
+export interface ListItemIProps {
   className?: string
   rightContentClassName?: string
   middleContentClassName?: string
@@ -22,7 +22,7 @@ export interface Props {
   onClick?: (e?: React.MouseEvent) => void
 }
 
-const ListItem: React.FC<Props> = (props) => {
+const ListItem: React.FC<ListItemIProps> = (props) => {
   const isClickable = !!props.onClick // Check if onClick prop is provided
 
   const handleClick = (e: React.MouseEvent) => {
@@ -138,6 +138,6 @@ ListItem.defaultProps = {
   chevron: true,
   divider: true,
   disabled: false
-} as Partial<Props>
+} as Partial<ListItemIProps>
 
 export default ListItem

@@ -4,12 +4,12 @@ import styles from './styles.module.scss'
 
 import Button from '../../Button'
 
-interface ItemProps {
+interface ItemIProps {
   message: string | React.ReactNode
   params?: ToastParamsProps
 }
 
-const ToastItem: React.FC<ItemProps> = (props) => {
+const ToastItem: React.FC<ItemIProps> = (props) => {
   const [isCloseTrigger, setIsCloseTrigger] = React.useState(false)
   const [isMount, setIsMount] = React.useState(true)
 

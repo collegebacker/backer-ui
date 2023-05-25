@@ -2,14 +2,14 @@ import React from 'react'
 import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
-export interface Props {
+export interface CloseButtonIProps {
   className?: string
   style?: React.CSSProperties
   onClick: () => void
   hasBackground?: boolean
 }
 
-const BackButton: React.FC<Props> = (props) => {
+const CloseButton: React.FC<CloseButtonIProps> = (props) => {
   return (
     <button
       className={joinClasses([styles.button, props.className])}
@@ -26,10 +26,10 @@ const BackButton: React.FC<Props> = (props) => {
   )
 }
 
-BackButton.defaultProps = {
+CloseButton.defaultProps = {
   className: '',
   style: {},
   hasBackground: true
-} as Partial<Props>
+} as Partial<CloseButtonIProps>
 
-export default BackButton
+export default CloseButton

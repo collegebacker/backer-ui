@@ -3,7 +3,7 @@ import React from 'react'
 import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
-export interface Props {
+export interface AccordionIProps {
   className?: string
   mode?: 'default' | 'app'
   items: Array<{
@@ -12,7 +12,7 @@ export interface Props {
   }>
 }
 
-const Accordion: React.FC<Props> = (props) => {
+const Accordion: React.FC<AccordionIProps> = (props) => {
   return (
     <ul className={joinClasses([styles.wrap, props.className])}>
       {props.items.map((item, index) => {
@@ -32,6 +32,6 @@ const Accordion: React.FC<Props> = (props) => {
 Accordion.defaultProps = {
   className: '',
   mode: 'default'
-} as Partial<Props>
+} as Partial<AccordionIProps>
 
 export default Accordion

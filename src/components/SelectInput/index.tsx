@@ -1,8 +1,8 @@
 import React from 'react'
-import Input, { InputProps } from '../Input'
+import Input, { InputIProps } from '../Input'
 import SelectModal from '../SelectModal'
 
-export interface DropdownProps extends InputProps {
+export interface DropdownIProps extends InputIProps {
   label: string
   modalTitle?: string
   modalDescription?: string
@@ -10,7 +10,7 @@ export interface DropdownProps extends InputProps {
   onSelect: (value: SelectOptionType) => void
 }
 
-const SelectInput: React.FC<DropdownProps> = (props) => {
+const SelectInput: React.FC<DropdownIProps> = (props) => {
   const [value, setValue] = React.useState({} as SelectOptionType)
   const [isModalOpen, setIsModalOpen] = React.useState(false)
 

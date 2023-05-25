@@ -22,7 +22,7 @@ const isNumber = (value: any) => {
   return !isNaN(value)
 }
 
-export interface MoneyInputProps {
+export interface MoneyInputIProps {
   className?: string
   style?: React.CSSProperties
   decimals?: boolean
@@ -40,7 +40,7 @@ export interface MoneyInputProps {
 }
 
 const MoneyInput = React.forwardRef(
-  (props: MoneyInputProps, ref: React.ForwardedRef<HTMLInputElement>) => {
+  (props: MoneyInputIProps, ref: React.ForwardedRef<HTMLInputElement>) => {
     const [value, setValue] = React.useState(
       isNumber(props.value)
         ? formatCurrency((Number(props.value) / 100).toFixed(2))
@@ -112,6 +112,6 @@ MoneyInput.defaultProps = {
   label: 'Amount',
   name: 'amount',
   decimals: true
-} as Partial<MoneyInputProps>
+} as Partial<MoneyInputIProps>
 
 export default MoneyInput

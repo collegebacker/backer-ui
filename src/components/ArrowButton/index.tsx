@@ -6,7 +6,7 @@ import styles from './styles.module.scss'
 //////// TYPES AND PROPS ////////
 /////////////////////////////////
 
-export interface Props {
+export interface ArrowButtonIProps {
   tabIndex?: number
   className?: string
   disabled?: boolean
@@ -19,7 +19,7 @@ export interface Props {
   onKeyUp?: (event: React.KeyboardEvent<HTMLButtonElement>) => void
 }
 
-const ArrowButton = React.forwardRef<any, Props>((props, ref) => {
+const ArrowButton = React.forwardRef<any, ArrowButtonIProps>((props, ref) => {
   return (
     <button
       tabIndex={props.tabIndex}
@@ -58,6 +58,6 @@ ArrowButton.defaultProps = {
   disabled: false,
   direction: 'left',
   style: {}
-} as Partial<Props>
+} as Partial<ArrowButtonIProps>
 
 export default ArrowButton

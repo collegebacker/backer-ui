@@ -4,14 +4,14 @@ import styles from './styles.module.scss'
 
 import logosURLs from './logosURLs.json'
 
-export interface Props {
+export interface PaymentLogoIProps {
   className?: string
   style?: React.CSSProperties
   mode?: 'light' | 'dark'
   name: PaymentLogoTypes
 }
 
-const PaymentLogo: React.FC<Props> = (props) => {
+const PaymentLogo: React.FC<PaymentLogoIProps> = (props) => {
   return (
     <img
       src={logosURLs[props.name][props.mode]}
@@ -27,6 +27,6 @@ PaymentLogo.defaultProps = {
   mode: 'light',
   name: 'apple-pay',
   style: {}
-} as Partial<Props>
+} as Partial<PaymentLogoIProps>
 
 export default PaymentLogo

@@ -2,16 +2,16 @@ import React from 'react'
 import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
-export interface Props {
+export interface DividerIProps {
   className?: string
 }
 
-const Divider: React.FC<Props> = (props) => {
+const Divider: React.FC<DividerIProps> = (props) => {
   return <div className={joinClasses([styles.divider, props.className])} />
 }
 
 Divider.defaultProps = {
   className: ''
-} as Partial<Props>
+} as Partial<DividerIProps>
 
 export default Divider

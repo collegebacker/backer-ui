@@ -4,7 +4,7 @@ import { joinClasses } from '../../utils'
 import gsap from 'gsap'
 import { stringToGradient, isMobile, getFirstLetter } from '../../utils'
 
-export interface Props {
+export interface PolaroidPhotoIProps {
   className?: string
   style?: React.CSSProperties
   name?: string
@@ -15,7 +15,7 @@ export interface Props {
   noHoverEffect?: boolean
 }
 
-const PolaroidPhoto: React.FC<Props> = (props) => {
+const PolaroidPhoto: React.FC<PolaroidPhotoIProps> = (props) => {
   const photoRef = React.useRef<HTMLDivElement>(null)
   const [imageSrc, setImageSrc] = React.useState<string | undefined>(undefined)
 
@@ -151,6 +151,6 @@ PolaroidPhoto.defaultProps = {
   style: {},
   uploadMode: true,
   noHoverEffect: false
-} as Partial<Props>
+} as Partial<PolaroidPhotoIProps>
 
 export default PolaroidPhoto

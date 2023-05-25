@@ -1,8 +1,8 @@
 import React from 'react'
-import Input, { InputProps } from '../Input'
+import Input, { InputIProps } from '../Input'
 
 const ZipInput = React.forwardRef(
-  (props: InputProps, ref: React.ForwardedRef<HTMLInputElement>) => {
+  (props: InputIProps, ref: React.ForwardedRef<HTMLInputElement>) => {
     return (
       <Input
         {...props}
@@ -24,6 +24,6 @@ ZipInput.displayName = 'ZipInput'
 ZipInput.defaultProps = {
   label: 'Zip code',
   name: 'zip'
-} as Partial<InputProps>
+} as Partial<InputIProps>
 
 export default ZipInput

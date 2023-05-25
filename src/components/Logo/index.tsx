@@ -2,7 +2,7 @@ import React from 'react'
 import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
-export interface Props {
+export interface LogoIProps {
   className?: string
   type?: 'default' | 'foundation' | 'sign' | 'text'
   hoverAnimation?: boolean
@@ -42,7 +42,7 @@ const BackerTextPath = () => (
   </>
 )
 
-const BackerFoundation: React.FC<Props> = (props) => (
+const BackerFoundation: React.FC<LogoIProps> = (props) => (
   <svg
     viewBox='0 0 138 40'
     xmlns='http://www.w3.org/2000/svg'
@@ -68,7 +68,7 @@ const BackerFoundation: React.FC<Props> = (props) => (
   </svg>
 )
 
-const BackerText: React.FC<Props> = (props) => (
+const BackerText: React.FC = () => (
   <svg
     width='120'
     height='30'
@@ -84,7 +84,7 @@ const BackerText: React.FC<Props> = (props) => (
   </svg>
 )
 
-const Backer: React.FC<Props> = (props) => (
+const Backer: React.FC<LogoIProps> = (props) => (
   <svg
     viewBox='0 0 170 40'
     xmlns='http://www.w3.org/2000/svg'
@@ -95,7 +95,7 @@ const Backer: React.FC<Props> = (props) => (
   </svg>
 )
 
-const BackerSign: React.FC<Props> = (props) => (
+const BackerSign: React.FC<LogoIProps> = (props) => (
   <svg
     viewBox='0 0 40 40'
     xmlns='http://www.w3.org/2000/svg'
@@ -105,7 +105,7 @@ const BackerSign: React.FC<Props> = (props) => (
   </svg>
 )
 
-const renderLogo = (props: Props) => {
+const renderLogo = (props: LogoIProps) => {
   switch (props.type) {
     case 'default':
       return <Backer hoverAnimation={props.hoverAnimation} />
@@ -118,7 +118,7 @@ const renderLogo = (props: Props) => {
   }
 }
 
-const Logo = React.forwardRef<any, Props>((props, ref) => {
+const Logo = React.forwardRef<any, LogoIProps>((props, ref) => {
   return (
     <div ref={ref} className={joinClasses([props.className, styles.logo])}>
       {renderLogo(props)}
@@ -132,6 +132,6 @@ Logo.defaultProps = {
   className: '',
   hoverAnimation: true,
   type: 'default'
-} as Partial<Props>
+} as Partial<LogoIProps>
 
 export default Logo

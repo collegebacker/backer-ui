@@ -4,7 +4,7 @@ import styles from './styles.module.scss'
 
 import icons from './icons.json'
 
-export interface Props {
+export interface IconIProps {
   className?: string
   style?: React.CSSProperties
   name: IconTypes
@@ -12,7 +12,7 @@ export interface Props {
   onClick?: () => void
 }
 
-const Icon: React.FC<Props> = (props) => {
+const Icon: React.FC<IconIProps> = (props) => {
   return (
     <i
       className={joinClasses([styles.icon, props.className])}
@@ -37,7 +37,7 @@ Icon.defaultProps = {
   name: 'cross',
   style: {},
   color: ''
-} as Partial<Props>
+} as Partial<IconIProps>
 
 export default Icon
 

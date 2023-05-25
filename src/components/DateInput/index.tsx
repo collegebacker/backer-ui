@@ -1,5 +1,5 @@
 import React from 'react'
-import Input, { InputProps } from '../Input'
+import Input, { InputIProps } from '../Input'
 import Calendar from '../Calendar'
 import Modal from '../Modal'
 
@@ -14,11 +14,11 @@ const convertDateToString = (date: Date) => {
 }
 
 // rewrite onChange in InputProps to another type
-type DateInputProps = Omit<InputProps, 'onChange'> & {
-  onChange: (value: string) => void
+interface DateInputIProps extends Omit<InputIProps, 'onChange'> {
+  onChange(value: string): void
 }
 
-const DateInput: React.FC<DateInputProps> = (props) => {
+const DateInput: React.FC<DateInputIProps> = (props) => {
   const [value, setValue] = React.useState<string>(props.value || '')
   const [isModalOpen, setIsModalOpen] = React.useState(false)
 
@@ -87,6 +87,6 @@ DateInput.defaultProps = {
   helperText: 'MM/DD/YYYY',
   errorMessage: '',
   value: ''
-} as Partial<DateInputProps>
+} as Partial<DateInputIProps>
 
 export default DateInput
