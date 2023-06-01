@@ -12,7 +12,7 @@ import Icon from '../Icon'
 
 // type Props = NewProps & Partial<CalendarProps>;
 
-interface CalendarIProps extends Partial<CalendarProps> {
+type CalendarIProps = Omit<Partial<CalendarProps>, 'hideYearArrows'> & {
   hideYearArrows?: boolean
 }
 

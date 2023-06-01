@@ -392,9 +392,9 @@ interface RadioIProps {
 }
 declare const Radio: React.FC<RadioIProps>;
 
-interface CalendarIProps extends Partial<CalendarProps> {
+type CalendarIProps = Omit<Partial<CalendarProps>, 'hideYearArrows'> & {
     hideYearArrows?: boolean;
-}
+};
 declare const Calendar: React.FC<CalendarIProps>;
 
 interface RecurringDatePickerIProps {
