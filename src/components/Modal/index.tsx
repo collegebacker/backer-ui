@@ -34,7 +34,7 @@ const Modal = React.forwardRef<any, ModalIProps>((props, ref) => {
   const modalRef = React.useRef<HTMLDivElement>(null)
   const gradientsRef = React.useRef<HTMLDivElement>(null)
 
-  const [isMount, setIsMount] = React.useState(false)
+  // const [isMount, setIsMount] = React.useState(false)
   const [isOpen, setIsOpen] = React.useState(false)
 
   const [modalAnimationClass, setModalAnimationClass] = React.useState('')
@@ -48,7 +48,7 @@ const Modal = React.forwardRef<any, ModalIProps>((props, ref) => {
       return modalRef
     },
     open: () => {
-      setIsMount(true)
+      setIsOpen(true)
     },
     close: () => {
       setIsOpen(false)
@@ -81,26 +81,23 @@ const Modal = React.forwardRef<any, ModalIProps>((props, ref) => {
   /////////////////
 
   React.useEffect(() => {
-    if (props.isOpen) {
-      setIsMount(true)
-    } else {
-      setIsOpen(false)
-    }
+    setIsOpen(props.isOpen || false)
   }, [props.isOpen])
-
-  React.useEffect(() => {
-    if (isMount) {
-      setIsOpen(true)
-      document.body.style.overflow = 'hidden'
-      document.body.style.touchAction = 'none'
-    } else {
-      document.body.style.removeProperty('overflow')
-      document.body.style.removeProperty('touch-action')
-    }
-  }, [isMount])
 
   useDidMountEffect(() => {
     if (isOpen) {
+      // global body style
+      document.body.style.overflow = 'hidden'
+      document.body.style.touchAction = 'none'
+
+      // add z-index style
+      modalWrapRef.current?.style.setProperty('z-index', '999')
+
+      // remove hide class
+      modalWrapRef.current?.classList.remove(styles.modalWrap_hide)
+      gradientsRef.current?.classList.remove(styles.gradients_hide)
+
+      // add show class
       modalWrapRef.current?.classList.add(styles.modalWrap_show)
       gradientsRef.current?.classList.add(styles.gradients_show)
 
@@ -108,104 +105,81 @@ const Modal = React.forwardRef<any, ModalIProps>((props, ref) => {
         !props.isBottomSheet ? styles.popup_show : styles.bottomsheet_show
       )
     } else {
+      // global body style
+      document.body.style.removeProperty('overflow')
+      document.body.style.removeProperty('touch-action')
+
+      // remove z-index style
+      modalWrapRef.current?.style.removeProperty('z-index')
+
+      // remove show class
+      modalWrapRef.current?.classList.remove(styles.modalWrap_show)
+      gradientsRef.current?.classList.remove(styles.gradients_show)
+
+      // add hide class
       modalWrapRef.current?.classList.add(styles.modalWrap_hide)
       gradientsRef.current?.classList.add(styles.gradients_hide)
 
       setModalAnimationClass(
         !props.isBottomSheet ? styles.popup_hide : styles.bottomsheet_hide
       )
-
-      const timer = setTimeout(() => {
-        setIsMount(false)
-      }, 500)
-
-      return () => {
-        clearTimeout(timer)
-      }
     }
   }, [isOpen])
-
-  useDidMountEffect(() => {
-    if (props.isBottomSheet) {
-      const myObserver = new ResizeObserver((entries) => {
-        entries.forEach((entry) => {
-          if (
-            window.innerHeight > (entry.target as HTMLDivElement).offsetHeight
-          ) {
-            modalRef.current?.classList.remove(styles.bottomsheet_stick)
-          } else {
-            modalRef.current?.classList.add(styles.bottomsheet_stick)
-          }
-        })
-      })
-      if (isMount) {
-        myObserver.observe(modalRef.current)
-
-        return () => {
-          myObserver.disconnect()
-        }
-      } else {
-        myObserver.disconnect()
-      }
-    }
-  }, [isMount])
 
   ///////////////
   // RENDERING //
   ///////////////
 
   return createPortal(
-    isMount && (
-      <FocusTrap>
-        <aside
-          role='dialog'
-          aria-modal
-          aria-hidden={false}
-          ref={modalWrapRef}
-          className={styles.modalWrap}
-          {...props.dataAttrs}
+    <FocusTrap active={isOpen}>
+      <aside
+        role='dialog'
+        aria-modal
+        aria-hidden={false}
+        ref={modalWrapRef}
+        className={styles.modalWrap}
+        {...props.dataAttrs}
+      >
+        <section
+          ref={modalRef}
+          className={joinClasses([
+            styles.modal,
+            !props.isBottomSheet ? styles.popup : styles.bottomsheet,
+            modalAnimationClass,
+            props.className
+          ])}
+          style={props.style}
         >
-          <section
-            ref={modalRef}
+          {props.showBackButton && (
+            <BackButton
+              className={styles.backButton}
+              onClick={props.onBackClick}
+            />
+          )}
+          {props.showCloseButton && (
+            <CloseButton
+              className={styles.closeButton}
+              onClick={handleCloseClick}
+            />
+          )}
+
+          <div
+            tabIndex={0}
             className={joinClasses([
-              styles.modal,
-              !props.isBottomSheet ? styles.popup : styles.bottomsheet,
-              modalAnimationClass,
-              props.className
+              styles.contentWrapper,
+              props.contentClassName
             ])}
-            style={props.style}
           >
-            {props.showBackButton && (
-              <BackButton
-                className={styles.backButton}
-                onClick={props.onBackClick}
-              />
-            )}
-            {props.showCloseButton && (
-              <CloseButton
-                className={styles.closeButton}
-                onClick={handleCloseClick}
-              />
-            )}
-
-            <div
-              tabIndex={0}
-              className={joinClasses([
-                styles.contentWrapper,
-                props.contentClassName
-              ])}
-            >
-              {props.children}
-            </div>
-          </section>
-
-          <div className={styles.gradients} ref={gradientsRef}>
-            <div className={styles.gradient1} />
-            <div className={styles.gradient2} />
+            {props.children}
           </div>
-        </aside>
-      </FocusTrap>
-    ),
+        </section>
+
+        <div className={styles.gradients} ref={gradientsRef}>
+          <div className={styles.gradient1} />
+          <div className={styles.gradient2} />
+        </div>
+      </aside>
+    </FocusTrap>,
     document.body
   )
 })

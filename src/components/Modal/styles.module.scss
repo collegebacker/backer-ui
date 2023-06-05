@@ -3,7 +3,6 @@
 // @layer backer-ui-styles {
 .modalWrap {
   position: fixed;
-  z-index: 999;
   top: 0;
   left: 0;
   width: 100%;
@@ -15,8 +14,11 @@
     rgba(255, 255, 255, 0.3) 100%
   );
   transition: opacity 0.2s ease;
-  pointer-events: none;
+
+  // props for hiding
   opacity: 0;
+  pointer-events: none;
+  z-index: -999;
 
   &_show {
     animation: modalWrapShowAnimation 0.2s ease forwards;
@@ -83,7 +85,8 @@
   max-height: calc(100% - 40px);
   border-radius: var(--radius-l);
   opacity: 0;
-  background-color: var(--color-main-0);
+  // background-color: var(--color-main-0);
+  background-color: antiquewhite;
 
   &::-webkit-scrollbar {
     width: 0;

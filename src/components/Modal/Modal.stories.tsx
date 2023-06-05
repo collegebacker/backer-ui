@@ -59,15 +59,16 @@ export default {
 } as ComponentMeta<typeof Modal>
 
 const Template: ComponentStory<typeof Modal> = (args) => {
-  const modalRef = React.useRef<any>(null)
+  const [isOpen, setIsOpen] = React.useState(false)
 
   return (
     <div className='iconsWrap'>
-      <Modal ref={modalRef} {...args} />
+      <Modal {...args} isOpen={isOpen} onCloseClick={() => setIsOpen(false)} />
       <Button
         label='Trigger Modal'
         onClick={() => {
-          modalRef.current.open()
+          console.log('click')
+          setIsOpen(true)
         }}
       />
     </div>
