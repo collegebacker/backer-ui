@@ -1,6 +1,7 @@
 import React from 'react'
 import Checkmark from '../Checkmark'
 import Modal from '../Modal'
+import { useDidMountEffect } from '../../hooks'
 import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
@@ -8,7 +9,7 @@ export interface SelectModalIProps {
   isOpen?: boolean
   modalTitle?: string
   modalDescription?: string
-  value?: string
+  value?: string | null
   options: Array<{ label: string; value: string; className?: string }>
   closeOnSelect?: boolean
   onSelect: (value: SelectOptionType) => void
@@ -17,28 +18,26 @@ export interface SelectModalIProps {
 }
 
 const SelectModal: React.FC<SelectModalIProps> = (props) => {
-  const [value, setValue] = React.useState({} as SelectOptionType)
+  const [value, setValue] = React.useState(props.value)
   const [isModalOpen, setIsModalOpen] = React.useState(false)
 
   const itemRefs = React.useRef([])
 
   const handleOnSelect = (value: SelectOptionType) => {
-    setValue(value)
+    const selectedOption = props.options.find(
+      (option) => option.value === value.value
+    )
+    // setValue(value)
     props.closeOnSelect && setIsModalOpen(false)
-    props.onSelect && props.onSelect(value)
+    props.onSelect && props.onSelect(selectedOption)
   }
 
   React.useEffect(() => {
     setIsModalOpen(props.isOpen)
   }, [props.isOpen])
 
-  React.useEffect(() => {
-    if (props.value) {
-      const newValue = props.options.find(
-        (option) => option.value === props.value
-      )
-      setValue(newValue)
-    }
+  useDidMountEffect(() => {
+    setValue(props.value)
   }, [props.value])
 
   React.useEffect(() => {
@@ -90,23 +89,25 @@ const SelectModal: React.FC<SelectModalIProps> = (props) => {
         </p>
       )}
       <ul className={styles.listWrap}>
-        {props.options.map((option, index) => (
-          <li
-            key={index}
-            onClick={() => handleOnSelect(option)}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter') {
-                handleOnSelect(option)
-              }
-            }}
-            className={joinClasses([styles.listItem, option.className || ''])}
-            tabIndex={0}
-            ref={(el) => (itemRefs.current[index] = el)}
-          >
-            <span className='typo-app-body-main'>{option.label}</span>
-            {value.value === option.value && <Checkmark checked />}
-          </li>
-        ))}
+        {props.options.map((option, index) => {
+          return (
+            <li
+              key={index}
+              onClick={() => handleOnSelect(option)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  handleOnSelect(option)
+                }
+              }}
+              className={joinClasses([styles.listItem, option.className || ''])}
+              tabIndex={0}
+              ref={(el) => (itemRefs.current[index] = el)}
+            >
+              <span className='typo-app-body-main'>{option.label}</span>
+              {value === option.value && <Checkmark checked />}
+            </li>
+          )
+        })}
       </ul>
       {props.customContent}
     </Modal>

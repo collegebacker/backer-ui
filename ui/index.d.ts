@@ -589,7 +589,7 @@ interface SelectModalIProps {
     isOpen?: boolean;
     modalTitle?: string;
     modalDescription?: string;
-    value?: string;
+    value?: string | null;
     options: Array<{
         label: string;
         value: string;

@@ -11,17 +11,19 @@ export default {
 } as ComponentMeta<typeof SelectModal>
 
 const Template: ComponentStory<typeof SelectModal> = (args) => {
-  const modalRef = React.useRef(null)
   const [isOpen, setIsOpen] = React.useState(false)
+  const [value, setValue] = React.useState('brather')
 
   return (
     <>
       <SelectModal
         {...args}
         isOpen={isOpen}
-        onSelect={(value) => {
-          console.log('selected', value)
+        value={value}
+        onSelect={(option) => {
+          console.log('option story', option.value)
           setIsOpen(false)
+          setValue(option.value)
         }}
         onCloseClick={() => {
           console.log('close')
@@ -33,6 +35,13 @@ const Template: ComponentStory<typeof SelectModal> = (args) => {
         onClick={() => {
           console.log('open')
           setIsOpen(true)
+        }}
+      />
+      <Button
+        label='Clear'
+        onClick={() => {
+          console.log('clear')
+          setValue(null)
         }}
       />
     </>
