@@ -1,4 +1,5 @@
 import React from 'react'
+import { useDidMountEffect } from '../../hooks'
 import Input, { InputIProps } from '../Input'
 import SelectModal from '../SelectModal'
 
@@ -11,26 +12,21 @@ export interface DropdownIProps extends InputIProps {
 }
 
 const SelectInput: React.FC<DropdownIProps> = (props) => {
-  const [value, setValue] = React.useState({} as SelectOptionType)
+  const [value, setValue] = React.useState(props.value)
   const [isModalOpen, setIsModalOpen] = React.useState(false)
 
-  const handleOnSelect = (value: SelectOptionType) => {
-    setValue(value)
+  const handleOnSelect = (option: SelectOptionType) => {
+    setValue(option.value)
     setIsModalOpen(false)
-    props.onSelect && props.onSelect(value)
+    props.onSelect && props.onSelect(option)
   }
 
   const handleOpenModal = () => {
     setIsModalOpen(true)
   }
 
-  React.useEffect(() => {
-    if (props.value) {
-      const newValue = props.options.find(
-        (option) => option.value === props.value
-      )
-      setValue(newValue)
-    }
+  useDidMountEffect(() => {
+    setValue(props.value)
   }, [props.value])
 
   // RENDER
@@ -42,7 +38,7 @@ const SelectInput: React.FC<DropdownIProps> = (props) => {
         modalTitle={props.modalTitle}
         modalDescription={props.modalDescription}
         options={props.options}
-        value={value.value}
+        value={value}
         onSelect={handleOnSelect}
       />
       <Input
@@ -55,7 +51,7 @@ const SelectInput: React.FC<DropdownIProps> = (props) => {
             handleOpenModal()
           }
         }}
-        value={value.label}
+        value={props.options.find((option) => option.value === value)?.label}
         icon={{
           name: 'chevron-down',
           onClick: () => {

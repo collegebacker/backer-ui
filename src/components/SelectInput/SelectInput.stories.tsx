@@ -11,11 +11,28 @@ export default {
 } as ComponentMeta<typeof SelectInput>
 
 const Template: ComponentStory<typeof SelectInput> = (args) => {
+  const [firstValue, setFirstValue] = React.useState('brather')
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', width: '300px' }}>
+      <SelectInput
+        {...args}
+        value={firstValue}
+        onSelect={(option) => {
+          // console.log('option story', option.value)
+          setFirstValue(option.value)
+        }}
+      />
       <SelectInput {...args} />
       <SelectInput {...args} />
-      <SelectInput {...args} />
+      <button
+        onClick={() => {
+          console.log('clear')
+          setFirstValue(null)
+        }}
+      >
+        clear
+      </button>
     </div>
   )
 }
