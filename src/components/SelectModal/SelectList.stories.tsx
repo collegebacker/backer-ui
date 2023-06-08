@@ -12,7 +12,9 @@ export default {
 
 const Template: ComponentStory<typeof SelectModal> = (args) => {
   const [isOpen, setIsOpen] = React.useState(false)
-  const [value, setValue] = React.useState('brather')
+  const [value, setValue] = React.useState(
+    'ff820a07-e094-4344-a834-150c1ca4ac93'
+  )
 
   return (
     <>
@@ -51,9 +53,9 @@ const Template: ComponentStory<typeof SelectModal> = (args) => {
 export const Default = Template.bind({})
 Default.args = {
   options: [
-    { label: 'Marty Mc.Fly', value: 'Marty Mc.Fly' },
-    { label: 'Father', value: 'father' },
-    { label: 'Brother', value: 'brather' }
+    { label: 'Marty Mc.Fly', value: 'ff820a07-e094-4344-a834-150c1ca4ac91' },
+    { label: 'Father', value: 'ff820a07-e094-4344-a834-150c1ca4ac92' },
+    { label: 'Brother', value: 'ff820a07-e094-4344-a834-150c1ca4ac93' }
   ],
   onSelect: (e) => console.log('selected', e)
 }
