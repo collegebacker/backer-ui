@@ -26,10 +26,7 @@ const SelectInput: React.FC<DropdownIProps> = (props) => {
   }
 
   useDidMountEffect(() => {
-    // if value is empty or null, set value to null
-    if (!props.value) {
-      setValue(null)
-    }
+    setValue(props.value)
   }, [props.value])
 
   // RENDER

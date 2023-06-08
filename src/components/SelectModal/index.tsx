@@ -27,7 +27,7 @@ const SelectModal: React.FC<SelectModalIProps> = (props) => {
     const selectedOption = props.options.find(
       (option) => option.value === value.value
     )
-    setValue(selectedOption.value)
+    // setValue(value)
     props.closeOnSelect && setIsModalOpen(false)
     props.onSelect && props.onSelect(selectedOption)
   }
@@ -37,10 +37,7 @@ const SelectModal: React.FC<SelectModalIProps> = (props) => {
   }, [props.isOpen])
 
   useDidMountEffect(() => {
-    // if value is empty or null, set value to null
-    if (!props.value) {
-      setValue(null)
-    }
+    setValue(props.value)
   }, [props.value])
 
   React.useEffect(() => {
@@ -92,23 +89,25 @@ const SelectModal: React.FC<SelectModalIProps> = (props) => {
         </p>
       )}
       <ul className={styles.listWrap}>
-        {props.options.map((option, index) => (
-          <li
-            key={index}
-            onClick={() => handleOnSelect(option)}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter') {
-                handleOnSelect(option)
-              }
-            }}
-            className={joinClasses([styles.listItem, option.className || ''])}
-            tabIndex={0}
-            ref={(el) => (itemRefs.current[index] = el)}
-          >
-            <span className='typo-app-body-main'>{option.label}</span>
-            {value === option.value && <Checkmark checked />}
-          </li>
-        ))}
+        {props.options.map((option, index) => {
+          return (
+            <li
+              key={index}
+              onClick={() => handleOnSelect(option)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  handleOnSelect(option)
+                }
+              }}
+              className={joinClasses([styles.listItem, option.className || ''])}
+              tabIndex={0}
+              ref={(el) => (itemRefs.current[index] = el)}
+            >
+              <span className='typo-app-body-main'>{option.label}</span>
+              {value === option.value && <Checkmark checked />}
+            </li>
+          )
+        })}
       </ul>
       {props.customContent}
     </Modal>
