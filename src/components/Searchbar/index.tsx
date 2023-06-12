@@ -9,6 +9,7 @@ export interface SearchbarIProps {
   value?: string
   autoFocus?: boolean
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onClear?: () => void
 }
 
 const CrossIcon = () => (
@@ -59,8 +60,13 @@ const Searchbar: React.FC<SearchbarIProps> = (props) => {
         onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
           setValue('')
           e.currentTarget.blur()
+
           if (inputRef.current) {
             inputRef.current.focus()
+          }
+
+          if (props.onClear) {
+            props.onClear()
           }
         }}
       >

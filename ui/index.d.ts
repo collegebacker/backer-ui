@@ -616,6 +616,7 @@ interface SearchbarIProps {
     value?: string;
     autoFocus?: boolean;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onClear?: () => void;
 }
 declare const Searchbar: React.FC<SearchbarIProps>;
 
