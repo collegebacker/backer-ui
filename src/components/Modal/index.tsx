@@ -34,6 +34,7 @@ const Modal = React.forwardRef<any, ModalIProps>((props, ref) => {
   const modalRef = React.useRef<HTMLDivElement>(null)
   const gradientsRef = React.useRef<HTMLDivElement>(null)
 
+  const [_document, setDocument] = React.useState<Document | null>(null)
   const [isMount, setIsMount] = React.useState(false)
   const [isOpen, setIsOpen] = React.useState(false)
 
@@ -79,6 +80,10 @@ const Modal = React.forwardRef<any, ModalIProps>((props, ref) => {
   /////////////////
   // USE EFFECTS //
   /////////////////
+
+  React.useEffect(() => {
+    setDocument(document)
+  }, [])
 
   React.useEffect(() => {
     if (props.isOpen) {
@@ -127,25 +132,24 @@ const Modal = React.forwardRef<any, ModalIProps>((props, ref) => {
 
   useDidMountEffect(() => {
     if (props.isBottomSheet) {
-      const myObserver = new ResizeObserver((entries) => {
-        entries.forEach((entry) => {
-          if (
-            window.innerHeight > (entry.target as HTMLDivElement).offsetHeight
-          ) {
-            modalRef.current?.classList.remove(styles.bottomsheet_stick)
-          } else {
-            modalRef.current?.classList.add(styles.bottomsheet_stick)
-          }
-        })
-      })
       if (isMount) {
+        const myObserver = new ResizeObserver((entries) => {
+          entries.forEach((entry) => {
+            if (
+              window.innerHeight > (entry.target as HTMLDivElement).offsetHeight
+            ) {
+              modalRef.current?.classList.remove(styles.bottomsheet_stick)
+            } else {
+              modalRef.current?.classList.add(styles.bottomsheet_stick)
+            }
+          })
+        })
+
         myObserver.observe(modalRef.current)
 
         return () => {
           myObserver.disconnect()
         }
-      } else {
-        myObserver.disconnect()
       }
     }
   }, [isMount])
@@ -153,6 +157,10 @@ const Modal = React.forwardRef<any, ModalIProps>((props, ref) => {
   ///////////////
   // RENDERING //
   ///////////////
+
+  if (!_document) {
+    return null
+  }
 
   return createPortal(
     isMount && (
@@ -206,7 +214,7 @@ const Modal = React.forwardRef<any, ModalIProps>((props, ref) => {
         </aside>
       </FocusTrap>
     ),
-    document.body
+    _document.body
   )
 })
 

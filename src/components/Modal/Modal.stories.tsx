@@ -366,7 +366,7 @@ const PlaygroundTemplate: ComponentStory<typeof Modal> = (args) => {
         flexDirection: 'column'
       }}
     >
-      <Modal ref={modalRef} closeOnClickOutside={false}>
+      <Modal ref={modalRef} closeOnClickOutside={false} isBottomSheet>
         <div>
           <p
             className='typo-app-body-paragraph'
@@ -392,6 +392,26 @@ const PlaygroundTemplate: ComponentStory<typeof Modal> = (args) => {
           >
             change classname
           </button>
+          <p
+            className='typo-app-body-paragraph'
+            style={{ marginBottom: '30px' }}
+          >
+            Hey there! We’ve started thinking about the future, and are putting
+            together a team of people who want to support us along the way. We’d
+            love to have you join us! You’ll be able to follow along as our kid
+            grows up. And if you want to contribute to their college fund, you
+            can do that too. 🎓
+          </p>
+          <p
+            className='typo-app-body-paragraph'
+            style={{ marginBottom: '30px' }}
+          >
+            Hey there! We’ve started thinking about the future, and are putting
+            together a team of people who want to support us along the way. We’d
+            love to have you join us! You’ll be able to follow along as our kid
+            grows up. And if you want to contribute to their college fund, you
+            can do that too. 🎓
+          </p>
         </div>
       </Modal>
 
