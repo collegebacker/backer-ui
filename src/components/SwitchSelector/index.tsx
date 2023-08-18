@@ -26,6 +26,12 @@ const SwitchSelector: React.FC<SwitchSelectorIProps> = (props) => {
     props.onChange({ index, label: option.label, value: option.value })
   }
 
+  React.useEffect(() => {
+    if (props.activeIndex !== selected) {
+      setSelected(props.activeIndex)
+    }
+  }, [props.activeIndex])
+
   return (
     <section className={joinClasses([styles.wrap, props.className])}>
       {(props.options || []).map((option, index) => (
