@@ -1,7 +1,7 @@
 // @layer backer-ui-styles {
 .pic {
   position: relative;
-  border-radius: 50%;
+  border-radius: var(--radius, 50%);
   background-size: cover;
   background-position: center;
   width: var(--size, 100px);

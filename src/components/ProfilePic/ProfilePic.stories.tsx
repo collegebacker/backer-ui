@@ -58,6 +58,7 @@ UploadMode.args = {
   name: 'Lily Sharpe’sEducation Fund 🐰🌿',
   style: {
     '--size': '140px'
+    // '--radius': '10%'
   } as any
 }
 
