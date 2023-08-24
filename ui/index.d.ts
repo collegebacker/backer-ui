@@ -585,16 +585,17 @@ interface SwitchSelectorIProps {
 }
 declare const SwitchSelector: React.FC<SwitchSelectorIProps>;
 
+interface OptionsIProps {
+    label: string;
+    value: string;
+    className?: string;
+}
 interface SelectModalIProps {
     isOpen?: boolean;
     modalTitle?: string;
     modalDescription?: string;
     value?: string | null;
-    options: Array<{
-        label: string;
-        value: string;
-        className?: string;
-    }>;
+    options: Array<OptionsIProps>;
     closeOnSelect?: boolean;
     onSelect: (value: SelectOptionType) => void;
     onCloseClick?: () => void;

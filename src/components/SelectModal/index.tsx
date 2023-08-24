@@ -5,12 +5,18 @@ import { useDidMountEffect } from '../../hooks'
 import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
+interface OptionsIProps {
+  label: string
+  value: string
+  className?: string
+}
+
 export interface SelectModalIProps {
   isOpen?: boolean
   modalTitle?: string
   modalDescription?: string
   value?: string | null
-  options: Array<{ label: string; value: string; className?: string }>
+  options: Array<OptionsIProps>
   closeOnSelect?: boolean
   onSelect: (value: SelectOptionType) => void
   onCloseClick?: () => void
@@ -92,6 +98,7 @@ const SelectModal: React.FC<SelectModalIProps> = (props) => {
         {props.options.map((option, index) => {
           return (
             <li
+              id={option.value}
               key={index}
               onClick={() => handleOnSelect(option)}
               onKeyDown={(e) => {
