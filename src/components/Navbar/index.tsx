@@ -13,6 +13,7 @@ export interface NavbarIProps {
   backButtonClick?: () => void
   backButtonLabel?: string
   backButtonStartColumn?: number
+  backButtonClassName?: string
   onCloseClick?: () => void
   logoLink?: string | null
   hideLogo?: boolean
@@ -53,9 +54,12 @@ const Navbar: React.FC<NavbarIProps> = React.memo((props) => {
       <div className='grid'>
         {props.backButtonClick && (
           <div
-            className={`grid-desktop-${props.backButtonStartColumn}-${
-              12 - props.backButtonStartColumn
-            } grid-tablet-1-4`}
+            className={joinClasses([
+              `grid-desktop-${props.backButtonStartColumn}-${
+                12 - props.backButtonStartColumn
+              } grid-tablet-1-4`,
+              props.backButtonClassName
+            ])}
           >
             <BackButton
               hasBackground={false}

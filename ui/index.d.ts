@@ -627,6 +627,7 @@ interface NavbarIProps {
     backButtonClick?: () => void;
     backButtonLabel?: string;
     backButtonStartColumn?: number;
+    backButtonClassName?: string;
     onCloseClick?: () => void;
     logoLink?: string | null;
     hideLogo?: boolean;
