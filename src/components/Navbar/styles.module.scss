@@ -59,6 +59,12 @@
   }
 }
 
+.hideLogoOnTablet {
+  @media only screen and (max-width: $grid-tablet-breakpoint) {
+    display: none;
+  }
+}
+
 .hideLogoOnMobile {
   @media only screen and (max-width: $grid-mobile-breakpoint) {
     display: none;

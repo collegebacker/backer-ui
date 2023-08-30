@@ -631,6 +631,7 @@ interface NavbarIProps {
     onCloseClick?: () => void;
     logoLink?: string | null;
     hideLogo?: boolean;
+    hideLogoOnTablet?: boolean;
     hideLogoOnMobile?: boolean;
     buttons?: Array<{
         label?: string;

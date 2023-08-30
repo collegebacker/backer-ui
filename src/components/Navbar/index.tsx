@@ -17,6 +17,7 @@ export interface NavbarIProps {
   onCloseClick?: () => void
   logoLink?: string | null
   hideLogo?: boolean
+  hideLogoOnTablet?: boolean
   hideLogoOnMobile?: boolean
   buttons?: Array<{
     label?: string
@@ -42,6 +43,7 @@ const Navbar: React.FC<NavbarIProps> = React.memo((props) => {
           className={joinClasses([
             styles.logo,
             props.backButtonClick && styles.hideLogoOnShrink,
+            props.hideLogoOnTablet && styles.hideLogoOnTablet,
             props.hideLogoOnMobile && styles.hideLogoOnMobile
           ])}
           {...(props.logoLink && linkProps)}
@@ -112,6 +114,7 @@ Navbar.defaultProps = {
   backButtonStartColumn: 3,
   hideLogo: false,
   hideLogoOnMobile: false,
+  hideLogoOnTablet: false,
   logoLink: '/dashboard'
 } as Partial<NavbarIProps>
 

@@ -23,7 +23,7 @@ export interface PillButtonIProps {
   areaLabelledBy?: string
 }
 
-const ButtonContent = ({ ...props }: PillButtonIProps) => {
+const ButtonContent = (props: PillButtonIProps) => {
   const iconStyles = props.label
     ? {
         marginLeft: '10px',
