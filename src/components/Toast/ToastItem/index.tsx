@@ -60,10 +60,10 @@ const ToastItem: React.FC<ItemIProps> = (props) => {
 
   return isMount ? (
     <section
-      className={joinClasses([
+      className={joinClasses(
         styles.toastItemWrap,
         isCloseTrigger ? styles.toastOut : styles.toastIn
-      ])}
+      )}
       onClick={handleCloseOnParentClick}
       onAnimationEnd={() => {
         if (isCloseTrigger) {
@@ -72,7 +72,7 @@ const ToastItem: React.FC<ItemIProps> = (props) => {
       }}
     >
       <div
-        className={joinClasses([styles.toastItem, styles[props.params?.type]])}
+        className={joinClasses(styles.toastItem, styles[props.params?.type])}
       >
         {props.params?.emoji !== '' || props.params?.type !== 'info' ? (
           <div className={styles.emoji}>{addEmoji()}</div>

@@ -14,8 +14,50 @@ export interface ProfilePicIProps {
   name?: string
   imageSrc?: string
   uploadMode?: boolean
+  profilePicIcon?: boolean
   onChange?: (imageFile: File) => void
 }
+
+/////////////////////////////////
+///////// SVG PICTURES //////////
+/////////////////////////////////
+
+const ProfilePicSVG = () => (
+  <svg viewBox='0 0 60 60' fill='none' xmlns='http://www.w3.org/2000/svg'>
+    <ellipse cx='30.4153' cy='21.7068' rx='5.70682' ry='5.70682' fill='white' />
+    <path
+      d='M30.2723 30.8376C24.5991 30.8376 20 35.4367 20 41.1099H40.5445C40.5445 35.4367 35.9455 30.8376 30.2723 30.8376Z'
+      fill='white'
+    />
+  </svg>
+)
+
+const CameraSVG = () => (
+  <svg
+    viewBox='0 0 33 27'
+    fill='none'
+    stroke='var(--color-main-500)'
+    xmlns='http://www.w3.org/2000/svg'
+    vectorEffect='non-scaling-stroke'
+  >
+    <path
+      vectorEffect='non-scaling-stroke'
+      d='M16.3331 20.0692C19.2297 20.0692 21.5778 17.721 21.5778 14.8244C21.5778 11.9279 19.2297 9.57971 16.3331 9.57971C13.4365 9.57971 11.0884 11.9279 11.0884 14.8244C11.0884 17.721 13.4365 20.0692 16.3331 20.0692Z'
+    />
+    <path
+      vectorEffect='non-scaling-stroke'
+      d='M4.84375 5.24988L4.84375 12.9095'
+    />
+    <path
+      vectorEffect='non-scaling-stroke'
+      d='M8.67327 9.07959L1.01367 9.07959'
+    />
+    <path
+      vectorEffect='non-scaling-stroke'
+      d='M1.65186 14.1861L1.65186 25.0372L31.0139 25.0372L31.0139 5.88815L22.0777 5.88815L22.0777 2.05835L10.5882 2.05835L10.5882 6.52645'
+    />
+  </svg>
+)
 
 /////////////////////////////////
 ///////// CARDS SLIDER //////////
@@ -31,10 +73,10 @@ const ProfilePic: React.FC<ProfilePicIProps> = (props) => {
   //
   return (
     <div
-      className={joinClasses([
+      className={joinClasses(
         styles.pic,
         props.className ? props.className : ''
-      ])}
+      )}
       style={{
         backgroundImage: `url(${props.imageSrc}), ${stringToGradient(
           props.name
@@ -61,39 +103,26 @@ const ProfilePic: React.FC<ProfilePicIProps> = (props) => {
             }}
           />
           <div
-            className={joinClasses([
-              styles.uploadPhotoPlaceholderImage,
-              imageSrc ? styles.imageExist : ''
-            ])}
+            className={joinClasses(
+              styles.cameraImage,
+              imageSrc && !props.profilePicIcon ? styles.imageExist : '',
+              props.profilePicIcon
+                ? styles.cameraImageShiftPosition
+                : styles.cameraImageNormalPosition
+            )}
           >
-            <svg
-              viewBox='0 0 33 27'
-              fill='none'
-              stroke='var(--color-main-500)'
-              xmlns='http://www.w3.org/2000/svg'
-            >
-              <path
-                vectorEffect='non-scaling-stroke'
-                d='M16.3331 20.0692C19.2297 20.0692 21.5778 17.721 21.5778 14.8244C21.5778 11.9279 19.2297 9.57971 16.3331 9.57971C13.4365 9.57971 11.0884 11.9279 11.0884 14.8244C11.0884 17.721 13.4365 20.0692 16.3331 20.0692Z'
-              />
-              <path
-                vectorEffect='non-scaling-stroke'
-                d='M4.84375 5.24988L4.84375 12.9095'
-              />
-              <path
-                vectorEffect='non-scaling-stroke'
-                d='M8.67327 9.07959L1.01367 9.07959'
-              />
-              <path
-                vectorEffect='non-scaling-stroke'
-                d='M1.65186 14.1861L1.65186 25.0372L31.0139 25.0372L31.0139 5.88815L22.0777 5.88815L22.0777 2.05835L10.5882 2.05835L10.5882 6.52645'
-              />
-            </svg>
+            <CameraSVG />
           </div>
         </div>
       )}
 
-      {!props.imageSrc && !props.uploadMode && (
+      {props.profilePicIcon && !props.imageSrc && (
+        <div className={styles.profilePicIcon}>
+          <ProfilePicSVG />
+        </div>
+      )}
+
+      {!props.imageSrc && !props.uploadMode && !props.profilePicIcon && (
         <svg className={styles.letterPlaceholder} viewBox='0 0 60 60'>
           <text x='50%' y='52%' textAnchor='middle' alignmentBaseline='middle'>
             {getFirstLetter(props.name)}
@@ -107,7 +136,8 @@ const ProfilePic: React.FC<ProfilePicIProps> = (props) => {
 ProfilePic.defaultProps = {
   className: '',
   imageSrc: '',
-  uploadMode: false
+  uploadMode: false,
+  profilePicIcon: false
 } as Partial<ProfilePicIProps>
 
 export default ProfilePic

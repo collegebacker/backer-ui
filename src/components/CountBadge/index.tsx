@@ -18,7 +18,7 @@ const CountBadge: React.FC<CountBadgeIProps> = (props) => {
   }
 
   return (
-    <div className={joinClasses([styles.wrap, props.className])}>
+    <div className={joinClasses(styles.wrap, props.className)}>
       <span>{handleLimit()}</span>
     </div>
   )

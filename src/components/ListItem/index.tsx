@@ -36,13 +36,13 @@ const ListItem: React.FC<ListItemIProps> = (props) => {
   return React.createElement(
     listItemElement,
     {
-      className: joinClasses([
+      className: joinClasses(
         styles.wrap,
         props.className,
         props.divider && styles.divider,
         props.disabled && styles.disabled,
         isClickable && styles.clickable
-      ]),
+      ),
       style: props.style,
       onClick: handleClick,
       onKeyDown: (e: React.KeyboardEvent) => {
@@ -55,10 +55,10 @@ const ListItem: React.FC<ListItemIProps> = (props) => {
     <>
       {props.leftContent && (
         <div
-          className={joinClasses([
+          className={joinClasses(
             styles.leftContent,
             props.leftContentClassName
-          ])}
+          )}
         >
           {props.leftContent}
         </div>
@@ -67,36 +67,36 @@ const ListItem: React.FC<ListItemIProps> = (props) => {
       <div className={styles.middleContent}>
         {props.topLabel && (
           <span
-            className={joinClasses(['typo-app-body-caption', styles.caption])}
+            className={joinClasses('typo-app-body-caption', styles.caption)}
           >
             {props.topLabel}
           </span>
         )}
 
         {props.titleLarge && (
-          <h4 className={joinClasses(['typo-app-title-small', styles.title])}>
+          <h4 className={joinClasses('typo-app-title-small', styles.title)}>
             {props.titleLarge}
           </h4>
         )}
 
         {props.title && (
-          <h4 className={joinClasses(['typo-app-body-main', styles.title])}>
+          <h4 className={joinClasses('typo-app-body-main', styles.title)}>
             {props.title}
           </h4>
         )}
 
         {props.description && (
-          <p className={joinClasses(['typo-app-body-caption', styles.caption])}>
+          <p className={joinClasses('typo-app-body-caption', styles.caption)}>
             {props.description}
           </p>
         )}
 
         {props.middleContent && (
           <div
-            className={joinClasses([
+            className={joinClasses(
               styles.middleContent,
               props.middleContentClassName
-            ])}
+            )}
           >
             {props.middleContent}
           </div>
@@ -107,10 +107,10 @@ const ListItem: React.FC<ListItemIProps> = (props) => {
         <div className={styles.rightContent}>
           {props.rightContent && (
             <div
-              className={joinClasses([
+              className={joinClasses(
                 styles.rightContent,
                 props.rightContentClassName
-              ])}
+              )}
             >
               {props.rightContent}
             </div>

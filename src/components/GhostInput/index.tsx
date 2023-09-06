@@ -96,13 +96,13 @@ const GhostInput = React.forwardRef<any, GhostInputIProps>((props, ref) => {
   return (
     <div
       ref={ref}
-      className={joinClasses([
+      className={joinClasses(
         styles.componentWrap,
         props.className,
         props.errorMessage ? styles.error : '',
         props.type === 'money' ? styles.money : '',
         props.errorMessage ? styles.shake : ''
-      ])}
+      )}
     >
       <div className={styles.inputWrap}>
         {props.type === 'money' ? (

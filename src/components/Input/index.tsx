@@ -45,11 +45,11 @@ export interface InputIProps {
 const Input = React.forwardRef(
   (props: InputIProps, ref: React.ForwardedRef<HTMLInputElement>) => {
     const inputArgs = {
-      className: joinClasses([
+      className: joinClasses(
         styles.input,
         props.hideSpinButton ? styles.hideSpinButton : '',
         props.readOnly ? '' : styles.mouseStates
-      ]),
+      ),
       style: {
         cursor: props.cursor
       },
@@ -80,13 +80,13 @@ const Input = React.forwardRef(
 
     return (
       <div
-        className={joinClasses([
+        className={joinClasses(
           styles.componentWrap,
           props.className,
           props.errorMessage ? styles.error : '',
           props.errorMessage ? styles.shake : '',
           props.disabled ? styles.disabled : ''
-        ])}
+        )}
         data-error={props.errorMessage ? 'true' : 'false'}
         style={props.style}
       >
@@ -138,10 +138,7 @@ const Input = React.forwardRef(
 
         {(props.helperText || props.errorMessage) && (
           <span
-            className={joinClasses([
-              'typo-app-body-caption',
-              styles.helperText
-            ])}
+            className={joinClasses('typo-app-body-caption', styles.helperText)}
           >
             {props.errorMessage ? props.errorMessage : props.helperText}
           </span>

@@ -48,10 +48,10 @@ const ChipsSelector: React.FC<ChipsSelectorIProps> = (props) => {
             <li key={index}>
               <div
                 tabIndex={0}
-                className={joinClasses([
+                className={joinClasses(
                   styles.chip,
                   currentIndex === index ? styles.activeChip : ''
-                ])}
+                )}
                 onClick={() => handleSelect(index)}
                 onKeyDown={(event) => selectOnEnter(event, index)}
               >

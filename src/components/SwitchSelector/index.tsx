@@ -33,7 +33,7 @@ const SwitchSelector: React.FC<SwitchSelectorIProps> = (props) => {
   }, [props.activeIndex])
 
   return (
-    <section className={joinClasses([styles.wrap, props.className])}>
+    <section className={joinClasses(styles.wrap, props.className)}>
       {(props.options || []).map((option, index) => (
         <PillButton
           key={index}

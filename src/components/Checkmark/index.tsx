@@ -24,12 +24,12 @@ const Checkmark: React.FC<CheckmarkIProps> = (props) => {
 
   return (
     <div
-      className={joinClasses([
+      className={joinClasses(
         styles.wrap,
         checked ? styles.checked : '',
         props.className,
         props.visibleOutline ? styles.visibleOutline : ''
-      ])}
+      )}
       style={props.style}
     >
       <Icon className={styles.tickIcon} name='tickmark' />

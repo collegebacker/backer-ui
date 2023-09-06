@@ -16,7 +16,7 @@ const PaymentLogo: React.FC<PaymentLogoIProps> = (props) => {
     <img
       src={logosURLs[props.name][props.mode]}
       alt={props.name}
-      className={joinClasses([styles.icon, props.className])}
+      className={joinClasses(styles.icon, props.className)}
       style={props.style}
     />
   )

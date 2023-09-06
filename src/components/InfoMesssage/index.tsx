@@ -23,11 +23,7 @@ export interface WarnMesssageIProps {
 const WarnMesssage: React.FC<WarnMesssageIProps> = (props) => {
   return (
     <section
-      className={joinClasses([
-        styles.wrap,
-        props.className,
-        styles[props.mode]
-      ])}
+      className={joinClasses(styles.wrap, props.className, styles[props.mode])}
       style={{
         flexDirection: props.orientation === 'left' ? 'row' : 'row-reverse',
         cursor: props.onClick ? 'pointer' : 'default'
@@ -50,10 +46,10 @@ const WarnMesssage: React.FC<WarnMesssageIProps> = (props) => {
 
         {props.undertitleContent && (
           <div
-            className={joinClasses([
+            className={joinClasses(
               styles.undertitleContent,
               props.undertitleContentClassName
-            ])}
+            )}
           >
             {props.undertitleContent}
           </div>

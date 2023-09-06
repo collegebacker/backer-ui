@@ -80,7 +80,7 @@ const Stack: React.FC<StackIProps> = ({
   return (
     <Element
       {...rest}
-      className={joinClasses([styles.wrap, className])}
+      className={joinClasses(styles.wrap, className)}
       style={{
         ...rest.style,
         flexDirection: direction,

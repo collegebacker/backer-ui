@@ -25,11 +25,11 @@ const AccordionItem: React.FC<AccordionItemIProps> = (props) => {
 
   return (
     <li
-      className={joinClasses([
+      className={joinClasses(
         styles.accordion,
         props.mode === 'default' ? styles.defaultStyle : styles.appStyle,
         isOpen ? styles.open : ''
-      ])}
+      )}
     >
       <div
         className={styles.header}

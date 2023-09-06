@@ -13,7 +13,7 @@ export interface BackButtonIProps {
 const BackButton: React.FC<BackButtonIProps> = (props) => {
   return (
     <button
-      className={joinClasses([styles.button, props.className])}
+      className={joinClasses(styles.button, props.className)}
       style={{
         ...props.style,
         ...(props.hasBackground
@@ -24,7 +24,7 @@ const BackButton: React.FC<BackButtonIProps> = (props) => {
     >
       <div className={styles.arrow} />
       {props.label && (
-        <span className={joinClasses(['typo-app-body-caption', styles.label])}>
+        <span className={joinClasses('typo-app-body-caption', styles.label)}>
           {props.label}
         </span>
       )}

@@ -358,6 +358,7 @@ interface ProfilePicIProps {
     name?: string;
     imageSrc?: string;
     uploadMode?: boolean;
+    profilePic?: boolean;
     onChange?: (imageFile: File) => void;
 }
 declare const ProfilePic: React.FC<ProfilePicIProps>;

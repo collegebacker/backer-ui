@@ -41,7 +41,7 @@ const Searchbar: React.FC<SearchbarIProps> = (props) => {
   }
 
   return (
-    <div className={joinClasses([styles.inputWrap, props.className])}>
+    <div className={joinClasses(styles.inputWrap, props.className)}>
       <Icon name='magnifier' className={styles.icon} />
       <input
         autoFocus={props.autoFocus}
@@ -52,10 +52,10 @@ const Searchbar: React.FC<SearchbarIProps> = (props) => {
         onChange={handleChange}
       />
       <button
-        className={joinClasses([
+        className={joinClasses(
           styles.clearButton,
           !!value ? '' : styles.hideButton
-        ])}
+        )}
         title='clear'
         onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
           setValue('')

@@ -72,22 +72,22 @@ const Textarea: React.FC<TextareaIProps> = (props) => {
 
   return (
     <div
-      className={joinClasses([
+      className={joinClasses(
         styles.wrap,
         props.className,
         props.errorMessage && styles.error
-      ])}
+      )}
       style={{ ...props.style }}
     >
       <label
-        className={joinClasses(['typo-app-body-caption', styles.label])}
+        className={joinClasses('typo-app-body-caption', styles.label)}
         ref={labelRef}
       >
         {props.label}:
       </label>
       <textarea
         ref={textareaRef}
-        className={joinClasses(['typo-app-body-paragraph', styles.textarea])}
+        className={joinClasses('typo-app-body-paragraph', styles.textarea)}
         style={props.style}
         onChange={handleChange}
         value={props.value}
@@ -95,14 +95,14 @@ const Textarea: React.FC<TextareaIProps> = (props) => {
       />
       {props.helperText && !props.errorMessage && (
         <span
-          className={joinClasses(['typo-app-body-caption', styles.helperText])}
+          className={joinClasses('typo-app-body-caption', styles.helperText)}
         >
           {props.helperText}
         </span>
       )}
       {props.errorMessage && props.errorMessage && (
         <span
-          className={joinClasses(['typo-app-body-caption', styles.helperText])}
+          className={joinClasses('typo-app-body-caption', styles.helperText)}
         >
           {props.errorMessage}
         </span>

@@ -179,18 +179,18 @@ const CodeInput = React.forwardRef<any, CodeInputIProps>((props, ref) => {
 
   return (
     <div
-      className={joinClasses([
+      className={joinClasses(
         styles.componentWrap,
         props.className,
         props.isInvalid ? styles.error : ''
-      ])}
+      )}
       style={props.style}
     >
       <section
         ref={ref}
         onPaste={handlePaste}
         onFocus={handleOnFocus}
-        className={joinClasses([props.isInvalid ? styles.shake : ''])}
+        className={joinClasses(props.isInvalid ? styles.shake : '')}
       >
         {Array.from({ length: props.length }).map((_, index) => {
           return (
@@ -222,10 +222,10 @@ const CodeInput = React.forwardRef<any, CodeInputIProps>((props, ref) => {
       <p className={`typo-app-body-main ${styles.resendSection}`}>
         {props.resendText}{' '}
         <a
-          className={joinClasses([
+          className={joinClasses(
             styles.resendLink,
             resendTimer > 0 ? styles.resendLink_disabled : ''
-          ])}
+          )}
           onClick={handleResend}
         >
           Resend code

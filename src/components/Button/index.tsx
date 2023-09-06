@@ -68,7 +68,7 @@ const ButtonContent = ({ ...props }: ButtonIProps) => {
 }
 
 const Button = React.forwardRef<any, ButtonIProps>((props, ref) => {
-  const classes = joinClasses([
+  const classes = joinClasses(
     styles.button,
     styles[props.mode],
     styles[props.size],
@@ -79,7 +79,7 @@ const Button = React.forwardRef<any, ButtonIProps>((props, ref) => {
         : ''
       : styles[`fixedSize-${props.size}`],
     props.className
-  ])
+  )
 
   const style = {
     ...(props.maxWidth ? { maxWidth: props.maxWidth } : {}),

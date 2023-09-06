@@ -25,7 +25,7 @@ const PolaroidPhoto: React.FC<PolaroidPhotoIProps> = (props) => {
 
   return (
     <div
-      className={joinClasses([styles.polaroidWrapper, props.className])}
+      className={joinClasses(styles.polaroidWrapper, props.className)}
       style={props.style}
       onClick={props.onClick}
     >
@@ -84,10 +84,10 @@ const PolaroidPhoto: React.FC<PolaroidPhotoIProps> = (props) => {
             />
 
             <div
-              className={joinClasses([
+              className={joinClasses(
                 styles.uploadPhotoPlaceholderImage,
                 imageSrc ? styles.imageExist : ''
-              ])}
+              )}
             >
               <svg
                 width='33'
@@ -116,9 +116,7 @@ const PolaroidPhoto: React.FC<PolaroidPhotoIProps> = (props) => {
               </svg>
             </div>
 
-            <div
-              className={joinClasses([styles.photoHoverFade, styles.photo])}
-            />
+            <div className={joinClasses(styles.photoHoverFade, styles.photo)} />
           </div>
         )}
 

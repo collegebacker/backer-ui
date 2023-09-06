@@ -12,7 +12,7 @@ export interface CloseButtonIProps {
 const CloseButton: React.FC<CloseButtonIProps> = (props) => {
   return (
     <button
-      className={joinClasses([styles.button, props.className])}
+      className={joinClasses(styles.button, props.className)}
       onClick={props.onClick}
       style={{
         ...props.style,

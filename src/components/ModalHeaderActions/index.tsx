@@ -37,7 +37,7 @@ const ModalHeaderActions: React.FC<ModalHeaderActionsIProps> = (props) => {
 
   return (
     <section
-      className={joinClasses([styles.wrap, props.className])}
+      className={joinClasses(styles.wrap, props.className)}
       style={{
         justifyContent:
           buttonProps.saveButton.show && buttonProps.cancelButton.show

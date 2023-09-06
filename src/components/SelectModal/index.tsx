@@ -106,7 +106,7 @@ const SelectModal: React.FC<SelectModalIProps> = (props) => {
                   handleOnSelect(option)
                 }
               }}
-              className={joinClasses([styles.listItem, option.className || ''])}
+              className={joinClasses(styles.listItem, option.className || '')}
               tabIndex={0}
               ref={(el) => (itemRefs.current[index] = el)}
             >

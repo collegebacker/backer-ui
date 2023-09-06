@@ -24,22 +24,22 @@ export interface LabelTagIProps {
 const LabelTag: React.FC<LabelTagIProps> = (props) => {
   return (
     <div
-      className={joinClasses([
+      className={joinClasses(
         styles.wrap,
         styles[`${props.size}Size`],
         styles[`${props.color}${props.outline ? `-outline` : ''}`],
         props.className,
         props.widthLock ? styles[`${props.size}SizeLockWidth`] : ''
-      ])}
+      )}
       style={props.style}
     >
       <span
-        className={joinClasses([
+        className={joinClasses(
           props.size === 'large'
             ? 'typo-app-body-main'
             : 'typo-app-body-caption',
           styles.label
-        ])}
+        )}
       >
         {props.label}
       </span>

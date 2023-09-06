@@ -1,4 +1,3 @@
-// @layer backer-ui-styles {
 .pic {
   position: relative;
   border-radius: var(--radius, 50%);
@@ -44,7 +43,7 @@
   &:hover {
     background-color: rgba(0, 0, 0, 0.05);
 
-    .uploadPhotoPlaceholderImage {
+    .cameraImageNormalPosition {
       transform: translate(-50%, -50%) scale(1.05);
     }
 
@@ -54,7 +53,7 @@
   }
 }
 
-.uploadPhotoPlaceholderImage {
+.cameraImage {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -62,9 +61,6 @@
   height: 40px;
   pointer-events: none;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   background-color: white;
   border-radius: var(--radius-m);
   transition: transform 0.1s ease-in-out, opacity 0.15s ease-in-out;
@@ -74,7 +70,28 @@
   }
 }
 
+.cameraImageNormalPosition {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cameraImageShiftPosition {
+  bottom: -5px;
+  right: -5px;
+  background-color: var(--color-main-50);
+}
+
+.profilePicIcon {
+  width: 100%;
+  height: 100%;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
 .imageExist {
   opacity: 0;
 }
-// }

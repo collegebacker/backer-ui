@@ -14,7 +14,7 @@ export interface AccordionIProps {
 
 const Accordion: React.FC<AccordionIProps> = (props) => {
   return (
-    <ul className={joinClasses([styles.wrap, props.className])}>
+    <ul className={joinClasses(styles.wrap, props.className)}>
       {props.items.map((item, index) => {
         return (
           <AccordionItem

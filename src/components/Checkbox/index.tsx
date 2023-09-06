@@ -27,11 +27,11 @@ const Checkbox: React.FC<CheckboxIProps> = (props) => {
   return (
     <label
       htmlFor={props.id}
-      className={joinClasses([
+      className={joinClasses(
         styles.label,
         props.disabled ? styles.disabled : '',
         props.className
-      ])}
+      )}
     >
       <span className={styles.wrap}>
         <input

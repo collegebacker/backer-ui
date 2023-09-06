@@ -54,7 +54,7 @@ const RecurringDatePicker: React.FC<RecurringDatePickerIProps> = (props) => {
   }
 
   return (
-    <section className={joinClasses([styles.wrap, props.className])}>
+    <section className={joinClasses(styles.wrap, props.className)}>
       {props.showSwitcher && (
         <section className={styles.switcher}>
           <PillButton

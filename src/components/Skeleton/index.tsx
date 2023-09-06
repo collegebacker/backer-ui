@@ -43,10 +43,10 @@ export interface SkeletonButtonProps extends SkeletonBoneIProps {
 const SkeletonBody: React.FC<SkeletonBodyIProps> = (props) => {
   return (
     <div
-      className={joinClasses([
+      className={joinClasses(
         props.showBackground ? styles.body : '',
         props.className
-      ])}
+      )}
       style={{ ...props.style }}
     >
       {props.children}
@@ -57,7 +57,7 @@ const SkeletonBody: React.FC<SkeletonBodyIProps> = (props) => {
 const SkeletonBone: React.FC<SkeletonBoneIProps> = (props) => {
   return (
     <div
-      className={joinClasses([styles.bone, props.className])}
+      className={joinClasses(styles.bone, props.className)}
       style={{ ...props.style }}
     />
   )
@@ -66,11 +66,11 @@ const SkeletonBone: React.FC<SkeletonBoneIProps> = (props) => {
 const TextLine: React.FC<SkeletonTextProps> = (props) => {
   return (
     <div
-      className={joinClasses([
+      className={joinClasses(
         styles.bone,
         styles[props.fontSize],
         props.className
-      ])}
+      )}
       style={{ ...props.style }}
     />
   )
@@ -79,7 +79,7 @@ const TextLine: React.FC<SkeletonTextProps> = (props) => {
 const SkeletonText: React.FC<SkeletonTextProps> = (props) => {
   return props.lines > 1 ? (
     <div
-      className={joinClasses([styles.textWrap, props.className])}
+      className={joinClasses(styles.textWrap, props.className)}
       style={{ ...props.style }}
     >
       {[...Array(props.lines)].map((_, i) => (
@@ -107,12 +107,12 @@ const SkeletonText: React.FC<SkeletonTextProps> = (props) => {
 const SkeletonButton: React.FC<SkeletonButtonProps> = (props) => {
   return (
     <div
-      className={joinClasses([
+      className={joinClasses(
         styles.bone,
         styles.button,
         styles[`button__${props.size}`],
         props.className
-      ])}
+      )}
       style={{ ...props.style }}
     />
   )
@@ -121,7 +121,7 @@ const SkeletonButton: React.FC<SkeletonButtonProps> = (props) => {
 const SkeletonProfilePic: React.FC<SkeletonBoneIProps> = (props) => {
   return (
     <div
-      className={joinClasses([styles.bone, styles.profilePic, props.className])}
+      className={joinClasses(styles.bone, styles.profilePic, props.className)}
       style={{ ...props.style }}
     />
   )

@@ -18,12 +18,12 @@ export interface ActionMesssageIProps {
 const ActionMesssage: React.FC<ActionMesssageIProps> = (props) => {
   return (
     <section
-      className={joinClasses([
+      className={joinClasses(
         styles.wrap,
         props.className,
         styles[props.mode],
         props.onClick ? styles.clickable : ''
-      ])}
+      )}
       onClick={props.onClick}
       tabIndex={props.tabIndex}
     >
@@ -36,10 +36,10 @@ const ActionMesssage: React.FC<ActionMesssageIProps> = (props) => {
 
         {props.undertitleContent && (
           <div
-            className={joinClasses([
+            className={joinClasses(
               styles.undertitleContent,
               props.undertitleContentClassName
-            ])}
+            )}
           >
             {props.undertitleContent}
           </div>

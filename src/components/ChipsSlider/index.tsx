@@ -392,10 +392,7 @@ const ChipsSlider: React.FC<ChipsSliderIProps> = (props) => {
   //
   return (
     <div
-      className={joinClasses([
-        styles.sliderContainer,
-        props.containerClassName
-      ])}
+      className={joinClasses(styles.sliderContainer, props.containerClassName)}
       ref={sliderContainerRef}
       tabIndex={0}
       onFocus={() => {
@@ -438,11 +435,11 @@ const ChipsSlider: React.FC<ChipsSliderIProps> = (props) => {
         <>
           <ArrowButton
             ref={arrowLeftRef}
-            className={joinClasses([
+            className={joinClasses(
               styles.arrowLeft,
               styles.arrowButton,
               props.arrowsClassName
-            ])}
+            )}
             direction='left'
             onMouseUp={goPreviousCard}
             disabled={activeIndex === 0}
@@ -452,11 +449,11 @@ const ChipsSlider: React.FC<ChipsSliderIProps> = (props) => {
           />
           <ArrowButton
             ref={arrowRightRef}
-            className={joinClasses([
+            className={joinClasses(
               styles.rightArrow,
               styles.arrowButton,
               props.arrowsClassName
-            ])}
+            )}
             direction='right'
             onMouseUp={goToNextCard}
             disabled={activeIndex === props.items.length - 1}
@@ -470,17 +467,17 @@ const ChipsSlider: React.FC<ChipsSliderIProps> = (props) => {
         {!props.hideOverlayGradients ? (
           <>
             <div
-              className={joinClasses([
+              className={joinClasses(
                 styles.leftGradient,
                 props.overlayGradientsClassName
-              ])}
+              )}
               ref={overlayGradientLeftRef}
             />
             <div
-              className={joinClasses([
+              className={joinClasses(
                 styles.rightGradient,
                 props.overlayGradientsClassName
-              ])}
+              )}
               ref={overlayGradientRightRef}
             />
           </>

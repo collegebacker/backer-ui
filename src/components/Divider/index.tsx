@@ -7,7 +7,7 @@ export interface DividerIProps {
 }
 
 const Divider: React.FC<DividerIProps> = (props) => {
-  return <div className={joinClasses([styles.divider, props.className])} />
+  return <div className={joinClasses(styles.divider, props.className)} />
 }
 
 Divider.defaultProps = {

@@ -25,7 +25,7 @@ const Spinner: React.FC<SpinnerIProps> = (props) => {
 
   return (
     <div
-      className={joinClasses([styles.loaderWrap, props.className])}
+      className={joinClasses(styles.loaderWrap, props.className)}
       style={{
         ...props.style,
         width: getSize(props.size),
@@ -37,7 +37,7 @@ const Spinner: React.FC<SpinnerIProps> = (props) => {
         height={getSize(props.size)}
         viewBox={`0 0 ${getSize(props.size)} ${getSize(props.size)}`}
         fill='none'
-        className={joinClasses([styles.loader, styles[props.size]])}
+        className={joinClasses(styles.loader, styles[props.size])}
         style={props.color ? { fill: props.color } : {}}
         xmlns='http://www.w3.org/2000/svg'
       >

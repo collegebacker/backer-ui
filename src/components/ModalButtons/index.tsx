@@ -18,7 +18,7 @@ export interface ModalButtonsIProps {
 const ModalButtons: React.FC<ModalButtonsIProps> = (props) => {
   return (
     <div
-      className={joinClasses([styles.wrap, props.className])}
+      className={joinClasses(styles.wrap, props.className)}
       style={props.style}
     >
       {props.items.map((item, index) => {

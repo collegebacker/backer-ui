@@ -46,7 +46,7 @@ const BackerFoundation: React.FC<LogoIProps> = (props) => (
   <svg
     viewBox='0 0 138 40'
     xmlns='http://www.w3.org/2000/svg'
-    className={joinClasses([props.hoverAnimation && styles.hoverAnimation])}
+    className={joinClasses(props.hoverAnimation && styles.hoverAnimation)}
   >
     <BackerSignPath />
     <path d='M53.0368 39.5449V35.4531H57.1108V34.5232H53.0368V31.7829H58.2452V30.8653H52V39.5449H53.0368Z' />
@@ -88,7 +88,7 @@ const Backer: React.FC<LogoIProps> = (props) => (
   <svg
     viewBox='0 0 170 40'
     xmlns='http://www.w3.org/2000/svg'
-    className={joinClasses([props.hoverAnimation && styles.hoverAnimation])}
+    className={joinClasses(props.hoverAnimation && styles.hoverAnimation)}
   >
     <BackerSignPath />
     <BackerTextPath />
@@ -99,7 +99,7 @@ const BackerSign: React.FC<LogoIProps> = (props) => (
   <svg
     viewBox='0 0 40 40'
     xmlns='http://www.w3.org/2000/svg'
-    className={joinClasses([props.hoverAnimation && styles.hoverAnimation])}
+    className={joinClasses(props.hoverAnimation && styles.hoverAnimation)}
   >
     <BackerSignPath />
   </svg>
@@ -120,7 +120,7 @@ const renderLogo = (props: LogoIProps) => {
 
 const Logo = React.forwardRef<any, LogoIProps>((props, ref) => {
   return (
-    <div ref={ref} className={joinClasses([props.className, styles.logo])}>
+    <div ref={ref} className={joinClasses(props.className, styles.logo)}>
       {renderLogo(props)}
     </div>
   )

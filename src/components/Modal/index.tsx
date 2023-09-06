@@ -175,12 +175,12 @@ const Modal = React.forwardRef<any, ModalIProps>((props, ref) => {
         >
           <section
             ref={modalRef}
-            className={joinClasses([
+            className={joinClasses(
               styles.modal,
               !props.isBottomSheet ? styles.popup : styles.bottomsheet,
               modalAnimationClass,
               props.className
-            ])}
+            )}
             style={props.style}
           >
             {props.showBackButton && (
@@ -198,10 +198,10 @@ const Modal = React.forwardRef<any, ModalIProps>((props, ref) => {
 
             <div
               tabIndex={0}
-              className={joinClasses([
+              className={joinClasses(
                 styles.contentWrapper,
                 props.contentClassName
-              ])}
+              )}
             >
               {props.children}
             </div>

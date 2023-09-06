@@ -35,17 +35,17 @@ const Navbar: React.FC<NavbarIProps> = React.memo((props) => {
 
   return (
     <nav
-      className={joinClasses([styles.wrap, props.className])}
+      className={joinClasses(styles.wrap, props.className)}
       style={props.style}
     >
       {!props.hideLogo && (
         <LogoTag
-          className={joinClasses([
+          className={joinClasses(
             styles.logo,
             props.backButtonClick && styles.hideLogoOnShrink,
             props.hideLogoOnTablet && styles.hideLogoOnTablet,
             props.hideLogoOnMobile && styles.hideLogoOnMobile
-          ])}
+          )}
           {...(props.logoLink && linkProps)}
         >
           <Logo type='sign' className={styles.logoSign} />
@@ -56,12 +56,12 @@ const Navbar: React.FC<NavbarIProps> = React.memo((props) => {
       <div className='grid'>
         {props.backButtonClick && (
           <div
-            className={joinClasses([
+            className={joinClasses(
               `grid-desktop-${props.backButtonStartColumn}-${
                 12 - props.backButtonStartColumn
               } grid-tablet-1-4`,
               props.backButtonClassName
-            ])}
+            )}
           >
             <BackButton
               hasBackground={false}
@@ -83,10 +83,10 @@ const Navbar: React.FC<NavbarIProps> = React.memo((props) => {
             >
               {button.label && (
                 <span
-                  className={joinClasses([
+                  className={joinClasses(
                     'typo-app-body-main',
                     styles.buttonLabel
-                  ])}
+                  )}
                 >
                   {button.label}
                 </span>

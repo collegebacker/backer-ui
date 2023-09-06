@@ -51,12 +51,12 @@ const ButtonContent = (props: PillButtonIProps) => {
 }
 
 const PillButton = React.forwardRef<any, PillButtonIProps>((props, ref) => {
-  const classes = joinClasses([
+  const classes = joinClasses(
     props.className,
     styles.button,
     props.isActive ? styles.active : '',
     !props.allowPointerEvents && props.isActive ? styles.noPointerEvents : ''
-  ])
+  )
 
   const style = {
     ...(props.style || {})

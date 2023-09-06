@@ -24,7 +24,7 @@ const ArrowButton = React.forwardRef<any, ArrowButtonIProps>((props, ref) => {
     <button
       tabIndex={props.tabIndex}
       ref={ref}
-      className={joinClasses([styles.arrowButton, props.className])}
+      className={joinClasses(styles.arrowButton, props.className)}
       style={{
         transform:
           props.direction === 'left' ? 'rotate(0deg)' : 'rotate(180deg)',

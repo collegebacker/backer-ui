@@ -54,7 +54,7 @@ const DotPagination: React.FC<DotPaginationIProps> = (props) => {
 
   return (
     <div
-      className={joinClasses([styles.container, props.className])}
+      className={joinClasses(styles.container, props.className)}
       style={{
         width:
           props.visibleAmount < props.totalAmount
@@ -72,10 +72,10 @@ const DotPagination: React.FC<DotPaginationIProps> = (props) => {
         {Array.from(Array(props.totalAmount).keys()).map((_, index) => {
           return (
             <div
-              className={joinClasses([
+              className={joinClasses(
                 styles.paginationDot,
                 props.activeIndex === index ? styles.activeDot : ''
-              ])}
+              )}
               style={{
                 transform: `scale(${limitDots(index) ? 0.5 : 1})`
               }}

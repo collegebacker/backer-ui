@@ -15,7 +15,7 @@ export interface IconIProps {
 const Icon: React.FC<IconIProps> = (props) => {
   return (
     <i
-      className={joinClasses([styles.icon, props.className])}
+      className={joinClasses(styles.icon, props.className)}
       style={{ ...props.style }}
       onClick={props.onClick}
     >

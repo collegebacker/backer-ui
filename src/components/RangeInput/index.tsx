@@ -51,7 +51,7 @@ const RangeInput: React.FC<RangeInputIProps> = (props) => {
     <input
       ref={inputRef}
       type='range'
-      className={joinClasses([styles.slider, props.className])}
+      className={joinClasses(styles.slider, props.className)}
       style={props.style}
       min={props.min}
       max={props.max}

@@ -59,11 +59,11 @@ const WarnMesssage: React.FC<WarnMesssageIProps> = (props) => {
   return (
     !!props.text && (
       <section
-        className={joinClasses([
+        className={joinClasses(
           styles.wrap,
           styles[`${props.outline ? `${props.type}-outline` : props.type}`],
           props.className
-        ])}
+        )}
         style={{
           cursor: props.onClick ? 'pointer' : 'default'
         }}
