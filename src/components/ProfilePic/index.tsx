@@ -14,7 +14,7 @@ export interface ProfilePicIProps {
   name?: string
   imageSrc?: string
   uploadMode?: boolean
-  profilePicIcon?: boolean
+  profileIcon?: boolean
   onChange?: (imageFile: File) => void
 }
 
@@ -105,8 +105,8 @@ const ProfilePic: React.FC<ProfilePicIProps> = (props) => {
           <div
             className={joinClasses(
               styles.cameraImage,
-              imageSrc && !props.profilePicIcon ? styles.imageExist : '',
-              props.profilePicIcon
+              imageSrc && !props.profileIcon ? styles.imageExist : '',
+              props.profileIcon
                 ? styles.cameraImageShiftPosition
                 : styles.cameraImageNormalPosition
             )}
@@ -116,13 +116,13 @@ const ProfilePic: React.FC<ProfilePicIProps> = (props) => {
         </div>
       )}
 
-      {props.profilePicIcon && !props.imageSrc && (
-        <div className={styles.profilePicIcon}>
+      {props.profileIcon && !props.imageSrc && (
+        <div className={styles.profileIcon}>
           <ProfilePicSVG />
         </div>
       )}
 
-      {!props.imageSrc && !props.uploadMode && !props.profilePicIcon && (
+      {!props.imageSrc && !props.uploadMode && !props.profileIcon && (
         <svg className={styles.letterPlaceholder} viewBox='0 0 60 60'>
           <text x='50%' y='52%' textAnchor='middle' alignmentBaseline='middle'>
             {getFirstLetter(props.name)}
@@ -137,7 +137,7 @@ ProfilePic.defaultProps = {
   className: '',
   imageSrc: '',
   uploadMode: false,
-  profilePicIcon: false
+  profileIcon: false
 } as Partial<ProfilePicIProps>
 
 export default ProfilePic
