@@ -104,7 +104,7 @@ const ListItem: React.FC<ListItemIProps> = (props) => {
       </div>
 
       {props.rightContent || (isClickable && props.chevron) ? (
-        <div className={styles.rightContent}>
+        <div className={styles.rightContentWrap}>
           {props.rightContent && (
             <div
               className={joinClasses(
