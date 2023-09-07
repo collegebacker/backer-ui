@@ -70,7 +70,7 @@ Default.args = {
       <LabelTag size='small' />
     </>
   ),
-  middleContent: <p>Hello I'm a custom content</p>,
+  middleContent: <p>Hello I'm a custom content. And I'm in the middle</p>,
   divider: true,
   onClick: () => {
     console.log('clicked')

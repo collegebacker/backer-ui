@@ -32,6 +32,8 @@ const ListItem: React.FC<ListItemIProps> = (props) => {
   }
 
   const listItemElement = isClickable ? 'button' : 'li' // Determine the element type
+  const isRightContentExist =
+    props.rightContent || (isClickable && props.chevron)
 
   return React.createElement(
     listItemElement,
@@ -64,7 +66,12 @@ const ListItem: React.FC<ListItemIProps> = (props) => {
         </div>
       )}
 
-      <div className={styles.middleContent}>
+      <div
+        className={styles.middleContent}
+        style={{
+          paddingRight: isRightContentExist ? `30px` : 0
+        }}
+      >
         {props.topLabel && (
           <span
             className={joinClasses('typo-app-body-caption', styles.caption)}
@@ -103,7 +110,7 @@ const ListItem: React.FC<ListItemIProps> = (props) => {
         )}
       </div>
 
-      {props.rightContent || (isClickable && props.chevron) ? (
+      {isRightContentExist ? (
         <div className={styles.rightContentWrap}>
           {props.rightContent && (
             <div
