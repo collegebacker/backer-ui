@@ -61,6 +61,9 @@ declare global {
     | 'lock-closed'
     | 'bank-account'
     | 'empty-circle'
+    | 'start-outline'
+    | 'people-group'
+    | 'b-cake'
 
   type TargetTypes = '_blank' | '_self' | '_parent' | '_top'
 
