@@ -64,6 +64,7 @@ declare global {
     | 'start-outline'
     | 'people-group'
     | 'b-cake'
+    | 'link-large'
 
   type TargetTypes = '_blank' | '_self' | '_parent' | '_top'
 
