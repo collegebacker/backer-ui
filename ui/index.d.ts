@@ -631,6 +631,7 @@ interface NavbarIProps {
     backButtonClassName?: string;
     onCloseClick?: () => void;
     logoLink?: string | null;
+    onLogoClick?: () => void;
     hideLogo?: boolean;
     hideLogoOnTablet?: boolean;
     hideLogoOnMobile?: boolean;

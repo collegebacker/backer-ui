@@ -16,6 +16,7 @@ export interface NavbarIProps {
   backButtonClassName?: string
   onCloseClick?: () => void
   logoLink?: string | null
+  onLogoClick?: () => void
   hideLogo?: boolean
   hideLogoOnTablet?: boolean
   hideLogoOnMobile?: boolean
@@ -47,6 +48,7 @@ const Navbar: React.FC<NavbarIProps> = React.memo((props) => {
             props.hideLogoOnMobile && styles.hideLogoOnMobile
           )}
           {...(props.logoLink && linkProps)}
+          onClick={props.onLogoClick}
         >
           <Logo type='sign' className={styles.logoSign} />
           <Logo type='text' className={styles.logoText} />
