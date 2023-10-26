@@ -36,9 +36,7 @@ Default.args = {
   onCloseClick: () => {
     console.log('Close button')
   },
-  onLogoClick: () => {
-    console.log('Logo')
-  },
+  onLogoClick: undefined,
   buttons: [
     {
       label: 'Button',

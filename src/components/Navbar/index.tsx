@@ -27,32 +27,65 @@ export interface NavbarIProps {
   }>
 }
 
-const Navbar: React.FC<NavbarIProps> = React.memo((props) => {
-  const LogoTag = props.logoLink ? 'a' : 'div'
+export interface LogoWrapperIProps {
+  logoLink?: string | null
+  onLogoClick?: () => void
+  hideLogo?: boolean
+  hideLogoOnTablet?: boolean
+  hideLogoOnMobile?: boolean
+  children: React.ReactNode
+}
+
+const LogoWrapper = (props: LogoWrapperIProps) => {
   const linkProps = {
     href: props.logoLink,
     target: '_self'
   }
 
+  const classes = joinClasses(
+    styles.logo,
+    props.hideLogoOnTablet && styles.hideLogoOnTablet,
+    props.hideLogoOnMobile && styles.hideLogoOnMobile
+  )
+
+  if (props.onLogoClick) {
+    return (
+      <button
+        className={joinClasses(classes, styles.logoBtn)}
+        onClick={props.onLogoClick}
+      >
+        {props.children}
+      </button>
+    )
+  }
+
+  if (props.logoLink) {
+    return (
+      <a className={classes} {...linkProps}>
+        {props.children}
+      </a>
+    )
+  }
+
+  return <div className={classes}>{props.children}</div>
+}
+
+const Navbar: React.FC<NavbarIProps> = React.memo((props) => {
   return (
     <nav
       className={joinClasses(styles.wrap, props.className)}
       style={props.style}
     >
       {!props.hideLogo && (
-        <LogoTag
-          className={joinClasses(
-            styles.logo,
-            props.backButtonClick && styles.hideLogoOnShrink,
-            props.hideLogoOnTablet && styles.hideLogoOnTablet,
-            props.hideLogoOnMobile && styles.hideLogoOnMobile
-          )}
-          {...(props.logoLink && linkProps)}
-          onClick={props.onLogoClick}
+        <LogoWrapper
+          logoLink={props.logoLink}
+          onLogoClick={props.onLogoClick}
+          hideLogoOnTablet={props.hideLogoOnTablet}
+          hideLogoOnMobile={props.hideLogoOnMobile}
         >
           <Logo type='sign' className={styles.logoSign} />
           <Logo type='text' className={styles.logoText} />
-        </LogoTag>
+        </LogoWrapper>
       )}
 
       <div className='grid'>
