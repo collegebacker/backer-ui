@@ -80,8 +80,12 @@ const Navbar: React.FC<NavbarIProps> = React.memo((props) => {
         <LogoWrapper
           logoLink={props.logoLink}
           onLogoClick={props.onLogoClick}
-          hideLogoOnTablet={props.hideLogoOnTablet}
-          hideLogoOnMobile={props.hideLogoOnMobile}
+          hideLogoOnTablet={
+            props.hideLogoOnTablet || props.backButtonClick !== undefined
+          }
+          hideLogoOnMobile={
+            props.hideLogoOnMobile || props.backButtonClick !== undefined
+          }
         >
           <Logo type='sign' className={styles.logoSign} />
           <Logo type='text' className={styles.logoText} />

@@ -30,9 +30,9 @@ export const Default = Template.bind({})
 Default.args = {
   className: '',
   style: {},
-  backButtonClick: () => {
-    console.log('Back button')
-  },
+  // backButtonClick: () => {
+  //   console.log('Back button')
+  // },
   onCloseClick: () => {
     console.log('Close button')
   },
