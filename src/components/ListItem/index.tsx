@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import { joinClasses } from '../../utils'
+import { value joinClasses } from '../../utils'
 import Icon from '../Icon'
 
 export interface ListItemIProps {
@@ -20,6 +20,7 @@ export interface ListItemIProps {
   chevron?: boolean
   disabled?: boolean
   onClick?: (e?: React.MouseEvent) => void
+  middleContentPaddingRight?: number
 }
 
 const ListItem: React.FC<ListItemIProps> = (props) => {
@@ -69,7 +70,9 @@ const ListItem: React.FC<ListItemIProps> = (props) => {
       <div
         className={styles.middleContent}
         style={{
-          paddingRight: isRightContentExist ? `30px` : 0
+          paddingRight: isRightContentExist
+            ? `${props.middleContentPaddingRight || 30}px`
+            : 0
         }}
       >
         {props.topLabel && (
