@@ -561,6 +561,7 @@ interface ListItemIProps {
     chevron?: boolean;
     disabled?: boolean;
     onClick?: (e?: React.MouseEvent) => void;
+    middleContentPaddingRight?: number;
 }
 declare const ListItem: React.FC<ListItemIProps>;
 
