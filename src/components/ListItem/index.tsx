@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import { value joinClasses } from '../../utils'
+import { joinClasses } from '../../utils'
 import Icon from '../Icon'
 
 export interface ListItemIProps {
