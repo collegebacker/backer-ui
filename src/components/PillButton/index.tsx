@@ -6,6 +6,7 @@ import styles from './styles.module.scss'
 
 export interface PillButtonIProps {
   className?: string
+  labelClassName?: string
   style?: React.CSSProperties
   type?: 'button' | 'submit' | 'reset'
   icon?: IconTypes
@@ -33,7 +34,7 @@ const ButtonContent = (props: PillButtonIProps) => {
 
   return (
     <>
-      {props.label ? <span className={styles.text}>{props.label}</span> : null}
+      {props.label ? <span className={joinClasses(styles.text, props.labelClassName)}>{props.label}</span> : null}
 
       {props.icon && (
         <Icon name={props.icon} className={styles.icon} style={iconStyles} />
