@@ -17,6 +17,7 @@ export interface ButtonIProps {
   form?: string
   disabled?: boolean
   label?: string
+  labelClassName?: string
   maxWidth?: number
   minWidth?: number
   hasMinWidth?: boolean
@@ -32,7 +33,7 @@ const ButtonContent = ({ ...props }: ButtonIProps) => {
   return (
     <>
       {props.label ? (
-        <span className={styles.text}>
+        <span className={joinClasses(styles.text, props.labelClassName)}>
           {!props.busy ? props.label : props.busyLabel}
         </span>
       ) : null}
