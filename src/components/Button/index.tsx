@@ -108,6 +108,7 @@ const Button = React.forwardRef<any, ButtonIProps>((props, ref) => {
         icon={props.icon}
         busy={props.busy}
         busyLabel={props.busyLabel}
+        labelClassName={props.labelClassName}
       />
     </props.tag>
   )
