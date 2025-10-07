@@ -34,5 +34,9 @@
   "discover": {
     "dark": "https://res.cloudinary.com/dgfjsma5p/image/upload/v1671668401/backer-ui/payment-logos/dark/discover.svg",
     "light": "https://res.cloudinary.com/dgfjsma5p/image/upload/v1671668465/backer-ui/payment-logos/light/discover.svg"
+  },
+  "amex": {
+    "dark": "https://res.cloudinary.com/dgfjsma5p/image/upload/backer-ui/payment-logos/dark/amex.svg",
+    "light": "https://res.cloudinary.com/dgfjsma5p/image/upload/backer-ui/payment-logos/light/amex.svg"
   }
 }
