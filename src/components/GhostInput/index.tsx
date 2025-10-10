@@ -54,9 +54,60 @@ const GhostInput = React.forwardRef<any, GhostInputIProps>((props, ref) => {
     }
   }, [props.errorMessage])
 
+  const formatWithThousandSeparator = (value: string) => {
+    if (value === '') return ''
+
+    const parts = value.split('.')
+    const integerPart = parts[0]
+    const decimalPart = parts[1]
+
+    // Add thousand separators to integer part
+    const formattedInteger = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+
+    // Combine with decimal part if it exists
+    return decimalPart !== undefined
+      ? `${formattedInteger}.${decimalPart}`
+      : formattedInteger
+  }
+
+  const calculateNewCursorPosition = (
+    oldValue: string,
+    newValue: string,
+    oldCursorPosition: number
+  ) => {
+    if (oldValue === newValue) return oldCursorPosition
+
+    // Count commas before cursor position in old value
+    const commasBeforeCursor = (
+      oldValue.substring(0, oldCursorPosition).match(/,/g) || []
+    ).length
+
+    // Count commas in new value
+    const totalCommasInNew = (newValue.match(/,/g) || []).length
+
+    // Calculate the difference in commas
+    const commaDifference = totalCommasInNew - commasBeforeCursor
+
+    // Adjust cursor position based on comma changes
+    let newPosition = oldCursorPosition + commaDifference
+
+    // Ensure cursor doesn't go beyond the end of the new value
+    newPosition = Math.min(newPosition, newValue.length)
+
+    // Ensure cursor doesn't go before the start
+    newPosition = Math.max(newPosition, 0)
+
+    return newPosition
+  }
+
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (props.type === 'money') {
-      const cleanedVal = e.target.value.replace(/,/g, '.')
+      const input = e.target
+      const cursorPosition = input.selectionStart
+      const oldValue = val || ''
+
+      // Remove all commas first to get clean numeric value
+      const cleanedVal = e.target.value.replace(/,/g, '')
       const ex = props.allowCents ? /^[0-9]+\.?[0-9]*$/ : /^[0-9]+$/
 
       if (cleanedVal.match(ex) || cleanedVal === '') {
@@ -68,13 +119,30 @@ const GhostInput = React.forwardRef<any, GhostInputIProps>((props, ref) => {
           cleanedVal === '' ||
           !props.maximumMoney
         ) {
+          let formattedVal = ''
           if (val.split('.')[1] && val.split('.')[1].length > 2) {
             let trimmmedVal =
               val.split('.')[0] + '.' + val.split('.')[1].slice(0, 2)
-            setVal(trimmmedVal)
+            // Format with thousand separators
+            formattedVal = formatWithThousandSeparator(trimmmedVal)
           } else {
-            setVal(val)
+            // Format with thousand separators
+            formattedVal = formatWithThousandSeparator(val)
           }
+
+          setVal(formattedVal)
+
+          // Restore cursor position after formatting
+          setTimeout(() => {
+            if (input) {
+              const newCursorPosition = calculateNewCursorPosition(
+                oldValue,
+                formattedVal,
+                cursorPosition
+              )
+              input.setSelectionRange(newCursorPosition, newCursorPosition)
+            }
+          }, 0)
         }
       }
     }
