@@ -78,6 +78,7 @@ declare global {
     | 'mastercard'
     | 'mastercard-nocaption'
     | 'discover'
+    | 'amex'
 
   type AppTypographyTypes =
     | 'title-xlarge'

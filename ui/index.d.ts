@@ -15,6 +15,7 @@ interface ButtonIProps {
     form?: string;
     disabled?: boolean;
     label?: string;
+    labelClassName?: string;
     maxWidth?: number;
     minWidth?: number;
     hasMinWidth?: boolean;
@@ -29,6 +30,7 @@ declare const Button: React.ForwardRefExoticComponent<ButtonIProps & React.RefAt
 
 interface PillButtonIProps {
     className?: string;
+    labelClassName?: string;
     style?: React.CSSProperties;
     type?: 'button' | 'submit' | 'reset';
     icon?: IconTypes;
