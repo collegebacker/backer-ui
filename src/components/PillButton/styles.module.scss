@@ -9,7 +9,7 @@
   justify-content: center;
   align-items: center;
   padding: 12px 18px;
-  border-radius: var(--radius-s);
+  border-radius: 80px;
   height: 45px;
   border: 1px solid var(--color-main-transparent-80);
   outline: none;
@@ -22,7 +22,7 @@
     background-color: var(--color-main-transparent-50);
   }
 
-  @include focus-state(var(--radius-s));
+  @include focus-state(80px);
 }
 
 @mixin base-icon {
