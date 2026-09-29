@@ -13,9 +13,9 @@
   user-select: none;
 
   span {
-    font-family: 'ABCMArfa', sans-serif;
+    font-family: var(--typo-sansserif-fontfamily);
     font-size: 10px;
-    font-weight: 500;
+    font-weight: var(--typo-medium-fontweight);
     line-height: 100%;
     color: var(--color-main-0);
   }
