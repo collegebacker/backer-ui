@@ -32,7 +32,6 @@ export interface ModalIProps {
 const Modal = React.forwardRef<any, ModalIProps>((props, ref) => {
   const modalWrapRef = React.useRef<HTMLDivElement>(null)
   const modalRef = React.useRef<HTMLDivElement>(null)
-  const gradientsRef = React.useRef<HTMLDivElement>(null)
 
   const [_document, setDocument] = React.useState<Document | null>(null)
   const [isMount, setIsMount] = React.useState(false)
@@ -107,14 +106,12 @@ const Modal = React.forwardRef<any, ModalIProps>((props, ref) => {
   useDidMountEffect(() => {
     if (isOpen) {
       modalWrapRef.current?.classList.add(styles.modalWrap_show)
-      gradientsRef.current?.classList.add(styles.gradients_show)
 
       setModalAnimationClass(
         !props.isBottomSheet ? styles.popup_show : styles.bottomsheet_show
       )
     } else {
       modalWrapRef.current?.classList.add(styles.modalWrap_hide)
-      gradientsRef.current?.classList.add(styles.gradients_hide)
 
       setModalAnimationClass(
         !props.isBottomSheet ? styles.popup_hide : styles.bottomsheet_hide
@@ -206,11 +203,6 @@ const Modal = React.forwardRef<any, ModalIProps>((props, ref) => {
               {props.children}
             </div>
           </section>
-
-          <div className={styles.gradients} ref={gradientsRef}>
-            <div className={styles.gradient1} />
-            <div className={styles.gradient2} />
-          </div>
         </aside>
       </FocusTrap>
     ),

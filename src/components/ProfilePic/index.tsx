@@ -2,7 +2,7 @@ import React from 'react'
 import { joinClasses } from '../../utils'
 import styles from './styles.module.scss'
 
-import { stringToGradient, getFirstLetter } from '../../utils'
+import { placeholderBackground, getFirstLetter } from '../../utils'
 
 /////////////////////////////////
 //////// TYPES AND PROPS ////////
@@ -78,9 +78,7 @@ const ProfilePic: React.FC<ProfilePicIProps> = (props) => {
         props.className ? props.className : ''
       )}
       style={{
-        backgroundImage: `url(${props.imageSrc}), ${stringToGradient(
-          props.name
-        )}`,
+        backgroundImage: `url(${props.imageSrc}), ${placeholderBackground}`,
         ...props.style
       }}
     >

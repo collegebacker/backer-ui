@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './styles.module.scss'
 import { joinClasses } from '../../utils'
 import gsap from 'gsap'
-import { stringToGradient, isMobile, getFirstLetter } from '../../utils'
+import { placeholderBackground, isMobile, getFirstLetter } from '../../utils'
 
 export interface PolaroidPhotoIProps {
   className?: string
@@ -123,7 +123,7 @@ const PolaroidPhoto: React.FC<PolaroidPhotoIProps> = (props) => {
         <div
           className={styles.photo}
           style={{
-            backgroundImage: `url(${imageSrc}), ${stringToGradient(props.name)}`
+            backgroundImage: `url(${imageSrc}), ${placeholderBackground}`
           }}
         >
           {!imageSrc && !props.uploadMode && (

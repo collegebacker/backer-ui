@@ -1,5 +1,5 @@
 export { default as waitForScrollEnd } from './waitForScrollEnd'
-export { default as stringToGradient } from './stringToGradient'
+export { default as placeholderBackground } from './placeholderBackground'
 export { default as isMobile } from './isMobile'
 export { default as replaceWithNumbers } from './replaceWithNumbers'
 export { default as validateIfStringIsCorrectDate } from './validateIfStringIsCorrectDate'

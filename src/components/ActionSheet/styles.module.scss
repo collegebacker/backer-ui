@@ -30,9 +30,9 @@
 }
 
 .text {
-  font-family: 'ABCMArfa', sans-serif;
+  font-family: var(--typo-sansserif-fontfamily);
   font-size: 17px;
-  font-weight: 300;
+  font-weight: var(--typo-light-fontweight);
   line-height: 130%;
   padding: 30px;
   width: 100%;
@@ -66,9 +66,9 @@
   }
 
   span {
-    font-family: 'ABCMArfa', sans-serif;
+    font-family: var(--typo-sansserif-fontfamily);
     font-size: 17px;
-    font-weight: 500;
+    font-weight: var(--typo-medium-fontweight);
     line-height: 120%;
     color: var(--color-main-500);
   }

@@ -45,8 +45,8 @@
   transition: transform 0.1s ease, border 0.1s ease;
 
   span {
-    font-family: 'ABCMarfa', sans-serif;
-    font-weight: 500;
+    font-family: var(--typo-sansserif-fontfamily);
+    font-weight: var(--typo-medium-fontweight);
     font-size: 17px;
     color: var(--color-main-500);
   }

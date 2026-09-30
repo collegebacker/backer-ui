@@ -14,10 +14,10 @@
 
 .logo {
   display: flex;
-  gap: 12px;
+  gap: 9px;
   align-items: center;
   position: absolute;
-  height: 32px;
+  height: 40px;
   left: $grid-desktop-padding;
 
   @media only screen and (max-width: $grid-tablet-breakpoint) {
@@ -40,12 +40,12 @@
 }
 
 .logoSign {
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
 }
 
 .logoText {
-  height: 24px;
+  height: 15px;
 
   @media only screen and (max-width: $grid-mobile-breakpoint) {
     display: none;
